@@ -7,10 +7,11 @@ tools/__pycache__/
 data/stats/
 data/stats/*
 data/stats/*/*
-data/.version
 compile_commands.json
 objdiff.json
 code.bin
+.changes
+.version
 *.csv_b
 *.m2c
 *.bin

@@ -1,4 +1,6 @@
 import os
+import sys
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "tools"))
 from tools._settings import getExeFile
 
 def apply(config, args):
