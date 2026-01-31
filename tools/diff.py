@@ -24,8 +24,8 @@ def main():
     if decomp_symbol is None:
         fail(f"Couldn't find in decomp: {symbolname}")
 
-    sym_size = int(symbol[2])
-    decomp_size = int(decomp_symbol[1])
+    sym_size = int(symbol[MapFmt.End] - symbol[MapFmt.Start])
+    decomp_size = int(decomp_symbol[ElfFmt.Size])
     if decomp_size == 0:
         print(f"Warning: decomp symbol size for {symbol[3]} is 0. Using the original size instead.")
         decomp_size = sym_size
@@ -33,8 +33,8 @@ def main():
     cmd = [
         sys.executable,
         str(Path(getProjDir()) / "tools" / "asm-differ" / "diff.py"),
-        str(symbol[0]-0x00100000),
-        str(decomp_symbol[0]-0x00100000),
+        str(symbol[MapFmt.Start]-0x00100000),
+        str(decomp_symbol[ElfFmt.Start]-0x00100000),
         str(sym_size),
         str(decomp_size)
     ] + extra_flags

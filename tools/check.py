@@ -1,4 +1,4 @@
-print ("Enumerating and checking ...")
+print ("The check has begun ...")
     
 from colorama import Fore, Style
 from low.__parseMap import *
@@ -15,17 +15,19 @@ is_sim_mode = False
 is_silent = False
 is_log = False
 found_flag = False
-csv_path = getFuncSymFile()
-log_path = f"{getProjDir()}/data/ver/{get_ver}/.changes"
+csv_path = getMapFile()
+log_path = str(Path(getProjDir()) / "data" / "ver" / get_ver() / ".changes")
 
 def rank_symbol(sym, decomp_sym):
-    sym_size = int(sym[2])
-    decomp_size = int(decomp_sym[1])
+    sym_size = sym[MapFmt.End] - sym[MapFmt.Start]
+    decomp_size = decomp_sym[ElfFmt.Size]
 
     if decomp_size == 0:
         decomp_size = sym_size
 
-    out = str(subprocess.check_output(f'\"{sys.executable}\" "{Path(getProjDir()) / "tools" / "asm-differ" / "diff.py"}" --format json {sym[0] - 0x00100000} {decomp_sym[0] - 0x00100000} {sym_size} {decomp_size}', shell=True))
+    ss = f'\"{sys.executable}\" "{Path(getProjDir()) / "tools" / "asm-differ" / "diff.py"}" --format json {sym[MapFmt.Start] - 0x00100000} {decomp_sym[ElfFmt.Start] - 0x00100000} {sym_size} {decomp_size}'
+    #print (str)
+    out = str(subprocess.check_output(ss, shell=True))
 
     if not "CURRENT" in out:
         raise RuntimeError(f"Unexpected output when running asm-differ:\n{out}")
@@ -55,11 +57,11 @@ def getRankName(rank: str):
 
 def getRankMsg(prev, now):
     if now == 'O':
-        if prev == 'U': return "Perfectly Ok."
-        if prev in ('m','M'): return "Now Ok."
+        if prev == 'U': return "Now perfectly Matching."
+        if prev in ('m','M'): return "Now Matching."
         return "Ok."
     if now == 'U':
-        if prev == 'O': return "Completely Undefined."
+        if prev == 'O': return "Now completely Undefined."
         if prev in ('m','M'): return "Now Undefined."
         return "Not Decompiled."
     if now == 'M':
@@ -85,39 +87,49 @@ def clear_line():
 def print_progress(name, prog, rank):
     printf (Fore.LIGHTRED_EX + f"[{prog}%] " + Fore.LIGHTCYAN_EX + name + Fore.RESET + Style.RESET_ALL + f" ({rank})", end='\r')
 
+def write_line(f, sym):
+    line = []
+    for col in MapFmt:
+        if col in (MapFmt.Start, MapFmt.End):
+            line.append(f"0x{sym[col]:08X}")
+        else:
+            line.append(str(sym[col]))
+    f.write(','.join(line) + '\n')
+
 def check_syms():
     syms = read_sym_file()
     newsyms = []
-    sym_addrs = []
-    sym_sizes = []
+    sym_starts = []
+    sym_ends = []
     do_rewrite = False
     is_error = False
     sym_num = len(syms)
     if sym_num == 0:
-        print ("No symbols found in csv.")
+        print ("No symbols found in map.")
         return
-    last_sym_addr = syms[sym_num-1][0]
-    first_sym_addr = syms[0][0]
+    last_sym_addr = syms[-1][MapFmt.Start]
+    first_sym_addr = syms[0][MapFmt.Start]
     last_name = ""
     log = []
 
     for sym in syms:
-        size=sym[2]
-        addr=sym[0]
-        oldrank=sym[1]
+        end=sym[MapFmt.End]
+        start=sym[MapFmt.Start]
+        oldrank=sym[MapFmt.Rank]
+        name=sym[MapFmt.Symbol]
+        tag=sym[MapFmt.Tag]
+        typ=sym[MapFmt.Type]
         rank='U'
-        name=sym[3]
-        tag=sym[4]
 
-        progress = ((addr-first_sym_addr) / (last_sym_addr-first_sym_addr)) * 100
+        progress = ((start - first_sym_addr) / (syms[-1][MapFmt.End] - first_sym_addr)) * 100
         progress = round(progress, 1)
 
         # check addr dupl
-        if addr in sym_addrs:
-            print (f"0x{addr:08X} appears more than once!")
+        if start in sym_starts:
+            print (f"0x{start:08X} appears more than once!")
 
-        sym_addrs.append(addr)
-        sym_sizes.append(size)
+        sym_starts.append(start)
+        sym_ends.append(end)
 
         # check no name
         if is_skip_mode or not name or len(name) == 0:
@@ -130,7 +142,7 @@ def check_syms():
             rank = rank_symbol(sym, decomp_symbol)
 
         # main adding
-        newsyms.append((addr, rank, size, name, tag))
+        newsyms.append((start, end, typ, rank, name, tag))
         last_name = name
         clear_line()
         print_progress (last_name, progress, rank)
@@ -143,12 +155,12 @@ def check_syms():
     clear_line()
 
     # post check before writing
-    mySyms = [(int(sym_addrs[i]), int(sym_sizes[i])) for i in range(len(sym_addrs))]
+    mySyms = [(int(sym_starts[i]), int(sym_ends[i])) for i in range(len(sym_starts))]
     mySyms.sort(key=lambda x: x[0])
     for i in range(len(mySyms) - 1):
-        addr, size = mySyms[i]
-        next_addr = mySyms[i + 1][0]
-        if addr + size > next_addr:
+        addr, endaddr = mySyms[i]
+        next_addr = mySyms[i + 1][MapFmt.Start]
+        if endaddr > next_addr:
             print (f"MAP OVERLAP: 0x{addr:08X} overlaps with 0x{next_addr:08X}")
             is_error = True
 
@@ -183,10 +195,10 @@ def check_syms():
             dst.write(src.read())
         # write
         with open(csv_path, 'w') as f:
-            f.write("Address,Rank,Size,Symbol,Tag\n")
+            f.write(','.join(field.name for field in MapFmt) + '\n')
+
             for sym in newsyms:
-                f.write(f"0x{sym[0]:08X},{sym[1]},{sym[2]:06d},{sym[3]},{sym[4]}\n")
-        
+                write_line(f, sym)
 
 def check_sym(symbol_name):
     dec = get_elf_symbol(symbol_name)
@@ -194,31 +206,38 @@ def check_sym(symbol_name):
         print (f"Symbol {symbol_name} not found in build.")
         return
 
-    syms = read_sym_file()
-    for sym in syms:
-        if symbol_name != sym[3]:
-            continue
+    sym = get_symbol(symbol_name)
+    if sym is None:
+        print (f"Symbol {symbol_name} not found in map.")
+        return
 
-        prevrank = sym[1]
-        nowrank = rank_symbol(sym, dec)
+    prevrank = sym[MapFmt.Rank]
+    nowrank = rank_symbol(sym, dec)
 
-        if found_flag and prevrank != nowrank:
-            # update CSV
-            file = open(csv_path, "r").readlines()
-            newline = f"0x{sym[0]:08X},{nowrank},{sym[2]:06d},{sym[3]},{sym[4]}\n"
-            for i, line in enumerate(file):
-                if symbol_name == line.split(',')[3]:
-                    file[i] = newline
-                    break
-            with open(csv_path, "w") as f:
-                f.writelines(file)
+    if found_flag and prevrank != nowrank:
+        # update map
+        file = open(csv_path, "r").readlines()
 
-            # Always print rank change in literal format for single symbol
-            print (f"{prevrank} -> {nowrank} ({getRankMsg(prevrank, nowrank)})")
-        else:
-            # Print the normal message for unchanged single symbol
-            printf (getRankMsg(prevrank, nowrank))
-        break
+        cols = []
+        for col in MapFmt:
+            if col in (MapFmt.Start, MapFmt.End):
+                cols.append(f"0x{sym[col]:08X}")
+            elif col == MapFmt.Rank:
+                cols.append(nowrank)
+            else:
+                cols.append(str(sym[col]))
+        newline = ",".join(cols) + "\n"
+
+        for i, line in enumerate(file):
+            if symbol_name == line.split(',')[MapFmt.Symbol]:
+                file[i] = newline
+                break
+        with open(csv_path, "w") as f:
+            f.writelines(file)
+
+        print (f"{prevrank} -> {nowrank} ({getRankMsg(prevrank, nowrank)})")
+    else:
+        printf (getRankMsg(prevrank, nowrank))
 
 def main():
     global found_flag

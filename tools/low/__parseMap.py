@@ -1,24 +1,31 @@
 import sys
 import csv
 from _settings import *
+from enum import IntEnum
 
-import csv
-from _settings import *
+class MapFmt(IntEnum):
+    Start = 0
+    End = 1
+    Type = 2
+    Rank = 3
+    Symbol = 4
+    Tag = 5
 
 def _rows():
-    with open(getFuncSymFile(), newline='') as f:
+    with open(getMapFile(), newline='') as f:
         for row in csv.reader(f, delimiter=',', quotechar='"'):
-            if row and row[0].startswith("0x"):
-                addr = int(row[0], 0) if row[0] else 0
-                size = int(row[2], 0) if row[2] else 0
-                yield addr, row[1], size, row[3], row[4]
+            if row and row[MapFmt.Start].startswith("0x"):
+                #print (row)
+                start = int(row[MapFmt.Start], 0)
+                end = int(row[MapFmt.End], 0) if row[MapFmt.End] else (start + 4)
+                yield start, end, row[MapFmt.Type], row[MapFmt.Rank], row[MapFmt.Symbol], row[MapFmt.Tag]
 
 def read_sym_file():
     return list(_rows())
 
 def get_symbol(symbol):
-    return next((r for r in _rows() if r[3] == symbol), None)
+    return next((r for r in _rows() if r[MapFmt.Symbol] == symbol), None)
 
-def get_symbol_with_addr_and_size(addr, size):
-    return next((r for r in _rows() if r[0] == addr and r[2] == size), None)
+def get_symbol_with_addrs(start, end):
+    return next((r for r in _rows() if r[MapFmt.Start] == start and r[MapFmt.End] == end), None)
 
