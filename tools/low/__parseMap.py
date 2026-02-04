@@ -17,7 +17,7 @@ def _rows():
             if row and row[MapFmt.Start].startswith("0x"):
                 #print (row)
                 start = int(row[MapFmt.Start], 0)
-                end = int(row[MapFmt.End], 0) if row[MapFmt.End] else (start + 4)
+                end = int(row[MapFmt.End], 0) if row[MapFmt.End] else 0
                 yield start, end, row[MapFmt.Type], row[MapFmt.Rank], row[MapFmt.Symbol], row[MapFmt.Tag]
 
 def read_sym_file():
