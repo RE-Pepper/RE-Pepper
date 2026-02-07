@@ -10,6 +10,20 @@ import re
 from _settings import *
 from splector._utils import *
 
+"""
+TODO:
+    .word 0x7483958D                                                                @ 0x0016A7F0 (data)
+    .word 0x5B814683                                                                @ 0x0016A7F4 (data)
+    .word 0x00006883                                                                @ 0x0016A7F8 (data)
+    eorseq   r1, pc, r0, lsl fp                                                     @ 0x0016A7FC - 101B3F00
+
+.extern _ZN2al8setNerveEPNS_9IUseNerveEPKNS_5NerveE
+.extern fn_0025CB78
+.extern fn_0026800C
+
+.global fn_0016A800
+"""
+
 BASE_ADDR = 0x00100000
 data_start = 0
 data_addrs = set() # defined data
@@ -17,24 +31,26 @@ addr_done = set() # defined data in functions
 datablob_refs = set() # references inside current function
 func_refs = set() # all referenced func
 switchcases = set() # jumptables inside current function
+switchtable = set() # jumptables inside current function
 data_view = [] # all data bytes of program
 sym_map = {} # table with symbols (addr: name)
 
 class FakeDataInsn:
     __slots__ = ("address", "size", "id", "mnemonic", "op_str", "operands", "bytes")
 
-    def __init__(self, addr, value=0):
+    def __init__(self, addr, raw_bytes):
         self.address = addr
         self.size = 4
         self.id = 0
         self.mnemonic = ".word"
         self.op_str = ""
         self.operands = []
-        self.bytes = value.to_bytes(4, "little")
+        self.bytes = bytes(raw_bytes)
 
     def __repr__(self):
         attrs = ", ".join(f"{k}={getattr(self, k)!r}" for k in self.__slots__)
         return f"<FakeDataInsn {attrs}>"
+
 
 def get_function(addr, ranges, starts):
     idx = bisect_right(starts, addr) - 1
@@ -90,19 +106,26 @@ def dump_data_single(addr, size, caller):
 def dump_data_ref(addr, caller): # 
     pc = addr - BASE_ADDR
     is_func = caller[3] == "f"
+    out = f"@ERROR AT {addr} (ref)"
     if pc < 0 or pc >= len(data_view):
-        return f"@ERROR AT {addr} (ref)"
+        return out
 
-    val = struct.unpack_from("<I", data_view, pc)[0]
-    if is_func and (caller[0] < val < caller[1]): # in callee function
-        return f"{'    .word loc_%08X' % val:<84}@ 0x{addr:08X} (local ref)\n"
-    elif val in sym_map: # defined symbol
-        name = sym_map.get(val)
-        return f"{f'    .word {name}':<84}@ 0x{addr:08X} (func ref)\n"
-    elif is_func and caller[1] <= val < caller[4]: # part of data blob
-        return f"{'    .word 0x%08X' % val:<84}@ 0x{addr:08X} (blob ref)\n"
-    else: # treat as any other data
-        return f"{'    .word dat_%08X' % val:<84}@ 0x{addr:08X} (data ref)\n"
+    val = struct.unpack_from("<I", data_view, pc)[0] # get 4 byte word
+
+    str = ["data ref", f"0x{val:08X}"] # type, data
+
+    if is_func: # check is function
+        if caller[0] < val < caller[1]: # inside of callee function
+            if val in switchcases:
+                str = ["switch case", f"case_{val:08X}"]
+            else: # just local
+                str = ["local ref", f"loc_{val:08X}"]
+        elif (val in sym_map) and (caller[1] < val >= caller[4]): # defined symbol
+            str = ["func ref" if val < data_start else "data", sym_map.get(val)]
+    elif (val >= data_start) and (val in sym_map): # treat as any other data ( found in preprocessing )
+        str = ["data ref", sym_map.get(val)]
+
+    return f"{f'    .word {str[1]}':<84}@ 0x{addr:08X} ({str[0]})\n"
 
 def dump_data(f):
     start = f[0]
@@ -138,7 +161,7 @@ def disassemble_func(f):
             fake_instrs = []
             addr = blob_start
             while addr < blob_end:
-                fake_instrs.append(FakeDataInsn(addr, struct.unpack_from("<I", data_view, addr - BASE_ADDR)[0]))
+                fake_instrs.append(FakeDataInsn(addr, data_view[addr - BASE_ADDR : addr - BASE_ADDR + 4]))
                 addr += 4
 
             instrs[i_idx:i_idx+1] = fake_instrs
@@ -188,55 +211,42 @@ def disassemble_func(f):
                     if attempts <= 0:
                         break
                     else:
+                        next_idx += 1
                         continue
+                # if here, we got a case.
+                attempts = 0
                 locals.add(val)
                 data_addrs.add(nexti.address)
                 datablob_refs.discard(nexti.address)
-                switchcases.add(nexti.address) # val is a case
+                switchcases.add(val)
+                switchtable.add(nexti.address)
                 next_idx += 1
-            break
+            continue
 
-        if (i.address in datablob_refs) and (i.address not in switchcases):
-            datablob_refs.discard(i.address) # if instr is found data (in function)
-            #if f[0] == 0x1387C8: print(f"{i.address:08X}")
+        if (i.address in datablob_refs) and (i.address not in switchtable): # if is found data
+            datablob_refs.discard(i.address)
             data_addrs.add(i.address)
 
-    # Pass 3: Big Data Scan
+    # Pass 3: Datablob
     for i_idx, i in enumerate(instrs):
         if (i.address in data_addrs) and (i_idx != 0):
             prev = instrs[i_idx-1]
             if prev.mnemonic.lower() not in ("b", "bx", "pop", "bl"):
                 continue
             try_addr = i.address
-            while try_addr < (f[4]-4):
+            while try_addr < (f[4]):
                 try_addr += 4
-                #if f[0] == 0x1387C8: print(f"s{try_addr:08X}")
                 if try_addr in locals:
                     break
-                #if f[0] == 0x1387C8: print(f"e{try_addr:08X}")
                 if try_addr not in data_addrs:
-                    #if f[0] == 0x1387C8: print(f"x{try_addr:08X}")
                     data_addrs.add(try_addr)
         
     data_addrs_sort = sorted(data_addrs)
     # Pass 4: Writing the lines
     for i_idx, i in enumerate(instrs):
-        if i.address in switchcases:
-            continue
         if i.address in addr_done:
                     continue
-        if i.address in data_addrs: # check if current instr is actually data        
-            """if i_idx == len(instrs) - 1:
-                mydatasize = f[1] - i.address # next func start - this addr
-                #if mydatasize > 8: print(f"0x{i.address:08X}: size: {mydatasize}, funcend:{f[1]:08X}")
-            else:
-                addrs_idx = data_addrs_sort.index(i.address)
-                mydatasize = min(data_addrs_sort[addrs_idx+1] - i.address, f[1] - i.address) # next addr - this addr
-                #if mydatasize > 8: print(f"0x{i.address:08X}: size: {mydatasize}, ref:{data_addrs_sort[addrs_idx+1]:08X}")
-
-            if mydatasize > 40: # experimental
-                continue"""
-            #if f[0] == 0x1387C8: print(f"ff{i.address:08X}")
+        if i.address in data_addrs: # check if current instr is actually data
             mydatasize = 4
             for line in dump_data_single(i.address, mydatasize, f):
                 lines.append(line) # dump em
@@ -254,7 +264,14 @@ def disassemble_func(f):
             if op.type == CS_OP_IMM:
                 target = op.imm
                 is_local = f[0] <= target < f[1]
-                name = f"loc_{target:08X}" if is_local else sym_map.get(target)
+                name = None
+                if is_local:
+                    if target in switchcases:
+                        name = f"case_{target:08X}"
+                    else:
+                        name = f"loc_{target:08X}"
+                else:
+                    name = sym_map.get(target)
                 if name is None:
                     continue
                 if not is_local:
@@ -265,7 +282,10 @@ def disassemble_func(f):
         if i.address == f[0]:
             label += f"\n.global {f[2]}\n{f[2]}:\n"
         elif i.address in locals:
-            label += f"loc_{i.address:08X}:\n"
+            if i.address in switchcases:
+                label += f"\ncase_{i.address:08X}:\n"
+            else:
+                label += f"\nloc_{i.address:08X}:\n"
 
         bytes_hex = ''.join(f'{b:02X}' for b in i.bytes)
         lines.append(label + f"    {i.mnemonic:<8} {op_str:<70} @ 0x{i.address:08X} - {bytes_hex}\n")
@@ -298,6 +318,7 @@ def disassemble_symbol(f):
                 lines.append(line)
         datablob_refs.clear()
         switchcases.clear()
+        switchtable.clear()
     return name, externs, lines
 
 def run():
