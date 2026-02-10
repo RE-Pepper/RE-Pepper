@@ -1,49 +1,64 @@
+import os
 from _settings import *
 from low.__parseMap import *
 
-def read_data_sym_file():
-    import csv
-    with open(getDataSymFile(), newline='') as f:
-        syms = []
-        reader = csv.reader(f, delimiter=',',quotechar='"')
-        for row in reader:
-            syms.append((int(row[0], 0), row[1]))
-        return syms
+def readConfig():
+    if not os.path.isfile(getConfFile()):
+        return [0,0,0]
+    
+    with open(getConfFile(), 'r') as f:
+        lines = f.readlines()
+
+    if len(lines) < 6:
+        return [0,0,0]
+
+    ro=str(lines[1].strip())
+    rw=str(lines[3].strip())
+    rest=str(lines[5].strip())
+
+    return [ro,rw,rest]
 
 def genLDScript():
-    matching_data = '\n'
-    const_data = '\n'
-    syms = read_sym_file()
-    data_syms = read_data_sym_file()
-    syms = sorted(syms, key=lambda tup: tup[0])
-    data_syms = sorted(data_syms, key=lambda tup: tup[0])
+    data = '\n'
+    syms = sorted(read_sym_file(), key=lambda tup: tup[MapFmt.Start])
     for sym in syms:
-        if (sym[3] and (sym[1] == 'm' or sym[1] == 'O')):
-            matching_data += sym[3] + " " + "0x{:08x}\n".format(sym[0])
-            matching_data += "{\n"
-            matching_data += "\t" + sym[3] + " " + "0x{:08x}\n".format(sym[0])
-            matching_data += "\t{\n"
-            if sym[4] == "gdef":
-                matching_data += "\t\t* (:gdef:" + sym[3] + ")\n"
-            elif sym[4] == "t":
-                matching_data += "\t\t* (t." + sym[3] + ")\n"
-            else:
-                matching_data += "\t\t* (i." + sym[3] + ")\n"
-            matching_data += "\t}\n"
-            matching_data += "}\n"
-    for sym in data_syms:
-        const_data += sym[1] + " " + "0x{:08x}\n".format(sym[0])
-        const_data += "{\n"
-        const_data += "\t" + sym[1] + " " + "0x{:08x}\n".format(sym[0])
-        const_data += "\t{\n"
-        const_data += "\t\t* (" + sym[1] + ")\n"
-        const_data += "\t}\n"
-        const_data += "}\n"
+        if (sym[MapFmt.Symbol] and (sym[MapFmt.Rank] == 'm' or sym[MapFmt.Rank] == 'O')):
+            addr = sym[MapFmt.Start]
+            type = sym[MapFmt.Type]
+            name = sym[MapFmt.Symbol]
+            if type == "f" or type == "d":
+                sect = "i."+name
+            elif type == "fg" or type == "dg":
+                sect = ":gdef:"+name
+            elif type == "ft":
+                sect = "t."+name
+            elif type == "dd":
+                sect = ".data_"+name
+            elif type == "dc":
+                sect = ".constdata_"+name
+            elif type == "db":
+                sect = ".bss_"+name
+
+            data += name + " 0x{:08x}\n".format(addr)
+            data += "{\n"
+            data += "\t" + name + " 0x{:08x}\n".format(addr)
+            data += "\t{\n"
+            data += "\t\t* (" + sect + ")\n"
+            data += "\t}\n"
+            data += "}\n"
+
+    ro, rw, rest = readConfig()
 
     with open(Path(getProjDir()) / "data" / "template" / "linker.ld", 'r') as template:
         with open(Path(getBuildPath()) / "linker.ld", 'w') as out:
-            out.write(template.read().replace("$$$", matching_data).replace("&&&", const_data))
+
+            out_line = template.read().replace("$$$", data)
             
+            if len(ro) > 3:
+                out_line.replace("§O", ro).replace("§W", rw).replace("§R", rest)
+
+            out.write(out_line)
+
 def main():
     genLDScript()
 

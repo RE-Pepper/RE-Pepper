@@ -9,11 +9,8 @@ def getMapFile(): # Map for all symbols
     return str(Path(getProjDir()) / "data" / "ver" / get_ver() / "map.csv")
 def getExeFile(): # Path of original code binary
     return str(Path(getProjDir()) / "data" / "ver" / get_ver() / "code.bin")
-# TODO: deprecate
-def getFuncSymFile(): # Path of functions csv
-    return str(Path(getProjDir()) / "data" / "ver" / get_ver() / "redpepper_functions.csv")
-def getDataSymFile(): # Path of data symbols csv
-    return str(Path(getProjDir()) / "data" / "ver" / get_ver() / "data_symbols.csv")
+def getConfFile(): # Config for binary
+    return str(Path(getProjDir()) / "data" / "ver" / get_ver() / "config.txt")
 
 def getBuildPath(): # Build path
     return str(Path(getProjDir()) / "build")

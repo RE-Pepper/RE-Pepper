@@ -9,7 +9,6 @@ class MapFmt(IntEnum):
     Type = 2
     Rank = 3
     Symbol = 4
-    Tag = 5
 
 def _rows():
     with open(getMapFile(), newline='') as f:
@@ -18,7 +17,7 @@ def _rows():
                 #print (row)
                 start = int(row[MapFmt.Start], 0)
                 end = int(row[MapFmt.End], 0) if row[MapFmt.End] else 0
-                yield start, end, row[MapFmt.Type], row[MapFmt.Rank], row[MapFmt.Symbol], row[MapFmt.Tag]
+                yield start, end, row[MapFmt.Type], row[MapFmt.Rank], row[MapFmt.Symbol]
 
 def read_sym_file():
     return list(_rows())

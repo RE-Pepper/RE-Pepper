@@ -117,7 +117,6 @@ def check_syms():
         start=sym[MapFmt.Start]
         oldrank=sym[MapFmt.Rank]
         name=sym[MapFmt.Symbol]
-        tag=sym[MapFmt.Tag]
         typ=sym[MapFmt.Type]
         rank='U'
 
@@ -142,7 +141,7 @@ def check_syms():
             rank = rank_symbol(sym, decomp_symbol)
 
         # main adding
-        newsyms.append((start, end, typ, rank, name, tag))
+        newsyms.append((start, end, typ, rank, name))
         last_name = name
         clear_line()
         print_progress (last_name, progress, rank)

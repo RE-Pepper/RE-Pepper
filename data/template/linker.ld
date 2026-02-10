@@ -1,8 +1,6 @@
 $$$
 
-&&&
-
-RO_SECTION 0x003a2000
+RO_SECTION §O
 {
     RO +0
     {
@@ -19,7 +17,7 @@ RO_SECTION 0x003a2000
     }
 }
 
-RW_SECTION 0x003e1000
+RW_SECTION §W
 {
     RW +0
     {
@@ -39,9 +37,9 @@ MODULE_INFO     (0x00100000 + (0x04000000 - 0x00100000))
     }
 }
 
-GARBAGE_SECTION 0x00432000
+GARBAGE_SECTION §R
 {
-    REST_SECTION 0x00432000
+    REST_SECTION §R
     {
         * (+CODE)
     }
