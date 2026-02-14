@@ -9,15 +9,19 @@ class MapFmt(IntEnum):
     Type = 2
     Rank = 3
     Symbol = 4
+    Next = 5
 
 def _rows():
     with open(getMapFile(), newline='') as f:
-        for row in csv.reader(f, delimiter=',', quotechar='"'):
+        rows = list(csv.reader(f, delimiter=',', quotechar='"'))
+        rowslen = len(rows)
+        for rowi, row in enumerate(rows):
             if row and row[MapFmt.Start].startswith("0x"):
                 #print (row)
                 start = int(row[MapFmt.Start], 0)
                 end = int(row[MapFmt.End], 0) if row[MapFmt.End] else 0
-                yield start, end, row[MapFmt.Type], row[MapFmt.Rank], row[MapFmt.Symbol]
+                next = int(rows[rowi+1][MapFmt.Start], 0) if rowi < rowslen-1 else end
+                yield start, end, row[MapFmt.Type], row[MapFmt.Rank], row[MapFmt.Symbol], next
 
 def read_sym_file():
     return list(_rows())

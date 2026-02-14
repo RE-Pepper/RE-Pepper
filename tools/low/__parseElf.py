@@ -44,8 +44,18 @@ if elf_exists:
     readelf_data = "\n".join(lines)
     #print (readelf_data)
 
+# TODO: remove once splector done
+stubs_data = set()
+with open(f"{getBuildPath()}/RedPepper.map") as f:
+    s = StringIO(f.read())
+    for line in s:
+        if len(line.split()) == 6 and line.split()[5] == 'Stubs.o(stubs)':
+            stubs_data.add(line.split()[0])
+
 def get_elf_symbol(n):
     if not elf_exists or not n:
+        return None
+    if n in stubs_data:# TODO: remove once splector done
         return None
     s = StringIO(readelf_data)
     for l in s:

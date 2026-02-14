@@ -18,16 +18,30 @@ found_flag = False
 csv_path = getMapFile()
 log_path = str(Path(getProjDir()) / "data" / "ver" / get_ver() / ".changes")
 
-def rank_symbol(sym, decomp_sym):
-    sym_size = sym[MapFmt.End] - sym[MapFmt.Start]
-    decomp_size = decomp_sym[ElfFmt.Size]
+def rank_symbol(symbol, decomp_symbol):
+    sym_start = int(symbol[MapFmt.Start]-0x00100000)
+    decomp_start = int(decomp_symbol[ElfFmt.Start]-0x00100000)
 
-    if decomp_size == 0:
+    sym_size = int(symbol[MapFmt.End] - symbol[MapFmt.Start])
+    decomp_size = int(decomp_symbol[ElfFmt.Size])
+    if decomp_size <= 0:
         decomp_size = sym_size
 
-    ss = f'\"{sys.executable}\" "{Path(getProjDir()) / "tools" / "asm-differ" / "diff.py"}" --format json {sym[MapFmt.Start] - 0x00100000} {decomp_sym[ElfFmt.Start] - 0x00100000} {sym_size} {decomp_size}'
-    #print (str)
-    out = str(subprocess.check_output(ss, shell=True))
+    if sym_size <= 0:
+        return 'U'
+
+    cmd = [
+        sys.executable,
+        str(Path(getProjDir()) / "tools" / "asm-differ" / "diff.py"),
+        str("--format json"),
+        str(sym_start),
+        str(decomp_start),
+        str(sym_size),
+        str(decomp_size)
+    ]
+    cmd = " ".join(cmd)
+    #print (cmd)
+    out = str(subprocess.check_output(cmd, shell=True))
 
     if not "CURRENT" in out:
         raise RuntimeError(f"Unexpected output when running asm-differ:\n{out}")

@@ -26,12 +26,14 @@ def genLDScript():
             addr = sym[MapFmt.Start]
             type = sym[MapFmt.Type]
             name = sym[MapFmt.Symbol]
-            if type == "f" or type == "d":
+            if type == "f":
                 sect = "i."+name
             elif type == "fg" or type == "dg":
                 sect = ":gdef:"+name
             elif type == "ft":
                 sect = "t."+name
+            elif type == "d":
+                sect = ".sdata_"+name
             elif type == "dd":
                 sect = ".data_"+name
             elif type == "dc":
@@ -55,7 +57,7 @@ def genLDScript():
             out_line = template.read().replace("$$$", data)
             
             if len(ro) > 3:
-                out_line.replace("§O", ro).replace("§W", rw).replace("§R", rest)
+                out_line = out_line.replace("§O", ro).replace("§W", rw).replace("§R", rest)
 
             out.write(out_line)
 

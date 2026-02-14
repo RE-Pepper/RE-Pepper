@@ -25,20 +25,27 @@ def upd_status(status):
     set_status(status)
     print_progress()
 
-def echo(str, end="\n"):
+def echo(str, end="\r"):
     clear_line()
     print (str, end)
 
+def str_addr(a):
+    return f"{a:08X}h"
 def str_addrs(addrs):
-    return (", ".join(f"{a:08X}h" for a in addrs))
+    return (", ".join(str_addr(a) for a in addrs))
+def str_instr(i):
+    return f"0x{i.address:08X}: {i.mnemonic} {i.op_str}"
 def str_instrs(instrs):
-    return ("\n".join(f"0x{i.address:08X}: {i.mnemonic} {i.op_str}" for i in instrs))
+    return ("\n".join(str_instr(i) for i in instrs))
+
+def str_define(name):
+    return f"\n.global {name}\n{name}:\n"
 
 error_list = []
 error_details = ""
 def error_func(f, instrs, str):
     global error_details
-    error_list.append(f"ERROR! Function at 0x{f[0]:08X}: {str}")
+    error_list.append(f"ERROR! Function at 0x{f[0]:08X} : {str}")
     if error_details != "":
         return
     line=[]
@@ -67,14 +74,14 @@ def clean_dir(path):
     os.makedirs(out_dir, exist_ok=True)
 
 def check_name(name, typ, addr):
-    if not name or name.strip() == "":
+    if not name or name.strip() == "" or "::" in name:
         if (typ == "f"):
-            return f"fn_{addr:08X}"
+            return f"fn_{addr:08X}", True
         elif (typ is None or typ == ""):
-            return f"unk_{addr:08X}"
+            return f"unk_{addr:08X}", True
         else:
-            return f"dat_{addr:08X}"
-    return name
+            return f"dat_{addr:08X}", True
+    return name, False
 
 def load_map():
     upd_status ("Loading map")
@@ -87,24 +94,46 @@ def load_map():
         start = sym[MapFmt.Start]
         end = sym[MapFmt.End]
         typ = sym[MapFmt.Type]
-        next = syms[i+1][MapFmt.Start] if (i != symlen-1) else end
-        name = check_name(sym[MapFmt.Symbol], typ, start) # valid name
+        is_data = sym[MapFmt.Type].startswith("d")
+
+        name, is_gen = check_name(sym[MapFmt.Symbol], typ, start) # valid name
+
+        if i < symlen-1:
+            next_any = syms[i+1][MapFmt.Start]
+            next = 0
+            if syms[i+1][MapFmt.Type].startswith("d" if is_data else "f"):
+                next = next_any
+            for s in syms[i+1:]:
+                if s[MapFmt.Type].startswith("d" if is_data else "f"):
+                    next = s[MapFmt.Start]
+                    break
+            if next == 0:
+                next = end
+        else:
+            next = end
+            next_any = next
         
         if start != 0x00100000: # skip __ctr_start
             sym_map[start] = name
 
-        if (end > next) and (typ == "f"):
-            echo (f"OVERLAP! {name} touching next symbol.")
+        if (end > next_any):
+            echo (f"OVERLAP! {name} touching next symbol. {end} > {next_any}")
+        elif (end > next):
+            echo (f"BUG! {name} touching next symbol of same type. {end} > {next}")
+        elif (start > next_any):
+            echo (f"WRONG ADDR! {name} is followed by a lower address. {start} > {next_any}")
+        elif (start > next):
+            echo (f"WRONG ADDR! {name}\'s next same-type symbol has a lower address. {start} > {next}")
 
         if sym[MapFmt.Rank] == 'O': # Matched
             continue
         if end is None or end <= 0:
-            if symlen < i+1:
+            if symlen == i+1:
                 echo ("Last symbol has no end.")
             elif symlen > (i+1):
                 end = syms[i+1][MapFmt.Start]
 
-        ranges.append((start, end, name, typ, next))
+        ranges.append((start, end, name, typ, next, is_gen))
 
     ranges.sort(key=lambda x: x[0])
     return sym_map, ranges

@@ -12,7 +12,7 @@ from splector._utils import *
 """
 TODO:
 datablob_ext
-make it store extensions, and find strings for sjis to store.
+make it find strings for sjis to store.
 """
 
 md = Cs(CS_ARCH_ARM, CS_MODE_ARM)
@@ -21,6 +21,7 @@ md.skipdata = True
 
 BASE_ADDR = 0x00100000
 data_start = 0
+data_end = 0
 data_addrs = set() # defined data
 addr_done = set() # defined data in functions
 datablob_refs = set() # references inside current function
@@ -30,6 +31,7 @@ switchcases = set() # jumptables inside current function
 switchtable = set() # jumptables inside current function
 data_view = [] # all data bytes of program
 sym_map = {} # table with symbols (addr: name)
+ranges = [] # symbol map data
 
 class FakeDataInsn:
     __slots__ = ("address", "size", "id", "mnemonic", "op_str", "operands", "bytes")
@@ -75,7 +77,7 @@ def dump_data_single(addr, size, caller):
             val = struct.unpack_from("<I", data_view, pc + offset)[0]
             if BASE_ADDR < val < (len(data_view)+BASE_ADDR):
                 lines.append(dump_data_ref(a, caller))
-            elif val in datablob_ext:
+            else:
                 lines.append(f"{'    .word 0x%08X' % val:<84}@ 0x{a:08X} (data)\n")
             offset += 4
 
@@ -92,7 +94,7 @@ def dump_data_single(addr, size, caller):
 
 def dump_data_ref(addr, caller): # 
     pc = addr - BASE_ADDR
-    is_func = caller[3] == "f"
+    is_func = (not caller is None) and caller[3].startswith("f")
     out = f"@ERROR AT {addr} (ref)"
     if pc < 0 or pc >= len(data_view):
         return out
@@ -161,12 +163,13 @@ def disassemble_func(f):
 
     # Pass 1: Find data refs
     for i_idx, i in enumerate(instrs):
-        if i.operands:
+        if i.bytes == b'\x00\x00\x00\x00':
+            datablob_list[i.address] = i.address
+        elif i.operands:
             for op_idx, op in enumerate(i.operands):
-                if op.type == CS_OP_MEM and op.mem.base == ARM_REG_PC: # ex: add r1, pc, #0x8
+                if (op.type == CS_OP_MEM or op.type == ARM_OP_MEM) and op.mem.base == ARM_REG_PC: # ex: add r1, pc, #0x8
                     addr = i.address + 8 + op.mem.disp
                     datablob_list[i.address] = addr
-                    if addr == 0x00185980: echo (f"I am yello {i.address:08X}")
 
                 elif op.type == CS_OP_REG and op.reg == ARM_REG_PC: # ex: ldr r1, [pc, #0x8]
                     if len(i.operands) < 3 or op_idx >= len(i.operands)-1:
@@ -182,7 +185,6 @@ def disassemble_func(f):
                     else:
                         addr = i.address + 8 + next.imm
                     datablob_list[i.address] = addr
-                    if addr == 0x00185980: echo (f"I am yelloo {i.address:08X}")
 
     # Pass 2: Jumptables
     for i_idx, i in enumerate(instrs):
@@ -222,27 +224,22 @@ def disassemble_func(f):
         if instrs[i_idx-1].mnemonic.lower() not in ("b", "bx", "pop", "bl"): # find a possible local branch or function end
             continue
         for try_addr in range(i.address, f[4], 4): # from now to function end
-            if try_addr == 0x00185980: echo (f"uu {i.address:08X}")
             if try_addr in locals: # detected branch, was blob inside function
                 break
             if try_addr >= f[4]: # function end, was blob after function
                 break
 
-            if try_addr == 0x00185980: echo (f"aa {i.address:08X}")
             if not try_addr in datablob_ext:
                 datablob_ext.add(try_addr)
-                if try_addr == 0x00185980: echo (f"oooooo {i.address:08X}")
 
     datablob_refs.clear()
     # Pass 4: Remove wrong data references
     for ia, addr in datablob_list.items():
-        if addr == 0x00185980: echo (f"s {ia:08X} {addr:08X}")
         if addr is None:
             continue
         if ia in datablob_ext and not addr in datablob_ext:
             continue
-        if addr == 0x00185980: echo (f"s {ia:08X} {addr:08X}")
-        if f[0] > addr > f[4]:
+        if f[5] and (addr < f[0] or addr >= f[4]):
             error_func(f, instrs, f"Reference at 0x{ia:08X} to 0x{addr:08X} is out of function bounds!")
 
         datablob_refs.add(addr)
@@ -253,10 +250,8 @@ def disassemble_func(f):
     has_instr = False
     # Pass 5: Writing the lines
     for i_idx, i in enumerate(instrs):
-        if i.address == 0x00185980: echo (f"gggg {i.address:08X}")
         if i.address in addr_done:
             continue
-        if i.address == 0x00185980: echo (f"gg {i.address:08X}")
         if (i.address in data_addrs) or (i.address in datablob_refs): # check if current instr is actually data
             mydatasize = 4
             for line in dump_data_single(i.address, mydatasize, f):
@@ -284,7 +279,7 @@ def disassemble_func(f):
                         name = f"case_{target:08X}"
                     else:
                         name = f"loc_{target:08X}"
-                else:
+                elif target < data_start:
                     name = sym_map.get(target)
                 if name is None:
                     continue
@@ -295,7 +290,7 @@ def disassemble_func(f):
         # write directives
         label = ''
         if i.address == f[0]:
-            label += f"\n.global {f[2]}\n{f[2]}:\n"
+            label += str_define(f[2])
         elif i.address in locals:
             if i.address in switchcases:
                 label += f"\ncase_{i.address:08X}:\n"
@@ -309,17 +304,17 @@ def disassemble_func(f):
     if has_instr == False:
         error_func (f, instrs, f"No instructions!")
 
-    return f[2], sorted(externs), lines
+    return sorted(externs), lines
 
 def disassemble_symbol(f):
     if f[0] in addr_done:
-        f[2], [], []  # already written
-    typ = f[3]
-    if typ != "f":
-        lines = dump_data(f)
-        return f[2], [], lines
+        return [], []  # already written
 
-    name, externs, lines = disassemble_func(f)
+    if not f[3].startswith("f"):
+        lines = dump_data(f)
+        return [], lines
+
+    externs, lines = disassemble_func(f)
     if not lines: # not a valid function after all
         lines = dump_data(f)
     else: # valid function
@@ -337,10 +332,36 @@ def disassemble_symbol(f):
         datablob_ext.clear()
         switchcases.clear()
         switchtable.clear()
-    return name, externs, lines
+    return externs, lines
+
+def assemble_data(addr):
+    lines = []
+    size = 4
+
+    if addr in addr_done:
+        return []
+
+    # get size
+    if addr in sym_map:
+        lines.append(str_define(sym_map.get(addr)))
+        for sym in ranges:
+            if sym[MapFmt.Type] == "db": # skip bss
+                return []
+            if addr == sym[MapFmt.Start]:
+                if sym[MapFmt.End] is None or sym[MapFmt.End <= sym[MapFmt.Start]]:
+                    next = min((a for a in sym_map if a > addr), default=data_end)
+                    size = next - sym[MapFmt.Start] # get next start address in map
+                else:
+                    size = sym[MapFmt.End] - sym[MapFmt.Start]
+                break
+
+    for line in dump_data_single(addr, size, None):
+        lines.append(line)
+
+    return lines
 
 def run():
-    global data_view, data_start, sym_map
+    global data_view, data_start, data_end, sym_map, ranges
     sym_map, ranges = load_map()
 
     upd_status("Reading binary")
@@ -355,7 +376,7 @@ def run():
 
     upd_status("Preprocessing")
     for f in ranges: # find all data symbols
-        if(f[3] != "f"):
+        if not f[3].startswith("f"):
             size = f[1] - f[0]
             for i in range(size):
                 data_addrs.add(f[0]+i)
@@ -371,20 +392,32 @@ def run():
                 sym_map[val] = name
                 ranges.append((val, val+4, name, "d"))
 
+    if len(sys.argv) > 1:
+        skipToAddr = int(sys.argv[1], 0)
+    else:
+        skipToAddr = 0
+
     upd_status("Splecting and writing assembly")
 
+    # Start writing data
     ranges.sort(key=lambda x: x[0]) # sort it once more
     with open(getSplitOrigAsmPath(), 'w') as out:
         out.write(".section .text\n")
         out.write(".syntax unified\n")
 
-        set_status ("Splecting ")
+        set_status ("Splecting map ")
 
+        # Write out functions
         for f in ranges:
+            if f[0] >= data_start:
+                continue
+            if f[0] < skipToAddr:
+                set_progress (f"FF 0x{f[0]:08X}")
+                continue
             set_progress (f"0x{f[0]:08X}")
             print_progress()
 
-            name, externs, lines = disassemble_symbol(f)
+            externs, lines = disassemble_symbol(f)
 
             if len(externs) > 0:
                 out.write("\n")
@@ -397,7 +430,35 @@ def run():
 
             error_exec()
 
-    count = len(ranges)
+        set_status ("Splecting data ")
+
+        count = len(ranges)
+        # Rewrite ranges
+        new_ranges = []
+        for sym in ranges:
+            if sym[MapFmt.Type].startswith("d"):
+                new_ranges.append(sym)
+        ranges = new_ranges
+
+        # Write out data
+        data_end = len(data_view) + BASE_ADDR
+        for addr in range(data_start, data_end, 4):
+            if addr < skipToAddr:
+                set_progress (f"FF 0x{f[0]:08X}")
+                continue
+            set_progress (f"0x{addr:08X}")
+            print_progress()
+
+            lines = assemble_data(addr)
+
+            if len(lines) <= 0:
+                continue
+
+            out.writelines(lines)
+                
+
+    if skipToAddr != 0:
+        echo (f"SPLIT INCOMPLETE, STARTED FROM {skipToAddr}")
     echo (f"Wrote {count} symbols to {getSplitOrigAsmPath()}")
 
 if __name__ == "__main__":

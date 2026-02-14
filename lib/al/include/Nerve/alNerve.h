@@ -13,11 +13,6 @@ struct Nerve
         virtual void executeOnEnd( NerveKeeper* nerveKeeper ) const {};
 };
 
-#ifndef split
-#define SPLIT_HACK
-#define split( A ) A
-#endif
-
 #define NERVE_DEF( CLASS, ACTION )                                               \
         struct CLASS##Nrv##ACTION : public ::al::Nerve                           \
         {                                                                        \

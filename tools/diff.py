@@ -24,21 +24,26 @@ def main():
     if decomp_symbol is None:
         fail(f"Couldn't find in decomp: {symbolname}")
 
-    sym_size = int(symbol[MapFmt.End] - symbol[MapFmt.Start])
+    sym_start = int(symbol[MapFmt.Start]-0x00100000)
+    decomp_start = int(decomp_symbol[ElfFmt.Start]-0x00100000)
+
+    sym_size = int(symbol[MapFmt.Next] - symbol[MapFmt.Start])
     decomp_size = int(decomp_symbol[ElfFmt.Size])
-    if decomp_size == 0:
-        print(f"Warning: decomp symbol size for {symbol[3]} is 0. Using the original size instead.")
+    if decomp_size <= 0:
         decomp_size = sym_size
+
+    if sym_size <= 0:
+        fail(f"End address is invalid for {symbolname}")
 
     cmd = [
         sys.executable,
         str(Path(getProjDir()) / "tools" / "asm-differ" / "diff.py"),
-        str(symbol[MapFmt.Start]-0x00100000),
-        str(decomp_symbol[ElfFmt.Start]-0x00100000),
+        str(sym_start),
+        str(decomp_start),
         str(sym_size),
         str(decomp_size)
     ] + extra_flags
-
+    #print(cmd)
     subprocess.run(cmd)
 
 if __name__ == "__main__":
