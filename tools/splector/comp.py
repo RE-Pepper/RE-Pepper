@@ -5,7 +5,7 @@ from _settings import *
 from splector._utils import *
 
 def execute(input, output):
-    str(subprocess.check_output(f'"{Path(os.environ.get("DEVKITARM")) / "bin" / "arm-none-eabi-as"}" -mcpu=mpcore -mfpu=vfp -mfloat-abi=hard -o {output} {input}', shell=True))
+    subprocess.run(f'"{Path(os.environ["DEVKITARM"]) / "bin" / "arm-none-eabi-as"}" -mcpu=mpcore -mfpu=vfp -mfloat-abi=hard -o {output} {input}', shell=True)
 
 # TODO: some symbols, that have :: in the section name, are ommited. get the orig symbol here.
 

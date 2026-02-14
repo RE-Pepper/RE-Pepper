@@ -31,7 +31,8 @@ switchcases = set() # jumptables inside current function
 switchtable = set() # jumptables inside current function
 data_view = [] # all data bytes of program
 sym_map = {} # table with symbols (addr: name)
-ranges = [] # symbol map data
+ranges = [] # symbol map all
+ranges_data = [] # symbol map data
 
 class FakeDataInsn:
     __slots__ = ("address", "size", "id", "mnemonic", "op_str", "operands", "bytes")
@@ -64,10 +65,6 @@ def dump_data_single(addr, size, caller):
         for ai in range(size):
             a = addr + ai
             addr_done.add(a)
-
-    if addr > data_start:
-        name = sym_map.get(addr) if addr in sym_map else f"dat_{addr:08X}"
-        lines.append(f"\n.global {name}\n{name}:\n")
 
     while offset < size:
         a = addr + offset
@@ -130,16 +127,14 @@ def disassemble_func(f):
     global md, datablob_refs
 
     pc = f[0] - BASE_ADDR
-    size = f[1] - f[0]
+    size = f[4] - f[0]
+    name = f[2]
     lines = []
     externs = set()
     locals = set()
     datablob_list = {}
 
-    try:
-        instrs = list(md.disasm(data_view[pc:pc+size], f[0]))
-    except Exception:
-        return [], [], []  # fallback handled by caller
+    instrs = list(md.disasm(data_view[pc:pc+size], f[0]))
 
     # Pass 0: Fake instruction generation and local labels
     for i_idx, i in enumerate(instrs):
@@ -221,8 +216,12 @@ def disassemble_func(f):
         if i.address in switchtable: # skip jtables
             continue
 
-        if instrs[i_idx-1].mnemonic.lower() not in ("b", "bx", "pop", "bl"): # find a possible local branch or function end
+        # find a possible local branch or function end
+        prev = instrs[i_idx-1]
+        mnem = prev.mnemonic.lower()
+        if not mnem in ("b", "bx", "pop", "bl"):
             continue
+
         for try_addr in range(i.address, f[4], 4): # from now to function end
             if try_addr in locals: # detected branch, was blob inside function
                 break
@@ -252,8 +251,18 @@ def disassemble_func(f):
     for i_idx, i in enumerate(instrs):
         if i.address in addr_done:
             continue
-        if (i.address in data_addrs) or (i.address in datablob_refs): # check if current instr is actually data
-            mydatasize = 4
+        # check if current instr is actually data
+        if (i.address in data_addrs) or (i.address in datablob_refs) or (i.address > f[1]):
+            mydatasize = 4 # find size if possible, else 4
+            if i.address in sym_map:
+                for sym in ranges_data:
+                    if sym != i.address:
+                        continue
+
+                    if sym[1] and sym[1] > sym[0]:
+                        mydatasize = sym[1] - sym[0]
+                    break
+
             for line in dump_data_single(i.address, mydatasize, f):
                 lines.append(line) # dump em
 
@@ -273,24 +282,26 @@ def disassemble_func(f):
             if op.type == CS_OP_IMM:
                 target = op.imm
                 is_local = f[0] <= target < f[1]
-                name = None
+                labelname = None
                 if is_local:
                     if target in switchcases:
-                        name = f"case_{target:08X}"
+                        labelname = f"case_{target:08X}"
                     else:
-                        name = f"loc_{target:08X}"
+                        labelname = f"loc_{target:08X}"
                 elif target < data_start:
-                    name = sym_map.get(target)
-                if name is None:
+                    labelname = sym_map.get(target)
+                if labelname is None:
                     continue
                 if not is_local:
-                    externs.add(name)
-                op_str = re.sub(r'#?0x[0-9a-fA-F]+', name, op_str)
+                    externs.add(labelname)
+                op_str = re.sub(r'#?0x[0-9a-fA-F]+', labelname, op_str)
 
         # write directives
         label = ''
         if i.address == f[0]:
-            label += str_define(f[2])
+            label += f"\n.global {name}"
+            label += f"\n.type {name} %function"
+            label += f"\n{name}:\n"
         elif i.address in locals:
             if i.address in switchcases:
                 label += f"\ncase_{i.address:08X}:\n"
@@ -300,6 +311,8 @@ def disassemble_func(f):
         # write final instruction line
         bytes_hex = ''.join(f'{b:02X}' for b in i.bytes)
         lines.append(label + f"    {i.mnemonic:<8} {op_str:<70} @ 0x{i.address:08X} - {bytes_hex}\n")
+
+    lines.append(f".size {name}, .-{name}\n")
 
     if has_instr == False:
         error_func (f, instrs, f"No instructions!")
@@ -334,7 +347,10 @@ def disassemble_symbol(f):
         switchtable.clear()
     return externs, lines
 
+data_lastname = None
 def assemble_data(addr):
+    global data_lastname
+
     lines = []
     size = 4
 
@@ -343,16 +359,22 @@ def assemble_data(addr):
 
     # get size
     if addr in sym_map:
-        lines.append(str_define(sym_map.get(addr)))
-        for sym in ranges:
-            if sym[MapFmt.Type] == "db": # skip bss
-                return []
-            if addr == sym[MapFmt.Start]:
-                if sym[MapFmt.End] is None or sym[MapFmt.End <= sym[MapFmt.Start]]:
-                    next = min((a for a in sym_map if a > addr), default=data_end)
-                    size = next - sym[MapFmt.Start] # get next start address in map
-                else:
-                    size = sym[MapFmt.End] - sym[MapFmt.Start]
+        if data_lastname:
+            lines.append(f".size {data_lastname}, .-{data_lastname}\n")
+        data_lastname = sym_map.get(addr)
+        lines.append(f"\n.global {data_lastname}")
+        lines.append(f"\n.type {data_lastname} %object")
+        lines.append(f"\n{data_lastname}:\n")
+
+        next = min((a for a in sym_map if a > addr), default=data_end)
+        size = next - addr # get next start address in map
+
+        for sym in ranges_data:
+            if addr == sym[0]:
+                if sym[3] == "db": # skip bss
+                    return []
+                if sym[1] and sym[1] > addr:
+                    size = sym[1] - addr
                 break
 
     for line in dump_data_single(addr, size, None):
@@ -376,10 +398,9 @@ def run():
 
     upd_status("Preprocessing")
     for f in ranges: # find all data symbols
-        if not f[3].startswith("f"):
+        if f[3].startswith("d"):
             size = f[1] - f[0]
-            for i in range(size):
-                data_addrs.add(f[0]+i)
+            data_addrs.add(f[0])
         else:
             data_start = f[1]
 
@@ -388,9 +409,9 @@ def run():
         val = struct.unpack_from("<I", data_view, off)[0]
         if (BASE_ADDR < val < endaddr) and (val not in sym_map):
             if val > data_start:
-                name = f"dat_{val:08X}"
-                sym_map[val] = name
-                ranges.append((val, val+4, name, "d"))
+                dataname = f"dat_{val:08X}"
+                sym_map[val] = dataname
+                ranges.append((val, val+4, dataname, "d"))
 
     if len(sys.argv) > 1:
         skipToAddr = int(sys.argv[1], 0)
@@ -434,17 +455,15 @@ def run():
 
         count = len(ranges)
         # Rewrite ranges
-        new_ranges = []
         for sym in ranges:
-            if sym[MapFmt.Type].startswith("d"):
-                new_ranges.append(sym)
-        ranges = new_ranges
+            if sym[3].startswith("d"):
+                ranges_data.append(sym)
 
         # Write out data
         data_end = len(data_view) + BASE_ADDR
         for addr in range(data_start, data_end, 4):
             if addr < skipToAddr:
-                set_progress (f"FF 0x{f[0]:08X}")
+                set_progress (f"FF 0x{addr:08X}")
                 continue
             set_progress (f"0x{addr:08X}")
             print_progress()

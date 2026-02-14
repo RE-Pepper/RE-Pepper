@@ -37,9 +37,8 @@ def str_instr(i):
     return f"0x{i.address:08X}: {i.mnemonic} {i.op_str}"
 def str_instrs(instrs):
     return ("\n".join(str_instr(i) for i in instrs))
-
-def str_define(name):
-    return f"\n.global {name}\n{name}:\n"
+def str_func(f):
+    return f"0x{f[0]:08X}-0x{f[1]:08X}: {f[2]} ({str(f[3])}) > 0x{f[4]:08X} ? {f[5]}"
 
 error_list = []
 error_details = ""
@@ -98,40 +97,48 @@ def load_map():
 
         name, is_gen = check_name(sym[MapFmt.Symbol], typ, start) # valid name
 
-        if i < symlen-1:
+        if i < (symlen-1):
             next_any = syms[i+1][MapFmt.Start]
-            next = 0
-            if syms[i+1][MapFmt.Type].startswith("d" if is_data else "f"):
+        else:
+            next_any = end
+
+        if end is None or end <= start:
+            if symlen == i+1:
+                fail ("Last symbol has no end.")
+            elif symlen > (i+1):
+                end = next_any
+
+        if i < (symlen-1):
+            if is_data:
                 next = next_any
-            for s in syms[i+1:]:
-                if s[MapFmt.Type].startswith("d" if is_data else "f"):
-                    next = s[MapFmt.Start]
-                    break
-            if next == 0:
-                next = end
+            else:
+                next = 0
+                if syms[i+1][MapFmt.Type].startswith("f"):
+                    next = next_any
+                else:
+                    for s in syms[i+1:]:
+                        if s[MapFmt.Type].startswith("f"):
+                            next = s[MapFmt.Start]
+                            break
+                if next == 0:
+                    if next_any <= start:
+                        next = end
+                    else:
+                        next = next_any
         else:
             next = end
-            next_any = next
-        
+
         if start != 0x00100000: # skip __ctr_start
             sym_map[start] = name
 
         if (end > next_any):
-            echo (f"OVERLAP! {name} touching next symbol. {end} > {next_any}")
+            echo (f"OVERLAP! {name} touching next symbol. {str_addr(end)} > {str_addr(next_any)}")
         elif (end > next):
-            echo (f"BUG! {name} touching next symbol of same type. {end} > {next}")
+            echo (f"BUG! {name} touching next symbol of same type. {str_addr(end)} > {str_addr(next)}")
         elif (start > next_any):
-            echo (f"WRONG ADDR! {name} is followed by a lower address. {start} > {next_any}")
+            echo (f"WRONG ADDR! {name} is followed by a lower address. {str_addr(start)} > {str_addr(next_any)}")
         elif (start > next):
-            echo (f"WRONG ADDR! {name}\'s next same-type symbol has a lower address. {start} > {next}")
-
-        if sym[MapFmt.Rank] == 'O': # Matched
-            continue
-        if end is None or end <= 0:
-            if symlen == i+1:
-                echo ("Last symbol has no end.")
-            elif symlen > (i+1):
-                end = syms[i+1][MapFmt.Start]
+            echo (f"WRONG ADDR! {name}\'s next same-type symbol has a lower address. {str_addr(start)} > {str_addr(next)}")
 
         ranges.append((start, end, name, typ, next, is_gen))
 
