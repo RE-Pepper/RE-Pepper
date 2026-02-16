@@ -17,6 +17,7 @@ def main():
     extra_flags = sys.argv[2:]
 
     symbol = get_symbol(symbolname)
+    next_symbol = get_next(symbolname)
     decomp_symbol = get_elf_symbol(symbolname)
 
     if symbol is None:
@@ -27,7 +28,7 @@ def main():
     sym_start = int(symbol[MapFmt.Start]-0x00100000)
     decomp_start = int(decomp_symbol[ElfFmt.Start]-0x00100000)
 
-    sym_size = int(symbol[MapFmt.Next] - symbol[MapFmt.Start])
+    sym_size = int(next_symbol - symbol[MapFmt.Start])
     decomp_size = int(decomp_symbol[ElfFmt.Size])
     if decomp_size <= 0:
         decomp_size = sym_size

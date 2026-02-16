@@ -24,7 +24,7 @@ elf_exists = os.path.exists(getElfPath())
 if elf_exists:
     # Step 1: Get Data
     cmd = f'"{Path(os.environ.get("DEVKITARM")) / "bin" / "arm-none-eabi-readelf"}" "{getElfPath()}" -sw -W'
-    readelf_data = str(subprocess.check_output(cmd, shell=True))
+    readelf_data = str(subprocess.check_output(cmd))
     if sys.platform == 'win32': # Fix Newlines
         readelf_data = readelf_data.replace(r'\r\n', '\n')
     else:

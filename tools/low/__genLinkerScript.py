@@ -21,25 +21,13 @@ def readConfig():
 def genLDScript():
     data = '\n'
     syms = sorted(read_sym_file(), key=lambda tup: tup[MapFmt.Start])
-    for sym in syms:
+    for sym, sym_i in enumerate(syms):
         if (sym[MapFmt.Symbol] and (sym[MapFmt.Rank] == 'm' or sym[MapFmt.Rank] == 'O')):
             addr = sym[MapFmt.Start]
             type = sym[MapFmt.Type]
             name = sym[MapFmt.Symbol]
-            if type == "f":
-                sect = "i."+name
-            elif type == "fg" or type == "dg":
-                sect = ":gdef:"+name
-            elif type == "ft":
-                sect = "t."+name
-            elif type == "d":
-                sect = ".sdata_"+name
-            elif type == "dd":
-                sect = ".data_"+name
-            elif type == "dc":
-                sect = ".constdata_"+name
-            elif type == "db":
-                sect = ".bss_"+name
+
+            sect = typeToSectionLinker(type, name)
 
             data += name + " 0x{:08x}\n".format(addr)
             data += "{\n"

@@ -1,12 +1,18 @@
 import os
 import shutil
 from low.__parseMap import *
+from low.__utilsElf import typeToSection
 from enum import IntEnum
 from colorama import Fore, Style
 from capstone import *
 
 curname = ""
 curstatus = "Initializing"
+
+meta_lastfunc = None # curr/last func
+meta_lastfunc_do_size = False
+meta_lastdata = None # last data that had meta (.global .type .size) written
+meta_lastdata_do_size = False
 
 def set_progress(name):
     global curname
@@ -39,6 +45,25 @@ def str_instrs(instrs):
     return ("\n".join(str_instr(i) for i in instrs))
 def str_func(f):
     return f"0x{f[0]:08X}-0x{f[1]:08X}: {f[2]} ({str(f[3])}) > 0x{f[4]:08X} ? {f[5]}"
+def str_sym(f):
+    return f"0x{f[MapFmt.Start]:08X}-0x{f[MapFmt.End]:08X}: {f[MapFmt.Symbol]} ({str(f[MapFmt.Type])}, {f[MapFmt.Rank]})"
+
+def sym_conv(map_sym):
+    sym = [None] * len(MapFmt)
+    for col in MapFmt:
+        match col:
+            case MapFmt.Start as t:
+                sym[t] = map_sym[0]
+            case MapFmt.End as t:
+                sym[t] = map_sym[4] # prefer next
+            case MapFmt.Type as t:
+                sym[t] = map_sym[3]
+            case MapFmt.Rank as t:
+                sym[t] = map_sym[6] if map_sym[6] else "U"
+            case MapFmt.Symbol as t:
+                sym[t] = map_sym[2].replace("$$_$$", "::")
+
+    return sym
 
 error_list = []
 error_details = ""
@@ -73,14 +98,75 @@ def clean_dir(path):
     os.makedirs(out_dir, exist_ok=True)
 
 def check_name(name, typ, addr):
-    if not name or name.strip() == "" or "::" in name:
+    if not name or name.strip() == "":
         if (typ == "f"):
             return f"fn_{addr:08X}", True
         elif (typ is None or typ == ""):
             return f"unk_{addr:08X}", True
         else:
             return f"dat_{addr:08X}", True
-    return name, False
+    return name.replace("::", "$$_$$"), False
+
+class FakeDataInsn:
+    __slots__ = ("address", "size", "id", "mnemonic", "op_str", "operands", "bytes")
+
+    def __init__(self, addr, raw_bytes):
+        self.address = addr
+        self.size = 4
+        self.id = 0
+        self.mnemonic = ".word"
+        self.op_str = ""
+        self.operands = []
+        self.bytes = bytes(raw_bytes)
+
+    def __repr__(self):
+        attrs = ", ".join(f"{k}={getattr(self, k)!r}" for k in self.__slots__)
+        return f"<FakeDataInsn {attrs}>"
+
+def meta_add_start(name, is_func=False, do_size=False):
+    global meta_lastdata, meta_lastfunc, meta_lastfunc_do_size, meta_lastdata_do_size
+
+    line = ''
+
+    if is_func: # next function begins
+        if meta_lastfunc and meta_lastfunc_do_size:
+            line += f".size {meta_lastfunc}, .-{meta_lastfunc}\n"
+            meta_lastfunc = None
+        meta_lastfunc = name
+        meta_lastfunc_do_size = do_size
+    else:
+        if meta_lastdata and meta_lastdata_do_size:
+            line += f".size {meta_lastdata}, .-{meta_lastdata}\n"
+            meta_lastdata = None
+        meta_lastdata = name
+        meta_lastdata_do_size = do_size
+
+    return line
+def meta_add_start_addr(addr, is_func=False, do_size=False):
+    return meta_add_start(f"dat_{addr:08X}", is_func, do_size)
+
+def typeToSectionAttr(type):
+    if "f" in type:
+        return "ax"
+    elif "d" in type and not "c" in type:
+        return "aw"
+    else:
+        return "a"
+
+def meta_add(type, sect, name):
+    line = ''
+    line += f"\n.global {name}"
+    if type:
+        line += f"\n.type {name} %{type}"
+    if sect and not "g" in sect:
+        line += f"\n.section {typeToSection(sect, name)},\"{typeToSectionAttr(type)}\",%progbits"
+    line += f"\n{name}:\n"
+
+    return line
+def meta_add_data(type, sect):
+    return meta_add(type, sect, meta_lastdata)
+def meta_add_func(type, sect):
+    return meta_add(type, sect, meta_lastfunc)
 
 def load_map():
     upd_status ("Loading map")
@@ -93,19 +179,22 @@ def load_map():
         start = sym[MapFmt.Start]
         end = sym[MapFmt.End]
         typ = sym[MapFmt.Type]
+        rank = sym[MapFmt.Rank]
         is_data = sym[MapFmt.Type].startswith("d")
+        has_lp = False
 
         name, is_gen = check_name(sym[MapFmt.Symbol], typ, start) # valid name
 
         if i < (symlen-1):
             next_any = syms[i+1][MapFmt.Start]
+            has_lp = "dl" in syms[i+1][MapFmt.Type]
         else:
             next_any = end
 
         if end is None or end <= start:
             if symlen == i+1:
                 fail ("Last symbol has no end.")
-            elif symlen > (i+1):
+            elif not is_data and symlen > (i+1):
                 end = next_any
 
         if i < (symlen-1):
@@ -121,17 +210,17 @@ def load_map():
                             next = s[MapFmt.Start]
                             break
                 if next == 0:
-                    if next_any <= start:
-                        next = end
-                    else:
+                    if end <= start:
                         next = next_any
+                    else:
+                        next = end
         else:
             next = end
 
         if start != 0x00100000: # skip __ctr_start
             sym_map[start] = name
 
-        if (end > next_any):
+        if (end > next_any) and (not has_lp):
             echo (f"OVERLAP! {name} touching next symbol. {str_addr(end)} > {str_addr(next_any)}")
         elif (end > next):
             echo (f"BUG! {name} touching next symbol of same type. {str_addr(end)} > {str_addr(next)}")
@@ -140,7 +229,7 @@ def load_map():
         elif (start > next):
             echo (f"WRONG ADDR! {name}\'s next same-type symbol has a lower address. {str_addr(start)} > {str_addr(next)}")
 
-        ranges.append((start, end, name, typ, next, is_gen))
+        ranges.append((start, end, name, typ, next, is_gen, rank))
 
     ranges.sort(key=lambda x: x[0])
     return sym_map, ranges

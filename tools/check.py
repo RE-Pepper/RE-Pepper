@@ -1,6 +1,7 @@
 print ("The check has begun ...")
     
 from colorama import Fore, Style
+from low.__updateMap import *
 from low.__parseMap import *
 from low.__parseElf import *
 import multiprocessing
@@ -101,14 +102,6 @@ def clear_line():
 def print_progress(name, prog, rank):
     printf (Fore.LIGHTRED_EX + f"[{prog}%] " + Fore.LIGHTCYAN_EX + name + Fore.RESET + Style.RESET_ALL + f" ({rank})", end='\r')
 
-def write_line(f, sym):
-    line = []
-    for col in MapFmt:
-        if col in (MapFmt.Start, MapFmt.End):
-            line.append(f"0x{sym[col]:08X}")
-        else:
-            line.append(str(sym[col]))
-    f.write(','.join(line) + '\n')
 
 def check_syms():
     syms = read_sym_file()
@@ -203,15 +196,8 @@ def check_syms():
 
     else:
         print ("Updating map ...")
-        # read
-        with open(csv_path, 'r') as src, open(csv_path + '_b', 'w') as dst:
-            dst.write(src.read())
-        # write
-        with open(csv_path, 'w') as f:
-            f.write(','.join(field.name for field in MapFmt) + '\n')
 
-            for sym in newsyms:
-                write_line(f, sym)
+        updateFull(newsyms, csv_path)
 
 def check_sym(symbol_name):
     dec = get_elf_symbol(symbol_name)
@@ -228,25 +214,8 @@ def check_sym(symbol_name):
     nowrank = rank_symbol(sym, dec)
 
     if found_flag and prevrank != nowrank:
-        # update map
-        file = open(csv_path, "r").readlines()
-
-        cols = []
-        for col in MapFmt:
-            if col in (MapFmt.Start, MapFmt.End):
-                cols.append(f"0x{sym[col]:08X}")
-            elif col == MapFmt.Rank:
-                cols.append(nowrank)
-            else:
-                cols.append(str(sym[col]))
-        newline = ",".join(cols) + "\n"
-
-        for i, line in enumerate(file):
-            if symbol_name == line.split(',')[MapFmt.Symbol]:
-                file[i] = newline
-                break
-        with open(csv_path, "w") as f:
-            f.writelines(file)
+        sym[MapFmt.Rank] = nowrank
+        updateSingle(sym, csv_path)
 
         print (f"{prevrank} -> {nowrank} ({getRankMsg(prevrank, nowrank)})")
     else:

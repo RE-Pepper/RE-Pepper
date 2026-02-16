@@ -21,10 +21,10 @@ def getElfPath(): # Path of build elf file
 
 def getSplitPath(): # Output dir split
     return str(Path(getBuildPath()) / "split")
-def getSplitOrigAsmPath(): # asm output of split og
-    return str(Path(getSplitPath()) / "orig.s")
-def getSplitOrigObjPath(): # as output of split og
-    return str(Path(getSplitPath()) / "orig.o")
+def getSplitAsmPath(): # asm output of split og
+    return str(Path(getSplitPath()) / f"{get_ver()}.s")
+def getSplitObjPath(): # as output of split og
+    return str(Path(getSplitPath()) / f"{get_ver()}.o")
 
 def getPresetId(): # Decomp.me PID for 3D Land
     return 8

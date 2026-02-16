@@ -20,7 +20,7 @@ __compiler_armcc(ASM)
 file(GLOB_RECURSE SOURCES_GAME ${CMAKE_SOURCE_DIR}/Game/src/*.c ${CMAKE_SOURCE_DIR}/Game/src/*.cpp)
 file(GLOB_RECURSE SOURCES_AL ${CMAKE_SOURCE_DIR}/lib/al/src/*.c ${CMAKE_SOURCE_DIR}/lib/al/src/*.cpp)
 
-add_executable(RedPepper $<TARGET_OBJECTS:crt0> ${SOURCES_GAME} ${SOURCES_AL})
+add_executable(RedPepper $<TARGET_OBJECTS:crt0> ${CMAKE_BINARY_DIR}/split/orig.o ${SOURCES_GAME} ${SOURCES_AL})
 
 target_link_libraries(RedPepper PUBLIC sead)
 target_link_libraries(RedPepper PUBLIC nw)
