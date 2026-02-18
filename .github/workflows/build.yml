@@ -57,8 +57,8 @@ jobs:
           export ARMCC41LIB="${ARMCC_PATH}/lib"
           export DEVKITARM="$PWD/setup/dkp"
           
-          VERSIONS=(); for dir in ./data/ver/*/; do VERSIONS+=("${dir%/}"); done; VERSIONS=("${VERSIONS[@]##*/}")
-
+          VERSIONS=(); for dir in ./data/ver/*/; do [[ -f "$dir/map.csv" && -f "$dir/config.txt" ]] && VERSIONS+=("${dir%/}"); done; VERSIONS=("${VERSIONS[@]##*/}")
+          did_run=false
           for v in "${VERSIONS[@]}"; do
               echo "Now $v"
               python tools/build.py "$v"
@@ -67,14 +67,19 @@ jobs:
               echo "Generating progress info"
               python tools/progress.py
               echo "Finished $v"
+              did_run=true
           done
-          python tools/build.py
+
+          if [ -z "$did_run" ]; do
+              echo "No versions found."
+              exit 1
+          fi
 
       - name: Publish stats
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          VERSIONS=(); for dir in ./data/ver/*/; do VERSIONS+=("${dir%/}"); done; VERSIONS=("${VERSIONS[@]##*/}")
+          VERSIONS=(); for dir in ./data/ver/*/; do [[ -f "$dir/map.csv" && -f "$dir/config.txt" ]] && VERSIONS+=("${dir%/}"); done; VERSIONS=("${VERSIONS[@]##*/}")
 
           for v in "${VERSIONS[@]}"; do
               echo "Now $v"

@@ -12,7 +12,9 @@ def make_line(sym):
             line.append(str(sym[col]))
     return ','.join(line) + '\n'
 
-def updateFull(newsyms, csv_path=getMapFile()):
+def updateFull(newsyms, csv_path=None):
+    if not csv_path:
+        csv_path = getMapFile()
     # Create backup
     with open(csv_path, 'r') as src, open(csv_path + '_b', 'w') as dst:
         dst.write(src.read())
@@ -26,7 +28,9 @@ def updateFull(newsyms, csv_path=getMapFile()):
         for sym in newsyms:
             f.write(make_line(sym))
 
-def updateSingle(sym, csv_path=getMapFile()):
+def updateSingle(sym, csv_path=None):
+    if not csv_path:
+        csv_path = getMapFile()
     # Build line
     sym[MapFmt.Rank] = nowrank
     newline = make_line(sym)

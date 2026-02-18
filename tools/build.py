@@ -28,9 +28,9 @@ def main() -> None:
     sys.argv = [sys.argv[0]] # clear args
     
     # Preparations and check version
-    found_version = sort_bin_if_exist()
-    old_version = get_ver()
     version = args.version
+    found_version = sort_bin_if_exist()
+    old_version = get_ver(version)
 
     if not version or found_version or ("code.bin" in version):
         version = found_version or old_version
@@ -51,9 +51,15 @@ def main() -> None:
 
     if not is_ver_exist(version):
         print(f"data/ver/{version}/code.bin missing. Please provide the code.bin from the {version} version.")
+        set_ver(old_version)
         return
     if not is_ver_valid(version):
         print(f"code.bin for {version} is invalid. Did you dump the right version, correctly?")
+        set_ver(old_version)
+        return
+    if not is_ver_configured(version):
+        print(f"Current version {version} is not configured. Try again later, por favor.")
+        set_ver(old_version)
         return
 
     # Clean on command or ver change

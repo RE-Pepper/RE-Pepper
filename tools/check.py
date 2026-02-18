@@ -16,8 +16,8 @@ is_sim_mode = False
 is_silent = False
 is_log = False
 found_flag = False
-csv_path = getMapFile()
-log_path = str(Path(getProjDir()) / "data" / "ver" / get_ver() / ".changes")
+csv_path = ""
+log_path = ""
 
 def rank_symbol(symbol, decomp_symbol):
     sym_start = int(symbol[MapFmt.Start]-0x00100000)
@@ -224,6 +224,7 @@ def check_sym(symbol_name):
 def main():
     global found_flag
     global csv_path
+    global log_path
     global is_skip_mode
     global is_sim_mode
     global is_silent
@@ -241,6 +242,9 @@ def main():
     is_sim_mode = args.s
     is_silent = args.q
     is_log = args.w
+
+    csv_path = getMapFile()
+    log_path = str(Path(getProjDir()) / "data" / "ver" / get_ver() / ".changes")
 
     with open(Path(getBuildPath()) / "compile_commands.json", "r") as f:
         if any("NON_MATCHING" in line for line in f): # check if we compiled for Matching-only build

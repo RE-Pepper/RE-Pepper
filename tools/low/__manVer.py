@@ -21,10 +21,14 @@ def getVerFile():
 def getDefaultVer():
     return 'eu'
 
-def get_ver():
+def set_ver(version):
+    with open(getVerFile(), 'w') as f:
+        f.write(version)
+
+def get_ver(version=None):
     if not os.path.exists(getVerFile()):
-        set_ver(getDefaultVer())
-        print (f"Note: Using default version \'{getDefaultVer()}\'")
+        set_ver(version or getDefaultVer())
+        if not version: print (f"Note: Using default version \'{getDefaultVer()}\'")
 
     with open(getVerFile(), 'r') as f:
         ver = f.read()
@@ -33,7 +37,3 @@ def get_ver():
         print ("Error: invalid version file")
 
     return ver
-
-def set_ver(version):
-    with open(getVerFile(), 'w') as f:
-        f.write(version)

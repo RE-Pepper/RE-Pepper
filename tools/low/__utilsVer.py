@@ -4,6 +4,13 @@ import hashlib
 from pathlib import Path
 from low.__manVer import *
 
+def get_ver_path(version, file):
+    return Path(_getProjDir()) / "data" / "ver" / version / file
+def _getProjDir():
+    return Path(os.path.realpath(__file__).split("tools")[0].rstrip(os.sep))
+def _getExeFile(version):
+    return str(get_ver_path(version, "code.bin"))
+
 def get_versions():
     return list(versions.keys())
 
@@ -12,17 +19,14 @@ def is_ver_name(name):
 
 def is_ver_exist(version):
     return os.path.exists(_getExeFile(version))
-    
-def _getProjDir():
-    return Path(os.path.realpath(__file__).split("tools")[0].rstrip(os.sep))
-def _getExeFile(version):
-    return str(Path(_getProjDir()) / "data" / "ver" / version / "code.bin")
 
 def is_ver_valid(version):
     if not is_ver_name(version):
         return False
 
     return hashlib.sha256(Path(_getExeFile(version)).read_bytes()).hexdigest() == versions[version]
+def is_ver_configured(version):
+    return os.path.exists(get_ver_path(version, "config.txt")) and os.path.exists(get_ver_path(version, "map.csv"))
 
 def get_file_ver(path):
     target_hash = hashlib.sha256(Path(path).read_bytes()).hexdigest()
