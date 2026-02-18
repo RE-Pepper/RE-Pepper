@@ -1,3 +1,8 @@
+import sys
+def fail(msg: str):
+    print(msg)
+    sys.exit(1)
+
 def typeToSection(type, name):
     if "g" in type: # any global def
         return name
@@ -5,9 +10,6 @@ def typeToSection(type, name):
         return "t."+name
     elif "f" in type: # fallback default func
         return "i."+name
-
-    elif "dl" in type: # skip if literal pool
-        return None
 
     elif "dd" in type: #
         return ".data_"+name

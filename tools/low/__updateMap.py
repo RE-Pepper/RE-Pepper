@@ -1,14 +1,16 @@
 from low.__parseMap import MapFmt
 from _settings import *
 
-def write_line(f, sym):
+def make_line(sym):
     line = []
     for col in MapFmt:
-        if col in (MapFmt.Start, MapFmt.End):
+        if not sym[col]:
+            line.append("")
+        elif col in (MapFmt.Start, MapFmt.End, MapFmt.Pool):
             line.append(f"0x{sym[col]:08X}")
         else:
             line.append(str(sym[col]))
-    f.write(','.join(line) + '\n')
+    return ','.join(line) + '\n'
 
 def updateFull(newsyms, csv_path=getMapFile()):
     # Create backup
@@ -22,19 +24,12 @@ def updateFull(newsyms, csv_path=getMapFile()):
 
         # Write Symbols
         for sym in newsyms:
-            write_line(f, sym)
+            f.write(make_line(sym))
 
 def updateSingle(sym, csv_path=getMapFile()):
     # Build line
-    cols = []
-    for col in MapFmt:
-        if col in (MapFmt.Start, MapFmt.End):
-            cols.append(f"0x{sym[col]:08X}")
-        elif col == MapFmt.Rank:
-            cols.append(nowrank)
-        else:
-            cols.append(str(sym[col]))
-    newline = ",".join(cols) + "\n"
+    sym[MapFmt.Rank] = nowrank
+    newline = make_line(sym)
 
     # Write changes
     file = open(csv_path, "r").readlines()

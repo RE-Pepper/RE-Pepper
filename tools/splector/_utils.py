@@ -1,4 +1,5 @@
 import os
+import sys
 import shutil
 from low.__parseMap import *
 from low.__utilsElf import typeToSection
@@ -44,7 +45,8 @@ def str_instr(i):
 def str_instrs(instrs):
     return ("\n".join(str_instr(i) for i in instrs))
 def str_func(f):
-    return f"0x{f[0]:08X}-0x{f[1]:08X}: {f[2]} ({str(f[3])}) > 0x{f[4]:08X} ? {f[5]}"
+    pool = f"-0x{f[7]:08X}" if f[7] else ""
+    return f"0x{f[0]:08X}{pool}-0x{f[1]:08X}: {f[2]} ({str(f[3])}) > 0x{f[4]:08X} ? {f[5]}"
 def str_sym(f):
     return f"0x{f[MapFmt.Start]:08X}-0x{f[MapFmt.End]:08X}: {f[MapFmt.Symbol]} ({str(f[MapFmt.Type])}, {f[MapFmt.Rank]})"
 
@@ -55,11 +57,13 @@ def sym_conv(map_sym):
             case MapFmt.Start as t:
                 sym[t] = map_sym[0]
             case MapFmt.End as t:
-                sym[t] = map_sym[4] # prefer next
-            case MapFmt.Type as t:
-                sym[t] = map_sym[3]
+                sym[t] = map_sym[1] # prefer next
+            case MapFmt.Pool as t:
+                sym[t] = map_sym[7] if (map_sym[7] != map_sym[1]) else None
             case MapFmt.Rank as t:
                 sym[t] = map_sym[6] if map_sym[6] else "U"
+            case MapFmt.Type as t:
+                sym[t] = map_sym[3]
             case MapFmt.Symbol as t:
                 sym[t] = map_sym[2].replace("$$_$$", "::")
 
@@ -96,6 +100,10 @@ def clean_dir(path):
         upd_status ("Output exists, deleting")
         shutil.rmtree(out_dir)
     os.makedirs(out_dir, exist_ok=True)
+
+def fail(msg: str):
+    echo (msg)
+    sys.exit(1)
 
 def check_name(name, typ, addr):
     if not name or name.strip() == "":
@@ -156,6 +164,7 @@ def typeToSectionAttr(type):
 def meta_add(type, sect, name):
     line = ''
     line += f"\n.global {name}"
+    line += f"\n.weak {name}"
     if type:
         line += f"\n.type {name} %{type}"
     if sect and not "g" in sect:
@@ -180,14 +189,13 @@ def load_map():
         end = sym[MapFmt.End]
         typ = sym[MapFmt.Type]
         rank = sym[MapFmt.Rank]
-        is_data = sym[MapFmt.Type].startswith("d")
-        has_lp = False
+        pool = sym[MapFmt.Pool]
+        is_data = "d" in sym[MapFmt.Type]
 
         name, is_gen = check_name(sym[MapFmt.Symbol], typ, start) # valid name
 
         if i < (symlen-1):
             next_any = syms[i+1][MapFmt.Start]
-            has_lp = "dl" in syms[i+1][MapFmt.Type]
         else:
             next_any = end
 
@@ -202,11 +210,11 @@ def load_map():
                 next = next_any
             else:
                 next = 0
-                if syms[i+1][MapFmt.Type].startswith("f"):
+                if "f" in syms[i+1][MapFmt.Type]:
                     next = next_any
                 else:
                     for s in syms[i+1:]:
-                        if s[MapFmt.Type].startswith("f"):
+                        if "f" in s[MapFmt.Type]:
                             next = s[MapFmt.Start]
                             break
                 if next == 0:
@@ -220,7 +228,7 @@ def load_map():
         if start != 0x00100000: # skip __ctr_start
             sym_map[start] = name
 
-        if (end > next_any) and (not has_lp):
+        if (end > next_any):
             echo (f"OVERLAP! {name} touching next symbol. {str_addr(end)} > {str_addr(next_any)}")
         elif (end > next):
             echo (f"BUG! {name} touching next symbol of same type. {str_addr(end)} > {str_addr(next)}")
@@ -229,7 +237,7 @@ def load_map():
         elif (start > next):
             echo (f"WRONG ADDR! {name}\'s next same-type symbol has a lower address. {str_addr(start)} > {str_addr(next)}")
 
-        ranges.append((start, end, name, typ, next, is_gen, rank))
+        ranges.append((start, end, name, typ, next, is_gen, rank, pool))
 
     ranges.sort(key=lambda x: x[0])
     return sym_map, ranges

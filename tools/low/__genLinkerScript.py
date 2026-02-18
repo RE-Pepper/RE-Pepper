@@ -1,6 +1,7 @@
 import os
 from _settings import *
 from low.__parseMap import *
+from low.__utilsElf import typeToSectionLinker
 
 def readConfig():
     if not os.path.isfile(getConfFile()):
@@ -21,7 +22,7 @@ def readConfig():
 def genLDScript():
     data = '\n'
     syms = sorted(read_sym_file(), key=lambda tup: tup[MapFmt.Start])
-    for sym, sym_i in enumerate(syms):
+    for sym_i, sym in enumerate(syms):
         if (sym[MapFmt.Symbol] and (sym[MapFmt.Rank] == 'm' or sym[MapFmt.Rank] == 'O')):
             addr = sym[MapFmt.Start]
             type = sym[MapFmt.Type]

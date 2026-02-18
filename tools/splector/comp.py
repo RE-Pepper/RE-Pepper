@@ -26,7 +26,7 @@ def run():
     subprocess.run([gnuas, "-mcpu=mpcore", "-mfpu=vfp", "-mfloat-abi=hard", "-o", getSplitObjPath(), getSplitAsmPath()])
 
     if not os.path.exists(getSplitObjPath()):
-        print (f"{getSplitAsmPath()} not found.")
+        print (f"{getSplitObjPath()} not found.")
         return
 
     print ("Patching ...")

@@ -30,7 +30,8 @@ data_view = [] # all data bytes of program
 ranges = [] # symbol map all
 ranges_data = [] # symbol map data
 sym_map = {} # table with symbols (addr: name)
-data_symbols_map = {} # for final map updating
+symbols_map = {} # for final map updating
+func_ends = {}
 data_symbol_last = 0
 
 def data_line_build(addr, data, type, info, sect, is_first):
@@ -70,9 +71,9 @@ def dump_data_single(addr, size, caller, sect):
     if addr > data_start:
         if addr in sym_map:
             data_symbol_last = addr
-            data_symbols_map[data_symbol_last] = [0,sect]
+            symbols_map[data_symbol_last] = [0,sect]
         if data_symbol_last:
-            data_symbols_map[data_symbol_last][0] += size
+            symbols_map[data_symbol_last][0] += size
 
     alignernum = 0
     while offset < size:
@@ -98,7 +99,7 @@ def dump_data_single(addr, size, caller, sect):
 
 def dump_data_ref(addr, caller, sect, is_first=False): # 
     pc = addr - BASE_ADDR
-    is_func = (not caller is None) and caller[3].startswith("f")
+    is_func = (not caller is None) and "f" in caller[3]
     out = f"@ERROR AT {addr} (ref)"
     if pc < 0 or pc >= len(data_view):
         return out
@@ -141,7 +142,6 @@ def disassemble_func(f):
     size = f[4] - f[0]
     name = f[2]
     lines = []
-    externs = set()
     locals = set()
     datablob_list = {}
 
@@ -169,7 +169,7 @@ def disassemble_func(f):
 
     # Pass 1: Find data refs
     for i_idx, i in enumerate(instrs):
-        if i.bytes == b'\x00\x00\x00\x00':
+        if (i.bytes == b'\x00\x00\x00\x00'):
             datablob_list[i.address] = i.address
         elif i.operands:
             for op_idx, op in enumerate(i.operands):
@@ -186,7 +186,7 @@ def disassemble_func(f):
                         continue
                     if next.type != CS_OP_IMM:
                         continue
-                    if i.mnemonic.lower().startswith("sub"):
+                    if "sub" in i.mnemonic.lower():
                         addr = i.address + 8 - next.imm
                     else:
                         addr = i.address + 8 + next.imm
@@ -221,20 +221,24 @@ def disassemble_func(f):
     datablob_set = set(v for v in datablob_list.values() if v is not None)
     # Pass 3: Bigger Data scan
     for i_idx, i in enumerate(instrs):
-        if i_idx == 0 or not ((i.address in data_addrs) or (i.address in datablob_set)):
-            continue
-        # this is ref. data
+        not_pool = not f[7] or (i.address < f[7])
+        if not_pool:
+            if i_idx == 0 or not (i.address in data_addrs or i.address in datablob_set):
+                continue
+            # this is ref. data
         if i.address in switchtable: # skip jtables
             continue
+
         # add and ref data here
-        if i.address in datablob_set:
+        if i.address in datablob_set or i.address == f[7]:
             data_refs_in_func.add(i.address)
 
-        # find a possible local branch or function end, only first data
-        prev = instrs[i_idx-1]
-        mnem = prev.mnemonic.lower()
-        if not mnem in ("b", "bx", "pop", "bl"):
-            continue
+        if not_pool:
+            # find a possible local branch or function end, only first data
+            prev = instrs[i_idx-1]
+            mnem = prev.mnemonic.lower()
+            if not mnem in ("b", "bx", "pop", "bl") and (i.bytes != b'\x0e\xf0\xa0\xe1'):
+                continue
 
         for try_addr in range(i.address, f[4], 4): # from now to function end
             if try_addr in locals: # detected branch, was blob inside function
@@ -262,12 +266,13 @@ def disassemble_func(f):
 
     data_addrs_sort = sorted(data_addrs)
     has_instr = False
+    lp_start = 0
     # Pass 5: Writing the lines
     for i_idx, i in enumerate(instrs):
         if i.address in addr_done:
             continue
         # check if current instr is actually data
-        if (i.address in data_addrs) or (i.address in datablob_refs) or (i.address > f[1]) or (i.mnemonic.lower().startswith(".word")):
+        if (i.address in data_addrs) or (i.address in datablob_refs) or (i.address > f[1]) or (".word" in i.mnemonic.lower()):
             mydatasize = 4 # find size if possible, else 4
             if i.address in sym_map:
                 for sym in ranges_data:
@@ -282,9 +287,11 @@ def disassemble_func(f):
                 lines.append(line) # dump em
 
             for x in range(mydatasize): # notify data not to write again
-                addr_done.add(i.address)
-            if i.mnemonic.lower().startswith(".word") and (i.address not in data_addrs) and (i.address not in datablob_refs) and (i.address <= f[1]):
+                addr_done.add(x)
+            if ".word" in i.mnemonic.lower() and (i.address not in data_addrs) and (i.address not in datablob_refs) and (i.address <= f[1]):
                 echo (f"Info: resolved leftover .word at 0x{i.address:08X}")
+            if lp_start == 0:
+                lp_start = i.address
             continue
 
         # this is an instruction.
@@ -298,6 +305,8 @@ def disassemble_func(f):
         for op_idx, op in enumerate(i.operands):
             if op.type == CS_OP_IMM:
                 target = op.imm
+                if target <= BASE_ADDR or target >= data_end:
+                    continue
                 is_local = f[0] < target < f[1]
                 labelname = None
                 if target in datablob_refs: # is local data
@@ -313,10 +322,9 @@ def disassemble_func(f):
                 elif target < data_start: # anything but data
                     labelname = sym_map.get(target)
                 if labelname is None:
+                    echo (f"Warn: Failed to resolve label from {f[2]} : 0x{i.address:08X} to 0x{target:08X}")
                     continue
-                if not is_local:
-                    externs.add(labelname)
-                op_str = re.sub(r'#?0x[0-9a-fA-F]+', labelname, op_str)
+                op_str = re.sub(r'#?0x[0-9a-fA-F]+', labelname, op_str).upper()
 
         # write directives
 
@@ -324,11 +332,6 @@ def disassemble_func(f):
 
         if i.address == f[0]:
             label += meta_add_start(f[2], True, True)
-
-            if len(externs) > 0:
-                label += "\n"
-            for e in externs:
-                label += f".extern {e}\n"
 
             label += meta_add_func("function", f[3] if f[0] != BASE_ADDR else None)
 
@@ -345,13 +348,17 @@ def disassemble_func(f):
     if has_instr == False:
         error_func (f, instrs, f"No instructions!")
 
+    if lp_start:
+        # overwrite function end
+        func_ends[f[0]] = lp_start
+
     return lines
 
 def disassemble_symbol(f):
     if f[0] in addr_done:
         return []  # already written
 
-    if not f[3].startswith("f"):
+    if not "f" in f[3]:
         lines = dump_data(f)
         return lines
 
@@ -409,7 +416,7 @@ def assemble_data(addr):
         down = None
 
         for sym in ranges_data:
-            if not sym[3].startswith("d"):
+            if not "d" in sym[3]:
                 continue
 
             if sym[0] < addr: # find 
@@ -419,12 +426,17 @@ def assemble_data(addr):
                 if (not down) or (sym[0] < down[0]):
                     down = sym
 
-        if (not (up or down)) or (not (up[3] or down[3])):
-            sect = "d"
-        elif not (up or up[3]):
-            sect = down[3]
-        elif not down or down[3]:
-            sect = up[3]
+        if up and not up[3]:
+            up = None
+        if down and not down[3]:
+            down = None
+
+        if not (up or down):
+            sect = "d" # default (data)
+        elif up:
+            sect = up[3] # up
+        elif down:
+            sect = down[3] # down
         else:
             ddown = addr - down[0] # start of higher addr 
             dup = up[1] - addr     # end of lower addr
@@ -443,6 +455,8 @@ def assemble_data(addr):
         lines.append(line)
 
     return lines
+
+asm_attrs = [["THUMB_ISA_use", 0], ["ARM_ISA_use", 1]]
 
 def run():
     global data_view, data_start, data_end, sym_map, ranges, noref_list
@@ -463,13 +477,14 @@ def run():
     upd_status("Preprocessing")
     for f in ranges: # find all data symbols
         if "r" in f[3]: # noref specified
-            for a in range(f[0], f[1], 1):
+            for a in range(f[0], f[4], 1):
                 noref_list.add(a)
-        if f[3].startswith("d"):
+        if "d" in f[3]:
             size = f[1] - f[0]
             data_addrs.add(f[0])
         else:
             data_start = f[1]
+    data_end = len(data_view) + BASE_ADDR
 
     endaddr = BASE_ADDR + len(data_view) # try find references
     for off in range(0, len(data_view), 4):
@@ -493,8 +508,21 @@ def run():
     with open(getSplitAsmPath(), 'w') as out:
         out.write(".section .text\n")
         out.write(".syntax unified\n")
+        for at in asm_attrs:
+            out.write(f".eabi_attribute Tag_{at[0]}, {at[1]}\n")
 
         set_status ("Splecting map ")
+
+        # Forward declare
+        externs = []
+        for f in ranges:
+            if not "f" in f[3]:
+                continue
+            externs.append(f"\n.extern {f[2]}")
+            externs.append(f"\n.type {f[2]}, %function")
+        if len(externs) <= 0:
+            fail ("No functions found!")
+        out.writelines(externs)
 
         # Write out functions
         for f in ranges:
@@ -521,11 +549,10 @@ def run():
 
         # Rewrite ranges
         for sym in ranges:
-            if sym[3].startswith("d"):
+            if "d" in sym[3]:
                 ranges_data.append(sym)
 
         # Write out data
-        data_end = len(data_view) + BASE_ADDR
         for addr in range(data_start, data_end, 1):
             if addr < skipToAddr:
                 set_progress (f"FF 0x{addr:08X}")
@@ -546,42 +573,45 @@ def run():
         echo (f"SPLIT INCOMPLETE, STARTED FROM {skipToAddr}")
     echo (f"Wrote {count} lines to {getSplitAsmPath()}")
 
+
+    set_status("Updating map")
+    set_progress("")
+    print_progress()
+
     # Create dict temp
-    data_map_dict = {sym[0]: list(sym) for sym in ranges}
+    sym_map_dict = {sym[0]: list(sym) for sym in ranges}
 
     # start, end, name, typ, next, is_gen, rank
     # go through every known data
-    for addr, data in data_symbols_map.items():
-        data_start = addr
-        data_end = addr + data[0]
-        if addr in data_map_dict:  # symbol exists, but update
-            sym = data_map_dict[addr]
-            sym[1] = data_end
-            sym[4] = data_end
-            sym[3] = data[1]
-            data_map_dict[addr] = sym
+    for addr, data in symbols_map.items():
+        start = addr
+        end = addr + data[0]
+        if addr in sym_map_dict:  # symbol exists, but update
+            sym = sym_map_dict[addr]
+            sym[1] = end # set end to new end
+            sym[4] = end # set next to new end
+            sym_map_dict[addr] = sym
         else:  # new, add
-            data_map_dict[data_start] = [data_start, data_end, "", data[1], data_end, True, "U"]
+            sym_map_dict[start] = [start, end, "", data[1], end, True, "U", end]
 
     # update all symbols
-    for sym in data_map_dict.values():
+    for sym in sym_map_dict.values():
         if (sym[5]):  # is autogenerated
             sym[2] = ""
-        if (addr < data_start) and (not "dl" in sym[3]) and ("d" in f[3]):
-            sym[3] = sym[3].replace("d", "dl")  # be sure to mark literal pools
-        elif (addr >= data_start) and ("dl" in sym[3]):
-            sym[3] = sym[3].replace("dl", "d") # be sure no literal pools are in real data
+        if (sym[0] in func_ends): # reassign function ends
+            sym[7] = func_ends.get(sym[0])
 
     # Convert to map syms
-    sym_list = [sym_conv(sym) for sym in data_map_dict.values()]
+    sym_list = [sym_conv(sym) for sym in sym_map_dict.values()]
 
     # Sort
     sym_list.sort(key=lambda x: x[MapFmt.Start])  # sort it
 
-    set_status("Updating map")
-    set_progress("")
-
     updateFull(sym_list)
+
+    set_status("Splectoratic!")
+    set_progress("")
+    print_progress()
 
 if __name__ == "__main__":
     run()

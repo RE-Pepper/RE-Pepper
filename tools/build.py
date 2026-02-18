@@ -6,6 +6,8 @@ import sys
 import shutil
 import hashlib
 import argparse
+import splector.split
+import splector.comp
 
 from low.__genLinkerScript import genLDScript
 from low.__genObjdiffFile import genObjdiff
@@ -23,7 +25,9 @@ def main() -> None:
     parser.add_argument('-m', action='store_true', help="Compile only matching code (BROKEN)")
     parser.add_argument('-w', action='store_true', help="Omit many warnings (nintendo format)")
     args = parser.parse_args()
+    sys.argv = [sys.argv[0]] # clear args
     
+    # Preparations and check version
     found_version = sort_bin_if_exist()
     old_version = get_ver()
     version = args.version
@@ -48,14 +52,26 @@ def main() -> None:
     if not is_ver_exist(version):
         print(f"data/ver/{version}/code.bin missing. Please provide the code.bin from the {version} version.")
         return
-
     if not is_ver_valid(version):
         print(f"code.bin for {version} is invalid. Did you dump the right version, correctly?")
         return
 
-    if not os.path.isdir(getBuildPath()) or args.c or (version != old_version):
+    # Clean on command or ver change
+    if args.c or (version != old_version):
         shutil.rmtree(getBuildPath(), ignore_errors=True)
-        cmake_args = ['cmake', "-B", getBuildPath(), '-G', 'Unix Makefiles', f"-DRP_VERSION={version.upper()}"]
+
+    # Split code
+    if not os.path.exists(getSplitObjPath()):
+        status (f"Splecting code.bin ({version}) ...")
+        splector.split.run()
+        splector.comp.run()
+    if not os.path.exists(getSplitObjPath()):
+        status ("Splector failed.")
+        return
+
+    # Gen build dir
+    if not os.path.isdir(Path(getBuildPath()) / "Makefile"):
+        cmake_args = ['cmake', "-B", getBuildPath(), '-G', 'Unix Makefiles', f"-DRP_VERSION={version.upper()}", f"-DRP_VERSION_LOWER={version.lower()}"]
         if args.m == True:
             cmake_args.append("-DONLY_MATCHING=1")
         if args.w == True:
@@ -65,21 +81,25 @@ def main() -> None:
             subprocess.run(cmake_args, check=True)
         except subprocess.CalledProcessError:
             exit(1)
+    if not os.path.isdir(getBuildPath()):
+        status ("No cmake generated.")
 
+    # Gen linker
     status ("Generating linker.ld ...")
     genLDScript()
     if not os.path.exists(Path(getBuildPath()) / "linker.ld"):
         status ("No linker file generated.")
         return
 
+    # Build
     cmake_args = ['cmake', '--build', getBuildPath(), '--', '-j', str(multiprocessing.cpu_count())]
     if args.v:
         cmake_args.append('VERBOSE=1')
-
     result = subprocess.run(cmake_args)
     if result.returncode != 0:
         exit(result)
 
+    # Conv .axf to code.bin
     def fromelf():
         status("Generating code.bin ...")
         subprocess.run([
@@ -87,12 +107,13 @@ def main() -> None:
             '--bincombined', str(Path(getBuildPath()) / getElfName()),
             '--output', str(Path(getBuildPath()) / 'code.bin')
         ], check=True)
-
     fromelf()
 
+    # Copy compile commands for editor
     if os.path.exists(f'compile_commands.json'):
         shutil.copyfile(f'compile_commands.json', '../compile_commands.json')
 
+    # Gen Objdiff (wip)
     #status("Generating objdiff.json ...")
     #genObjdiff()
 
