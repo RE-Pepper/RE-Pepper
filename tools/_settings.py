@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 from low.__manVer import get_ver
 from pathlib import Path

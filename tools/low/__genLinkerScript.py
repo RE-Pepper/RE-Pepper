@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 from _settings import *
 from low.__parseMap import *
@@ -5,48 +6,66 @@ from low.__utilsElf import typeToSectionLinker
 
 def readConfig():
     if not os.path.isfile(getConfFile()):
-        return [0,0,0]
+        return [0,0]
     
     with open(getConfFile(), 'r') as f:
         lines = f.readlines()
 
-    if len(lines) < 6:
-        return [0,0,0]
+    if len(lines) < 4:
+        return [0,0]
 
-    ro=str(lines[1].strip())
-    rw=str(lines[3].strip())
-    rest=str(lines[5].strip())
+    roi=int(lines[1].strip(), 0)
+    rwi=int(lines[3].strip(), 0)
+    ros=str(lines[1].strip())
+    rws=str(lines[3].strip())
 
-    return [ro,rw,rest]
+    return [roi,rwi,ros,rws]
 
 def genLDScript():
-    data = '\n'
+    s_code = ''
+    s_dataro = ''
+    s_datarw = ''
+
+    ro_i, rw_i, ro_s, rw_s = readConfig()
+    if ro_i==0 or rw_i==0:
+        print(f"Error getting configuration for {get_ver()}!")
+        exit(1)
+
     syms = sorted(read_sym_file(), key=lambda tup: tup[MapFmt.Start])
     for sym_i, sym in enumerate(syms):
-        if (sym[MapFmt.Symbol] and (sym[MapFmt.Rank] == 'm' or sym[MapFmt.Rank] == 'O')):
-            addr = sym[MapFmt.Start]
-            type = sym[MapFmt.Type]
-            name = sym[MapFmt.Symbol]
+        addr = sym[MapFmt.Start]
+        type = sym[MapFmt.Type]
+        name = sym[MapFmt.Symbol]
+        if not name:
+            if "f" in type:
+                name = f"fn_{addr:08X}"
+            elif "d" in type:
+                name = f"dat_{addr:08X}"
+            else:
+                print(f"Unsupported sym type: {type} at 0x{addr:08X}")
+                exit(1)
+                
+        sect = typeToSectionLinker(type, name)
 
-            sect = typeToSectionLinker(type, name)
+        part = ""
+        part += "\t" + name + " 0x{:08x}\n".format(addr)
+        part += "\t{\n"
+        part += "\t\t* (" + sect + ")\n"
+        part += "\t}\n"
 
-            data += name + " 0x{:08x}\n".format(addr)
-            data += "{\n"
-            data += "\t" + name + " 0x{:08x}\n".format(addr)
-            data += "\t{\n"
-            data += "\t\t* (" + sect + ")\n"
-            data += "\t}\n"
-            data += "}\n"
-
-    ro, rw, rest = readConfig()
+        if addr < ro_i:
+            s_code += part
+        elif addr < rw_i:
+            s_dataro += part
+        else:
+            s_datarw += part
 
     with open(Path(getProjDir()) / "data" / "template" / "linker.ld", 'r') as template:
         with open(Path(getBuildPath()) / "linker.ld", 'w') as out:
 
-            out_line = template.read().replace("$$$", data)
+            out_line = template.read().replace("$$$", s_code).replace("&&&", s_dataro).replace("###", s_datarw)
             
-            if len(ro) > 3:
-                out_line = out_line.replace("§O", ro).replace("§W", rw).replace("§R", rest)
+            out_line = out_line.replace("§O", ro_s).replace("§W", rw_s)
 
             out.write(out_line)
 

@@ -1,11 +1,15 @@
+#!/usr/bin/env python3
 import os
 import sys
 import shutil
-from low.__parseMap import *
-from low.__utilsElf import typeToSection
+import pathlib
 from enum import IntEnum
 from colorama import Fore, Style
 from capstone import *
+
+sys.path.append(str(pathlib.Path(__file__).resolve().parent.parent))
+from low.__parseMap import *
+from low.__utilsElf import typeToSection
 
 curname = ""
 curstatus = "Initializing"
@@ -37,7 +41,7 @@ def echo(str, end="\r"):
     print (str, end)
 
 def str_addr(a):
-    return f"{a:08X}h"
+    return f"0x{a:08X}"
 def str_addrs(addrs):
     return (", ".join(str_addr(a) for a in addrs))
 def str_instr(i):
@@ -77,7 +81,7 @@ def error_func(f, instrs, str):
     if error_details != "":
         return
     line=[]
-    line.append(f"Details: Range: 0x{f[0]:08X} - 0x{f[1]:08X}, Name: {f[2]}, Next Func Start: {f[4]:08X}")
+    line.append(f"Details: Range: 0x{f[0]:08X} - 0x{f[1]:08X}, Name: {f[2]}, Next Func Start: 0x{f[4]:08X}")
     line.append("instrs:")
     line.append(str_instrs(instrs))
     error_details = "\n".join(line)
@@ -150,35 +154,35 @@ def meta_add_start(name, is_func=False, do_size=False):
         meta_lastdata_do_size = do_size
 
     return line
-def meta_add_start_addr(addr, is_func=False, do_size=False):
-    return meta_add_start(f"dat_{addr:08X}", is_func, do_size)
 
 def typeToSectionAttr(type):
-    if "f" in type:
+    if not type:
+        return "a"
+    elif "f" in type:
         return "ax"
     elif "d" in type and not "c" in type:
         return "aw"
     else:
         return "a"
 
-def meta_add(type, sect, name):
+def meta_add(objtype, sectname, name, do_export=False):
     line = ''
-    line += f"\n.global {name}"
-    line += f"\n.weak {name}"
-    if type:
-        line += f"\n.type {name} %{type}"
-    if sect and not "g" in sect:
-        line += f"\n.section {typeToSection(sect, name)},\"{typeToSectionAttr(type)}\",%progbits"
+    if do_export:
+        line += f"\n.global {name}"
+    if objtype:
+        line += f"\n.weak {name}"
+        line += f"\n.type {name} %{objtype}"
+        if sectname:
+            line += f"\n.section {sectname},\"{typeToSectionAttr(objtype)}\",%progbits"
     line += f"\n{name}:\n"
 
     return line
-def meta_add_data(type, sect):
-    return meta_add(type, sect, meta_lastdata)
-def meta_add_func(type, sect):
-    return meta_add(type, sect, meta_lastfunc)
+def meta_add_data(objtype, sectname, do_export=False):
+    return meta_add(objtype, sectname, meta_lastdata, do_export)
+def meta_add_func(objtype, sectname):
+    return meta_add(objtype, sectname, meta_lastfunc, True)
 
 def load_map():
-    upd_status ("Loading map")
     sym_map = {}
     ranges = []
     syms = read_sym_file()
@@ -190,6 +194,7 @@ def load_map():
         typ = sym[MapFmt.Type]
         rank = sym[MapFmt.Rank]
         pool = sym[MapFmt.Pool]
+        section = sym[MapFmt.Section]
         is_data = "d" in sym[MapFmt.Type]
 
         name, is_gen = check_name(sym[MapFmt.Symbol], typ, start) # valid name
@@ -225,9 +230,6 @@ def load_map():
         else:
             next = end
 
-        if start != 0x00100000: # skip __ctr_start
-            sym_map[start] = name
-
         if (end > next_any):
             echo (f"OVERLAP! {name} touching next symbol. {str_addr(end)} > {str_addr(next_any)}")
         elif (end > next):
@@ -236,8 +238,15 @@ def load_map():
             echo (f"WRONG ADDR! {name} is followed by a lower address. {str_addr(start)} > {str_addr(next_any)}")
         elif (start > next):
             echo (f"WRONG ADDR! {name}\'s next same-type symbol has a lower address. {str_addr(start)} > {str_addr(next)}")
+        elif (start in sym_map):
+            echo (f"DUPLICATE ADDR! {std_addr(start)} is the start address in more than 2 symbols!")
+        elif (name in sym_map):
+            echo (f"DUPLICATE NAME! {name} is used for more than one symbols!")
 
-        ranges.append((start, end, name, typ, next, is_gen, rank, pool))
+        if start != 0x00100000: # skip __ctr_start
+            sym_map[start] = name
+
+        ranges.append((start, end, name, typ, next, is_gen, rank, pool, section))
 
     ranges.sort(key=lambda x: x[0])
     return sym_map, ranges

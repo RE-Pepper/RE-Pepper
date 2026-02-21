@@ -1,12 +1,10 @@
-$$$
+TEXT_SECTION 0x00100000
+{
+$$$}
 
 RO_SECTION §O
 {
-    RO +0
-    {
-        * (+CONST)
-    }
-    STATIC_INIT  +0 
+&&&    STATIC_INIT  +0 
     {
         * (.static_init)
     }
@@ -19,15 +17,7 @@ RO_SECTION §O
 
 RW_SECTION §W
 {
-    RW +0
-    {
-        * (+RW-DATA)
-    }
-    ZI +0
-    {
-        * (+ZI)
-    }
-}
+###}
 
 MODULE_INFO     (0x00100000 + (0x04000000 - 0x00100000))
 {
@@ -37,9 +27,9 @@ MODULE_INFO     (0x00100000 + (0x04000000 - 0x00100000))
     }
 }
 
-GARBAGE_SECTION §R
+GARBAGE_SECTION +0
 {
-    REST_SECTION §R
+    REST_SECTION +0
     {
         * (+CODE)
     }

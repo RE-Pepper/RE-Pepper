@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 print ("Generating progress ...")
 
 from time import sleep

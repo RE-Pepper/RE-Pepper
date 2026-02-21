@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from low.__parseMap import MapFmt
 from _settings import *
 
@@ -5,7 +6,7 @@ def make_line(sym):
     line = []
     for col in MapFmt:
         if not sym[col]:
-            line.append("")
+            line.append("          ")
         elif col in (MapFmt.Start, MapFmt.End, MapFmt.Pool):
             line.append(f"0x{sym[col]:08X}")
         else:
@@ -22,7 +23,7 @@ def updateFull(newsyms, csv_path=None):
     # Write file
     with open(csv_path, 'w') as f:
         # Write Header
-        f.write(','.join(field.name for field in MapFmt) + '\n')
+        f.write(','.join(field.name.ljust(10) if field.name in ('Start','Pool','End','Section') else field.name for field in MapFmt) + '\n')
 
         # Write Symbols
         for sym in newsyms:

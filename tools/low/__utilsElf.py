@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 def fail(msg: str):
     print(msg)
@@ -5,7 +6,7 @@ def fail(msg: str):
 
 def typeToSection(type, name):
     if "g" in type: # any global def
-        return name
+        return "g."+name
     elif "ft" in type: # func template
         return "t."+name
     elif "f" in type: # fallback default func

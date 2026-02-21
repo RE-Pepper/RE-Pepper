@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 print ("The check has begun ...")
     
 from colorama import Fore, Style

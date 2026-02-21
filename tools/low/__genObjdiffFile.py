@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from _settings import *
 import json
 import sys

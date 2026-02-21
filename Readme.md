@@ -31,16 +31,21 @@ As noted earlier, this fork made some updates regarding structure of some files.
 #### ARMCC
 ARM C/C++ Compiler, 4.1 [Build 894]
 - Find ARMCC 791 and 894
+- Find a working license
+
 ##### Windows:
 - Pick a folder on your harddrive, using ```C:\ARMCC\894\``` as an example.
 - Mirror this folder layout:
     - ```C:\ARMCC\894\bin``` (894)
     - ```C:\ARMCC\894\include``` (894)
-    - ```C:\ÅRMCC\894\lib``` (791)
+    - ```C:\ARMCC\894\lib``` (791)
+    - ```C:\ARMCC\894\license.dat```
 - Set these Environment Variables:
-    - ARMCC_PATH = ```C:\ARMCC\894```
-    - ARMCC41LIB = ```C:\ARMCC\894\lib```
-    - ARMCC41INC = ```C:\ARMCC\894\include\windows```
+    - ARMCC_PATH      = ```C:\ARMCC\894```
+    - ARMCC41LIB      = ```%ARMCC_PATH%\lib```
+    - ARMCC41INC      = ```%ARMCC_PATH%\include\windows```
+    - LM_LICENSE_FILE = ```%ARMCC_PATH%\license.dat```
+
 ##### Linux:
 - Pick a folder on your harddrive, using ```/opt/armcc/894/``` as an example.
 - Mirror this folder layout:
@@ -48,9 +53,10 @@ ARM C/C++ Compiler, 4.1 [Build 894]
     - ```/opt/armcc/894/include``` (894)
     - ```/opt/armcc/894/lib``` (791)
 - Set these Environment Variables (export X="Y"):
-    - ARMCC_PATH = ```/opt/armcc/894```
-    - ARMCC41LIB = ```/opt/armcc/894/lib```
-    - ARMCC41INC = ```/opt/armcc/894/include/unix```
+    - ARMCC_PATH      = ```/opt/armcc/894```
+    - ARMCC41LIB      = ```$ARMCC_PATH/894/lib```
+    - ARMCC41INC      = ```$ARMCC_PATH/894/include/unix```
+    - LM_LICENSE_FILE = ```$ARMCC_PATH/license.dat```
 
 #### Project
 - Clone this repository recursively using ```git clone https://github.com/RedPepperDec/RedPepper.git --recursive```
