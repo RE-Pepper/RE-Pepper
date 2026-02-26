@@ -672,7 +672,7 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x0011B7FC,0x0011B988,0x0011B998,          ,U,f,
 0x0011B998,0x0011BA18,0x0011BA1C,          ,U,f,
 0x0011BA1C,          ,0x0011BA80,          ,U,f,
-0x0011BA80,0x0011BA98,0x0011BEC8,          ,U,f,
+0x0011BA80,          ,0x0011BEC8,          ,U,f,
 0x0011BEC8,          ,0x0011BFDC,          ,U,f,
 0x0011BFDC,          ,0x0011C008,          ,U,f,
 0x0011C008,          ,0x0011C110,          ,U,f,
@@ -1179,7 +1179,7 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x00137E30,0x001380E0,0x00138128,          ,U,f,
 0x00138128,0x00138338,0x00138354,          ,U,f,
 0x00138354,0x00138384,0x00138390,          ,U,f,
-0x00138390,0x001384A0,0x001385D8,          ,U,f,
+0x00138390,0x00138584,0x001385D8,          ,U,f,
 0x001385D8,          ,0x001385E0,          ,U,f,
 0x001385E0,0x00138794,0x001387C8,          ,U,f,
 0x001387C8,0x00138850,0x00138864,          ,U,f,
@@ -1844,11 +1844,11 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x00155A28,          ,0x00155A4C,          ,U,f,
 0x00155A4C,0x00155C90,0x00155C94,          ,U,f,
 0x00155C94,          ,0x00155C9C,          ,U,f,
-0x00155C9C,0x00155E54,0x001560CC,          ,U,f,
+0x00155C9C,0x00156020,0x001560CC,          ,U,f,
 0x001560CC,          ,0x001560D4,          ,U,f,
 0x001560D4,0x00156214,0x00156220,          ,U,f,
 0x00156220,          ,0x00156228,          ,U,f,
-0x00156228,0x001563E0,0x00156758,          ,U,f,
+0x00156228,0x0015661C,0x00156758,          ,U,f,
 0x00156758,0x0015692C,0x00156964,          ,U,f,
 0x00156964,0x001569BC,0x001569C0,          ,U,f,
 0x001569C0,0x00156BB0,0x00156BBC,          ,U,f,
@@ -1927,7 +1927,7 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x00159F88,0x00159FA8,0x00159FAC,          ,U,f,
 0x00159FAC,0x00159FB8,0x00159FC4,          ,U,f,
 0x00159FC4,0x00159FE0,0x00159FEC,          ,U,f,
-0x00159FEC,0x0015A0A4,0x0015A2C0,          ,U,f,
+0x00159FEC,0x0015A288,0x0015A2C0,          ,U,f,
 0x0015A2C0,          ,0x0015A320,          ,U,f,
 0x0015A320,          ,0x0015A33C,          ,U,f,
 0x0015A33C,0x0015A368,0x0015A36C,          ,U,f,
@@ -2016,7 +2016,7 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x0015DC58,0x0015DCB4,0x0015DCB8,          ,U,f,
 0x0015DCB8,0x0015DE5C,0x0015DE6C,          ,U,f,
 0x0015DE6C,0x0015DF20,0x0015DF30,          ,U,f,
-0x0015DF30,0x0015DF40,0x0015E1A4,          ,U,f,
+0x0015DF30,0x0015E2C0,0x0015E1A4,          ,U,f,
 0x0015E1A4,0x0015E2C0,0x0015E2E4,          ,U,f,
 0x0015E2E4,0x0015E314,0x0015E318,          ,U,f,
 0x0015E318,0x0015E340,0x0015E34C,          ,U,f,
@@ -2094,7 +2094,7 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x00161AE4,          ,0x00161AFC,          ,U,f,
 0x00161AFC,0x00161B64,0x00161B74,          ,U,f,
 0x00161B74,0x00161C0C,0x00161C34,          ,U,f,
-0x00161C34,0x00161C6C,0x0016207C,          ,U,f,
+0x00161C34,0x0016205C,0x0016207C,          ,U,f,
 0x0016207C,0x00162118,0x0016211C,          ,U,f,
 0x0016211C,0x00162220,0x00162230,          ,U,f,
 0x00162230,0x001623B4,0x001623D0,          ,U,f,
@@ -2324,7 +2324,7 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x0016D930,0x0016DA28,0x0016DA40,          ,U,f,
 0x0016DA40,0x0016DAB0,0x0016DABC,          ,U,f,
 0x0016DABC,0x0016DB98,0x0016DBB0,          ,U,f,
-0x0016DBB0,0x0016DC3C,0x0016DEE8,          ,U,f,
+0x0016DBB0,0x0016DE50,0x0016DEE8,          ,U,f,
 0x0016DEE8,          ,0x0016DEF0,          ,U,f,
 0x0016DEF0,0x0016E0FC,0x0016E12C,          ,U,f,
 0x0016E12C,          ,0x0016E150,          ,U,f,
@@ -2590,7 +2590,7 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x0017A33C,0x0017A3BC,0x0017A3DC,          ,U,f,
 0x0017A3DC,0x0017A468,0x0017A4D0,          ,O,f,_ZN2al17CameraParamVision4initEPKNS_9ByamlIterE
 0x0017A4D0,          ,0x0017A520,          ,U,f,
-0x0017A520,0x0017A750,0x0017AC10,          ,U,f,
+0x0017A520,          ,0x0017AC10,          ,U,f,
 0x0017AC10,          ,0x0017AC60,          ,U,f,
 0x0017AC60,0x0017ADEC,0x0017ADFC,          ,U,f,
 0x0017ADFC,0x0017AE7C,0x0017AE90,          ,U,f,
@@ -2864,14 +2864,14 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x00186630,0x0018664C,0x00186650,          ,U,f,
 0x00186650,0x00186658,0x0018665C,          ,U,f,
 0x0018665C,0x001866E0,0x0018670C,          ,U,f,
-0x0018670C,0x00186718,0x00186798,          ,O,f,_ZN2al18getStageSwitchNameENS_15StageSwitchTypeE
+0x0018670C,0x0018675C,0x00186798,          ,O,f,_ZN2al18getStageSwitchNameENS_15StageSwitchTypeE
 0x00186798,          ,0x001867A0,          ,U,f,
 0x001867A0,0x001869E4,0x00186A00,          ,U,f,
 0x00186A00,0x00186C0C,0x00186C18,          ,U,f,
 0x00186C18,0x00186CA0,0x00186CC8,          ,U,f,
 0x00186CC8,0x00186D28,0x00186D44,          ,O,f,_ZN18AquariumSwimDebris4initERKN2al13ActorInitInfoE
 0x00186D44,0x00186D6C,0x00186D70,          ,O,f,_ZN18AquariumSwimDebrisC1ERKN4sead14SafeStringBaseIcEE
-0x00186D70,0x00186E1C,0x001871A4,          ,U,f,
+0x00186D70,0x0018716C,0x001871A4,          ,U,f,
 0x001871A4,0x001872AC,0x001872D4,          ,U,f,
 0x001872D4,          ,0x0018730C,          ,U,f,
 0x0018730C,0x00187318,0x0018731C,          ,U,f,
@@ -2891,11 +2891,11 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x00187AB8,0x00187C74,0x00187CBC,          ,U,f,
 0x00187CBC,0x00187CD8,0x00187CDC,          ,U,f,
 0x00187CDC,0x00187D8C,0x00187DC8,          ,U,f,
-0x00187DC8,0x00187E6C,0x00187EDC,          ,U,f,
+0x00187DC8,          ,0x00187EDC,          ,U,f,
 0x00187EDC,          ,0x00187F0C,          ,U,f,
 0x00187F0C,0x00187F24,0x00187F28,          ,U,f,
 0x00187F28,          ,0x00187F7C,          ,U,f,
-0x00187F7C,0x00187FA4,0x00188000,          ,U,f,
+0x00187F7C,0x00187FEC,0x00188000,          ,U,f,
 0x00188000,0x0018802C,0x00188030,          ,U,f,
 0x00188030,0x0018805C,0x00188060,          ,U,f,
 0x00188060,0x00188260,0x0018857C,          ,U,f,
@@ -3154,7 +3154,7 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x001913F8,0x00191488,0x00191490,          ,U,f,
 0x00191490,0x00191508,0x00191510,          ,U,f,
 0x00191510,0x00191560,0x00191564,          ,U,f,
-0x00191564,0x00191738,0x00191B9C,          ,U,f,
+0x00191564,          ,0x00191B9C,          ,U,f,
 0x00191B9C,          ,0x00191C94,          ,U,f,
 0x00191C94,          ,0x00191CE4,          ,U,f,
 0x00191CE4,0x00191DF4,0x00191DFC,          ,U,f,
@@ -3461,7 +3461,7 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x0019DD50,          ,0x0019DD70,          ,U,f,
 0x0019DD70,0x0019DDA8,0x0019DDAC,          ,U,f,
 0x0019DDAC,0x0019DF50,0x0019DF5C,          ,U,f,
-0x0019DF5C,0x0019DF80,0x0019E22C,          ,U,f,
+0x0019DF5C,0x0019E224,0x0019E22C,          ,U,f,
 0x0019E22C,          ,0x0019E2B8,          ,U,f,
 0x0019E2B8,0x0019E390,0x0019E3A0,          ,U,f,
 0x0019E3A0,0x0019E4A8,0x0019E4C8,          ,U,f,
@@ -3742,7 +3742,7 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x001A8A8C,          ,0x001A8B28,          ,U,f,
 0x001A8B28,0x001A8B58,0x001A8B5C,          ,U,f,
 0x001A8B5C,0x001A8B64,0x001A8B68,          ,U,f,
-0x001A8B68,0x001A8BD8,0x001A8D48,          ,U,f,
+0x001A8B68,0x001A8CF0,0x001A8D48,          ,U,f,
 0x001A8D48,          ,0x001A8D50,          ,U,f,
 0x001A8D50,0x001A8E9C,0x001A8EB4,          ,U,f,
 0x001A8EB4,0x001A8EFC,0x001A8F00,          ,U,f,
@@ -9582,7 +9582,8 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x00288624,0x00288688,0x0028868C,          ,U,f,
 0x0028868C,          ,0x0028870C,          ,U,f,
 0x0028870C,          ,0x00288740,          ,U,fa,__aeabi_idivmod
-0x00288740,          ,0x00288768,          ,U,fa,__arm_div_large_positive
+0x00288740,          ,0x00288764,          ,U,fa,__arm_div_large_positive
+0x00288764,          ,0x00288768,          ,U,fa,__arm_div_large_positive_customhackxd
 0x00288768,          ,0x00288798,          ,U,fa,__arm_div16
 0x00288798,          ,0x002887CC,          ,U,fa,__arm_div12
 0x002887CC,          ,0x002887F0,          ,U,fa,__arm_div8
@@ -16801,21 +16802,20 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x00377CF8,          ,0x00377D1C,          ,U,f,
 0x00377D1C,          ,0x00377D38,          ,U,f,
 0x00377D38,          ,0x00377D50,          ,U,f,
-0x00377D50,          ,0x00377DA0,          ,U,f,
+0x00377D50,          ,0x00377DA0,          ,U,f,__aeabi_vec_cctor_nocookie_nodtor
 0x00377DA0,          ,0x00377DA4,          ,U,f,
-0x00377DA4,          ,0x00377DAC,          ,U,f,
+0x00377DA4,          ,0x00377DAC,          ,U,f,__cxa_pure_virtual
 0x00377DAC,0x00377EA4,0x00377EB0,          ,U,f,
 0x00377EB0,0x00377EC4,0x00377EC8,          ,U,f,
 0x00377EC8,0x00377EDC,0x00377EE0,          ,U,f,
 0x00377EE0,          ,0x00377EE4,          ,U,f,
-0x00377EE4,0x00377FB8,0x00377FC0,          ,U,f,
-0x00377FC0,          ,0x00377FC8,          ,U,f,
-0x00377FC8,          ,0x00377FD0,          ,U,f,
-0x00377FD0,0x00378F1C,0x0037B818,          ,U,f,
-0x0037B818,0x0037B8BC,0x0037B8D0,          ,U,f,
-0x0037B8D0,0x0037C84C,0x0037F0E0,          ,U,f,
-0x0037F0E0,0x0037F5C0,0x0037F5E0,          ,U,f,
-0x0037F5E0,0x0037F640,0x0037F668,          ,U,f,
+0x00377EE4,0x00377FB8,0x00377FC0,          ,U,f,__hardfp_fmodf
+0x00377FC0,          ,0x00377FC8,          ,U,f,__rt_SIGPVFN
+0x00377FD0,0x00378F1C,0x0037B818,          ,U,f,__shv_partialValidateShaderValidator
+0x0037B818,0x0037B8BC,0x0037B8D0,          ,U,f,__shv_preDraw
+0x0037B8D0,0x0037C84C,0x0037F0E0,          ,U,f,__shv_validateShaderValidator
+0x0037F0E0,0x0037F5C0,0x0037F5E0,          ,U,f,__srf_initSurface
+0x0037F5E0,0x0037F640,0x0037F668,          ,U,f,__sti___10_Bubble_cpp
 0x0037F668,0x0037F6CC,0x0037F6F0,          ,U,f,
 0x0037F6F0,0x0037F750,0x0037F778,          ,U,f,
 0x0037F778,0x0037F7D8,0x0037F800,          ,U,f,
@@ -17434,11 +17434,11 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x0038E404,0x0038E43C,0x0038E440,          ,U,f,
 0x0038E440,0x0038E4D0,0x0038E4D4,          ,U,f,
 0x0038E4D4,0x0038E55C,0x0038E564,          ,U,f,
-0x0038E564,0x0038EA3C,0x0038EA60,          ,U,f,
-0x0038EA60,          ,0x0038EA68,          ,U,f,
-0x0038EA68,0x0038EE34,0x0038EE70,          ,U,f,
-0x0038EE70,0x0038F014,0x0038F028,          ,U,f,
-0x0038F028,0x0038F22C,0x0038F238,          ,U,f,
+0x0038E564,0x0038EA3C,0x0038EA60,          ,U,f,arp_drawHostArrays
+0x0038EA60,          ,0x0038EA68,          ,U,f,glEnable
+0x0038EA68,0x0038EE34,0x0038EE70,          ,U,f,ena_enableStatus
+0x0038EE70,0x0038F014,0x0038F028,          ,U,f,glCompressedTexImage2D
+0x0038F028,0x0038F22C,0x0038F238,          ,U,f,glDeleteBuffers
 0x0038F238,0x0038F280,0x0038F398,          ,U,f,
 0x0038F398,0x0038F784,0x0038F7CC,          ,U,f,
 0x0038F7CC,0x0038F880,0x0038F890,          ,U,f,
@@ -19268,10 +19268,8 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x003B2A98,          ,0x003B2AA8,          ,U,dc,
 0x003B2AA8,          ,0x003B2AB0,          ,U,dc,
 0x003B2AB0,          ,0x003B2ABC,          ,U,dc,
-0x003B2ABC,          ,0x003B2AC4,          ,U,dc,_ZTVN2al13NrvBreakModel17BreakModelNrvWaitE
-0x003B2AC4,          ,0x003B2ACC,          ,U,dc,
-0x003B2ACC,          ,0x003B2AD4,          ,U,dc,_ZTVN2al13NrvBreakModel18BreakModelNrvBreakE
-0x003B2AD4,          ,0x003B2ADC,          ,U,dc,
+0x003B2ABC,          ,0x003B2ACC,          ,U,dc,_ZTVN2al13NrvBreakModel17BreakModelNrvWaitE
+0x003B2ACC,          ,0x003B2ADC,          ,U,dc,_ZTVN2al13NrvBreakModel18BreakModelNrvBreakE
 0x003B2ADC,          ,0x003B2AEC,          ,U,dc,
 0x003B2AEC,          ,0x003B2AFC,          ,U,dc,
 0x003B2AFC,          ,0x003B2B0C,          ,U,dc,
@@ -20286,12 +20284,9 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x003BAD18,          ,0x003BAD28,          ,U,d,
 0x003BAD28,          ,0x003BAD38,          ,U,d,
 0x003BAD38,          ,0x003BAD40,          ,U,d,
-0x003BAD40,          ,0x003BAD48,          ,U,dc,_ZTVN13NrvFugumannen17FugumannenNrvMoveE
-0x003BAD48,          ,0x003BAD50,          ,U,dc,
-0x003BAD50,          ,0x003BAD58,          ,U,dc,_ZTVN13NrvFugumannen18FugumannenNrvMove2E
-0x003BAD58,          ,0x003BAD60,          ,U,dc,
-0x003BAD60,          ,0x003BAD68,          ,U,dc,_ZTVN13NrvFugumannen21FugumannenNrvBlowDownE
-0x003BAD68,          ,0x003BAD70,          ,U,dc,
+0x003BAD40,          ,0x003BAD50,          ,U,dc,_ZTVN13NrvFugumannen17FugumannenNrvMoveE
+0x003BAD50,          ,0x003BAD60,          ,U,dc,_ZTVN13NrvFugumannen18FugumannenNrvMove2E
+0x003BAD60,          ,0x003BAD70,          ,U,dc,_ZTVN13NrvFugumannen21FugumannenNrvBlowDownE
 0x003BAD70,          ,0x003BAD88,          ,U,dc,
 0x003BAD88,          ,0x003BAD98,          ,U,dc,
 0x003BAD98,          ,0x003BADA8,          ,U,dc,

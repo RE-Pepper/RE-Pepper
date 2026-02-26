@@ -2,6 +2,7 @@
 import os
 import re
 import sys
+import bisect
 import struct
 from capstone import *
 from capstone.arm import *
@@ -18,8 +19,9 @@ from low.__updateMap import updateFull
 md = None
 
 flag_doUpdate = False
+flag_useNextAddr = False
 
-asm_attrs = [["THUMB_ISA_use", 0], ["ARM_ISA_use", 1]]
+asm_attrs = [["THUMB_ISA_use", 0], ["ARM_ISA_use", 1], ["conformance", "\"2.06\""], ["ABI_PCS_GOT_use", 2], ["ABI_PCS_wchar_t", 2], ["ABI_FP_number_model", 1], ["ABI_align8_needed", 1], ["ABI_align8_preserved", 1], ["ABI_enum_size", 1], ["ABI_VFP_args", 1], ["ABI_optimization_goals", 2], ["CPU_unaligned_access", 1]]
 
 BASE_ADDR = 0x00100000
 data_start = 0
@@ -34,7 +36,8 @@ func_refs = set() # all referenced func
 func_asm_list = set() # collection of all asm functions
 ext_calls = set() # set of out of function labes for asm
 switchcases = set() # jumpcases inside current function
-switchtable = set() # jumptables inside current function
+switchtable_entry = set() # jumptable entries inside current function
+switchtables = set() # all jumptable identifiers (1 = 1 jumptable)
 noref_list = set() # datas that should not contain refs
 data_view = [] # all data bytes of program
 ranges = [] # symbol map all
@@ -44,6 +47,8 @@ symbols_map = {} # for final map updating
 func_ends = {}
 func_types = {}
 data_symbol_last = 0
+data_prev_tag = ""
+
 
 def data_line_build(addr, data, datatype, info, tag, sect, is_first, is_asm):
     do_export = (addr > data_start) or is_asm
@@ -58,13 +63,16 @@ def data_line_build(addr, data, datatype, info, tag, sect, is_first, is_asm):
 
     str = ''
     if myname:
-        if not do_size:
+        if not do_size or sect == 1: # sect=1 is skip flag
             sect = None
         if not sect and tag:
             sect = typeToSection(tag, myname)
         # add directives (meta)
         str += meta_add_start(myname, False, do_size)
         str += meta_add_data(mytype, sect, do_export)
+
+        # set tag for later check
+        data_prev_tag = tag
 
     # write line
     str += f"{f'    .{datatype} {data}':<84}@ 0x{addr:08X} "
@@ -100,26 +108,23 @@ def dump_data_single(addr, size, caller, tag, sect=None):
         if data_symbol_last:
             symbols_map[data_symbol_last][0] += size
     
-    alignernum = 0
     while offset < size:
         a = addr + offset
         is_first = offset == 0
         remaining = size - offset
 
-        if (not a in noref_list) and remaining >= 4 and alignernum == 0:
+        if (not a in noref_list) and remaining >= 4:
             val = struct.unpack_from("<I", data_view, pc + offset)[0]
             if BASE_ADDR < val < (len(data_view)+BASE_ADDR):
-                lines.append(dump_data_ref(a, caller, tag, sect, is_first))
-                offset += 4
-                continue
-            else:
-                alignernum = 4
+                myline = dump_data_ref(a, caller, tag, sect, is_first)
+                if myline:
+                    lines.append(myline)
+                    offset += 4
+                    continue
 
         val = data_view[pc + offset]
         lines.append(data_line_build(a, f"0x{val:02X}", "byte", "data", tag, sect, is_first, False))
         offset += 1
-        if alignernum > 0:
-            alignernum -= 1
     return lines
 
 def dump_data_ref(addr, caller, tag, sect, is_first=False): # 
@@ -135,7 +140,7 @@ def dump_data_ref(addr, caller, tag, sect, is_first=False): #
     is_func = (not caller is None) and "f" in caller[3]
     is_asm = is_func and ("a" in caller[3]) and (val in func_asm_list)
 
-    str = ["data ref", f"0x{val:08X}"] # type, data
+    str = [1, f"0x{val:08X}"] # type, data
 
     if is_func: # check is function
         if caller[0] < val < caller[1] or is_asm: # inside of callee function
@@ -153,6 +158,9 @@ def dump_data_ref(addr, caller, tag, sect, is_first=False): #
     elif (val in sym_map): # treat as any other data ( found in preprocessing )
         str = ["data ref", sym_map.get(val)]
 
+    if str[0] == 1:
+        return None
+
     return data_line_build(addr, str[1], "word", str[0], tag, sect, is_first, is_asm)
 
 def dump_data(f):
@@ -168,7 +176,13 @@ def disassemble_func(f):
     global md, datablob_refs, ext_calls
 
     pc = f[0] - BASE_ADDR
-    size = f[4] - f[0]
+    fstart = f[0]
+    if flag_useNextAddr:
+        fend = f[4]
+    else:
+        fend = f[1]
+    size = fend - fstart
+    fpool = f[7]
     name = f[2]
     lines = []
     locals = set()
@@ -193,7 +207,7 @@ def disassemble_func(f):
 
         if i.mnemonic.lower().startswith('b'):
             op = i.operands[0]
-            if op.type == CS_OP_IMM and f[0] <= op.imm < f[1]:
+            if op.type == CS_OP_IMM and f[0] <= op.imm < fend:
                 locals.add(op.imm)
 
     # Pass 1: Find data refs
@@ -250,7 +264,7 @@ def disassemble_func(f):
                 nexti = instrs[next_idx]
                 attempts -= 1
                 val = struct.unpack_from("<I", data_view, nexti.address - BASE_ADDR)[0]
-                if not (f[0] <= val < f[1]): # val is not a case
+                if not (fstart <= val < fend): # val is not a case
                     if attempts <= 0:
                         next_idx = len(instrs)
                     else:
@@ -262,23 +276,27 @@ def disassemble_func(f):
                 data_addrs.add(nexti.address)
                 datablob_list.pop(nexti.address, None)
                 switchcases.add(val)
-                switchtable.add(nexti.address)
+                switchtable_entry.add(nexti.address)
                 next_idx += 1
+
+                if not (i.address in switchtables) and ((nexti.address == fpool) or (val > fpool)):
+                    echo (f"DATA ADDR WRONG! Function {f[2]} at {str_addr(fstart)} has data address in jump table.")
+                switchtables.add(i.address)
             continue
 
     datablob_set = set(v for v in datablob_list.values() if v is not None)
     # Pass 3: Bigger Data scan
     for i_idx, i in enumerate(instrs):
-        not_pool = not f[7] or (i.address < f[7])
+        not_pool = not fpool or (i.address < fpool)
         if not_pool:
             if i_idx == 0 or not (i.address in data_addrs or i.address in datablob_set):
                 continue
             # this is ref. data
-        if i.address in switchtable: # skip jtables
+        if i.address in switchtable_entry: # skip jtables
             continue
 
         # add and ref data here
-        if i.address in datablob_set or i.address == f[7]:
+        if i.address in datablob_set or i.address == fpool:
             data_refs_in_func.add(i.address)
 
         if not_pool:
@@ -288,10 +306,10 @@ def disassemble_func(f):
             if not mnem in ("b", "bx", "pop", "bl") and (i.bytes != b'\x0e\xf0\xa0\xe1'):
                 continue
 
-        for try_addr in range(i.address, f[4], 4): # from now to function end
+        for try_addr in range(i.address, fend, 4): # from now to function end
             if try_addr in locals: # detected branch, was blob inside function
                 break
-            if try_addr >= f[4]: # function end, was blob after function
+            if try_addr >= fend: # function end, was blob after function
                 break
 
             if not try_addr in datablob_ext:
@@ -305,7 +323,7 @@ def disassemble_func(f):
         if ia in datablob_ext and not addr in datablob_ext:
             data_refs_in_func.discard(addr)
             continue
-        if (addr < f[0] or addr >= f[4]) and not ("a" in f[3] and addr in func_asm_list):
+        if (addr < fstart or addr >= fend) and not ("a" in f[3] and addr in func_asm_list):
             error_func(f, instrs, f"Reference at 0x{ia:08X} to 0x{addr:08X} is out of function bounds!")
 
         datablob_refs.add(addr)
@@ -322,7 +340,7 @@ def disassemble_func(f):
         if i.address in addr_done:
             continue
         # check if current instr is actually data
-        if (i.address in data_addrs) or (i.address in datablob_refs) or (i.address > f[1]) or (".word" in i.mnemonic.lower()):
+        if (i.address in data_addrs) or (i.address in datablob_refs) or (i.address > fend) or (".word" in i.mnemonic.lower()):
             mydatasize = 4 # find size if possible, else 4
             if i.address in sym_map:
                 for sym in ranges_data:
@@ -338,7 +356,7 @@ def disassemble_func(f):
 
             for x in range(mydatasize): # notify data not to write again
                 addr_done.add(x)
-            if ".word" in i.mnemonic.lower() and (i.address not in data_addrs) and (i.address not in datablob_refs) and (i.address <= f[1]):
+            if ".word" in i.mnemonic.lower() and (i.address not in data_addrs) and (i.address not in datablob_refs) and (i.address <= fend):
                 echo (f"Info: resolved leftover .word at 0x{i.address:08X}")
             if lp_start == 0:
                 lp_start = i.address
@@ -363,7 +381,7 @@ def disassemble_func(f):
                     target = op.imm
 
         if target and (target > BASE_ADDR and target < data_end):
-            is_ext = target < f[0] or target >= f[1]
+            is_ext = target < fstart or target >= fend
             is_asm = "a" in f[3] and target in func_asm_list
 
             labelname = None # target in data_addrs, target < data_start
@@ -390,7 +408,7 @@ def disassemble_func(f):
         # write directives
         label = ''
 
-        if i.address == f[0]:
+        if i.address == fstart:
             mytype = f[3]
             myname = f[2]
             if f[8]:
@@ -415,7 +433,7 @@ def disassemble_func(f):
 
     if lp_start:
         # overwrite function end
-        func_ends[f[0]] = lp_start
+        func_ends[fstart] = lp_start
 
     return lines
 
@@ -436,7 +454,7 @@ def disassemble_symbol(f):
             if d in addr_done:
                 continue  # already written
             if (d >= f[4] or d < f[0]) and not ("a" in f[3] and d in func_asm_list):
-                echo (f"Warn: Attempted to add data addr 0x{d:08X} to {f[2]} (0x{f[0]:08X}), which is out of its bounds.")
+                echo (f"Warn: Attempted to add data addr {str_ddr(d)} to {f[2]} ({str_addr(f[0])}), which is out of its bounds.")
                 continue
             if idx == len(blob) - 1:
                 size = f[4] - d
@@ -447,13 +465,14 @@ def disassemble_symbol(f):
         datablob_refs.clear()
         datablob_ext.clear()
         switchcases.clear()
-        switchtable.clear()
+        switchtable_entry.clear()
     return lines
 
 def assemble_data(addr):
     lines = []
     size = 4
     do_refs = True
+    tag = None
     sect = None
 
     if addr in addr_done:
@@ -466,7 +485,7 @@ def assemble_data(addr):
             if addr == sym[0]:
                 if sym[3] == "db": # skip bss
                     return []
-                sect = sym[3]
+                tag = sym[3]
                 if sym[1] and sym[1] > addr:
                     size = sym[1] - addr # if end addr, get correct size
                 break
@@ -475,21 +494,12 @@ def assemble_data(addr):
             nextadr = min((a for a in sym_map if a > addr), default=data_end)
             size = nextadr - addr # get next start address in map
 
-    if not sect:
-        up = None
-        down = None
-
-        # find closest data symbol
-        for sym in ranges_data:
-            if not "d" in sym[3]:
-                continue
-
-            if sym[0] < addr: # find 
-                if (not up) or (sym[0] > up[0]):
-                    up = sym
-            elif sym[0] > addr:
-                if (not down) or (sym[0] < down[0]):
-                    down = sym
+    if not tag:
+        sym_idx = bisect.bisect_left(ranges_data, addr, key=lambda x: x[0])
+        if sym_idx > 0:
+            up = ranges_data[sym_idx - 1]
+        if sym_idx < len(ranges_data):
+            down = ranges_data[sym_idx + 1]
 
         # decide which to use
         if up and down: # get closest
@@ -497,22 +507,25 @@ def assemble_data(addr):
             dup = up[1] - addr
 
             if dup == ddown:
-                sect = down[3]
+                tag = down[3]
             elif ddown > dup:
-                sect = up[3]
+                tag = up[3]
             else:
-                sect = down[3]
+                tag = down[3]
         elif up:
-            sect = up[3]
+            tag = up[3]
         elif down:
-            sect = down[3]
+            tag = down[3]
         else:
-            sect = "d" # fallback
+            tag = "d" # fallback
 
         # strip per-symbol properties
-        sect = sect.replace("r", "").replace("g", "")
+        tag = tag.replace("r", "").replace("g", "")
 
-    for line in dump_data_single(addr, size, None, sect):
+    if (addr % 4) != 0:
+        sect = 1 # append unaligned ones to prev
+
+    for line in dump_data_single(addr, size, None, tag, sect):
         lines.append(line)
 
     return lines
@@ -676,10 +689,12 @@ def run(do_update=None):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('split.py', description="Splector 5000")
     parser.add_argument('-u', action='store_false', help="Attempt to update map (dangerous!)")
+    parser.add_argument('-a', action='store_false', help="Use next symbol start for function end instead of defined end")
     args = parser.parse_args()
     sys.argv = [sys.argv[0]] # clear args
 
     flag_doUpdate = args.u
+    flag_useNextAddr = args.a
 
     run()
 

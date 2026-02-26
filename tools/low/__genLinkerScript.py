@@ -21,6 +21,9 @@ def readConfig():
 
     return [roi,rwi,ros,rws]
 
+def endPart(str):
+    return str.split('\n', 1)[1] + "\t}\n"
+
 def genLDScript():
     s_code = ''
     s_dataro = ''
@@ -33,7 +36,10 @@ def genLDScript():
 
     syms = sorted(read_sym_file(), key=lambda tup: tup[MapFmt.Start])
     for sym_i, sym in enumerate(syms):
+        isCreateSection = True
         addr = sym[MapFmt.Start]
+        if (addr % 4) != 0:
+            isCreateSection = False
         type = sym[MapFmt.Type]
         name = sym[MapFmt.Symbol]
         if not name:
@@ -48,10 +54,11 @@ def genLDScript():
         sect = typeToSectionLinker(type, name)
 
         part = ""
-        part += "\t" + name + " 0x{:08x}\n".format(addr)
-        part += "\t{\n"
+        if isCreateSection:
+            part += "\t}\n"
+            part += "\t" + name + " 0x{:08x}\n".format(addr)
+            part += "\t{\n"
         part += "\t\t* (" + sect + ")\n"
-        part += "\t}\n"
 
         if addr < ro_i:
             s_code += part
@@ -59,6 +66,10 @@ def genLDScript():
             s_dataro += part
         else:
             s_datarw += part
+
+    s_code = endPart(s_code)
+    s_dataro = endPart(s_dataro)
+    s_datarw = endPart(s_datarw)
 
     with open(Path(getProjDir()) / "data" / "template" / "linker.ld", 'r') as template:
         with open(Path(getBuildPath()) / "linker.ld", 'w') as out:

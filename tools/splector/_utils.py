@@ -240,8 +240,10 @@ def load_map():
             echo (f"WRONG ADDR! {name}\'s next same-type symbol has a lower address. {str_addr(start)} > {str_addr(next)}")
         elif (start in sym_map):
             echo (f"DUPLICATE ADDR! {std_addr(start)} is the start address in more than 2 symbols!")
-        elif (name in sym_map):
-            echo (f"DUPLICATE NAME! {name} is used for more than one symbols!")
+        #elif (start % 4) != 0:
+        #    echo (f"BAD ADDR! {str_addr(start)} is not 4 byte aligned!")
+        #elif (name in sym_map):
+        #    echo (f"DUPLICATE NAME! {name} is used for more than one symbols!")
 
         if start != 0x00100000: # skip __ctr_start
             sym_map[start] = name
