@@ -101,12 +101,16 @@ def error_exec():
     error_list.clear()
     quit()
 
-def clean_dir(path):
-    out_dir = os.path.dirname(path)
+def clean_dir(out_dir):
     if os.path.exists(out_dir):
-        upd_status ("Output exists, deleting")
+        echo ("Output exists, deleting")
         shutil.rmtree(out_dir)
     os.makedirs(out_dir, exist_ok=True)
+
+def get_file(name):
+    return str(getSplitInPath() / name)
+def get_asm_file(addr):
+    return str(getSplitInPath() / f"a{addr:08X}.s")
 
 def fail(msg: str):
     echo (msg)
@@ -148,17 +152,27 @@ def meta_add_start(name, sect, is_func=False, do_size=False):
         meta_lastsect = sect
 
     if is_func: # next function begins
+        meta_lastfunc = name
+        meta_lastfunc_do_size = do_size
+    else:
+        meta_lastdata = name
+        meta_lastdata_do_size = do_size
+
+    return line
+
+def meta_add_end(is_func=False):
+    global meta_lastdata, meta_lastfunc, meta_lastfunc_do_size, meta_lastdata_do_size
+
+    line = ''
+
+    if is_func: # next function begins
         if meta_lastfunc and meta_lastfunc_do_size:
             line += f".size {meta_lastfunc}, .-{meta_lastfunc}\n"
             meta_lastfunc = None
-        meta_lastfunc = name
-        meta_lastfunc_do_size = do_size
     else:
         if meta_lastdata and meta_lastdata_do_size:
             line += f".size {meta_lastdata}, .-{meta_lastdata}\n"
             meta_lastdata = None
-        meta_lastdata = name
-        meta_lastdata_do_size = do_size
 
     return line
 

@@ -49,17 +49,22 @@ func_types = {}
 data_symbol_last = 0
 data_prev_tag = ""
 
+def data_line_builder_get_name(addr):
+    myname = None
+    if addr in sym_map:
+        myname = sym_map.get(addr)
+    elif (addr in data_refs_in_func) or (addr in data_addrs) or (addr in datablob_refs):
+        myname = f"dat_{addr:08X}"
+
+    return myname
 
 def data_line_build(addr, data, datatype, info, tag, sect, is_first, is_asm):
     do_export = (addr > data_start) or is_asm
     do_size = addr > data_start
     mytype = "object" if (addr > data_start) else None
 
-    myname = None
-    if addr in sym_map:
-        myname = sym_map.get(addr)
-    elif (addr in data_refs_in_func) or (addr in data_addrs) or (addr in datablob_refs):
-        myname = f"dat_{addr:08X}"
+    myname = data_line_builder_get_name(addr)
+    mynextname = data_line_builder_get_name(addr+1)
 
     str = ''
     if myname:
@@ -81,6 +86,10 @@ def data_line_build(addr, data, datatype, info, tag, sect, is_first, is_asm):
         str += f"({info})\n"
     else:
         str += f"\n"
+
+    if mynextname:
+        str += meta_add_end()
+    
     return str
 
 def dump_data_single(addr, size, caller, tag, sect=None):
@@ -358,7 +367,7 @@ def disassemble_func(f):
                 addr_done.add(x)
             if ".word" in i.mnemonic.lower() and (i.address not in data_addrs) and (i.address not in datablob_refs) and (i.address <= fend):
                 echo (f"Info: resolved leftover .word at 0x{i.address:08X}")
-            if lp_start == 0:
+            if flag_doUpdate and lp_start == 0:
                 lp_start = i.address
             continue
 
@@ -430,7 +439,9 @@ def disassemble_func(f):
     if has_instr == False:
         error_func (f, instrs, f"No instructions!")
 
-    if lp_start:
+    lines.append(meta_add_end(True))
+
+    if flag_doUpdate and lp_start:
         # overwrite function end
         func_ends[fstart] = lp_start
 
@@ -539,6 +550,7 @@ def run(do_update=None):
     sym_map, ranges = load_map()
 
     count = 0
+    count_files = 0
 
     upd_status("Preparing")
     with open(getExeFile(), 'rb') as f:
@@ -549,7 +561,7 @@ def run(do_update=None):
     md.detail = True
     md.skipdata = True
 
-    clean_dir(getSplitAsmPath())
+    clean_dir(getSplitInPath())
 
     upd_status("Preprocessing")
     for f in ranges: # find all data symbols
@@ -588,61 +600,68 @@ def run(do_update=None):
 
     # Start writing data
     ranges.sort(key=lambda x: x[0]) # sort it once more
-    with open(getSplitAsmPath(), 'w') as out:
+    with open(get_file("common.inc"), 'w') as out:
         out.write(".syntax unified\n")
         for at in asm_attrs:
             out.write(f".eabi_attribute Tag_{at[0]}, {at[1]}\n")
 
-        set_status ("Splecting map ")
+    set_status ("Splecting map ")
 
-        # Write out functions
-        for f in ranges:
-            if f[0] >= data_start:
-                continue
-            if f[0] < skipToAddr:
-                set_progress (f"FF 0x{f[0]:08X}")
-                continue
-            set_progress (f"0x{f[0]:08X}")
-            print_progress()
+    # Write out functions
+    for f in ranges:
+        if f[0] >= data_start:
+            continue
+        if f[0] < skipToAddr:
+            set_progress (f"FF 0x{f[0]:08X}")
+            continue
+        set_progress (f"0x{f[0]:08X}")
+        print_progress()
 
-            lines = disassemble_symbol(f)
+        lines = disassemble_symbol(f)
 
-            if len(lines) <= 0:
-                continue
+        if len(lines) <= 0:
+            continue
 
-            count += len(lines)
+        count += len(lines)
+        count_files += 1
 
+        with open(get_asm_file(f[8] or f[0]), 'a') as out:
+            if out.tell() == 0:
+                out.write(".include \"common.inc\"\n")
             out.writelines(lines)
 
-            error_exec()
+        error_exec()
 
-        set_status ("Splecting data ")
+    set_status ("Splecting data ")
 
-        # Rewrite ranges
-        for sym in ranges:
-            if "d" in sym[3]:
-                ranges_data.append(sym)
+    # Rewrite ranges
+    for sym in ranges:
+        if "d" in sym[3]:
+            ranges_data.append(sym)
 
-        # Write out data
-        for addr in range(data_start, data_end, 1):
-            if addr < skipToAddr:
-                set_progress (f"FF 0x{addr:08X}")
-                continue
-            set_progress (f"0x{addr:08X}")
-            print_progress()
+    # Write out data
+    for addr in range(data_start, data_end, 1):
+        if addr < skipToAddr:
+            set_progress (f"FF 0x{addr:08X}")
+            continue
+        set_progress (f"0x{addr:08X}")
+        print_progress()
 
-            lines = assemble_data(addr)
+        lines = assemble_data(addr)
 
-            if len(lines) <= 0:
-                continue
+        if len(lines) <= 0:
+            continue
 
-            count += len(lines)
+        count += len(lines)
+        count_files += 1
 
+        with open(get_asm_file(addr), 'a') as out:
+            out.write(".include \"common.inc\"\n")
             out.writelines(lines)
 
     if skipToAddr != 0:
         echo (f"SPLIT INCOMPLETE, STARTED FROM {skipToAddr}")
-    echo (f"Wrote {count} lines to {getSplitAsmPath()}")
+    echo (f"Wrote {count} lines in {count_files} files to {getSplitInPath()}")
 
 
     if flag_doUpdate:

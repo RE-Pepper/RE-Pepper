@@ -68,11 +68,11 @@ def main() -> None:
         shutil.rmtree(getBuildPath(), ignore_errors=True)
 
     # Split code
-    if not os.path.exists(getSplitObjPath()):
+    if not os.path.exists(getSplitOutPath()):
         status (f"Splecting code.bin ({version}) ...")
         splector.split.run()
         splector.comp.run()
-    if not os.path.exists(getSplitObjPath()):
+    if not os.path.exists(getSplitOutPath()):
         status ("Splector failed.")
         return
 

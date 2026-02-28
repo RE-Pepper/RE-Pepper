@@ -20,12 +20,12 @@ def getElfName(): # Name of built elf file
 def getElfPath(): # Path of build elf file
     return str(Path(getBuildPath()) / getElfName())
 
-def getSplitPath(): # Output dir split
-    return str(Path(getBuildPath()) / "split")
-def getSplitAsmPath(): # asm output of split og
-    return str(Path(getSplitPath()) / f"{get_ver()}.s")
-def getSplitObjPath(): # as output of split og
-    return str(Path(getSplitPath()) / f"{get_ver()}.o")
+def getSplitDir(): # base dir for splits
+    return Path(getBuildPath()) / "split"
+def getSplitInPath(): # asm dir
+    return getSplitDir() / f"{get_ver()}_i"
+def getSplitOutPath(): # obj dir
+    return getSplitDir() / f"{get_ver()}_o"
 
 def getPresetId(): # Decomp.me PID for 3D Land
     return 8
