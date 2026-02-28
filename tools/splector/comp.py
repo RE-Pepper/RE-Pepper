@@ -15,8 +15,6 @@ class NmFmt(IntEnum):
     Type = 1
     Symbol = 2
 
-# TODO: some symbols, that have :: in the section name, are ommited. get the orig symbol here.
-
 def run():
     print ("Recompiling ...")
 

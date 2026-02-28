@@ -68,8 +68,8 @@ def data_line_build(addr, data, datatype, info, tag, sect, is_first, is_asm):
         if not sect and tag:
             sect = typeToSection(tag, myname)
         # add directives (meta)
-        str += meta_add_start(myname, False, do_size)
-        str += meta_add_data(mytype, sect, do_export)
+        str += meta_add_start(myname, sect, False, do_size)
+        str += meta_add_data(mytype, addr, do_export)
 
         # set tag for later check
         data_prev_tag = tag
@@ -394,7 +394,7 @@ def disassemble_func(f):
                     labelname = f"case_{target:08X}"
                 else:
                     labelname = f"loc_{target:08X}"
-                    if is_asm: ext_calls.add(target)
+                    if is_ext and is_asm: ext_calls.add(target)
 
             if (labelname is None):
                 if (target % 4096 != 0): echo (f"Warn: Failed to resolve label from {f[2]} : 0x{i.address:08X} to 0x{target:08X}")
@@ -414,14 +414,13 @@ def disassemble_func(f):
             if f[8]:
                 mytype = func_types.get(f[8])
                 myname = sym_map.get(f[8])
-            label += meta_add_start(f[2], True, True)
-            label += meta_add_func("function", typeToSection(mytype, myname))
+            label += meta_add_start(f[2], typeToSection(mytype, myname), True, True)
+            label += meta_add_func("function", f[0])
 
         elif (i.address in locals) or (i.address in ext_calls):
             if i.address in switchcases:
                 label += f"\ncase_{i.address:08X}:\n"
             else:
-                if i.address in ext_calls: label += f"\n.global loc_{i.address:08X}"
                 label += f"\nloc_{i.address:08X}:\n"
 
         # write final instruction line

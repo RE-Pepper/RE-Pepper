@@ -14,6 +14,9 @@ from low.__utilsElf import typeToSection
 curname = ""
 curstatus = "Initializing"
 
+# other than sect last = curr
+meta_lastsect = "wopee" # last sect
+meta_sect = "wopee" # curr sect
 meta_lastfunc = None # curr/last func
 meta_lastfunc_do_size = False
 meta_lastdata = None # last data that had meta (.global .type .size) written
@@ -135,10 +138,14 @@ class FakeDataInsn:
         attrs = ", ".join(f"{k}={getattr(self, k)!r}" for k in self.__slots__)
         return f"<FakeDataInsn {attrs}>"
 
-def meta_add_start(name, is_func=False, do_size=False):
-    global meta_lastdata, meta_lastfunc, meta_lastfunc_do_size, meta_lastdata_do_size
+def meta_add_start(name, sect, is_func=False, do_size=False):
+    global meta_lastdata, meta_lastfunc, meta_lastfunc_do_size, meta_lastdata_do_size, meta_lastsect, meta_sect
 
     line = ''
+
+    if do_size:
+        meta_sect = sect if meta_lastsect != sect else None
+        meta_lastsect = sect
 
     if is_func: # next function begins
         if meta_lastfunc and meta_lastfunc_do_size:
@@ -165,22 +172,23 @@ def typeToSectionAttr(type):
     else:
         return "a"
 
-def meta_add(objtype, sectname, name, do_export=False):
+def meta_add(objtype, t_addr, name, do_export=False):
     line = ''
     if do_export:
         line += f"\n.global {name}"
     if objtype:
         line += f"\n.weak {name}"
         line += f"\n.type {name} %{objtype}"
-        if sectname:
-            line += f"\n.section {sectname},\"{typeToSectionAttr(objtype)}\",%progbits"
+        if meta_sect:
+            line += f"\n.section {meta_sect},\"{typeToSectionAttr(objtype)}\",%progbits"
+            #line += f"\n. = {str_addr(t_addr)}"
     line += f"\n{name}:\n"
 
     return line
-def meta_add_data(objtype, sectname, do_export=False):
-    return meta_add(objtype, sectname, meta_lastdata, do_export)
-def meta_add_func(objtype, sectname):
-    return meta_add(objtype, sectname, meta_lastfunc, True)
+def meta_add_data(objtype, t_addr, do_export=False):
+    return meta_add(objtype, t_addr, meta_lastdata, do_export)
+def meta_add_func(objtype, t_addr):
+    return meta_add(objtype, t_addr, meta_lastfunc, True)
 
 def load_map():
     sym_map = {}
