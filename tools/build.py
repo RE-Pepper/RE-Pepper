@@ -8,7 +8,7 @@ import shutil
 import hashlib
 import argparse
 import splector.split
-import splector.comp
+import splector.genlist
 
 from low.__genLinkerScript import genLDScript
 from low.__genObjdiffFile import genObjdiff
@@ -22,6 +22,7 @@ def main() -> None:
     parser = argparse.ArgumentParser('build.py', description="Build the Super Mario 3D Land decompilation project")
     parser.add_argument("version", nargs="?", default=None, help="Version to use")
     parser.add_argument('-c', action='store_true', help="Clean before building")
+    parser.add_argument('-cs', action='store_true', help="Clean split before building")
     parser.add_argument('-v', action='store_true', help="Give verbose output")
     parser.add_argument('-m', action='store_true', help="Compile only matching code (BROKEN)")
     parser.add_argument('-w', action='store_true', help="Omit many warnings (nintendo format)")
@@ -63,22 +64,30 @@ def main() -> None:
         set_ver(old_version)
         return
 
+    status (f"RedPepper v{version.upper()}")
+
     # Clean on command or ver change
     if args.c or (version != old_version):
         shutil.rmtree(getBuildPath(), ignore_errors=True)
 
     # Split code
-    if not os.path.exists(getSplitOutPath()):
-        status (f"Splecting code.bin ({version}) ...")
+    split_list = str(getSplitPath() / "list.cmake")
+    if args.cs or not (os.path.exists(getSplitPath()) and os.path.exists(split_list)):
         splector.split.run()
-        splector.comp.run()
-    if not os.path.exists(getSplitOutPath()):
-        status ("Splector failed.")
+        splector.genlist.run()
+    if not os.path.exists(getSplitPath()):
+        status ("Splits are missing.")
+        return
+    elif not os.path.exists(split_list):
+        status ("Split list missing.")
         return
 
     # Gen build dir
     if not os.path.isdir(Path(getBuildPath()) / "Makefile"):
-        cmake_args = ['cmake', "-B", getBuildPath(), '-G', 'Unix Makefiles', f"-DRP_VERSION={version.upper()}", f"-DRP_VERSION_LOWER={version.lower()}"]
+        cmake_args = ['cmake', "-B", getBuildPath(), '-G', 'Ninja',
+            f"-DRP_VERSION={version.upper()}",
+            f"-DRP_SPLIT_LIST={split_list}"
+        ]
         if args.m == True:
             cmake_args.append("-DONLY_MATCHING=1")
         if args.w == True:

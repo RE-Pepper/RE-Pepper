@@ -4,11 +4,13 @@ import re
 import sys
 import bisect
 import struct
+import argparse
 from capstone import *
 from capstone.arm import *
 from _settings import *
 from splector._utils import *
 from low.__updateMap import updateFull
+from low.__utilsMap import *
 
 # Reads every function notes different cases, and disassembles the binary.
 # Code is detected with references, where functions must already exist within a map (not detected)
@@ -20,10 +22,8 @@ md = None
 
 flag_doUpdate = False
 flag_useNextAddr = False
+flag_ffaddr = 0
 
-asm_attrs = [["THUMB_ISA_use", 0], ["ARM_ISA_use", 1], ["conformance", "\"2.06\""], ["ABI_PCS_GOT_use", 2], ["ABI_PCS_wchar_t", 2], ["ABI_FP_number_model", 1], ["ABI_align8_needed", 1], ["ABI_align8_preserved", 1], ["ABI_enum_size", 1], ["ABI_VFP_args", 1], ["ABI_optimization_goals", 2], ["CPU_unaligned_access", 1]]
-
-BASE_ADDR = 0x00100000
 data_start = 0
 data_end = 0
 data_addrs = set() # defined data
@@ -40,55 +40,52 @@ switchtable_entry = set() # jumptable entries inside current function
 switchtables = set() # all jumptable identifiers (1 = 1 jumptable)
 noref_list = set() # datas that should not contain refs
 data_view = [] # all data bytes of program
-ranges = [] # symbol map all
+ranges = {} # symbol map all
 ranges_data = [] # symbol map data
+ranges_data_dict = {} # symbol dict data
 sym_map = {} # table with symbols (addr: name)
 symbols_map = {} # for final map updating
 func_ends = {}
 func_types = {}
 data_symbol_last = 0
 data_prev_tag = ""
+header = None
 
-def data_line_builder_get_name(addr):
+def data_line_builder_get_sym(addr):
     myname = None
-    if addr in sym_map:
+    size = 4
+    if addr in ranges_data_dict:
         myname = sym_map.get(addr)
+        size = ranges_data_dict[addr][1] - ranges_data_dict[addr][0]
     elif (addr in data_refs_in_func) or (addr in data_addrs) or (addr in datablob_refs):
         myname = f"dat_{addr:08X}"
 
-    return myname
+    return myname, size
 
 def data_line_build(addr, data, datatype, info, tag, sect, is_first, is_asm):
     do_export = (addr > data_start) or is_asm
-    do_size = addr > data_start
-    mytype = "object" if (addr > data_start) else None
 
-    myname = data_line_builder_get_name(addr)
-    mynextname = data_line_builder_get_name(addr+1)
+    myname, size = data_line_builder_get_sym(addr)
 
     str = ''
     if myname:
-        if not do_size or sect == 1: # sect=1 is skip flag
+        if addr < data_start or sect == 1: # sect=1 is skip flag
             sect = None
         if not sect and tag:
             sect = typeToSection(tag, myname)
         # add directives (meta)
-        str += meta_add_start(myname, sect, False, do_size)
-        str += meta_add_data(mytype, addr, do_export)
+        str += meta_add(tag, sect, myname, size, do_export)
 
         # set tag for later check
         data_prev_tag = tag
 
     # write line
-    str += f"{f'    .{datatype} {data}':<84}@ 0x{addr:08X} "
+    str += f"{f'    {datatype} {data}':<84}; 0x{addr:08X} "
     # add data info
     if is_first:
         str += f"({info})\n"
     else:
         str += f"\n"
-
-    if mynextname:
-        str += meta_add_end()
     
     return str
 
@@ -96,8 +93,9 @@ def dump_data_single(addr, size, caller, tag, sect=None):
     global data_symbol_last
 
     lines = []
+    externals = set()
     
-    pc = addr - BASE_ADDR
+    pc = addr - header[HeadType.Text][HeadVal.Start]
     if pc < 0 or pc >= len(data_view):
         return lines
     size = min(size, len(data_view) - pc)
@@ -124,23 +122,25 @@ def dump_data_single(addr, size, caller, tag, sect=None):
 
         if (not a in noref_list) and remaining >= 4:
             val = struct.unpack_from("<I", data_view, pc + offset)[0]
-            if BASE_ADDR < val < (len(data_view)+BASE_ADDR):
-                myline = dump_data_ref(a, caller, tag, sect, is_first)
+            if header[HeadType.Text][HeadVal.Start] < val < header[HeadType.Bss][HeadVal.End]:
+                myline, ref_name = dump_data_ref(a, caller, tag, sect, is_first)
+                if ref_name and (not caller or not (caller[0] <= val < caller[1])):
+                    externals.add(ref_name)
                 if myline:
                     lines.append(myline)
                     offset += 4
                     continue
 
         val = data_view[pc + offset]
-        lines.append(data_line_build(a, f"0x{val:02X}", "byte", "data", tag, sect, is_first, False))
+        lines.append(data_line_build(a, f"0x{val:02X}", "DCB", "data", tag, sect, is_first, False))
         offset += 1
-    return lines
+    return lines, externals
 
 def dump_data_ref(addr, caller, tag, sect, is_first=False): # 
     global ext_calls
 
-    pc = addr - BASE_ADDR
-    out = f"@ERROR AT {addr} (ref)"
+    pc = addr - header[HeadType.Text][HeadVal.Start]
+    out = f";ERROR AT {addr} (ref)"
     if pc < 0 or pc >= len(data_view):
         return out
 
@@ -149,28 +149,37 @@ def dump_data_ref(addr, caller, tag, sect, is_first=False): #
     is_func = (not caller is None) and "f" in caller[3]
     is_asm = is_func and ("a" in caller[3]) and (val in func_asm_list)
 
+    ref_name = None
+
     str = [1, f"0x{val:08X}"] # type, data
 
     if is_func: # check is function
         if caller[0] < val < caller[1] or is_asm: # inside of callee function
             if val in sym_map:
-                str = ["ref", sym_map.get(val)]
+                str = ["ref", f"|{sym_map.get(val)}|"]
+                ref_name = str[1]
             if val in datablob_refs:
                 str = ["data", f"dat_{val:08X}"]
+                ref_name = str[1]
             elif val in switchcases:
                 str = ["switch case", f"case_{val:08X}"]
             else: # just local
                 str = ["local ref", f"loc_{val:08X}"]
                 if is_asm: ext_calls.add(val)
         elif (val in sym_map) and (caller[1] < val >= caller[4]): # defined symbol
-            str = ["func ref" if val < data_start else "data ref", sym_map.get(val)]
+            myinfoname = "func ref" if val < data_start else "data ref"
+            str = [myinfoname, f"|{sym_map.get(val)}|"]
+            ref_name = str[1]
     elif (val in sym_map): # treat as any other data ( found in preprocessing )
-        str = ["data ref", sym_map.get(val)]
+        str = ["data ref", f"|{sym_map.get(val)}|"]
+        ref_name = str[1]
+    if header[HeadType.Bss][HeadVal.Start] <= val < header[HeadType.Bss][HeadVal.End]:
+        str[0] = "bss ref"
 
     if str[0] == 1:
-        return None
+        return None, None
 
-    return data_line_build(addr, str[1], "word", str[0], tag, sect, is_first, is_asm)
+    return data_line_build(addr, str[1], "DCD", str[0], tag, sect, is_first, is_asm), ref_name
 
 def dump_data(f):
     start = f[0]
@@ -178,13 +187,13 @@ def dump_data(f):
     for j in range(size): # avoid writing out again
         if (start+j) in addr_done:
             return []
-    lines = dump_data_single(f[0], f[1]-f[0], f, f[3], f[8])
-    return lines
+    lines, externals = dump_data_single(f[0], f[1]-f[0], f, f[3], f[8])
+    return lines, externals
 
 def disassemble_func(f):
     global md, datablob_refs, ext_calls
 
-    pc = f[0] - BASE_ADDR
+    pc = f[0] - header[HeadType.Text][HeadVal.Start]
     fstart = f[0]
     if flag_useNextAddr:
         fend = f[4]
@@ -195,6 +204,7 @@ def disassemble_func(f):
     name = f[2]
     lines = []
     locals = set()
+    externals = set()
     datablob_list = {}
 
     instrs = list(md.disasm(data_view[pc:pc+size], f[0]))
@@ -208,7 +218,7 @@ def disassemble_func(f):
             fake_instrs = []
             addr = blob_start
             while addr < blob_end:
-                fake_instrs.append(FakeDataInsn(addr, data_view[addr - BASE_ADDR : addr - BASE_ADDR + 4]))
+                fake_instrs.append(FakeDataInsn(addr, data_view[addr - header[HeadType.Text][HeadVal.Start] : addr - header[HeadType.Text][HeadVal.Start] + 4]))
                 addr += 4
 
             instrs[i_idx:i_idx+1] = fake_instrs
@@ -272,7 +282,7 @@ def disassemble_func(f):
             while next_idx < len(instrs):
                 nexti = instrs[next_idx]
                 attempts -= 1
-                val = struct.unpack_from("<I", data_view, nexti.address - BASE_ADDR)[0]
+                val = struct.unpack_from("<I", data_view, nexti.address - header[HeadType.Text][HeadVal.Start])[0]
                 if not (fstart <= val < fend): # val is not a case
                     if attempts <= 0:
                         next_idx = len(instrs)
@@ -353,15 +363,19 @@ def disassemble_func(f):
             mydatasize = 4 # find size if possible, else 4
             if i.address in sym_map:
                 for sym in ranges_data:
-                    if sym != i.address:
+                    if sym[0] != i.address:
                         continue
 
+                    externals.add(sym[2]) # add external
                     if sym[1] and sym[1] > sym[0]:
                         mydatasize = sym[1] - sym[0]
                     break
 
-            for line in dump_data_single(i.address, mydatasize, f, None, f[8]):
+            lines_data, ext_data = dump_data_single(i.address, mydatasize, f, None, f[8])
+            for line in lines_data:
                 lines.append(line) # dump em
+            for extd in ext_data:
+                externals.add(extd)
 
             for x in range(mydatasize): # notify data not to write again
                 addr_done.add(x)
@@ -389,13 +403,15 @@ def disassemble_func(f):
                 if op.type == CS_OP_IMM: # direct reference
                     target = op.imm
 
-        if target and (target > BASE_ADDR and target < data_end):
+        if target and (target > header[HeadType.Text][HeadVal.Start] and target < data_end):
             is_ext = target < fstart or target >= fend
             is_asm = "a" in f[3] and target in func_asm_list
 
             labelname = None # target in data_addrs, target < data_start
             if target in sym_map and (target in data_addrs) != (target < data_start): # known
                 labelname = sym_map.get(target)
+                if target != f[0]:
+                    externals.add(labelname) # add external
             elif target in datablob_refs: # is local data
                 labelname = f"dat_{target:08X}"
             elif not is_ext or is_asm: # is local code
@@ -423,78 +439,83 @@ def disassemble_func(f):
             if f[8]:
                 mytype = func_types.get(f[8])
                 myname = sym_map.get(f[8])
-            label += meta_add_start(f[2], typeToSection(mytype, myname), True, True)
-            label += meta_add_func("function", f[0])
+            label += meta_add("f", typeToSection(mytype, myname), f[2], f[1] - f[0], True)
 
         elif (i.address in locals) or (i.address in ext_calls):
             if i.address in switchcases:
-                label += f"\ncase_{i.address:08X}:\n"
+                label += f"\ncase_{i.address:08X}\n"
             else:
-                label += f"\nloc_{i.address:08X}:\n"
+                label += f"\nloc_{i.address:08X}\n"
 
         # write final instruction line
         bytes_hex = ''.join(f'{b:02X}' for b in i.bytes)
-        lines.append(label + f"    {mnemonic:<8} {op_str:<70} @ 0x{i.address:08X} - {bytes_hex}\n")
+        lines.append(label + f"    {mnemonic.upper():<8} {op_str:<70} ; 0x{i.address:08X} - {bytes_hex}\n")
 
     if has_instr == False:
         error_func (f, instrs, f"No instructions!")
 
-    lines.append(meta_add_end(True))
+    lines.append("    ENDFUNC\n\n")
 
     if flag_doUpdate and lp_start:
         # overwrite function end
         func_ends[fstart] = lp_start
 
-    return lines
+    return lines, externals
 
 def disassemble_symbol(f):
     if f[0] in addr_done:
         return []  # already written
 
     if not "f" in f[3]:
-        lines = dump_data(f)
-        return lines
+        return dump_data(f)
 
-    lines = disassemble_func(f)
+    lines, externals = disassemble_func(f)
     if not lines: # not a valid function after all
-        lines = dump_data(f)
-    else: # valid function
-        blob = sorted(datablob_refs)
-        for idx, d in enumerate(blob):
-            if d in addr_done:
-                continue  # already written
-            if (d >= f[4] or d < f[0]) and not ("a" in f[3] and d in func_asm_list):
-                echo (f"Warn: Attempted to add data addr {str_ddr(d)} to {f[2]} ({str_addr(f[0])}), which is out of its bounds.")
-                continue
-            if idx == len(blob) - 1:
-                size = f[4] - d
-            else:
-                size = blob[idx+1] - d
-            for line in dump_data_single(d, size, f, None, None):
-                lines.append(line)
-        datablob_refs.clear()
-        datablob_ext.clear()
-        switchcases.clear()
-        switchtable_entry.clear()
-    return lines
+        return dump_data(f)
+
+    # valid function
+    blob = sorted(datablob_refs)
+    for idx, d in enumerate(blob):
+        if d in addr_done:
+            continue  # already written
+        if (d >= f[4] or d < f[0]) and not ("a" in f[3] and d in func_asm_list):
+            echo (f"Warn: Attempted to add data addr {str_ddr(d)} to {f[2]} ({str_addr(f[0])}), which is out of its bounds.")
+            continue
+        if idx == len(blob) - 1:
+            size = f[4] - d
+        else:
+            size = blob[idx+1] - d
+        lines_data, ext_data = dump_data_single(d, size, f, None, None)
+        for line in lines_data:
+            lines.append(line)
+        for extd in ext_data:
+            externals.add(extd)
+    datablob_refs.clear()
+    datablob_ext.clear()
+    switchcases.clear()
+    switchtable_entry.clear()
+
+    return lines, externals
 
 def assemble_data(addr):
-    lines = []
     size = 4
     do_refs = True
     tag = None
     sect = None
+    lines = []
 
     if addr in addr_done:
-        return []
+        return [], []
 
     # get size
+    sym_found = False
     if addr in sym_map:
         size = 0
         for sym in ranges_data:
             if addr == sym[0]:
+                sym_found = True
                 if sym[3] == "db": # skip bss
-                    return []
+                    return [], []
                 tag = sym[3]
                 if sym[1] and sym[1] > addr:
                     size = sym[1] - addr # if end addr, get correct size
@@ -504,7 +525,10 @@ def assemble_data(addr):
             nextadr = min((a for a in sym_map if a > addr), default=data_end)
             size = nextadr - addr # get next start address in map
 
-    if not tag:
+    if not (flag_doUpdate or sym_found):
+        return [], [] # avoid writing unknown bytes if not updating map
+
+    if sym_found and not tag:
         sym_idx = bisect.bisect_left(ranges_data, addr, key=lambda x: x[0])
         if sym_idx > 0:
             up = ranges_data[sym_idx - 1]
@@ -535,21 +559,27 @@ def assemble_data(addr):
     if (addr % 4) != 0:
         sect = 1 # append unaligned ones to prev
 
-    for line in dump_data_single(addr, size, None, tag, sect):
+    lines_data, externals = dump_data_single(addr, size, None, tag, sect)
+    for line in lines_data:
         lines.append(line)
 
-    return lines
+    return lines, externals
 
 def run(do_update=None):
-    global md, data_view, data_start, data_end, sym_map, ranges, noref_list, flag_doUpdate, func_types
+    global md, data_view, data_start, data_end, sym_map, ranges, noref_list, flag_doUpdate, flag_ffaddr, func_types, header
 
+    echo ("Splector initiated.")
+    
     if not do_update is None:
         flag_doUpdate = do_update
+    if flag_ffaddr is None:
+        flag_ffaddr = 0
 
     upd_status ("Loading map")
     sym_map, ranges = load_map()
 
     count = 0
+    count_syms = 0
     count_files = 0
 
     upd_status("Preparing")
@@ -557,14 +587,17 @@ def run(do_update=None):
         data = f.read()
     data_view = memoryview(data)
 
+    header = readHeader()
+
     md = Cs(CS_ARCH_ARM, CS_MODE_ARM)
     md.detail = True
     md.skipdata = True
 
-    clean_dir(getSplitInPath())
+    if flag_ffaddr == 0:
+        clean_dir(getSplitPath())
 
     upd_status("Preprocessing")
-    for f in ranges: # find all data symbols
+    for a, f in ranges.items(): # find all data symbols
         if "r" in f[3]: # noref specified
             for a in range(f[0], f[4], 1):
                 noref_list.add(a)
@@ -577,91 +610,95 @@ def run(do_update=None):
         else:
             data_start = f[1]
             func_types[f[0]] = f[3]
-    data_end = len(data_view) + BASE_ADDR
+    data_end = len(data_view) + header[HeadType.Text][HeadVal.Start]
 
     
     if flag_doUpdate:
         # try find references
-        endaddr = BASE_ADDR + len(data_view)
+        endaddr = header[HeadType.Text][HeadVal.Start] + len(data_view)
         for off in range(0, len(data_view), 4):
-            if (off + BASE_ADDR) in noref_list:
+            if (off + header[HeadType.Text][HeadVal.Start]) in noref_list:
                 continue
             val = struct.unpack_from("<I", data_view, off)[0]
-            if (BASE_ADDR < val < endaddr) and (val not in sym_map):
+            if (header[HeadType.Text][HeadVal.Start] < val < endaddr) and (val not in sym_map):
                 if val > data_start:
                     sym_map[val] = f"dat_{val:08X}"
-
-    if len(sys.argv) > 1:
-        skipToAddr = int(sys.argv[1], 0)
-    else:
-        skipToAddr = 0
 
     upd_status("Splecting and writing assembly")
 
     # Start writing data
-    ranges.sort(key=lambda x: x[0]) # sort it once more
-    with open(get_file("common.inc"), 'w') as out:
-        out.write(".syntax unified\n")
-        for at in asm_attrs:
-            out.write(f".eabi_attribute Tag_{at[0]}, {at[1]}\n")
-
     set_status ("Splecting map ")
 
+    # extra data ranges
+    for a, sym in ranges.items():
+        if "d" in sym[3]:
+            ranges_data.append(sym)
+            ranges_data_dict[sym[0]] = sym
+
     # Write out functions
-    for f in ranges:
+    for a, f in ranges.items():
         if f[0] >= data_start:
             continue
-        if f[0] < skipToAddr:
+        if f[0] < flag_ffaddr:
             set_progress (f"FF 0x{f[0]:08X}")
             continue
         set_progress (f"0x{f[0]:08X}")
         print_progress()
 
-        lines = disassemble_symbol(f)
+        lines, externals = disassemble_symbol(f)
 
         if len(lines) <= 0:
             continue
 
         count += len(lines)
-        count_files += 1
+        count_syms += 1
+        if not f[8] or f[8] == f[0]:
+            count_files += 1
 
         with open(get_asm_file(f[8] or f[0]), 'a') as out:
-            if out.tell() == 0:
-                out.write(".include \"common.inc\"\n")
+            if len(externals) > 0:
+                for e in externals:
+                    out.write(f"    IMPORT |{e}|\n")
+                out.write("\n")
             out.writelines(lines)
+            out.write("    END\n")
 
         error_exec()
 
     set_status ("Splecting data ")
 
-    # Rewrite ranges
-    for sym in ranges:
-        if "d" in sym[3]:
-            ranges_data.append(sym)
-
     # Write out data
-    for addr in range(data_start, data_end, 1):
-        if addr < skipToAddr:
+    if flag_doUpdate:
+        my_datalist = range(data_start, data_end, 1)
+    else:
+        my_datalist = [r[0] for r in ranges_data]
+    for addr in my_datalist:
+        if addr < flag_ffaddr:
             set_progress (f"FF 0x{addr:08X}")
             continue
         set_progress (f"0x{addr:08X}")
         print_progress()
 
-        lines = assemble_data(addr)
+        lines, externals = assemble_data(addr)
 
         if len(lines) <= 0:
             continue
 
         count += len(lines)
+        count_syms += 1
         count_files += 1
 
         with open(get_asm_file(addr), 'a') as out:
-            out.write(".include \"common.inc\"\n")
+            if len(externals) > 0:
+                for e in externals:
+                    out.write(f"    IMPORT {e}\n")
+                out.write("\n")
             out.writelines(lines)
+            out.write("    END\n")
 
-    if skipToAddr != 0:
-        echo (f"SPLIT INCOMPLETE, STARTED FROM {skipToAddr}")
-    echo (f"Wrote {count} lines in {count_files} files to {getSplitInPath()}")
+    if flag_ffaddr != 0:
+        echo (f"SPLIT INCOMPLETE, STARTED FROM {flag_ffaddr}")
+    echo (f"Wrote {count_syms} symbols among {count} lines in {count_files} files to {getSplitPath()}")
 
 
     if flag_doUpdate:
@@ -669,31 +706,28 @@ def run(do_update=None):
         set_progress("")
         print_progress()
 
-        # Create dict temp
-        sym_map_dict = {sym[0]: list(sym) for sym in ranges}
-
         # start, end, name, typ, next, is_gen, rank
         # go through every known data
         for addr, data in symbols_map.items():
             start = addr
             end = addr + data[0]
-            if addr in sym_map_dict:  # symbol exists, but update
-                sym = sym_map_dict[addr]
+            if addr in ranges:  # symbol exists, but update
+                sym = ranges[addr]
                 sym[1] = end # set end to new end
                 sym[4] = end # set next to new end
-                sym_map_dict[addr] = sym
+                ranges[addr] = sym
             else:  # new, add
-                sym_map_dict[start] = [start, end, "", data[1], end, True, "U", end]
+                ranges[start] = [start, end, "", data[1], end, True, "U", end]
 
         # update all symbols
-        for sym in sym_map_dict.values():
+        for a, sym in ranges.items():
             if (sym[5]):  # is autogenerated
                 sym[2] = ""
             if (sym[0] in func_ends): # reassign function ends
                 sym[7] = func_ends.get(sym[0])
 
         # Convert to map syms
-        sym_list = [sym_conv(sym) for sym in sym_map_dict.values()]
+        sym_list = [sym_conv(sym) for a, sym in ranges.items()]
 
         # Sort
         sym_list.sort(key=lambda x: x[MapFmt.Start])  # sort it
@@ -704,15 +738,17 @@ def run(do_update=None):
     set_progress("")
     print_progress()
 
-if __name__ == "__main__":
+if os.path.basename(sys.argv[0]) == "splect.py":
     parser = argparse.ArgumentParser('split.py', description="Splector 5000")
     parser.add_argument('-u', action='store_false', help="Attempt to update map (dangerous!)")
     parser.add_argument('-a', action='store_false', help="Use next symbol start for function end instead of defined end")
+    parser.add_argument("ffaddr", nargs="?", type=lambda x: int(x, 0), default=None, help="Skip until addr (avoids cleaning)")
     args = parser.parse_args()
     sys.argv = [sys.argv[0]] # clear args
 
     flag_doUpdate = args.u
     flag_useNextAddr = args.a
+    flag_ffaddr = args.ffaddr
 
     run()
 

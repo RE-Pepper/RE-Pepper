@@ -4,7 +4,6 @@ import sys
 import shutil
 import pathlib
 from enum import IntEnum
-from colorama import Fore, Style
 from capstone import *
 
 sys.path.append(str(pathlib.Path(__file__).resolve().parent.parent))
@@ -14,13 +13,8 @@ from low.__utilsElf import typeToSection
 curname = ""
 curstatus = "Initializing"
 
-# other than sect last = curr
 meta_lastsect = "wopee" # last sect
 meta_sect = "wopee" # curr sect
-meta_lastfunc = None # curr/last func
-meta_lastfunc_do_size = False
-meta_lastdata = None # last data that had meta (.global .type .size) written
-meta_lastdata_do_size = False
 
 def set_progress(name):
     global curname
@@ -33,15 +27,17 @@ def clear_line():
     print (' ' * shutil.get_terminal_size((80, 20)).columns, end='\r')
 def print_progress():
     clear_line()
-    print (Fore.LIGHTCYAN_EX + curstatus + Fore.LIGHTRED_EX + curname + Fore.RESET + Style.RESET_ALL + " ...", end='\r')
+    print ("\033[38;5;202m" + curstatus + "\033[38;2;150;75;0m" + curname + "\033[0m\033[K ...", end='\r')
 
 def upd_status(status):
     set_status(status)
     print_progress()
 
-def echo(str, end="\r"):
+def echor(str, end="\r"):
+    print (f"\033[38;5;226m{str}\033[0m\033[K", end=end)
+def echo(str, end="\n"):
     clear_line()
-    print (str, end)
+    echor(str, end)
 
 def str_addr(a):
     return f"0x{a:08X}"
@@ -72,7 +68,7 @@ def sym_conv(map_sym):
             case MapFmt.Type as t:
                 sym[t] = map_sym[3]
             case MapFmt.Symbol as t:
-                sym[t] = map_sym[2].replace("$$_$$", "::")
+                sym[t] = map_sym[2]
 
     return sym
 
@@ -103,14 +99,15 @@ def error_exec():
 
 def clean_dir(out_dir):
     if os.path.exists(out_dir):
-        echo ("Output exists, deleting")
+        echor ("Output exists, deleting....")
         shutil.rmtree(out_dir)
+        echo ("Output exists, deleted.")
     os.makedirs(out_dir, exist_ok=True)
 
 def get_file(name):
-    return str(getSplitInPath() / name)
+    return str(getSplitPath() / name)
 def get_asm_file(addr):
-    return str(getSplitInPath() / f"a{addr:08X}.s")
+    return str(getSplitPath() / f"a{addr:08X}.s")
 
 def fail(msg: str):
     echo (msg)
@@ -124,7 +121,7 @@ def check_name(name, typ, addr):
             return f"unk_{addr:08X}", True
         else:
             return f"dat_{addr:08X}", True
-    return name.replace("::", "$$_$$"), False
+    return name, False
 
 class FakeDataInsn:
     __slots__ = ("address", "size", "id", "mnemonic", "op_str", "operands", "bytes")
@@ -142,71 +139,42 @@ class FakeDataInsn:
         attrs = ", ".join(f"{k}={getattr(self, k)!r}" for k in self.__slots__)
         return f"<FakeDataInsn {attrs}>"
 
-def meta_add_start(name, sect, is_func=False, do_size=False):
-    global meta_lastdata, meta_lastfunc, meta_lastfunc_do_size, meta_lastdata_do_size, meta_lastsect, meta_sect
+def typeToSectionAttr(type):
+    if not type:
+        return None
+    elif "f" in type:
+        return "CODE,READONLY"
+    elif "d" in type and not "c" in type:
+        return "DATA,READWRITE"
+    else:
+        return "DATA,READONLY"
 
-    line = ''
+def meta_add(type_code, sect, name, size, do_export=False):
+    global meta_lastsect, meta_sect
 
-    if do_size:
+    type = typeToSectionAttr(type_code)
+
+    if sect:
         meta_sect = sect if meta_lastsect != sect else None
         meta_lastsect = sect
 
-    if is_func: # next function begins
-        meta_lastfunc = name
-        meta_lastfunc_do_size = do_size
-    else:
-        meta_lastdata = name
-        meta_lastdata_do_size = do_size
-
-    return line
-
-def meta_add_end(is_func=False):
-    global meta_lastdata, meta_lastfunc, meta_lastfunc_do_size, meta_lastdata_do_size
-
-    line = ''
-
-    if is_func: # next function begins
-        if meta_lastfunc and meta_lastfunc_do_size:
-            line += f".size {meta_lastfunc}, .-{meta_lastfunc}\n"
-            meta_lastfunc = None
-    else:
-        if meta_lastdata and meta_lastdata_do_size:
-            line += f".size {meta_lastdata}, .-{meta_lastdata}\n"
-            meta_lastdata = None
-
-    return line
-
-def typeToSectionAttr(type):
-    if not type:
-        return "a"
-    elif "f" in type:
-        return "ax"
-    elif "d" in type and not "c" in type:
-        return "aw"
-    else:
-        return "a"
-
-def meta_add(objtype, t_addr, name, do_export=False):
     line = ''
     if do_export:
-        line += f"\n.global {name}"
-    if objtype:
-        line += f"\n.weak {name}"
-        line += f"\n.type {name} %{objtype}"
-        if meta_sect:
-            line += f"\n.section {meta_sect},\"{typeToSectionAttr(objtype)}\",%progbits"
-            #line += f"\n. = {str_addr(t_addr)}"
-    line += f"\n{name}:\n"
+        if meta_sect and type:
+            line += f"    AREA |{meta_sect}|,{type}\n"
+        else:
+            line += "\n"
+        line += f"    EXPORT |{name}| [WEAK,SIZE=0x{size:X}]"
+    line += f"\n|{name}|"
+    if type and "CODE" in type:
+        line += " FUNCTION"
+    line += "\n"
 
     return line
-def meta_add_data(objtype, t_addr, do_export=False):
-    return meta_add(objtype, t_addr, meta_lastdata, do_export)
-def meta_add_func(objtype, t_addr):
-    return meta_add(objtype, t_addr, meta_lastfunc, True)
 
 def load_map():
     sym_map = {}
-    ranges = []
+    ranges = {}
     syms = read_sym_file()
     symlen = len(syms)
     for i in range(symlen):
@@ -217,7 +185,9 @@ def load_map():
         rank = sym[MapFmt.Rank]
         pool = sym[MapFmt.Pool]
         section = sym[MapFmt.Section]
-        is_data = "d" in sym[MapFmt.Type]
+
+        if "b" in typ:
+            continue
 
         name, is_gen = check_name(sym[MapFmt.Symbol], typ, start) # valid name
 
@@ -229,11 +199,11 @@ def load_map():
         if end is None or end <= start:
             if symlen == i+1:
                 fail ("Last symbol has no end.")
-            elif not is_data and symlen > (i+1):
+            elif not "d" in typ and symlen > (i+1):
                 end = next_any
 
         if i < (symlen-1):
-            if is_data:
+            if "d" in typ:
                 next = next_any
             else:
                 next = 0
@@ -270,7 +240,6 @@ def load_map():
         if start != 0x00100000: # skip __ctr_start
             sym_map[start] = name
 
-        ranges.append((start, end, name, typ, next, is_gen, rank, pool, section))
+        ranges[start] = ((start, end, name, typ, next, is_gen, rank, pool, section))
 
-    ranges.sort(key=lambda x: x[0])
     return sym_map, ranges

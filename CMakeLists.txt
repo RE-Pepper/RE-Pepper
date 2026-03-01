@@ -1,5 +1,10 @@
 cmake_minimum_required(VERSION 3.24)
 
+include(${RP_SPLIT_LIST})
+if(NOT DEFINED SPLIT_LIST)
+    message(FATAL_ERROR "${RP_SPLIT_LIST} was not generated properly.")
+endif()
+
 include(${CMAKE_SOURCE_DIR}/project/Global.cmake)
 
 #add_subdirectory(lib/sead)
@@ -12,8 +17,7 @@ project(RedPepper C CXX ASM)
 
 add_executable(RedPepper
     #$<TARGET_OBJECTS:crt0>
-    ${CMAKE_BINARY_DIR}/split/${RP_VERSION_LOWER}.o
-    ${SOURCES_GAME} ${SOURCES_AL})
+    ${SPLIT_LIST} ${SOURCES_GAME} ${SOURCES_AL})
 
 set_target_properties(RedPepper PROPERTIES LINKER_LANGUAGE CXX)
 

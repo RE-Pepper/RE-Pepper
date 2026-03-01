@@ -2,24 +2,8 @@
 import os
 from _settings import *
 from low.__parseMap import *
+from low.__utilsMap import *
 from low.__utilsElf import typeToSectionLinker
-
-def readConfig():
-    if not os.path.isfile(getConfFile()):
-        return [0,0]
-    
-    with open(getConfFile(), 'r') as f:
-        lines = f.readlines()
-
-    if len(lines) < 4:
-        return [0,0]
-
-    roi=int(lines[1].strip(), 0)
-    rwi=int(lines[3].strip(), 0)
-    ros=str(lines[1].strip())
-    rws=str(lines[3].strip())
-
-    return [roi,rwi,ros,rws]
 
 def endPart(str):
     return str.split('\n', 1)[1] + "\t}\n"
@@ -29,7 +13,12 @@ def genLDScript():
     s_dataro = ''
     s_datarw = ''
 
-    ro_i, rw_i, ro_s, rw_s = readConfig()
+    header = readHeader()
+    ro_i = header[HeadType.Ro][HeadVal.Start]
+    rw_i = header[HeadType.Rw][HeadVal.Start]
+    ro_s = f"0x{ro_i:08X}"
+    rw_s = f"0x{rw_i:08X}"
+
     if ro_i==0 or rw_i==0:
         print(f"Error getting configuration for {get_ver()}!")
         exit(1)

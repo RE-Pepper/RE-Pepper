@@ -7,9 +7,13 @@ tools/__pycache__/
 data/stats/
 data/stats/*
 data/stats/*/*
+data/ver/*/split/
+data/ver/*/split/*
 compile_commands.json
 objdiff.json
-code.bin
+data/ver/*.bin
+data/*.bin
+data/ver/*/*.bin
 .changes
 .version
 *.csv_b
