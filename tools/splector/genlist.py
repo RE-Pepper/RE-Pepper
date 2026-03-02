@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 import os
+import sys
 from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 from _settings import *
 from splector._utils import *
 
@@ -25,3 +28,5 @@ def run():
 
     echo (f"Wrote cmake list.")
 
+if "genlist.py" in sys.argv[0]:
+    run()

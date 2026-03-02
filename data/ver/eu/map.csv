@@ -21123,9 +21123,9 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x003BDA50,          ,0x003BDA58,          ,U,dc,_ZTVN2al15NrvFallMapParts18FallMapPartsNrvEndE
 0x003BDA58,          ,0x003BDA60,          ,U,dc,
 0x003BDA60,          ,0x003BDA68,          ,U,dc,
-0x003BDA68,          ,0x003BDA70,          ,U,dc,
-0x003BDA70,          ,0x003BDA78,          ,U,dc,
-0x003BDA78,          ,0x003BDA88,          ,U,dc,
+0x003BDA68,          ,0x003BDA70,          ,U,dcr,
+0x003BDA70,          ,0x003BDA78,          ,U,dcr,
+0x003BDA78,          ,0x003BDA88,          ,U,dcr,
 0x003BDA88,          ,0x003BDA98,          ,U,dc,
 0x003BDA98,          ,0x003BDAA0,          ,U,dc,
 0x003BDAA0,          ,0x003BDAA8,          ,U,dc,

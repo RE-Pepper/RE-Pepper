@@ -68,7 +68,10 @@ def main() -> None:
 
     # Clean on command or ver change
     if args.c or (version != old_version):
-        shutil.rmtree(getBuildPath(), ignore_errors=True)
+        subprocess.run(["cmake", "--build", getBuildPath(), "--target", "clean"])
+
+    if args.c:
+        exit(0)
 
     # Split code
     split_list = str(getSplitPath() / "list.cmake")

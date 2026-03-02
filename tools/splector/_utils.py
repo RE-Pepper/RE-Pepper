@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 import os
+import re
 import sys
 import shutil
-import pathlib
 from enum import IntEnum
+from pathlib import Path
 from capstone import *
 
-sys.path.append(str(pathlib.Path(__file__).resolve().parent.parent))
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 from low.__parseMap import *
 from low.__utilsElf import typeToSection
 
@@ -16,6 +17,10 @@ curstatus = "Initializing"
 meta_lastsect = "wopee" # last sect
 meta_sect = "wopee" # curr sect
 
+is_silent = False
+
+RE_SPECIAL = re.compile(r'[^a-zA-Z0-9_]')
+
 def set_progress(name):
     global curname
     curname = name
@@ -23,18 +28,27 @@ def set_status(status):
     global curstatus
     curstatus = status
 
+def set_silent(state):
+    global is_silent
+    is_silent = state
+    if is_silent:
+        echo ("Not printing progress.")
+
 def clear_line():
+    if is_silent: return
     print (' ' * shutil.get_terminal_size((80, 20)).columns, end='\r')
 def print_progress():
+    if is_silent: return
     clear_line()
-    print ("\033[38;5;202m" + curstatus + "\033[38;2;150;75;0m" + curname + "\033[0m\033[K ...", end='\r')
+    print ("\033[38;5;172m" + curstatus + "\033[38;2;150;75;0m" + curname + "\033[0m\033[K ...", end='\r')
 
 def upd_status(status):
+    if is_silent: return
     set_status(status)
     print_progress()
 
 def echor(str, end="\r"):
-    print (f"\033[38;5;226m{str}\033[0m\033[K", end=end)
+    print (f"\033[38;5;221m{str}\033[0m\033[K", end=end)
 def echo(str, end="\n"):
     clear_line()
     echor(str, end)
@@ -149,7 +163,7 @@ def typeToSectionAttr(type):
     else:
         return "DATA,READONLY"
 
-def meta_add(type_code, sect, name, size, do_export=False):
+def meta_add(type_code, sect, name, size, do_export=False, do_meta_ext=False):
     global meta_lastsect, meta_sect
 
     type = typeToSectionAttr(type_code)
@@ -158,14 +172,22 @@ def meta_add(type_code, sect, name, size, do_export=False):
         meta_sect = sect if meta_lastsect != sect else None
         meta_lastsect = sect
 
-    line = ''
+    if RE_SPECIAL.search(name):
+        name = f"|{name}|"
+
+    line = '\n'
     if do_export:
         if meta_sect and type:
             line += f"    AREA |{meta_sect}|,{type}\n"
         else:
             line += "\n"
-        line += f"    EXPORT |{name}| [WEAK,SIZE=0x{size:X}]"
-    line += f"\n|{name}|"
+        line += f"    EXPORT {name}"
+        if do_meta_ext:
+            line += f" [WEAK,SIZE=0x{size:X}]\n"
+        else:
+            line += "\n"
+
+    line += f"{name}"
     if type and "CODE" in type:
         line += " FUNCTION"
     line += "\n"
