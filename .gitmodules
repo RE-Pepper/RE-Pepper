@@ -8,13 +8,9 @@
 	url = https://github.com/RedPepperDec/sead_ctr
 	branch = main
 [submodule "lib/ctrsdk"]
-	path = lib/CTRSDK
+	path = lib/CtrSDK
 	url = https://github.com/RedPepperDec/ctrsdk
 	branch = main
-[submodule "project"]
-	path = project
-	url = https://github.com/RedPepperDec/RedPepper_Meta
-	branch = master
 [submodule "lib/NintendoWare"]
 	path = lib/NintendoWare
 	url = https://github.com/RedPepperDec/NintendoWare_ctr
