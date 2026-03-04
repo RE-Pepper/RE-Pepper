@@ -64,14 +64,15 @@ def main() -> None:
         set_ver(old_version)
         return
 
-    status (f"RedPepper v{version.upper()}")
-
     # Clean on command or ver change
     if args.c or (version != old_version):
         subprocess.run(["cmake", "--build", getBuildPath(), "--target", "clean"])
+        if args.c:
+            exit(0)
+        else:
+            print(f"Version changed, rebuilding. ({old_version.upper()} -> {version.upper()})")
 
-    if args.c:
-        exit(0)
+    status (f"RedPepper v{version.upper()}")
 
     # Split code
     split_list = str(getSplitPath() / "list.cmake")
@@ -129,8 +130,8 @@ def main() -> None:
     fromelf()
 
     # Copy compile commands for editor
-    if os.path.exists(f'compile_commands.json'):
-        shutil.copyfile(f'compile_commands.json', '../compile_commands.json')
+    if os.path.exists(f"{getBuildPath()}/compile_commands.json"):
+        shutil.copyfile(f"{getBuildPath()}/compile_commands.json", "compile_commands.json")
 
     # Gen Objdiff (wip)
     #status("Generating objdiff.json ...")

@@ -46,7 +46,7 @@ def sort_bin_if_exist():
     # Check version
     ver = get_file_ver(try_bin_path)
     if not ver:
-        print("data/code.bin does not correspond to any known version.")
+        print("found loose data/code.bin, but does not correspond to any known version.")
         print("list of versions with SHA256:")
         for k, v in versions.items():
             print(k + ": " + v)
@@ -57,6 +57,6 @@ def sort_bin_if_exist():
     dest_file_path = _getExeFile(ver)
     os.rename(try_bin_path, dest_file_path)
 
-    print("found loose code.bin in data/, identified as " + ver + "version and moved to data/ver/"+ver+"/code.bin")
+    print("found loose code.bin in data/, identified as v" + ver + " and moved to data/ver/"+ver+"/code.bin.")
 
     return ver
