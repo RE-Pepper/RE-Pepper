@@ -8,8 +8,8 @@ from pathlib import Path
 from capstone import *
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
-from low.__parseMap import *
-from low.__utilsElf import typeToSection
+tools.low.__parseMap import *
+tools.low.__utilsElf import typeToSection
 
 curname = ""
 curstatus = "Initializing"

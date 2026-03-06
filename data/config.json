@@ -1,0 +1,40 @@
+{
+  "project_name": "RedPepper",
+  "app_name": "CtrApp",
+  "decompme_id": 8,
+  "versions": {
+    "eu": "e1d7e188ff88467df776c17cec45c44857fadf5b699944baa8cddcae7d939e64",
+    "us": "c705711154b1c514d7a0b5d133fabff42834110b198bd4cf86397d0d1c1597e9",
+    "jp": "885dcaed5994076732b1f99e452a6f06493c23464ae0509ebbf44b8c6fd614a7",
+    "eu_d": "184b8804ccf4aea9f447b2278dfc3171d4f8c4e6abf890d7b24680d649e034c6",
+    "us_d": "6016cbdada120b2476e512e8c87c5d525f62ee8daa9f81e00c8caa1237477344",
+    "jp_d": "b1987a589ddb9d4caf723e0dfb470131d2aee52023b8b9a90455f6c9f694fefc",
+    "tw": "6207415ee0c6d2dff53d65b39cc2b05318a3b25e62e39639ab2a7243d96357f0",
+    "cn": "11ca2f6fa7e8b9553737830899787e7236f4fdbf8b96ed03c99fbe6a8939b37d",
+    "kr": "820940dc19b86f8d47515973d9f1484c4efc0571a729c294e85b53e5097fda56"
+  },
+  "default_version" : "eu",
+  "compiler": "4.1/791",
+  "modules": {
+    "Game": {},
+    "lib/al": {},
+    "lib/sead": {
+      "source_dir": "modules/src"
+    },
+    "lib/sead/addins/libms": {},
+    "lib/NintendoWare": {
+      "source_dir": "sources",
+      "compiler": "4.0/902"
+    },
+    "lib/CtrSDK": {
+      "source_dir": "sources",
+      "compiler": "4.0/902"
+    }
+  },
+  "flags_compile": " ",
+  "flags_compile_asm": " ",
+  "flags_compile_cxx": " ",
+  "flags_link": " "
+  "flag_forceinclude": ""
+  "flag_diag": ""
+}

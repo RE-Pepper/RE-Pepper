@@ -6,9 +6,9 @@ import cxxfilt
 import requests
 from elftools.elf.elffile import ELFFile
 from elftools.elf.sections import SymbolTableSection
-from low.__genCtxFile import genCtxs
-from low.__parseMap import get_symbol
-from _settings import *
+tools.low.__genCtxFile import genCtxs
+tools.low.__parseMap import get_symbol
+tools.low.glob import *
 
 def find_source_path(str):
     with open(getElfPath(), "rb") as f:

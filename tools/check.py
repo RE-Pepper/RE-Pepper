@@ -2,9 +2,9 @@
 print ("The check has begun ...")
     
 from colorama import Fore, Style
-from low.__updateMap import *
-from low.__parseMap import *
-from low.__parseElf import *
+tools.low.__updateMap import *
+tools.low.__parseMap import *
+tools.low.__parseElf import *
 import multiprocessing
 import threading
 import argparse

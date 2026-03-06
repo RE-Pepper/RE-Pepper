@@ -2,9 +2,9 @@
 import subprocess
 import os
 import sys
-from _settings import *
-from low.__parseElf import *
-from low.__parseMap import *
+tools.low.glob import *
+tools.low.__parseElf import *
+tools.low.__parseMap import *
 
 def fail(msg: str):
     print(msg)

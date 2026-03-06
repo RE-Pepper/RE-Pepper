@@ -4,7 +4,7 @@ import subprocess
 import sys
 import os
 import re
-from _settings import *
+tools.low.glob import *
 from enum import IntEnum
 
 class ElfFmt(IntEnum):

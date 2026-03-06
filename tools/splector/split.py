@@ -10,10 +10,10 @@ from capstone import *
 from capstone.arm import *
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
-from _settings import *
+tools.low.glob import *
 from splector._utils import *
-from low.__updateMap import updateFull
-from low.__utilsMap import *
+tools.low.__updateMap import updateFull
+tools.low.__utilsMap import *
 
 # Reads every function notes different cases, and disassembles the binary.
 # Code is detected with references, where functions must already exist within a map (not detected)

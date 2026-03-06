@@ -5,9 +5,9 @@ import sys
 import struct
 from capstone import *
 from capstone.arm import *
-from _settings import *
+tools.low.glob import *
 from splector._utils import *
-from low.__updateMap import updateFull
+tools.low.__updateMap import updateFull
 
 # goal: find all function starts
 # bl calls = sure

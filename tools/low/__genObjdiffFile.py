@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-from _settings import *
+tools.low.glob import *
 import json
 import sys
 from colorama import Fore, Style
-from low.__genCtxFile import genCtx
+tools.low.__genCtxFile import genCtx
 from elftools.elf.elffile import ELFFile
 from elftools.elf.sections import SymbolTableSection
 

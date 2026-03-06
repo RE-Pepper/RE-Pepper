@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
-from _settings import *
+tools.low.glob import *
 from splector._utils import *
 
 def run():

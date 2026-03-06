@@ -6,9 +6,9 @@ try:
     is_filter = True
 except ImportError:
     is_filter = False
-from _settings import *
-from low.__parseElf import *
-from low.__parseMap import *
+tools.low.glob import *
+tools.low.__parseElf import *
+tools.low.__parseMap import *
 from io import StringIO
 
 def main():

@@ -4,6 +4,8 @@ tools/__pycache__/
 .cache/
 [Pp]riv/
 
+data/.*
+data/compilers
 data/stats/
 data/stats/*
 data/stats/*/*
@@ -15,7 +17,6 @@ data/ver/*.bin
 data/*.bin
 data/ver/*/*.bin
 .changes
-.version
 *.csv_b
 *.m2c
 *.bin

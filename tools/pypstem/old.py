@@ -10,10 +10,10 @@ import argparse
 import splector.split
 import splector.genlist
 
-from low.__genLinkerScript import genLDScript
-from low.__genObjdiffFile import genObjdiff
-from low.__utilsVer import *
-from _settings import *
+tools.low.__genLinkerScript import genLDScript
+tools.low.__genObjdiffFile import genObjdiff
+tools.low.__utilsVer import *
+tools.low.glob import *
 
 def main() -> None:
     def status(msg: str):
@@ -37,8 +37,6 @@ def main() -> None:
     if not version or found_version or ("code.bin" in version):
         version = found_version or old_version
     else:
-        if version == "us":
-            version = "us_1"
         if not is_ver_name(version):
             print (f"Passed argument \'{version}\' is not a valid version!")
             print (f"Available versions: {get_versions()}")

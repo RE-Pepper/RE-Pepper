@@ -2,7 +2,7 @@
 import os
 import sys
 import struct
-from _settings import *
+tools.low.glob import *
 from enum import IntEnum
 
 def fail(msg: str):
