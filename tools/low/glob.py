@@ -37,6 +37,11 @@ def isLinux():
     import sys
     return "linux" in sys.platform
 
+is_silent = False
+def setSilent(): # for functions that rewrite a line during output
+    global is_silent
+    is_silent = True
+
 # TODO: deprecate
 def getPresetId(): # Decomp.me PID for 3D Land
     return cfg.decompme_id

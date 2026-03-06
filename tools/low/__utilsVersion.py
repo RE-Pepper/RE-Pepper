@@ -10,6 +10,8 @@ def getProjDir(): # Resolve project path
     return Path(os.path.realpath(__file__).split("tools")[0].rstrip(os.sep))
 def getExeFile(): # Path of original code binary
     return str(getVerDir() / "code.bin")
+def getHeadFile(): # Path of original code binary
+    return str(getVerDir() / "exh.bin")
     
 def getVerFile():
     return str(Path(getProjDir()) / "data" / ".version")
@@ -62,24 +64,27 @@ def get_file_ver(path):
 
 def sort_bin_if_exist():
     try_bin_path = str(Path(getProjDir()) / "data" / "code.bin")
+    try_exh_path = str(Path(getProjDir()) / "data" / "exh.bin")
 
     if not os.path.exists(try_bin_path):
         return None
+    if not os.path.exists(try_exh_path):
+        fail ("Found unsorted code.bin, but missing exh.bin. Please add exh.bin to data/ (exheader).")
 
     # Check version
     ver = get_file_ver(try_bin_path)
     if not ver:
-        print("found loose data/code.bin, but does not correspond to any known version.")
-        print("list of versions with SHA256:")
+        echo ("Found loose data/code.bin, but does not correspond to any known version.")
+        echo ("List of versions with SHA256:")
         for k, v in cfg.versions.items():
             print(k + ": " + v)
-        sys.exit(1)
-        return None
+
+        fail ("Please verify your binaries, and try again.")
 
     # Move file
-    dest_file_path = getExeFile(ver)
-    os.rename(try_bin_path, dest_file_path)
+    os.rename(try_bin_path, getExeFile(ver))
+    os.rename(try_exh_path, getHeadFile(ver))
 
-    print("found loose code.bin in data/, identified as v" + ver + " and moved to data/ver/"+ver+"/code.bin.")
+    echo (f"found loose binaries in data/, identified as v{ver.upper()} and moved to data/ver/{ver}/.")
 
     return ver

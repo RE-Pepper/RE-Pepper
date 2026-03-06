@@ -13,10 +13,15 @@ def _call(path, args):
     cmd.append(str(path))
     cmd.extend(args.split())
 
-    subprocess.run(cmd)
+    env = os.environ.copy()
+    env["TMP"] = "/tmp"
+    env["TEMP"] = "/tmp"
+
+    subprocess.run(cmd, env=env)
 
 def do_assemble(path, flags):
     _call(str(path / "armasm.exe"), flags)
 
 def do_compile(path, flags):
+    echo (flags)
     _call(str(path / "armcc.exe"), flags)

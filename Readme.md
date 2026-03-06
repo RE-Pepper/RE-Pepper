@@ -19,78 +19,26 @@ Check out the [docs](https://prp.moddi.dev)!
 As noted earlier, this fork made some updates regarding structure of some files.  
 - code.bin goes to the data/ folder.  
 - symbol files are gone, instead use the .csv files inside of the data/ folder.  
+- cmake scrapped and wrote custom build system
+- rebuild assembly (for possible modding support)
 
 ### Prequesites
-    - Linux setup/Windows setup with CMake and GNU make
-    - Python 3.10
-    - CMake >= 3.24
+    - Python 3
     - DevKitPro
-    - code.bin extracted from Super Mario 3D Land
+    - `code.bin` and `exh.bin` extracted from Super Mario 3D Land
 
 ### Setup
-#### ARMCC
-ARM C/C++ Compiler, 4.1 [Build 894]
-- Find ARMCC 791 and 894
-- Find a working license
-
-##### Windows:
-- Pick a folder on your harddrive, using ```C:\ARMCC\894\``` as an example.
-- Mirror this folder layout:
-    - ```C:\ARMCC\894\bin``` (894)
-    - ```C:\ARMCC\894\include``` (894)
-    - ```C:\ARMCC\894\lib``` (791)
-    - ```C:\ARMCC\894\license.dat```
-- Set these Environment Variables:
-    - ARMCC_PATH      = ```C:\ARMCC\894```
-    - ARMCC41LIB      = ```%ARMCC_PATH%\lib```
-    - ARMCC41INC      = ```%ARMCC_PATH%\include\windows```
-    - LM_LICENSE_FILE = ```%ARMCC_PATH%\license.dat```
-
-##### Linux:
-- Pick a folder on your harddrive, using ```/opt/armcc/894/``` as an example.
-- Mirror this folder layout:
-    - ```/opt/armcc/894/bin``` (894)
-    - ```/opt/armcc/894/include``` (894)
-    - ```/opt/armcc/894/lib``` (791)
-- Set these Environment Variables (export X="Y"):
-    - ARMCC_PATH      = ```/opt/armcc/894```
-    - ARMCC41LIB      = ```$ARMCC_PATH/894/lib```
-    - ARMCC41INC      = ```$ARMCC_PATH/894/include/unix```
-    - LM_LICENSE_FILE = ```$ARMCC_PATH/license.dat```
-
-#### Project
-- Clone this repository recursively using ```git clone https://github.com/RedPepperDec/RedPepper.git --recursive```
-- Place the code.bin file in data/ver/{version}/code.bin
-- Run 'python3 -m pip install colorama watchdog levenshtein cxxfilt pyelftools' to install python prequesites (only watchdog and pyelftools needed for build!)
+- Clone this repository using ```git clone https://github.com/RedPepperDec/RedPepper.git```
+- Enter directory, and clone submodules using ```git submodule update --init --recursive```
+- Place the `code.bin` and `exh.bin` files in data/ver/{version}/code.bin
+- Run 'python3 -m pip install colorama watchdog levenshtein cxxfilt pyelftools' to install python prequesites
 - (Optional) If you want to run tools/progress.py, you also run 'python3 -m pip install GitPython matplotlib numpy'
+- run ```py make.py {version}```. default version is EU
 
-Shift-JIS support:
-##### Windows:  
-Make sure the japanese language is installed.
-##### Linux:
-- Arch:
-```bash
-echo "ja_JP.SJIS SHIFT_JIS" | sudo tee -a /etc/locale.gen
-sudo locale-gen
-```
-- Debian/Ubuntu:  
-```bash
-sudo apt update
-sudo apt install locales -y
-echo "ja_JP.SJIS SHIFT_JIS" | sudo tee -a /usr/share/i18n/SUPPORTED
-echo "ja_JP.SJIS SHIFT_JIS" | sudo tee -a /etc/locale.gen
-sudo locale-gen ja_JP.SJIS
-sudo update-locale
-```
 
 ### Tools
 The tools use python, and in the tools/ directory of this repository.  
 For [...], run --help to get a list of options.
-#### build.py
-```python tools/build.py [-c][-v] <version>```
-Sets the build folder, and builds the project.  
-- `-c` to delete the build folder, to reset it
-- `-v` to see advanced information during compilation
 
 #### diff.py
 ```python tools/diff.py [asmdiff flags] <symbol>```

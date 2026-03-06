@@ -21,18 +21,18 @@ is_silent = False
 
 RE_SPECIAL = re.compile(r'[^a-zA-Z0-9_]')
 
+def set_silent(state):
+    global is_silent
+    is_silent = state
+    if is_silent:
+        echo ("Not printing progress.")
+
 def set_progress(name):
     global curname
     curname = name
 def set_status(status):
     global curstatus
     curstatus = status
-
-def set_silent(state):
-    global is_silent
-    is_silent = state
-    if is_silent:
-        echo ("Not printing progress.")
 
 def clear_line():
     if is_silent: return

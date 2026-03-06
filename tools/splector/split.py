@@ -10,7 +10,7 @@ from capstone import *
 from capstone.arm import *
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
-tools.low.glob import *
+tools.low.glob import getExeFile, getSplitPath
 from splector._utils import *
 tools.low.__updateMap import updateFull
 tools.low.__utilsMap import *

@@ -51,8 +51,8 @@ flags_compile_asm = None
 # Full flags for linking
 flags_link = None
 
-# Optional flag for forceinclude
-flag_forceinclude = None
+# Optional flag for preinclude
+flag_preinclude = None
 flag_diag = None
 
 # Dict of macros
@@ -105,7 +105,7 @@ def readFile(path):
     checkStrEntry(data, "flags_compile_cxx")
     checkStrEntry(data, "flags_compile_asm")
     checkStrEntry(data, "flags_link")
-    checkStrEntry(data, "flag_forceinclude")
+    checkStrEntry(data, "flag_preinclude")
     checkStrEntry(data, "flag_diag")
     checkSetEntry(data, "macros")
     checkSetEntry(data, "extensions")

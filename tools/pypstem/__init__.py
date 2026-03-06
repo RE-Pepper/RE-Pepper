@@ -4,17 +4,25 @@ import subprocess
 from tools.low.glob import *
 from tools.pypstem.manCompiler import *
 from tools.pypstem.callCompiler import *
+from tools.pypstem._utils import *
 
 # __init__.py: main build routine
 
 compiler_path = None
+flag_preinclude = ""
+
+default_flags_comp = "--cpu=MPCore --fpmode=fast --apcs=/interwork "
+default_flags_comp_cxx = "--signed_chars --dollar --force_new_nothrow --no_rtti "
 
 # todo: add check to enforce specific formats for specific configs (cfg.py)
-def getFileBuildPath(file):
-    return getBuildPath() / file.relative_to(getProjDir()).with_suffix(".o")
+# todo: migrate old.py into this somehow (dont forget version checks!)
+# todo: compile_commands.json
+# todo: scatter map
+# todo: map file
+# todo: that one other funny file maybe
+# note: force these (link): --cpu=MPCore --fpu=VFPv2 --startup=__ctr_start --entry=__ctr_start --keep=nnMain --datacompressor=off --verbose --mangled --map
 
-def getMacroStr(macros):
-    return "".join(f"-D{macro}={val or "1"} " for macro, val in macros.items())
+# CURRENT STATE: some files in sdk do not produce output at the end, debug and continue expanding pypstem
 
 def buildFile(file_in, file_out, add_flag, flag_asm, flag_cxx):
     flags = ""
@@ -30,13 +38,13 @@ def buildFile(file_in, file_out, add_flag, flag_asm, flag_cxx):
 
     if not "c" in ext:
         # asm
-        flags += f" {add_flag} {cfg.flags_compile} {cfg.flags_compile_asm} -o {file_output} {file_input}"
+        flags += f"{cfg.flags_compile} {cfg.flags_compile_asm} {add_flag} {flag_preinclude} -o {file_out} {file_inp}"
 
         do_assemble(compiler_path, flags)
     else:
         # generic
-        flags += "--cpp -c " if "cpp" in ext else "--c99 -c "
-        flags += f" {add_flag} {cfg.flags_compile} {cfg.flags_compile_cxx} -o {file_out} {file_in}"
+        flags += "--cpp -c " if "cpp" in ext else " --c99 -c "
+        flags += f"{cfg.flags_compile} {cfg.flags_compile_cxx} {add_flag} {default_flags_comp_cxx} {flag_preinclude} -o {file_out} {file_in}"
 
         do_compile(compiler_path, flags)
         
@@ -60,10 +68,12 @@ def convertFile(file):
         fail (f"Conversion failed for {file}: {e}")
 
 def run():
-    global compiler_path
+    global compiler_path, flag_preinclude
 
     data_new = {}
     flags = ""
+
+    echo ("Preparing build ...")
 
     # read file list
     data_old = None
@@ -77,32 +87,55 @@ def run():
     for src_path_name, src_data in cfg.modules.items():
         inc_path = getProjDir().joinpath(*src_path_name.split("/")).joinpath(*src_data["include_dir"].split("/"))
         flags += f"-I{inc_path} "
-    
     flags += getMacroStr(cfg.macros)
+    if cfg.flag_preinclude:
+        preinc_path = getProjDir().joinpath(*cfg.flag_preinclude.split("/"))
+        flag_preinclude = f"--preinclude={preinc_path} "
+    if cfg.flag_diag:
+        flags += cfg.flag_diag
+        flags += " "
+    flags += default_flags_comp
+
+    module_paths = {}
+    module_files = {}
+    # find max:
+    data_len = 0
+    for src_path_name, src_data in cfg.modules.items():
+        src_path = getProjDir().joinpath(*src_path_name.split("/")).joinpath(*src_data["source_dir"].split("/"))
+        module_paths[src_path_name] = src_path
+
+        module_files[src_path_name] = set()
+        for file in src_path.rglob("**.*"):
+            module_files[src_path_name].add(file)
+            data_len += 1
+    progress_set_max(data_len)
 
     # iterate modules
     for src_path_name, src_data in cfg.modules.items():
-        src_path = getProjDir().joinpath(*src_path_name.split("/")).joinpath(*src_data["source_dir"].split("/"))
-        my_flags = flags
-        my_flags_asm = None
-        my_flags_cxx = None
+        progress_set_type(f"Building {src_path_name}/")
+
+        src_path = module_paths[src_path_name]
+        my_flags = ""
+        my_flags_asm = ""
+        my_flags_cxx = ""
         if src_data.get("flags"):
             my_flags_asm = src_data["flags"]
             my_flags_cxx = src_data["flags"]
         if src_data.get("flags_asm"):
             my_flags_asm += " "
-            my_flags_asm += src_data["flags"]
+            my_flags_asm += src_data["flags_asm"]
         if src_data.get("flags_cxx"):
             my_flags_asm += " "
-            my_flags_cxx += src_data["flags"]
+            my_flags_cxx += src_data["flags_cxx"]
         if src_data.get("macros"):
-            my_flags += " "
             my_flags += getMacroStr(src_data["macros"])
+            my_flags += " "
+        my_flags += flags
 
         compiler_path = set_compiler(src_data["compiler"] if src_data.get("compiler") else cfg.compiler)
 
         # iterate specific files
-        for file in src_path.rglob("**.*"):
+        for idx, file in enumerate(module_files[src_path_name]):
             # check file extension
             file_str = str(file)
             if not file_str.split(".")[-1] in cfg.extensions:
@@ -118,6 +151,9 @@ def run():
                 do_update = True
 
             if do_update: # build it
+                progress_set(f"{file.name}", idx)
+                progress_print()
+            
                 out_path = getFileBuildPath(file)
                 convertFile(file)
                 buildFile(file, out_path, my_flags, my_flags_asm, my_flags_cxx)
@@ -126,9 +162,12 @@ def run():
                     fail_ex ("Output not found.", f"Looked for {out_path}")
 
             data_new[file_str] = timestamp
+        echo (f"#{src_path_name}")
 
     if not data_new:
         echo ("No files found")
+
+    fail ("You didnt fail!")
 
     with open(getListFile(), "w") as f:
         for file, date in data_new.items():
