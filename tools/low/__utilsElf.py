@@ -31,3 +31,4 @@ def typeToSectionLinker(type, name):
         return ":gdef:"+name
     else:
         return typeToSection(type, name)
+

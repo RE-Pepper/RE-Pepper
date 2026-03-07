@@ -2,7 +2,7 @@
 print ("Generating progress ...")
 
 from time import sleep
-tools.low.__parseMap import *
+tools.low.__readMap import *
 from colorama import Fore
 import json
 from pathlib import Path
@@ -45,8 +45,8 @@ def main():
     syms_minor = 0
     syms_ok = 0
     syms_total = 0
-    bytes_ok = get_matching_bytes(getExeFile(), str(Path(getBuildPath()) / "code.bin"))
-    code_bin_size = os.path.getsize(getExeFile())
+    bytes_ok = get_matching_bytes(getBinFile(), str(Path(getBuildPath()) / "code.bin"))
+    code_bin_size = os.path.getsize(getBinFile())
     ver = get_ver()
     os.makedirs(str(Path('data') / 'stats' / ver), exist_ok=True)
     

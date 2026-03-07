@@ -3,8 +3,8 @@ import subprocess
 import os
 import sys
 tools.low.glob import *
-tools.low.__parseElf import *
-tools.low.__parseMap import *
+tools.low.__readElf import *
+tools.low.__readMap import *
 
 def fail(msg: str):
     print(msg)

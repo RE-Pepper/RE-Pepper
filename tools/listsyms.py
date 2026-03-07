@@ -7,8 +7,8 @@ try:
 except ImportError:
     is_filter = False
 tools.low.glob import *
-tools.low.__parseElf import *
-tools.low.__parseMap import *
+tools.low.__readElf import *
+tools.low.__readMap import *
 from io import StringIO
 
 def main():

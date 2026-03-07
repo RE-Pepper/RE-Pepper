@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import csv
-tools.low.glob import *
 from enum import IntEnum
+
+from tools.low.glob import *
 
 class MapFmt(IntEnum):
     Start = 0

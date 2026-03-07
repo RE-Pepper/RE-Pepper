@@ -85,6 +85,13 @@ def checkSetEntry(data, name):
             globals()[name].extend(set(my_entry))
         else:
             globals()[name] = set(my_entry)
+def checkDctEntry(data, name):
+    my_entry = data.get(name)
+    if my_entry:
+        if globals()[name]:
+            globals()[name].update(dict(my_entry))
+        else:
+            globals()[name] = dict(my_entry)
 
 def readFile(path):
     global project_name, app_name, decompme_id, versions, modules, extensions
@@ -98,7 +105,7 @@ def readFile(path):
     checkStrEntry(data, "project_name")
     checkStrEntry(data, "app_name")
     checkIntEntry(data, "decompme_id")
-    checkStrEntry(data, "versions")
+    checkDctEntry(data, "versions")
     checkStrEntry(data, "default_version")
     checkStrEntry(data, "compiler")
     checkStrEntry(data, "flags_compile")

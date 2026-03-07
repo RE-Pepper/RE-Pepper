@@ -4,8 +4,9 @@ import subprocess
 import sys
 import os
 import re
-tools.low.glob import *
 from enum import IntEnum
+
+from tools.low.glob import *
 
 class ElfFmt(IntEnum):
     Start = 0

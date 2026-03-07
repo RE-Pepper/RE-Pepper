@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 import os
-tools.low.glob import *
-tools.low.__parseMap import *
-tools.low.__utilsMap import *
-tools.low.__utilsElf import typeToSectionLinker
+from tools.low.glob import *
+from tools.low.__readMap import *
+from tools.low.__utilsElf import typeToSectionLinker
+from tools.low.__readHead import *
 
 def endPart(str):
     return str.split('\n', 1)[1] + "\t}\n"
 
-def genLDScript():
+def gen_scatter():
     s_code = ''
     s_dataro = ''
     s_datarw = ''
 
-    header = readHeader()
+    header = read_header()
     ro_i = header[HeadType.Ro][HeadVal.Start]
     rw_i = header[HeadType.Rw][HeadVal.Start]
     ro_s = f"0x{ro_i:08X}"

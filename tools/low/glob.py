@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from pathlib import Path
 from tools.low import cfg
+from tools.low.__utilsVersion import get_ver
 
 # helpers
 def getProjDir(): # Resolve project path
@@ -10,25 +11,26 @@ def getProjDir(): # Resolve project path
 def getDataDir():
     return Path(getProjDir()) / "data"
 def getVerDir(): # Get directory for version
-    from tools.low.__utilsVersion import get_ver
     return getDataDir() / "ver" / get_ver()
 def getCompilerDir():
     return getDataDir() / "compilers"
 def getListFile(): # List of all src files + dates
-    return str(getDataDir() / ".list")
+    return getDataDir() / ".list"
 def getMapFile(): # Map for all symbols
-    return str(getVerDir() / "map.csv")
-def getExeFile(): # Path of original code binary
-    return str(getVerDir() / "code.bin")
+    return getVerDir() / "map.csv"
+def getBinFile(): # Path of original code binary
+    return getVerDir() / "code.bin"
 def getHeadFile(): # Config for binary
-    return str(next(getVerDir().glob("ex*.bin"), None))
+    return next(getVerDir().glob("ex*.bin"), None)
 
 def getBuildPath(): # Build path
     return Path(getProjDir()) / "build"
 def getElfName(): # Name of built elf file
     return f"{cfg.project_name}.axf"
-def getElfPath(): # Path of build elf file
-    return str(getBuildPath() / getElfName())
+def getElfFile(): # Path of build elf file
+    return getBuildPath() / getElfName()
+def getExportFile():
+    return getBuildPath() / "code.bin"
 
 def getSplitPath(): # base dir for splits
     return Path(getVerDir()) / "split"

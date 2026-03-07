@@ -10,10 +10,10 @@ from capstone import *
 from capstone.arm import *
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
-tools.low.glob import getExeFile, getSplitPath
 from splector._utils import *
-tools.low.__updateMap import updateFull
-tools.low.__utilsMap import *
+from tools.low.glob import getBinFile, getSplitPath
+from tools.low.__updateMap import updateFull
+from tools.low.__readHead import read_header
 
 # Reads every function notes different cases, and disassembles the binary.
 # Code is detected with references, where functions must already exist within a map (not detected)
@@ -616,11 +616,11 @@ def run(do_update=None):
     first_addr_in_file = None
 
     upd_status("Preparing")
-    with open(getExeFile(), 'rb') as f:
+    with open(getBinFile(), 'rb') as f:
         data = f.read()
     data_view = memoryview(data)
 
-    header = readHeader()
+    header = read_header()
 
     md = Cs(CS_ARCH_ARM, CS_MODE_ARM)
     md.detail = True

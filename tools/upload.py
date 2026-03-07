@@ -7,7 +7,7 @@ import requests
 from elftools.elf.elffile import ELFFile
 from elftools.elf.sections import SymbolTableSection
 tools.low.__genCtxFile import genCtxs
-tools.low.__parseMap import get_symbol
+tools.low.__readMap import get_symbol
 tools.low.glob import *
 
 def find_source_path(str):

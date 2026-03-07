@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-tools.low.glob import *
 import json
 import sys
 from colorama import Fore, Style
-tools.low.__genCtxFile import genCtx
 from elftools.elf.elffile import ELFFile
 from elftools.elf.sections import SymbolTableSection
+
+from tools.low.__genCtxFile import genCtx
+from tools.low.glob import *
 
 def get_paths ():
     paths = []

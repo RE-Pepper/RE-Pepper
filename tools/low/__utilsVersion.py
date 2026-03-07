@@ -6,12 +6,19 @@ from pathlib import Path
 from tools.low import cfg
 
 # from _settings
+def getVerDir(version):
+    return Path(getProjDir()) / "data" / "ver" / version
 def getProjDir(): # Resolve project path
     return Path(os.path.realpath(__file__).split("tools")[0].rstrip(os.sep))
-def getExeFile(): # Path of original code binary
-    return str(getVerDir() / "code.bin")
-def getHeadFile(): # Path of original code binary
-    return str(getVerDir() / "exh.bin")
+def getBinFile(version): # Path of original code binary
+    return getVerDir(version) / "code.bin"
+def getHeadFile(version): # Path of original code binary
+    return getVerDir(version) / "exh.bin"
+def echo(str, end="\n"):
+    print (f"\033[38;5;221m{str}\033[0m\033[K", end=end)
+def fail(err):
+    print (f"\033[38;5;196mError: {err}\033[0m\033[K")
+    exit(1)
     
 def getVerFile():
     return str(Path(getProjDir()) / "data" / ".version")
@@ -34,24 +41,24 @@ def get_ver(version=None):
     return ver
 
 def get_ver_path(version, file):
-    return Path(getProjDir()) / "data" / "ver" / version / file
+    return getVerDir(version) / file
 
 def get_versions():
-    return list(cfg.versions.keys())
+    return list(cfg.versions)
 
 def is_ver_name(name):
-    return name in cfg.versions.keys()
+    return name in cfg.versions
 
 def is_ver_exist(version):
-    return os.path.exists(getExeFile(version))
+    return getBinFile(version).exists()
 
 def is_ver_valid(version):
     if not is_ver_name(version):
         return False
 
-    return hashlib.sha256(Path(getExeFile(version)).read_bytes()).hexdigest() == versions[version]
+    return hashlib.sha256(getBinFile(version).read_bytes()).hexdigest() == cfg.versions[version]
 def is_ver_configured(version):
-    return os.path.exists(get_ver_path(version, "config.txt")) and os.path.exists(get_ver_path(version, "map.csv"))
+    return getVerDir(version).exists() and get_ver_path(version, "map.csv").exists()
 
 def get_file_ver(path):
     target_hash = hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -82,9 +89,9 @@ def sort_bin_if_exist():
         fail ("Please verify your binaries, and try again.")
 
     # Move file
-    os.rename(try_bin_path, getExeFile(ver))
+    os.rename(try_bin_path, getBinFile(ver))
     os.rename(try_exh_path, getHeadFile(ver))
 
-    echo (f"found loose binaries in data/, identified as v{ver.upper()} and moved to data/ver/{ver}/.")
+    echo (f"Found loose binaries in data/, identified as v{ver.upper()} and moved to data/ver/{ver}/.")
 
     return ver

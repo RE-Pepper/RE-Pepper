@@ -56,7 +56,7 @@ def check_wibo():
     out.write_bytes(requests.get(link).content)
     os.chmod(out, 0o755)
 
-def set_compiler(ver):
+def setup_compiler(ver):
     rev, build = splitVersion(ver)
 
     dir = getCompilerPath(rev, build)
