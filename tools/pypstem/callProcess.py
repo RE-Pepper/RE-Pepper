@@ -21,7 +21,10 @@ def _call(path, arg):
     env = os.environ.copy()
     env["TMP"] = "/tmp"
 
-    subprocess.run(cmd, env=env)
+    ret = subprocess.run(cmd, env=env)
+
+    if ret.returncode != 0:
+        fail_ex (f"{path.name} failed with {ret.returncode}.", f"{" ".join(cmd)}")
 
 def do_assemble(arg):
     _call(get_compiler() / "armasm.exe", arg)

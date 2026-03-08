@@ -13,48 +13,66 @@ def gen_scatter():
     s_dataro = ''
     s_datarw = ''
 
-    header = read_header()
-    ro_i = header[HeadType.Ro][HeadVal.Start]
-    rw_i = header[HeadType.Rw][HeadVal.Start]
-    ro_s = f"0x{ro_i:08X}"
-    rw_s = f"0x{rw_i:08X}"
+    ro_s = '+0'
+    rw_s = '+0'
 
-    if ro_i==0 or rw_i==0:
-        print(f"Error getting configuration for {get_ver()}!")
-        exit(1)
+    if not cfg.allow_shifting:
+        header = read_header()
+        ro_i = header[HeadType.Ro][HeadVal.Start]
+        rw_i = header[HeadType.Rw][HeadVal.Start]
+        ro_s = f"0x{ro_i:08X}"
+        rw_s = f"0x{rw_i:08X}"
 
+    sect_prev = 0
+    addr_prev = 0
     syms = sorted(read_sym_file(), key=lambda tup: tup[MapFmt.Start])
-    for sym_i, sym in enumerate(syms):
+    for sym in syms:
+        if cfg.only_matching and sym[MapFmt.Rank] != 'O':
+            continue
         isCreateSection = True
         addr = sym[MapFmt.Start]
-        if (addr % 4) != 0:
-            isCreateSection = False
+        sect = sym[MapFmt.Section]
         type = sym[MapFmt.Type]
         name = sym[MapFmt.Symbol]
+
+        if (addr % 4) != 0:
+            isCreateSection = False
+        if sect and (sect == sect_prev or sect == addr_prev):
+            continue
+
         if not name:
             if "f" in type:
                 name = f"fn_{addr:08X}"
             elif "d" in type:
                 name = f"dat_{addr:08X}"
             else:
-                print(f"Unsupported sym type: {type} at 0x{addr:08X}")
-                exit(1)
-                
-        sect = typeToSectionLinker(type, name)
+                fail (f"Unsupported sym type: {type} at 0x{addr:08X}")
+
+        sect_str = typeToSectionLinker(type, name)
 
         part = ""
         if isCreateSection:
-            part += "\t}\n"
-            part += "\t" + name + " 0x{:08x}\n".format(addr)
-            part += "\t{\n"
-        part += "\t\t* (" + sect + ")\n"
+            name_er = f"ER{name.upper()}"
+            addr_str = " +0"
+            if not cfg.allow_shifting:
+                addr_str = f" 0x{addr:08x}\n"
+            part +=  "\t}\n"
+            part += f"\t{name_er}{addr_str}"
+            part +=  "\t{\n"
+        part += f"\t\t* ({sect_str})\n"
 
-        if addr < ro_i:
-            s_code += part
-        elif addr < rw_i:
-            s_dataro += part
+        if "f" in type:
+            s_code += part # func
+        elif "d" in type:
+            if "c" in type:
+                s_dataro += part # dat ro
+            else:
+                s_datarw += part # dat rw
         else:
-            s_datarw += part
+            fail (f"Unsupported sym type: {type} at 0x{addr:08X}")
+
+        sect_prev = sect
+        addr_prev = addr
 
     s_code = endPart(s_code)
     s_dataro = endPart(s_dataro)

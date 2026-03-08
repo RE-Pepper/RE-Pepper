@@ -79,7 +79,7 @@ def upload (sym_name, show_name, ctx, src, obj_path):
         "context": ctx,
         "source_code": src,
         "diff_label": sym_name,
-        "preset": getPresetId ()
+        "preset": cfg.preset_id
     }
 
     r = requests.post(url, files=files, data=data)

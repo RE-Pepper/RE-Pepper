@@ -5,8 +5,6 @@ from tools.pypstem.manSetup import setup_compiler
 from tools.low.glob import *
 from tools.low.__genScatter import gen_scatter
 
-default_flags_link = " --cpu=MPCore --fpu=VFPv2 --startup=__ctr_start --entry=__ctr_start --keep=nnMain --datacompressor=off --verbose --mangled --map "
-
 def exec_link():
     echo ("Generating ldscript")
     gen_scatter()
@@ -29,13 +27,11 @@ def exec_link():
     flags += default_flags_link
 
     flags += " "
-    flags += str(getBuildDependFile())
+    flags += str(getDependFile())
 
     flags += " --userlibpath="
     flags += str(getBuildLibPath())
     flags += " "
-
-    flags += str(getSplitFile())
 
     if not cfg.modules or len(cfg.modules) <= 0:
         echo ("No modules are specified.")

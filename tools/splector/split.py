@@ -594,8 +594,6 @@ def assemble_data(addr):
 
 def run(do_update=None):
     global md, data_view, data_start, data_end, sym_map, ranges, noref_list, flag_doUpdate, flag_ffaddr, func_types, header, label_log
-
-    echo ("Splector initiated.")
     
     if not do_update is None:
         flag_doUpdate = do_update
@@ -627,9 +625,9 @@ def run(do_update=None):
     md.skipdata = True
 
     if flag_ffaddr == 0:
-        if os.path.exists(getSplitPath()):
+        if os.path.exists(getSplitAsmDir()):
             echor ("Output exists, deleting....")
-            shutil.rmtree(getSplitPath())
+            shutil.rmtree(getSplitAsmDir())
             echo ("Output exists, deleted.")
         getSplitAsmDir().mkdir(parents=True, exist_ok=True)
 
@@ -780,7 +778,7 @@ def run(do_update=None):
 
     if flag_ffaddr != 0:
         echo (f"SPLIT INCOMPLETE, STARTED FROM {flag_ffaddr}")
-    echo (f"Wrote {count_syms} symbols among {count_lines} lines in {count_files} files to {getSplitAsmDir()}")
+    echo (f"Wrote {count_syms} symbols among {count_lines} lines in {count_files} files")
 
 
     if flag_doUpdate:

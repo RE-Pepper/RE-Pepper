@@ -52,9 +52,14 @@ flags_compile_asm = None
 # Full flags for linking
 flags_link = None
 
-# Optional flag for preinclude
+# Optional flags for sorting
 flag_preinclude = None
 flag_diag = None
+
+# Switches
+only_matching = False
+allow_shifting = True
+keep_objects = False
 
 # Dict of macros
 macros = {}
@@ -74,11 +79,22 @@ def _fail(str):
 def checkStrEntry(data, name):
     my_entry = data.get(name)
     if my_entry:
-        globals()[name] = str(my_entry)
+        if globals()[name]:
+            globals()[name] += str(my_entry)
+        else:
+            globals()[name] = str(my_entry)
+def checkFlgEntry(data, name):
+    checkStrEntry(data, name)
+    if globals()[name]:
+        globals()[name] += " "
 def checkIntEntry(data, name):
     my_entry = data.get(name)
     if my_entry:
         globals()[name] = int(my_entry)
+def checkBolEntry(data, name):
+    my_entry = data.get(name)
+    if my_entry:
+        globals()[name] = bool(my_entry)
 def checkSetEntry(data, name):
     my_entry = data.get(name)
     if my_entry:
@@ -109,14 +125,17 @@ def readFile(path):
     checkDctEntry(data, "versions")
     checkStrEntry(data, "default_version")
     checkStrEntry(data, "compiler")
-    checkStrEntry(data, "flags_compile")
-    checkStrEntry(data, "flags_compile_cxx")
-    checkStrEntry(data, "flags_compile_asm")
-    checkStrEntry(data, "flags_link")
-    checkStrEntry(data, "flag_preinclude")
-    checkStrEntry(data, "flag_diag")
+    checkFlgEntry(data, "flags_compile")
+    checkFlgEntry(data, "flags_compile_cxx")
+    checkFlgEntry(data, "flags_compile_asm")
+    checkFlgEntry(data, "flags_link")
+    checkFlgEntry(data, "flag_preinclude")
+    checkFlgEntry(data, "flag_diag")
     checkSetEntry(data, "macros")
     checkSetEntry(data, "extensions")
+    checkBolEntry(data, "only_matching")
+    checkBolEntry(data, "allow_shifting")
+    checkBolEntry(data, "keep_objects")
 
     my_modules = data.get("modules")
     if my_modules:

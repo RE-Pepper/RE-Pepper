@@ -40,18 +40,18 @@ def exec_check(version, clear=False, stop=False):
             shutil.rmtree(getBuildObjPath(), ignore_errors=True) # rem objects
             if getBuildLibPath().exists():
                 for item in getBuildLibPath().iterdir(): # only keep split
-                    if tem.is_file() and not getSplitLibName() in item.name: 
+                    if item.is_file() and not getSplitLibName() in item.name: 
                         item.unlink()
             for item in getBuildPath().iterdir():
                 if item.is_file():
                     item.unlink()
         if not clear and not stop:
             print(f"Version changed, rebuilding. ({old_version.upper()} -> {version.upper()})")
-    else:
-        if not getBuildObjPath().exists():
-            getBuildObjPath().mkdir(parents=True, exist_ok = True)
-        if not getBuildLibPath().exists():
-            getBuildLibPath().mkdir(parents=True, exist_ok = True)
+
+    if not getBuildObjPath().exists():
+        getBuildObjPath().mkdir(parents=True, exist_ok = True)
+    if not getBuildLibPath().exists():
+        getBuildLibPath().mkdir(parents=True, exist_ok = True)
 
     if stop:
         exit(0)

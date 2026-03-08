@@ -14,8 +14,6 @@ flags_cxx = ""
 # todo: add check to enforce specific formats for specific configs (cfg.py)
 
 def buildFile(file_in, file_out, add_flag, flag_asm, flag_cxx):
-    flags = ""
-    
     if not file_in.exists():
         fail (f"Bug: trying to build not existing source {file_in}")
 
@@ -24,16 +22,17 @@ def buildFile(file_in, file_out, add_flag, flag_asm, flag_cxx):
 
     file_out.parent.mkdir(parents=True, exist_ok=True)
 
+    ret_flags = ""
     if not "c" in file_in.suffix:
         # asm
-        flags += f"{flags_asm} {add_flag} -o {file_out} {file_in}"
-
-        do_assemble(flags)
+        ret_flags = f" {flags_asm} {add_flag}"
+        do_assemble(f"{ret_flags} -o {file_out} {file_in}")
     else:
-        # generic
-        flags += f" -c {flags_cxx} {add_flag} -o {file_out} {file_in}"
+        # cxx
+        ret_flags = f" -c {flags_cxx} {add_flag}"
+        do_compile(f"{ret_flags} -o {file_out} {file_in}")
 
-        do_compile(flags)
+    return ret_flags
 
 # ensure shift-jis
 def convertFile(file):
@@ -72,7 +71,9 @@ def exec_build(add_macros=None):
     data_old = None
     if os.path.exists(getListFile()):
         with open(getListFile(), "r") as f:
-            data_old = {line.split()[0]: int(line.split()[1]) for line in f if line.strip()}
+            for line in f:
+                row = line.split()
+                data_old[row[0]] = {"ts": row[1], "flags": row[2]}
 
     check_wibo()
 
@@ -131,10 +132,12 @@ def exec_build(add_macros=None):
     for mod_path_name, mod_data in cfg.modules.items():
         progress_set_type(f"{mod_path_name}/")
 
+        obj_new_list = set()
+    
         mod_ar_name = f"lib{mod_data.get("name")}.a"
         mod_ar_file = getBuildLibPath() / mod_ar_name
         mod_ar_arg_add = f"-r {str(mod_ar_file)}"
-        mod_ar_arg_rem = f"-d {str(mod_ar_file)}"
+        mod_ar_arg_rem = f"-d {str(mod_ar_file)} --diag_suppress=6831"
         mod_ar_do_add = False
         mod_ar_do_rem = False
 
@@ -165,6 +168,7 @@ def exec_build(add_macros=None):
         for file in sorted(module_files[mod_path_name]):
             file_str = str(file.relative_to(getProjDir()))
 
+            full_flag_str = ""
             do_update = False
             timestamp = int(file.stat().st_mtime)
             out_path = getFileBuildPath(file)
@@ -174,7 +178,7 @@ def exec_build(add_macros=None):
                 do_update = True
             elif not file_str in data_old: # file not in .list yet
                 do_update = True
-            elif timestamp != data_old.get(file_str): # timestamp mismatch
+            elif timestamp != data_old.get(file_str)["ts"]: # timestamp mismatch
                 do_update = True
 
             if do_update: # build it
@@ -183,7 +187,7 @@ def exec_build(add_macros=None):
                 progress_print()
             
                 convertFile(file)
-                buildFile(file, out_path, my_flags, my_flags_asm, my_flags_cxx)
+                full_flag_str = buildFile(file, out_path, my_flags, my_flags_asm, my_flags_cxx)
 
                 if not out_path.exists():
                     fail_ex ("Output not found.", f"Missing {str(out_path)}")
@@ -191,15 +195,21 @@ def exec_build(add_macros=None):
                     mod_ar_arg_add += " "
                     mod_ar_arg_add += str(out_path)
                     mod_ar_do_add = True
+                    obj_new_list.add(out_path)
+            else:
+                full_flag_str = data_old.get(file_str)["flags"]
 
-            data_new[file_str] = timestamp
+            data_new[file_str] = {"ts": timestamp, "flags": full_flag_str}
             data_new_names.add(file.name)
 
-        for old_file, _ in data_old.items():
-            old_name = Path(old_file).name
-            if not old_name in data_new_names:
-                mod_ar_arg_rem += str(old_name)
+        if data_old and data_new_names:
+            for old_file, _ in data_old.items():
+                if not mod_path_name in old_file:
+                    continue
+                if Path(old_file).name in data_new_names:
+                    continue
                 mod_ar_arg_rem += " "
+                mod_ar_arg_rem += Path(old_file).with_suffix(".o").name
                 mod_ar_do_rem = True
 
         line_category = ""
@@ -208,13 +218,18 @@ def exec_build(add_macros=None):
         line_category += f"<{len(module_files[mod_path_name])}> {mod_data.get("name")}"
 
         if mod_ar_do_add:
-            echo (f"{line_category}: Archive add", "\r")
+            echo (f"{line_category}: Adding", "\r")
             do_archive(mod_ar_arg_add)
         if mod_ar_do_rem:
-            echo (f"{line_category}: Archive remove", "\r")
+            echo (f"{line_category}: Removing", "\r")
             do_archive(mod_ar_arg_rem)
 
         if mod_ar_do_add or mod_ar_do_rem:
+            if not cfg.keep_objects:
+                echo (f"{line_category}: Cleaning", "\r")
+                for f in obj_new_list:
+                    f.unlink()
+                shutil.rmtree(getBuildObjPath() / mod_path.relative_to(getProjDir()).parts[0])
             echo (f"{line_category}: Done")
         else:
             echo (f"{line_category}: Unchanged")
@@ -223,5 +238,5 @@ def exec_build(add_macros=None):
         echo ("No files found")
 
     with open(getListFile(), "w") as f:
-        for file, date in data_new.items():
-            f.write(f"{file} {date}\n")
+        for file, data in data_new.items():
+            f.write(f"{file} {data["ts"]} {data["flags"]}\n")

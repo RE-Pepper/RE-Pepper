@@ -45,7 +45,7 @@ def gen_objdiff():
             data +=  "      \"scratch\": {\n"
             data +=  "        \"platform\": \"n3ds\",\n"
             data += f"        \"ctx_path\": \"{ctx}\",\n"
-            data += f"        \"preset_id\": {getPresetId()},\n"
+            data += f"        \"preset_id\": {cfg.preset_id},\n"
             data +=  "        \"build_ctx\": true\n"
             data +=  "      },\n"
             data +=  "      \"metadata\": {\n"

@@ -41,8 +41,6 @@ def getBuildObjPath():
     return getBuildPath() / "obj"
 def getBuildLibPath():
     return getBuildPath() / "lib"
-def getBuildDependFile():
-    return getBuildObjPath() / "depend.o"
 
 def getJsonComcomFile():
     return getProjDir() / "compile_commands.json"
@@ -59,6 +57,8 @@ def getSplitLibName():
     return "splector"
 def getSplitLibFile():
     return getBuildLibPath() / f"lib{getSplitLibName()}.a"
+def getDependFile():
+    return getSplitPath() / "depend.o"
 
 is_silent = False # for functions that rewrite a line during output
 version = None # game version global
@@ -78,12 +78,6 @@ def isSilent():
 def getVersion():
     return version
 
-
-# TODO: deprecate
-def getPresetId(): # Decomp.me PID for 3D Land
-    return cfg.decompme_id
-def getAppName(): # Programm ID from exh.bin
-    return cfg.app_name
 
 # ui
 def echo(str, end="\n"):

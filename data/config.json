@@ -16,14 +16,35 @@
   "default_version" : "eu",
   "compiler": "4.1/791",
   "modules": {
+    "Game": {
+      "name": "Game"
+    },
+    "lib/al": {
+      "name": "Actor"
+    },
+    "lib/sead": {
+      "name": "Sead",
+      "source_dir": "modules/src"
+    },
+    "lib/sead/addins/libms": {
+      "name": "MS"
+    },
+    "lib/NintendoWare": {
+      "name": "NW",
+      "source_dir": "sources",
+      "compiler": "4.0/902",
+      "flags_cxx": "--no_allow_fpreg_for_nonfpdata --gnu"
+    },
     "lib/CtrSDK": {
-      "name": "CtrSDK",
-      "source_dir": "sources"
+      "name": "SDK",
+      "source_dir": "sources",
+      "compiler": "4.0/902",
+      "flags_cxx": "--no_allow_fpreg_for_nonfpdata --gnu"
     }
   },
   "flags_compile": "--arm --no_exceptions",
   "flags_compile_cxx": "-O3 -Otime --split_sections --force_new_nothrow --data_reorder --multibyte_chars --enum_is_int --sys_include --signed_chars --no_rtti_data --forceinline",
-  "flags_link": "--no_exceptions --inline --tailreorder --largeregions --pad=0xFF --arm_only --vfemode=force",
+  "flags_link": "--no_exceptions --inline --tailreorder --largeregions --pad=0xFF --arm_only --keep=* --keep_protected_symbols --no_strict_visibility --vfemode=off",
   "flag_preinclude": "lib/CtrSDK/include/nn/types.h",
   "flag_diag": "--diag_style=gnu"
 }

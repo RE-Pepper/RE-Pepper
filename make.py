@@ -12,9 +12,11 @@ def main():
     parser.add_argument('-cr', action='store_true', help="Clean before building (and continue)")
     parser.add_argument('-cs', action='store_true', help="Clean split and continue")
     parser.add_argument('-ca', action='store_true', help="Clean split and build and continue")
-    parser.add_argument('-v', action='store_true', help="Give verbose output")
+    parser.add_argument('-k', action='store_true', help="Keep built output (for debugging)")
     parser.add_argument('-m', action='store_true', help="Compile only matching code")
+    parser.add_argument('-s', action='store_true', help="Deny shifting during linking")
     parser.add_argument('-w', action='store_true', help="Omit many warnings (nintendo standard)")
+    parser.add_argument('-fv', action='store_true', help="Flag: Enable VFE")
     args = parser.parse_args()
     sys.argv = [sys.argv[0]] # clear args
 
@@ -26,11 +28,21 @@ def main():
 
     pypstem.exec_split(args.cs)
 
-    if args.v:
-        cfg.flags_compile_cxx += "--strict --strict_warnings "
     if args.w:
         cfg.flag_diag += "--diag_suppress=186,340,401,1256,1297,1568,1764,1786,1788,2523,2819,96,1794,1801,2442,3017,optimizations --diag_error=68,88,174,188,223 --diag_warning=177,193,228,550,826,1301"
-        
+    if args.m:
+        cfg.only_matching = False
+
+    # TODO: remove this hack, upstrem should only contain matches.
+    cfg.macros["NON_MATCHING"] = 1
+    if args.s:
+        cfg.allow_shifting = False
+    if args.k:
+        cfg.keep_objects = True
+
+    if args.fv:
+        cfg.flags_link += "--vfemode=force"
+
     pypstem.exec_build()
 
     pypstem.exec_export_json()

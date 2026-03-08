@@ -22,7 +22,7 @@ def read_header():
     with open(getHeadFile(), 'rb') as f:
         data = f.read(0x40)
 
-    app_name = getAppName().encode()
+    app_name = cfg.app_name.encode()
     if data[:6] != app_name:
         fail (f"Invalid exh.bin for v{get_ver().upper()}: Expected {app_name}, got {data[:6]}")
 
