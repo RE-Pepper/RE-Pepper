@@ -31,14 +31,18 @@ def progress_upd_type(status):
 compiler_path = None
 def set_compiler(path):
     global compiler_path
-    compiler_path = path
+    compiler_path = Path(path)
 def get_compiler():
     return compiler_path
 
 def getFileBuildPath(file):
-    return getBuildPath() / file.relative_to(getProjDir()).with_suffix(".o")
+    return getBuildObjPath() / file.relative_to(getProjDir()).with_suffix(".o")
 
 def getMacroStr(macros):
     return "".join(f"-D{macro}={val or "1"} " for macro, val in macros.items())
+
+default_flags_comp = " --cpu=MPCore --fpmode=fast --apcs=/interwork "#--info=totals 
+default_flags_comp_asm = "--diag_suppress=1608"
+default_flags_comp_cxx = " --signed_chars --dollar --force_new_nothrow --no_rtti "
 
 

@@ -22,16 +22,16 @@ include_paths = [
     "lib/sead/addins/libms/include",
 ]
 
-def get_type_inc(sym=None, main_data=None, traversed=None):
-    file_path = find_src_file("nn/types.h")
+def getTypeInc(sym=None, main_data=None, traversed=None):
+    file_path = findSrcFile("nn/types.h")
     if not os.path.exists(file_path):
         print("nn/types.h missing, cannot continue.")
         return ""
 
-    data, _m = traverse_file (file_path, sym, main_data, traversed)
+    data, _m = traverseFile (file_path, sym, main_data, traversed)
     return data
 
-def find_src_file(pat):
+def findSrcFile(pat):
     if len(pat) < 3:
         print ("Error: Cannot find empty string for path.")
         return pat
@@ -49,12 +49,12 @@ def find_src_file(pat):
 
     return pat
 
-def traverse_file(pat, sym=None, main_data=None, traversed=None):
+def traverseFile(pat, sym=None, main_data=None, traversed=None):
     if main_data is None:
         main_data = []
 
     content = []
-    file_path = str(Path(find_src_file(pat)).resolve())
+    file_path = str(Path(findSrcFile(pat)).resolve())
     if len(file_path) == 0 or not os.path.exists(file_path):
         return "", main_data
 
@@ -78,7 +78,7 @@ def traverse_file(pat, sym=None, main_data=None, traversed=None):
             content.append(f'// Context from {file_path}\n')
             main_data.append(f'// Context from {file_path}\n')
         
-        for l in get_type_inc(sym, main_data, traversed): # to be called after anything is written to main_data.
+        for l in getTypeInc(sym, main_data, traversed): # to be called after anything is written to main_data.
             content.append(l)
     else:
         content.append(f"// File: {file_path}\n")
@@ -112,7 +112,7 @@ def traverse_file(pat, sym=None, main_data=None, traversed=None):
 
             incl_path = match.group(1) or match.group(2)
 
-            included, _m = traverse_file (incl_path, sym, main_data, traversed)
+            included, _m = traverseFile (incl_path, sym, main_data, traversed)
             for incl_line in included:
                 content.append(incl_line)
             content.append (f"// Includes End: {file_path}\n")
@@ -127,11 +127,11 @@ def traverse_file(pat, sym=None, main_data=None, traversed=None):
 
     return content, main_data
 
-def genCtxs(path, symbol):
-    ctx_data, main_data = traverse_file(path, symbol)
+def genCtxs(path, symbol): # what is this again
+    ctx_data, main_data = traverseFile(path, symbol)
     return "".join(ctx_data), "".join(main_data)
-def genCtx(path):
-    ctx_data, main_data = traverse_file(path)
+def gen_ctx(path):
+    ctx_data, main_data = traverseFile(path)
     return "".join(ctx_data), "".join(main_data)
 
 if __name__ == '__main__':

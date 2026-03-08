@@ -4,7 +4,11 @@ $$$}
 
 RO_SECTION §O
 {
-&&&    STATIC_INIT  +0 
+&&&    RO +0
+    {
+        * (+CONST)
+    }
+    STATIC_INIT  +0 
     {
         * (.static_init)
     }
@@ -17,7 +21,15 @@ RO_SECTION §O
 
 RW_SECTION §W
 {
-###}
+###    RW +0
+    {
+        * (+RW-DATA)
+    }
+    ZI +0
+    {
+        * (+ZI)
+    }
+}
 
 MODULE_INFO     (0x00100000 + (0x04000000 - 0x00100000))
 {

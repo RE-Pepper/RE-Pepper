@@ -11,9 +11,9 @@ from capstone.arm import *
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from splector._utils import *
-from tools.low.glob import getBinFile, getSplitPath
+from tools.low.glob import getBinFile, getSplitAsmDir
 from tools.low.__updateMap import updateFull
-from tools.low.__readHead import read_header
+from tools.low.__readHead import *
 
 # Reads every function notes different cases, and disassembles the binary.
 # Code is detected with references, where functions must already exist within a map (not detected)
@@ -199,7 +199,7 @@ def dump_data_ref(addr, caller, tag, sect, is_first=False): #
     if ref_name and (not caller or is_ext):
         func_exts.add(ref_name)
 
-    return data_line_build(addr, str[1], "DCD", str[0], tag, sect, is_first, is_asm, is_ext)
+    return data_line_build(addr, str[1], "DCDU", str[0], tag, sect, is_first, is_asm, is_ext)
 
 def dump_data(f):
     start = f[0]
@@ -627,7 +627,11 @@ def run(do_update=None):
     md.skipdata = True
 
     if flag_ffaddr == 0:
-        clean_dir(getSplitPath())
+        if os.path.exists(getSplitPath()):
+            echor ("Output exists, deleting....")
+            shutil.rmtree(getSplitPath())
+            echo ("Output exists, deleted.")
+        getSplitAsmDir().mkdir(parents=True, exist_ok=True)
 
     upd_status("Preprocessing")
     for a, f in ranges.items(): # find all data symbols
@@ -668,20 +672,29 @@ def run(do_update=None):
             ranges_data.append(sym)
             ranges_data_dict[sym[0]] = sym
 
-    def write_asm_file():
+    def write_asm_file(override_name=None, silent=False, sort=True):
         global label_log, func_exts
         nonlocal count_files, lines_file, file_sym_count, file_name
-        file_name = get_asm_file(first_addr_in_file)
+        file_name = ""
+        if override_name:
+            file_name = get_file(override_name)
+        else:
+            file_name = get_asm_file(first_addr_in_file)
+
         file_sym_count = 0
-        count_files += 1
-        with open(file_name, 'w') as out:
+        if not silent:
+            count_files += 1
+        with open(file_name, 'w', newline='\r\n', encoding='utf-8') as out:
             # write imports
             if len(func_exts) > 0:
+                imports = sorted(func_exts) if sort else func_exts
                 for e in sorted(func_exts):
                     if not e in label_log:
                         my_e = f"|{e}|" if RE_SPECIAL.search(e) else e
                         out.write(f"    IMPORT {my_e}\n")
                         label_log.add(e)
+            out.write("\n    PRESERVE8\n")
+            
             # write data
             out.writelines(lines_file)
             out.write("\n    END\n")
@@ -761,9 +774,13 @@ def run(do_update=None):
 
     write_asm_file()
 
+    # write depend file
+    func_exts.update(list(sym_map.values()))
+    write_asm_file("depend.s", True, False)
+
     if flag_ffaddr != 0:
         echo (f"SPLIT INCOMPLETE, STARTED FROM {flag_ffaddr}")
-    echo (f"Wrote {count_syms} symbols among {count_lines} lines in {count_files} files to {getSplitPath()}")
+    echo (f"Wrote {count_syms} symbols among {count_lines} lines in {count_files} files to {getSplitAsmDir()}")
 
 
     if flag_doUpdate:

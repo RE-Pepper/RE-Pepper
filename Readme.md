@@ -4,6 +4,9 @@ This is a decompilation of Super Mario 3D Land (note that retail JP, KO, TW, and
 It is also fork from the repo on 3dsdecomp's github, and recieved some structural updates.  
 Originally this is based on the EU release, but multiversion support is added and experimental.  
   
+> [!IMPORTANT]
+> Reminder: **this will not produce a playable game.** This project will not allow you to play the game if you don't already own it.
+  
 Check out the [docs](https://prp.moddi.dev)!
 
 ## Progress (EU)
@@ -35,6 +38,8 @@ As noted earlier, this fork made some updates regarding structure of some files.
 - (Optional) If you want to run tools/progress.py, you also run 'python3 -m pip install GitPython matplotlib numpy'
 - run ```py make.py {version}```. default version is EU
 
+> [!IMPORTANT]
+> Note: **do not delete cmd.exe**, it is required to pass a silly check when building with armcc.
 
 ### Tools
 The tools use python, and in the tools/ directory of this repository.  

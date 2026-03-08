@@ -111,17 +111,10 @@ def error_exec():
     error_list.clear()
     quit()
 
-def clean_dir(out_dir):
-    if os.path.exists(out_dir):
-        echor ("Output exists, deleting....")
-        shutil.rmtree(out_dir)
-        echo ("Output exists, deleted.")
-    os.makedirs(out_dir, exist_ok=True)
-
 def get_file(name):
-    return str(getSplitPath() / name)
+    return str(getSplitAsmDir() / name)
 def get_asm_file(addr):
-    return str(getSplitPath() / f"a{addr:08X}.s")
+    return str(getSplitAsmDir() / f"a{addr:08X}.s")
 
 def fail(msg: str):
     echo (msg)

@@ -8,36 +8,29 @@ from tools.pypstem._utils import *
 
 # __init__.py: main build routine
 
-flags_asm = None
-flags_cxx = None
-
-default_flags_comp = "--cpu=MPCore --fpmode=fast --apcs=/interwork "#--info=totals 
-default_flags_comp_asm = ""
-default_flags_comp_cxx = "--signed_chars --dollar --force_new_nothrow --no_rtti "
+flags_asm = ""
+flags_cxx = ""
 
 # todo: add check to enforce specific formats for specific configs (cfg.py)
-# todo: migrate old.py into this somehow (dont forget version checks!)
 
 def buildFile(file_in, file_out, add_flag, flag_asm, flag_cxx):
     flags = ""
-    ext = os.path.splitext(file_in)[1]
     
     if not file_in.exists():
         fail (f"Bug: trying to build not existing source {file_in}")
 
-    if "h" in ext:
+    if "h" in file_in.suffix:
         fail ("Why are you adding headers as source? (bad)")
 
     file_out.parent.mkdir(parents=True, exist_ok=True)
 
-    if not "c" in ext:
+    if not "c" in file_in.suffix:
         # asm
         flags += f"{flags_asm} {add_flag} -o {file_out} {file_in}"
 
         do_assemble(flags)
     else:
         # generic
-        flags += "--c99" if ".c" == ext else " --cpp"
         flags += f" -c {flags_cxx} {add_flag} -o {file_out} {file_in}"
 
         do_compile(flags)
@@ -60,10 +53,15 @@ def convertFile(file):
     except Exception as e:
         fail (f"Conversion failed for {file}: {e}")
 
-def exec_build():
+def exec_build(add_macros=None):
     global flags_asm, flags_cxx
 
+    if not cfg.modules or len(cfg.modules) <= 0:
+        echo ("No modules are specified, nothing to build.")
+        return
+
     data_new = {}
+    data_new_names = set()
     flags = ""
     file_counter = 0
 
@@ -79,69 +77,93 @@ def exec_build():
     check_wibo()
 
     # precreate flags
-    for src_path_name, src_data in cfg.modules.items():
-        inc_path = getProjDir().joinpath(*src_path_name.split("/")).joinpath(*src_data["include_dir"].split("/"))
-        flags += f"-I{inc_path} "
-
-    flags += getMacroStr(cfg.macros)
+    # includes
+    for mod_path_name, mod_data in cfg.modules.items():
+        if not mod_data.get("include_dir"):
+            continue
+        inc_path = getProjDir().joinpath(*str(mod_path_name).split("/")).joinpath(*mod_data.get("include_dir").split("/"))
+        flags_cxx += f" -I{inc_path} "
+    # macros
+    flags_cxx += getMacroStr(cfg.macros)
+    flags_cxx += f" -DVERSION={getVersion().upper()}"
+    if add_macros:
+        if isinstance(add_macros, dict):
+            flags_cxx += getMacroStr(add_macros)
+        elif sinstance(add_macros, list):
+            flags_cxx += getMacroStr(dict.fromkeys(add_macros))
+    # preinclude
     if cfg.flag_preinclude:
-        preinc_path = getProjDir().joinpath(*cfg.flag_preinclude.split("/"))
-        flags += f"--preinclude={preinc_path} "
+        preinc_path = getProjDir().joinpath(*str(cfg.flag_preinclude).split("/"))
+        flags_cxx += f" --preinclude={preinc_path} "
+    # diagnosis
     if cfg.flag_diag:
         flags += cfg.flag_diag
         flags += " "
-    flags += f"{default_flags_comp} {cfg.flags_compile} "
-    flags_asm = f"{default_flags_comp_asm} {flags} {cfg.flags_compile_asm} "
-    flags_cxx = f"{default_flags_comp_cxx} {flags} {cfg.flags_compile_cxx} "
+    # main
+    flags += f" {default_flags_comp} {cfg.flags_compile} "
+    flags_asm += f" {default_flags_comp_asm} {flags} "
+    if cfg.flags_compile_asm:
+        flags_asm += f"{cfg.flags_compile_asm} "
+    flags_cxx += f" {default_flags_comp_cxx} {flags} "
+    if cfg.flags_compile_cxx:
+        flags_cxx += f"{cfg.flags_compile_cxx} "
 
     module_paths = {}
     module_files = {}
     # find max:
     data_len = 0
-    for src_path_name, src_data in cfg.modules.items():
-        src_path = getProjDir().joinpath(*src_path_name.split("/")).joinpath(*src_data["source_dir"].split("/"))
-        module_paths[src_path_name] = src_path
+    for mod_path_name, mod_data in cfg.modules.items():
+        mod_dir = mod_data.get("source_dir") or "."
+        mod_path = getProjDir().joinpath(*str(mod_path_name).split("/")).joinpath(*str(mod_dir).split("/"))
+        module_paths[mod_path_name] = mod_path
 
-        module_files[src_path_name] = set()
-        for file in src_path.rglob("**.*"):
+        module_files[mod_path_name] = set()
+        for file in mod_path.rglob("**.*"):
             # check file extension
-            if not str(file).split(".")[-1] in cfg.extensions:
+            if not file.suffix.lstrip(".") in cfg.extensions:
                 continue
 
-            module_files[src_path_name].add(file)
+            module_files[mod_path_name].add(file)
             data_len += 1
     progress_set_max(data_len)
 
     # iterate modules
-    for src_path_name, src_data in cfg.modules.items():
-        progress_set_type(f"{src_path_name}/")
+    for mod_path_name, mod_data in cfg.modules.items():
+        progress_set_type(f"{mod_path_name}/")
 
-        src_path = module_paths[src_path_name]
+        mod_ar_name = f"lib{mod_data.get("name")}.a"
+        mod_ar_file = getBuildLibPath() / mod_ar_name
+        mod_ar_arg_add = f"-r {str(mod_ar_file)}"
+        mod_ar_arg_rem = f"-d {str(mod_ar_file)}"
+        mod_ar_do_add = False
+        mod_ar_do_rem = False
+
+        mod_path = module_paths[mod_path_name]
         my_flags = ""
         my_flags_asm = ""
         my_flags_cxx = ""
-        val = src_data.get("flags")
+        val = mod_data.get("flags")
         if val:
             my_flags_asm = val
             my_flags_cxx = val
-        val = src_data.get("flags_asm")
+        val = mod_data.get("flags_asm")
         if val:
             my_flags_asm += " "
             my_flags_asm += val
-        val = src_data.get("flags_cxx")
+        val = mod_data.get("flags_cxx")
         if val:
             my_flags_asm += " "
             my_flags_cxx += val
-        val = src_data.get("macros")
+        val = mod_data.get("macros")
         if val:
             my_flags += getMacroStr(val)
             my_flags += " "
 
-        set_compiler(setup_compiler(src_data.get("compiler") or cfg.compiler))
+        set_compiler(setup_compiler(mod_data.get("compiler") or cfg.compiler))
 
         # iterate specific files
-        for file in sorted(module_files[src_path_name]):
-            file_str = str(file)
+        for file in sorted(module_files[mod_path_name]):
+            file_str = str(file.relative_to(getProjDir()))
 
             do_update = False
             timestamp = int(file.stat().st_mtime)
@@ -164,14 +186,38 @@ def exec_build():
                 buildFile(file, out_path, my_flags, my_flags_asm, my_flags_cxx)
 
                 if not out_path.exists():
-                    fail_ex ("Output not found.", f"Missing {out_path}")
+                    fail_ex ("Output not found.", f"Missing {str(out_path)}")
+                else:
+                    mod_ar_arg_add += " "
+                    mod_ar_arg_add += str(out_path)
+                    mod_ar_do_add = True
 
             data_new[file_str] = timestamp
+            data_new_names.add(file.name)
+
+        for old_file, _ in data_old.items():
+            old_name = Path(old_file).name
+            if not old_name in data_new_names:
+                mod_ar_arg_rem += str(old_name)
+                mod_ar_arg_rem += " "
+                mod_ar_do_rem = True
+
         line_category = ""
         if file_counter > 0:
             line_category += f"[{file_counter}]"
-        line_category += f"[{len(module_files[src_path_name])}] {src_path_name}"
-        echo (line_category)
+        line_category += f"<{len(module_files[mod_path_name])}> {mod_data.get("name")}"
+
+        if mod_ar_do_add:
+            echo (f"{line_category}: Archive add", "\r")
+            do_archive(mod_ar_arg_add)
+        if mod_ar_do_rem:
+            echo (f"{line_category}: Archive remove", "\r")
+            do_archive(mod_ar_arg_rem)
+
+        if mod_ar_do_add or mod_ar_do_rem:
+            echo (f"{line_category}: Done")
+        else:
+            echo (f"{line_category}: Unchanged")
 
     if not data_new:
         echo ("No files found")

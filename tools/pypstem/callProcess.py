@@ -4,7 +4,7 @@ import os
 import sys
 
 from tools.pypstem._utils import get_compiler
-from tools.low.glob import fail_ex
+from tools.low.glob import fail_ex, fail, echo
 
 def _call(path, arg):
     from tools.low.glob import isLinux
@@ -31,6 +31,9 @@ def do_compile(arg):
 
 def do_link(arg):
     _call(get_compiler() / "armlink.exe", arg)
+
+def do_archive(arg):
+    _call(get_compiler() / "armar.exe", arg)
 
 def do_export(arg):
     _call(get_compiler() / "fromelf.exe", arg)

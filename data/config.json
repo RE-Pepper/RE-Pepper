@@ -16,20 +16,9 @@
   "default_version" : "eu",
   "compiler": "4.1/791",
   "modules": {
-    "Game": {},
-    "lib/al": {},
-    "lib/sead": {
-      "source_dir": "modules/src"
-    },
-    "lib/sead/addins/libms": {},
-    "lib/NintendoWare": {
-      "source_dir": "sources",
-      "compiler": "4.0/902"
-    },
     "lib/CtrSDK": {
-      "source_dir": "sources",
-      "compiler": "4.0/902",
-      "flags_cxx": "--no_allow_fpreg_for_nonfpdata --gnu"
+      "name": "CtrSDK",
+      "source_dir": "sources"
     }
   },
   "flags_compile": "--arm --no_exceptions",

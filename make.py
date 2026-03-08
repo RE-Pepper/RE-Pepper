@@ -8,23 +8,36 @@ from tools.low.glob import * # globals
 def main():
     parser = argparse.ArgumentParser('make.py', description="Build the Super Mario 3D Land decompilation project")
     parser.add_argument("version", nargs="?", default=None, help="Version to use")
-    parser.add_argument('-c', action='store_true', help="Clean before building")
-    parser.add_argument('-cs', action='store_true', help="Clean split before building")
+    parser.add_argument('-c', action='store_true', help="Clean before building (and stop)")
+    parser.add_argument('-cr', action='store_true', help="Clean before building (and continue)")
+    parser.add_argument('-cs', action='store_true', help="Clean split and continue")
+    parser.add_argument('-ca', action='store_true', help="Clean split and build and continue")
     parser.add_argument('-v', action='store_true', help="Give verbose output")
     parser.add_argument('-m', action='store_true', help="Compile only matching code")
     parser.add_argument('-w', action='store_true', help="Omit many warnings (nintendo standard)")
     args = parser.parse_args()
     sys.argv = [sys.argv[0]] # clear args
 
-    version = pypstem.exec_check(args.version, args.c)
+    if args.ca:
+        args.cr = True
+        args.cs = True
+
+    version = pypstem.exec_check(args.version, args.c or args.cr, args.c and not args.cr)
 
     pypstem.exec_split(args.cs)
 
+    if args.v:
+        cfg.flags_compile_cxx += "--strict --strict_warnings "
+    if args.w:
+        cfg.flag_diag += "--diag_suppress=186,340,401,1256,1297,1568,1764,1786,1788,2523,2819,96,1794,1801,2442,3017,optimizations --diag_error=68,88,174,188,223 --diag_warning=177,193,228,550,826,1301"
+        
     pypstem.exec_build()
+
+    pypstem.exec_export_json()
 
     pypstem.exec_link()
 
-    pypstem.exec_export()
+    pypstem.exec_export_bin()
 
 if __name__ == "__main__":
     main()

@@ -23,7 +23,7 @@ def fail(err):
 def getVerFile():
     return str(Path(getProjDir()) / "data" / ".version")
 
-def set_ver(version):
+def write_ver(version):
     with open(getVerFile(), 'w') as f:
         f.write(version)
 

@@ -28,6 +28,7 @@ compiler = None
 # Module objects.
 # Example:
 # "lib/ctrsdk": {
+#   "name":        "ctrsdk"  # required for archive name (libctrsdk.a)
 #   "source_dir":  "src"     # defaults fo "src"
 #   "include_dir": "include" # defaults to "include"
 #   "compiler":    "4.1/791" # defaults to fallback compiler, error if nowhere
@@ -36,7 +37,7 @@ compiler = None
 #   "flags_cxx":   "-c"      # additional flags (add for cxx)
 #   "decompme_id": 8         # defaults to main, tools/upload unusable if nowhere
 # }
-modules = None
+modules = {}
 
 # Extension of source files. Can be left as default
 extensions = set(["cpp", "c", "s"])
@@ -127,6 +128,8 @@ def readFile(path):
                     modules[my_src_name][name] = val
             else:
                 modules[my_src_name] = my_src_cfg
+            if not modules[my_src_name].get("name"):
+                _fail (f"Module {my_src_name} missing \'name\' entry")
             if not modules[my_src_name].get("source_dir"):
                 modules[my_src_name]["source_dir"] = "src"
             if not modules[my_src_name].get("include_dir"):
@@ -142,14 +145,14 @@ def assertEntry(name):
 def assertCfg():
     assertEntry("project_name")
     assertEntry("app_name")
-    assertEntry("modules")
     assertEntry("versions")
+    assertEntry("compiler")
     assertEntry("default_version")
     assertEntry("flags_compile")
     assertEntry("flags_link")
 
-    if len(globals()["modules"]) <= 0:
-        _fail ("config.json is missing modules, add and try again.")
+    if not modules or len(modules) <= 0:
+        print ("config.json is missing modules.")
 
     if not assert_flag:
         _fail ("config.json is not complete, edit and try again.")

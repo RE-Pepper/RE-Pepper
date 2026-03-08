@@ -61,7 +61,7 @@ def gen_scatter():
     s_datarw = endPart(s_datarw)
 
     with open(Path(getProjDir()) / "data" / "template" / "linker.ld", 'r') as template:
-        with open(Path(getBuildPath()) / "linker.ld", 'w') as out:
+        with open(getOutScatterFile(), 'w') as out:
 
             out_line = template.read().replace("$$$", s_code).replace("&&&", s_dataro).replace("###", s_datarw)
             
