@@ -20,40 +20,37 @@ def splitVersion(ver):
 def getCompilerPath(rev, build):
     return getCompilerDir() / rev / build
 
-def download(rev, build):
-    dir = getCompilerPath(rev, build)
-    if dir.is_dir():
-        fail ("Bug: download called, even though version exists.", f"Version: {ver}")
+def download(name_file, path, name_show, is_zip):
+    echo (f"Downloading {name_show} ...")
 
-    dir.mkdir(parents=True, exist_ok=True)
+    link = f"https://github.com/RedPepperDec/data/releases/download/dasdasdsa/{name_file}.zip"
 
-    echo (f"Downloading compiler {rev}/{build} ...")
-
-    link = f"https://github.com/RedPepperDec/data/releases/download/dasdasdsa/{build}.zip"
     try:
-        with urllib.request.urlopen(link) as response:
-            with zipfile.ZipFile(io.BytesIO(response.read())) as z:
-                dir.mkdir(parents=True, exist_ok=True)
-                z.extractall(dir)
+        if is_zip:
+            path.mkdir(parents=True, exist_ok=True)
+            with urllib.request.urlopen(link) as response:
+                with zipfile.ZipFile(io.BytesIO(response.read())) as z:
+                    path.mkdir(parents=True, exist_ok=True)
+                    z.extractall(path)
+        else:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(requests.get(link).content)
 
     except Exception as e:
-        if dir.exists():
-            shutil.rmtree(dir)
+        if path.exists():
+            shutil.rmtree(path)
 
-        fail (f"Download failed: {e}")
+        fail (f"Download for {name_show} failed: {e}")
 
 def check_wibo():
     if not isLinux():
         return
     out = getCompilerDir() / "wibo"
-    if os.path.exists(out):
+    if out.exists():
         return
 
-    echo ("Downloading wibo ...")
-
-    out.parent.mkdir(parents=True, exist_ok=True)
-    link = "https://github.com/decompals/wibo/releases/download/1.1.0/wibo-x86_64"
-    out.write_bytes(requests.get(link).content)
+    download("wibo", out, "wibo", False)
+    link = "https://github.com/RedPepperDec/data/releases/download/dasdasdsa/wibo"
     os.chmod(out, 0o755)
 
 def setup_compiler(ver):
@@ -62,7 +59,7 @@ def setup_compiler(ver):
     dir = getCompilerPath(rev, build)
 
     if not dir.is_dir(): # download when missing
-        download(rev, build)
+        download(build, dir, f"compiler {rev}/{build}", True)
 
     if not dir.is_dir(): # still missing
         fail (f"Cannot get compiler {ver}: Directory not found.")

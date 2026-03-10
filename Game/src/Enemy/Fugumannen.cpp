@@ -25,8 +25,8 @@ Fugumannen::Fugumannen( const sead::SafeString& name )
 {
 }
 
-extern "C" void FUN_0027b51c( al::LiveActor*, const al::ActorInitInfo& info, int );
-extern "C" void FUN_0027ee34( al::LiveActor*, const al::ActorInitInfo& info, int );
+extern "C" void fn_0027b51c( al::LiveActor*, const al::ActorInitInfo& info, int );
+extern "C" void fn_0027ee34( al::LiveActor*, const al::ActorInitInfo& info, int );
 
 void Fugumannen::init( const al::ActorInitInfo& info )
 {
@@ -41,8 +41,8 @@ void Fugumannen::init( const al::ActorInitInfo& info )
         mStateBlowDown = new EnemyStateBlowDown( this, nullptr, "SwimBlowDown", 1 );
         al::initNerveState( this, mStateBlowDown, &NrvFugumannen::BlowDown, "state:BlowDown" );
         al::startAction( this, "SwimWait" );
-        FUN_0027b51c( this, info, 3 );
-        FUN_0027ee34( this, info, 3 );
+        fn_0027b51c( this, info, 3 );
+        fn_0027ee34( this, info, 3 );
         al::offCollide( this );
         makeActorAppeared();
 }
@@ -56,21 +56,21 @@ void Fugumannen::attackSensor( al::HitSensor* me, al::HitSensor* other )
         }
 }
 
-extern "C" bool FUN_0027b768( u32, al::HitSensor*, al::HitSensor*, al::NerveStateBase*, const al::Nerve* );
-extern "C" bool FUN_0027b704( u32, al::HitSensor*, al::HitSensor*, al::NerveStateBase* );
+extern "C" bool fn_0027b768( u32, al::HitSensor*, al::HitSensor*, al::NerveStateBase*, const al::Nerve* );
+extern "C" bool fn_0027b704( u32, al::HitSensor*, al::HitSensor*, al::NerveStateBase* );
 
 bool Fugumannen::receiveMsg( u32 msg, al::HitSensor* other, al::HitSensor* me )
 {
         if ( al::isNerve( this, &NrvFugumannen::BlowDown ) || al::isSensorName( me, "Attack" ) )
                 return false;
 
-        bool rv = FUN_0027b768( msg, other, me, mStateBlowDown, &NrvFugumannen::BlowDown );
+        bool rv = fn_0027b768( msg, other, me, mStateBlowDown, &NrvFugumannen::BlowDown );
         if ( rv ) // :skull:?
                 rv = true;
 
         if ( !rv && ( rv = al::isMsg9( msg ), rv ) )
         {
-                FUN_0027b704( msg, other, me, mStateBlowDown );
+                fn_0027b704( msg, other, me, mStateBlowDown );
                 al::setNerve( this, &NrvFugumannen::BlowDown );
                 return true;
         }
@@ -78,7 +78,7 @@ bool Fugumannen::receiveMsg( u32 msg, al::HitSensor* other, al::HitSensor* me )
         return rv;
 }
 
-extern "C" void FUN_00240e08( al::LiveActor*, const sead::Vector3f&, float );
+extern "C" void fn_00240e08( al::LiveActor*, const sead::Vector3f&, float );
 
 void Fugumannen::exeMove()
 {
@@ -86,7 +86,7 @@ void Fugumannen::exeMove()
         sead::Vector3f railDir = al::getRailDir( this );
         if ( !al::isLoopRail( this ) )
                 railDir *= -1;
-        FUN_00240e08( this, railDir, 4.0 );
+        fn_00240e08( this, railDir, 4.0 );
         if ( al::isRailReachedGoal( this ) )
                 al::setNerve( this, &NrvFugumannen::Move2 );
 }
@@ -96,18 +96,18 @@ void Fugumannen::exeMove2()
         sead::Vector3f railDir = al::getRailDir( this );
         if ( !al::isLoopRail( this ) )
                 railDir *= -1;
-        FUN_00240e08( this, railDir, 4.0 );
+        fn_00240e08( this, railDir, 4.0 );
         if ( al::isGreaterStep( this, 45 ) )
                 al::setNerve( this, &NrvFugumannen::Move );
 }
 
-extern "C" void FUN_002cd428( al::LiveActor*, al::NerveStateBase* );
+extern "C" void fn_002cd428( al::LiveActor*, al::NerveStateBase* );
 
 void Fugumannen::exeBlowDown()
 {
         if ( al::updateNerveState( this ) )
         {
-                FUN_002cd428( this, mStateBlowDown );
+                fn_002cd428( this, mStateBlowDown );
                 kill();
         }
 }

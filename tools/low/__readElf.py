@@ -22,6 +22,23 @@ class ReadElfFmt(IntEnum):
     Section = 6
     Symbol = 7
 
+class ElfMapFmt(IntEnum):
+    
+
+if not getBuildMapFile().exists():
+    fail_ex ("Build Map file not found, readElf cannot be used.", f"Missing: {getMapFile()}")
+
+#Memory Map of the image
+#0x .o
+with open(getBuildMapFile(), "r") as f:
+    data_map = f.read()
+if not data_map:
+    fail ("Failed to read the Build Map file.")
+for line in data_map:
+    line = line.split()
+    if len(line) != 
+
+# REMOVE ALL THAT
 elf_exists = os.path.exists(getElfPath())
 if elf_exists:
     # Step 1: Get Data

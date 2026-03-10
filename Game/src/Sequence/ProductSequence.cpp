@@ -37,13 +37,13 @@ void ProductSequence::init()
 
 #endif
 
-extern "C" bool FUN_0025ba7c( const char* );
+extern "C" bool fn_0025ba7c( const char* );
 
 void ProductSequence::exeTitle()
 {
         if ( al::updateNerveState( this ) )
         {
-                if ( FUN_0025ba7c( "オープニング実行" ) )
+                if ( fn_0025ba7c( "オープニング実行" ) )
                         al::setNerve( this, &NrvProductSequence::CourseSelect );
                 else
                         al::setNerve( this, &NrvProductSequence::Opening );
@@ -65,13 +65,13 @@ void ProductSequence::exeKinopioHouse()
         }
 }
 
-extern "C" bool FUN_0025ddd0();
+extern "C" bool fn_0025ddd0();
 
 void ProductSequence::exeEnding()
 {
         if ( al::updateNerveState( this ) )
         {
-                if ( FUN_0025ddd0() )
+                if ( fn_0025ddd0() )
                         al::setNerve( this, &NrvProductSequence::Unk1 );
                 else
                         al::setNerve( this, &NrvProductSequence::Title );

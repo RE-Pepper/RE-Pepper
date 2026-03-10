@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 print ("The check has begun ...")
     
-from colorama import Fore, Style
-tools.low.__updateMap import *
-tools.low.__readMap import *
-tools.low.__readElf import *
+from tools.low.__updateMap import *
+from tools.low.__readMap import *
+from tools.low.__readElf import *
 import multiprocessing
 import threading
 import argparse

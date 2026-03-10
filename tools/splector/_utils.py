@@ -171,9 +171,10 @@ def meta_add(type_code, sect, name, size, do_export=False, do_meta_ext=False):
     line = '\n'
     if do_export:
         if meta_sect and type:
-            line += f"    AREA |{meta_sect}|,{type}\n"
-        else:
-            line += "\n"
+            line += f"    AREA |{meta_sect}|,{type}"
+        if meta_sect == name:
+            line += f",COMGROUP={name}"
+        line += "\n"
         line += f"    EXPORT {name}"
         if do_meta_ext:
             line += f" [WEAK,SIZE=0x{size:X}]\n"

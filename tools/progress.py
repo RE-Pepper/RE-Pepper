@@ -1,20 +1,21 @@
 #!/usr/bin/env python3
 print ("Generating progress ...")
 
-from time import sleep
-tools.low.__readMap import *
-from colorama import Fore
-import json
-from pathlib import Path
 import datetime
-from git import Repo
-import os
+import numpy
 import io
+import os
+import sys
+import json
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.ticker
-import numpy as np
-import sys
+from time import sleep
+from git import Repo
+from pathlib import Path
+from colorama import Fore
+
+from tools.low.__readMap import *
 
 def write_release_txt(ver: str, u: str, o: str, m: str, mm: str, total: str, bytes: str):
     textt = f"""## {ver.upper()} Matched: *{bytes}*
@@ -91,7 +92,7 @@ def main():
     x_values = [datetime.datetime.now()]
     y_values = [(bytes_ok / code_bin_size) * 100]
 
-    np.seterr(all="ignore")
+    numpy.seterr(all="ignore")
     repo = Repo(".")
 
     for commit in repo.iter_commits():

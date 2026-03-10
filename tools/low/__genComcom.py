@@ -3,7 +3,7 @@ from tools.low.glob import *
 from tools.pypstem._utils import getFileBuildPath
 
 def gen_comcom():
-    directory = str(getBuildPath())
+    directory = str(getBuildObjPath())
     command = ""
 
     with open(getJsonComcomFile(), "w") as f:
@@ -17,7 +17,7 @@ def gen_comcom():
                 continue
 
             for file in src_path.rglob("**.*"):
-                output = getFileBuildPath(file).relative_to(getBuildPath())
+                output = getFileBuildPath(file).relative_to(getBuildObjPath())
 
                 f.write("\n{\n")
                 f.write(f"  \"directory\": \"{directory}\",\n")

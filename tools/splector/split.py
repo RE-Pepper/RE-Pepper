@@ -19,7 +19,7 @@ from tools.low.__readHead import *
 # Code is detected with references, where functions must already exist within a map (not detected)
 # use init.py to detect functions for initial map analysis
 
-file_sym_count_max = 64
+file_sym_count_max = 32
 
 md = None
 
@@ -461,7 +461,10 @@ def disassemble_func(f):
             myname = f[2]
             if f[8]:
                 mytype = func_types.get(f[8])
-                myname = sym_map.get(f[8])
+                if f[8] == header[HeadType.Text][HeadVal.Start]:
+                    myname = "__ctr_start"
+                else:
+                    myname = sym_map.get(f[8])
             label += meta_add("f", typeToSection(mytype, myname), f[2], f[1] - f[0], True, True)
             extrainfo += " (asm function)"
 
@@ -732,6 +735,9 @@ def run(do_update=None):
             write_asm_file()
 
         error_exec()
+
+    if not first_addr_in_file:
+        fail ("Nothing to split was found, cannot be.")
 
     write_asm_file()
 

@@ -92,7 +92,7 @@ void FallMapParts::exeFallSign()
 }
 #endif
 
-extern "C" bool FUN_00268df8( IUseAudioKeeper*,
+extern "C" bool fn_00268df8( IUseAudioKeeper*,
         const sead::SafeString& name ); // something with sound
 
 #ifdef NON_MATCHING
@@ -102,7 +102,7 @@ void FallMapParts::exeFall()
         if ( isFirstStep( this ) )
         {
                 tryStartAction( this, "Fall" );
-                FUN_00268df8( this, "FallStart" );
+                fn_00268df8( this, "FallStart" );
                 setTrans( this, mStartTrans );
         }
         addVelocityToGravity( this, 1.0 );

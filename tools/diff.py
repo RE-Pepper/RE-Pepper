@@ -2,9 +2,9 @@
 import subprocess
 import os
 import sys
-tools.low.glob import *
-tools.low.__readElf import *
-tools.low.__readMap import *
+from tools.low.glob import *
+from tools.low.__readElf import *
+from tools.low.__readMap import *
 
 def fail(msg: str):
     print(msg)

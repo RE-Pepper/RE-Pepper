@@ -20,18 +20,18 @@ LiveActorKit::LiveActorKit( int groupBufSize )
         mAllActors = new LiveActorGroup( "全てのアクター", mAllActorsBufferSize );
 }
 
-extern "C" void FUN_00240350();
-extern "C" void FUN_001e8a64();
+extern "C" void fn_00240350();
+extern "C" void fn_001e8a64();
 
-extern "C" void FUN_001cc9b0( const char*, const FunctorV0F& );
+extern "C" void fn_001cc9b0( const char*, const FunctorV0F& );
 
 #ifdef NON_MATCHING
 
 // loop is weird
 void LiveActorKit::endInit()
 {
-        FUN_001cc9b0( "プレイヤー影ボリュームのフィル", FunctorV0F( FUN_00240350 ) );
-        FUN_001cc9b0( "影ボリュームのフィル", FunctorV0F( FUN_001e8a64 ) );
+        fn_001cc9b0( "プレイヤー影ボリュームのフィル", FunctorV0F( fn_00240350 ) );
+        fn_001cc9b0( "影ボリュームのフィル", FunctorV0F( fn_001e8a64 ) );
         mEffectSystem->startScene();
         mExecuteDirector->createExecutorListTable();
         mCollisionDirector->endInit();

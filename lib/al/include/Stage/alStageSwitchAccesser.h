@@ -16,7 +16,7 @@ public:
         int initWithPlacementInfo( StageSwitchType type1, const PlacementInfo& info, StageSwitchType type2 );
 
         bool isTypeKillDeadOn() const;
-        int  FUN_0024e734() const; // ?
+        int  fn_0024e734() const; // ?
 
 public:
         StageSwitchAccesser();

@@ -52,12 +52,11 @@ def gen_scatter():
 
         part = ""
         if isCreateSection:
-            name_er = f"ER{name.upper()}"
             addr_str = " +0"
             if not cfg.allow_shifting:
                 addr_str = f" 0x{addr:08x}\n"
             part +=  "\t}\n"
-            part += f"\t{name_er}{addr_str}"
+            part += f"\t{name}{addr_str}"
             part +=  "\t{\n"
         part += f"\t\t* ({sect_str})\n"
 

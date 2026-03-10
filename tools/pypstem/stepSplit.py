@@ -13,38 +13,43 @@ from tools.low.glob import *
 def isSymMapDiff():
     store_file = getDataDir() / ".map"
 
-    def write_new(path, ts):
-        with open(store_file, "w") as f:
-            f.write(f"{str(path)} {ts}")
-
     if not getMapFile().exists():
         fail ("Version not configured, cannot split.")
 
     ts_new = int(getMapFile().stat().st_mtime)
 
+    def write_new():
+        path_mapcfg = str(getCfgMapFile().relative_to(getProjDir()))
+        with open(path_mapcfg, "w") as f:
+            f.write(f"{path_mapcfg} {ts_new}")
+
     if not store_file.exists():
-        write_new(getMapFile(), ts_new)
+        write_new()
         return True
 
     ts_old = 0
     with open(store_file, "r") as f:
         map_old, ts_old = next(f).split()
 
-    write_new(getMapFile(), ts_new)
-
-    if map_old != str(getMapFile()):
+    if str(Path(map_old).relative_to(getProjDir())) != str(getMapFile().relativeTo(getProjDir())):
+        write_new()
         return True
     if int(ts_old) != ts_new:
+        write_new()
         return True
 
     return False
 
 def exec_split(clear=False):
-    if clear or isSymMapDiff() or not getSplitLibFile().exists() or (getSplitAsmDir().exists() and not cfg.keep_object):
+    if clear or isSymMapDiff() or not getSplitLibFile().exists() or (getSplitAsmDir().exists() and not cfg.keep_objects):
         echo ("Splitting assembly")
 
-        if clear and getSplitLibFile().exists():
+        if getSplitLibFile().exists():
             getSplitLibFile().unlink()
+        if getSplitAsmDir().exists():
+            shutil.rmtree(getSplitAsmDir(), ignore_errors=True)
+        if getSplitObjDir().exists():
+            shutil.rmtree(getSplitObjDir(), ignore_errors=True)
         
         splector.split.run()
 

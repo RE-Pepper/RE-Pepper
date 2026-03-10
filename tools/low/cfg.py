@@ -95,6 +95,7 @@ def checkBolEntry(data, name):
     my_entry = data.get(name)
     if my_entry:
         globals()[name] = bool(my_entry)
+        print (name)
 def checkSetEntry(data, name):
     my_entry = data.get(name)
     if my_entry:

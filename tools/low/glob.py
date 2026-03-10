@@ -14,8 +14,14 @@ def getVerDir(): # Get directory for version
     return getDataDir() / "ver" / get_ver()
 def getCompilerDir():
     return getDataDir() / "compilers"
-def getListFile(): # List of all src files + dates
-    return getDataDir() / ".list"
+def getCfgListFile(): # List of all src files + dates
+    return getDataDir() / ".files"
+def getCfgMapFile(): # Path to map with date
+    return getDataDir() / ".map"
+def getCfgFlagsFile(): # List of all modules + flags
+    return getDataDir() / ".flags"
+def getCfgFlagsTFile(): # List of all modules + flags (temp)
+    return getDataDir() / "..flags"
 def getMapFile(): # Map for all symbols
     return getVerDir() / "map.csv"
 def getBinFile(): # Path of original code binary
