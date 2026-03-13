@@ -2,6 +2,7 @@
   "project_name": "RedPepper",
   "app_name": "CtrApp",
   "decompme_id": 8,
+  "default_version" : "eu",
   "versions": {
     "eu": "e1d7e188ff88467df776c17cec45c44857fadf5b699944baa8cddcae7d939e64",
     "us": "c705711154b1c514d7a0b5d133fabff42834110b198bd4cf86397d0d1c1597e9",
@@ -13,13 +14,39 @@
     "cn": "11ca2f6fa7e8b9553737830899787e7236f4fdbf8b96ed03c99fbe6a8939b37d",
     "kr": "820940dc19b86f8d47515973d9f1484c4efc0571a729c294e85b53e5097fda56"
   },
-  "default_version" : "eu",
-  "compiler": "4.1/791",
   "modules": {
   },
-  "flags_compile": "--arm --no_exceptions",
-  "flags_compile_cxx": "-O3 -Otime --split_sections --force_new_nothrow --multibyte_chars --enum_is_int --sys_include --signed_chars --no_rtti_data --forceinline --gnu",
-  "flags_link": "--verbose --no_exceptions --inline --tailreorder --largeregions --pad=0xFF --arm_only --keep=* --no_remove --vfemode=off --keep_protected_symbols --override_visibility --no_strict_visibility",
-  "flag_preinclude": "lib/CtrSDK/include/nn/types.h",
-  "flag_diag": "--diag_style=gnu --info=merge"
+  "compiler": "4.1/791",
+  "flags_compile": [
+    "--arm",
+    "--no_exceptions",
+    "--diag_style=gnu"
+  ],
+  "flags_compile_cxx": [
+    "-O3",
+    "-Otime",
+    "--gnu",
+    "--split_sections",
+    "--force_new_nothrow",
+    "--multibyte_chars",
+    "--enum_is_int",
+    "--sys_include",
+    "--signed_chars",
+    "--no_rtti_data",
+    "--forceinline",
+    "--preinclude=lib/CtrSDK/include/nn/types.h"
+  ],
+  "flags_link": [
+    "--no_exceptions",
+    "--inline",
+    "--tailreorder",
+    "--largeregions",
+    "--pad=0xFF",
+    "--arm_only",
+    "--keep=*",
+    "--no_remove",
+    "--vfemode=off",
+    "--no_strict_visibility",
+    "--no_list_mapping_symbols"
+  ]
 }

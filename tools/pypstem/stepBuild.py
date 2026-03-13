@@ -8,8 +8,8 @@ from tools.pypstem._utils import *
 
 # __init__.py: main build routine
 
-flags_asm = ""
-flags_cxx = ""
+flags_asm = []
+flags_cxx = []
 
 # todo: add check to enforce specific formats for specific configs (cfg.py)
 
@@ -23,10 +23,10 @@ def buildFile(file_in, file_out):
     file_out.parent.mkdir(parents=True, exist_ok=True)
 
     if not "c" in file_in.suffix:
-        flags = f"{flags_asm} -o {file_out} {file_in}"
+        flags = flags_asm + ["-o", file_out, file_in]
         do_assemble(flags)
     else:
-        flags = f"{flags_cxx} -c -o {file_out} {file_in}"
+        flags = flags_cxx + ["-c", "-o", file_out, file_in]
         do_compile(flags)
 
 # ensure shift-jis
@@ -79,51 +79,52 @@ def exec_build(add_macros=None):
         flags_old = {}
         with open(getCfgFlagsFile(), "r") as f:
             for line in f:
-                pat, _, flags = line.rstrip("\n").partition(' ')
+                row = line.split()
+                if len(row) != 2:
+                    echo ("data/.flags is corrupt, rebuilding.")
+                    getCfgFlagsFile().unlink()
+                    break
 
-                if pat in flags_old:
-                    flags_old[f"{pat}_s"] = flags
+                if row[0] in flags_old:
+                    flags_old[f"{row[0]}_s"] = int(row[1])
                 else:
-                    flags_old[pat] = flags
+                    flags_old[row[0]] = int(row[1])
+
     if getCfgFlagsTFile().exists():
         getCfgFlagsTFile().unlink()
 
     check_wibo()
 
     # precreate flags
-    base_flags = ""
-    base_flags_cxx = ""
-    base_flags_asm = ""
+    base_flags = []
+    base_flags_cxx = []
+    base_flags_asm = []
     # includes
     for mod_path_name, mod_data in cfg.modules.items():
         if not mod_data.get("include_dir"):
             continue
         inc_path = getProjDir().joinpath(*str(mod_path_name).split("/")).joinpath(*mod_data.get("include_dir").split("/"))
-        base_flags_cxx += f" -I{inc_path} "
+        base_flags_cxx.append(f"-I{inc_path}")
     # macros
-    base_flags_cxx += getMacroStr(cfg.macros)
-    base_flags_cxx += f" -DVERSION={getVersion().upper()}"
+    base_flags_cxx.append(getMacroArray(cfg.macros))
+    base_flags_cxx.append(f"-DVERSION={getVersion().upper()}")
     if add_macros:
         if isinstance(add_macros, dict):
-            base_flags_cxx += getMacroStr(add_macros)
+            base_flags_cxx += getMacroArray(add_macros)
         elif sinstance(add_macros, list):
-            base_flags_cxx += getMacroStr(dict.fromkeys(add_macros))
-    # preinclude
-    if cfg.flag_preinclude:
-        preinc_path = getProjDir().joinpath(*str(cfg.flag_preinclude).split("/"))
-        base_flags_cxx += f" --preinclude={preinc_path} "
-    # diagnosis
-    if cfg.flag_diag:
-        base_flags += cfg.flag_diag
-        base_flags += " "
+            base_flags_cxx += getMacroArray(dict.fromkeys(add_macros))
     # main
-    base_flags += f" {default_flags_comp} {cfg.flags_compile} "
-    base_flags_asm += f" {default_flags_comp_asm} {base_flags} "
+    base_flags.extend(default_flags_comp)
+    base_flags.extend(cfg.flags_compile)
+    base_flags_asm.extend(base_flags)
+    base_flags_asm.extend(default_flags_comp_asm)
+    base_flags_cxx.extend(base_flags)
+    base_flags_cxx.extend(default_flags_comp_cxx)
+
     if cfg.flags_compile_asm:
-        flags_asm += f"{cfg.flags_compile_asm} "
-    base_flags_cxx += f" {default_flags_comp_cxx} {base_flags} "
+        base_flags_asm.extend(cfg.flags_compile_asm)
     if cfg.flags_compile_cxx:
-        base_flags_cxx += f"{cfg.flags_compile_cxx} "
+        base_flags_asm.extend(cfg.flags_compile_cxx)
 
     # find files and note length
 
@@ -154,8 +155,8 @@ def exec_build(add_macros=None):
     
         mod_ar_name = f"lib{mod_data.get("name")}.a"
         mod_ar_file = getBuildLibPath() / mod_ar_name
-        mod_ar_arg_add = f"-r {str(mod_ar_file)}"
-        mod_ar_arg_rem = f"-d {str(mod_ar_file)} --diag_suppress=6831"
+        mod_ar_arg_add = ["-r", str(mod_ar_file)]
+        mod_ar_arg_rem = ["-d", str(mod_ar_file), "--diag_suppress=6831"]
         mod_ar_do_add = False
         mod_ar_do_rem = False
 
@@ -164,23 +165,17 @@ def exec_build(add_macros=None):
         flags_asm = base_flags_asm
         val = mod_data.get("flags")
         if val:
-            flags_asm += " "
-            flags_asm += val
-            flags_cxx += " "
-            flags_cxx += val
+            flags_asm.extend(val)
+            flags_cxx.extend(val)
         val = mod_data.get("flags_asm")
         if val:
-            flags_asm += " "
-            flags_asm += val
+            flags_asm.extend(val)
         val = mod_data.get("flags_cxx")
         if val:
-            flags_asm += " "
-            flags_cxx += val
+            flags_cxx.extend(val)
         val = mod_data.get("macros")
         if val:
-            flags_cxx += " "
-            flags_cxx += getMacroStr(val)
-            flags_cxx += " "
+            flags_cxx.extend(getMacroArray(val))
 
         old_flags_cxx = None
         old_flags_asm = None
@@ -190,13 +185,16 @@ def exec_build(add_macros=None):
 
         set_compiler(setup_compiler(mod_data.get("compiler") or cfg.compiler))
 
+        new_flags_cxx_hash = getArrayHash(flags_cxx)
+        new_flags_asm_hash = getArrayHash(flags_asm)
+
         force_update = False
-        if (flags_cxx != old_flags_cxx) or (flags_asm != old_flags_asm):
+        if (new_flags_cxx_hash != old_flags_cxx) or (new_flags_asm_hash != old_flags_asm):
             force_update = True # flags mismatch
 
         # iterate files
         for file in sorted(module_files[mod_path_name]):
-            file_str = str(file.relative_to(getProjDir()))
+            file_str = os.path.relpath(file, getProjDir())
 
             do_update = False
             timestamp = int(file.stat().st_mtime)
@@ -223,8 +221,7 @@ def exec_build(add_macros=None):
                 if not out_path.exists():
                     fail_ex ("Output not found.", f"Missing {str(out_path)}")
                 else:
-                    mod_ar_arg_add += " "
-                    mod_ar_arg_add += str(out_path)
+                    mod_ar_arg_add.append(str(out_path))
                     mod_ar_do_add = True
                     obj_new_list.add(out_path)
 
@@ -238,14 +235,13 @@ def exec_build(add_macros=None):
                     continue
                 if Path(old_file).name in data_new_names:
                     continue
-                mod_ar_arg_rem += " "
-                mod_ar_arg_rem += Path(old_file).with_suffix(".o").name
+                mod_ar_arg_rem.append(Path(old_file).with_suffix(".o").name)
                 mod_ar_do_rem = True
 
         # write flags down
         with open(getCfgFlagsTFile(), "a") as f:
-            f.write(f"{mod_path_name} {flags_cxx}\n")
-            f.write(f"{mod_path_name} {flags_asm}\n")
+            f.write(f"{mod_path_name} {new_flags_cxx_hash}\n")
+            f.write(f"{mod_path_name} {new_flags_asm_hash}\n")
 
         # prebuild module string
         line_category = ""
@@ -267,7 +263,7 @@ def exec_build(add_macros=None):
                 echo (f"{line_category}: Cleaning", "\r")
                 for f in obj_new_list:
                     f.unlink()
-                shutil.rmtree(getBuildObjPath() / mod_path.relative_to(getProjDir()).parts[0])
+                shutil.rmtree(getBuildObjPath() / os.path.relpath(mod_path, getProjDir()).split(os.sep)[0])
             echo (f"{line_category}: Done")
         else:
             echo (f"{line_category}: Unchanged")

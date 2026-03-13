@@ -13,35 +13,26 @@ def exec_link():
 
     set_compiler(setup_compiler(cfg.compiler))
 
-    flags = cfg.flags_link
-    flags += " --callgraph_output=text --callgraph_file="
-    flags += str(getOutCallFile())
-    flags += " --list="
-    flags += str(getOutMapFile())
-    flags += " --output="
-    flags += str(getElfFile())
-    flags += " --scatter="
-    flags += str(getOutScatterFile())
-    flags += " "
+    flags = default_flags_link
+    flags.extend(cfg.flags_link)
+    flags.append( "--callgraph_output=text")
+    flags.append(f"--callgraph_file={str(getOutCallFile())}")
+    flags.append(f"--list={str(getOutMapFile())}")
+    flags.append(f"--output={str(getElfFile())}")
+    flags.append(f"--scatter={str(getOutScatterFile())}")
 
-    flags += default_flags_link
+    flags.append(str(getDependFile()))
 
-    flags += " "
-    flags += str(getDependFile())
-
-    flags += " --userlibpath="
-    flags += str(getBuildLibPath())
-    flags += " "
+    flags.append(f"--userlibpath={str(getBuildLibPath())}")
 
     if not cfg.modules or len(cfg.modules) <= 0:
         echo ("No modules are specified.")
     else:#replace with archive names
         for mod_path_name, mod_data in cfg.modules.items():
-            flags += " --library="
-            flags += str(mod_data.get("name"))
+            my_name = str(mod_data.get("name"))
+            flags.append(f"--library={my_name}")
 
-    flags += " --library="
-    flags += getSplitLibName()
+    flags.append(f"--library={getSplitLibName()}")
 
     echo (f"Linking {getElfFile().name}")
 

@@ -12,7 +12,8 @@ def exec_export_bin():
         exit(0)
 
     echo ("Exporting code.bin")
-    do_export(f"--bincombined {getElfFile()} --output {getExportFile()}")
+    flags = ["--bincombined", getElfFile(), "--output", getExportFile()]
+    do_export(flags)
 
 def exec_export_json():
     if not getBuildPath().is_dir():

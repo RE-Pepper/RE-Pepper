@@ -52,10 +52,6 @@ flags_compile_asm = None
 # Full flags for linking
 flags_link = None
 
-# Optional flags for sorting
-flag_preinclude = None
-flag_diag = None
-
 # Switches
 only_matching = False
 allow_shifting = True
@@ -83,10 +79,6 @@ def checkStrEntry(data, name):
             globals()[name] += str(my_entry)
         else:
             globals()[name] = str(my_entry)
-def checkFlgEntry(data, name):
-    checkStrEntry(data, name)
-    if globals()[name]:
-        globals()[name] += " "
 def checkIntEntry(data, name):
     my_entry = data.get(name)
     if my_entry:
@@ -103,6 +95,13 @@ def checkSetEntry(data, name):
             globals()[name].extend(set(my_entry))
         else:
             globals()[name] = set(my_entry)
+def checkArrEntry(data, name):
+    my_entry = data.get(name)
+    if my_entry:
+        if globals()[name]:
+            globals()[name].extend(list(my_entry))
+        else:
+            globals()[name] = list(my_entry)
 def checkDctEntry(data, name):
     my_entry = data.get(name)
     if my_entry:
@@ -126,12 +125,10 @@ def readFile(path):
     checkDctEntry(data, "versions")
     checkStrEntry(data, "default_version")
     checkStrEntry(data, "compiler")
-    checkFlgEntry(data, "flags_compile")
-    checkFlgEntry(data, "flags_compile_cxx")
-    checkFlgEntry(data, "flags_compile_asm")
-    checkFlgEntry(data, "flags_link")
-    checkFlgEntry(data, "flag_preinclude")
-    checkFlgEntry(data, "flag_diag")
+    checkArrEntry(data, "flags_compile")
+    checkArrEntry(data, "flags_compile_cxx")
+    checkArrEntry(data, "flags_compile_asm")
+    checkArrEntry(data, "flags_link")
     checkSetEntry(data, "macros")
     checkSetEntry(data, "extensions")
     checkBolEntry(data, "only_matching")

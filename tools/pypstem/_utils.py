@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import shutil
+import hashlib
 from tools.low.glob import *
+from tools.pypstem.defaultFlags import *
 
 curname = ""
 curstatus = ""
@@ -38,12 +40,9 @@ def get_compiler():
 def getFileBuildPath(file):
     return getBuildObjPath() / file.relative_to(getProjDir()).with_suffix(".o")
 
-def getMacroStr(macros):
-    return "".join(f"-D{macro}={val or "1"} " for macro, val in macros.items())
+def getMacroArray(macros):
+    return [f"-D{macro}={val or '1'}" for macro, val in macros.items()]
 
-default_flags_comp = " --cpu=MPCore --fpmode=fast --apcs=/interwork "#--info=totals 
-default_flags_comp_asm = "--diag_suppress=1608"
-default_flags_comp_cxx = " --signed_chars --dollar --force_new_nothrow --no_rtti "
-default_flags_link = " --cpu=MPCore --fpu=VFPv2 --startup=__ctr_start --entry=__ctr_start --keep=nnMain --datacompressor=off --mangled --symbols --map --muldefweak"
-default_flags_link += " --diag_suppress=6642,6439,6314"
+def getArrayHash(array):
+    return hashlib.sha1(" ".join(arr).encode()).hexdigest()
 

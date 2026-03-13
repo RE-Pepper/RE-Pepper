@@ -6,37 +6,37 @@ import sys
 from tools.pypstem._utils import get_compiler
 from tools.low.glob import fail_ex, fail, echo
 
-def _call(path, arg):
+def _call(path, arg_list):
     from tools.low.glob import isLinux
 
-    cmd = []
+    idx = 0;
     if isLinux():
-        cmd.append("wibo")
+        arg_list.insert(idx, "wibo")
+        idx += 1
     if not path.exists():
         fail_ex (f"Compiler binaries incomplete, cannot find {path.name}", f"At {path}")
 
-    cmd.append(str(path))
-    cmd.extend(arg.split())
+    arg_list.insert(idx, str(path))
 
     env = os.environ.copy()
     env["TMP"] = "/tmp"
 
-    ret = subprocess.run(cmd, env=env)
+    ret = subprocess.run(arg_list, env=env)
 
     if ret.returncode != 0:
-        fail_ex (f"{path.name} failed with {ret.returncode}.", f"{" ".join(cmd)}")
+        fail_ex (f"{path.name} failed with {ret.returncode}.", f"{" ".join(arg_list)}")
 
-def do_assemble(arg):
-    _call(get_compiler() / "armasm.exe", arg)
+def do_assemble(arg_list):
+    _call(get_compiler() / "armasm.exe", arg_list)
 
-def do_compile(arg):
-    _call(get_compiler() / "armcc.exe", arg)
+def do_compile(arg_list):
+    _call(get_compiler() / "armcc.exe", arg_list)
 
-def do_link(arg):
-    _call(get_compiler() / "armlink.exe", arg)
+def do_link(arg_list):
+    _call(get_compiler() / "armlink.exe", arg_list)
 
-def do_archive(arg):
-    _call(get_compiler() / "armar.exe", arg)
+def do_archive(arg_list):
+    _call(get_compiler() / "armar.exe", arg_list)
 
-def do_export(arg):
-    _call(get_compiler() / "fromelf.exe", arg)
+def do_export(arg_list):
+    _call(get_compiler() / "fromelf.exe", arg_list)

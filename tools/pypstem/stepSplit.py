@@ -11,27 +11,25 @@ from tools.low.glob import *
 # TODO: also resplect if csv map changed
 
 def isSymMapDiff():
-    store_file = getDataDir() / ".map"
-
     if not getMapFile().exists():
         fail ("Version not configured, cannot split.")
 
     ts_new = int(getMapFile().stat().st_mtime)
 
     def write_new():
-        path_mapcfg = str(getCfgMapFile().relative_to(getProjDir()))
-        with open(path_mapcfg, "w") as f:
-            f.write(f"{path_mapcfg} {ts_new}")
+        with open(getCfgMapFile(), "w") as f:
+            f.write(f"{get_ver()} {ts_new}")
 
-    if not store_file.exists():
+    if not getCfgMapFile().exists():
         write_new()
         return True
 
     ts_old = 0
-    with open(store_file, "r") as f:
-        map_old, ts_old = next(f).split()
+    ver_old = 0
+    with open(getCfgMapFile(), "r") as f:
+        ver_old, ts_old = next(f).split()
 
-    if str(Path(map_old).relative_to(getProjDir())) != str(getMapFile().relativeTo(getProjDir())):
+    if get_ver() != ver_old:
         write_new()
         return True
     if int(ts_old) != ts_new:
@@ -60,27 +58,26 @@ def exec_split(clear=False):
 
         set_compiler(setup_compiler(cfg.compiler))
 
-        flags_asm = f"{default_flags_comp} {default_flags_comp_asm} --unaligned_access "
+        flags_asm = default_flags_comp
+        flags_asm.extend(default_flags_comp_asm)
+        flags_asm.append("--unaligned_access")
         if cfg.flags_compile:
-            flags_asm += cfg.flags_compile
-            flags_asm += " "
+            flags_asm.extend(cfg.flags_compile)
         if cfg.flags_compile_asm:
-            flags_asm += cfg.flags_compile_asm
-            flags_asm += " "
+            flags_asm.extend(cfg.flags_compile_asm)
         ar_path = getSplitLibFile()
-        flags_ar = f"--create {str(ar_path)}"
+        flags_ar = ["--create", str(ar_path)]
 
         getSplitObjDir().mkdir(parents=True, exist_ok=True)
 
         for asm in getSplitAsmDir().rglob("*.s"):
             output = getSplitObjDir() / asm.with_suffix(".o").name
 
-            asm_flags = f"{flags_asm} -o {str(output)} {asm}"
+            asm_flags = flags_asm + ["-o", str(output), str(asm)]
             do_assemble(asm_flags)
 
             if asm.name.startswith("a"): # add to archive
-                flags_ar += " "
-                flags_ar += str(output)
+                flags_ar.append(str(output))
             else: # special file, move to build folder
                 output.rename(getSplitPath() / output.name)
 

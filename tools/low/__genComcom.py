@@ -17,7 +17,7 @@ def gen_comcom():
                 continue
 
             for file in src_path.rglob("**.*"):
-                output = getFileBuildPath(file).relative_to(getBuildObjPath())
+                output = os.path.relpath(getFileBuildPath(file), getBuildObjPath())
 
                 f.write("\n{\n")
                 f.write(f"  \"directory\": \"{directory}\",\n")
