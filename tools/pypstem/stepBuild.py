@@ -47,7 +47,9 @@ def convertFile(file):
     except Exception as e:
         fail (f"Conversion failed for {file}: {e}")
 
-def exec_build(add_macros=None):
+def exec_build():
+    echo ("Building modules")
+
     global flags_asm, flags_cxx
 
     if not cfg.modules or len(cfg.modules) <= 0:
@@ -86,9 +88,9 @@ def exec_build(add_macros=None):
                     break
 
                 if row[0] in flags_old:
-                    flags_old[f"{row[0]}_s"] = int(row[1])
+                    flags_old[f"{row[0]}_s"] = row[1]
                 else:
-                    flags_old[row[0]] = int(row[1])
+                    flags_old[row[0]] = row[1]
 
     if getCfgFlagsTFile().exists():
         getCfgFlagsTFile().unlink()
@@ -103,16 +105,11 @@ def exec_build(add_macros=None):
     for mod_path_name, mod_data in cfg.modules.items():
         if not mod_data.get("include_dir"):
             continue
-        inc_path = getProjDir().joinpath(*str(mod_path_name).split("/")).joinpath(*mod_data.get("include_dir").split("/"))
+        inc_path = getModInc(mod_path_name, mod_data)
         base_flags_cxx.append(f"-I{inc_path}")
     # macros
-    base_flags_cxx.append(getMacroArray(cfg.macros))
-    base_flags_cxx.append(f"-DVERSION={getVersion().upper()}")
-    if add_macros:
-        if isinstance(add_macros, dict):
-            base_flags_cxx += getMacroArray(add_macros)
-        elif sinstance(add_macros, list):
-            base_flags_cxx += getMacroArray(dict.fromkeys(add_macros))
+    base_flags_cxx.append(getMacroStr("VERSION", getVersion().upper()))
+    base_flags_cxx.extend(getMacroArray(cfg.macros))
     # main
     base_flags.extend(default_flags_comp)
     base_flags.extend(cfg.flags_compile)
@@ -133,8 +130,7 @@ def exec_build(add_macros=None):
     data_len = 0
 
     for mod_path_name, mod_data in cfg.modules.items():
-        mod_dir = mod_data.get("source_dir") or "."
-        mod_path = getProjDir().joinpath(*str(mod_path_name).split("/")).joinpath(*str(mod_dir).split("/"))
+        mod_path = getModSrc(mod_path_name, mod_data)
         module_paths[mod_path_name] = mod_path
 
         module_files[mod_path_name] = set()
@@ -155,10 +151,6 @@ def exec_build(add_macros=None):
     
         mod_ar_name = f"lib{mod_data.get("name")}.a"
         mod_ar_file = getBuildLibPath() / mod_ar_name
-        mod_ar_arg_add = ["-r", str(mod_ar_file)]
-        mod_ar_arg_rem = ["-d", str(mod_ar_file), "--diag_suppress=6831"]
-        mod_ar_do_add = False
-        mod_ar_do_rem = False
 
         mod_path = module_paths[mod_path_name]
         flags_cxx = base_flags_cxx
@@ -177,13 +169,13 @@ def exec_build(add_macros=None):
         if val:
             flags_cxx.extend(getMacroArray(val))
 
+        setup_compiler(mod_data.get("compiler"))
+
         old_flags_cxx = None
         old_flags_asm = None
         if flags_old:
             old_flags_cxx = flags_old.get(mod_path_name)
             old_flags_asm = flags_old.get(f"{mod_path_name}_s")
-
-        set_compiler(setup_compiler(mod_data.get("compiler") or cfg.compiler))
 
         new_flags_cxx_hash = getArrayHash(flags_cxx)
         new_flags_asm_hash = getArrayHash(flags_asm)
@@ -221,13 +213,14 @@ def exec_build(add_macros=None):
                 if not out_path.exists():
                     fail_ex ("Output not found.", f"Missing {str(out_path)}")
                 else:
-                    mod_ar_arg_add.append(str(out_path))
-                    mod_ar_do_add = True
+                    ar_arg = ["-rcn", str(mod_ar_file), str(out_path)]
+                    do_archive(ar_arg)
                     obj_new_list.add(out_path)
 
             data_new[file_str] = timestamp
             data_new_names.add(file.name)
 
+        did_delete = False
         # check for deleted files
         if data_old and data_new_names:
             for old_file, _ in data_old.items():
@@ -235,8 +228,9 @@ def exec_build(add_macros=None):
                     continue
                 if Path(old_file).name in data_new_names:
                     continue
-                mod_ar_arg_rem.append(Path(old_file).with_suffix(".o").name)
-                mod_ar_do_rem = True
+                ar_arg = ["-ds", str(mod_ar_file), "--diag_suppress=6831", str(Path(old_file).with_suffix(".o").name)]
+                do_archive(ar_arg)
+                did_delete = True
 
         # write flags down
         with open(getCfgFlagsTFile(), "a") as f:
@@ -249,29 +243,26 @@ def exec_build(add_macros=None):
             line_category += f"[{file_counter}]"
         line_category += f"<{len(module_files[mod_path_name])}> {mod_data.get("name")}"
 
-        # manage archive
-        if mod_ar_do_add:
-            echo (f"{line_category}: Adding", "\r")
-            do_archive(mod_ar_arg_add)
-        if mod_ar_do_rem:
-            echo (f"{line_category}: Removing", "\r")
-            do_archive(mod_ar_arg_rem)
-
         # clean / report
-        if mod_ar_do_add or mod_ar_do_rem:
-            if not cfg.keep_objects:
-                echo (f"{line_category}: Cleaning", "\r")
-                for f in obj_new_list:
-                    f.unlink()
-                shutil.rmtree(getBuildObjPath() / os.path.relpath(mod_path, getProjDir()).split(os.sep)[0])
-            echo (f"{line_category}: Done")
-        else:
+        if len(obj_new_list) <= 0 and not did_delete:
             echo (f"{line_category}: Unchanged")
+            continue
+
+        ar_arg = ["-s", str(mod_ar_file)]
+        do_archive(ar_arg)
+
+        if len(obj_new_list) > 0 and not cfg.keep_objects:
+            echo (f"{line_category}: Cleaning", "\r")
+            for f in obj_new_list:
+                f.unlink()
+            shutil.rmtree(getBuildObjPath() / os.path.relpath(mod_path, getProjDir()).split(os.sep)[0])
+
+        echo (f"{line_category}: Done")
 
     if not data_new:
         echo ("No files found")
 
-    getCfgFlagsTFile().rename(getCfgFlagsFile())
+    getCfgFlagsTFile().replace(getCfgFlagsFile())
 
     with open(getCfgListFile(), "w") as f:
         for file, time in data_new.items():

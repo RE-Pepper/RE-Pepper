@@ -1,6 +1,5 @@
 [Bb]uild*/
 __pycache__/
-tools/__pycache__/
 .cache/
 [Pp]riv/
 
@@ -9,8 +8,6 @@ data/compilers
 data/stats/
 data/stats/*
 data/stats/*/*
-data/ver/*/split/
-data/ver/*/split/*
 compile_commands.json
 objdiff.json
 data/ver/*.bin

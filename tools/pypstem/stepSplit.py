@@ -18,7 +18,7 @@ def isSymMapDiff():
 
     def write_new():
         with open(getCfgMapFile(), "w") as f:
-            f.write(f"{get_ver()} {ts_new}")
+            f.write(f"{getVersion()} {ts_new}")
 
     if not getCfgMapFile().exists():
         write_new()
@@ -29,7 +29,7 @@ def isSymMapDiff():
     with open(getCfgMapFile(), "r") as f:
         ver_old, ts_old = next(f).split()
 
-    if get_ver() != ver_old:
+    if getVersion() != ver_old:
         write_new()
         return True
     if int(ts_old) != ts_new:
@@ -40,7 +40,7 @@ def isSymMapDiff():
 
 def exec_split(clear=False):
     if clear or isSymMapDiff() or not getSplitLibFile().exists() or (getSplitAsmDir().exists() and not cfg.keep_objects):
-        echo ("Splitting assembly")
+        echo ("Splitting assembly (may take a few minutes)")
 
         if getSplitLibFile().exists():
             getSplitLibFile().unlink()
@@ -54,36 +54,39 @@ def exec_split(clear=False):
         if not getSplitAsmDir().exists():
             fail ("Splits are missing.")
 
-        echo ("Compiling split")
+        echo ("Recompiling splits")
 
-        set_compiler(setup_compiler(cfg.compiler))
+        setup_compiler(cfg.compiler)
 
         flags_asm = default_flags_comp
         flags_asm.extend(default_flags_comp_asm)
-        flags_asm.append("--unaligned_access")
         if cfg.flags_compile:
             flags_asm.extend(cfg.flags_compile)
         if cfg.flags_compile_asm:
             flags_asm.extend(cfg.flags_compile_asm)
-        ar_path = getSplitLibFile()
-        flags_ar = ["--create", str(ar_path)]
 
         getSplitObjDir().mkdir(parents=True, exist_ok=True)
 
         for asm in getSplitAsmDir().rglob("*.s"):
             output = getSplitObjDir() / asm.with_suffix(".o").name
+            echo (f"> {output.name} <", "\r")
 
             asm_flags = flags_asm + ["-o", str(output), str(asm)]
             do_assemble(asm_flags)
 
-            if asm.name.startswith("a"): # add to archive
-                flags_ar.append(str(output))
-            else: # special file, move to build folder
-                output.rename(getSplitPath() / output.name)
+            if not asm.name.startswith("a"):
+                output.replace(getSplitPath() / output.name)
 
         echo ("Archiving splits")
 
+        ar_path = str(getSplitLibFile())
         getBuildLibPath().mkdir(parents=True, exist_ok=True)
+        for obj in getSplitObjDir().rglob("*.o"):
+            echo (f"> {obj.name} <", "\r")
+            flags_ar = ["-rcn", ar_path, str(obj)]
+            do_archive(flags_ar)
+
+        flags_ar = ["-s", ar_path]
         do_archive(flags_ar)
 
         if not cfg.keep_objects:

@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
 import sys
 import argparse
+
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+from tools.low.glob import *
+from tools.low.__readElf import *
+from tools.low.__readMap import *
+
 try:
     import cxxfilt
     is_filter = True
 except ImportError:
+    echo ("cxxfilt module not found, not demangling.")
     is_filter = False
-tools.low.glob import *
-tools.low.__readElf import *
-tools.low.__readMap import *
 from io import StringIO
 
 def main():
@@ -46,12 +51,10 @@ def main():
     if args.e:
         if args.c:
             print("elf / csv")
-        for line in StringIO(readelf_data):
-            sym = line.split()
-
-            name = sym[ReadElfFmt.Symbol]
-            addr = "0x{:08X}".format(int(sym[ReadElfFmt.Address], 16))
-            size = "0x{:04X}".format(int(sym[ReadElfFmt.Size]))
+        for sym in get_elf_symbol_list():
+            name = sym[ElfMapFmt.Symbol]
+            addr = f"0x{sym[ElfMapFmt.Address]:08X}"
+            size = f"0x{sym[ElfMapFmt.Size]:06X}"
 
             if not name or name is None:
                 continue
@@ -60,18 +63,18 @@ def main():
                     continue
 
             if args.zs:
-                size = sym[ReadElfFmt.Size]
+                size = sym[ElfMapFmt.Size]
             if args.za:
-                addr = int(sym[ReadElfFmt.Address], 16)
+                addr = int(sym[ElfMapFmt.Address], 16)
             if args.d and is_filter:
                 try:
-                    name = cxxfilt.demangle(sym[ReadElfFmt.Symbol])
+                    name = cxxfilt.demangle(sym[ElfMapFmt.Symbol])
                 except cxxfilt.InvalidName:
-                    name = sym[ReadElfFmt.Symbol]
+                    name = sym[ElfMapFmt.Symbol]
 
             has_found = True
 
-            csv_sym = get_symbol(sym[ReadElfFmt.Symbol])
+            csv_sym = get_symbol(sym[ElfMapFmt.Symbol])
             ex = ""
             if not args.w and ( csv_sym == None or csv_sym[MapFmt.Rank] != 'O' ):
                 ex = " (U)"

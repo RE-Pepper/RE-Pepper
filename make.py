@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import argparse
-from tools import pypstem # build system
+from tools.pypstem import main as pypstem # build system
 from tools.low.glob import * # globals
 
 # TODO: Game is commented out because its a big fuckery when compiling without Stubs, inlines, sym map...
@@ -19,7 +19,7 @@ def main():
     parser.add_argument('-do', action='store_true', help="Build with debug info (objects only)")
     parser.add_argument('-dl', action='store_true', help="Build with debug info (linker only)")
     parser.add_argument('-m', action='store_true', help="Compile only matching code")
-    parser.add_argument('-s', action='store_true', help="Deny shifting during linking")
+    parser.add_argument('-ms', action='store_true', help="Disable shifting during linking")
     parser.add_argument('-w', action='store_true', help="Omit many warnings (nintendo standard)")
     parser.add_argument('-fv', action='store_true', help="Flag: Enable VFE")
     args = parser.parse_args()
@@ -40,7 +40,7 @@ def main():
         cfg.flags_compile.append("--diag_warning=177,193,228,550,826,1301")
     if args.m:
         cfg.only_matching = True
-    if args.s:
+    if args.ms:
         cfg.allow_shifting = False
     #if args.k:
     cfg.keep_objects = True

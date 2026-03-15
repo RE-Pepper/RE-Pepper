@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from os import path
 from tools.low.glob import *
 from tools.pypstem._utils import getFileBuildPath
 
@@ -17,7 +18,7 @@ def gen_comcom():
                 continue
 
             for file in src_path.rglob("**.*"):
-                output = os.path.relpath(getFileBuildPath(file), getBuildObjPath())
+                output = path.relpath(getFileBuildPath(file), getBuildObjPath())
 
                 f.write("\n{\n")
                 f.write(f"  \"directory\": \"{directory}\",\n")

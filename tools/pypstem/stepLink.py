@@ -11,10 +11,11 @@ def exec_link():
 
     echo ("Preparing to link ...", "\r")
 
-    set_compiler(setup_compiler(cfg.compiler))
+    setup_compiler(cfg.compiler)
 
     flags = default_flags_link
     flags.extend(cfg.flags_link)
+    flags.append( "--callgraph")
     flags.append( "--callgraph_output=text")
     flags.append(f"--callgraph_file={str(getOutCallFile())}")
     flags.append(f"--list={str(getOutMapFile())}")

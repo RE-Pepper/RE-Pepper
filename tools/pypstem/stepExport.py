@@ -19,8 +19,6 @@ def exec_export_json():
     if not getBuildPath().is_dir():
         exit(0)
 
-    echo ("Generating compiler_commands.json")
+    echo ("Generating json")
     gen_comcom()
-
-   # echo ("Generating objdiff.json")
    # gen_objdiff()

@@ -1,84 +1,77 @@
 #!/usr/bin/env python3
-from io import StringIO
-import subprocess
-import sys
-import os
 import re
+import os
+import sys
+import subprocess
+from io import StringIO
 from enum import IntEnum
 
 from tools.low.glob import *
 
-class ElfFmt(IntEnum):
-    Start = 0
-    Size = 1
-
-class ReadElfFmt(IntEnum):
-    Index = 0 # Note: has a colon at the end
-    Address = 1
-    Size = 2
-    Type = 3
-    Scope = 4
-    Visibility = 5
-    Section = 6
-    Symbol = 7
-
+#  __ctr_start                              0x00100000   ARM Code      36  crt0.o(.emb_text)
 class ElfMapFmt(IntEnum):
-    
+    Symbol = 0
+    Address = 1
+    Type = 2
+    Size = 3
+    Section = 4
 
-if not getBuildMapFile().exists():
-    fail_ex ("Build Map file not found, readElf cannot be used.", f"Missing: {getMapFile()}")
+def _read_elf_symbols():
+    if not getOutMapFile().exists():
+        fail_ex ("Build Map file not found, readElf cannot be used.", f"Missing: {getMapFile()}")
 
-#Memory Map of the image
-#0x .o
-with open(getBuildMapFile(), "r") as f:
-    data_map = f.read()
-if not data_map:
-    fail ("Failed to read the Build Map file.")
-for line in data_map:
-    line = line.split()
-    if len(line) != 
+    with open(getOutMapFile(), "r") as f:
+        if not f:
+            fail ("Build Map file is empty. Did you finish building?")
 
-# REMOVE ALL THAT
-elf_exists = os.path.exists(getElfPath())
-if elf_exists:
-    # Step 1: Get Data
-    cmd = f'"{Path(os.environ.get("DEVKITARM")) / "bin" / "arm-none-eabi-readelf"}" "{getElfPath()}" -sw -W'
-    readelf_data = str(subprocess.check_output(cmd))
-    if sys.platform == 'win32': # Fix Newlines
-        readelf_data = readelf_data.replace(r'\r\n', '\n')
-    else:
-        readelf_data = readelf_data.replace(r'\n', '\n')
-    # Step 2: Filter Data
-    lines = []
-    for l in readelf_data.splitlines():
-        a = l.split()
-        if len(a) != (ReadElfFmt.Symbol+1): # Wrong number of cols
-            continue
-        if a[ReadElfFmt.Symbol] in ("$a", "$t", "$d", "$v0"):
-            continue
-        if a[ReadElfFmt.Symbol].startswith(("$a.", "$t.", "$d.")):
-            continue
-        if a[ReadElfFmt.Type] in ("FUNC","OBJECT","NOTYPE"):
-            lines.append(l)
-    readelf_data = "\n".join(lines)
-    #print (readelf_data)
+        #0x .o
+        flag_found = False
+        for line in f:
+            if not flag_found:
+                if "Global Symbols" in line:
+                    flag_found = True # got start
 
-# TODO: remove once splector done
-stubs_data = set()
-with open(f"{getBuildPath()}/RedPepper.map") as f:
-    s = StringIO(f.read())
-    for line in s:
-        if len(line.split()) == 6 and line.split()[5] == 'Stubs.o(stubs)':
-            stubs_data.add(line.split()[0])
+                continue
 
-def get_elf_symbol(n):
-    if not elf_exists or not n:
-        return None
-    if n in stubs_data:# TODO: remove once splector done
-        return None
-    s = StringIO(readelf_data)
-    for l in s:
-        a = l.split()
-        if n == a[ReadElfFmt.Symbol]:
-            return (int(a[ReadElfFmt.Address],16), int(a[ReadElfFmt.Size]))
-    return None
+            if not "0x00" in line: # not a sym
+                if line.startswith("==="):
+                    break # end reached
+                continue
+
+            line = [part for part in line.split() if part != "ABSOLUTE"]
+            line_len = len(line)
+            fmt_len = len(ElfMapFmt)
+            #echo (line)
+            #echo (line_len)
+            #echo (fmt_len)
+
+            sym = line[0]
+            addr = int(line[1], 0)
+            type = line[2]
+            
+            if line_len != fmt_len:
+                if (line_len-1) != fmt_len:
+                    fail_ex ("Unhandled line format in map", line)
+
+                type += f" {line[3]}"
+                size = int(line[4])
+                sect = line[5]
+            else:
+                size = int(line[3])
+                sect = line[4]
+
+            yield [sym, addr, type, size, sect]
+
+        if not flag_found:
+            fail_ex ("Symbols not found in map.", "Ensure you are passing --symbols to linker.")
+        
+
+_elf_map_data = {}
+for sym in _read_elf_symbols():
+    _elf_map_data[sym[ElfMapFmt.Symbol]] = sym
+
+def get_elf_symbol_list():
+    return _elf_map_data.values()
+
+def get_elf_symbol(name):
+    return _elf_map_data.get(name)

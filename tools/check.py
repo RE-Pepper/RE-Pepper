@@ -244,7 +244,7 @@ def main():
     is_log = args.w
 
     csv_path = getMapFile()
-    log_path = str(Path(getProjDir()) / "data" / "ver" / get_ver() / ".changes")
+    log_path = str(Path(getProjDir()) / "data" / "ver" / getVersion() / ".changes")
 
     with open(Path(getBuildPath()) / "compile_commands.json", "r") as f:
         if any("NON_MATCHING" in line for line in f): # check if we compiled for Matching-only build

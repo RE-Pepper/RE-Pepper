@@ -37,7 +37,7 @@ As noted earlier, this fork made some updates regarding structure of some files.
   - Core: `capstone pyelftools requests`
   - asm-differ: `argcomplete watchdog python-Levenshtein cxxfilt`
   - progress.py: `GitPython matplotlib numpy mplcursors`
-  - listsyms.py/upload.py: `cxxfilt`
+  - listsyms.py/upload.py: `cxxfilt` (optional)
   - upload.py: `requests`
 
 #### Project

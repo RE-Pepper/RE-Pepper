@@ -1,8 +1,8 @@
 TEXT_SECTION 0x00100000
 {
-$$$}
+///}
 
-RO_SECTION §O
+RO_SECTION //O
 {
 &&&    RO +0
     {
@@ -19,7 +19,7 @@ RO_SECTION §O
     }
 }
 
-RW_SECTION §W
+RW_SECTION //W
 {
 ###    RW +0
     {

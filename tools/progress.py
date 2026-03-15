@@ -28,7 +28,7 @@ def write_release_txt(ver: str, u: str, o: str, m: str, mm: str, total: str, byt
 **Total**: *{total}*
 """
 
-    with open(str(Path("data") / "stats" / get_ver() / "release.txt"), 'w') as f:
+    with open(str(Path("data") / "stats" / getVersion() / "release.txt"), 'w') as f:
         f.write(textt)
 
 def get_matching_bytes(orig: str, other: str):
@@ -48,7 +48,7 @@ def main():
     syms_total = 0
     bytes_ok = get_matching_bytes(getBinFile(), str(Path(getBuildPath()) / "code.bin"))
     code_bin_size = os.path.getsize(getBinFile())
-    ver = get_ver()
+    ver = getVersion()
     os.makedirs(str(Path('data') / 'stats' / ver), exist_ok=True)
     
     syms = read_sym_file()

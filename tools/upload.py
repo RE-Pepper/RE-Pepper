@@ -2,16 +2,25 @@
 import sys
 import os
 import json
-import cxxfilt
 import requests
 from elftools.elf.elffile import ELFFile
 from elftools.elf.sections import SymbolTableSection
-tools.low.__genCtxFile import genCtxs
-tools.low.__readMap import get_symbol
-tools.low.glob import *
 
-def find_source_path(str):
-    with open(getElfPath(), "rb") as f:
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+from tools.low.__genContext import gen_ctx, find_file_path
+from tools.low.__readMap import get_symbol
+from tools.low.glob import *
+
+try:
+    import cxxfilt
+    is_filter = True
+except ImportError:
+    echo ("cxxfilt module not found, not demangling.")
+    is_filter = False
+
+def find_source_path(sym_name):
+    with open(getElfFile(), "rb") as f:
         elf = ELFFile(f)
         last_file = None
         func_syms = []
@@ -19,40 +28,13 @@ def find_source_path(str):
         print ("Collecting functions ...")
         
         for section in elf.iter_sections():
-            if not isinstance(section, SymbolTableSection):
-                continue
-
-            for sym in section.iter_symbols():
-                if sym['st_info']['type'] == 'STT_FUNC':
-                    func_syms.append (sym.name)
 
 
-        print ("Finding file ...")
-        
-        for section in elf.iter_sections():
-            if not isinstance(section, SymbolTableSection):
-                continue
-
-            for sym in section.iter_symbols():
-                st_type = sym['st_info']['type']
-
-                if st_type == 'STT_FILE':
-                    last_file = sym.name
-
-                elif st_type == 'STT_SECTION':
-                    name = sym.name
-                    if '.' not in name:
-                        continue
-
-                    _, after_dot = name.split('.', 1)
-
-                    if after_dot not in func_syms:
-                        continue
-
-                    if str != after_dot:
-                        continue
-
-                    return last_file
+            echo (section.name)
+            echo (section)
+            if isinstance(section, SymbolTableSection):
+                for sym in section.iter_symbols():
+                    echo (sym['st_info'])
 
 def get_obj_path (str):
     if not os.path.exists(Path(getBuildPath()) / "compile_commands.json"):
@@ -129,7 +111,10 @@ def main():
         print ("compile_commands.json missing, please build!")
         return
 
-    name = cxxfilt.demangle (sym)
+    if is_filter:
+        name = cxxfilt.demangle (sym)
+    else:
+        name = sym
 
     print(f"Source file: {path}")
     print(f"Lines: ctx {len(data.splitlines())}, src {len(main.splitlines())}")

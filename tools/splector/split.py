@@ -665,7 +665,7 @@ def run(do_update=None):
     upd_status("Splecting and writing assembly")
 
     # Start writing data
-    set_status ("Splecting map ")
+    set_status ("Splecting funcs ")
 
     # extra data ranges
     for a, sym in ranges.items():

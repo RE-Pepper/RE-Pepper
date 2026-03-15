@@ -4,7 +4,7 @@ default_flags_comp = [
     "--cpu=MPCore",
     "--fpmode=fast",
     "--apcs=/interwork",
-]  # --info=totals
+]
 
 default_flags_comp_asm = [
     "--diag_suppress=1608",
@@ -15,12 +15,13 @@ default_flags_comp_cxx = [
     "--dollar",
     "--force_new_nothrow",
     "--no_rtti",
-    "--no_debug",
+    "--debug",
     "--no_debug_macros",
 ]
 
 default_flags_link = [
-    "--verbose", "--xref",
+    "--verbose",
+    "--debug",
     "--cpu=MPCore",
     "--fpu=VFPv2",
     "--startup=__ctr_start",
@@ -30,8 +31,6 @@ default_flags_link = [
     "--mangled",
     "--symbols",
     "--map",
-    "--muldefweak",
-    "--no_debug",
-    "--diag_suppress=6642,6439,6314",
+    "--diag_suppress=6642,6439,6329,6314",
 ]
 

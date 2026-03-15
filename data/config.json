@@ -15,10 +15,14 @@
     "kr": "820940dc19b86f8d47515973d9f1484c4efc0571a729c294e85b53e5097fda56"
   },
   "modules": {
+    "lib/CtrSDK": {
+        "source_dir": "sources",
+        "name": "CtrSDK"
+    }
   },
   "compiler": "4.1/791",
   "flags_compile": [
-    "--arm",
+    "--arm_only",
     "--no_exceptions",
     "--diag_style=gnu"
   ],
@@ -37,12 +41,12 @@
     "--preinclude=lib/CtrSDK/include/nn/types.h"
   ],
   "flags_link": [
+    "--arm_only",
     "--no_exceptions",
     "--inline",
     "--tailreorder",
     "--largeregions",
     "--pad=0xFF",
-    "--arm_only",
     "--keep=*",
     "--no_remove",
     "--vfemode=off",

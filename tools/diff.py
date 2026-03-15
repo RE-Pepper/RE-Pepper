@@ -22,9 +22,9 @@ def main():
     decomp_symbol = get_elf_symbol(symbolname)
 
     if symbol is None:
-        fail(f"Couldn't find in csv: {symbolname}")
+        fail (f"Couldn't find in csv: {symbolname}")
     if decomp_symbol is None:
-        fail(f"Couldn't find in decomp: {symbolname}")
+        fail (f"Couldn't find in decomp: {symbolname}")
 
     sym_start = int(symbol[MapFmt.Start]-0x00100000)
     decomp_start = int(decomp_symbol[ElfFmt.Start]-0x00100000)

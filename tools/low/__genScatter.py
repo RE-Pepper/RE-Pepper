@@ -80,9 +80,9 @@ def gen_scatter():
     with open(Path(getProjDir()) / "data" / "template" / "linker.ld", 'r') as template:
         with open(getOutScatterFile(), 'w') as out:
 
-            out_line = template.read().replace("$$$", s_code).replace("&&&", s_dataro).replace("###", s_datarw)
+            out_line = template.read().replace("///", s_code).replace("&&&", s_dataro).replace("###", s_datarw)
             
-            out_line = out_line.replace("§O", ro_s).replace("§W", rw_s)
+            out_line = out_line.replace("//O", ro_s).replace("//W", rw_s)
 
             out.write(out_line)
 

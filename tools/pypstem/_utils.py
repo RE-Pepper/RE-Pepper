@@ -30,19 +30,22 @@ def progress_upd_type(status):
     progress_set_type(status)
     progress_print()
 
-compiler_path = None
-def set_compiler(path):
-    global compiler_path
-    compiler_path = Path(path)
-def get_compiler():
-    return compiler_path
-
 def getFileBuildPath(file):
     return getBuildObjPath() / file.relative_to(getProjDir()).with_suffix(".o")
 
+def getMacroStr(macro, val):
+    return f"-D{macro}={val or '1'}"
 def getMacroArray(macros):
-    return [f"-D{macro}={val or '1'}" for macro, val in macros.items()]
+    if isinstance(macros, list):
+        macros = dict.fromkeys(macros)
+    return [getMacroStr(macro, val) for macro, val in macros.items()]
 
 def getArrayHash(array):
-    return hashlib.sha1(" ".join(arr).encode()).hexdigest()
+    return hashlib.sha1(" ".join(map(str, array)).encode()).hexdigest()
 
+def getModSrc(mod_path_name, mod_data):
+    mod_subdir = mod_data.get("source_dir") or "."
+    return getProjDir().joinpath(*str(mod_path_name).split("/")).joinpath(*str(mod_subdir).split("/"))
+def getModInc(mod_path_name, mod_data):
+    mod_subdir = mod_data.get("include_dir") or "."
+    return getProjDir().joinpath(*str(mod_path_name).split("/")).joinpath(*str(mod_subdir).split("/"))
