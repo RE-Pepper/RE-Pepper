@@ -171,9 +171,9 @@ def meta_add(type_code, sect, name, size, do_export=False, do_meta_ext=False):
     line = '\n'
     if do_export:
         if meta_sect and type:
-            line += f"    AREA |{meta_sect}|,{type}"
+            line += f"    AREA |{meta_sect}|,{type},COMGROUP={name},ALIGN=2" # 2^2=4 byte alignment
         if meta_sect == name:
-            line += f",COMGROUP={name}"
+            line += f""
         line += "\n"
         line += f"    EXPORT {name}"
         if do_meta_ext:

@@ -39,59 +39,83 @@ def isSymMapDiff():
     return False
 
 def exec_split(clear=False):
-    if clear or isSymMapDiff() or not getSplitLibFile().exists() or (getSplitAsmDir().exists() and not cfg.keep_objects):
-        echo ("Splitting assembly (may take a few minutes)")
-
-        if getSplitLibFile().exists():
-            getSplitLibFile().unlink()
-        if getSplitAsmDir().exists():
-            shutil.rmtree(getSplitAsmDir(), ignore_errors=True)
-        if getSplitObjDir().exists():
-            shutil.rmtree(getSplitObjDir(), ignore_errors=True)
-        
-        splector.split.run()
-
-        if not getSplitAsmDir().exists():
-            fail ("Splits are missing.")
-
-        echo ("Recompiling splits")
-
-        setup_compiler(cfg.compiler)
-
-        flags_asm = default_flags_comp
-        flags_asm.extend(default_flags_comp_asm)
-        if cfg.flags_compile:
-            flags_asm.extend(cfg.flags_compile)
-        if cfg.flags_compile_asm:
-            flags_asm.extend(cfg.flags_compile_asm)
-
-        getSplitObjDir().mkdir(parents=True, exist_ok=True)
-
-        for asm in getSplitAsmDir().rglob("*.s"):
-            output = getSplitObjDir() / asm.with_suffix(".o").name
-            echo (f"> {output.name} <", "\r")
-
-            asm_flags = flags_asm + ["-o", str(output), str(asm)]
-            do_assemble(asm_flags)
-
-            if not asm.name.startswith("a"):
-                output.replace(getSplitPath() / output.name)
-
-        echo ("Archiving splits")
-
-        ar_path = str(getSplitLibFile())
-        getBuildLibPath().mkdir(parents=True, exist_ok=True)
-        for obj in getSplitObjDir().rglob("*.o"):
-            echo (f"> {obj.name} <", "\r")
-            flags_ar = ["-rcn", ar_path, str(obj)]
-            do_archive(flags_ar)
-
-        flags_ar = ["-s", ar_path]
-        do_archive(flags_ar)
-
-        if not cfg.keep_objects:
-            shutil.rmtree(getSplitAsmDir(), ignore_errors=True)
-            shutil.rmtree(getSplitObjDir(), ignore_errors=True)
-    else:
+    if not clear and getSplitLibFile().exists() and (getSplitAsmDir().exists() and cfg.keep_objects):# and not isSymMapDiff():
         echo ("Assembly up to date")
+        return
+
+    echo ("Splector11 (may take a few minutes)!")
+    if not clear:
+        echo (" if you need to regenerate it later, run with \'-cs\'.")
+
+    if getSplitAsmDir().exists():
+        shutil.rmtree(getSplitAsmDir(), ignore_errors=True)
+    if getSplitObjDir().exists():
+        shutil.rmtree(getSplitObjDir(), ignore_errors=True)
+    
+    splector.split.run()
+
+    if not getSplitAsmDir().exists():
+        fail ("Splits are missing.")
+
+    echo ("Recompiling splits")
+
+    setup_compiler(cfg.compiler)
+
+    flags_asm = default_flags_comp
+    flags_asm.extend(default_flags_comp_asm)
+    if cfg.flags_compile:
+        flags_asm.extend(cfg.flags_compile)
+    if cfg.flags_compile_asm:
+        flags_asm.extend(cfg.flags_compile_asm)
+
+    getSplitObjDir().mkdir(parents=True, exist_ok=True)
+
+    for asm in getSplitAsmDir().rglob("*.s"):
+        output = getSplitObjDir() / asm.with_suffix(".o").name
+        echo (f"> {output.name} <", "\r")
+
+        asm_flags = flags_asm + ["-o", str(output), str(asm)]
+        do_assemble(asm_flags)
+
+        if not asm.name.startswith("a"):
+            output.replace(getSplitPath() / output.name)
+
+    echo ("Prelinking recomp")
+
+    # generate .via
+    via_path = getSplitPath() / "splector.via"
+
+    with open(via_path, "w") as f:
+        for s in getSplitObjDir().glob("*.o"):
+            f.write(str(s))
+            f.write(" ")
+
+    out_name = str(getSplitObjFile())
+
+    # prelink all objs
+    flags_link = default_flags_link + ["--partial", f"--output={out_name}", f"--via={via_path}", "--no_map", "--no_symbols", "--no_locals"]
+    do_link(flags_link, True)
+
+    if not getSplitObjFile().exists():
+        fail ("Splector recompilation is missing.")
+
+    # strip debug
+    flags_strip = [out_name, "--elf", "--strip=debug,comment,notes", "--output", out_name]
+    do_export(flags_strip)
+
+    if not getSplitObjFile().exists():
+        fail ("Splector recompilation went missing while stripping.")
+
+    # generate archive
+    echo ("Archiving recomp")
+    ar_path = str(getSplitLibFile())
+
+    getBuildLibPath().mkdir(parents=True, exist_ok=True)
+
+    flags_ar = ["-rcs", ar_path, str(getSplitObjFile())]
+    do_archive(flags_ar)
+
+    # cleanup
+    if not cfg.keep_objects:
+        shutil.rmtree(getSplitPath(), ignore_errors=True)
 

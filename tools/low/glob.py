@@ -54,6 +54,8 @@ def getCfgFlagsFile(): # List of all modules + flags
     return getDataDir() / ".flags"
 def getCfgFlagsTFile(): # List of all modules + flags (temp)
     return getDataDir() / "..flags"
+def getCfgSymsFile(): # List of all symbols + files
+    return getDataDir() / ".syms"
 def getMapFile(): # Map for all symbols
     return getVerDir() / "map.csv"
 def getBinFile(): # Path of original code binary
@@ -93,6 +95,8 @@ def getSplitObjDir():
     return getSplitPath() / "obj"
 def getSplitLibName():
     return "splector"
+def getSplitObjFile():
+    return getSplitPath() / "splector.o"
 def getSplitLibFile():
     return getBuildLibPath() / f"lib{getSplitLibName()}.a"
 def getDependFile():
@@ -102,10 +106,17 @@ def getDependFile():
 # ui
 def echo(str, end="\n"):
     print (f"\033[38;5;221m{str}\033[0m\033[K", end=end)
-def fail(err):
-    raise RuntimeError(f"\033[38;5;196mError: {err}\033[0m\033[K")
-def fail_ex(err, info):
-    raise RuntimeError(f"Failure!\n\033[38;5;196mError: {err}\033[0m\033[K\n\033[38;5;82m{info}\033[0m\033[K")
+def _fail_base(msg, det):
+    if det: # backtrace
+        raise RuntimeError(f"Failure!\n{msg}")
+    else: # simple
+        echo (msg)
+        exit (1)
+def fail(err, det=True):
+    _fail_base(f"\033[38;5;196mError: {err}\033[0m\033[K", det)
+        
+def fail_ex(err, info, det=True):
+    _fail_base(f"\033[38;5;196mError: {err}\033[0m\033[K\n\033[38;5;82m{info}\033[0m\033[K", det)
 
 # enable ansi colors on windows
 if os.name == "nt":
@@ -118,3 +129,4 @@ if os.name == "nt":
 
 # read config
 cfg.read(getVerDir(), getDataDir())
+

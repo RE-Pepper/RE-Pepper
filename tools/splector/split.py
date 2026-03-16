@@ -19,7 +19,7 @@ from tools.low.__readHead import *
 # Code is detected with references, where functions must already exist within a map (not detected)
 # use init.py to detect functions for initial map analysis
 
-file_sym_count_max = 32
+file_sym_count_max = 111
 
 md = None
 
@@ -665,7 +665,7 @@ def run(do_update=None):
     upd_status("Splecting and writing assembly")
 
     # Start writing data
-    set_status ("Splecting funcs ")
+    set_status ("Splecting func ")
 
     # extra data ranges
     for a, sym in ranges.items():

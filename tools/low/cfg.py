@@ -55,7 +55,8 @@ flags_link = None
 # Switches
 only_matching = False
 allow_shifting = True
-keep_objects = False
+keep_objects = True
+do_split = True
 
 # Dict of macros
 macros = {}
@@ -73,44 +74,41 @@ def _fail(str):
     exit(1)
 
 def checkStrEntry(data, name):
-    my_entry = data.get(name)
-    if my_entry:
+    if name in data:
         if globals()[name]:
-            globals()[name] += str(my_entry)
+            globals()[name] += str(data.get(name))
         else:
-            globals()[name] = str(my_entry)
+            globals()[name] = str(data.get(name))
 def checkIntEntry(data, name):
-    my_entry = data.get(name)
-    if my_entry:
-        globals()[name] = int(my_entry)
+    if name in data:
+        globals()[name] = int(data.get(name))
 def checkBolEntry(data, name):
-    my_entry = data.get(name)
-    if my_entry:
-        globals()[name] = bool(my_entry)
+    if name in data:
+        globals()[name] = bool(data.get(name))
         print (name)
 def checkSetEntry(data, name):
-    my_entry = data.get(name)
-    if my_entry:
+    if data.get(name):
         if globals()[name]:
-            globals()[name].extend(set(my_entry))
+            globals()[name].extend(set(data.get(name)))
         else:
-            globals()[name] = set(my_entry)
+            globals()[name] = set(data.get(name))
 def checkArrEntry(data, name):
-    my_entry = data.get(name)
-    if my_entry:
+    if name in data:
         if globals()[name]:
-            globals()[name].extend(list(my_entry))
+            globals()[name].extend(list(data.get(name)))
         else:
-            globals()[name] = list(my_entry)
+            globals()[name] = list(data.get(name))
 def checkDctEntry(data, name):
-    my_entry = data.get(name)
-    if my_entry:
+    if name in data:
         if globals()[name]:
-            globals()[name].update(dict(my_entry))
+            globals()[name].update(dict(data.get(name)))
         else:
-            globals()[name] = dict(my_entry)
+            globals()[name] = dict(data.get(name))
 
 def readFile(path):
+    if not path.exists():
+        return
+
     global project_name, app_name, decompme_id, versions, modules, extensions
 
     try:
@@ -134,6 +132,7 @@ def readFile(path):
     checkBolEntry(data, "only_matching")
     checkBolEntry(data, "allow_shifting")
     checkBolEntry(data, "keep_objects")
+    checkBolEntry(data, "do_split")
 
     my_modules = data.get("modules")
     if my_modules:
@@ -178,13 +177,9 @@ def read(verDir, dataDir):
     if not os.path.exists(str(dataDir / "config.json")):
         _fail ("Missing config.json in data/.")
 
-    readFile(str(dataDir / "config.json"))
-    
-    if not os.path.exists(str(verDir / "config.json")):
-        assertCfg()
-        return
-
-    readFile(str(verDir / "config.json"))
+    readFile(dataDir / "config.json")
+    readFile(verDir / "config.json")
+    readFile(dataDir / "config.user.json")
 
     assertCfg()
 

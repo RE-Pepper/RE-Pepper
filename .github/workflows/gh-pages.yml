@@ -41,8 +41,8 @@ jobs:
     - name: Clone repo
       uses: GuillaumeFalourd/clone-github-repo-action@v2.3
       with:
-        owner: 'RedPepperDec'
-        repository: 'RedPepperWiki'
+        owner: 'DecPepper'
+        repository: 'DecPepperWiki'
         branch: 'master'
         persist-credentials: false
         access-token: ${{ secrets.GH_TOKEN }}
@@ -74,11 +74,11 @@ jobs:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         mkdir priv
-        mv RedPepperWiki priv/RedPepperWiki
-        python -m mkdocs build --config-file priv/RedPepperWiki/mkdocs.yml
+        mv DecPepperWiki priv/DecPepperWiki
+        python -m mkdocs build --config-file priv/DecPepperWiki/mkdocs.yml
         # upload
-        git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/RedPepperDec/RedPepper.git
-        echo "prp.moddi.dev" >> priv/RedPepperWiki/site/CNAME
+        git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/DecPepper/DecPepper.git
+        echo "prp.moddi.dev" >> priv/DecPepperWiki/site/CNAME
         echo "Set CNAME"
-        python -m ghp_import -n -f -p -b website priv/RedPepperWiki/site
+        python -m ghp_import -n -f -p -b website priv/DecPepperWiki/site
 

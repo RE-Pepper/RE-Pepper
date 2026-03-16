@@ -121,10 +121,7 @@ def traverseFile(pat, sym=None, main_data=None, traversed=None):
 
     return content, main_data
 
-def genCtxs(path, symbol): # what is this again
-    ctx_data, main_data = traverseFile(path, symbol)
-    return "".join(ctx_data), "".join(main_data)
-def gen_ctx(path):
+def gen_ctx(path, symbol):
     ctx_data, main_data = traverseFile(path)
     return "".join(ctx_data), "".join(main_data)
 

@@ -22,19 +22,31 @@ except ImportError:
 def find_source_path(sym_name):
     with open(getElfFile(), "rb") as f:
         elf = ELFFile(f)
-        last_file = None
-        func_syms = []
 
-        print ("Collecting functions ...")
-        
         for section in elf.iter_sections():
+            if not isinstance(section, SymbolTableSection):
+                continue
 
+            # found sym section
+            last_file = None
 
-            echo (section.name)
-            echo (section)
-            if isinstance(section, SymbolTableSection):
-                for sym in section.iter_symbols():
-                    echo (sym['st_info'])
+            for sym in section.iter_symbols():
+                sym_type = sym['st_info']['type']
+
+                if (sym.name.startswith("$")):
+                    continue
+
+                echo (sym.name)
+                #if (sym_type == "STT_FILE"):
+                #    last_file = sym.name
+                #elif not (last_file == str(getDependFile())):
+                #    if sym_name == sym.name:
+                #        echo (sym.name)
+                #        return str(last_file)
+
+            break
+
+    return None
 
 def get_obj_path (str):
     if not os.path.exists(Path(getBuildPath()) / "compile_commands.json"):
@@ -86,19 +98,22 @@ def upload (sym_name, show_name, ctx, src, obj_path):
 
 def main():
     if len(sys.argv) <= 1:
-        print ("Missing argument: Symbol")
-        return
+        fail ("Missing argument: Symbol", False)
+
+
+    echo ("Finding source file ...")
 
     sym = sys.argv[1]
     path = find_source_path(sym)
-    if (path is None):
+    if not path:
         if(get_symbol(sym)):
-            print ("Symbol found in map, but not in compilation. Make sure you put the symbol in a file before uploading!")
+            fail ("Symbol found in map, but not in compilation. Make sure you put the symbol in a file before uploading!")
         else:
-            print ("Symbol not found. Did you spell it correctly?")
-        return
+            fail ("Symbol not found. Did you spell it correctly?")
 
-    print ("Collecting code ...")
+    echo (f"Found in {path}")
+
+    echo ("Collecting code ...")
     data, main = genCtxs(path, sym)
 
     #for line in data:
@@ -108,24 +123,23 @@ def main():
 
     path_obj = get_obj_path (path)
     if path_obj is None:
-        print ("compile_commands.json missing, please build!")
-        return
+        fail ("compile_commands.json missing, please build!")
 
     if is_filter:
         name = cxxfilt.demangle (sym)
     else:
         name = sym
 
-    print(f"Source file: {path}")
-    print(f"Lines: ctx {len(data.splitlines())}, src {len(main.splitlines())}")
-    if input("Ready to upload? (y/N): ").strip().lower() not in ("y", "yes", "j", "ja"):
+    echo (f"Source file: {path}")
+    echo (f"Lines: ctx {len(data.splitlines())}, src {len(main.splitlines())}")
+    if input("Ready to upload? (y/N) ").strip().lower() not in ("y", "yes", "j", "ja"):
         return
-    
+
     base_url, claim_url = upload(sym, name, data, main, path_obj)
 
-    print (f"Scratch created. Good luck matching {name}!.")
-    print (f" -> Claim: {claim_url}")
-    print (f" -> Url: {base_url}")
+    echo (f"Scratch created. Good luck matching {name}, and may armcc be with you.")
+    echo (f" -> Claim: {claim_url}")
+    echo (f" -> Url: {base_url}")
 
 if __name__ == "__main__":
     main()

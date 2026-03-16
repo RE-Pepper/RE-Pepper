@@ -1,5 +1,5 @@
 {
-  "project_name": "RedPepper",
+  "project_name": "DecPepper",
   "app_name": "CtrApp",
   "decompme_id": 8,
   "default_version" : "eu",
@@ -51,6 +51,9 @@
     "--no_remove",
     "--vfemode=off",
     "--no_strict_visibility",
-    "--no_list_mapping_symbols"
+    "--no_list_mapping_symbols",
+    "--show_parent_lib",
+    "--show_full_path"
   ]
 }
+

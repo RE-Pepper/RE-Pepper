@@ -42,7 +42,7 @@ def convertFile(file):
 
     try:
         text = data.decode('utf-8')
-        with open("/data/decomp/RedPepper/priv/test_out", 'wb') as f:
+        with open(file, 'wb') as f:
             f.write(text.encode('shift_jis'))
     except Exception as e:
         fail (f"Conversion failed for {file}: {e}")
@@ -95,7 +95,7 @@ def exec_build():
     if getCfgFlagsTFile().exists():
         getCfgFlagsTFile().unlink()
 
-    check_wibo()
+    getCfgSymsFile().unlink()
 
     # precreate flags
     base_flags = []
@@ -213,7 +213,7 @@ def exec_build():
                 if not out_path.exists():
                     fail_ex ("Output not found.", f"Missing {str(out_path)}")
                 else:
-                    ar_arg = ["-rcn", str(mod_ar_file), str(out_path)]
+                    ar_arg = ["-rn", str(mod_ar_file), str(out_path)]
                     do_archive(ar_arg)
                     obj_new_list.add(out_path)
 
