@@ -10,18 +10,19 @@ from tools.low.glob import * # globals
 def main():
     parser = argparse.ArgumentParser('make.py', description="Build the Super Mario 3D Land decompilation project")
     parser.add_argument("version", nargs="?", default=None, help="Version to use")
+    parser.add_argument("--warn", '-w', action='store_true', help="Omit many warnings (nintendo standard)")
+    parser.add_argument("--match_only", '-mo', action='store_true', help="Compile only matching code")
+    parser.add_argument("--no_shift", '-sh', action='store_true', help="Disable shifting during linking")
+    parser.add_argument("--no_split", '-sp', action='store_true', help="Disable splitting process (less accurate but faster)")
+    parser.add_argument("--vfe", '-vf', action='store_true', help="Enable VFE for building")
+    parser.add_argument("--debug", '-d', action='store_true', help="Build with debug info")
+    parser.add_argument("--debug_obj", '-do', action='store_true', help="Build with debug info (objects only)")
+    parser.add_argument("--debug_link", '-dl', action='store_true', help="Build with debug info (linker only)")
+    parser.add_argument("--delete", '-k', action='store_true', help="Delete temporary built files")
     parser.add_argument("--clean", '-c', action='store_true', help="Clean before building (and stop)")
     parser.add_argument("--clear_all", '-ca', action='store_true', help="Clean split and build (and continue)")
     parser.add_argument("--clear_build", '-cr', action='store_true', help="Clean build (and continue)")
     parser.add_argument("--clear_split", '-cs', action='store_true', help="Clean split (and continue)")
-    parser.add_argument("--delete", '-k', action='store_true', help="Delete temporary built files")
-    parser.add_argument("--debug", '-d', action='store_true', help="Build with debug info")
-    parser.add_argument("--debug_obj", '-do', action='store_true', help="Build with debug info (objects only)")
-    parser.add_argument("--debug_link", '-dl', action='store_true', help="Build with debug info (linker only)")
-    parser.add_argument("--match_only", '-m', action='store_true', help="Compile only matching code")
-    parser.add_argument("--no_shift", '-ms', action='store_true', help="Disable shifting during linking")
-    parser.add_argument("--warn", '-w', action='store_true', help="Omit many warnings (nintendo standard)")
-    parser.add_argument("--vfe", '-fv', action='store_true', help="Flag: Enable VFE")
     args = parser.parse_args()
     sys.argv = [sys.argv[0]] # clear args
 
@@ -40,6 +41,8 @@ def main():
         cfg.only_matching = True
     if args.no_shift:
         cfg.allow_shifting = False
+    if args.no_split:
+        cfg.do_split = False
     if args.delete:
         cfg.keep_objects = True
     if args.debug_obj:

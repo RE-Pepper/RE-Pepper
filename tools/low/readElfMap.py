@@ -8,6 +8,8 @@ from enum import IntEnum
 
 from tools.low.glob import *
 
+# Read build/ver/Project.map
+
 #  __ctr_start                              0x00100000   ARM Code      36  crt0.o(.emb_text)
 class ElfMapFmt(IntEnum):
     Symbol = 0

@@ -5,8 +5,8 @@ import argparse
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from tools.low.glob import *
-from tools.low.__readElf import *
-from tools.low.__readMap import *
+from tools.low.readElfMap import *
+from tools.low.readSymMap import *
 
 try:
     import cxxfilt

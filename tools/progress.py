@@ -15,7 +15,7 @@ from git import Repo
 from pathlib import Path
 from colorama import Fore
 
-from tools.low.__readMap import *
+from tools.low.readSymMap import *
 
 def write_release_txt(ver: str, u: str, o: str, m: str, mm: str, total: str, bytes: str):
     textt = f"""## {ver.upper()} Matched: *{bytes}*
@@ -86,7 +86,7 @@ def main():
 
     write_type('Total', "Total Functions", str(syms_total), 'inactive');
     write_type('OK', "Matching", str(syms_ok), "success");
-    write_type('NonMatching', "Non-matching", str(syms_major + syms_minor), "yellow");
+    write_type('NonMatching', "Non-matching", str(syms_major + syms_minor), "yellow.);
     write_type('Code', "code.bin", bytes_ok_str, "informational");
 
     x_values = [datetime.datetime.now()]

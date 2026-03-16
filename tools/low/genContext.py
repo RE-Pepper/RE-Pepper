@@ -10,6 +10,8 @@ from tools.pypstem.manSetup import *
 from tools.pypstem._utils import *
 from tools.low.glob import *
 
+# Generate ctx for a single source
+
 base_code_dirs = set()
 for mod_path_name, mod_data in cfg.modules.items():
     base_code_dirs.add(getModInc(mod_path_name, mod_data))

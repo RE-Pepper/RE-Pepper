@@ -4,15 +4,15 @@ __pycache__/
 [Pp]riv/
 
 data/.*
+data/config.user.json
 data/compilers
 data/stats/
 data/stats/*
 data/stats/*/*
-compile_commands.json
+
 objdiff.json
-data/ver/*.bin
-data/*.bin
-data/ver/*/*.bin
+compile_commands.json
+
 .changes
 *.csv_b
 *.m2c

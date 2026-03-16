@@ -12,8 +12,8 @@ from capstone.arm import *
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from splector._utils import *
 from tools.low.glob import getBinFile, getSplitAsmDir
-from tools.low.__updateMap import updateFull
-from tools.low.__readHead import *
+from tools.low.updateMap import updateFull
+from tools.low.readHeader import *
 
 # Reads every function notes different cases, and disassembles the binary.
 # Code is detected with references, where functions must already exist within a map (not detected)
@@ -778,10 +778,6 @@ def run(do_update=None):
 
     write_asm_file()
 
-    # write depend file
-    func_exts.update(list(sym_map.values()))
-    write_asm_file("depend.s", True, False)
-
     if flag_ffaddr != 0:
         echo (f"SPLIT INCOMPLETE, STARTED FROM {flag_ffaddr}")
     echo (f"Wrote {count_syms} symbols among {count_lines} lines in {count_files} files")
@@ -819,6 +815,9 @@ def run(do_update=None):
         sym_list.sort(key=lambda x: x[MapFmt.Start])  # sort it
 
         updateFull(sym_list)
+
+    func_exts.update(list(map(sym_map)))
+    write_asm_file("depend.s", True, False)
 
     set_status("Splectoratic!")
     set_progress("")

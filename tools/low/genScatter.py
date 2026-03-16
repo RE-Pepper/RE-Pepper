@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 import os
 from tools.low.glob import *
-from tools.low.__readMap import *
-from tools.low.__utilsElf import typeToSectionLinker
-from tools.low.__readHead import *
+from tools.low.readSymMap import *
+from tools.low.getSection import typeToSectionLinker
+from tools.low.readHeader import *
 
 def endPart(str):
     return str.split('\n', 1)[1] + "\t}\n"

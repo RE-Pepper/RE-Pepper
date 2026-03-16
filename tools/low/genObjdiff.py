@@ -5,8 +5,10 @@ from colorama import Fore, Style
 from elftools.elf.elffile import ELFFile
 from elftools.elf.sections import SymbolTableSection
 
-from tools.low.__genContext import gen_ctx
+from tools.low.genContext import gen_ctx
 from tools.low.glob import *
+
+# Generate objdiff.json (WNIP)
 
 def get_paths_for (file):
     paths = get_paths()

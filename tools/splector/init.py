@@ -7,7 +7,7 @@ from capstone import *
 from capstone.arm import *
 tools.low.glob import *
 from splector._utils import *
-tools.low.__updateMap import updateFull
+tools.low.updateMap import updateFull
 
 # goal: find all function starts
 # bl calls = sure

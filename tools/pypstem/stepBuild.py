@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import os
+import json
 import subprocess
+from tools.low.readElfSym import *
 from tools.low.glob import *
 from tools.pypstem.manSetup import *
 from tools.pypstem.callProcess import *
@@ -51,7 +53,7 @@ def exec_build():
     echo ("Building modules")
 
     global flags_asm, flags_cxx
-
+    read_elfsym("/data/decomp/RedPepper/build/eu/obj/lib/CtrSDK/sources/fs/*.o")
     if not cfg.modules or len(cfg.modules) <= 0:
         echo ("No modules are specified, nothing to build.")
         return
@@ -65,7 +67,7 @@ def exec_build():
 
     # read file list
     data_old = None
-    if os.path.exists(getCfgListFile()):
+    if getCfgListFile().exists():
         data_old = {}
         with open(getCfgListFile(), "r") as f:
             for line in f:
@@ -77,7 +79,7 @@ def exec_build():
 
                 data_old[row[0]] = int(row[1])
     flags_old = None
-    if os.path.exists(getCfgFlagsFile()):
+    if getCfgFlagsFile().exists():
         flags_old = {}
         with open(getCfgFlagsFile(), "r") as f:
             for line in f:
@@ -92,10 +94,13 @@ def exec_build():
                 else:
                     flags_old[row[0]] = row[1]
 
+    json_syms = {}
+    if getCfgSymsFile().exists():
+        with open(getCfgSymsFile(), "r") as f:
+            json_syms = json.load(f)
+
     if getCfgFlagsTFile().exists():
         getCfgFlagsTFile().unlink()
-
-    getCfgSymsFile().unlink()
 
     # precreate flags
     base_flags = []
@@ -133,10 +138,14 @@ def exec_build():
         mod_path = getModSrc(mod_path_name, mod_data)
         module_paths[mod_path_name] = mod_path
 
+        mod_extensions = cfg.extensions
+        if "extensions" in mod_data:
+            mod_extensions = mod_data.get("extensions")
+
         module_files[mod_path_name] = set()
         for file in mod_path.rglob("**.*"):
             # check file extension
-            if not file.suffix.lstrip(".") in cfg.extensions:
+            if not file.suffix.lstrip(".") in mod_extensions:
                 continue
 
             module_files[mod_path_name].add(file)
@@ -183,6 +192,8 @@ def exec_build():
         force_update = False
         if (new_flags_cxx_hash != old_flags_cxx) or (new_flags_asm_hash != old_flags_asm):
             force_update = True # flags mismatch
+        if not getCfgSymsFile().exists():
+            force_update = True
 
         # iterate files
         for file in sorted(module_files[mod_path_name]):
@@ -203,19 +214,29 @@ def exec_build():
                 do_update = True
 
             if do_update: # build it
+                # set progress
                 file_counter += 1
                 progress_set(f"{file.name}", file_counter)
                 progress_print()
-            
+
+                # build it
                 convertFile(file)
                 buildFile(file, out_path)
 
+                # post process
                 if not out_path.exists():
                     fail_ex ("Output not found.", f"Missing {str(out_path)}")
-                else:
-                    ar_arg = ["-rn", str(mod_ar_file), str(out_path)]
-                    do_archive(ar_arg)
-                    obj_new_list.add(out_path)
+
+                ar_arg = ["-rn", str(mod_ar_file), str(out_path)]
+                do_archive(ar_arg)
+
+                if file_str in json_syms:
+                    del json_syms[file_str]
+                json_syms[file_str] = []
+                for sym in read_elfsym(out_path):
+                    json_syms[file_str].append(sym[ElfSymFmt.Symbol])
+
+                obj_new_list.add(out_path)
 
             data_new[file_str] = timestamp
             data_new_names.add(file.name)
@@ -267,3 +288,5 @@ def exec_build():
     with open(getCfgListFile(), "w") as f:
         for file, time in data_new.items():
             f.write(f"{file} {time}\n")
+    with open(getCfgSymsFile(), "w") as f:
+        json.dump(json_syms, f)

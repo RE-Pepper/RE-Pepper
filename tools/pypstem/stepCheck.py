@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import shutil
 from tools.low.glob import *
-from tools.low.__utilsVersion import *
+from tools.low.utilsVersion import *
 from tools.pypstem.manSetup import check_wibo
 
 def sayHi():

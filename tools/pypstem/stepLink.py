@@ -3,7 +3,7 @@ from tools.pypstem._utils import *
 from tools.pypstem.callProcess import do_link
 from tools.pypstem.manSetup import setup_compiler
 from tools.low.glob import *
-from tools.low.__genScatter import gen_scatter
+from tools.low.genScatter import gen_scatter
 
 def exec_link():
     echo ("Generating ldscript")
@@ -33,7 +33,8 @@ def exec_link():
             my_name = str(mod_data.get("name"))
             flags.append(f"--library={my_name}")
 
-    flags.append(f"--library={getSplitLibName()}")
+    if cfg.do_split:
+        flags.append(f"--library={getSplitLibName()}")
 
     echo (f"Linking {getElfFile().name}")
 

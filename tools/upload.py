@@ -8,8 +8,8 @@ from elftools.elf.sections import SymbolTableSection
 
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
-from tools.low.__genContext import gen_ctx, find_file_path
-from tools.low.__readMap import get_symbol
+from tools.low.genContext import gen_ctx, find_file_path
+from tools.low.readSymMap import get_symbol
 from tools.low.glob import *
 
 try:
@@ -132,7 +132,7 @@ def main():
 
     echo (f"Source file: {path}")
     echo (f"Lines: ctx {len(data.splitlines())}, src {len(main.splitlines())}")
-    if input("Ready to upload? (y/N) ").strip().lower() not in ("y", "yes", "j", "ja"):
+    if input("Ready to upload? (y/N) ").strip().low.r() not in ("y", "yes", "j", "ja"):
         return
 
     base_url, claim_url = upload(sym, name, data, main, path_obj)

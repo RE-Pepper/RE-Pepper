@@ -6,6 +6,8 @@ from enum import IntEnum
 
 from tools.low.glob import *
 
+# Read Ext Header from game (exheader.bin) and get section offsets
+
 class HeadType(IntEnum):
     Text = 0
     Ro = 1

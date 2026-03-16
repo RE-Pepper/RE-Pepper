@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 print ("The check has begun ...")
     
-from tools.low.__updateMap import *
-from tools.low.__readMap import *
-from tools.low.__readElf import *
+from tools.low.updateMap import *
+from tools.low.readSymMap import *
+from tools.low.readElfMap import *
 import multiprocessing
 import threading
 import argparse

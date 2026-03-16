@@ -8,8 +8,8 @@ from pathlib import Path
 from capstone import *
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
-from tools.low.__readMap import *
-from tools.low.__utilsElf import typeToSection
+from tools.low.readSymMap import *
+from tools.low.getSection import typeToSection
 
 curname = ""
 curstatus = "Initializing"

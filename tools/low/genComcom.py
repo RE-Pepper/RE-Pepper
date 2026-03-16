@@ -3,6 +3,8 @@ from os import path
 from tools.low.glob import *
 from tools.pypstem._utils import getFileBuildPath
 
+# Generate compiler_commands.json
+
 def gen_comcom():
     directory = str(getBuildObjPath())
     command = ""

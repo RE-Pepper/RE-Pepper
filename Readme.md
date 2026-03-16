@@ -1,30 +1,34 @@
-# DecPepper
+# RE:Pepper
  
-This is a decompilation of Super Mario 3D Land (note that retail JP, KO, TW, and US versions are nearly identical).  
+This is a reverse engineering project for Super Mario 3D Land.  
 It is also fork from RedPepper on 3dsdecomp's github, massively upgrading the way it works.  
 Currently, this decompilation only targets the European version, but multiversion support was added and is experimental.  
   
 > [!IMPORTANT]
 > Reminder: **this will not produce a playable game.** This project will not allow you to play the game if you don't already own it.
   
-Check out the [docs](https://prp.moddi.dev)!
+> [!NOTE]
+> This project was built in a way that allows for easy customization. If this were to be forked for another game, MIT License applies to the toolchain. The decompiled code is CC0.
+  
+Check out the [docs](https://prp.moddi.dev)!  
+Chat about [3DS Decompilation](https://discord.gg/dFgw7CwrEX)!  
+Ask in the [3DL Discord](https://discord.gg/wK4ZKa9QXq)!  
 
 ## Progress (EU)
 
-<img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/DecPepper/DecPepper/releases/download/stats-eu/Code.json&style=flat-square"/> <img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/RedPepperDec/RedPepper/releases/download/stats-eu/Total.json&style=flat-square"/>
+<img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/REPepper/REPepper/releases/download/stats-eu/Code.json&style=flat-square"/> <img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/RedPepperDec/RedPepper/releases/download/stats-eu/Total.json&style=flat-square"/>
 
-<img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/DecPepper/DecPepper/releases/download/stats-eu/OK.json&style=flat-square"/> <img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/RedPepperDec/RedPepper/releases/download/stats-eu/NonMatching.json&style=flat-square"/>
+<img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/REPepper/REPepper/releases/download/stats-eu/OK.json&style=flat-square"/> <img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/RedPepperDec/RedPepper/releases/download/stats-eu/NonMatching.json&style=flat-square"/>
 
-![Progress](https://github.com/DecPepper/DecPepper/releases/download/stats-eu/Progress.png)
+![Progress](https://github.com/REPepper/REPepper/releases/download/stats-eu/Progress.png)
 
 ## How To
 
-As noted earlier, this fork made some updates regarding structure of some files.  
-- code.bin goes to the data/ folder.  
+As noted earlier, this fork of the RedPepper project made some updates:  
 - symbol files are gone, instead use the .csv files inside of the data/ folder.  
-- cmake scrapped and wrote custom build system
-- upgrade tooling
-- rebuild assembly (for possible modding support)
+- cmake scrapped and wrote custom build system along with new tools  
+- code.bin and exh.bin go to the data/ folder.  
+- rebuild assembly (for "possible" modding support)  
 
 ### Prequesites
     - Python 3
@@ -42,7 +46,7 @@ As noted earlier, this fork made some updates regarding structure of some files.
   - upload.py: `requests`
 
 #### Project
-- Clone this repository using ```git clone https://github.com/DecPepper/DecPepper.git```
+- Clone this repository using ```git clone https://github.com/REPepper/REPepper.git```
 - Enter directory, and clone submodules using ```git submodule update --init --recursive```
 - Place the `code.bin` and `exh.bin` files in the data folder, the tools will put them where needed.
 - run ```py make.py [version]```. default version is EU
@@ -77,6 +81,7 @@ Writes the assembly splits from the code.bin
 Core build system of the project
 
 ## SHASUM
+note: retail JP, KO, TW, and US versions are nearly identical  
 (eu) ```code.bin: e1d7e188ff88467df776c17cec45c44857fadf5b699944baa8cddcae7d939e64```   
 (us) ```code.bin: a38d213506f0477077c4a550f12dfd720e8c9bda00b7688c76b03360a538bb1a```  
 (jp) ```code.bin: 885dcaed5994076732b1f99e452a6f06493c23464ae0509ebbf44b8c6fd614a7```  
@@ -89,7 +94,6 @@ Core build system of the project
 
 ## Links
 
-- [Original Discord Server](https://discord.gg/wK4ZKa9QXq)
 - [Original Wiki](https://al.littun.co/decomp)
 - [decomp.me](https://decomp.me/preset/8)
 

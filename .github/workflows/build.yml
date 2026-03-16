@@ -28,7 +28,7 @@ jobs:
       - name: Checkout build repo
         uses: actions/checkout@v4
         with:
-          repository: DecPepper/DecPepper_Build
+          repository: REPepper/REPepper_Build
           token: ${{ secrets.GH_TOKEN }}
           path: setup
 

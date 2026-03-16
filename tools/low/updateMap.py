@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-from tools.low.__readMap import MapFmt
+from tools.low.readSymMap import MapFmt
 from tools.low.glob import *
+
+# Update map
 
 def make_line(sym):
     line = []

@@ -2,8 +2,8 @@
 from tools.pypstem.callProcess import do_export
 from tools.pypstem._utils import *
 from tools.low.glob import *
-from tools.low.__genComcom import *
-from tools.low.__genObjdiff import *
+from tools.low.genComcom import *
+from tools.low.genObjdiff import *
 
 # TODO: objdiff.json
 
