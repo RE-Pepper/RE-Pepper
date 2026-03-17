@@ -27,7 +27,7 @@ def rank_symbol(symbol, decomp_symbol):
     sym_start = int(symbol[MapFmt.Start]-addr_base)
     decomp_start = int(decomp_symbol[ElfMapFmt.Address]-addr_base)
 
-    sym_size = int(symbol[MapFmt.End] - symbol[MapFmt.Start])
+    sym_size = int(symbol[MapFmt.Pool] - symbol[MapFmt.Start])
     decomp_size = int(decomp_symbol[ElfMapFmt.Size])
     if decomp_size <= 0:
         decomp_size = sym_size
@@ -45,7 +45,7 @@ def rank_symbol(symbol, decomp_symbol):
         str(decomp_size)
     ]
     cmd = " ".join(cmd)
-    #print (cmd)
+    #echo (cmd)
     err = subprocess.run(cmd, shell=True, capture_output=True, text=True)
     if err.returncode != 0:
         fail (f"asm-differ failed:\n"+ err.stderr, False)

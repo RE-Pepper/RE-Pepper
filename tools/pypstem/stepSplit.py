@@ -63,7 +63,11 @@ def write_depend():
     do_assemble(asm_flags)
 
 def write_stubs():
-    if (getBuildLibPath() / "libstubs.a").exists():
+    # add stubs module
+    cfg.modules[str(getSplitPath().relative_to(getProjDir()))] = {"name": "stubs", "extensions": set(["c"]), "source_dir": "."}
+
+    # check if archive exists
+    if (getBuildLibPath() / "libstubs.a").exists() and not isSymMapDiff():
         return
 
     # write stubs.c
@@ -83,9 +87,6 @@ def write_stubs():
                 continue
 
             f.write(f"STUB({func});\n")
-
-    # add stubs module
-    cfg.modules[str(getSplitPath().relative_to(getProjDir()))] = {"name": "stubs", "extensions": set(["c"]), "source_dir": ".", "flags": ["--keep"]}
 
 def exec_split(clear=False):
     if not cfg.do_split:

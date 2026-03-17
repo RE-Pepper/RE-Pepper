@@ -29,14 +29,14 @@ def write_ver(version):
 
 def get_ver(version=None):
     if not os.path.exists(getVerFile()):
-        set_ver(version or cfg.default_version)
-        if not version: print (f"Note: Using default version \'{cfg.default_version}\'")
+        write_ver(version or cfg.default_version)
+        if not version: echo (f"Note: Using default version \'{cfg.default_version}\'")
 
     with open(getVerFile(), 'r') as f:
         ver = f.read()
 
     if len(ver) < 2:
-        print ("Error: invalid version file")
+        fail ("invalid version file")
 
     return ver
 

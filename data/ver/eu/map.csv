@@ -1,29 +1,29 @@
 Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x00100000,          ,0x00100024,          ,m,fg,__ctr_start
 0x00100024,0x00100040,0x00100048,          ,O,f,nninitRegion
-0x00100048,          ,0x00100050,          ,m,f,_printf_percent
-0x00100050,          ,0x00100058,          ,U,f,_printf_p
-0x00100058,          ,0x00100060,          ,U,f,_printf_f
-0x00100060,          ,0x00100068,          ,U,f,_printf_e
-0x00100068,          ,0x00100070,          ,U,f,_printf_g
-0x00100070,          ,0x00100078,          ,U,f,_printf_a
-0x00100078,          ,0x00100084,          ,U,f,_printf_ll
-0x00100084,          ,0x0010008C,          ,U,f,_printf_i
-0x0010008C,          ,0x00100094,          ,U,f,_printf_d
-0x00100094,          ,0x0010009C,          ,U,f,_printf_u
-0x0010009C,          ,0x001000A4,          ,U,f,_printf_o
-0x001000A4,          ,0x001000AC,          ,U,f,_printf_x
-0x001000AC,          ,0x001000B4,          ,U,f,_printf_lli
-0x001000B4,          ,0x001000BC,          ,U,f,_printf_lld
-0x001000BC,          ,0x001000C4,          ,U,f,_printf_llu
-0x001000C4,          ,0x001000CC,          ,U,f,_printf_llo
-0x001000CC,          ,0x001000D4,          ,U,f,_printf_llx
-0x001000D4,          ,0x001000E0,          ,U,f,_printf_l
-0x001000E0,          ,0x001000E8,          ,U,f,_printf_c
-0x001000E8,          ,0x001000F0,          ,O,f,_printf_s
-0x001000F0,          ,0x001000F8,          ,U,f,_printf_lc
-0x001000F8,          ,0x00100100,          ,U,f,_printf_ls
-0x00100100,          ,0x00100108,          ,O,f,_printf_percent_end
+0x00100048,          ,0x00100050,          ,m,fg,_printf_percent
+0x00100050,          ,0x00100058,          ,U,fg,_printf_p
+0x00100058,          ,0x00100060,          ,U,fg,_printf_f
+0x00100060,          ,0x00100068,          ,U,fg,_printf_e
+0x00100068,          ,0x00100070,          ,U,fg,_printf_g
+0x00100070,          ,0x00100078,          ,U,fg,_printf_a
+0x00100078,          ,0x00100084,          ,U,fg,_printf_ll
+0x00100084,          ,0x0010008C,          ,U,fg,_printf_i
+0x0010008C,          ,0x00100094,          ,U,fg,_printf_d
+0x00100094,          ,0x0010009C,          ,U,fg,_printf_u
+0x0010009C,          ,0x001000A4,          ,U,fg,_printf_o
+0x001000A4,          ,0x001000AC,          ,U,fg,_printf_x
+0x001000AC,          ,0x001000B4,          ,U,fg,_printf_lli
+0x001000B4,          ,0x001000BC,          ,U,fg,_printf_lld
+0x001000BC,          ,0x001000C4,          ,U,fg,_printf_llu
+0x001000C4,          ,0x001000CC,          ,U,fg,_printf_llo
+0x001000CC,          ,0x001000D4,          ,U,fg,_printf_llx
+0x001000D4,          ,0x001000E0,          ,U,fg,_printf_l
+0x001000E0,          ,0x001000E8,          ,U,fg,_printf_c
+0x001000E8,          ,0x001000F0,          ,O,fg,_printf_s
+0x001000F0,          ,0x001000F8,          ,U,fg,_printf_lc
+0x001000F8,          ,0x00100100,          ,U,fg,_printf_ls
+0x00100100,          ,0x00100108,          ,O,fg,_printf_percent_end
 0x00100108,0x00100154,0x0010015C,          ,O,f,nnMain
 0x0010015C,0x00100188,0x00100190,          ,U,f,nninitCallStaticInitializers
 0x00100190,0x001001D4,0x001001DC,          ,M,f,nninitLocale
@@ -31,8 +31,8 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x001001FC,0x00100254,0x0010025C,          ,U,f,_ZN2nn6applet3CTR6detail10InitializeEj
 0x0010025C,0x0010030C,0x00100318,          ,M,f,_ZN11Application14createInstanceEPN4sead4HeapE
 0x00100318,0x00100350,0x00100354,          ,U,f,_ZN11Application3runEv
-0x00100354,0x00100690,0x00100714,          ,U,f,_ZN11Application4initEiPPc
-0x00100714,          ,0x0010073C,          ,U,f,_ZN19ApplicationFunction10initializeEiPPc
+0x00100354,0x00100690,0x00100714,          ,U,f,_ZN11Application4initEv
+0x00100714,          ,0x0010073C,          ,U,f,_ZN19ApplicationFunction10initializeEv
 0x0010073C,0x0010074C,0x00100750,          ,m,f,_ZN2nn2fs28ForceDisableLatencyEmulationEv
 0x00100750,0x0010075C,0x00100760,          ,U,f,_ZN2nn2os16GetAppMemorySizeEv
 0x00100760,0x001007B0,0x001007B4,          ,U,f,_ZN2nn2os18GetUsingMemorySizeEv
@@ -9888,9 +9888,9 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x002932B0,0x002932E8,0x002932EC,          ,U,f,
 0x002932EC,0x00293314,0x00293318,          ,U,f,_ZN4sead7HeapMgr15setCurrentHeap_EPNS_4HeapE
 0x00293318,0x0029336C,0x00293374,          ,U,f,
-0x00293374,0x002933B8,0x002933C0,          ,U,f,_ZN4sead9IDisposerC2Ev
+0x00293374,0x002933B8,0x002933C0,          ,U,f,_ZN4sead9IDisposerC1EPNS_4HeapENS0_14HeapNullOptionE
 0x002933C0,          ,0x002933D0,          ,U,f,
-0x002933D0,0x00293414,0x00293418,          ,U,f,
+0x002933D0,0x00293414,0x00293418,          ,U,f,_ZnajPN4sead4HeapEi
 0x00293418,0x00293478,0x0029347C,          ,U,f,
 0x0029347C,          ,0x00293480,          ,U,f,nninitSystem
 0x00293480,          ,0x00293498,          ,U,f,

@@ -24,11 +24,11 @@
     "lib/sead": {
       "name": "Sead",
       "source_dir": "modules/src",
-      "flags_cxx": "--no_vla"
+      "flags_cxx": ["--no_vla"]
     },
     "lib/sead/addins/libms": {
       "name": "MS",
-      "flags_cxx": "--no_vla"
+      "flags_cxx": ["--no_vla"]
     },
     "lib/NintendoWare": {
       "name": "NW",
@@ -58,9 +58,9 @@
     "--sys_include",
     "--signed_chars",
     "--no_rtti_data",
-    "--forceinline",
-    "--preinclude=lib/CtrSDK/include/nn/types.h"
+    "--forceinline"
   ],
+  "flag_preinclude": "lib/CtrSDK/include/nn/types.h",
   "flags_link": [
     "--arm_only",
     "--no_exceptions",

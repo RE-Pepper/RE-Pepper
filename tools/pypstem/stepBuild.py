@@ -126,7 +126,10 @@ def exec_build():
     if cfg.flags_compile_asm:
         base_flags_asm.extend(cfg.flags_compile_asm)
     if cfg.flags_compile_cxx:
-        base_flags_asm.extend(cfg.flags_compile_cxx)
+        base_flags_cxx.extend(cfg.flags_compile_cxx)
+    if cfg.flag_preinclude:
+        preinc_path = getProjDir() / Path(cfg.flag_preinclude)
+        base_flags_cxx.append(f"--preinclude={preinc_path}")
 
     # find files and note length
 
@@ -144,6 +147,11 @@ def exec_build():
 
         module_files[mod_path_name] = set()
         for file in mod_path.rglob("**.*"):
+            if file.suffix.lstrip(".") in ("h"):
+                timestamp = int(file.stat().st_mtime)
+                file_str = os.path.relpath(file, getProjDir())
+                data_new[file_str] = timestamp
+        
             # check file extension
             if not file.suffix.lstrip(".") in mod_extensions:
                 continue
@@ -160,6 +168,7 @@ def exec_build():
     
         mod_ar_name = f"lib{mod_data.get("name")}.a"
         mod_ar_file = getBuildLibPath() / mod_ar_name
+        mod_ar_list = set()
 
         mod_path = module_paths[mod_path_name]
         flags_cxx = base_flags_cxx
@@ -229,7 +238,7 @@ def exec_build():
                     fail_ex ("Output not found.", f"Missing {str(out_path)}")
 
                 # append to archive
-                ar_arg = ["-rn", str(mod_ar_file), str(out_path)]
+                ar_arg = ["-rcn", str(mod_ar_file), str(out_path)]
                 do_archive(ar_arg)
 
                 # add to list
@@ -254,7 +263,7 @@ def exec_build():
                     continue
                 if Path(old_file).name in data_new_names:
                     continue
-                ar_arg = ["-ds", str(mod_ar_file), "--diag_suppress=6831", str(Path(old_file).with_suffix(".o").name)]
+                ar_arg = ["-dcs", str(mod_ar_file), "--diag_suppress=6831", str(Path(old_file).with_suffix(".o").name)]
                 do_archive(ar_arg)
                 did_delete = True
 
@@ -274,7 +283,7 @@ def exec_build():
             echo (f"{line_category}: Unchanged")
             continue
 
-        ar_arg = ["-s", str(mod_ar_file)]
+        ar_arg = ["-sc", str(mod_ar_file)]
         do_archive(ar_arg)
 
         if len(obj_new_list) > 0 and not cfg.keep_objects:

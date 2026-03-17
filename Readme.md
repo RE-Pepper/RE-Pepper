@@ -37,13 +37,13 @@ As noted earlier, this fork of the RedPepper project made some updates:
 
 ### Setup
 #### Python
-- To install all python dependencies at once, do `python3 -m pip install colorama capstone pyelftools requests argcomplete watchdog python-Levenshtein cxxfilt GitPython matplotlib numpy mplcursors`
+- To install all python dependencies at once, do `python3 -m pip install colorama capstone pyelftools requests argcomplete watchdog python-Levenshtein cxxfilt GitPython matplotlib numpy mplcursors questionary`
 - If not, then for individuals:
   - Core: `capstone pyelftools requests`
   - asm-differ: `argcomplete watchdog python-Levenshtein cxxfilt`
   - progress.py: `GitPython matplotlib numpy mplcursors`
   - listsyms.py/upload.py: `cxxfilt` (optional)
-  - upload.py: `requests`
+  - upload.py: `requests questionary`
 
 #### Project
 - Clone this repository using ```git clone https://github.com/RE-Pepper/RE-Pepper.git```

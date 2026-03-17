@@ -52,6 +52,8 @@ flags_compile_asm = None
 # Full flags for linking
 flags_link = None
 
+flag_preinclude = None
+
 # Switches
 only_matching = False
 allow_shifting = False
@@ -127,6 +129,7 @@ def readFile(path):
     checkArrEntry(data, "flags_compile_cxx")
     checkArrEntry(data, "flags_compile_asm")
     checkArrEntry(data, "flags_link")
+    checkStrEntry(data, "flag_preinclude")
     checkSetEntry(data, "macros")
     checkSetEntry(data, "extensions")
     checkBolEntry(data, "only_matching")

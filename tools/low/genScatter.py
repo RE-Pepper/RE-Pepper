@@ -77,8 +77,10 @@ def gen_scatter():
         addr_prev = addr
 
     s_code = endPart(s_code)
-    s_dataro = endPart(s_dataro)
-    s_datarw = endPart(s_datarw)
+    if s_dataro:
+        s_dataro = endPart(s_dataro)
+    if s_datarw:
+        s_datarw = endPart(s_datarw)
 
     with open(Path(getProjDir()) / "data" / "template" / "linker.ld", 'r') as template:
         with open(getOutScatterFile(), 'w') as out:

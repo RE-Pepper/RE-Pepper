@@ -31,9 +31,9 @@ def main():
     decomp_start = int(decomp_symbol[ElfMapFmt.Address]-addr_base)
 
     sym_size = int(symbol[MapFmt.Pool] - symbol[MapFmt.Start])
-    decomp_size = sym_size#int(decomp_symbol[ElfMapFmt.Size])
-    #if decomp_size <= 0:
-    #    decomp_size = sym_size
+    decomp_size = int(decomp_symbol[ElfMapFmt.Size])
+    if decomp_size <= 0:
+        decomp_size = sym_size
 
     if sym_size <= 0:
         fail (f"End address is invalid for {symbolname}")
