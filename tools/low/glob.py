@@ -129,4 +129,5 @@ if os.name == "nt":
 
 # read config
 cfg.read(getVerDir(), getDataDir())
+setCompilerVer(cfg.compiler)
 

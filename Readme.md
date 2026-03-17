@@ -16,11 +16,11 @@ Ask in the [3DL Discord](https://discord.gg/wK4ZKa9QXq)!
 
 ## Progress (EU)
 
-<img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/REPepper/REPepper/releases/download/stats-eu/Code.json&style=flat-square"/> <img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/RedPepperDec/RedPepper/releases/download/stats-eu/Total.json&style=flat-square"/>
+<img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/RE-Pepper/RE-Pepper/releases/download/stats-eu/Code.json&style=flat-square"/> <img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/RedPepperDec/RedPepper/releases/download/stats-eu/Total.json&style=flat-square"/>
 
-<img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/REPepper/REPepper/releases/download/stats-eu/OK.json&style=flat-square"/> <img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/RedPepperDec/RedPepper/releases/download/stats-eu/NonMatching.json&style=flat-square"/>
+<img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/RE-Pepper/RE-Pepper/releases/download/stats-eu/OK.json&style=flat-square"/> <img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/RedPepperDec/RedPepper/releases/download/stats-eu/NonMatching.json&style=flat-square"/>
 
-![Progress](https://github.com/REPepper/REPepper/releases/download/stats-eu/Progress.png)
+![Progress](https://github.com/RE-Pepper/RE-Pepper/releases/download/stats-eu/Progress.png)
 
 ## How To
 
@@ -46,7 +46,7 @@ As noted earlier, this fork of the RedPepper project made some updates:
   - upload.py: `requests`
 
 #### Project
-- Clone this repository using ```git clone https://github.com/REPepper/REPepper.git```
+- Clone this repository using ```git clone https://github.com/RE-Pepper/RE-Pepper.git```
 - Enter directory, and clone submodules using ```git submodule update --init --recursive```
 - Place the `code.bin` and `exh.bin` files in the data folder, the tools will put them where needed.
 - run ```py make.py [version]```. default version is EU

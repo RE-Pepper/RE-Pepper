@@ -178,7 +178,6 @@ def dump_data_ref(addr, caller, tag, sect, is_first=False): #
                 str = ["switch case", f"case_{val:08X}"]
             else: # just local
                 str = ["local ref", f"loc_{val:08X}"]
-                if val == 0x00113E9C: echo ("BRO")
                 if is_asm:
                     ext_calls.add(val)
         elif (val in sym_map) and is_ext: # defined symbol
@@ -816,7 +815,7 @@ def run(do_update=None):
 
         updateFull(sym_list)
 
-    func_exts.update(list(map(sym_map)))
+    func_exts.update(list(map(str, sym_map.values())))
     write_asm_file("depend.s", True, False)
 
     set_status("Splectoratic!")

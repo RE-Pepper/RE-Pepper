@@ -227,16 +227,20 @@ def exec_build():
                 if not out_path.exists():
                     fail_ex ("Output not found.", f"Missing {str(out_path)}")
 
+                # append to archive
                 ar_arg = ["-rn", str(mod_ar_file), str(out_path)]
                 do_archive(ar_arg)
 
-                if file_str in json_syms:
-                    del json_syms[file_str]
-                json_syms[file_str] = []
-                for sym in read_elfsym(out_path):
-                    json_syms[file_str].append(sym[ElfSymFmt.Symbol])
-
+                # add to list
                 obj_new_list.add(out_path)
+
+                # write down symbols in .syms
+                if not str(getBuildPath()) in str(file):
+                    if file_str in json_syms:
+                        del json_syms[file_str]
+                    json_syms[file_str] = []
+                    for sym in read_elfsym(out_path):
+                        json_syms[file_str].append(sym[ElfSymFmt.Symbol])
 
             data_new[file_str] = timestamp
             data_new_names.add(file.name)

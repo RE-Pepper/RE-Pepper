@@ -2,7 +2,6 @@
 import re
 import os
 import sys
-from io import StringIO
 from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
@@ -27,14 +26,14 @@ def getTypeInc(sym=None, main_data=None, traversed=None):
     data, _ = traverseFile (file_path, sym, main_data, traversed)
     return data
 
-def find_file_path(relative_path):
+def findFilePath(relative_path):
     if not relative_path:
         fail ("Cannot find empty string for path.")
 
     if Path(relative_path).exists():
-        return str(p) # direct path given
+        return relative_path # direct path given
 
-    attempt_armcc = Path(get_compiler_env_inc()) / relative_path
+    attempt_armcc = Path(os.environ[get_compiler_env_inc()]) / relative_path
     if attempt_armcc.exists():
         return None # do not resolve arm headers
 
@@ -44,89 +43,85 @@ def find_file_path(relative_path):
         if candidate.exists():
             return candidate
 
-    return None
+    fail (f"Cannot find file: {relative_path}")
 
 def traverseFile(pat, sym=None, main_data=None, traversed=None):
     if main_data is None:
         main_data = []
 
     content = []
-    file_path = str(findFilePath(pat))
+    file_path = findFilePath(pat)
     if not file_path or not file_path.exists():
-        return "", main_data
+        return None, main_data
 
     if traversed is None: traversed = set()
     if file_path in traversed:
-        return "", main_data
+        return None, main_data
 
     traversed.add(file_path)
 
     has_includes = False
-    is_skipping = False
     is_ns_al = False
     is_main_data = True if main_data is None or len(main_data) == 0 else False
     if is_main_data:
         content.append('#define NON_MATCHING\n')
 
         if sym:
-            content.append(f'// Context for {sym} in {file_path}\n')
-            main_data.append(f'// Context for {sym} in {file_path}\n')
+            content.append(f'// Context for {sym} in {file_path.relative_to(getProjDir())}\n')
+            main_data.append(f'// Context for {sym} in {file_path.relative_to(getProjDir())}\n')
         else:
-            content.append(f'// Context from {file_path}\n')
-            main_data.append(f'// Context from {file_path}\n')
+            content.append(f'// Context from {file_path.relative_to(getProjDir())}\n')
+            main_data.append(f'// Context from {file_path.relative_to(getProjDir())}\n')
         
         for l in getTypeInc(sym, main_data, traversed): # to be called after anything is written to main_data.
             content.append(l)
     else:
-        content.append(f"// File: {file_path}\n")
+        content.append(f"// File: {file_path.relative_to(getProjDir())}\n")
 
     with open(file_path, "r", encoding="shift-jis") as f:
-        s = StringIO(f.read())
+        s = f.read().splitlines()
         for line in s:
-            if is_skipping == True:
-                continue
-
             if "#pragma once" in line:
                 continue
 
-            if not "#include" in line: # main append
-                if is_main_data:
-                    main_data.append(line)
-                else:
-                    content.append (line)
-                if "namespace " in line:
-                    is_ns_al = True
+            if "include" in line and "#" in line:
+                incl_path = ""
+                match = re.search(r'"([^"]*)"|<([^>]*)>', line)
+                if not match:
+                    continue
+
+                incl_path = match.group(1) or match.group(2)
+                if not incl_path:
+                    continue
+
+                included, _m = traverseFile (incl_path, sym, main_data, traversed)
+                if not included:
+                    continue
+                    
+                for incl_line in included:
+                    content.append(incl_line)
+                content.append (f"// Included from: {file_path.relative_to(getProjDir())}\n")
+                has_includes = True
                 continue
-            
-            if not '<' in line and not '>' in line and not '\"' in line:
-                continue
 
-            incl_path = ""
-            match = re.search(r'"([^"]*)"|<([^>]*)>', line)
-            if not match:
-                continue
+            if is_main_data:
+                main_data.append(line)
+            else:
+                content.append (line)
+            #if "namespace " in line:
+            #    is_ns_al = True
 
-            incl_path = match.group(1) or match.group(2)
 
-            included, _m = traverseFile (incl_path, sym, main_data, traversed)
-            for incl_line in included:
-                content.append(incl_line)
-            content.append (f"// Includes End: {file_path}\n")
-            has_includes = True
-
-    if is_skipping == True and is_ns_al == True:
+    if is_ns_al == True:
         if is_main_data:
             main_data.append ("Insert code here ...")
-            main_data.append ("}")
-        else:
-            content.append ("}")
+            #main_data.append ("}")
+        #else:
+            #content.append ("}")
 
     return content, main_data
 
 def gen_ctx(path, symbol):
-    ctx_data, main_data = traverseFile(path)
-    return "".join(ctx_data), "".join(main_data)
+    ctx_data, main_data = traverseFile(path, symbol)
+    return "\n".join(ctx_data), "\n".join(main_data)
 
-if __name__ == '__main__':
-    import sys
-    print("".join(genCtx(sys.argv[1])))

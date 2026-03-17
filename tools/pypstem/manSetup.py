@@ -23,7 +23,7 @@ def getCompilerPath(rev, build):
 def download(name_file, path, name_show, is_zip):
     echo (f"Downloading {name_show} ...")
 
-    link = f"https://github.com/REPepper/data/releases/download/dasdasdsa/{name_file}.zip"
+    link = f"https://github.com/RE-Pepper/data/releases/download/dasdasdsa/{name_file}.zip"
 
     try:
         if is_zip:
@@ -51,12 +51,12 @@ def check_wibo():
         return
 
     download("wibo", out, "wibo", False)
-    link = "https://github.com/REPepper/data/releases/download/dasdasdsa/wibo"
+    link = "https://github.com/RE-Pepper/data/releases/download/dasdasdsa/wibo"
     os.chmod(out, 0o755)
 
 def setup_compiler(ver=getCompilerVer()):
     if not ver:
-        ver = getCompilerVer()
+        fail ("Couldnt get compiler version.")
     rev, build = splitVersion(ver)
 
     dir = getCompilerPath(rev, build)

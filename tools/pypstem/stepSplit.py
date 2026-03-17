@@ -125,8 +125,7 @@ def exec_split(clear=False):
         do_assemble(asm_flags)
 
         if not asm.name.startswith("a"):
-            echo (f"Unknown file in split asm: {asm} (ignored)")
-            asm.replace(asm.with_suffix(p.suffix + "_b"))
+            output.replace(getSplitPath() / output.name)
 
     echo ("Prelinking recomp")
 

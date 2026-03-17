@@ -8,12 +8,12 @@ from tools.low.glob import * # globals
 # I guess we have to start again :D (dont want to work with duct tape)
 
 def main():
-    parser = argparse.ArgumentParser('make.py', description="Build the Super Mario 3D Land decompilation project")
+    parser = argparse.ArgumentParser('make.py', description="Build RE:Pepper")
     parser.add_argument("version", nargs="?", default=None, help="Version to use")
     parser.add_argument("--warn", '-w', action='store_true', help="Omit many warnings (nintendo standard)")
     parser.add_argument("--match_only", '-mo', action='store_true', help="Compile only matching code")
-    parser.add_argument("--no_shift", '-sh', action='store_true', help="Disable shifting during linking")
-    parser.add_argument("--no_split", '-sp', action='store_true', help="Disable splitting process (less accurate but faster)")
+    parser.add_argument("--shift", '-sh', action='store_true', help="Allow shifts during linking")
+    parser.add_argument("--split", '-sp', action='store_true', help="Enable splitting process (slow)")
     parser.add_argument("--vfe", '-vf', action='store_true', help="Enable VFE for building")
     parser.add_argument("--debug", '-d', action='store_true', help="Build with debug info")
     parser.add_argument("--debug_obj", '-do', action='store_true', help="Build with debug info (objects only)")
@@ -39,10 +39,10 @@ def main():
 
     if args.match_only:
         cfg.only_matching = True
-    if args.no_shift:
-        cfg.allow_shifting = False
-    if args.no_split:
-        cfg.do_split = False
+    if args.shift:
+        cfg.allow_shifting = True
+    if args.split:
+        cfg.do_split = True
     if args.delete:
         cfg.keep_objects = True
     if args.debug_obj:

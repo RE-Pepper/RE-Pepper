@@ -54,9 +54,9 @@ flags_link = None
 
 # Switches
 only_matching = False
-allow_shifting = True
+allow_shifting = False
 keep_objects = True
-do_split = True
+do_split = False
 
 # Dict of macros
 macros = {}
