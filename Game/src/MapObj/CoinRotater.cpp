@@ -18,11 +18,11 @@ const char* CoinRotater::getSceneObjName() const
         return "コインローテータ";
 }
 
-extern "C" void FUN_00277de0( al::LiveActor*, const al::ActorInitInfo& );
+extern "C" void fn_00277de0( al::LiveActor*, const al::ActorInitInfo& );
 
 void CoinRotater::initAfterPlacementSceneObj( const al::ActorInitInfo& info )
 {
-        FUN_00277de0( this, info );
+        fn_00277de0( this, info );
         makeActorAppeared();
 }
 

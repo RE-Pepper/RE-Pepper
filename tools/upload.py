@@ -1,91 +1,94 @@
+#!/usr/bin/env python3
 import sys
 import os
 import json
-import cxxfilt
+import struct
 import requests
-from elftools.elf.elffile import ELFFile
-from elftools.elf.sections import SymbolTableSection
-from low.__genCtxFile import genCtxs
-from low.__parseMap import get_symbol
-from _settings import *
+from capstone import *
+from capstone.arm import *
 
-def find_source_path(str):
-    with open(getElfPath(), "rb") as f:
-        elf = ELFFile(f)
-        last_file = None
-        func_syms = []
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+from tools.low.genContext import gen_ctx
+from tools.low.getSymFile import get_sym_file
+from tools.low.readSymMap import *
+from tools.low.readHeader import *
+from tools.low.glob import *
+from tools.pypstem.manSetup import setup_compiler
+from tools.pypstem._utils import getFileBuildPath
 
-        print ("Collecting functions ...")
-        
-        for section in elf.iter_sections():
-            if not isinstance(section, SymbolTableSection):
-                continue
+try:
+    import cxxfilt
+    is_filter = True
+except ImportError:
+    echo ("cxxfilt module not found, not demangling.")
+    is_filter = False
 
-            for sym in section.iter_symbols():
-                if sym['st_info']['type'] == 'STT_FUNC':
-                    func_syms.append (sym.name)
+def get_asm (sym_name):
+    lines = []
+    sym = get_symbol(sym_name)
+    if not sym:
+        fail (f"get_asm cannot find sym for {sym_name}")
 
+    # read offsets
+    base_addr = read_header()[HeadType.Text][HeadVal.Start]
+    addr_start = sym[MapFmt.Start] - base_addr
+    addr_end_code = sym[MapFmt.Pool] - base_addr
+    addr_end_func = sym[MapFmt.End] - base_addr
 
-        print ("Finding file ...")
-        
-        for section in elf.iter_sections():
-            if not isinstance(section, SymbolTableSection):
-                continue
+    # read binary
+    with open(getBinFile(), 'rb') as f:
+        data = f.read()
+    data_view = memoryview(data)
 
-            for sym in section.iter_symbols():
-                st_type = sym['st_info']['type']
+    # init capstone
+    md = Cs(CS_ARCH_ARM, CS_MODE_ARM)
+    md.detail = True
 
-                if st_type == 'STT_FILE':
-                    last_file = sym.name
+    instrs = list(md.disasm(data_view[addr_start:addr_end_code], 0))
 
-                elif st_type == 'STT_SECTION':
-                    name = sym.name
-                    if '.' not in name:
-                        continue
+    for i in instrs:
+        mnem = i.mnemonic
+        str = i.op_str
+        if mnem.startswith("b") and str.startswith("#"):
+            str = str.replace("#", "")
+        lines.append(f"    {mnem}\t\t{str}")
 
-                    _, after_dot = name.split('.', 1)
+    if addr_end_func > addr_end_code:
+        for data in range(addr_end_code, addr_end_func, 4):
+            val = struct.unpack_from("<I", data_view, data)[0]
+            lines.append(f"    .word\t0x{val:08X}")
 
-                    if after_dot not in func_syms:
-                        continue
+    return "\n".join(lines)
 
-                    if str != after_dot:
-                        continue
+def upload (sym_name, show_name, ctx, src):
+    echo ("Uploading ...")
 
-                    return last_file
+    url = f"https://decomp.me/api/scratch"
+    asm = get_asm(sym_name)
 
-def get_obj_path (str):
-    if not os.path.exists(Path(getBuildPath()) / "compile_commands.json"):
-        return None
+    if not ctx and not src:
+        data = {
+            "name": show_name,
+            "context": "",
+            "target_asm": asm,
+            "diff_label": sym_name,
+            "preset": cfg.decompme_id
+        }
+    else:
+        data = {
+            "name": show_name,
+            "context": ctx,
+            "source_code": src,
+            "target_asm": asm,
+            "diff_label": sym_name,
+            "preset": cfg.decompme_id
+        }
 
-    with open(Path(getBuildPath()) / "compile_commands.json") as f:
-        data = json.load(f)
-
-    for e in data:
-        if e.get("file") == (str):
-            return f'{getBuildPath()}/{e.get("output")}'
-
-def upload (sym_name, show_name, ctx, src, obj_path):
-    print ("Uploading ...")
-
-    api_base = "https://decomp.me"
-    url = f"{api_base}/api/scratch"
-    
-    files = {
-        "target_obj": open (obj_path, 'rb')
-    }
-    data = {
-        "name": show_name,
-        "context": ctx,
-        "source_code": src,
-        "diff_label": sym_name,
-        "preset": getPresetId ()
-    }
-
-    r = requests.post(url, files=files, data=data)
+    r = requests.post(url, data=data)
 
     if not r.ok:
-        print("Error:", r.status_code, r.text)
-        return None, None
+        fail (f"{r.status_code} - {r.text}")
 
     res = r.json()
 
@@ -93,8 +96,7 @@ def upload (sym_name, show_name, ctx, src, obj_path):
     claim_token = res.get("claim_token")
 
     if not slug or not claim_token:
-        print("Unexpected response:", res)
-        return None, None
+        fail (f"Unexpected response: {res}")
     
     base_url = f"{api_base}/scratch/{slug}/"
     claim_url = f"{api_base}/scratch/{slug}/claim?token={claim_token}"
@@ -103,43 +105,36 @@ def upload (sym_name, show_name, ctx, src, obj_path):
 
 def main():
     if len(sys.argv) <= 1:
-        print ("Missing argument: Symbol")
+        fail ("Missing argument: Symbol", False)
+
+    sym_in = sys.argv[1]
+    path, sym = get_sym_file(sym_in)
+
+    if not path:
+        data = None
+        main = None
+    else:
+        echo ("Collecting code ...")
+        data, main = gen_ctx(path, sym)
+
+    if is_filter:
+        name = cxxfilt.demangle (sym)
+    else:
+        name = sym
+
+    if path:
+        echo (f"Lines: ctx {len(data.splitlines())}, src {len(main.splitlines())}")
+    else:
+        echo ("No file found, ctx will be empty.")
+
+    if input("Ready to upload? (y/N) ").strip().lower() not in ("y", "yes", "j", "ja"):
         return
 
-    sym = sys.argv[1]
-    path = find_source_path(sym)
-    if (path is None):
-        if(get_symbol(sym)):
-            print ("Symbol found in map, but not in compilation. Make sure you put the symbol in a file before uploading!")
-        else:
-            print ("Symbol not found. Did you spell it correctly?")
-        return
+    base_url, claim_url = upload(sym, name, data, main)
 
-    print ("Collecting code ...")
-    data, main = genCtxs(path, sym)
-
-    #for line in data:
-    #    print (line.rstrip('\n'))
-    #for line in main:
-    #    print (line.rstrip('\n'))
-
-    path_obj = get_obj_path (path)
-    if path_obj is None:
-        print ("compile_commands.json missing, please build!")
-        return
-
-    name = cxxfilt.demangle (sym)
-
-    print(f"Source file: {path}")
-    print(f"Lines: ctx {len(data.splitlines())}, src {len(main.splitlines())}")
-    if input("Ready to upload? (y/N): ").strip().lower() not in ("y", "yes", "j", "ja"):
-        return
-    
-    base_url, claim_url = upload(sym, name, data, main, path_obj)
-
-    print (f"Scratch created. Good luck matching {name}!.")
-    print (f" -> Claim: {claim_url}")
-    print (f" -> Url: {base_url}")
+    echo (f"Scratch created. Good luck matching {name}, and may armcc be with you.")
+    echo (f" -> Claim: {claim_url}")
+    echo (f" -> Url: {base_url}")
 
 if __name__ == "__main__":
     main()

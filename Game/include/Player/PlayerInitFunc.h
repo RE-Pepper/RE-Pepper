@@ -8,6 +8,6 @@ namespace PlayerInitFunc
 
 const PlayerModelInfo* getModelInfo();
 const PlayerAnimInfo*  getAnimInfo();
-void*                  FUN_00260620();
+void*                  fn_00260620();
 
 } // namespace PlayerInitFunc

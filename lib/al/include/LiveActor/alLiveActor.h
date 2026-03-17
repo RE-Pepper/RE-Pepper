@@ -140,10 +140,10 @@ public:
         virtual StageSwitchKeeper*     getStageSwitchKeeper() const;
         virtual void                   initStageSwitchKeeper();
         virtual void                   control();
-        virtual void                   calcAndSetBaseMtx();
+        virtual void                   calcAndSetBaseMtx() {}
         virtual void                   updateCollider();
-        virtual void                   v22();
-        virtual void                   v23();
+        virtual void                   v22() {}
+        virtual void                   v23() {}
 
 public:
         LiveActor( const char* name );

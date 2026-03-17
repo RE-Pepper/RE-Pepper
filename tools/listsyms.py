@@ -1,13 +1,19 @@
+#!/usr/bin/env python3
 import sys
 import argparse
+
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+from tools.low.glob import *
+from tools.low.readElfMap import *
+from tools.low.readSymMap import *
+
 try:
     import cxxfilt
     is_filter = True
 except ImportError:
+    echo ("cxxfilt module not found, not demangling.")
     is_filter = False
-from _settings import *
-from low.__parseElf import *
-from low.__parseMap import *
 from io import StringIO
 
 def main():
@@ -37,7 +43,7 @@ def main():
         if args.f:
             csv_syms = syms
         for sym in syms:
-            name=sym[3]
+            name=sym[MapFmt.Symbol]
             if not name or name is None:
                 continue
             csv_names.append(name)
@@ -45,79 +51,77 @@ def main():
     if args.e:
         if args.c:
             print("elf / csv")
-        for line in StringIO(readelf_data):
-            if "FUNC" in line:
-                sym = line.split()
+        for sym in get_elf_symbol_list():
+            name = sym[ElfMapFmt.Symbol]
+            addr = f"0x{sym[ElfMapFmt.Address]:08X}"
+            size = f"0x{sym[ElfMapFmt.Size]:06X}"
 
-                name = sym[7]
-                addr = int(sym[1], 16)
-                size = sym[2]
+            if not name or name is None:
+                continue
+            if args.w:
+                if name in csv_names:
+                    continue
 
-                if not args.zs:
-                    size = "0x{:04X}".format(int(sym[2]))
+            if args.zs:
+                size = sym[ElfMapFmt.Size]
+            if args.za:
+                addr = int(sym[ElfMapFmt.Address], 16)
+            if args.d and is_filter:
+                try:
+                    name = cxxfilt.demangle(sym[ElfMapFmt.Symbol])
+                except cxxfilt.InvalidName:
+                    name = sym[ElfMapFmt.Symbol]
+
+            has_found = True
+
+            csv_sym = get_symbol(sym[ElfMapFmt.Symbol])
+            ex = ""
+            if not args.w and ( csv_sym == None or csv_sym[MapFmt.Rank] != 'O' ):
+                ex = " (U)"
+            if args.w:
+                if args.f:
+                    csv_sym_try = get_symbol_with_addr_and_size(int(addr,16), int(size,16))
+                    if (not csv_sym_try is None):
+                        if (csv_sym_try[MapFmt.Symbol] != name):
+                            print(f"{addr}:{size}: elf={name} != csv={csv_sym_try[MapFmt.Symbol]}")
+                    continue
+                print(f"{addr}: {name}")
+                continue
+            if args.c:
+                if csv_sym == None:
+                    continue
+                csvaddr = csv_sym[MapFmt.Start]
+                csvsize = csv_sym[MapFmt.End] - csv_sym[MapFmt.Start]
+                if args.m:
+                    if (int(csvaddr) == int(addr, 16)) and (int(csvsize) == int(size,16)):
+                        continue
                 if not args.za:
-                    addr = "0x{:08X}".format(int(sym[1], 16))
-                if args.d and is_filter:
-                    try:
-                        name = cxxfilt.demangle(sym[3])
-                    except cxxfilt.InvalidName:
-                        name = sym[3]
-
-                if not name or name is None:
-                    continue
-                if args.w:
-                    if name in csv_names:
-                        continue
-                has_found = True
-
-                csv_sym = get_symbol(sym[7])
-                ex = ""
-                if not args.w and ( csv_sym == None or csv_sym[1] != 'O' ):
-                    ex = " (U)"
-                if args.w:
-                    if args.f:
-                        csv_sym_try = get_symbol_with_addr_and_size(int(addr,16), int(size,16))
-                        if (not csv_sym_try is None):
-                            if (csv_sym_try[3] != name):
-                                print(f"{addr}:{size}: elf={name} != csv={csv_sym_try[3]}")
-                        continue
-                    print(f"{addr}: {name}")
-                    continue
-                if args.c:
-                    if csv_sym == None:
-                        continue
-                    csvaddr = csv_sym[0]
-                    csvsize = csv_sym[2]
-                    if args.m:
-                        if (int(csvaddr) == int(addr, 16)) and (int(csvsize) == int(size,16)):
-                            continue
-                    if not args.za:
-                        csvaddr = "0x{:08X}".format(csv_sym[0])
-                    if not args.zs:
-                        csvsize = "0x{:04X}".format(csv_sym[2])
-                    print(f"{addr}:{size}/{csvaddr}:{csvsize}: {name}")
-                    continue
-                if args.n:
-                    print(f"{name}{ex}")
-                    continue
-                if args.a:
-                    print(f"{addr}:{size}: {name}{ex}")
-                    continue
-                if args.A:
-                    print(f"{size}:{addr}: {name}{ex}")
-                    continue
-                    
-                print(f"{addr}: {size}, {name}{ex}")
+                    csvaddr = "0x{:08X}".format(csv_sym[0])
+                if not args.zs:
+                    csvsize = "0x{:04X}".format(csv_sym[2])
+                print(f"{addr}:{size}/{csvaddr}:{csvsize}: {name}")
+                continue
+            if args.n:
+                print(f"{name}{ex}")
+                continue
+            if args.a:
+                print(f"{addr}:{size}: {name}{ex}")
+                continue
+            if args.A:
+                print(f"{size}:{addr}: {name}{ex}")
+                continue
+                
+            print(f"{addr}: {size}, {name}{ex}")
         return
 
     syms = read_sym_file()
     if args.s:
         syms.sort(key=lambda a: a[1])
     for sym in syms:
-        addr = sym[0]
-        rank = sym[1]
-        size = sym[2]
-        name = sym[3]
+        addr = "0x{:08X}".format(sym[MapFmt.Start])
+        size = "0x{:04X}".format(sym[MapFmt.End] - sym[MapFmt.Start])
+        rank = sym[MapFmt.Rank]
+        name = sym[MapFmt.Symbol]
 
         if not name or name is None:
             continue
@@ -126,15 +130,15 @@ def main():
                 continue
         has_found = True
 
-        if not args.zs:
-            size = "0x{:04X}".format(sym[2])
-        if not args.za:
-            addr = "0x{:08X}".format(sym[0])
+        if args.zs:
+            size = sym[MapFmt.End] - sym[MapFmt.Start]
+        if args.za:
+            addr = sym[MapFmt.Start]
         if args.d and is_filter:
             try:
-                name = cxxfilt.demangle(sym[3])
+                name = cxxfilt.demangle(sym[MapFmt.Symbol])
             except cxxfilt.InvalidName:
-                name = sym[3]
+                name = sym[MapFmt.Symbol]
 
         if args.n:
             if args.R and not args.r:

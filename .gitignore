@@ -1,16 +1,20 @@
 [Bb]uild*/
 __pycache__/
-tools/__pycache__/
 .cache/
 [Pp]riv/
 
+data/.*
+data/config.user.json
+data/compilers
 data/stats/
 data/stats/*
 data/stats/*/*
-data/.version
-compile_commands.json
+data/ver/*/.*
+
 objdiff.json
-code.bin
+compile_commands.json
+
+.changes
 *.csv_b
 *.m2c
 *.bin

@@ -1,31 +1,55 @@
-print ("Enumerating and checking ...")
-    
-from colorama import Fore, Style
-from low.__parseMap import *
-from low.__parseElf import *
-import multiprocessing
-import threading
-import argparse
+#!/usr/bin/env python3
+import sys
 import time
 import shutil
-import sys
+import argparse
+import threading
+import multiprocessing
+from colorama import Fore, Style
+
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+from tools.low.updateMap import *
+from tools.low.readSymMap import *
+from tools.low.readElfMap import *
+from tools.low.readHeader import *
+
+addr_base = read_header()[HeadType.Text][HeadVal.Start]
 
 is_skip_mode = False
 is_sim_mode = False
 is_silent = False
 is_log = False
-found_flag = False
-csv_path = getFuncSymFile()
-log_path = f"{getProjDir()}/data/ver/{get_ver}/.changes"
+csv_path = ""
+log_path = ""
 
-def rank_symbol(sym, decomp_sym):
-    sym_size = int(sym[2])
-    decomp_size = int(decomp_sym[1])
+def rank_symbol(symbol, decomp_symbol):
+    sym_start = int(symbol[MapFmt.Start]-addr_base)
+    decomp_start = int(decomp_symbol[ElfMapFmt.Address]-addr_base)
 
-    if decomp_size == 0:
+    sym_size = int(symbol[MapFmt.End] - symbol[MapFmt.Start])
+    decomp_size = int(decomp_symbol[ElfMapFmt.Size])
+    if decomp_size <= 0:
         decomp_size = sym_size
 
-    out = str(subprocess.check_output(f'\"{sys.executable}\" "{Path(getProjDir()) / "tools" / "asm-differ" / "diff.py"}" --format json {sym[0] - 0x00100000} {decomp_sym[0] - 0x00100000} {sym_size} {decomp_size}', shell=True))
+    if sym_size <= 0:
+        return 'U'
+
+    cmd = [
+        sys.executable,
+        str(Path(getProjDir()) / "tools" / "asm-differ" / "diff.py"),
+        str("--format json"),
+        str(sym_start),
+        str(decomp_start),
+        str(sym_size),
+        str(decomp_size)
+    ]
+    cmd = " ".join(cmd)
+    #print (cmd)
+    err = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    if err.returncode != 0:
+        fail (f"asm-differ failed:\n"+ err.stderr, False)
+    out = err.stdout
 
     if not "CURRENT" in out:
         raise RuntimeError(f"Unexpected output when running asm-differ:\n{out}")
@@ -55,11 +79,11 @@ def getRankName(rank: str):
 
 def getRankMsg(prev, now):
     if now == 'O':
-        if prev == 'U': return "Perfectly Ok."
-        if prev in ('m','M'): return "Now Ok."
+        if prev == 'U': return "Now perfectly Matching."
+        if prev in ('m','M'): return "Now Matching."
         return "Ok."
     if now == 'U':
-        if prev == 'O': return "Completely Undefined."
+        if prev == 'O': return "Now completely Undefined."
         if prev in ('m','M'): return "Now Undefined."
         return "Not Decompiled."
     if now == 'M':
@@ -85,39 +109,40 @@ def clear_line():
 def print_progress(name, prog, rank):
     printf (Fore.LIGHTRED_EX + f"[{prog}%] " + Fore.LIGHTCYAN_EX + name + Fore.RESET + Style.RESET_ALL + f" ({rank})", end='\r')
 
+
 def check_syms():
     syms = read_sym_file()
     newsyms = []
-    sym_addrs = []
-    sym_sizes = []
+    sym_starts = []
+    sym_ends = []
     do_rewrite = False
     is_error = False
     sym_num = len(syms)
     if sym_num == 0:
-        print ("No symbols found in csv.")
+        print ("No symbols found in map.")
         return
-    last_sym_addr = syms[sym_num-1][0]
-    first_sym_addr = syms[0][0]
+    last_sym_addr = syms[-1][MapFmt.Start]
+    first_sym_addr = syms[0][MapFmt.Start]
     last_name = ""
     log = []
 
     for sym in syms:
-        size=sym[2]
-        addr=sym[0]
-        oldrank=sym[1]
+        end=sym[MapFmt.End]
+        start=sym[MapFmt.Start]
+        oldrank=sym[MapFmt.Rank]
+        name=sym[MapFmt.Symbol]
+        typ=sym[MapFmt.Type]
         rank='U'
-        name=sym[3]
-        tag=sym[4]
 
-        progress = ((addr-first_sym_addr) / (last_sym_addr-first_sym_addr)) * 100
+        progress = ((start - first_sym_addr) / (syms[-1][MapFmt.End] - first_sym_addr)) * 100
         progress = round(progress, 1)
 
         # check addr dupl
-        if addr in sym_addrs:
-            print (f"0x{addr:08X} appears more than once!")
+        if start in sym_starts:
+            print (f"0x{start:08X} appears more than once!")
 
-        sym_addrs.append(addr)
-        sym_sizes.append(size)
+        sym_starts.append(start)
+        sym_ends.append(end)
 
         # check no name
         if is_skip_mode or not name or len(name) == 0:
@@ -130,7 +155,7 @@ def check_syms():
             rank = rank_symbol(sym, decomp_symbol)
 
         # main adding
-        newsyms.append((addr, rank, size, name, tag))
+        newsyms.append((start, end, typ, rank, name))
         last_name = name
         clear_line()
         print_progress (last_name, progress, rank)
@@ -143,12 +168,12 @@ def check_syms():
     clear_line()
 
     # post check before writing
-    mySyms = [(int(sym_addrs[i]), int(sym_sizes[i])) for i in range(len(sym_addrs))]
+    mySyms = [(int(sym_starts[i]), int(sym_ends[i])) for i in range(len(sym_starts))]
     mySyms.sort(key=lambda x: x[0])
     for i in range(len(mySyms) - 1):
-        addr, size = mySyms[i]
-        next_addr = mySyms[i + 1][0]
-        if addr + size > next_addr:
+        addr, endaddr = mySyms[i]
+        next_addr = mySyms[i + 1][MapFmt.Start]
+        if endaddr > next_addr:
             print (f"MAP OVERLAP: 0x{addr:08X} overlaps with 0x{next_addr:08X}")
             is_error = True
 
@@ -178,15 +203,8 @@ def check_syms():
 
     else:
         print ("Updating map ...")
-        # read
-        with open(csv_path, 'r') as src, open(csv_path + '_b', 'w') as dst:
-            dst.write(src.read())
-        # write
-        with open(csv_path, 'w') as f:
-            f.write("Address,Rank,Size,Symbol,Tag\n")
-            for sym in newsyms:
-                f.write(f"0x{sym[0]:08X},{sym[1]},{sym[2]:06d},{sym[3]},{sym[4]}\n")
-        
+
+        updateFull(newsyms, csv_path)
 
 def check_sym(symbol_name):
     dec = get_elf_symbol(symbol_name)
@@ -194,35 +212,25 @@ def check_sym(symbol_name):
         print (f"Symbol {symbol_name} not found in build.")
         return
 
-    syms = read_sym_file()
-    for sym in syms:
-        if symbol_name != sym[3]:
-            continue
+    sym = get_symbol(symbol_name)
+    if sym is None:
+        print (f"Symbol {symbol_name} not found in map.")
+        return
 
-        prevrank = sym[1]
-        nowrank = rank_symbol(sym, dec)
+    prevrank = sym[MapFmt.Rank]
+    nowrank = rank_symbol(sym, dec)
 
-        if found_flag and prevrank != nowrank:
-            # update CSV
-            file = open(csv_path, "r").readlines()
-            newline = f"0x{sym[0]:08X},{nowrank},{sym[2]:06d},{sym[3]},{sym[4]}\n"
-            for i, line in enumerate(file):
-                if symbol_name == line.split(',')[3]:
-                    file[i] = newline
-                    break
-            with open(csv_path, "w") as f:
-                f.writelines(file)
+    if cfg.only_matching and prevrank != nowrank:
+        sym[MapFmt.Rank] = nowrank
+        updateSingle(sym, csv_path)
 
-            # Always print rank change in literal format for single symbol
-            print (f"{prevrank} -> {nowrank} ({getRankMsg(prevrank, nowrank)})")
-        else:
-            # Print the normal message for unchanged single symbol
-            printf (getRankMsg(prevrank, nowrank))
-        break
+        print (f"{prevrank} -> {nowrank} ({getRankMsg(prevrank, nowrank)})")
+    else:
+        printf (getRankMsg(prevrank, nowrank))
 
 def main():
-    global found_flag
     global csv_path
+    global log_path
     global is_skip_mode
     global is_sim_mode
     global is_silent
@@ -241,12 +249,14 @@ def main():
     is_silent = args.q
     is_log = args.w
 
-    with open(Path(getBuildPath()) / "compile_commands.json", "r") as f:
-        if any("NON_MATCHING" in line for line in f): # check if we compiled for Matching-only build
-            found_flag = True
-    if not found_flag:
-        csv_path = getFuncSymFile().rsplit('.csv', 1)[0] + '_test.csv'
+    csv_path = getMapFile()
+    log_path = str(getVerDir() / ".changes")
+
+    if cfg.only_matching:
+        csv_path = getMapFile().with_stem(f"{getMapFile().stem}_test")
         print("Info: TEST MODE. You need to compile without -m (only matching) to rebuild the functions map. This output will be written to data/*_test.csv")
+
+    print ("The check has begun ...")
 
     if args.sym:
         check_sym(args.sym)

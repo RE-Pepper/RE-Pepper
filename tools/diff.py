@@ -1,17 +1,20 @@
-import subprocess
+#!/usr/bin/env python3
 import os
 import sys
-from _settings import *
-from low.__parseElf import *
-from low.__parseMap import *
+import subprocess
 
-def fail(msg: str):
-    print(msg)
-    sys.exit(1)
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+from tools.low.glob import *
+from tools.low.readElfMap import *
+from tools.low.readSymMap import *
+from tools.low.readHeader import *
+
+addr_base = read_header()[HeadType.Text][HeadVal.Start]
 
 def main():
     if len(sys.argv) < 2:
-        fail("diff.py <symbol> [extra flags]")
+        fail ("diff.py <symbol> [extra flags]")
 
     symbolname = sys.argv[1]
     extra_flags = sys.argv[2:]
@@ -20,25 +23,30 @@ def main():
     decomp_symbol = get_elf_symbol(symbolname)
 
     if symbol is None:
-        fail(f"Couldn't find in csv: {symbolname}")
+        fail (f"Couldn't find in csv: {symbolname}")
     if decomp_symbol is None:
-        fail(f"Couldn't find in decomp: {symbolname}")
+        fail (f"Couldn't find in decomp: {symbolname}")
 
-    sym_size = int(symbol[2])
-    decomp_size = int(decomp_symbol[1])
-    if decomp_size == 0:
-        print(f"Warning: decomp symbol size for {symbol[3]} is 0. Using the original size instead.")
-        decomp_size = sym_size
+    sym_start = int(symbol[MapFmt.Start]-addr_base)
+    decomp_start = int(decomp_symbol[ElfMapFmt.Address]-addr_base)
+
+    sym_size = int(symbol[MapFmt.Pool] - symbol[MapFmt.Start])
+    decomp_size = sym_size#int(decomp_symbol[ElfMapFmt.Size])
+    #if decomp_size <= 0:
+    #    decomp_size = sym_size
+
+    if sym_size <= 0:
+        fail (f"End address is invalid for {symbolname}")
 
     cmd = [
         sys.executable,
         str(Path(getProjDir()) / "tools" / "asm-differ" / "diff.py"),
-        str(symbol[0]-0x00100000),
-        str(decomp_symbol[0]-0x00100000),
+        str(sym_start),
+        str(decomp_start),
         str(sym_size),
         str(decomp_size)
     ] + extra_flags
-
+    #print(cmd)
     subprocess.run(cmd)
 
 if __name__ == "__main__":

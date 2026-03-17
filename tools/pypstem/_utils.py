@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+import shutil
+import hashlib
+from tools.low.glob import *
+from tools.pypstem.defaultFlags import *
+
+curname = ""
+curstatus = ""
+progmax = 0
+progidx = 0
+def progress_set(name, idx):
+    global curname, progidx
+    curname = name
+    progidx = idx
+def progress_set_type(status):
+    global curstatus
+    curstatus = status
+def progress_set_max(max):
+    global progmax
+    progmax = max
+def progress_print():
+    if is_silent: return
+    prog_line = ""
+    if progmax > 0:
+        prog_line += f"[{progidx}/{progmax}] "
+    prog_line += f"\033[38;5;172m{curstatus}\033[38;2;150;75;0m{curname}\033[0m\033[K ..."
+    print (prog_line, end='\r', flush=True)
+def progress_upd_type(status):
+    if is_silent: return
+    progress_set_type(status)
+    progress_print()
+
+def getFileBuildPath(file):
+    return getBuildObjPath() / file.relative_to(getProjDir()).with_suffix(".o")
+
+def getMacroStr(macro, val):
+    return f"-D{macro}={val or '1'}"
+def getMacroArray(macros):
+    if isinstance(macros, list):
+        macros = dict.fromkeys(macros)
+    return [getMacroStr(macro, val) for macro, val in macros.items()]
+
+def getArrayHash(array):
+    return hashlib.sha1(" ".join(map(str, array)).encode()).hexdigest()
+
+def getModSrc(mod_path_name, mod_data):
+    mod_subdir = mod_data.get("source_dir") or "."
+    return getProjDir().joinpath(*str(mod_path_name).split("/")).joinpath(*str(mod_subdir).split("/"))
+def getModInc(mod_path_name, mod_data):
+    mod_subdir = mod_data.get("include_dir") or "."
+    return getProjDir().joinpath(*str(mod_path_name).split("/")).joinpath(*str(mod_subdir).split("/"))

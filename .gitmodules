@@ -1,21 +1,17 @@
 
 [submodule "tools/asm-differ"]
 	path = tools/asm-differ
-	url = https://github.com/RedPepperDec/asm-differ
+	url = https://github.com/RE-Pepper/asm-differ
 	branch = main
 [submodule "lib/sead"]
 	path = lib/sead
-	url = https://github.com/RedPepperDec/sead_ctr
+	url = https://github.com/RE-Pepper/sead_ctr
 	branch = main
 [submodule "lib/ctrsdk"]
-	path = lib/CTRSDK
-	url = https://github.com/RedPepperDec/ctrsdk
+	path = lib/CtrSDK
+	url = https://github.com/RE-Pepper/ctrsdk
 	branch = main
-[submodule "project"]
-	path = project
-	url = https://github.com/RedPepperDec/RedPepper_Meta
-	branch = master
 [submodule "lib/NintendoWare"]
 	path = lib/NintendoWare
-	url = https://github.com/RedPepperDec/NintendoWare_ctr
+	url = https://github.com/RE-Pepper/NintendoWare_ctr
 	branch = master

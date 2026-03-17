@@ -23,13 +23,13 @@ TrickHintPanel::TrickHintPanel( const sead::SafeString& name )
 {
 }
 
-extern "C" u32 FUN_002278CC( al::LiveActor* actor, char* str );
+extern "C" u32 fn_002278CC( al::LiveActor* actor, char* str );
 
 void TrickHintPanel::init( const al::ActorInitInfo& info )
 {
         al::initActor( this, info );
         al::initNerve( this, &NrvTrickHintPanel::Wait, 0 );
-        _96 = FUN_002278CC( this, "" );
+        _96 = fn_002278CC( this, "" );
         makeActorAppeared();
 }
 
@@ -56,9 +56,9 @@ void TrickHintPanel::exeWait()
 {
 }
 
-extern "C" int FUN_0026A9B8( u32 );
-extern "C" int FUN_0026AA60( u32 );
-extern "C" int FUN_002786F4();
+extern "C" int fn_0026A9B8( u32 );
+extern "C" int fn_0026AA60( u32 );
+extern "C" int fn_002786F4();
 
 #ifdef NON_MATCHING
 
@@ -71,7 +71,7 @@ void TrickHintPanel::exeOn()
                 mPlayedSound = true;
         }
         al::startHitReaction( this, "ƒIƒ“" ); // "ƒIƒ“" -> On
-        FUN_0026A9B8( _96 );
+        fn_0026A9B8( _96 );
         al::invalidateClipping( this );
         al::setNerve( this, &NrvTrickHintPanel::nrv3 );
 }
@@ -79,15 +79,15 @@ void TrickHintPanel::exeOn()
 
 void TrickHintPanel::exenrv3()
 {
-        if ( !FUN_002786F4() || al::isGreaterStep( this, 20 ) )
+        if ( !fn_002786F4() || al::isGreaterStep( this, 20 ) )
                 al::setNerve( this, &NrvTrickHintPanel::Off );
 }
 
 void TrickHintPanel::exeOff()
 {
-        if ( FUN_002786F4() )
+        if ( fn_002786F4() )
         {
-                FUN_0026AA60( _96 );
+                fn_0026AA60( _96 );
                 al::validateClipping( this );
                 al::setNerve( this, &NrvTrickHintPanel::Wait );
         }

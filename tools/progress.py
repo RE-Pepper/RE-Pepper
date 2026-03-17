@@ -1,19 +1,21 @@
+#!/usr/bin/env python3
 print ("Generating progress ...")
 
-from time import sleep
-from low.__parseMap import *
-from colorama import Fore
-import json
-from pathlib import Path
 import datetime
-from git import Repo
-import os
+import numpy
 import io
+import os
+import sys
+import json
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.ticker
-import numpy as np
-import sys
+from time import sleep
+from git import Repo
+from pathlib import Path
+from colorama import Fore
+
+from tools.low.readSymMap import *
 
 def write_release_txt(ver: str, u: str, o: str, m: str, mm: str, total: str, bytes: str):
     textt = f"""## {ver.upper()} Matched: *{bytes}*
@@ -26,7 +28,7 @@ def write_release_txt(ver: str, u: str, o: str, m: str, mm: str, total: str, byt
 **Total**: *{total}*
 """
 
-    with open(str(Path("data") / "stats" / get_ver() / "release.txt"), 'w') as f:
+    with open(str(Path("data") / "stats" / getVersion() / "release.txt"), 'w') as f:
         f.write(textt)
 
 def get_matching_bytes(orig: str, other: str):
@@ -44,9 +46,9 @@ def main():
     syms_minor = 0
     syms_ok = 0
     syms_total = 0
-    bytes_ok = get_matching_bytes(getExeFile(), str(Path(getBuildPath()) / "code.bin"))
-    code_bin_size = os.path.getsize(getExeFile())
-    ver = get_ver()
+    bytes_ok = get_matching_bytes(getBinFile(), str(Path(getBuildPath()) / "code.bin"))
+    code_bin_size = os.path.getsize(getBinFile())
+    ver = getVersion()
     os.makedirs(str(Path('data') / 'stats' / ver), exist_ok=True)
     
     syms = read_sym_file()
@@ -84,13 +86,13 @@ def main():
 
     write_type('Total', "Total Functions", str(syms_total), 'inactive');
     write_type('OK', "Matching", str(syms_ok), "success");
-    write_type('NonMatching', "Non-matching", str(syms_major + syms_minor), "yellow");
+    write_type('NonMatching', "Non-matching", str(syms_major + syms_minor), "yellow.);
     write_type('Code', "code.bin", bytes_ok_str, "informational");
 
     x_values = [datetime.datetime.now()]
     y_values = [(bytes_ok / code_bin_size) * 100]
 
-    np.seterr(all="ignore")
+    numpy.seterr(all="ignore")
     repo = Repo(".")
 
     for commit in repo.iter_commits():

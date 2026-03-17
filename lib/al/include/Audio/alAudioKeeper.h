@@ -12,8 +12,8 @@ public:
 class IUseAudioKeeper
 {
 public:
-        virtual void v1();
-        virtual void v2();
+        virtual void v1() {}
+        virtual void v2() {}
 
         virtual AudioKeeper* getAudioKeeper() const = 0;
 };

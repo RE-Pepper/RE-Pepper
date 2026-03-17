@@ -15,7 +15,7 @@ int StageSwitchAccesser::initWithPlacementInfo( StageSwitchType type1, const Pla
         mId   = -1;
         mType = type2;
         info.tryGetIntByKey( &mId, type1Name );
-        return FUN_0024e734();
+        return fn_0024e734();
 }
 
 bool StageSwitchAccesser::isTypeKillDeadOn() const
@@ -23,7 +23,7 @@ bool StageSwitchAccesser::isTypeKillDeadOn() const
         return mType == StageSwitchType_Kill || mType == StageSwitchType_DeadOn;
 }
 
-int StageSwitchAccesser::FUN_0024e734() const
+int StageSwitchAccesser::fn_0024e734() const
 {
         return ( mId >> 0x1f ) + 1;
 } // ?

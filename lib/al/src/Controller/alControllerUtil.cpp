@@ -6,13 +6,13 @@
 namespace al
 {
 
-extern "C" const u32* FUN_0024edd8();
+extern "C" const u32* fn_0024edd8();
 
 bool isPadTrigger( int port, int mask )
 { // likely a fakematch
         int        masktemp = mask;
         int        porttemp = port;
-        const u32* maskPtr  = FUN_0024edd8();
+        const u32* maskPtr  = fn_0024edd8();
 
         if ( !maskPtr )
         {

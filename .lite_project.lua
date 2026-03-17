@@ -1,6 +1,6 @@
 local config = require "core.config"
 
 config.plugins.build.targets = {
-  { build_directory = "build", type = "cmake" }
+  { name = "main", type = "shell", runner = "python3", command = "tools/build.py", args_clean = {"-c"}},
 }
 
