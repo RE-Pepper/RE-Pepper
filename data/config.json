@@ -15,9 +15,30 @@
     "kr": "820940dc19b86f8d47515973d9f1484c4efc0571a729c294e85b53e5097fda56"
   },
   "modules": {
+    "Game": {
+      "name": "Game"
+    },
+    "lib/al": {
+      "name": "Actor"
+    },
+    "lib/sead": {
+      "name": "Sead",
+      "source_dir": "modules/src",
+      "flags_cxx": "--no_vla"
+    },
+    "lib/sead/addins/libms": {
+      "name": "MS",
+      "flags_cxx": "--no_vla"
+    },
+    "lib/NintendoWare": {
+      "name": "NW",
+      "source_dir": "sources",
+      "compiler": "4.0/902"
+    },
     "lib/CtrSDK": {
-        "source_dir": "sources",
-        "name": "CtrSDK"
+      "name": "SDK",
+      "source_dir": "sources",
+      "compiler": "4.0/902"
     }
   },
   "compiler": "4.1/791",

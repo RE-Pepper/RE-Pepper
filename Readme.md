@@ -85,7 +85,7 @@ note: retail JP, KO, TW, and US versions are nearly identical
 (eu) ```code.bin: e1d7e188ff88467df776c17cec45c44857fadf5b699944baa8cddcae7d939e64```   
 (us) ```code.bin: a38d213506f0477077c4a550f12dfd720e8c9bda00b7688c76b03360a538bb1a```  
 (jp) ```code.bin: 885dcaed5994076732b1f99e452a6f06493c23464ae0509ebbf44b8c6fd614a7```  
-(eu_d) ```code.bin: 184b8804ccf4aea9f447b2278dfc3171d4f8c4e6abf890d7b24680d649e034c6``` 
+(eu_d) ```code.bin: 184b8804ccf4aea9f447b2278dfc3171d4f8c4e6abf890d7b24680d649e034c6```  
 (jp_d) ```code.bin: b1987a589ddb9d4caf723e0dfb470131d2aee52023b8b9a90455f6c9f694fefc```  
 (us_d) ```code.bin: 6016cbdada120b2476e512e8c87c5d525f62ee8daa9f81e00c8caa1237477344```  
 (cn) ```code.bin: 11ca2f6fa7e8b9553737830899787e7236f4fdbf8b96ed03c99fbe6a8939b37d```  
