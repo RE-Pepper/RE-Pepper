@@ -177,8 +177,9 @@ def exec_build():
         val = mod_data.get("macros")
         if val:
             flags_cxx.extend(getMacroArray(val))
-
-        setup_compiler(mod_data.get("compiler"))
+        val = mod_data.get("compiler")
+        if val:
+            setup_compiler(val)
 
         old_flags_cxx = None
         old_flags_asm = None

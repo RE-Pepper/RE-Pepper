@@ -62,8 +62,6 @@ def _read_elf_symbols():
                 size = int(line[3])
                 sect = line[4]
 
-            echo (sect)
-
             yield [sym, addr, type, size, sect]
 
         if not flag_found:

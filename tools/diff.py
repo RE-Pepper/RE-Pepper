@@ -1,24 +1,25 @@
 #!/usr/bin/env python3
-import subprocess
 import os
 import sys
+import subprocess
+
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 from tools.low.glob import *
 from tools.low.readElfMap import *
 from tools.low.readSymMap import *
+from tools.low.readHeader import *
 
-def fail(msg: str):
-    print(msg)
-    sys.exit(1)
+addr_base = read_header()[HeadType.Text][HeadVal.Start]
 
 def main():
     if len(sys.argv) < 2:
-        fail("diff.py <symbol> [extra flags]")
+        fail ("diff.py <symbol> [extra flags]")
 
     symbolname = sys.argv[1]
     extra_flags = sys.argv[2:]
 
     symbol = get_symbol(symbolname)
-    next_symbol = get_next(symbolname)
     decomp_symbol = get_elf_symbol(symbolname)
 
     if symbol is None:
@@ -26,16 +27,16 @@ def main():
     if decomp_symbol is None:
         fail (f"Couldn't find in decomp: {symbolname}")
 
-    sym_start = int(symbol[MapFmt.Start]-0x00100000)
-    decomp_start = int(decomp_symbol[ElfFmt.Start]-0x00100000)
+    sym_start = int(symbol[MapFmt.Start]-addr_base)
+    decomp_start = int(decomp_symbol[ElfMapFmt.Address]-addr_base)
 
-    sym_size = int(next_symbol - symbol[MapFmt.Start])
-    decomp_size = int(decomp_symbol[ElfFmt.Size])
-    if decomp_size <= 0:
-        decomp_size = sym_size
+    sym_size = int(symbol[MapFmt.Pool] - symbol[MapFmt.Start])
+    decomp_size = sym_size#int(decomp_symbol[ElfMapFmt.Size])
+    #if decomp_size <= 0:
+    #    decomp_size = sym_size
 
     if sym_size <= 0:
-        fail(f"End address is invalid for {symbolname}")
+        fail (f"End address is invalid for {symbolname}")
 
     cmd = [
         sys.executable,

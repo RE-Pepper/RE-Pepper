@@ -11,9 +11,9 @@ def main():
     parser = argparse.ArgumentParser('make.py', description="Build RE:Pepper")
     parser.add_argument("version", nargs="?", default=None, help="Version to use")
     parser.add_argument("--warn", '-w', action='store_true', help="Omit many warnings (nintendo standard)")
-    parser.add_argument("--match_only", '-mo', action='store_true', help="Compile only matching code")
-    parser.add_argument("--shift", '-sh', action='store_true', help="Allow shifts during linking")
-    parser.add_argument("--split", '-sp', action='store_true', help="Enable splitting process (slow)")
+    parser.add_argument("--only_matching", '-mo', action='store_true', help="Compile only matching code")
+    parser.add_argument("--allow_shifting", '-sh', action='store_true', help="Allow shifts during linking")
+    parser.add_argument("--do_split", '-sp', action='store_true', help="Enable splitting process (slow)")
     parser.add_argument("--vfe", '-vf', action='store_true', help="Enable VFE for building")
     parser.add_argument("--debug", '-d', action='store_true', help="Build with debug info")
     parser.add_argument("--debug_obj", '-do', action='store_true', help="Build with debug info (objects only)")
@@ -26,7 +26,7 @@ def main():
     args = parser.parse_args()
     sys.argv = [sys.argv[0]] # clear args
 
-    # TODO: remove this hack, upstrem should only contain matches.
+    # TODO: remove this hack, upstrem should contain matches.
     cfg.macros["NON_MATCHING"] = 1
 
     # parse arguments
@@ -37,11 +37,11 @@ def main():
         args.debug_obj = True
         args.debug_link = True
 
-    if args.match_only:
+    if args.only_matching:
         cfg.only_matching = True
-    if args.shift:
+    if args.allow_shifting:
         cfg.allow_shifting = True
-    if args.split:
+    if args.do_split:
         cfg.do_split = True
     if args.delete:
         cfg.keep_objects = True

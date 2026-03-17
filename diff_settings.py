@@ -1,12 +1,12 @@
 import os
 import sys
-from tools.low.glob import getBinFile, getExportFile
+from tools.low.glob import *
 
 def apply(config, args):
-    config["make_command"] = ["python3", "make.py"]
-    config["baseimg"] = getBinFile()
-    config["myimg"] = getExportFile()
-    config["source_directories"] = ["Game", "lib"]
+    config["make_command"] = ["python", "make.py"]
+    config["baseimg"] = str(getBinFile())
+    config["myimg"] = str(getExportFile())
+    config["source_directories"] = cfg.modules.keys()
     config["source_extensions"] = [".c", ".h", ".cpp", ".hpp"]
     config["arch"] = "armel"
     config["arch_objdump"] = "arm"

@@ -9,6 +9,7 @@ data/compilers
 data/stats/
 data/stats/*
 data/stats/*/*
+data/ver/*/.*
 
 objdiff.json
 compile_commands.json

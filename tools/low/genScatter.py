@@ -27,7 +27,10 @@ def gen_scatter():
     addr_prev = 0
     syms = sorted(read_sym_file(), key=lambda tup: tup[MapFmt.Start])
     for sym in syms:
-        if cfg.only_matching and sym[MapFmt.Rank] != 'O':
+        rank = sym[MapFmt.Rank]
+        if cfg.only_matching and rank != 'O':
+            continue
+        elif not cfg.allow_shifting and not rank in ("O" "m"):
             continue
         isCreateSection = True
         addr = sym[MapFmt.Start]

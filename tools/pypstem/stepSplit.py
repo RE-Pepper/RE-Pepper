@@ -63,7 +63,7 @@ def write_depend():
     do_assemble(asm_flags)
 
 def write_stubs():
-    if (getBuildLibPath() / "libstubs.a").exists() and not isSymMapDiff():
+    if (getBuildLibPath() / "libstubs.a").exists():
         return
 
     # write stubs.c

@@ -1,30 +1,34 @@
 #!/usr/bin/env python3
-print ("The check has begun ...")
-    
+import sys
+import time
+import shutil
+import argparse
+import threading
+import multiprocessing
+from colorama import Fore, Style
+
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 from tools.low.updateMap import *
 from tools.low.readSymMap import *
 from tools.low.readElfMap import *
-import multiprocessing
-import threading
-import argparse
-import time
-import shutil
-import sys
+from tools.low.readHeader import *
+
+addr_base = read_header()[HeadType.Text][HeadVal.Start]
 
 is_skip_mode = False
 is_sim_mode = False
 is_silent = False
 is_log = False
-found_flag = False
 csv_path = ""
 log_path = ""
 
 def rank_symbol(symbol, decomp_symbol):
-    sym_start = int(symbol[MapFmt.Start]-0x00100000)
-    decomp_start = int(decomp_symbol[ElfFmt.Start]-0x00100000)
+    sym_start = int(symbol[MapFmt.Start]-addr_base)
+    decomp_start = int(decomp_symbol[ElfMapFmt.Address]-addr_base)
 
     sym_size = int(symbol[MapFmt.End] - symbol[MapFmt.Start])
-    decomp_size = int(decomp_symbol[ElfFmt.Size])
+    decomp_size = int(decomp_symbol[ElfMapFmt.Size])
     if decomp_size <= 0:
         decomp_size = sym_size
 
@@ -42,7 +46,10 @@ def rank_symbol(symbol, decomp_symbol):
     ]
     cmd = " ".join(cmd)
     #print (cmd)
-    out = str(subprocess.check_output(cmd, shell=True))
+    err = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    if err.returncode != 0:
+        fail (f"asm-differ failed:\n"+ err.stderr, False)
+    out = err.stdout
 
     if not "CURRENT" in out:
         raise RuntimeError(f"Unexpected output when running asm-differ:\n{out}")
@@ -213,7 +220,7 @@ def check_sym(symbol_name):
     prevrank = sym[MapFmt.Rank]
     nowrank = rank_symbol(sym, dec)
 
-    if found_flag and prevrank != nowrank:
+    if cfg.only_matching and prevrank != nowrank:
         sym[MapFmt.Rank] = nowrank
         updateSingle(sym, csv_path)
 
@@ -222,7 +229,6 @@ def check_sym(symbol_name):
         printf (getRankMsg(prevrank, nowrank))
 
 def main():
-    global found_flag
     global csv_path
     global log_path
     global is_skip_mode
@@ -244,14 +250,13 @@ def main():
     is_log = args.w
 
     csv_path = getMapFile()
-    log_path = str(Path(getProjDir()) / "data" / "ver" / getVersion() / ".changes")
+    log_path = str(getVerDir() / ".changes")
 
-    with open(Path(getBuildPath()) / "compile_commands.json", "r") as f:
-        if any("NON_MATCHING" in line for line in f): # check if we compiled for Matching-only build
-            found_flag = True
-    if not found_flag:
-        csv_path = getFuncSymFile().rsplit('.csv', 1)[0] + '_test.csv'
+    if cfg.only_matching:
+        csv_path = getMapFile().with_stem(f"{getMapFile().stem}_test")
         print("Info: TEST MODE. You need to compile without -m (only matching) to rebuild the functions map. This output will be written to data/*_test.csv")
+
+    print ("The check has begun ...")
 
     if args.sym:
         check_sym(args.sym)
