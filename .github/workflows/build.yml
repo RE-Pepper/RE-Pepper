@@ -58,7 +58,7 @@ jobs:
           did_run=false
           for v in "${VERSIONS[@]}"; do
               echo "Now $v"
-              python tools/build.py "$v"
+              python make.py "$v"
               echo "Checking and updating csv"
               python tools/check.py -q -w
               echo "Generating progress info"
