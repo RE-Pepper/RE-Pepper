@@ -35,7 +35,7 @@ NoteObj::NoteObj( NoteObjGenerator* generator )
 }
 #endif
 
-extern "C" void FUN_00270fc4( al::LiveActor*, float, int ); // MtxConnector (?)
+extern "C" void fn_00270fc4( al::LiveActor*, float, int ); // MtxConnector (?)
 
 static const char* sNoteObjArchive = "NoteObj";
 
@@ -46,7 +46,7 @@ void NoteObj::init( const al::ActorInitInfo& info ) // STUPID sead inlines
         {
                 al::initActorWithArchiveName( this, info, sNoteObjArchive );
                 mStartQuat = al::getQuat( this );
-                FUN_00270fc4( this, 70.0, 1 );
+                fn_00270fc4( this, 70.0, 1 );
                 _78 = al::getTrans( this );
                 al::invalidateClipping( this );
         }

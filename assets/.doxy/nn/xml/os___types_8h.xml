@@ -62,6 +62,6 @@
 <codeline lineno="22"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>os</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>nn</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="lib/CTRSDK/include/nn/os/os_Types.h"/>
+    <location file="lib/CtrSDK/include/nn/os/os_Types.h"/>
   </compounddef>
 </doxygen>

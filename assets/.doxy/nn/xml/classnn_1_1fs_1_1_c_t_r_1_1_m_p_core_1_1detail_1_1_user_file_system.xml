@@ -20,14 +20,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/fs/CTR/MPCore/detail/fs_UserFileSystem.h" line="12" column="33"/>
+        <location file="lib/CtrSDK/include/nn/fs/CTR/MPCore/detail/fs_UserFileSystem.h" line="12" column="33"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/fs/CTR/MPCore/detail/fs_UserFileSystem.h" line="10" column="17" bodyfile="lib/CTRSDK/include/nn/fs/CTR/MPCore/detail/fs_UserFileSystem.h" bodystart="10" bodyend="13"/>
+    <location file="lib/CtrSDK/include/nn/fs/CTR/MPCore/detail/fs_UserFileSystem.h" line="10" column="17" bodyfile="lib/CtrSDK/include/nn/fs/CTR/MPCore/detail/fs_UserFileSystem.h" bodystart="10" bodyend="13"/>
     <listofallmembers>
       <member refid="classnn_1_1fs_1_1_c_t_r_1_1_m_p_core_1_1detail_1_1_user_file_system_1abf80e5b45053e19288152439c2706f5a" prot="public" virt="non-virtual"><scope>nn::fs::CTR::MPCore::detail::UserFileSystem</scope><name>Initialize</name></member>
     </listofallmembers>

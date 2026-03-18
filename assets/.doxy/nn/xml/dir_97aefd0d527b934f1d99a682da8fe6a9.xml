@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="dir_97aefd0d527b934f1d99a682da8fe6a9" kind="dir">
     <compoundname>lib</compoundname>
-    <innerdir refid="dir_1e016f672f65000d1caa1843da5325e4">CTRSDK</innerdir>
+    <innerdir refid="dir_a581c965070d8303a3ac233c6039c11a">CtrSDK</innerdir>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

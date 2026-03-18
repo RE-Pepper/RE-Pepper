@@ -2,7 +2,7 @@
 
 # File alStageSwitchAccesser.cpp
 
-[**File List**](files.md) **>** [**al**](dir_9602f8714fac85fdd7f7ceb00b335c03.md) **>** [**src**](dir_efbb2da3221fe95d5cd9a5d2d5dabe34.md) **>** [**Stage**](dir_83103bebc67a29d7d8ce851aa6a5914e.md) **>** [**alStageSwitchAccesser.cpp**](al_stage_switch_accesser_8cpp.md)
+[**File List**](files.md) **>** [**al**](dir_06a57bfe438b90fdc9c94a1df001d5d7.md) **>** [**src**](dir_d8628e97cbd71936d4b5fb3774410590.md) **>** [**Stage**](dir_1105584207b8da44b58906e6f5240647.md) **>** [**alStageSwitchAccesser.cpp**](al_stage_switch_accesser_8cpp.md)
 
 [Go to the documentation of this file](al_stage_switch_accesser_8cpp.md)
 
@@ -25,7 +25,7 @@ int StageSwitchAccesser::initWithPlacementInfo( StageSwitchType type1, const Pla
         mId   = -1;
         mType = type2;
         info.tryGetIntByKey( &mId, type1Name );
-        return FUN_0024e734();
+        return fn_0024e734();
 }
 
 bool StageSwitchAccesser::isTypeKillDeadOn() const
@@ -33,7 +33,7 @@ bool StageSwitchAccesser::isTypeKillDeadOn() const
         return mType == StageSwitchType_Kill || mType == StageSwitchType_DeadOn;
 }
 
-int StageSwitchAccesser::FUN_0024e734() const
+int StageSwitchAccesser::fn_0024e734() const
 {
         return ( mId >> 0x1f ) + 1;
 } // ?

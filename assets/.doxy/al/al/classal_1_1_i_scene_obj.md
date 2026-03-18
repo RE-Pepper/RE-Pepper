@@ -129,5 +129,5 @@ inline virtual void al::ISceneObj::initSceneObj ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/al/include/Scene/alISceneObj.h`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Scene/alISceneObj.h`
 

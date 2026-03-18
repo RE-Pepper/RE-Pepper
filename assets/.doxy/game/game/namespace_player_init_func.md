@@ -51,7 +51,7 @@
 
 | Type | Name |
 | ---: | :--- |
-|  void \* | [**FUN\_00260620**](#function-fun_00260620) () <br> |
+|  void \* | [**fn\_00260620**](#function-fn_00260620) () <br> |
 |  const [**PlayerAnimInfo**](struct_player_anim_info.md) \* | [**getAnimInfo**](#function-getaniminfo) () <br> |
 |  const [**PlayerModelInfo**](struct_player_model_info.md) \* | [**getModelInfo**](#function-getmodelinfo) () <br> |
 
@@ -87,10 +87,10 @@
 
 
 
-### function FUN\_00260620 
+### function fn\_00260620 
 
 ```C++
-void * PlayerInitFunc::FUN_00260620 () 
+void * PlayerInitFunc::fn_00260620 () 
 ```
 
 

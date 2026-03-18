@@ -136,5 +136,5 @@ See [al::ISceneObj](classal_1_1_i_scene_obj.md)
 
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/al/include/Camera/alCameraDirector.h`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCameraDirector.h`
 

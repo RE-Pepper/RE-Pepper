@@ -67,8 +67,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="Game/include/Enemy/Togezo.h" line="17" column="14" bodyfile="Game/src/Enemy/Togezo.cpp" bodystart="66" bodyend="71"/>
-        <references refid="_togezo_8cpp_1a1ac066cee2ee03a0547bbafdb172bcf1">FUN_00259758</references>
-        <references refid="_togezo_8cpp_1adc9a578cff912a654b132e8e3ebe1167">FUN_00272a9c</references>
+        <references refid="_togezo_8cpp_1a29317e10b77a531cf8c3de6ac23d1cd5">fn_00259758</references>
+        <references refid="_togezo_8cpp_1a297d424186865a05be51726964edffa0">fn_00272a9c</references>
         <references refid="_togezo_8cpp_1abd8a1ce1462e35ef560d81791e4b5d9b">sTogezoWalkerStateParam</references>
       </memberdef>
       <memberdef kind="function" id="class_togezo_1a4671992639eb11962b3b8e3cfeee0ad2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -84,9 +84,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="Game/include/Enemy/Togezo.h" line="18" column="14" bodyfile="Game/src/Enemy/Togezo.cpp" bodystart="79" bodyend="91"/>
-        <references refid="_togezo_8cpp_1a86f6737a04c20f325dd790de280416c7">FUN_00258774</references>
-        <references refid="_togezo_8cpp_1a0ba9f2cc5aa26e6db9d1d61e46d93b0f">FUN_00262988</references>
-        <references refid="_togezo_8cpp_1adc9a578cff912a654b132e8e3ebe1167">FUN_00272a9c</references>
+        <references refid="_togezo_8cpp_1a1323e641cd5a5a455e1f85fec16775a9">fn_00258774</references>
+        <references refid="_togezo_8cpp_1a2171757a4f772aa0876a1b531d70956e">fn_00262988</references>
+        <references refid="_togezo_8cpp_1a297d424186865a05be51726964edffa0">fn_00272a9c</references>
         <references refid="namespacerp_1a6701b3d668865fd035e0b2b324fd18b9" compoundref="_player_function_8cpp" startline="20" endline="23">rp::getPlayerPos</references>
         <references refid="_togezo_8cpp_1abd8a1ce1462e35ef560d81791e4b5d9b">sTogezoWalkerStateParam</references>
       </memberdef>
@@ -103,9 +103,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="Game/include/Enemy/Togezo.h" line="19" column="14" bodyfile="Game/src/Enemy/Togezo.cpp" bodystart="98" bodyend="111"/>
-        <references refid="_togezo_8cpp_1a86f6737a04c20f325dd790de280416c7">FUN_00258774</references>
-        <references refid="_togezo_8cpp_1a0ba9f2cc5aa26e6db9d1d61e46d93b0f">FUN_00262988</references>
-        <references refid="_togezo_8cpp_1adc9a578cff912a654b132e8e3ebe1167">FUN_00272a9c</references>
+        <references refid="_togezo_8cpp_1a1323e641cd5a5a455e1f85fec16775a9">fn_00258774</references>
+        <references refid="_togezo_8cpp_1a2171757a4f772aa0876a1b531d70956e">fn_00262988</references>
+        <references refid="_togezo_8cpp_1a297d424186865a05be51726964edffa0">fn_00272a9c</references>
         <references refid="namespacerp_1a6701b3d668865fd035e0b2b324fd18b9" compoundref="_player_function_8cpp" startline="20" endline="23">rp::getPlayerPos</references>
         <references refid="_togezo_8cpp_1abd8a1ce1462e35ef560d81791e4b5d9b">sTogezoWalkerStateParam</references>
       </memberdef>
@@ -122,7 +122,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="Game/include/Enemy/Togezo.h" line="20" column="14" bodyfile="Game/src/Enemy/Togezo.cpp" bodystart="117" bodyend="121"/>
-        <references refid="_togezo_8cpp_1a1e9f7d3ec6bd5c84d2879dd0f9764ebf">FUN_0026b6cc</references>
+        <references refid="_togezo_8cpp_1a750c77c792e2b92d0db1324ab811c986">fn_0026b6cc</references>
         <references refid="class_togezo_1acfa2a7ba00b5e7178d6b66c13eefeed7" compoundref="_togezo_8h" startline="12">mWanderState</references>
       </memberdef>
       <memberdef kind="function" id="class_togezo_1ade4bb2a982d4b1695e3bf3fad13f6591" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -138,7 +138,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="Game/include/Enemy/Togezo.h" line="21" column="14" bodyfile="Game/src/Enemy/Togezo.cpp" bodystart="125" bodyend="134"/>
-        <references refid="_togezo_8cpp_1a86f6737a04c20f325dd790de280416c7">FUN_00258774</references>
+        <references refid="_togezo_8cpp_1a1323e641cd5a5a455e1f85fec16775a9">fn_00258774</references>
         <references refid="_togezo_8cpp_1abd8a1ce1462e35ef560d81791e4b5d9b">sTogezoWalkerStateParam</references>
       </memberdef>
       <memberdef kind="function" id="class_togezo_1a572e34f41c052ea97df54bbc0fc5db76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -154,7 +154,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="Game/include/Enemy/Togezo.h" line="22" column="14" bodyfile="Game/src/Enemy/Togezo.cpp" bodystart="141" bodyend="148"/>
-        <references refid="_togezo_8cpp_1abd057808a1876af76062021bbb3cfdb4">FUN_00279158</references>
+        <references refid="_togezo_8cpp_1aedcb64cb90f42c8407c019f42bae387c">fn_00279158</references>
         <references refid="class_togezo_1aab25bc8b451bd7e0e8689fb3f3ed4a6d" compoundref="_togezo_8h" startline="14">mBlowDownState</references>
       </memberdef>
       <memberdef kind="function" id="class_togezo_1a077f7e75b7f17d2283895eab2ca1905c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -174,8 +174,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="Game/include/Enemy/Togezo.h" line="25" column="22" bodyfile="Game/src/Enemy/Togezo.cpp" bodystart="46" bodyend="59"/>
-        <references refid="_togezo_8cpp_1a539aa7418965bfc783b8986dcc10fca6">FUN_0027a1a0</references>
-        <references refid="_togezo_8cpp_1a529e95cc8a35287097c4b1d8c24bd816">FUN_0027cf20</references>
+        <references refid="_togezo_8cpp_1a26275c96d8643d1ae0f85eb6dea19911">fn_0027a1a0</references>
+        <references refid="_togezo_8cpp_1aedb98c3fd773a4c84ceb2c1f7cb09197">fn_0027cf20</references>
         <references refid="class_togezo_1aab25bc8b451bd7e0e8689fb3f3ed4a6d" compoundref="_togezo_8h" startline="14">mBlowDownState</references>
         <references refid="class_togezo_1a7167f00cb5f6e59ee8f3a23db6612495" compoundref="_togezo_8h" startline="13">mChaseState</references>
         <references refid="class_togezo_1acfa2a7ba00b5e7178d6b66c13eefeed7" compoundref="_togezo_8h" startline="12">mWanderState</references>

@@ -201,12 +201,6 @@
 
 | Type | Name |
 | ---: | :--- |
-|  [**void**](classal_1_1_functor_v0_m.md) | [**FUN\_001cc9b0**](#function-fun_001cc9b0) ([**const**](classal_1_1_functor_v0_m.md) [**char**](classal_1_1_functor_v0_m.md) \*, [**const**](classal_1_1_functor_v0_m.md) [**FunctorV0F**](classal_1_1_functor_v0_f.md) &) <br> |
-|  [**void**](classal_1_1_functor_v0_m.md) | [**FUN\_001e8a64**](#function-fun_001e8a64) () <br> |
-|  [**void**](classal_1_1_functor_v0_m.md) | [**FUN\_00240350**](#function-fun_00240350) () <br> |
-|  [**const**](classal_1_1_functor_v0_m.md) [**u32**](classal_1_1_functor_v0_m.md) \* | [**FUN\_0024edd8**](#function-fun_0024edd8) () <br> |
-|  [**bool**](classal_1_1_functor_v0_m.md) | [**FUN\_00268df8**](#function-fun_00268df8) ([**IUseAudioKeeper**](classal_1_1_i_use_audio_keeper.md) \*, [**const**](classal_1_1_functor_v0_m.md) sead::SafeString & name) <br> |
-|  [**void**](classal_1_1_functor_v0_m.md) | [**FUN\_002911e8**](#function-fun_002911e8) (sead::FrameHeap \*\* out, [**u32**](classal_1_1_functor_v0_m.md) heapSize, [**const**](classal_1_1_functor_v0_m.md) [**char**](classal_1_1_functor_v0_m.md) \* name, [**u8**](classal_1_1_functor_v0_m.md), [**int**](classal_1_1_functor_v0_m.md)) <br> |
 |   | [**\_T\_BUTTON**](#function-_t_button) ([**A**](classal_1_1_functor_v0_m.md)) <br> |
 |   | [**\_T\_BUTTON**](#function-_t_button) ([**B**](classal_1_1_functor_v0_m.md)) <br> |
 |   | [**\_T\_BUTTON**](#function-_t_button) ([**X**](classal_1_1_functor_v0_m.md)) <br> |
@@ -251,6 +245,12 @@
 |  [**void**](classal_1_1_functor_v0_m.md) | [**executeDraw**](#function-executedraw) ([**const**](classal_1_1_functor_v0_m.md) [**LiveActorKit**](classal_1_1_live_actor_kit.md) \* kit, [**const**](classal_1_1_functor_v0_m.md) [**char**](classal_1_1_functor_v0_m.md) \*) <br> |
 |  [**void**](classal_1_1_functor_v0_m.md) | [**executeDrawList**](#function-executedrawlist) ([**const**](classal_1_1_functor_v0_m.md) [**LiveActorKit**](classal_1_1_live_actor_kit.md) \* kit, [**const**](classal_1_1_functor_v0_m.md) [**char**](classal_1_1_functor_v0_m.md) \*, [**const**](classal_1_1_functor_v0_m.md) [**char**](classal_1_1_functor_v0_m.md) \*) <br> |
 |  [**Resource**](classal_1_1_resource.md) \* | [**findOrCreateResource**](#function-findorcreateresource) ([**const**](classal_1_1_functor_v0_m.md) sead::SafeString & archive) <br> |
+|  [**void**](classal_1_1_functor_v0_m.md) | [**fn\_001cc9b0**](#function-fn_001cc9b0) ([**const**](classal_1_1_functor_v0_m.md) [**char**](classal_1_1_functor_v0_m.md) \*, [**const**](classal_1_1_functor_v0_m.md) [**FunctorV0F**](classal_1_1_functor_v0_f.md) &) <br> |
+|  [**void**](classal_1_1_functor_v0_m.md) | [**fn\_001e8a64**](#function-fn_001e8a64) () <br> |
+|  [**void**](classal_1_1_functor_v0_m.md) | [**fn\_00240350**](#function-fn_00240350) () <br> |
+|  [**const**](classal_1_1_functor_v0_m.md) [**u32**](classal_1_1_functor_v0_m.md) \* | [**fn\_0024edd8**](#function-fn_0024edd8) () <br> |
+|  [**bool**](classal_1_1_functor_v0_m.md) | [**fn\_00268df8**](#function-fn_00268df8) ([**IUseAudioKeeper**](classal_1_1_i_use_audio_keeper.md) \*, [**const**](classal_1_1_functor_v0_m.md) sead::SafeString & name) <br> |
+|  [**void**](classal_1_1_functor_v0_m.md) | [**fn\_002911e8**](#function-fn_002911e8) (sead::FrameHeap \*\* out, [**u32**](classal_1_1_functor_v0_m.md) heapSize, [**const**](classal_1_1_functor_v0_m.md) [**char**](classal_1_1_functor_v0_m.md) \* name, [**u8**](classal_1_1_functor_v0_m.md), [**int**](classal_1_1_functor_v0_m.md)) <br> |
 |  [**float**](classal_1_1_functor_v0_m.md) | [**getActionFrameMax**](#function-getactionframemax) ([**const**](classal_1_1_functor_v0_m.md) [**LayoutActor**](classal_1_1_layout_actor.md) \* actor) <br> |
 |  [**Application**](class_application.md) \* | [**getApplication**](#function-getapplication) () <br> |
 |  [**const**](classal_1_1_functor_v0_m.md) [**char**](classal_1_1_functor_v0_m.md) \* | [**getBaseName**](#function-getbasename) ([**const**](classal_1_1_functor_v0_m.md) [**char**](classal_1_1_functor_v0_m.md) \* name) <br> |
@@ -726,96 +726,6 @@ const NameToAreaObjCreator al::split(sAreaObjFactoryEntries)[];
 <hr>
 ## Public Functions Documentation
 
-
-
-
-### function FUN\_001cc9b0 
-
-```C++
-void al::FUN_001cc9b0 (
-    const  char *,
-    const  FunctorV0F &
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function FUN\_001e8a64 
-
-```C++
-void al::FUN_001e8a64 () 
-```
-
-
-
-
-<hr>
-
-
-
-### function FUN\_00240350 
-
-```C++
-void al::FUN_00240350 () 
-```
-
-
-
-
-<hr>
-
-
-
-### function FUN\_0024edd8 
-
-```C++
-const  u32 * al::FUN_0024edd8 () 
-```
-
-
-
-
-<hr>
-
-
-
-### function FUN\_00268df8 
-
-```C++
-bool al::FUN_00268df8 (
-    IUseAudioKeeper *,
-    const sead::SafeString & name
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function FUN\_002911e8 
-
-```C++
-void al::FUN_002911e8 (
-    sead::FrameHeap ** out,
-    u32 heapSize,
-    const  char * name,
-    u8,
-    int
-) 
-```
-
-
-
-
-<hr>
 
 
 
@@ -1483,6 +1393,96 @@ void al::executeDrawList (
 ```C++
 Resource * al::findOrCreateResource (
     const sead::SafeString & archive
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function fn\_001cc9b0 
+
+```C++
+void al::fn_001cc9b0 (
+    const  char *,
+    const  FunctorV0F &
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function fn\_001e8a64 
+
+```C++
+void al::fn_001e8a64 () 
+```
+
+
+
+
+<hr>
+
+
+
+### function fn\_00240350 
+
+```C++
+void al::fn_00240350 () 
+```
+
+
+
+
+<hr>
+
+
+
+### function fn\_0024edd8 
+
+```C++
+const  u32 * al::fn_0024edd8 () 
+```
+
+
+
+
+<hr>
+
+
+
+### function fn\_00268df8 
+
+```C++
+bool al::fn_00268df8 (
+    IUseAudioKeeper *,
+    const sead::SafeString & name
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function fn\_002911e8 
+
+```C++
+void al::fn_002911e8 (
+    sead::FrameHeap ** out,
+    u32 heapSize,
+    const  char * name,
+    u8,
+    int
 ) 
 ```
 
@@ -4856,5 +4856,5 @@ static const  ExecuteOrder al::split (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/al/include/AreaObj/alAreaInitInfo.h`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/AreaObj/alAreaInitInfo.h`
 

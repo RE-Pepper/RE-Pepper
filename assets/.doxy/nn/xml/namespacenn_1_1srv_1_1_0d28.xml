@@ -6,6 +6,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/sources/srv/srv_Api.cpp" line="7" column="5"/>
+    <location file="lib/CtrSDK/sources/srv/srv_Api.cpp" line="7" column="5"/>
   </compounddef>
 </doxygen>

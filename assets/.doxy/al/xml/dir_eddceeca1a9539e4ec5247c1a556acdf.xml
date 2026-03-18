@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_eddceeca1a9539e4ec5247c1a556acdf" kind="dir">
+    <compoundname>Rail</compoundname>
+    <innerfile refid="al_rail_8h">alRail.h</innerfile>
+    <innerfile refid="al_rail_function_8h">alRailFunction.h</innerfile>
+    <innerfile refid="al_rail_keeper_8h">alRailKeeper.h</innerfile>
+    <innerfile refid="al_rail_move_movement_8h">alRailMoveMovement.h</innerfile>
+    <innerfile refid="al_rail_rider_8h">alRailRider.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Rail/"/>
+  </compounddef>
+</doxygen>

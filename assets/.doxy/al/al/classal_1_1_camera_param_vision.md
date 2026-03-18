@@ -114,5 +114,5 @@ bool al::CameraParamVision::init (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/al/include/Camera/alCameraParamVision.h`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCameraParamVision.h`
 

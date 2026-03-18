@@ -439,5 +439,5 @@ inline nn::Result::operator bool ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/Result.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/Result.h`
 

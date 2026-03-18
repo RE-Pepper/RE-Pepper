@@ -66,12 +66,12 @@
 
 | Type | Name |
 | ---: | :--- |
-|  void | [**FUN\_00240e08**](#function-fun_00240e08) (al::LiveActor \*, const sead::Vector3f &, float) <br> |
-|  void | [**FUN\_0027b51c**](#function-fun_0027b51c) (al::LiveActor \*, const al::ActorInitInfo & info, int) <br> |
-|  bool | [**FUN\_0027b704**](#function-fun_0027b704) (u32, al::HitSensor \*, al::HitSensor \*, al::NerveStateBase \*) <br> |
-|  bool | [**FUN\_0027b768**](#function-fun_0027b768) (u32, al::HitSensor \*, al::HitSensor \*, al::NerveStateBase \*, const al::Nerve \*) <br> |
-|  void | [**FUN\_0027ee34**](#function-fun_0027ee34) (al::LiveActor \*, const al::ActorInitInfo & info, int) <br> |
-|  void | [**FUN\_002cd428**](#function-fun_002cd428) (al::LiveActor \*, al::NerveStateBase \*) <br> |
+|  void | [**fn\_00240e08**](#function-fn_00240e08) (al::LiveActor \*, const sead::Vector3f &, float) <br> |
+|  void | [**fn\_0027b51c**](#function-fn_0027b51c) (al::LiveActor \*, const al::ActorInitInfo & info, int) <br> |
+|  bool | [**fn\_0027b704**](#function-fn_0027b704) (u32, al::HitSensor \*, al::HitSensor \*, al::NerveStateBase \*) <br> |
+|  bool | [**fn\_0027b768**](#function-fn_0027b768) (u32, al::HitSensor \*, al::HitSensor \*, al::NerveStateBase \*, const al::Nerve \*) <br> |
+|  void | [**fn\_0027ee34**](#function-fn_0027ee34) (al::LiveActor \*, const al::ActorInitInfo & info, int) <br> |
+|  void | [**fn\_002cd428**](#function-fn_002cd428) (al::LiveActor \*, al::NerveStateBase \*) <br> |
 
 
 
@@ -105,10 +105,10 @@
 
 
 
-### function FUN\_00240e08 
+### function fn\_00240e08 
 
 ```C++
-void FUN_00240e08 (
+void fn_00240e08 (
     al::LiveActor *,
     const sead::Vector3f &,
     float
@@ -122,10 +122,10 @@ void FUN_00240e08 (
 
 
 
-### function FUN\_0027b51c 
+### function fn\_0027b51c 
 
 ```C++
-void FUN_0027b51c (
+void fn_0027b51c (
     al::LiveActor *,
     const al::ActorInitInfo & info,
     int
@@ -139,10 +139,10 @@ void FUN_0027b51c (
 
 
 
-### function FUN\_0027b704 
+### function fn\_0027b704 
 
 ```C++
-bool FUN_0027b704 (
+bool fn_0027b704 (
     u32,
     al::HitSensor *,
     al::HitSensor *,
@@ -157,10 +157,10 @@ bool FUN_0027b704 (
 
 
 
-### function FUN\_0027b768 
+### function fn\_0027b768 
 
 ```C++
-bool FUN_0027b768 (
+bool fn_0027b768 (
     u32,
     al::HitSensor *,
     al::HitSensor *,
@@ -176,10 +176,10 @@ bool FUN_0027b768 (
 
 
 
-### function FUN\_0027ee34 
+### function fn\_0027ee34 
 
 ```C++
-void FUN_0027ee34 (
+void fn_0027ee34 (
     al::LiveActor *,
     const al::ActorInitInfo & info,
     int
@@ -193,10 +193,10 @@ void FUN_0027ee34 (
 
 
 
-### function FUN\_002cd428 
+### function fn\_002cd428 
 
 ```C++
-void FUN_002cd428 (
+void fn_002cd428 (
     al::LiveActor *,
     al::NerveStateBase *
 ) 

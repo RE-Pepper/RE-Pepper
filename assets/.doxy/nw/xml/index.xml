@@ -6,8 +6,8 @@
   </compound>
   <compound refid="dir_73f9fd681b73af54dffcd392b356befa" kind="dir"><name>NintendoWare</name>
   </compound>
-  <compound refid="dir_b255656a763f7c1264eb1dd62ba55f4f" kind="dir"><name>snd</name>
+  <compound refid="dir_ade45b8677a2c0e13b06ddb76d6cfaa5" kind="dir"><name>snd</name>
   </compound>
-  <compound refid="dir_c72613bbd41d65f574b93bb63fb23f08" kind="dir"><name>src</name>
+  <compound refid="dir_dd6c2099314574e6e58110d84add19b8" kind="dir"><name>sources</name>
   </compound>
 </doxygenindex>

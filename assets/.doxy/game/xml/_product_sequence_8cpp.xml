@@ -59,11 +59,11 @@
     </incdepgraph>
     <innernamespace refid="namespace_nrv_product_sequence">NrvProductSequence</innernamespace>
     <sectiondef kind="func">
-      <memberdef kind="function" id="_product_sequence_8cpp_1a09b334d4b8d999d749470031b9a44c10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_product_sequence_8cpp_1afdfd558c331ed88f2882f7e8401d66b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
-        <definition>bool FUN_0025ba7c</definition>
+        <definition>bool fn_0025ba7c</definition>
         <argsstring>(const char *)</argsstring>
-        <name>FUN_0025ba7c</name>
+        <name>fn_0025ba7c</name>
         <param>
           <type>const char *</type>
         </param>
@@ -76,11 +76,11 @@
         <location file="Game/src/Sequence/ProductSequence.cpp" line="40" column="17" declfile="Game/src/Sequence/ProductSequence.cpp" declline="40" declcolumn="17"/>
         <referencedby refid="class_product_sequence_1a7fa46e1b47636909ca0298c1a0629338" compoundref="_product_sequence_8cpp" startline="42" endline="51">ProductSequence::exeTitle</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_product_sequence_8cpp_1a5c60241eeac5534ae30d9cc3ab16b6e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_product_sequence_8cpp_1af2cb6af23d3a0a8502b909a9a5024187" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
-        <definition>bool FUN_0025ddd0</definition>
+        <definition>bool fn_0025ddd0</definition>
         <argsstring>()</argsstring>
-        <name>FUN_0025ddd0</name>
+        <name>fn_0025ddd0</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -135,13 +135,13 @@
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40" refid="_product_sequence_8cpp_1a09b334d4b8d999d749470031b9a44c10" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="_product_sequence_8cpp_1a09b334d4b8d999d749470031b9a44c10" kindref="member">FUN_0025ba7c</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>);</highlight></codeline>
+<codeline lineno="40" refid="_product_sequence_8cpp_1afdfd558c331ed88f2882f7e8401d66b7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="_product_sequence_8cpp_1afdfd558c331ed88f2882f7e8401d66b7" kindref="member">fn_0025ba7c</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>);</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
 <codeline lineno="42" refid="class_product_sequence_1a7fa46e1b47636909ca0298c1a0629338" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_product_sequence_1a7fa46e1b47636909ca0298c1a0629338" kindref="member">ProductSequence::exeTitle</ref>()</highlight></codeline>
 <codeline lineno="43"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>al::updateNerveState(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="_product_sequence_8cpp_1a09b334d4b8d999d749470031b9a44c10" kindref="member">FUN_0025ba7c</ref>(<sp/></highlight><highlight class="stringliteral">&quot;オープニング実行&quot;</highlight><highlight class="normal"><sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="_product_sequence_8cpp_1afdfd558c331ed88f2882f7e8401d66b7" kindref="member">fn_0025ba7c</ref>(<sp/></highlight><highlight class="stringliteral">&quot;オープニング実行&quot;</highlight><highlight class="normal"><sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::setNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvProductSequence::CourseSelect<sp/>);</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::setNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvProductSequence::Opening<sp/>);</highlight></codeline>
@@ -163,13 +163,13 @@
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="66"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68" refid="_product_sequence_8cpp_1a5c60241eeac5534ae30d9cc3ab16b6e9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="_product_sequence_8cpp_1a5c60241eeac5534ae30d9cc3ab16b6e9" kindref="member">FUN_0025ddd0</ref>();</highlight></codeline>
+<codeline lineno="68" refid="_product_sequence_8cpp_1af2cb6af23d3a0a8502b909a9a5024187" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="_product_sequence_8cpp_1af2cb6af23d3a0a8502b909a9a5024187" kindref="member">fn_0025ddd0</ref>();</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
 <codeline lineno="70" refid="class_product_sequence_1a65f4b6437e23bf81339d58ddd407d3ee" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_product_sequence_1a65f4b6437e23bf81339d58ddd407d3ee" kindref="member">ProductSequence::exeEnding</ref>()</highlight></codeline>
 <codeline lineno="71"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>al::updateNerveState(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="_product_sequence_8cpp_1a5c60241eeac5534ae30d9cc3ab16b6e9" kindref="member">FUN_0025ddd0</ref>()<sp/>)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="_product_sequence_8cpp_1af2cb6af23d3a0a8502b909a9a5024187" kindref="member">fn_0025ddd0</ref>()<sp/>)</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::setNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvProductSequence::Unk1<sp/>);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::setNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvProductSequence::Title<sp/>);</highlight></codeline>

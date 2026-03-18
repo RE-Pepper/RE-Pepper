@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_7e131ebde053fe7d3351d1831517cd0c" kind="dir">
+    <compoundname>Controller</compoundname>
+    <innerfile refid="al_controller_util_8h">alControllerUtil.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Controller/"/>
+  </compounddef>
+</doxygen>

@@ -2,7 +2,7 @@
 
 # File srv\_Api.cpp
 
-[**File List**](files.md) **>** [**CTRSDK**](dir_1e016f672f65000d1caa1843da5325e4.md) **>** [**sources**](dir_a4ee87762c46a7490fc221af34a02561.md) **>** [**srv**](dir_064e8900dd82112c387a64bbbe98e02f.md) **>** [**srv\_Api.cpp**](srv___api_8cpp.md)
+[**File List**](files.md) **>** [**CtrSDK**](dir_a581c965070d8303a3ac233c6039c11a.md) **>** [**sources**](dir_6ad72fc0abbc32b2f59992fddd21f3c1.md) **>** [**srv**](dir_9265a2f0e35d56b43a6785601066bd6e.md) **>** [**srv\_Api.cpp**](srv___api_8cpp.md)
 
 [Go to the documentation of this file](srv___api_8cpp.md)
 

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_bbf0d395114b7d01e47e296975854f01" kind="dir">
+    <compoundname>Scene</compoundname>
+    <innerfile refid="al_i_scene_obj_8h">alISceneObj.h</innerfile>
+    <innerfile refid="al_scene_8h">alScene.h</innerfile>
+    <innerfile refid="al_scene_function_8h">alSceneFunction.h</innerfile>
+    <innerfile refid="al_scene_obj_holder_8h">alSceneObjHolder.h</innerfile>
+    <innerfile refid="al_scene_stop_ctrl_8h">alSceneStopCtrl.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Scene/"/>
+  </compounddef>
+</doxygen>

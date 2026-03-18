@@ -265,11 +265,11 @@
         <location file="Game/src/Enemy/Togezo.cpp" line="33" column="31" declfile="Game/src/Enemy/Togezo.cpp" declline="33" declcolumn="31"/>
         <referencedby refid="class_togezo_1a077f7e75b7f17d2283895eab2ca1905c" compoundref="_togezo_8cpp" startline="46" endline="59">Togezo::init</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_togezo_8cpp_1a539aa7418965bfc783b8986dcc10fca6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_togezo_8cpp_1a26275c96d8643d1ae0f85eb6dea19911" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void FUN_0027a1a0</definition>
+        <definition>void fn_0027a1a0</definition>
         <argsstring>(al::LiveActor *actor, const char *)</argsstring>
-        <name>FUN_0027a1a0</name>
+        <name>fn_0027a1a0</name>
         <param>
           <type>al::LiveActor *</type>
           <declname>actor</declname>
@@ -286,11 +286,11 @@
         <location file="Game/src/Enemy/Togezo.cpp" line="40" column="17" declfile="Game/src/Enemy/Togezo.cpp" declline="40" declcolumn="17"/>
         <referencedby refid="class_togezo_1a077f7e75b7f17d2283895eab2ca1905c" compoundref="_togezo_8cpp" startline="46" endline="59">Togezo::init</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_togezo_8cpp_1a529e95cc8a35287097c4b1d8c24bd816" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_togezo_8cpp_1aedb98c3fd773a4c84ceb2c1f7cb09197" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void FUN_0027cf20</definition>
+        <definition>void fn_0027cf20</definition>
         <argsstring>(al::LiveActor *actor, const al::ActorInitInfo &amp;info, int)</argsstring>
-        <name>FUN_0027cf20</name>
+        <name>fn_0027cf20</name>
         <param>
           <type>al::LiveActor *</type>
           <declname>actor</declname>
@@ -311,11 +311,11 @@
         <location file="Game/src/Enemy/Togezo.cpp" line="41" column="17" declfile="Game/src/Enemy/Togezo.cpp" declline="41" declcolumn="17"/>
         <referencedby refid="class_togezo_1a077f7e75b7f17d2283895eab2ca1905c" compoundref="_togezo_8cpp" startline="46" endline="59">Togezo::init</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_togezo_8cpp_1adc9a578cff912a654b132e8e3ebe1167" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_togezo_8cpp_1a297d424186865a05be51726964edffa0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
-        <definition>bool FUN_00272a9c</definition>
+        <definition>bool fn_00272a9c</definition>
         <argsstring>()</argsstring>
-        <name>FUN_00272a9c</name>
+        <name>fn_00272a9c</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -327,11 +327,11 @@
         <referencedby refid="class_togezo_1a4671992639eb11962b3b8e3cfeee0ad2" compoundref="_togezo_8cpp" startline="79" endline="91">Togezo::exeTurn</referencedby>
         <referencedby refid="class_togezo_1a06d3cf5b77014b553bb7f174c766a240" compoundref="_togezo_8cpp" startline="66" endline="71">Togezo::exeWander</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_togezo_8cpp_1a1ac066cee2ee03a0547bbafdb172bcf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_togezo_8cpp_1a29317e10b77a531cf8c3de6ac23d1cd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
-        <definition>bool FUN_00259758</definition>
+        <definition>bool fn_00259758</definition>
         <argsstring>(al::LiveActor *, const sead::Vector3f &amp;, const WalkerStateParam *)</argsstring>
-        <name>FUN_00259758</name>
+        <name>fn_00259758</name>
         <param>
           <type>al::LiveActor *</type>
         </param>
@@ -350,11 +350,11 @@
         <location file="Game/src/Enemy/Togezo.cpp" line="64" column="17" declfile="Game/src/Enemy/Togezo.cpp" declline="64" declcolumn="17"/>
         <referencedby refid="class_togezo_1a06d3cf5b77014b553bb7f174c766a240" compoundref="_togezo_8cpp" startline="66" endline="71">Togezo::exeWander</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_togezo_8cpp_1a0ba9f2cc5aa26e6db9d1d61e46d93b0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_togezo_8cpp_1a2171757a4f772aa0876a1b531d70956e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
-        <definition>bool FUN_00262988</definition>
+        <definition>bool fn_00262988</definition>
         <argsstring>(al::LiveActor *, sead::Vector3f *out, const sead::Vector3f &amp;, float)</argsstring>
-        <name>FUN_00262988</name>
+        <name>fn_00262988</name>
         <param>
           <type>al::LiveActor *</type>
         </param>
@@ -378,11 +378,11 @@
         <referencedby refid="class_togezo_1ab5d5cca7f132e766b1ec53c0e181bb57" compoundref="_togezo_8cpp" startline="98" endline="111">Togezo::exeSearch</referencedby>
         <referencedby refid="class_togezo_1a4671992639eb11962b3b8e3cfeee0ad2" compoundref="_togezo_8cpp" startline="79" endline="91">Togezo::exeTurn</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_togezo_8cpp_1a86f6737a04c20f325dd790de280416c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_togezo_8cpp_1a1323e641cd5a5a455e1f85fec16775a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void FUN_00258774</definition>
+        <definition>void fn_00258774</definition>
         <argsstring>(Togezo *, const WalkerStateParam *)</argsstring>
-        <name>FUN_00258774</name>
+        <name>fn_00258774</name>
         <param>
           <type><ref refid="class_togezo" kindref="compound">Togezo</ref> *</type>
         </param>
@@ -400,11 +400,11 @@
         <referencedby refid="class_togezo_1ab5d5cca7f132e766b1ec53c0e181bb57" compoundref="_togezo_8cpp" startline="98" endline="111">Togezo::exeSearch</referencedby>
         <referencedby refid="class_togezo_1a4671992639eb11962b3b8e3cfeee0ad2" compoundref="_togezo_8cpp" startline="79" endline="91">Togezo::exeTurn</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_togezo_8cpp_1a1e9f7d3ec6bd5c84d2879dd0f9764ebf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_togezo_8cpp_1a750c77c792e2b92d0db1324ab811c986" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
-        <definition>bool FUN_0026b6cc</definition>
+        <definition>bool fn_0026b6cc</definition>
         <argsstring>(WalkerStateWander *, const sead::Vector3f &amp;trans)</argsstring>
-        <name>FUN_0026b6cc</name>
+        <name>fn_0026b6cc</name>
         <param>
           <type><ref refid="class_walker_state_wander" kindref="compound">WalkerStateWander</ref> *</type>
         </param>
@@ -421,11 +421,11 @@
         <location file="Game/src/Enemy/Togezo.cpp" line="115" column="17" declfile="Game/src/Enemy/Togezo.cpp" declline="115" declcolumn="17"/>
         <referencedby refid="class_togezo_1a351ed1b46ac4818de01817c0eabb822a" compoundref="_togezo_8cpp" startline="117" endline="121">Togezo::exeChase</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_togezo_8cpp_1abd057808a1876af76062021bbb3cfdb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_togezo_8cpp_1aedcb64cb90f42c8407c019f42bae387c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void FUN_00279158</definition>
+        <definition>void fn_00279158</definition>
         <argsstring>(Togezo *, const EnemyStateBlowDown *)</argsstring>
-        <name>FUN_00279158</name>
+        <name>fn_00279158</name>
         <param>
           <type><ref refid="class_togezo" kindref="compound">Togezo</ref> *</type>
         </param>
@@ -486,8 +486,8 @@
 <codeline lineno="37"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="38"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40" refid="_togezo_8cpp_1a539aa7418965bfc783b8986dcc10fca6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_togezo_8cpp_1a539aa7418965bfc783b8986dcc10fca6" kindref="member">FUN_0027a1a0</ref>(<sp/>al::LiveActor*<sp/>actor,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>);<sp/></highlight><highlight class="comment">//<sp/>inits<sp/>al::Collider-&gt;_4</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41" refid="_togezo_8cpp_1a529e95cc8a35287097c4b1d8c24bd816" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_togezo_8cpp_1a529e95cc8a35287097c4b1d8c24bd816" kindref="member">FUN_0027cf20</ref>(<sp/>al::LiveActor*<sp/>actor,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::ActorInitInfo&amp;<sp/>info,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="40" refid="_togezo_8cpp_1a26275c96d8643d1ae0f85eb6dea19911" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_togezo_8cpp_1a26275c96d8643d1ae0f85eb6dea19911" kindref="member">fn_0027a1a0</ref>(<sp/>al::LiveActor*<sp/>actor,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>);<sp/></highlight><highlight class="comment">//<sp/>inits<sp/>al::Collider-&gt;_4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="_togezo_8cpp_1aedb98c3fd773a4c84ceb2c1f7cb09197" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_togezo_8cpp_1aedb98c3fd773a4c84ceb2c1f7cb09197" kindref="member">fn_0027cf20</ref>(<sp/>al::LiveActor*<sp/>actor,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::ActorInitInfo&amp;<sp/>info,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>NON_MATCHING</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
@@ -495,8 +495,8 @@
 <codeline lineno="46" refid="class_togezo_1a077f7e75b7f17d2283895eab2ca1905c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_togezo_1a077f7e75b7f17d2283895eab2ca1905c" kindref="member">Togezo::init</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::ActorInitInfo&amp;<sp/>info<sp/>)</highlight></codeline>
 <codeline lineno="47"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::initActorWithArchiveName(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>info,<sp/></highlight><highlight class="stringliteral">&quot;Togezo&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_togezo_8cpp_1a539aa7418965bfc783b8986dcc10fca6" kindref="member">FUN_0027a1a0</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;移動制限&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_togezo_8cpp_1a529e95cc8a35287097c4b1d8c24bd816" kindref="member">FUN_0027cf20</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>info,<sp/>1<sp/>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_togezo_8cpp_1a26275c96d8643d1ae0f85eb6dea19911" kindref="member">fn_0027a1a0</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;移動制限&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_togezo_8cpp_1aedb98c3fd773a4c84ceb2c1f7cb09197" kindref="member">fn_0027cf20</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>info,<sp/>1<sp/>);</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::initNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvTogezo::Wander,<sp/>3<sp/>);</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_togezo_1acfa2a7ba00b5e7178d6b66c13eefeed7" kindref="member">mWanderState</ref><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_walker_state_wander" kindref="compound">WalkerStateWander</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>al::getFrontPtr(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>),<sp/>&amp;<ref refid="_togezo_8cpp_1abd8a1ce1462e35ef560d81791e4b5d9b" kindref="member">sTogezoWalkerStateParam</ref>,<sp/>&amp;<ref refid="_togezo_8cpp_1ae8dd9a83578f24230eb841e328a7a52b" kindref="member">sTogezoWalkerStateWanderParam</ref><sp/>);</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_togezo_1a7167f00cb5f6e59ee8f3a23db6612495" kindref="member">mChaseState</ref><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_walker_state_chase" kindref="compound">WalkerStateChase</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>al::getFrontPtr(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>),<sp/>&amp;<ref refid="_togezo_8cpp_1abd8a1ce1462e35ef560d81791e4b5d9b" kindref="member">sTogezoWalkerStateParam</ref>,<sp/>&amp;<ref refid="_togezo_8cpp_1abe52849362e3ee474d2f38dcdbf18ccb" kindref="member">sTogezoWalkerStateChaseParam</ref>,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal"><sp/>);</highlight></codeline>
@@ -509,19 +509,19 @@
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="63" refid="_togezo_8cpp_1adc9a578cff912a654b132e8e3ebe1167" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="_togezo_8cpp_1adc9a578cff912a654b132e8e3ebe1167" kindref="member">FUN_00272a9c</ref>();</highlight></codeline>
-<codeline lineno="64" refid="_togezo_8cpp_1a1ac066cee2ee03a0547bbafdb172bcf1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="_togezo_8cpp_1a1ac066cee2ee03a0547bbafdb172bcf1" kindref="member">FUN_00259758</ref>(<sp/>al::LiveActor*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::Vector3f&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_walker_state_param" kindref="compound">WalkerStateParam</ref>*<sp/>);</highlight></codeline>
+<codeline lineno="63" refid="_togezo_8cpp_1a297d424186865a05be51726964edffa0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="_togezo_8cpp_1a297d424186865a05be51726964edffa0" kindref="member">fn_00272a9c</ref>();</highlight></codeline>
+<codeline lineno="64" refid="_togezo_8cpp_1a29317e10b77a531cf8c3de6ac23d1cd5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="_togezo_8cpp_1a29317e10b77a531cf8c3de6ac23d1cd5" kindref="member">fn_00259758</ref>(<sp/>al::LiveActor*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::Vector3f&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_walker_state_param" kindref="compound">WalkerStateParam</ref>*<sp/>);</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
 <codeline lineno="66" refid="class_togezo_1a06d3cf5b77014b553bb7f174c766a240" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_togezo_1a06d3cf5b77014b553bb7f174c766a240" kindref="member">Togezo::exeWander</ref>()</highlight></codeline>
 <codeline lineno="67"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::updateNerveState(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<ref refid="_togezo_8cpp_1adc9a578cff912a654b132e8e3ebe1167" kindref="member">FUN_00272a9c</ref>()<sp/>&amp;&amp;<sp/><ref refid="_togezo_8cpp_1a1ac066cee2ee03a0547bbafdb172bcf1" kindref="member">FUN_00259758</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>al::getFront(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>),<sp/>&amp;<ref refid="_togezo_8cpp_1abd8a1ce1462e35ef560d81791e4b5d9b" kindref="member">sTogezoWalkerStateParam</ref><sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<ref refid="_togezo_8cpp_1a297d424186865a05be51726964edffa0" kindref="member">fn_00272a9c</ref>()<sp/>&amp;&amp;<sp/><ref refid="_togezo_8cpp_1a29317e10b77a531cf8c3de6ac23d1cd5" kindref="member">fn_00259758</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>al::getFront(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>),<sp/>&amp;<ref refid="_togezo_8cpp_1abd8a1ce1462e35ef560d81791e4b5d9b" kindref="member">sTogezoWalkerStateParam</ref><sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::setNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvTogezo::Turn<sp/>);</highlight></codeline>
 <codeline lineno="71"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
-<codeline lineno="73" refid="_togezo_8cpp_1a0ba9f2cc5aa26e6db9d1d61e46d93b0f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="_togezo_8cpp_1a0ba9f2cc5aa26e6db9d1d61e46d93b0f" kindref="member">FUN_00262988</ref>(<sp/>al::LiveActor*,<sp/>sead::Vector3f*<sp/>out,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::Vector3f&amp;,</highlight></codeline>
+<codeline lineno="73" refid="_togezo_8cpp_1a2171757a4f772aa0876a1b531d70956e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="_togezo_8cpp_1a2171757a4f772aa0876a1b531d70956e" kindref="member">fn_00262988</ref>(<sp/>al::LiveActor*,<sp/>sead::Vector3f*<sp/>out,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::Vector3f&amp;,</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>);<sp/></highlight><highlight class="comment">//<sp/>turn<sp/>(?)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75" refid="_togezo_8cpp_1a86f6737a04c20f325dd790de280416c7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_togezo_8cpp_1a86f6737a04c20f325dd790de280416c7" kindref="member">FUN_00258774</ref>(<sp/><ref refid="class_togezo" kindref="compound">Togezo</ref>*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_walker_state_param" kindref="compound">WalkerStateParam</ref>*<sp/>);</highlight></codeline>
+<codeline lineno="75" refid="_togezo_8cpp_1a1323e641cd5a5a455e1f85fec16775a9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_togezo_8cpp_1a1323e641cd5a5a455e1f85fec16775a9" kindref="member">fn_00258774</ref>(<sp/><ref refid="class_togezo" kindref="compound">Togezo</ref>*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_walker_state_param" kindref="compound">WalkerStateParam</ref>*<sp/>);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>NON_MATCHING<sp/></highlight><highlight class="comment">//<sp/>inline<sp/>nops</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
@@ -529,13 +529,13 @@
 <codeline lineno="80"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>al::isFirstStep(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::startAction(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Turn&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_togezo_8cpp_1a86f6737a04c20f325dd790de280416c7" kindref="member">FUN_00258774</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;<ref refid="_togezo_8cpp_1abd8a1ce1462e35ef560d81791e4b5d9b" kindref="member">sTogezoWalkerStateParam</ref><sp/>);</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="_togezo_8cpp_1adc9a578cff912a654b132e8e3ebe1167" kindref="member">FUN_00272a9c</ref>()<sp/>)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_togezo_8cpp_1a1323e641cd5a5a455e1f85fec16775a9" kindref="member">fn_00258774</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;<ref refid="_togezo_8cpp_1abd8a1ce1462e35ef560d81791e4b5d9b" kindref="member">sTogezoWalkerStateParam</ref><sp/>);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="_togezo_8cpp_1a297d424186865a05be51726964edffa0" kindref="member">fn_00272a9c</ref>()<sp/>)</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::setNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvTogezo::Wander<sp/>);</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="_togezo_8cpp_1a0ba9f2cc5aa26e6db9d1d61e46d93b0f" kindref="member">FUN_00262988</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>al::getFrontPtr(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>),<sp/><ref refid="namespacerp_1a6701b3d668865fd035e0b2b324fd18b9" kindref="member">rp::getPlayerPos</ref>(),<sp/>6.0<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="_togezo_8cpp_1a2171757a4f772aa0876a1b531d70956e" kindref="member">fn_00262988</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>al::getFrontPtr(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>),<sp/><ref refid="namespacerp_1a6701b3d668865fd035e0b2b324fd18b9" kindref="member">rp::getPlayerPos</ref>(),<sp/>6.0<sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::setNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvTogezo::Search<sp/>);</highlight></codeline>
 <codeline lineno="91"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight></codeline>
@@ -548,11 +548,11 @@
 <codeline lineno="99"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>al::isFirstStep(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::startAction(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Search&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_togezo_8cpp_1a86f6737a04c20f325dd790de280416c7" kindref="member">FUN_00258774</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;<ref refid="_togezo_8cpp_1abd8a1ce1462e35ef560d81791e4b5d9b" kindref="member">sTogezoWalkerStateParam</ref><sp/>);</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_togezo_8cpp_1a0ba9f2cc5aa26e6db9d1d61e46d93b0f" kindref="member">FUN_00262988</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>al::getFrontPtr(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>),<sp/><ref refid="namespacerp_1a6701b3d668865fd035e0b2b324fd18b9" kindref="member">rp::getPlayerPos</ref>(),<sp/>6.0<sp/>);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_togezo_8cpp_1a1323e641cd5a5a455e1f85fec16775a9" kindref="member">fn_00258774</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;<ref refid="_togezo_8cpp_1abd8a1ce1462e35ef560d81791e4b5d9b" kindref="member">sTogezoWalkerStateParam</ref><sp/>);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_togezo_8cpp_1a2171757a4f772aa0876a1b531d70956e" kindref="member">fn_00262988</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>al::getFrontPtr(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>),<sp/><ref refid="namespacerp_1a6701b3d668865fd035e0b2b324fd18b9" kindref="member">rp::getPlayerPos</ref>(),<sp/>6.0<sp/>);</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>al::isActionEnd(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="_togezo_8cpp_1adc9a578cff912a654b132e8e3ebe1167" kindref="member">FUN_00272a9c</ref>()<sp/>)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="_togezo_8cpp_1a297d424186865a05be51726964edffa0" kindref="member">fn_00272a9c</ref>()<sp/>)</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::setNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvTogezo::Wander<sp/>);</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::setNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvTogezo::Chase<sp/>);</highlight></codeline>
@@ -561,12 +561,12 @@
 <codeline lineno="112"><highlight class="normal"></highlight></codeline>
 <codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115" refid="_togezo_8cpp_1a1e9f7d3ec6bd5c84d2879dd0f9764ebf" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="_togezo_8cpp_1a1e9f7d3ec6bd5c84d2879dd0f9764ebf" kindref="member">FUN_0026b6cc</ref>(<sp/><ref refid="class_walker_state_wander" kindref="compound">WalkerStateWander</ref>*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::Vector3f&amp;<sp/>trans<sp/>);</highlight></codeline>
+<codeline lineno="115" refid="_togezo_8cpp_1a750c77c792e2b92d0db1324ab811c986" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="_togezo_8cpp_1a750c77c792e2b92d0db1324ab811c986" kindref="member">fn_0026b6cc</ref>(<sp/><ref refid="class_walker_state_wander" kindref="compound">WalkerStateWander</ref>*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::Vector3f&amp;<sp/>trans<sp/>);</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight></codeline>
 <codeline lineno="117" refid="class_togezo_1a351ed1b46ac4818de01817c0eabb822a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_togezo_1a351ed1b46ac4818de01817c0eabb822a" kindref="member">Togezo::exeChase</ref>()</highlight></codeline>
 <codeline lineno="118"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>al::updateNerveStateAndNextNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvTogezo::Wander<sp/>)<sp/>)</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_togezo_8cpp_1a1e9f7d3ec6bd5c84d2879dd0f9764ebf" kindref="member">FUN_0026b6cc</ref>(<sp/><ref refid="class_togezo_1acfa2a7ba00b5e7178d6b66c13eefeed7" kindref="member">mWanderState</ref>,<sp/>al::getTrans(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_togezo_8cpp_1a750c77c792e2b92d0db1324ab811c986" kindref="member">fn_0026b6cc</ref>(<sp/><ref refid="class_togezo_1acfa2a7ba00b5e7178d6b66c13eefeed7" kindref="member">mWanderState</ref>,<sp/>al::getTrans(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>)<sp/>);</highlight></codeline>
 <codeline lineno="121"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"></highlight></codeline>
 <codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>NON_MATCHING<sp/></highlight><highlight class="comment">//<sp/>inline<sp/>nops</highlight><highlight class="normal"></highlight></codeline>
@@ -576,7 +576,7 @@
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>al::isFirstStep(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::startAction(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;AttackSuccess&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_togezo_8cpp_1a86f6737a04c20f325dd790de280416c7" kindref="member">FUN_00258774</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;<ref refid="_togezo_8cpp_1abd8a1ce1462e35ef560d81791e4b5d9b" kindref="member">sTogezoWalkerStateParam</ref><sp/>);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_togezo_8cpp_1a1323e641cd5a5a455e1f85fec16775a9" kindref="member">fn_00258774</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;<ref refid="_togezo_8cpp_1abd8a1ce1462e35ef560d81791e4b5d9b" kindref="member">sTogezoWalkerStateParam</ref><sp/>);</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>al::isActionEnd(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::setNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvTogezo::Wander<sp/>);</highlight></codeline>
@@ -584,14 +584,14 @@
 <codeline lineno="135"><highlight class="normal"></highlight></codeline>
 <codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="137"><highlight class="normal"></highlight></codeline>
-<codeline lineno="138" refid="_togezo_8cpp_1abd057808a1876af76062021bbb3cfdb4" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_togezo_8cpp_1abd057808a1876af76062021bbb3cfdb4" kindref="member">FUN_00279158</ref>(<sp/><ref refid="class_togezo" kindref="compound">Togezo</ref>*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_enemy_state_blow_down" kindref="compound">EnemyStateBlowDown</ref>*<sp/>);</highlight></codeline>
+<codeline lineno="138" refid="_togezo_8cpp_1aedcb64cb90f42c8407c019f42bae387c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_togezo_8cpp_1aedcb64cb90f42c8407c019f42bae387c" kindref="member">fn_00279158</ref>(<sp/><ref refid="class_togezo" kindref="compound">Togezo</ref>*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_enemy_state_blow_down" kindref="compound">EnemyStateBlowDown</ref>*<sp/>);</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"></highlight></codeline>
 <codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>NON_MATCHING</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="141" refid="class_togezo_1a572e34f41c052ea97df54bbc0fc5db76" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_togezo_1a572e34f41c052ea97df54bbc0fc5db76" kindref="member">Togezo::exeBlowDown</ref>()</highlight></codeline>
 <codeline lineno="142"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>al::updateNerveState(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_togezo_8cpp_1abd057808a1876af76062021bbb3cfdb4" kindref="member">FUN_00279158</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/><ref refid="class_togezo_1aab25bc8b451bd7e0e8689fb3f3ed4a6d" kindref="member">mBlowDownState</ref><sp/>);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_togezo_8cpp_1aedcb64cb90f42c8407c019f42bae387c" kindref="member">fn_00279158</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/><ref refid="class_togezo_1aab25bc8b451bd7e0e8689fb3f3ed4a6d" kindref="member">mBlowDownState</ref><sp/>);</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kill();</highlight></codeline>
 <codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="148"><highlight class="normal">}</highlight></codeline>

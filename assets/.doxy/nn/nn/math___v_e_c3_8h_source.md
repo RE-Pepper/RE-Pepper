@@ -2,7 +2,7 @@
 
 # File math\_VEC3.h
 
-[**File List**](files.md) **>** [**CTRSDK**](dir_1e016f672f65000d1caa1843da5325e4.md) **>** [**include**](dir_b105e27ad861a359b82da8d20daf787e.md) **>** [**nn**](dir_98edea970dce97b73b2af390faecf17b.md) **>** [**math**](dir_96a1579ba16decd843eb9cd0d5a3d337.md) **>** [**math\_VEC3.h**](math___v_e_c3_8h.md)
+[**File List**](files.md) **>** [**CtrSDK**](dir_a581c965070d8303a3ac233c6039c11a.md) **>** [**include**](dir_af9254bf4d22366cfccd04cbaa9622aa.md) **>** [**nn**](dir_a185e92459882a1d3c4a0e5724303e75.md) **>** [**math**](dir_f04f036a24ab4e9b968e47fb2e928fcd.md) **>** [**math\_VEC3.h**](math___v_e_c3_8h.md)
 
 [Go to the documentation of this file](math___v_e_c3_8h.md)
 

@@ -18,13 +18,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/err/CTR/err_Api.h" line="8" column="14" declfile="lib/CTRSDK/include/nn/err/CTR/err_Api.h" declline="8" declcolumn="14"/>
+        <location file="lib/CtrSDK/include/nn/err/CTR/err_Api.h" line="8" column="14" declfile="lib/CtrSDK/include/nn/err/CTR/err_Api.h" declline="8" declcolumn="14"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/err/CTR/err_Api.h" line="7" column="5"/>
+    <location file="lib/CtrSDK/include/nn/err/CTR/err_Api.h" line="7" column="5"/>
   </compounddef>
 </doxygen>

@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="10" column="12" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="10" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="10" column="12" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="10" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1a0d1eeb0ccc551c2378c3992d38eb889c" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1aed742c436da53c1080638ce6ef7d13de" kindref="member">u8</ref></type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="11" column="12" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="11" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="11" column="12" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="11" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1a8abc2bea4468cda6afcc764b0abcd930" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1aed742c436da53c1080638ce6ef7d13de" kindref="member">u8</ref></type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="12" column="12" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="12" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="12" column="12" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1ab91bed0aae205564bcdddee1ee06631d" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1aed742c436da53c1080638ce6ef7d13de" kindref="member">u8</ref></type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="13" column="12" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="13" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="13" column="12" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1a1dcd0bf7ac1ab2b8d02cb72dea0bc03d" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="14" column="13" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="14" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="14" column="13" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1a21eb82943c021987924ee6a41e3b4382" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1ad758b7a5c3f18ed79d2fcd23d9f16357" kindref="member">u64</ref></type>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="15" column="13" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="15" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="15" column="13" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1a8df3d0b5a747cc0a56235bae1d150831" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -100,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="16" column="13" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="16" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="16" column="13" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1ad0f9e59f707b4f284cf671573d5669e8" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1aed742c436da53c1080638ce6ef7d13de" kindref="member">u8</ref></type>
@@ -114,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="17" column="12" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="17" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="17" column="12" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1a814ea4ac447263ee52a298037d4f0ae2" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1aed742c436da53c1080638ce6ef7d13de" kindref="member">u8</ref></type>
@@ -128,7 +128,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="18" column="12" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="18" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="18" column="12" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1aafc1f6a28173293d9be3ab8e0d62a0fb" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1aed742c436da53c1080638ce6ef7d13de" kindref="member">u8</ref></type>
@@ -142,7 +142,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="19" column="12" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="19" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="19" column="12" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="19" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1afa9f80da418588b1ccd17dfa1bc2e2e5" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1aed742c436da53c1080638ce6ef7d13de" kindref="member">u8</ref></type>
@@ -156,7 +156,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="20" column="12" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="20" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="20" column="12" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1a2fbf6608a5e83e7db1f16014518351c9" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -170,7 +170,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="21" column="13" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="21" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="21" column="13" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1a37fd0bf7be1d3df768e51ce90bda6ea2" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -184,7 +184,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="22" column="13" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="22" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="22" column="13" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1ad672136d9b3eab27770a76af6fffe54c" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -198,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="23" column="13" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="23" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="23" column="13" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="23" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1a3f86256b95e2dee381c2803bb2059290" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -212,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="24" column="13" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="24" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="24" column="13" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1ad6eb44f6eb6ca5fd2d595f0408bed795" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -226,7 +226,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="25" column="13" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="25" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="25" column="13" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1acb3f79632269c4d3270966b23262d062" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -240,7 +240,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="26" column="13" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="26" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="26" column="13" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1ac02b98233cf1a33f3428baf5b85feb52" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -254,7 +254,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="27" column="13" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="27" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="27" column="13" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="27" bodyend="-1"/>
         <referencedby refid="namespacenn_1_1os_1a81cde5c6652a8d390084c3dfe339f7d7" compoundref="os___k_config_memory_8h" startline="44" endline="46">nn::os::GetAppMemorySize</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1a7d0b2c8857c5d1bde3fc787151598ca4" prot="public" static="no" mutable="no">
@@ -269,7 +269,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="28" column="13" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="28" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="28" column="13" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1a9aaafe3e99c51654da8e7810105d83e6" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -283,7 +283,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="29" column="13" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="29" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="29" column="13" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1a9ca2c53435a5bc27c5e3e721359073c3" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -297,7 +297,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="30" column="13" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="30" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="30" column="13" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1aa746e4c70a739b754150d58c0707dc3e" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1aed742c436da53c1080638ce6ef7d13de" kindref="member">u8</ref></type>
@@ -311,7 +311,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="31" column="12" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="31" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="31" column="12" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1ab7bae06409319c85e6d20413afe2ee53" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1aed742c436da53c1080638ce6ef7d13de" kindref="member">u8</ref></type>
@@ -325,7 +325,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="32" column="12" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="32" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="32" column="12" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1a1707a2fb7a758999e6a78fb2a7b9e9cd" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1aed742c436da53c1080638ce6ef7d13de" kindref="member">u8</ref></type>
@@ -339,7 +339,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="33" column="12" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="33" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="33" column="12" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1ac1de8892000f985c35d49b3e51eb0e92" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1aed742c436da53c1080638ce6ef7d13de" kindref="member">u8</ref></type>
@@ -353,7 +353,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="34" column="12" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="34" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="34" column="12" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1a611d9b10ded767bfc68532c6d6027e92" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -367,7 +367,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="35" column="13" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="35" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="35" column="13" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1os_1_1_k_config_memory_1abf2ff2fa4ebe1f6194ea578e34c86dd3" prot="public" static="no" mutable="no">
         <type><ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -381,14 +381,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="36" column="13" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="36" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="36" column="13" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="36" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="9" column="5" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="9" bodyend="37"/>
+    <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="9" column="5" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="9" bodyend="37"/>
     <listofallmembers>
       <member refid="structnn_1_1os_1_1_k_config_memory_1ac02b98233cf1a33f3428baf5b85feb52" prot="public" virt="non-virtual"><scope>nn::os::KConfigMemory</scope><name>appMemAlloc</name></member>
       <member refid="structnn_1_1os_1_1_k_config_memory_1ad6eb44f6eb6ca5fd2d595f0408bed795" prot="public" virt="non-virtual"><scope>nn::os::KConfigMemory</scope><name>appMemType</name></member>

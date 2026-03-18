@@ -82,5 +82,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/srv/detail/srv_Service.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/srv/detail/srv_Service.h`
 

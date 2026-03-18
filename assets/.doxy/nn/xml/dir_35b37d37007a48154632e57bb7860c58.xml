@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_35b37d37007a48154632e57bb7860c58" kind="dir">
+    <compoundname>CTR</compoundname>
+    <innerfile refid="err___api_8h">err_Api.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/CtrSDK/include/nn/err/CTR/"/>
+  </compounddef>
+</doxygen>

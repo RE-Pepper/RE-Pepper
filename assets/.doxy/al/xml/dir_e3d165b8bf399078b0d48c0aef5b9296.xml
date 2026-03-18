@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_e3d165b8bf399078b0d48c0aef5b9296" kind="dir">
+    <compoundname>Npc</compoundname>
+    <innerfile refid="al_break_model_8h">alBreakModel.h</innerfile>
+    <innerfile refid="al_effect_obj_8h">alEffectObj.h</innerfile>
+    <innerfile refid="al_sky_8h">alSky.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Npc/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_9265a2f0e35d56b43a6785601066bd6e" kind="dir">
+    <compoundname>srv</compoundname>
+    <innerfile refid="srv___api_8cpp">srv_Api.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/CtrSDK/sources/srv/"/>
+  </compounddef>
+</doxygen>

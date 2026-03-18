@@ -77,5 +77,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/sources/fs/fs_Api.cpp`
+The documentation for this class was generated from the following file `lib/CtrSDK/sources/fs/fs_Api.cpp`
 

@@ -67,7 +67,7 @@
         </inbodydescription>
         <location file="Game/include/MapObj/TrickHintPanel.h" line="13" column="14" bodyfile="Game/src/MapObj/TrickHintPanel.cpp" bodystart="66" bodyend="77"/>
         <references refid="class_trick_hint_panel_1a6e70167c901f723fb16e3fed4767709e" compoundref="_trick_hint_panel_8h" startline="8">_96</references>
-        <references refid="_trick_hint_panel_8cpp_1a181b42bfc4fdb93c9d82b6b56a7ec339">FUN_0026A9B8</references>
+        <references refid="_trick_hint_panel_8cpp_1a7659ae16207cf2d862446ef473d5bf24">fn_0026A9B8</references>
         <references refid="class_trick_hint_panel_1a049f596e17ce776c1246ef74e37baef6" compoundref="_trick_hint_panel_8h" startline="9">mPlayedSound</references>
       </memberdef>
       <memberdef kind="function" id="class_trick_hint_panel_1a375ef84fa70a470e9027d43cae417a11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -83,7 +83,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="Game/include/MapObj/TrickHintPanel.h" line="14" column="14" bodyfile="Game/src/MapObj/TrickHintPanel.cpp" bodystart="80" bodyend="84"/>
-        <references refid="_trick_hint_panel_8cpp_1af3c7a6a95ad129e9cc63d0fd6ccfa4b5">FUN_002786F4</references>
+        <references refid="_trick_hint_panel_8cpp_1a27c3f83439213e491f4cba4d68d38469">fn_002786F4</references>
       </memberdef>
       <memberdef kind="function" id="class_trick_hint_panel_1a1e2a4496107c674d8e05ce4957d33590" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -99,8 +99,8 @@
         </inbodydescription>
         <location file="Game/include/MapObj/TrickHintPanel.h" line="15" column="14" bodyfile="Game/src/MapObj/TrickHintPanel.cpp" bodystart="86" bodyend="94"/>
         <references refid="class_trick_hint_panel_1a6e70167c901f723fb16e3fed4767709e" compoundref="_trick_hint_panel_8h" startline="8">_96</references>
-        <references refid="_trick_hint_panel_8cpp_1a4772a7fb6404903105ebb8d5fe0eba3a">FUN_0026AA60</references>
-        <references refid="_trick_hint_panel_8cpp_1af3c7a6a95ad129e9cc63d0fd6ccfa4b5">FUN_002786F4</references>
+        <references refid="_trick_hint_panel_8cpp_1a728351b06a8fbb280b93fe874734a525">fn_0026AA60</references>
+        <references refid="_trick_hint_panel_8cpp_1a27c3f83439213e491f4cba4d68d38469">fn_002786F4</references>
       </memberdef>
       <memberdef kind="function" id="class_trick_hint_panel_1a02c521ae794ecbba99dea4b567702044" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -120,7 +120,7 @@
         </inbodydescription>
         <location file="Game/include/MapObj/TrickHintPanel.h" line="18" column="22" bodyfile="Game/src/MapObj/TrickHintPanel.cpp" bodystart="28" bodyend="34"/>
         <references refid="class_trick_hint_panel_1a6e70167c901f723fb16e3fed4767709e" compoundref="_trick_hint_panel_8h" startline="8">_96</references>
-        <references refid="_trick_hint_panel_8cpp_1abdb2d70cfa95283d82ead9a325fd7cd6">FUN_002278CC</references>
+        <references refid="_trick_hint_panel_8cpp_1a928f1a6bd5b4772938e9704b712ac4cc">fn_002278CC</references>
       </memberdef>
       <memberdef kind="function" id="class_trick_hint_panel_1adfd604eb286e022082189d995470301d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>bool</type>

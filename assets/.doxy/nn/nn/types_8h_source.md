@@ -2,7 +2,7 @@
 
 # File types.h
 
-[**File List**](files.md) **>** [**CTRSDK**](dir_1e016f672f65000d1caa1843da5325e4.md) **>** [**include**](dir_b105e27ad861a359b82da8d20daf787e.md) **>** [**nn**](dir_98edea970dce97b73b2af390faecf17b.md) **>** [**types.h**](types_8h.md)
+[**File List**](files.md) **>** [**CtrSDK**](dir_a581c965070d8303a3ac233c6039c11a.md) **>** [**include**](dir_af9254bf4d22366cfccd04cbaa9622aa.md) **>** [**nn**](dir_a185e92459882a1d3c4a0e5724303e75.md) **>** [**types.h**](types_8h.md)
 
 [Go to the documentation of this file](types_8h.md)
 
@@ -46,7 +46,9 @@ typedef s32 intptr_t;
 #define static_assert( COND, MSG ) typedef int __static_assert_balls[ ( COND ) ? 1 : -1 ]
 #endif
 
-#define split( S ) __attribute__( ( section( "i." #S ) ) ) S
+// without this static data cannot be referenced in the linker map
+#define split( S ) __attribute__( ( section( ".sdata_" #S ) ) ) S
+
 ```
 
 

@@ -7,6 +7,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/fs/CTR/MPCore/detail/fs_UserFileSystem.h" line="8" column="9"/>
+    <location file="lib/CtrSDK/include/nn/fs/CTR/MPCore/detail/fs_UserFileSystem.h" line="8" column="9"/>
   </compounddef>
 </doxygen>

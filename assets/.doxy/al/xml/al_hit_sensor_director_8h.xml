@@ -65,6 +65,6 @@
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>al</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="lib/al/include/LiveActor/alHitSensorDirector.h"/>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/LiveActor/alHitSensorDirector.h"/>
   </compounddef>
 </doxygen>

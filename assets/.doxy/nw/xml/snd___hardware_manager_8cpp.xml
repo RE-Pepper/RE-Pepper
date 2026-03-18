@@ -9,6 +9,6 @@
     <programlisting>
 <codeline lineno="1"><highlight class="comment">//<sp/>lovely</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="lib/NintendoWare/snd/src/snd_HardwareManager.cpp"/>
+    <location file="lib/NintendoWare/sources/snd/snd_HardwareManager.cpp"/>
   </compounddef>
 </doxygen>

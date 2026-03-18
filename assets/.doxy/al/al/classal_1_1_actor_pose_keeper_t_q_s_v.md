@@ -348,5 +348,5 @@ Implements [*al::ActorPoseKeeperBase::updatePoseRotate*](classal_1_1_actor_pose_
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/al/include/LiveActor/alActorPoseKeeper.h`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/LiveActor/alActorPoseKeeper.h`
 

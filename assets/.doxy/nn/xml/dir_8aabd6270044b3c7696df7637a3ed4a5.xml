@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_8aabd6270044b3c7696df7637a3ed4a5" kind="dir">
+    <compoundname>svc</compoundname>
+    <innerfile refid="svc___api_8cpp">svc_Api.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/CtrSDK/sources/svc/"/>
+  </compounddef>
+</doxygen>

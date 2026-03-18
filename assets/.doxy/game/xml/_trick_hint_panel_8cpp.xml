@@ -64,11 +64,11 @@
     </incdepgraph>
     <innernamespace refid="namespace_nrv_trick_hint_panel">NrvTrickHintPanel</innernamespace>
     <sectiondef kind="func">
-      <memberdef kind="function" id="_trick_hint_panel_8cpp_1abdb2d70cfa95283d82ead9a325fd7cd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_trick_hint_panel_8cpp_1a928f1a6bd5b4772938e9704b712ac4cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>u32</type>
-        <definition>u32 FUN_002278CC</definition>
+        <definition>u32 fn_002278CC</definition>
         <argsstring>(al::LiveActor *actor, char *str)</argsstring>
-        <name>FUN_002278CC</name>
+        <name>fn_002278CC</name>
         <param>
           <type>al::LiveActor *</type>
           <declname>actor</declname>
@@ -86,11 +86,11 @@
         <location file="Game/src/MapObj/TrickHintPanel.cpp" line="26" column="16" declfile="Game/src/MapObj/TrickHintPanel.cpp" declline="26" declcolumn="16"/>
         <referencedby refid="class_trick_hint_panel_1a02c521ae794ecbba99dea4b567702044" compoundref="_trick_hint_panel_8cpp" startline="28" endline="34">TrickHintPanel::init</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_trick_hint_panel_8cpp_1a181b42bfc4fdb93c9d82b6b56a7ec339" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_trick_hint_panel_8cpp_1a7659ae16207cf2d862446ef473d5bf24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
-        <definition>int FUN_0026A9B8</definition>
+        <definition>int fn_0026A9B8</definition>
         <argsstring>(u32)</argsstring>
-        <name>FUN_0026A9B8</name>
+        <name>fn_0026A9B8</name>
         <param>
           <type>u32</type>
         </param>
@@ -103,11 +103,11 @@
         <location file="Game/src/MapObj/TrickHintPanel.cpp" line="59" column="16" declfile="Game/src/MapObj/TrickHintPanel.cpp" declline="59" declcolumn="16"/>
         <referencedby refid="class_trick_hint_panel_1a8f4c4293f418160a569d6e12d9306db8" compoundref="_trick_hint_panel_8cpp" startline="66" endline="77">TrickHintPanel::exeOn</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_trick_hint_panel_8cpp_1a4772a7fb6404903105ebb8d5fe0eba3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_trick_hint_panel_8cpp_1a728351b06a8fbb280b93fe874734a525" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
-        <definition>int FUN_0026AA60</definition>
+        <definition>int fn_0026AA60</definition>
         <argsstring>(u32)</argsstring>
-        <name>FUN_0026AA60</name>
+        <name>fn_0026AA60</name>
         <param>
           <type>u32</type>
         </param>
@@ -120,11 +120,11 @@
         <location file="Game/src/MapObj/TrickHintPanel.cpp" line="60" column="16" declfile="Game/src/MapObj/TrickHintPanel.cpp" declline="60" declcolumn="16"/>
         <referencedby refid="class_trick_hint_panel_1a1e2a4496107c674d8e05ce4957d33590" compoundref="_trick_hint_panel_8cpp" startline="86" endline="94">TrickHintPanel::exeOff</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_trick_hint_panel_8cpp_1af3c7a6a95ad129e9cc63d0fd6ccfa4b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_trick_hint_panel_8cpp_1a27c3f83439213e491f4cba4d68d38469" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
-        <definition>int FUN_002786F4</definition>
+        <definition>int fn_002786F4</definition>
         <argsstring>()</argsstring>
-        <name>FUN_002786F4</name>
+        <name>fn_002786F4</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -166,13 +166,13 @@
 <codeline lineno="23"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="24"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26" refid="_trick_hint_panel_8cpp_1abdb2d70cfa95283d82ead9a325fd7cd6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>u32<sp/><ref refid="_trick_hint_panel_8cpp_1abdb2d70cfa95283d82ead9a325fd7cd6" kindref="member">FUN_002278CC</ref>(<sp/>al::LiveActor*<sp/>actor,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>str<sp/>);</highlight></codeline>
+<codeline lineno="26" refid="_trick_hint_panel_8cpp_1a928f1a6bd5b4772938e9704b712ac4cc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>u32<sp/><ref refid="_trick_hint_panel_8cpp_1a928f1a6bd5b4772938e9704b712ac4cc" kindref="member">fn_002278CC</ref>(<sp/>al::LiveActor*<sp/>actor,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>str<sp/>);</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
 <codeline lineno="28" refid="class_trick_hint_panel_1a02c521ae794ecbba99dea4b567702044" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_trick_hint_panel_1a02c521ae794ecbba99dea4b567702044" kindref="member">TrickHintPanel::init</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::ActorInitInfo&amp;<sp/>info<sp/>)</highlight></codeline>
 <codeline lineno="29"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::initActor(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>info<sp/>);</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::initNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvTrickHintPanel::Wait,<sp/>0<sp/>);</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_trick_hint_panel_1a6e70167c901f723fb16e3fed4767709e" kindref="member">_96</ref><sp/>=<sp/><ref refid="_trick_hint_panel_8cpp_1abdb2d70cfa95283d82ead9a325fd7cd6" kindref="member">FUN_002278CC</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_trick_hint_panel_1a6e70167c901f723fb16e3fed4767709e" kindref="member">_96</ref><sp/>=<sp/><ref refid="_trick_hint_panel_8cpp_1a928f1a6bd5b4772938e9704b712ac4cc" kindref="member">fn_002278CC</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>makeActorAppeared();</highlight></codeline>
 <codeline lineno="34"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
@@ -199,9 +199,9 @@
 <codeline lineno="56"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="57"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59" refid="_trick_hint_panel_8cpp_1a181b42bfc4fdb93c9d82b6b56a7ec339" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_trick_hint_panel_8cpp_1a181b42bfc4fdb93c9d82b6b56a7ec339" kindref="member">FUN_0026A9B8</ref>(<sp/>u32<sp/>);</highlight></codeline>
-<codeline lineno="60" refid="_trick_hint_panel_8cpp_1a4772a7fb6404903105ebb8d5fe0eba3a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_trick_hint_panel_8cpp_1a4772a7fb6404903105ebb8d5fe0eba3a" kindref="member">FUN_0026AA60</ref>(<sp/>u32<sp/>);</highlight></codeline>
-<codeline lineno="61" refid="_trick_hint_panel_8cpp_1af3c7a6a95ad129e9cc63d0fd6ccfa4b5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_trick_hint_panel_8cpp_1af3c7a6a95ad129e9cc63d0fd6ccfa4b5" kindref="member">FUN_002786F4</ref>();</highlight></codeline>
+<codeline lineno="59" refid="_trick_hint_panel_8cpp_1a7659ae16207cf2d862446ef473d5bf24" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_trick_hint_panel_8cpp_1a7659ae16207cf2d862446ef473d5bf24" kindref="member">fn_0026A9B8</ref>(<sp/>u32<sp/>);</highlight></codeline>
+<codeline lineno="60" refid="_trick_hint_panel_8cpp_1a728351b06a8fbb280b93fe874734a525" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_trick_hint_panel_8cpp_1a728351b06a8fbb280b93fe874734a525" kindref="member">fn_0026AA60</ref>(<sp/>u32<sp/>);</highlight></codeline>
+<codeline lineno="61" refid="_trick_hint_panel_8cpp_1a27c3f83439213e491f4cba4d68d38469" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_trick_hint_panel_8cpp_1a27c3f83439213e491f4cba4d68d38469" kindref="member">fn_002786F4</ref>();</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>NON_MATCHING</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
@@ -214,7 +214,7 @@
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_trick_hint_panel_1a049f596e17ce776c1246ef74e37baef6" kindref="member">mPlayedSound</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::startHitReaction(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;オン&quot;</highlight><highlight class="normal"><sp/>);<sp/></highlight><highlight class="comment">//<sp/>&quot;オン&quot;<sp/>-&gt;<sp/>On</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_trick_hint_panel_8cpp_1a181b42bfc4fdb93c9d82b6b56a7ec339" kindref="member">FUN_0026A9B8</ref>(<sp/><ref refid="class_trick_hint_panel_1a6e70167c901f723fb16e3fed4767709e" kindref="member">_96</ref><sp/>);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_trick_hint_panel_8cpp_1a7659ae16207cf2d862446ef473d5bf24" kindref="member">fn_0026A9B8</ref>(<sp/><ref refid="class_trick_hint_panel_1a6e70167c901f723fb16e3fed4767709e" kindref="member">_96</ref><sp/>);</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::invalidateClipping(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::setNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvTrickHintPanel::nrv3<sp/>);</highlight></codeline>
 <codeline lineno="77"><highlight class="normal">}</highlight></codeline>
@@ -222,15 +222,15 @@
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
 <codeline lineno="80" refid="class_trick_hint_panel_1a375ef84fa70a470e9027d43cae417a11" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_trick_hint_panel_1a375ef84fa70a470e9027d43cae417a11" kindref="member">TrickHintPanel::exenrv3</ref>()</highlight></codeline>
 <codeline lineno="81"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<ref refid="_trick_hint_panel_8cpp_1af3c7a6a95ad129e9cc63d0fd6ccfa4b5" kindref="member">FUN_002786F4</ref>()<sp/>||<sp/>al::isGreaterStep(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>20<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<ref refid="_trick_hint_panel_8cpp_1a27c3f83439213e491f4cba4d68d38469" kindref="member">fn_002786F4</ref>()<sp/>||<sp/>al::isGreaterStep(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>20<sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::setNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvTrickHintPanel::Off<sp/>);</highlight></codeline>
 <codeline lineno="84"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
 <codeline lineno="86" refid="class_trick_hint_panel_1a1e2a4496107c674d8e05ce4957d33590" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_trick_hint_panel_1a1e2a4496107c674d8e05ce4957d33590" kindref="member">TrickHintPanel::exeOff</ref>()</highlight></codeline>
 <codeline lineno="87"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="_trick_hint_panel_8cpp_1af3c7a6a95ad129e9cc63d0fd6ccfa4b5" kindref="member">FUN_002786F4</ref>()<sp/>)</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/><ref refid="_trick_hint_panel_8cpp_1a27c3f83439213e491f4cba4d68d38469" kindref="member">fn_002786F4</ref>()<sp/>)</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_trick_hint_panel_8cpp_1a4772a7fb6404903105ebb8d5fe0eba3a" kindref="member">FUN_0026AA60</ref>(<sp/><ref refid="class_trick_hint_panel_1a6e70167c901f723fb16e3fed4767709e" kindref="member">_96</ref><sp/>);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_trick_hint_panel_8cpp_1a728351b06a8fbb280b93fe874734a525" kindref="member">fn_0026AA60</ref>(<sp/><ref refid="class_trick_hint_panel_1a6e70167c901f723fb16e3fed4767709e" kindref="member">_96</ref><sp/>);</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::validateClipping(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::setNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvTrickHintPanel::Wait<sp/>);</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>

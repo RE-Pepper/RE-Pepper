@@ -7,6 +7,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/cfg/CTR/cfg_Api.h" line="4" column="1"/>
+    <location file="lib/CtrSDK/include/nn/cfg/CTR/cfg_Api.h" line="4" column="1"/>
   </compounddef>
 </doxygen>

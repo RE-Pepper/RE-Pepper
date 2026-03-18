@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Project RedPepper: Decompilation of Super Mario 3D Land.">
-    <link rel="stylesheet" href="https://prp.moddi.dev/assets/style.css">
+    <link rel="stylesheet" href="https://rep.moddi.dev/assets/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito&disp=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&disp=swap" rel="stylesheet">
-    <link rel="icon" href="https://prp.moddi.dev/assets/favicon.ico" type="image/x-icon">
-    <title>File Fugumannen.cpp - RedPepper Wiki</title>
+    <link rel="icon" href="https://rep.moddi.dev/assets/favicon.ico" type="image/x-icon">
+    <title>File Fugumannen.cpp - RE:Pepper Wiki</title>
   </head>
   <body>
     <div class="container">
@@ -19,76 +19,76 @@
 
       <div id="bar">
 
-          <a id="barTitle" href="https://prp.moddi.dev/"><b>Project RedPepper</b></a>
+          <a id="barTitle" href="https://rep.moddi.dev/"><b>RE:Pepper Project</b></a>
             <li class="nav-item">
-                <button onclick="window.location.href='https://prp.moddi.dev/files/'">
+                <button onclick="window.location.href='https://rep.moddi.dev/files/'">
                   Files
                 </button>
             </li>
             <li class="nav-item">
-                <button onclick="window.location.href='https://prp.moddi.dev/classes/'">
+                <button onclick="window.location.href='https://rep.moddi.dev/classes/'">
                   Classes
                 </button>
             </li>
             <li class="nav-item">
-                <button onclick="window.location.href='https://prp.moddi.dev/wiki/'">
+                <button onclick="window.location.href='https://rep.moddi.dev/wiki/'">
                   Full Wiki
                 </button>
             </li>
             <li class="nav-item">
                 <div class="dropdown">
                   <button class="dropdown-btn"
-                          onclick="window.location.href='https://prp.moddi.dev/ver/'">
+                          onclick="window.location.href='https://rep.moddi.dev/ver/'">
                     Versions
                   </button>
                   <ul class="dropdown-menu"> 
                       <li>
-                        <button onclick="window.location.href='https://prp.moddi.dev/ver/eu/'">
+                        <button onclick="window.location.href='https://rep.moddi.dev/ver/eu/'">
                           EU
                         </button>
                       </li> 
                       <li>
-                        <button onclick="window.location.href='https://prp.moddi.dev/ver/eu_d.md'">
+                        <button onclick="window.location.href='https://rep.moddi.dev/ver/eu_d.md'">
                           EU D
                         </button>
                       </li> 
                       <li>
-                        <button onclick="window.location.href='https://prp.moddi.dev/ver/jp.md'">
+                        <button onclick="window.location.href='https://rep.moddi.dev/ver/jp.md'">
                           JP
                         </button>
                       </li> 
                       <li>
-                        <button onclick="window.location.href='https://prp.moddi.dev/ver/jp_d.md'">
+                        <button onclick="window.location.href='https://rep.moddi.dev/ver/jp_d.md'">
                           JP D
                         </button>
                       </li> 
                       <li>
-                        <button onclick="window.location.href='https://prp.moddi.dev/ver/us_0.md'">
+                        <button onclick="window.location.href='https://rep.moddi.dev/ver/us_0.md'">
                           US R0
                         </button>
                       </li> 
                       <li>
-                        <button onclick="window.location.href='https://prp.moddi.dev/ver/us_1.md'">
+                        <button onclick="window.location.href='https://rep.moddi.dev/ver/us_1.md'">
                           US R1
                         </button>
                       </li> 
                       <li>
-                        <button onclick="window.location.href='https://prp.moddi.dev/ver/us_d.md'">
+                        <button onclick="window.location.href='https://rep.moddi.dev/ver/us_d.md'">
                           US D
                         </button>
                       </li> 
                       <li>
-                        <button onclick="window.location.href='https://prp.moddi.dev/ver/cn.md'">
+                        <button onclick="window.location.href='https://rep.moddi.dev/ver/cn.md'">
                           CN
                         </button>
                       </li> 
                       <li>
-                        <button onclick="window.location.href='https://prp.moddi.dev/ver/kr.md'">
+                        <button onclick="window.location.href='https://rep.moddi.dev/ver/kr.md'">
                           KR
                         </button>
                       </li> 
                       <li>
-                        <button onclick="window.location.href='https://prp.moddi.dev/ver/tw.md'">
+                        <button onclick="window.location.href='https://rep.moddi.dev/ver/tw.md'">
                           TW
                         </button>
                       </li>
@@ -128,8 +128,8 @@ Fugumannen::Fugumannen( const sead::SafeString&amp; name )
 {
 }
 
-extern &quot;C&quot; void FUN_0027b51c( al::LiveActor*, const al::ActorInitInfo&amp; info, int );
-extern &quot;C&quot; void FUN_0027ee34( al::LiveActor*, const al::ActorInitInfo&amp; info, int );
+extern &quot;C&quot; void fn_0027b51c( al::LiveActor*, const al::ActorInitInfo&amp; info, int );
+extern &quot;C&quot; void fn_0027ee34( al::LiveActor*, const al::ActorInitInfo&amp; info, int );
 
 void Fugumannen::init( const al::ActorInitInfo&amp; info )
 {
@@ -144,8 +144,8 @@ void Fugumannen::init( const al::ActorInitInfo&amp; info )
         mStateBlowDown = new EnemyStateBlowDown( this, nullptr, &quot;SwimBlowDown&quot;, 1 );
         al::initNerveState( this, mStateBlowDown, &amp;NrvFugumannen::BlowDown, &quot;state:BlowDown&quot; );
         al::startAction( this, &quot;SwimWait&quot; );
-        FUN_0027b51c( this, info, 3 );
-        FUN_0027ee34( this, info, 3 );
+        fn_0027b51c( this, info, 3 );
+        fn_0027ee34( this, info, 3 );
         al::offCollide( this );
         makeActorAppeared();
 }
@@ -159,21 +159,21 @@ void Fugumannen::attackSensor( al::HitSensor* me, al::HitSensor* other )
         }
 }
 
-extern &quot;C&quot; bool FUN_0027b768( u32, al::HitSensor*, al::HitSensor*, al::NerveStateBase*, const al::Nerve* );
-extern &quot;C&quot; bool FUN_0027b704( u32, al::HitSensor*, al::HitSensor*, al::NerveStateBase* );
+extern &quot;C&quot; bool fn_0027b768( u32, al::HitSensor*, al::HitSensor*, al::NerveStateBase*, const al::Nerve* );
+extern &quot;C&quot; bool fn_0027b704( u32, al::HitSensor*, al::HitSensor*, al::NerveStateBase* );
 
 bool Fugumannen::receiveMsg( u32 msg, al::HitSensor* other, al::HitSensor* me )
 {
         if ( al::isNerve( this, &amp;NrvFugumannen::BlowDown ) || al::isSensorName( me, &quot;Attack&quot; ) )
                 return false;
 
-        bool rv = FUN_0027b768( msg, other, me, mStateBlowDown, &amp;NrvFugumannen::BlowDown );
+        bool rv = fn_0027b768( msg, other, me, mStateBlowDown, &amp;NrvFugumannen::BlowDown );
         if ( rv ) // :skull:?
                 rv = true;
 
         if ( !rv &amp;&amp; ( rv = al::isMsg9( msg ), rv ) )
         {
-                FUN_0027b704( msg, other, me, mStateBlowDown );
+                fn_0027b704( msg, other, me, mStateBlowDown );
                 al::setNerve( this, &amp;NrvFugumannen::BlowDown );
                 return true;
         }
@@ -181,7 +181,7 @@ bool Fugumannen::receiveMsg( u32 msg, al::HitSensor* other, al::HitSensor* me )
         return rv;
 }
 
-extern &quot;C&quot; void FUN_00240e08( al::LiveActor*, const sead::Vector3f&amp;, float );
+extern &quot;C&quot; void fn_00240e08( al::LiveActor*, const sead::Vector3f&amp;, float );
 
 void Fugumannen::exeMove()
 {
@@ -189,7 +189,7 @@ void Fugumannen::exeMove()
         sead::Vector3f railDir = al::getRailDir( this );
         if ( !al::isLoopRail( this ) )
                 railDir *= -1;
-        FUN_00240e08( this, railDir, 4.0 );
+        fn_00240e08( this, railDir, 4.0 );
         if ( al::isRailReachedGoal( this ) )
                 al::setNerve( this, &amp;NrvFugumannen::Move2 );
 }
@@ -199,18 +199,18 @@ void Fugumannen::exeMove2()
         sead::Vector3f railDir = al::getRailDir( this );
         if ( !al::isLoopRail( this ) )
                 railDir *= -1;
-        FUN_00240e08( this, railDir, 4.0 );
+        fn_00240e08( this, railDir, 4.0 );
         if ( al::isGreaterStep( this, 45 ) )
                 al::setNerve( this, &amp;NrvFugumannen::Move );
 }
 
-extern &quot;C&quot; void FUN_002cd428( al::LiveActor*, al::NerveStateBase* );
+extern &quot;C&quot; void fn_002cd428( al::LiveActor*, al::NerveStateBase* );
 
 void Fugumannen::exeBlowDown()
 {
         if ( al::updateNerveState( this ) )
         {
-                FUN_002cd428( this, mStateBlowDown );
+                fn_002cd428( this, mStateBlowDown );
                 kill();
         }
 }

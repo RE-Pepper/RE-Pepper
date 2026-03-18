@@ -4,7 +4,7 @@
 
 
 
-[**FileList**](files.md) **>** [**CTRSDK**](dir_1e016f672f65000d1caa1843da5325e4.md) **>** [**include**](dir_b105e27ad861a359b82da8d20daf787e.md) **>** [**nn**](dir_98edea970dce97b73b2af390faecf17b.md) **>** [**srv**](dir_03a11bf737b72dd31d27d795228e685e.md) **>** [**detail**](dir_2de4005578f69a1564c3f333096c1f2b.md) **>** [**srv\_Service.h**](srv___service_8h.md)
+[**FileList**](files.md) **>** [**CtrSDK**](dir_a581c965070d8303a3ac233c6039c11a.md) **>** [**include**](dir_af9254bf4d22366cfccd04cbaa9622aa.md) **>** [**nn**](dir_a185e92459882a1d3c4a0e5724303e75.md) **>** [**srv**](dir_2f77558cefdcdd091fbae5ab2d60e6ab.md) **>** [**detail**](dir_102dcb73cc6fb1a3136e1728b868f8ae.md) **>** [**srv\_Service.h**](srv___service_8h.md)
 
 [Go to the source code of this file](srv___service_8h_source.md)
 
@@ -91,5 +91,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/srv/detail/srv_Service.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/srv/detail/srv_Service.h`
 

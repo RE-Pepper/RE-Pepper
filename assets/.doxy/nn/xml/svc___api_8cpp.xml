@@ -252,6 +252,6 @@
 <codeline lineno="181"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>svc</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="182"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>nn</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="lib/CTRSDK/sources/svc/svc_Api.cpp"/>
+    <location file="lib/CtrSDK/sources/svc/svc_Api.cpp"/>
   </compounddef>
 </doxygen>

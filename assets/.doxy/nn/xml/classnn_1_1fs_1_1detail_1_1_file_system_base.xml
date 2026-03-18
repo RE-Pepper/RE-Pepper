@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/fs/detail/fs_FileSystemBase.h" line="8" column="17" bodyfile="lib/CTRSDK/include/nn/fs/detail/fs_FileSystemBase.h" bodystart="8" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/fs/detail/fs_FileSystemBase.h" line="8" column="17" bodyfile="lib/CtrSDK/include/nn/fs/detail/fs_FileSystemBase.h" bodystart="8" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/fs/detail/fs_FileSystemBase.h" line="11" column="13" bodyfile="lib/CTRSDK/include/nn/fs/detail/fs_FileSystemBase.h" bodystart="11" bodyend="11"/>
+        <location file="lib/CtrSDK/include/nn/fs/detail/fs_FileSystemBase.h" line="11" column="13" bodyfile="lib/CtrSDK/include/nn/fs/detail/fs_FileSystemBase.h" bodystart="11" bodyend="11"/>
       </memberdef>
       <memberdef kind="function" id="classnn_1_1fs_1_1detail_1_1_file_system_base_1a06e0d341cb6d5524ced3ad99de8f0aa5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -50,14 +50,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/fs/detail/fs_FileSystemBase.h" line="12" column="13" bodyfile="lib/CTRSDK/include/nn/fs/detail/fs_FileSystemBase.h" bodystart="12" bodyend="15"/>
+        <location file="lib/CtrSDK/include/nn/fs/detail/fs_FileSystemBase.h" line="12" column="13" bodyfile="lib/CtrSDK/include/nn/fs/detail/fs_FileSystemBase.h" bodystart="12" bodyend="15"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/fs/detail/fs_FileSystemBase.h" line="7" column="9" bodyfile="lib/CTRSDK/include/nn/fs/detail/fs_FileSystemBase.h" bodystart="7" bodyend="16"/>
+    <location file="lib/CtrSDK/include/nn/fs/detail/fs_FileSystemBase.h" line="7" column="9" bodyfile="lib/CtrSDK/include/nn/fs/detail/fs_FileSystemBase.h" bodystart="7" bodyend="16"/>
     <listofallmembers>
       <member refid="classnn_1_1fs_1_1detail_1_1_file_system_base_1ac5a4b91bee3f6a941bbdea53b0d9f60c" prot="private" virt="non-virtual"><scope>nn::fs::detail::FileSystemBase</scope><name>_0</name></member>
       <member refid="classnn_1_1fs_1_1detail_1_1_file_system_base_1ac3f99050402d9162c3ca0701f42c0f6d" prot="public" virt="non-virtual"><scope>nn::fs::detail::FileSystemBase</scope><name>FileSystemBase</name></member>

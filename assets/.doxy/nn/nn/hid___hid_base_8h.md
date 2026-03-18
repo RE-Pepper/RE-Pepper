@@ -4,7 +4,7 @@
 
 
 
-[**FileList**](files.md) **>** [**CTR**](dir_fca7fa14950d22fe1751d6c08a725091.md) **>** [**hid\_HidBase.h**](hid___hid_base_8h.md)
+[**FileList**](files.md) **>** [**CTR**](dir_469c329f832ba112fcb0b93bb5878886.md) **>** [**hid\_HidBase.h**](hid___hid_base_8h.md)
 
 [Go to the source code of this file](hid___hid_base_8h_source.md)
 
@@ -90,5 +90,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/hid/CTR/hid_HidBase.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/hid/CTR/hid_HidBase.h`
 

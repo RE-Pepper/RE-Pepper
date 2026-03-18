@@ -82,5 +82,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/hid/CTR/hid_HidBase.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/hid/CTR/hid_HidBase.h`
 

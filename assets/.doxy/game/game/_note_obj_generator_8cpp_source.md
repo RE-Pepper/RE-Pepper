@@ -36,8 +36,8 @@ NoteObjGenerator::NoteObjGenerator( const sead::SafeString& name )
 {
 }
 
-extern "C" void FUN_00270fc4( al::LiveActor*, float, int ); // MtxConnector (?)
-extern "C" void FUN_001d581c();
+extern "C" void fn_00270fc4( al::LiveActor*, float, int ); // MtxConnector (?)
+extern "C" void fn_001d581c();
 
 void NoteObjGenerator::exeWait()
 {
@@ -45,9 +45,9 @@ void NoteObjGenerator::exeWait()
         {
                 al::invalidateClipping( this );
                 al::showModel( this );
-                FUN_00270fc4( this, 70.0, 1 );
+                fn_00270fc4( this, 70.0, 1 );
                 al::startAction( this, "Wait" );
-                FUN_001d581c();
+                fn_001d581c();
                 al::startNerveAction( this, "Move" );
         }
 }

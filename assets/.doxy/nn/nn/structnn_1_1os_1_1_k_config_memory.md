@@ -462,5 +462,5 @@ u32 nn::os::KConfigMemory::updateFlag;
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/os/os_KConfigMemory.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/os/os_KConfigMemory.h`
 

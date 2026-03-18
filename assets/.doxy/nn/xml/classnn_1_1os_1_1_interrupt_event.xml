@@ -64,7 +64,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="lib/CTRSDK/include/nn/os/os_InterruptEvent.h" line="7" column="5" bodyfile="lib/CTRSDK/include/nn/os/os_InterruptEvent.h" bodystart="7" bodyend="9"/>
+    <location file="lib/CtrSDK/include/nn/os/os_InterruptEvent.h" line="7" column="5" bodyfile="lib/CtrSDK/include/nn/os/os_InterruptEvent.h" bodystart="7" bodyend="9"/>
     <listofallmembers>
       <member refid="structnn_1_1os_1_1_handle_object_1af67b3008356477c8060389469c563af3" prot="private" virt="non-virtual"><scope>nn::os::InterruptEvent</scope><name>m_Handle</name></member>
     </listofallmembers>

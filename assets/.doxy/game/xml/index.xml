@@ -1098,7 +1098,7 @@
   <compound refid="namespace_player_init_func" kind="namespace"><name>PlayerInitFunc</name>
     <member refid="namespace_player_init_func_1ade1c89c63f3004ff0d040905340df095" kind="function"><name>getModelInfo</name></member>
     <member refid="namespace_player_init_func_1a178fb8b632b6ceab1d404020cd531bef" kind="function"><name>getAnimInfo</name></member>
-    <member refid="namespace_player_init_func_1af3ac84fd5943aaf58c12de0ea3013485" kind="function"><name>FUN_00260620</name></member>
+    <member refid="namespace_player_init_func_1aadf7b080f8ec6472775bccc48071c936" kind="function"><name>fn_00260620</name></member>
   </compound>
   <compound refid="namespacerp" kind="namespace"><name>rp</name>
     <member refid="namespacerp_1a25e3e3a7ce26bcfb37889f38280f64c6" kind="function"><name>createCoinRotater</name></member>
@@ -1290,25 +1290,25 @@
   <compound refid="_fire_ball_8cpp" kind="file"><name>FireBall.cpp</name>
   </compound>
   <compound refid="_fugumannen_8cpp" kind="file"><name>Fugumannen.cpp</name>
-    <member refid="_fugumannen_8cpp_1acdef4d7e311ac0644fcf1a74ee4a2cbb" kind="function"><name>FUN_0027b51c</name></member>
-    <member refid="_fugumannen_8cpp_1ae3b99263d19f2fdd0cca01988da744f6" kind="function"><name>FUN_0027ee34</name></member>
-    <member refid="_fugumannen_8cpp_1aea4150c7bc67b649bbc40b747b026341" kind="function"><name>FUN_0027b768</name></member>
-    <member refid="_fugumannen_8cpp_1add98d348bfb3b152acc1ed3448093565" kind="function"><name>FUN_0027b704</name></member>
-    <member refid="_fugumannen_8cpp_1a669131636ac32e04df2878d555e2ab73" kind="function"><name>FUN_00240e08</name></member>
-    <member refid="_fugumannen_8cpp_1abf63fe6309e3bf94d24784d80998423c" kind="function"><name>FUN_002cd428</name></member>
+    <member refid="_fugumannen_8cpp_1aa3bfa6b8b29767af5b583d9965aca769" kind="function"><name>fn_0027b51c</name></member>
+    <member refid="_fugumannen_8cpp_1a037877e33c6aa98610ed951cef5ffb30" kind="function"><name>fn_0027ee34</name></member>
+    <member refid="_fugumannen_8cpp_1a5fd6eb27d44d666a533c3c639ddb2d3f" kind="function"><name>fn_0027b768</name></member>
+    <member refid="_fugumannen_8cpp_1a9c0749cf84a9c072d2918ae2d47342de" kind="function"><name>fn_0027b704</name></member>
+    <member refid="_fugumannen_8cpp_1a02ec4d9e8a0d0ae162d2a8d9a4958361" kind="function"><name>fn_00240e08</name></member>
+    <member refid="_fugumannen_8cpp_1a4c3b56bd6ae6f1ebd0d6324f40aa57d2" kind="function"><name>fn_002cd428</name></member>
   </compound>
   <compound refid="_togezo_8cpp" kind="file"><name>Togezo.cpp</name>
     <member refid="_togezo_8cpp_1abd8a1ce1462e35ef560d81791e4b5d9b" kind="function"><name>sTogezoWalkerStateParam</name></member>
     <member refid="_togezo_8cpp_1ae8dd9a83578f24230eb841e328a7a52b" kind="function"><name>sTogezoWalkerStateWanderParam</name></member>
     <member refid="_togezo_8cpp_1abe52849362e3ee474d2f38dcdbf18ccb" kind="function"><name>sTogezoWalkerStateChaseParam</name></member>
-    <member refid="_togezo_8cpp_1a539aa7418965bfc783b8986dcc10fca6" kind="function"><name>FUN_0027a1a0</name></member>
-    <member refid="_togezo_8cpp_1a529e95cc8a35287097c4b1d8c24bd816" kind="function"><name>FUN_0027cf20</name></member>
-    <member refid="_togezo_8cpp_1adc9a578cff912a654b132e8e3ebe1167" kind="function"><name>FUN_00272a9c</name></member>
-    <member refid="_togezo_8cpp_1a1ac066cee2ee03a0547bbafdb172bcf1" kind="function"><name>FUN_00259758</name></member>
-    <member refid="_togezo_8cpp_1a0ba9f2cc5aa26e6db9d1d61e46d93b0f" kind="function"><name>FUN_00262988</name></member>
-    <member refid="_togezo_8cpp_1a86f6737a04c20f325dd790de280416c7" kind="function"><name>FUN_00258774</name></member>
-    <member refid="_togezo_8cpp_1a1e9f7d3ec6bd5c84d2879dd0f9764ebf" kind="function"><name>FUN_0026b6cc</name></member>
-    <member refid="_togezo_8cpp_1abd057808a1876af76062021bbb3cfdb4" kind="function"><name>FUN_00279158</name></member>
+    <member refid="_togezo_8cpp_1a26275c96d8643d1ae0f85eb6dea19911" kind="function"><name>fn_0027a1a0</name></member>
+    <member refid="_togezo_8cpp_1aedb98c3fd773a4c84ceb2c1f7cb09197" kind="function"><name>fn_0027cf20</name></member>
+    <member refid="_togezo_8cpp_1a297d424186865a05be51726964edffa0" kind="function"><name>fn_00272a9c</name></member>
+    <member refid="_togezo_8cpp_1a29317e10b77a531cf8c3de6ac23d1cd5" kind="function"><name>fn_00259758</name></member>
+    <member refid="_togezo_8cpp_1a2171757a4f772aa0876a1b531d70956e" kind="function"><name>fn_00262988</name></member>
+    <member refid="_togezo_8cpp_1a1323e641cd5a5a455e1f85fec16775a9" kind="function"><name>fn_00258774</name></member>
+    <member refid="_togezo_8cpp_1a750c77c792e2b92d0db1324ab811c986" kind="function"><name>fn_0026b6cc</name></member>
+    <member refid="_togezo_8cpp_1aedcb64cb90f42c8407c019f42bae387c" kind="function"><name>fn_00279158</name></member>
   </compound>
   <compound refid="_walker_state_chase_8cpp" kind="file"><name>WalkerStateChase.cpp</name>
     <member refid="_walker_state_chase_8cpp_1a22fe7216c791a4069f8cb3503cddafad" kind="variable"><name>sDefaultParam</name></member>
@@ -1316,24 +1316,24 @@
   <compound refid="_appear_step_8cpp" kind="file"><name>AppearStep.cpp</name>
   </compound>
   <compound refid="_coin_rotater_8cpp" kind="file"><name>CoinRotater.cpp</name>
-    <member refid="_coin_rotater_8cpp_1acf452f1c1b9f6ba9421f1d1a3cfa4de9" kind="function"><name>FUN_00277de0</name></member>
+    <member refid="_coin_rotater_8cpp_1a927e8276ffa316ca767ed6423c863f78" kind="function"><name>fn_00277de0</name></member>
   </compound>
   <compound refid="_note_obj_8cpp" kind="file"><name>NoteObj.cpp</name>
     <member refid="_note_obj_8cpp_1a81cc4567fd8adb497b3afd6bf432c94f" kind="variable"><name>sNoteObjArchive</name></member>
-    <member refid="_note_obj_8cpp_1a0c764d033389ca23d19f85ec94265941" kind="function"><name>FUN_00270fc4</name></member>
+    <member refid="_note_obj_8cpp_1a4fd5740b0984f89e3806b25d3e515e25" kind="function"><name>fn_00270fc4</name></member>
   </compound>
   <compound refid="_note_obj_generator_8cpp" kind="file"><name>NoteObjGenerator.cpp</name>
     <member refid="_note_obj_generator_8cpp_1aad9b6849281dba6124974b6979a2152a" kind="variable"><name>sCollector</name></member>
-    <member refid="_note_obj_generator_8cpp_1a0c764d033389ca23d19f85ec94265941" kind="function"><name>FUN_00270fc4</name></member>
-    <member refid="_note_obj_generator_8cpp_1ab41635bece2d52357637017abdaf707a" kind="function"><name>FUN_001d581c</name></member>
+    <member refid="_note_obj_generator_8cpp_1a4fd5740b0984f89e3806b25d3e515e25" kind="function"><name>fn_00270fc4</name></member>
+    <member refid="_note_obj_generator_8cpp_1aea58362c9d91856294559079ce988d21" kind="function"><name>fn_001d581c</name></member>
   </compound>
   <compound refid="_transparent_wall_8cpp" kind="file"><name>TransparentWall.cpp</name>
   </compound>
   <compound refid="_trick_hint_panel_8cpp" kind="file"><name>TrickHintPanel.cpp</name>
-    <member refid="_trick_hint_panel_8cpp_1abdb2d70cfa95283d82ead9a325fd7cd6" kind="function"><name>FUN_002278CC</name></member>
-    <member refid="_trick_hint_panel_8cpp_1a181b42bfc4fdb93c9d82b6b56a7ec339" kind="function"><name>FUN_0026A9B8</name></member>
-    <member refid="_trick_hint_panel_8cpp_1a4772a7fb6404903105ebb8d5fe0eba3a" kind="function"><name>FUN_0026AA60</name></member>
-    <member refid="_trick_hint_panel_8cpp_1af3c7a6a95ad129e9cc63d0fd6ccfa4b5" kind="function"><name>FUN_002786F4</name></member>
+    <member refid="_trick_hint_panel_8cpp_1a928f1a6bd5b4772938e9704b712ac4cc" kind="function"><name>fn_002278CC</name></member>
+    <member refid="_trick_hint_panel_8cpp_1a7659ae16207cf2d862446ef473d5bf24" kind="function"><name>fn_0026A9B8</name></member>
+    <member refid="_trick_hint_panel_8cpp_1a728351b06a8fbb280b93fe874734a525" kind="function"><name>fn_0026AA60</name></member>
+    <member refid="_trick_hint_panel_8cpp_1a27c3f83439213e491f4cba4d68d38469" kind="function"><name>fn_002786F4</name></member>
   </compound>
   <compound refid="_aquarium_swim_debris_8cpp" kind="file"><name>AquariumSwimDebris.cpp</name>
   </compound>
@@ -1372,15 +1372,12 @@
   <compound refid="_player_trigger_8cpp" kind="file"><name>PlayerTrigger.cpp</name>
   </compound>
   <compound refid="_product_sequence_8cpp" kind="file"><name>ProductSequence.cpp</name>
-    <member refid="_product_sequence_8cpp_1a09b334d4b8d999d749470031b9a44c10" kind="function"><name>FUN_0025ba7c</name></member>
-    <member refid="_product_sequence_8cpp_1a5c60241eeac5534ae30d9cc3ab16b6e9" kind="function"><name>FUN_0025ddd0</name></member>
+    <member refid="_product_sequence_8cpp_1afdfd558c331ed88f2882f7e8401d66b7" kind="function"><name>fn_0025ba7c</name></member>
+    <member refid="_product_sequence_8cpp_1af2cb6af23d3a0a8502b909a9a5024187" kind="function"><name>fn_0025ddd0</name></member>
   </compound>
   <compound refid="_product_state_stage_8cpp" kind="file"><name>ProductStateStage.cpp</name>
   </compound>
   <compound refid="_product_state_title_8cpp" kind="file"><name>ProductStateTitle.cpp</name>
-  </compound>
-  <compound refid="_stubs_8c" kind="file"><name>Stubs.c</name>
-    <member refid="_stubs_8c_1a37d97cb7d04034da2d87c07e78863abb" kind="define"><name>STUB</name></member>
   </compound>
   <compound refid="_application_8cpp" kind="file"><name>Application.cpp</name>
   </compound>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_ae22786bedc4ead2a439ef673b994a37" kind="dir">
+    <compoundname>Camera</compoundname>
+    <innerfile refid="al_camera_8cpp">alCamera.cpp</innerfile>
+    <innerfile refid="al_camera_dash_angle_tuner_param_8cpp">alCameraDashAngleTunerParam.cpp</innerfile>
+    <innerfile refid="al_camera_param_vision_8cpp">alCameraParamVision.cpp</innerfile>
+    <innerfile refid="al_camera_rotator_param_8cpp">alCameraRotatorParam.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/Camera/"/>
+  </compounddef>
+</doxygen>

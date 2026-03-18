@@ -84,6 +84,6 @@
 <codeline lineno="13"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hid</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="14"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>nn</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="lib/CTRSDK/include/nn/hid/CTR/hid_HidBase.h"/>
+    <location file="lib/CtrSDK/include/nn/hid/CTR/hid_HidBase.h"/>
   </compounddef>
 </doxygen>

@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/al/include/Camera/alCameraDirector.h" line="11" column="12" bodyfile="lib/al/include/Camera/alCameraDirector.h" bodystart="11" bodyend="-1"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCameraDirector.h" line="11" column="12" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCameraDirector.h" bodystart="11" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -48,7 +48,7 @@
         <link refid="classal_1_1_i_scene_obj"/>
       </node>
     </collaborationgraph>
-    <location file="lib/al/include/Camera/alCameraDirector.h" line="8" column="1" bodyfile="lib/al/include/Camera/alCameraDirector.h" bodystart="9" bodyend="14"/>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCameraDirector.h" line="8" column="1" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCameraDirector.h" bodystart="9" bodyend="14"/>
     <listofallmembers>
       <member refid="classal_1_1_camera_director_1aa86af895792c2970c9fdabdb33a006b4" prot="private" virt="non-virtual"><scope>al::CameraDirector</scope><name>_4</name></member>
       <member refid="classal_1_1_i_scene_obj_1a8fba37aa60f1d9fb9558e3409b4a3dd4" prot="public" virt="pure-virtual"><scope>al::CameraDirector</scope><name>getSceneObjName</name></member>

@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/svc/svc_Api.cpp" line="8" column="42" bodyfile="lib/CTRSDK/sources/svc/svc_Api.cpp" bodystart="8" bodyend="-1"/>
+        <location file="lib/CtrSDK/sources/svc/svc_Api.cpp" line="8" column="42" bodyfile="lib/CtrSDK/sources/svc/svc_Api.cpp" bodystart="8" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacenn_1_1svc_1a54e1857a6a7c4d55207785d2ed6b015f" prot="public" static="no" mutable="no">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref> <ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref> <ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/svc/svc_Api.cpp" line="8" column="52" bodyfile="lib/CTRSDK/sources/svc/svc_Api.cpp" bodystart="8" bodyend="-1"/>
+        <location file="lib/CtrSDK/sources/svc/svc_Api.cpp" line="8" column="52" bodyfile="lib/CtrSDK/sources/svc/svc_Api.cpp" bodystart="8" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacenn_1_1svc_1aa5fe56c5c46a309b8fc39e10ae1d2139" prot="public" static="no" mutable="no">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref> <ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref> <ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref> <ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/svc/svc_Api.cpp" line="8" column="62" bodyfile="lib/CTRSDK/sources/svc/svc_Api.cpp" bodystart="8" bodyend="-1"/>
+        <location file="lib/CtrSDK/sources/svc/svc_Api.cpp" line="8" column="62" bodyfile="lib/CtrSDK/sources/svc/svc_Api.cpp" bodystart="8" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacenn_1_1svc_1abc9a7b717780a497e64847f2aa117800" prot="public" static="no" mutable="no">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref> <ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref> <ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref> <ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref> <ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/svc/svc_Api.cpp" line="8" column="71" bodyfile="lib/CTRSDK/sources/svc/svc_Api.cpp" bodystart="8" bodyend="-1"/>
+        <location file="lib/CtrSDK/sources/svc/svc_Api.cpp" line="8" column="71" bodyfile="lib/CtrSDK/sources/svc/svc_Api.cpp" bodystart="8" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="10" column="22" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="10" declcolumn="22"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="10" column="22" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="10" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1aabb557cf740d0d95a6a4d51c19cea0f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__asm void</type>
@@ -111,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="11" column="16" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="11" declcolumn="16"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="11" column="16" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="11" declcolumn="16"/>
         <referencedby refid="crt0_8cpp_1aea13a4029a2780621f78f3db5df70ab0" compoundref="crt0_8cpp" startline="20" endline="33">__ctr_start</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1a12e74bde27e3f54783e293870c0cc7f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -130,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="12" column="16" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="12" declcolumn="16"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="12" column="16" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="12" declcolumn="16"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1af423bd563f3cfdad386a5feb46e4b3ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref></type>
@@ -152,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="13" column="22" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="13" declcolumn="22"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="13" column="22" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="13" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1a13941658a36b8feaac3ea63290485946" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref></type>
@@ -174,7 +174,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="14" column="22" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="14" declcolumn="22"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="14" column="22" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="14" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1a5e62580a1b8fd0331a7f4d4cd8de6c95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref></type>
@@ -196,7 +196,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="15" column="22" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="15" declcolumn="22"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="15" column="22" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="15" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1a71967dc6b151106acbb3550d8d014de5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref></type>
@@ -230,7 +230,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="16" column="22" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="16" declcolumn="22"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="16" column="22" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="16" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1a7a67666d4a98259432c34dc8b0fdda5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref></type>
@@ -248,7 +248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="17" column="22" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="17" declcolumn="22"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="17" column="22" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="17" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1aea32f2baa2f61385d58ae8d48c21b993" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref></type>
@@ -282,7 +282,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="18" column="22" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="18" declcolumn="22"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="18" column="22" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="18" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1a8cdfea90fe7d8faddb1a6ca995ac42a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref></type>
@@ -300,7 +300,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="19" column="22" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="19" declcolumn="22"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="19" column="22" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="19" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1adca1d1a938b73acab8bff7c678581104" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref></type>
@@ -334,7 +334,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="20" column="22" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="20" declcolumn="22"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="20" column="22" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="20" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1a5e8cf98701f93a25c93d9c30b189d82a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref></type>
@@ -356,7 +356,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="21" column="22" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="21" declcolumn="22"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="21" column="22" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="21" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1a9244e7c127f4a6603fae9b443e682395" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref></type>
@@ -378,7 +378,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="22" column="22" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="22" declcolumn="22"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="22" column="22" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="22" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1aadac5e53f365d600ce486f7532bb2b13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref></type>
@@ -400,7 +400,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="23" column="22" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="23" declcolumn="22"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="23" column="22" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="23" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1a19caea684c57eaa0123ee55efa14cd1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref></type>
@@ -422,7 +422,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="24" column="22" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="24" declcolumn="22"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="24" column="22" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="24" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1a6689498d36173586718c8f14e52e4102" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref></type>
@@ -444,7 +444,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="25" column="22" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="25" declcolumn="22"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="25" column="22" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="25" declcolumn="22"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1a9f50b52349c2c68a393cd53180823733" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__asm <ref refid="classnn_1_1_result" kindref="compound">nn::Result</ref></type>
@@ -462,7 +462,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="28" column="22" declfile="lib/CTRSDK/include/nn/svc/svc_Api.h" declline="28" declcolumn="22"/>
+        <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="28" column="22" declfile="lib/CtrSDK/include/nn/svc/svc_Api.h" declline="28" declcolumn="22"/>
         <referencedby refid="namespacenn_1_1dbg_1a049318857f74b2f73b32dba054d638f8" compoundref="dbg___api_8cpp" startline="7" endline="10">nn::dbg::Break</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1svc_1a570f60fbb7105daff68df4cb41f8a8bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -480,13 +480,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/svc/svc_Api.cpp" line="8" column="22"/>
+        <location file="lib/CtrSDK/sources/svc/svc_Api.cpp" line="8" column="22"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/svc/svc_Api.h" line="9" column="1"/>
+    <location file="lib/CtrSDK/include/nn/svc/svc_Api.h" line="9" column="1"/>
   </compounddef>
 </doxygen>

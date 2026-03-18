@@ -417,7 +417,7 @@ virtual void al::LiveActor::attackSensor (
 ### function calcAndSetBaseMtx 
 
 ```C++
-virtual void al::LiveActor::calcAndSetBaseMtx () 
+inline virtual void al::LiveActor::calcAndSetBaseMtx () 
 ```
 
 
@@ -898,7 +898,7 @@ virtual void al::LiveActor::updateCollider ()
 ### function v22 
 
 ```C++
-virtual void al::LiveActor::v22 () 
+inline virtual void al::LiveActor::v22 () 
 ```
 
 
@@ -911,7 +911,7 @@ virtual void al::LiveActor::v22 ()
 ### function v23 
 
 ```C++
-virtual void al::LiveActor::v23 () 
+inline virtual void al::LiveActor::v23 () 
 ```
 
 
@@ -1162,5 +1162,5 @@ class al::LiveActor::alLiveActorFunction (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/al/include/LiveActor/alLiveActor.h`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/LiveActor/alLiveActor.h`
 

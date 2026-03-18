@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/Result.h" line="11" column="5" bodyfile="lib/CTRSDK/include/nn/Result.h" bodystart="11" bodyend="21"/>
+        <location file="lib/CtrSDK/include/nn/Result.h" line="11" column="5" bodyfile="lib/CtrSDK/include/nn/Result.h" bodystart="11" bodyend="21"/>
       </memberdef>
       <memberdef kind="enum" id="classnn_1_1_result_1ab2660f5ebe99f768ad1159eea593f99c" prot="public" static="no" strong="no">
         <type></type>
@@ -194,7 +194,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/Result.h" line="23" column="5" bodyfile="lib/CTRSDK/include/nn/Result.h" bodystart="23" bodyend="37"/>
+        <location file="lib/CtrSDK/include/nn/Result.h" line="23" column="5" bodyfile="lib/CtrSDK/include/nn/Result.h" bodystart="23" bodyend="37"/>
       </memberdef>
       <memberdef kind="enum" id="classnn_1_1_result_1ab4efb6d2a57cd8aa8024927bcb5d09ff" prot="public" static="no" strong="no">
         <type></type>
@@ -982,7 +982,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/Result.h" line="39" column="5" bodyfile="lib/CTRSDK/include/nn/Result.h" bodystart="39" bodyend="137"/>
+        <location file="lib/CtrSDK/include/nn/Result.h" line="39" column="5" bodyfile="lib/CtrSDK/include/nn/Result.h" bodystart="39" bodyend="137"/>
       </memberdef>
       <memberdef kind="enum" id="classnn_1_1_result_1a39e72c6762fed20b6964a327ee19cbce" prot="public" static="no" strong="no">
         <type></type>
@@ -1171,7 +1171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/Result.h" line="139" column="5" bodyfile="lib/CTRSDK/include/nn/Result.h" bodystart="139" bodyend="165"/>
+        <location file="lib/CtrSDK/include/nn/Result.h" line="139" column="5" bodyfile="lib/CtrSDK/include/nn/Result.h" bodystart="139" bodyend="165"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -1187,7 +1187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/Result.h" line="8" column="9" bodyfile="lib/CTRSDK/include/nn/Result.h" bodystart="8" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/Result.h" line="8" column="9" bodyfile="lib/CtrSDK/include/nn/Result.h" bodystart="8" bodyend="-1"/>
         <referencedby refid="classnn_1_1_result_1aaa3bb32bd7ee944cfd26d19b73c9e217" compoundref="_result_8h" startline="175" endline="175">Failed</referencedby>
         <referencedby refid="classnn_1_1_result_1a926bb007ab0267a4cb517741086b56a1" compoundref="_result_8h" startline="179" endline="179">GetDescription</referencedby>
         <referencedby refid="classnn_1_1_result_1a6a8c361e3386827a62d0ab75fe566c22" compoundref="_result_8h" startline="176" endline="176">GetLevel</referencedby>
@@ -1210,7 +1210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/Result.h" line="167" column="5" bodyfile="lib/CTRSDK/include/nn/Result.h" bodystart="167" bodyend="167"/>
+        <location file="lib/CtrSDK/include/nn/Result.h" line="167" column="5" bodyfile="lib/CtrSDK/include/nn/Result.h" bodystart="167" bodyend="167"/>
       </memberdef>
       <memberdef kind="function" id="classnn_1_1_result_1a01e1d97801a9504f98917fd4ac5b793c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -1240,7 +1240,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/Result.h" line="169" column="5" bodyfile="lib/CTRSDK/include/nn/Result.h" bodystart="169" bodyend="172"/>
+        <location file="lib/CtrSDK/include/nn/Result.h" line="169" column="5" bodyfile="lib/CtrSDK/include/nn/Result.h" bodystart="169" bodyend="172"/>
       </memberdef>
       <memberdef kind="function" id="classnn_1_1_result_1a230cddf59484d260d9118836f8d08d56" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -1254,7 +1254,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/Result.h" line="174" column="10" bodyfile="lib/CTRSDK/include/nn/Result.h" bodystart="174" bodyend="174"/>
+        <location file="lib/CtrSDK/include/nn/Result.h" line="174" column="10" bodyfile="lib/CtrSDK/include/nn/Result.h" bodystart="174" bodyend="174"/>
         <references refid="classnn_1_1_result_1ad113f9adb6e6f06cb15caacf2af2f390" compoundref="_result_8h" startline="8">mValue</references>
         <referencedby refid="classnn_1_1_result_1a89b7aa44d548073cd28915a3d8d065b5" compoundref="_result_8h" startline="182" endline="182">operator bool</referencedby>
       </memberdef>
@@ -1270,7 +1270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/Result.h" line="175" column="10" bodyfile="lib/CTRSDK/include/nn/Result.h" bodystart="175" bodyend="175"/>
+        <location file="lib/CtrSDK/include/nn/Result.h" line="175" column="10" bodyfile="lib/CtrSDK/include/nn/Result.h" bodystart="175" bodyend="175"/>
         <references refid="classnn_1_1_result_1ad113f9adb6e6f06cb15caacf2af2f390" compoundref="_result_8h" startline="8">mValue</references>
       </memberdef>
       <memberdef kind="function" id="classnn_1_1_result_1a6a8c361e3386827a62d0ab75fe566c22" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -1285,7 +1285,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/Result.h" line="176" column="11" bodyfile="lib/CTRSDK/include/nn/Result.h" bodystart="176" bodyend="176"/>
+        <location file="lib/CtrSDK/include/nn/Result.h" line="176" column="11" bodyfile="lib/CtrSDK/include/nn/Result.h" bodystart="176" bodyend="176"/>
         <references refid="classnn_1_1_result_1ad113f9adb6e6f06cb15caacf2af2f390" compoundref="_result_8h" startline="8">mValue</references>
       </memberdef>
       <memberdef kind="function" id="classnn_1_1_result_1a5ae439aac70c3b46630ad9bdbf97fe0c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -1300,7 +1300,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/Result.h" line="177" column="13" bodyfile="lib/CTRSDK/include/nn/Result.h" bodystart="177" bodyend="177"/>
+        <location file="lib/CtrSDK/include/nn/Result.h" line="177" column="13" bodyfile="lib/CtrSDK/include/nn/Result.h" bodystart="177" bodyend="177"/>
         <references refid="classnn_1_1_result_1ad113f9adb6e6f06cb15caacf2af2f390" compoundref="_result_8h" startline="8">mValue</references>
       </memberdef>
       <memberdef kind="function" id="classnn_1_1_result_1a8a5fda0f26e8c2b92adf574945eeb888" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -1315,7 +1315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/Result.h" line="178" column="16" bodyfile="lib/CTRSDK/include/nn/Result.h" bodystart="178" bodyend="178"/>
+        <location file="lib/CtrSDK/include/nn/Result.h" line="178" column="16" bodyfile="lib/CtrSDK/include/nn/Result.h" bodystart="178" bodyend="178"/>
         <references refid="classnn_1_1_result_1ad113f9adb6e6f06cb15caacf2af2f390" compoundref="_result_8h" startline="8">mValue</references>
       </memberdef>
       <memberdef kind="function" id="classnn_1_1_result_1a926bb007ab0267a4cb517741086b56a1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -1330,7 +1330,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/Result.h" line="179" column="9" bodyfile="lib/CTRSDK/include/nn/Result.h" bodystart="179" bodyend="179"/>
+        <location file="lib/CtrSDK/include/nn/Result.h" line="179" column="9" bodyfile="lib/CtrSDK/include/nn/Result.h" bodystart="179" bodyend="179"/>
         <references refid="classnn_1_1_result_1ad113f9adb6e6f06cb15caacf2af2f390" compoundref="_result_8h" startline="8">mValue</references>
       </memberdef>
       <memberdef kind="function" id="classnn_1_1_result_1a50248516ba3c5d13656f82a85868d27a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -1345,7 +1345,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/Result.h" line="180" column="10" bodyfile="lib/CTRSDK/include/nn/Result.h" bodystart="180" bodyend="180"/>
+        <location file="lib/CtrSDK/include/nn/Result.h" line="180" column="10" bodyfile="lib/CtrSDK/include/nn/Result.h" bodystart="180" bodyend="180"/>
         <references refid="classnn_1_1_result_1ad113f9adb6e6f06cb15caacf2af2f390" compoundref="_result_8h" startline="8">mValue</references>
       </memberdef>
       <memberdef kind="function" id="classnn_1_1_result_1a89b7aa44d548073cd28915a3d8d065b5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -1360,7 +1360,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/Result.h" line="182" column="12" bodyfile="lib/CTRSDK/include/nn/Result.h" bodystart="182" bodyend="182"/>
+        <location file="lib/CtrSDK/include/nn/Result.h" line="182" column="12" bodyfile="lib/CtrSDK/include/nn/Result.h" bodystart="182" bodyend="182"/>
         <references refid="classnn_1_1_result_1a230cddf59484d260d9118836f8d08d56" compoundref="_result_8h" startline="174" endline="174">Succeeded</references>
       </memberdef>
     </sectiondef>
@@ -1368,7 +1368,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/Result.h" line="7" column="1" bodyfile="lib/CTRSDK/include/nn/Result.h" bodystart="7" bodyend="183"/>
+    <location file="lib/CtrSDK/include/nn/Result.h" line="7" column="1" bodyfile="lib/CtrSDK/include/nn/Result.h" bodystart="7" bodyend="183"/>
     <listofallmembers>
       <member refid="classnn_1_1_result_1a39e72c6762fed20b6964a327ee19cbce" prot="public" virt="non-virtual"><scope>nn::Result</scope><name>Description</name></member>
       <member refid="classnn_1_1_result_1a39e72c6762fed20b6964a327ee19cbceae22f2dae51169c86e05da0da65b98fe6" prot="public" virt="non-virtual"><scope>nn::Result</scope><name>Description_AlreadyDone</name></member>

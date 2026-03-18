@@ -4,7 +4,7 @@
 
 
 
-[**FileList**](files.md) **>** [**al**](dir_9602f8714fac85fdd7f7ceb00b335c03.md) **>** [**include**](dir_33e095f68a87f1feebb1083733ab6ad1.md) **>** [**Stage**](dir_c5a1413f15ee14dcd95f457cd353067b.md) **>** [**alStageSwitchType.h**](al_stage_switch_type_8h.md)
+[**FileList**](files.md) **>** [**al**](dir_06a57bfe438b90fdc9c94a1df001d5d7.md) **>** [**include**](dir_f7e8efec570a34efc8a6993e55383954.md) **>** [**Stage**](dir_5b0b61705299d400abf6aff2e591c6a0.md) **>** [**alStageSwitchType.h**](al_stage_switch_type_8h.md)
 
 [Go to the source code of this file](al_stage_switch_type_8h_source.md)
 
@@ -82,5 +82,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/al/include/Stage/alStageSwitchType.h`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Stage/alStageSwitchType.h`
 

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_15b4c6f09c9fa6dfc41329e92f0de021" kind="dir">
+    <compoundname>ndm</compoundname>
+    <innerfile refid="ndm___api_8h">ndm_Api.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/CtrSDK/include/nn/ndm/"/>
+  </compounddef>
+</doxygen>

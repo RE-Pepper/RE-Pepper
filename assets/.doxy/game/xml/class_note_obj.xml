@@ -113,7 +113,7 @@
         </inbodydescription>
         <location file="Game/include/MapObj/NoteObj.h" line="16" column="22" bodyfile="Game/src/MapObj/NoteObj.cpp" bodystart="33" bodyend="45"/>
         <references refid="class_note_obj_1a7c63e546dd9fa34aef7a0733ade250dd" compoundref="_note_obj_8h" startline="12">_78</references>
-        <references refid="_note_obj_8cpp_1a0c764d033389ca23d19f85ec94265941">FUN_00270fc4</references>
+        <references refid="_note_obj_8cpp_1a4fd5740b0984f89e3806b25d3e515e25">fn_00270fc4</references>
         <references refid="class_note_obj_1a10ba9147792b190c95d9e52d93faa266" compoundref="_note_obj_8h" startline="8">mStartQuat</references>
         <references refid="_note_obj_8cpp_1a81cc4567fd8adb497b3afd6bf432c94f" compoundref="_note_obj_8cpp" startline="30">sNoteObjArchive</references>
       </memberdef>

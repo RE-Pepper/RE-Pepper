@@ -154,5 +154,5 @@ inline al::AnimPlayerSimple * alModelCtr::getVisAnimPlayer () const
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/al/include/Model/alModelCtr.h`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Model/alModelCtr.h`
 

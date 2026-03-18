@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/srv/detail/srv_Service.h" line="12" column="27"/>
+        <location file="lib/CtrSDK/include/nn/srv/detail/srv_Service.h" line="12" column="27"/>
         <referencedby refid="namespacenn_1_1srv_1a67577788d80995f2723850b85974bfdf" compoundref="srv___api_8cpp" startline="14" endline="22">nn::srv::GetServiceHandle</referencedby>
       </memberdef>
     </sectiondef>
@@ -38,7 +38,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/srv/detail/srv_Service.h" line="10" column="9" bodyfile="lib/CTRSDK/include/nn/srv/detail/srv_Service.h" bodystart="10" bodyend="13"/>
+    <location file="lib/CtrSDK/include/nn/srv/detail/srv_Service.h" line="10" column="9" bodyfile="lib/CtrSDK/include/nn/srv/detail/srv_Service.h" bodystart="10" bodyend="13"/>
     <listofallmembers>
       <member refid="classnn_1_1srv_1_1detail_1_1_service_1aac7cec3bfacf2280bb3c1164cfb45dc9" prot="public" virt="non-virtual"><scope>nn::srv::detail::Service</scope><name>GetServiceHandle</name></member>
     </listofallmembers>

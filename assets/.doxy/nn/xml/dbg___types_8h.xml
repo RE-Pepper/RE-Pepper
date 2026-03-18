@@ -65,6 +65,6 @@
 <codeline lineno="14"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>dbg</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>nn</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="lib/CTRSDK/include/nn/dbg/dbg_Types.h"/>
+    <location file="lib/CtrSDK/include/nn/dbg/dbg_Types.h"/>
   </compounddef>
 </doxygen>

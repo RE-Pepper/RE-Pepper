@@ -192,5 +192,5 @@ virtual void al::AreaShape::v2 () = 0
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/al/include/AreaObj/alAreaShape.h`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/AreaObj/alAreaShape.h`
 

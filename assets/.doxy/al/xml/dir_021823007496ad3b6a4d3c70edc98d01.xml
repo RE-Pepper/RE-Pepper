@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_021823007496ad3b6a4d3c70edc98d01" kind="dir">
+    <compoundname>lib</compoundname>
+    <innerdir refid="dir_06a57bfe438b90fdc9c94a1df001d5d7">al</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/"/>
+  </compounddef>
+</doxygen>

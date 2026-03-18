@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/al/src/LiveActor/alSensorFunction.cpp" line="12" column="23" bodyfile="lib/al/src/LiveActor/alSensorFunction.cpp" bodystart="12" bodyend="-1"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/LiveActor/alSensorFunction.cpp" line="12" column="23" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/LiveActor/alSensorFunction.cpp" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structal_sensor_function_1_1_name_to_type_1ac5ee7b91246ad9e75b623ff8efda02a9" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceal_1ae7916cff523aa4e5e53a883d24479359" kindref="member">al::SensorType</ref></type>
@@ -29,14 +29,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/al/src/LiveActor/alSensorFunction.cpp" line="13" column="24" bodyfile="lib/al/src/LiveActor/alSensorFunction.cpp" bodystart="13" bodyend="-1"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/LiveActor/alSensorFunction.cpp" line="13" column="24" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/LiveActor/alSensorFunction.cpp" bodystart="13" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/al/src/LiveActor/alSensorFunction.cpp" line="10" column="1" bodyfile="lib/al/src/LiveActor/alSensorFunction.cpp" bodystart="11" bodyend="14"/>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/LiveActor/alSensorFunction.cpp" line="10" column="1" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/LiveActor/alSensorFunction.cpp" bodystart="11" bodyend="14"/>
     <listofallmembers>
       <member refid="structal_sensor_function_1_1_name_to_type_1a92f054c6d22ca8d189659299d1d320db" prot="public" virt="non-virtual"><scope>alSensorFunction::NameToType</scope><name>name</name></member>
       <member refid="structal_sensor_function_1_1_name_to_type_1ac5ee7b91246ad9e75b623ff8efda02a9" prot="public" virt="non-virtual"><scope>alSensorFunction::NameToType</scope><name>type</name></member>

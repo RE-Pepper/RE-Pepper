@@ -64,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_Types.h" line="7" column="5" bodyfile="lib/CTRSDK/include/nn/os/os_Types.h" bodystart="7" bodyend="13"/>
+        <location file="lib/CtrSDK/include/nn/os/os_Types.h" line="7" column="5" bodyfile="lib/CtrSDK/include/nn/os/os_Types.h" bodystart="7" bodyend="13"/>
       </memberdef>
       <memberdef kind="enum" id="namespacenn_1_1os_1a5f8d5a17a12bae4027b54d735c25de44" prot="public" static="no" strong="no">
         <type></type>
@@ -104,7 +104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_Types.h" line="16" column="5" bodyfile="lib/CTRSDK/include/nn/os/os_Types.h" bodystart="16" bodyend="20"/>
+        <location file="lib/CtrSDK/include/nn/os/os_Types.h" line="16" column="5" bodyfile="lib/CtrSDK/include/nn/os/os_Types.h" bodystart="16" bodyend="20"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -120,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="39" column="32" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="39" bodyend="41"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="39" column="32" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="39" bodyend="41"/>
         <referencedby refid="namespacenn_1_1os_1a81cde5c6652a8d390084c3dfe339f7d7" compoundref="os___k_config_memory_8h" startline="44" endline="46">GetAppMemorySize</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1os_1a81cde5c6652a8d390084c3dfe339f7d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -135,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" line="44" column="9" bodyfile="lib/CTRSDK/include/nn/os/os_KConfigMemory.h" bodystart="44" bodyend="46"/>
+        <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" line="44" column="9" bodyfile="lib/CtrSDK/include/nn/os/os_KConfigMemory.h" bodystart="44" bodyend="46"/>
         <references refid="structnn_1_1os_1_1_k_config_memory_1ac02b98233cf1a33f3428baf5b85feb52" compoundref="os___k_config_memory_8h" startline="27">nn::os::KConfigMemory::appMemAlloc</references>
         <references refid="namespacenn_1_1os_1aae2449a9ee3e617cbd3cff84caaaf5d1" compoundref="os___k_config_memory_8h" startline="39" endline="41">GetKConfigMemory</references>
       </memberdef>
@@ -144,6 +144,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/os/os_EventBase.h" line="5" column="1"/>
+    <location file="lib/CtrSDK/include/nn/os/os_EventBase.h" line="5" column="1"/>
   </compounddef>
 </doxygen>

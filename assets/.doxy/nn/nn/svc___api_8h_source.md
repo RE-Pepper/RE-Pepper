@@ -2,7 +2,7 @@
 
 # File svc\_Api.h
 
-[**File List**](files.md) **>** [**CTRSDK**](dir_1e016f672f65000d1caa1843da5325e4.md) **>** [**include**](dir_b105e27ad861a359b82da8d20daf787e.md) **>** [**nn**](dir_98edea970dce97b73b2af390faecf17b.md) **>** [**svc**](dir_b35d2e76648bb67c54723d7f8ee92489.md) **>** [**svc\_Api.h**](svc___api_8h.md)
+[**File List**](files.md) **>** [**CtrSDK**](dir_a581c965070d8303a3ac233c6039c11a.md) **>** [**include**](dir_af9254bf4d22366cfccd04cbaa9622aa.md) **>** [**nn**](dir_a185e92459882a1d3c4a0e5724303e75.md) **>** [**svc**](dir_c1b0279480f3283373e7c3eb28175a75.md) **>** [**svc\_Api.h**](svc___api_8h.md)
 
 [Go to the documentation of this file](svc___api_8h.md)
 

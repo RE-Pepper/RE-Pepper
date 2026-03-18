@@ -126,5 +126,5 @@ float nn::math::VEC3::z;
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/math/math_VEC3.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/math/math_VEC3.h`
 

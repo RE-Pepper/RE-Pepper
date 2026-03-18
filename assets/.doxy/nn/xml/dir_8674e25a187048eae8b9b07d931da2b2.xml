@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_8674e25a187048eae8b9b07d931da2b2" kind="dir">
+    <compoundname>dbg</compoundname>
+    <innerfile refid="dbg___api_8h">dbg_Api.h</innerfile>
+    <innerfile refid="dbg___types_8h">dbg_Types.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/CtrSDK/include/nn/dbg/"/>
+  </compounddef>
+</doxygen>

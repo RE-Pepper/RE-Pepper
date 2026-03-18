@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_3f787ef9b8b1977a0717b3ad578e7e39" kind="dir">
+    <compoundname>detail</compoundname>
+    <innerfile refid="fs___file_system_base_8h">fs_FileSystemBase.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/CtrSDK/include/nn/fs/detail/"/>
+  </compounddef>
+</doxygen>

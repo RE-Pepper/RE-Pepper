@@ -68,8 +68,8 @@
 
 | Type | Name |
 | ---: | :--- |
-|  void | [**FUN\_001d581c**](#function-fun_001d581c) () <br> |
-|  void | [**FUN\_00270fc4**](#function-fun_00270fc4) (al::LiveActor \*, float, int) <br> |
+|  void | [**fn\_001d581c**](#function-fn_001d581c) () <br> |
+|  void | [**fn\_00270fc4**](#function-fn_00270fc4) (al::LiveActor \*, float, int) <br> |
 
 
 
@@ -118,10 +118,10 @@ alNerveFunction::NerveActionCollector sCollector;
 
 
 
-### function FUN\_001d581c 
+### function fn\_001d581c 
 
 ```C++
-void FUN_001d581c () 
+void fn_001d581c () 
 ```
 
 
@@ -131,10 +131,10 @@ void FUN_001d581c ()
 
 
 
-### function FUN\_00270fc4 
+### function fn\_00270fc4 
 
 ```C++
-void FUN_00270fc4 (
+void fn_00270fc4 (
     al::LiveActor *,
     float,
     int

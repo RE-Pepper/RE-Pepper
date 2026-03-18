@@ -4,7 +4,7 @@
 
 
 
-[**FileList**](files.md) **>** [**crt0**](dir_d01e31ef8de96bf6eecc2542186e719f.md) **>** [**MPCore**](dir_44f2deeef687ca82489bc52746b18d22.md) **>** [**crt0.cpp**](crt0_8cpp.md)
+[**FileList**](files.md) **>** [**crt0**](dir_24f5be450dfa709e190b6f431391bee8.md) **>** [**MPCore**](dir_5ef632110aebbd6ea53d3bca60abe996.md) **>** [**crt0.cpp**](crt0_8cpp.md)
 
 [Go to the source code of this file](crt0_8cpp_source.md)
 
@@ -262,5 +262,5 @@ void nninitSystem ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/sources/crt0/MPCore/crt0.cpp`
+The documentation for this class was generated from the following file `lib/CtrSDK/sources/crt0/MPCore/crt0.cpp`
 

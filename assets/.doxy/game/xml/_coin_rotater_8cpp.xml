@@ -42,11 +42,11 @@
     </incdepgraph>
     <innernamespace refid="namespacerp">rp</innernamespace>
     <sectiondef kind="func">
-      <memberdef kind="function" id="_coin_rotater_8cpp_1acf452f1c1b9f6ba9421f1d1a3cfa4de9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_coin_rotater_8cpp_1a927e8276ffa316ca767ed6423c863f78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void FUN_00277de0</definition>
+        <definition>void fn_00277de0</definition>
         <argsstring>(al::LiveActor *, const al::ActorInitInfo &amp;)</argsstring>
-        <name>FUN_00277de0</name>
+        <name>fn_00277de0</name>
         <param>
           <type>al::LiveActor *</type>
         </param>
@@ -88,11 +88,11 @@
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;コインローテータ&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="19"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21" refid="_coin_rotater_8cpp_1acf452f1c1b9f6ba9421f1d1a3cfa4de9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_coin_rotater_8cpp_1acf452f1c1b9f6ba9421f1d1a3cfa4de9" kindref="member">FUN_00277de0</ref>(<sp/>al::LiveActor*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::ActorInitInfo&amp;<sp/>);</highlight></codeline>
+<codeline lineno="21" refid="_coin_rotater_8cpp_1a927e8276ffa316ca767ed6423c863f78" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_coin_rotater_8cpp_1a927e8276ffa316ca767ed6423c863f78" kindref="member">fn_00277de0</ref>(<sp/>al::LiveActor*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::ActorInitInfo&amp;<sp/>);</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="23" refid="class_coin_rotater_1a41b5dacdf28a7da5898c152266dccc94" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_coin_rotater_1a41b5dacdf28a7da5898c152266dccc94" kindref="member">CoinRotater::initAfterPlacementSceneObj</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::ActorInitInfo&amp;<sp/>info<sp/>)</highlight></codeline>
 <codeline lineno="24"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_coin_rotater_8cpp_1acf452f1c1b9f6ba9421f1d1a3cfa4de9" kindref="member">FUN_00277de0</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>info<sp/>);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_coin_rotater_8cpp_1a927e8276ffa316ca767ed6423c863f78" kindref="member">fn_00277de0</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>info<sp/>);</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>makeActorAppeared();</highlight></codeline>
 <codeline lineno="27"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>

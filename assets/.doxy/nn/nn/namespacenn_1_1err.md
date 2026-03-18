@@ -82,5 +82,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/err/CTR/err_Api.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/err/CTR/err_Api.h`
 

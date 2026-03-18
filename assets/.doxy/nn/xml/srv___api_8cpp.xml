@@ -95,6 +95,6 @@
 <codeline lineno="25"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>srv</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>nn</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="lib/CTRSDK/sources/srv/srv_Api.cpp"/>
+    <location file="lib/CtrSDK/sources/srv/srv_Api.cpp"/>
   </compounddef>
 </doxygen>

@@ -59,7 +59,7 @@
 
 | Type | Name |
 | ---: | :--- |
-|  void | [**FUN\_00277de0**](#function-fun_00277de0) (al::LiveActor \*, const al::ActorInitInfo &) <br> |
+|  void | [**fn\_00277de0**](#function-fn_00277de0) (al::LiveActor \*, const al::ActorInitInfo &) <br> |
 
 
 
@@ -93,10 +93,10 @@
 
 
 
-### function FUN\_00277de0 
+### function fn\_00277de0 
 
 ```C++
-void FUN_00277de0 (
+void fn_00277de0 (
     al::LiveActor *,
     const al::ActorInitInfo &
 ) 

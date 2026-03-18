@@ -100,5 +100,5 @@ void al::SwitchKeepOnAreaGroup::update (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/al/include/AreaObj/alSwitchKeepOnAreaGroup.h`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/AreaObj/alSwitchKeepOnAreaGroup.h`
 

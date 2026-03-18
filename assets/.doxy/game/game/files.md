@@ -132,7 +132,6 @@ Here is a list of all files with brief descriptions:
             * **file** [**ProductSequence.cpp**](_product_sequence_8cpp.md)     
             * **file** [**ProductStateStage.cpp**](_product_state_stage_8cpp.md)     
             * **file** [**ProductStateTitle.cpp**](_product_state_title_8cpp.md)     
-        * **file** [**Stubs.c**](_stubs_8c.md)     
         * **dir** [**System**](dir_c4e25bc9fc705584e5c854c33b9560d4.md)     
             * **file** [**Application.cpp**](_application_8cpp.md) 
             * **file** [**CourseList.cpp**](_course_list_8cpp.md) 

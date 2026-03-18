@@ -4,7 +4,7 @@
 
 
 
-[**FileList**](files.md) **>** [**CTRSDK**](dir_1e016f672f65000d1caa1843da5325e4.md) **>** [**sources**](dir_a4ee87762c46a7490fc221af34a02561.md) **>** [**svc**](dir_1b8e1e66c6eb5d4e43e8b32c9d2b1ed6.md) **>** [**svc\_Api.cpp**](svc___api_8cpp.md)
+[**FileList**](files.md) **>** [**CtrSDK**](dir_a581c965070d8303a3ac233c6039c11a.md) **>** [**sources**](dir_6ad72fc0abbc32b2f59992fddd21f3c1.md) **>** [**svc**](dir_8aabd6270044b3c7696df7637a3ed4a5.md) **>** [**svc\_Api.cpp**](svc___api_8cpp.md)
 
 [Go to the source code of this file](svc___api_8cpp_source.md)
 
@@ -84,5 +84,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/sources/svc/svc_Api.cpp`
+The documentation for this class was generated from the following file `lib/CtrSDK/sources/svc/svc_Api.cpp`
 

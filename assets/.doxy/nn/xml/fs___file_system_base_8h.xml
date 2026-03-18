@@ -47,6 +47,6 @@
 <codeline lineno="21"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>fs</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>nn</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="lib/CTRSDK/include/nn/fs/detail/fs_FileSystemBase.h"/>
+    <location file="lib/CtrSDK/include/nn/fs/detail/fs_FileSystemBase.h"/>
   </compounddef>
 </doxygen>

@@ -87,11 +87,11 @@
     </incdepgraph>
     <innernamespace refid="namespace_nrv_fugumannen">NrvFugumannen</innernamespace>
     <sectiondef kind="func">
-      <memberdef kind="function" id="_fugumannen_8cpp_1acdef4d7e311ac0644fcf1a74ee4a2cbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_fugumannen_8cpp_1aa3bfa6b8b29767af5b583d9965aca769" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void FUN_0027b51c</definition>
+        <definition>void fn_0027b51c</definition>
         <argsstring>(al::LiveActor *, const al::ActorInitInfo &amp;info, int)</argsstring>
-        <name>FUN_0027b51c</name>
+        <name>fn_0027b51c</name>
         <param>
           <type>al::LiveActor *</type>
         </param>
@@ -111,11 +111,11 @@
         <location file="Game/src/Enemy/Fugumannen.cpp" line="28" column="17" declfile="Game/src/Enemy/Fugumannen.cpp" declline="28" declcolumn="17"/>
         <referencedby refid="class_fugumannen_1a53873753fbd9ff13dfb66e3e54f8fb1f" compoundref="_fugumannen_8cpp" startline="31" endline="48">Fugumannen::init</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_fugumannen_8cpp_1ae3b99263d19f2fdd0cca01988da744f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_fugumannen_8cpp_1a037877e33c6aa98610ed951cef5ffb30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void FUN_0027ee34</definition>
+        <definition>void fn_0027ee34</definition>
         <argsstring>(al::LiveActor *, const al::ActorInitInfo &amp;info, int)</argsstring>
-        <name>FUN_0027ee34</name>
+        <name>fn_0027ee34</name>
         <param>
           <type>al::LiveActor *</type>
         </param>
@@ -135,11 +135,11 @@
         <location file="Game/src/Enemy/Fugumannen.cpp" line="29" column="17" declfile="Game/src/Enemy/Fugumannen.cpp" declline="29" declcolumn="17"/>
         <referencedby refid="class_fugumannen_1a53873753fbd9ff13dfb66e3e54f8fb1f" compoundref="_fugumannen_8cpp" startline="31" endline="48">Fugumannen::init</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_fugumannen_8cpp_1aea4150c7bc67b649bbc40b747b026341" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_fugumannen_8cpp_1a5fd6eb27d44d666a533c3c639ddb2d3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
-        <definition>bool FUN_0027b768</definition>
+        <definition>bool fn_0027b768</definition>
         <argsstring>(u32, al::HitSensor *, al::HitSensor *, al::NerveStateBase *, const al::Nerve *)</argsstring>
-        <name>FUN_0027b768</name>
+        <name>fn_0027b768</name>
         <param>
           <type>u32</type>
         </param>
@@ -164,11 +164,11 @@
         <location file="Game/src/Enemy/Fugumannen.cpp" line="59" column="17" declfile="Game/src/Enemy/Fugumannen.cpp" declline="59" declcolumn="17"/>
         <referencedby refid="class_fugumannen_1aa41b2cb78868d12d2d2c1624b0bcf9b7" compoundref="_fugumannen_8cpp" startline="62" endline="79">Fugumannen::receiveMsg</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_fugumannen_8cpp_1add98d348bfb3b152acc1ed3448093565" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_fugumannen_8cpp_1a9c0749cf84a9c072d2918ae2d47342de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
-        <definition>bool FUN_0027b704</definition>
+        <definition>bool fn_0027b704</definition>
         <argsstring>(u32, al::HitSensor *, al::HitSensor *, al::NerveStateBase *)</argsstring>
-        <name>FUN_0027b704</name>
+        <name>fn_0027b704</name>
         <param>
           <type>u32</type>
         </param>
@@ -190,11 +190,11 @@
         <location file="Game/src/Enemy/Fugumannen.cpp" line="60" column="17" declfile="Game/src/Enemy/Fugumannen.cpp" declline="60" declcolumn="17"/>
         <referencedby refid="class_fugumannen_1aa41b2cb78868d12d2d2c1624b0bcf9b7" compoundref="_fugumannen_8cpp" startline="62" endline="79">Fugumannen::receiveMsg</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_fugumannen_8cpp_1a669131636ac32e04df2878d555e2ab73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_fugumannen_8cpp_1a02ec4d9e8a0d0ae162d2a8d9a4958361" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void FUN_00240e08</definition>
+        <definition>void fn_00240e08</definition>
         <argsstring>(al::LiveActor *, const sead::Vector3f &amp;, float)</argsstring>
-        <name>FUN_00240e08</name>
+        <name>fn_00240e08</name>
         <param>
           <type>al::LiveActor *</type>
         </param>
@@ -214,11 +214,11 @@
         <referencedby refid="class_fugumannen_1ad73ca1712fa55f6616e84b47a31d32c7" compoundref="_fugumannen_8cpp" startline="83" endline="92">Fugumannen::exeMove</referencedby>
         <referencedby refid="class_fugumannen_1adaa1cfe5b8592801b3869faf31870730" compoundref="_fugumannen_8cpp" startline="94" endline="102">Fugumannen::exeMove2</referencedby>
       </memberdef>
-      <memberdef kind="function" id="_fugumannen_8cpp_1abf63fe6309e3bf94d24784d80998423c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_fugumannen_8cpp_1a4c3b56bd6ae6f1ebd0d6324f40aa57d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void FUN_002cd428</definition>
+        <definition>void fn_002cd428</definition>
         <argsstring>(al::LiveActor *, al::NerveStateBase *)</argsstring>
-        <name>FUN_002cd428</name>
+        <name>fn_002cd428</name>
         <param>
           <type>al::LiveActor *</type>
         </param>
@@ -267,8 +267,8 @@
 <codeline lineno="25"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="26"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28" refid="_fugumannen_8cpp_1acdef4d7e311ac0644fcf1a74ee4a2cbb" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_fugumannen_8cpp_1acdef4d7e311ac0644fcf1a74ee4a2cbb" kindref="member">FUN_0027b51c</ref>(<sp/>al::LiveActor*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::ActorInitInfo&amp;<sp/>info,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="29" refid="_fugumannen_8cpp_1ae3b99263d19f2fdd0cca01988da744f6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_fugumannen_8cpp_1ae3b99263d19f2fdd0cca01988da744f6" kindref="member">FUN_0027ee34</ref>(<sp/>al::LiveActor*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::ActorInitInfo&amp;<sp/>info,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="28" refid="_fugumannen_8cpp_1aa3bfa6b8b29767af5b583d9965aca769" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_fugumannen_8cpp_1aa3bfa6b8b29767af5b583d9965aca769" kindref="member">fn_0027b51c</ref>(<sp/>al::LiveActor*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::ActorInitInfo&amp;<sp/>info,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="29" refid="_fugumannen_8cpp_1a037877e33c6aa98610ed951cef5ffb30" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_fugumannen_8cpp_1a037877e33c6aa98610ed951cef5ffb30" kindref="member">fn_0027ee34</ref>(<sp/>al::LiveActor*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::ActorInitInfo&amp;<sp/>info,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="31" refid="class_fugumannen_1a53873753fbd9ff13dfb66e3e54f8fb1f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_fugumannen_1a53873753fbd9ff13dfb66e3e54f8fb1f" kindref="member">Fugumannen::init</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::ActorInitInfo&amp;<sp/>info<sp/>)</highlight></codeline>
 <codeline lineno="32"><highlight class="normal">{</highlight></codeline>
@@ -283,8 +283,8 @@
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_fugumannen_1a02d06d60f3bcb3127148d25a08bb0cac" kindref="member">mStateBlowDown</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_enemy_state_blow_down" kindref="compound">EnemyStateBlowDown</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;SwimBlowDown&quot;</highlight><highlight class="normal">,<sp/>1<sp/>);</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::initNerveState(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/><ref refid="class_fugumannen_1a02d06d60f3bcb3127148d25a08bb0cac" kindref="member">mStateBlowDown</ref>,<sp/>&amp;NrvFugumannen::BlowDown,<sp/></highlight><highlight class="stringliteral">&quot;state:BlowDown&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::startAction(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;SwimWait&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_fugumannen_8cpp_1acdef4d7e311ac0644fcf1a74ee4a2cbb" kindref="member">FUN_0027b51c</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>info,<sp/>3<sp/>);</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_fugumannen_8cpp_1ae3b99263d19f2fdd0cca01988da744f6" kindref="member">FUN_0027ee34</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>info,<sp/>3<sp/>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_fugumannen_8cpp_1aa3bfa6b8b29767af5b583d9965aca769" kindref="member">fn_0027b51c</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>info,<sp/>3<sp/>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_fugumannen_8cpp_1a037877e33c6aa98610ed951cef5ffb30" kindref="member">fn_0027ee34</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>info,<sp/>3<sp/>);</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::offCollide(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>makeActorAppeared();</highlight></codeline>
 <codeline lineno="48"><highlight class="normal">}</highlight></codeline>
@@ -298,21 +298,21 @@
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="57"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59" refid="_fugumannen_8cpp_1aea4150c7bc67b649bbc40b747b026341" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="_fugumannen_8cpp_1aea4150c7bc67b649bbc40b747b026341" kindref="member">FUN_0027b768</ref>(<sp/>u32,<sp/>al::HitSensor*,<sp/>al::HitSensor*,<sp/>al::NerveStateBase*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::Nerve*<sp/>);</highlight></codeline>
-<codeline lineno="60" refid="_fugumannen_8cpp_1add98d348bfb3b152acc1ed3448093565" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="_fugumannen_8cpp_1add98d348bfb3b152acc1ed3448093565" kindref="member">FUN_0027b704</ref>(<sp/>u32,<sp/>al::HitSensor*,<sp/>al::HitSensor*,<sp/>al::NerveStateBase*<sp/>);</highlight></codeline>
+<codeline lineno="59" refid="_fugumannen_8cpp_1a5fd6eb27d44d666a533c3c639ddb2d3f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="_fugumannen_8cpp_1a5fd6eb27d44d666a533c3c639ddb2d3f" kindref="member">fn_0027b768</ref>(<sp/>u32,<sp/>al::HitSensor*,<sp/>al::HitSensor*,<sp/>al::NerveStateBase*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::Nerve*<sp/>);</highlight></codeline>
+<codeline lineno="60" refid="_fugumannen_8cpp_1a9c0749cf84a9c072d2918ae2d47342de" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="_fugumannen_8cpp_1a9c0749cf84a9c072d2918ae2d47342de" kindref="member">fn_0027b704</ref>(<sp/>u32,<sp/>al::HitSensor*,<sp/>al::HitSensor*,<sp/>al::NerveStateBase*<sp/>);</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight></codeline>
 <codeline lineno="62" refid="class_fugumannen_1aa41b2cb78868d12d2d2c1624b0bcf9b7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_fugumannen_1aa41b2cb78868d12d2d2c1624b0bcf9b7" kindref="member">Fugumannen::receiveMsg</ref>(<sp/>u32<sp/>msg,<sp/>al::HitSensor*<sp/>other,<sp/>al::HitSensor*<sp/>me<sp/>)</highlight></codeline>
 <codeline lineno="63"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>al::isNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvFugumannen::BlowDown<sp/>)<sp/>||<sp/>al::isSensorName(<sp/>me,<sp/></highlight><highlight class="stringliteral">&quot;Attack&quot;</highlight><highlight class="normal"><sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rv<sp/>=<sp/><ref refid="_fugumannen_8cpp_1aea4150c7bc67b649bbc40b747b026341" kindref="member">FUN_0027b768</ref>(<sp/>msg,<sp/>other,<sp/>me,<sp/><ref refid="class_fugumannen_1a02d06d60f3bcb3127148d25a08bb0cac" kindref="member">mStateBlowDown</ref>,<sp/>&amp;NrvFugumannen::BlowDown<sp/>);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rv<sp/>=<sp/><ref refid="_fugumannen_8cpp_1a5fd6eb27d44d666a533c3c639ddb2d3f" kindref="member">fn_0027b768</ref>(<sp/>msg,<sp/>other,<sp/>me,<sp/><ref refid="class_fugumannen_1a02d06d60f3bcb3127148d25a08bb0cac" kindref="member">mStateBlowDown</ref>,<sp/>&amp;NrvFugumannen::BlowDown<sp/>);</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>rv<sp/>)<sp/></highlight><highlight class="comment">//<sp/>:skull:?</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rv<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!rv<sp/>&amp;&amp;<sp/>(<sp/>rv<sp/>=<sp/>al::isMsg9(<sp/>msg<sp/>),<sp/>rv<sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_fugumannen_8cpp_1add98d348bfb3b152acc1ed3448093565" kindref="member">FUN_0027b704</ref>(<sp/>msg,<sp/>other,<sp/>me,<sp/><ref refid="class_fugumannen_1a02d06d60f3bcb3127148d25a08bb0cac" kindref="member">mStateBlowDown</ref><sp/>);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_fugumannen_8cpp_1a9c0749cf84a9c072d2918ae2d47342de" kindref="member">fn_0027b704</ref>(<sp/>msg,<sp/>other,<sp/>me,<sp/><ref refid="class_fugumannen_1a02d06d60f3bcb3127148d25a08bb0cac" kindref="member">mStateBlowDown</ref><sp/>);</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::setNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvFugumannen::BlowDown<sp/>);</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -320,7 +320,7 @@
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rv;</highlight></codeline>
 <codeline lineno="79"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="81" refid="_fugumannen_8cpp_1a669131636ac32e04df2878d555e2ab73" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_fugumannen_8cpp_1a669131636ac32e04df2878d555e2ab73" kindref="member">FUN_00240e08</ref>(<sp/>al::LiveActor*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::Vector3f&amp;,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="81" refid="_fugumannen_8cpp_1a02ec4d9e8a0d0ae162d2a8d9a4958361" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_fugumannen_8cpp_1a02ec4d9e8a0d0ae162d2a8d9a4958361" kindref="member">fn_00240e08</ref>(<sp/>al::LiveActor*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::Vector3f&amp;,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
 <codeline lineno="83" refid="class_fugumannen_1ad73ca1712fa55f6616e84b47a31d32c7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_fugumannen_1ad73ca1712fa55f6616e84b47a31d32c7" kindref="member">Fugumannen::exeMove</ref>()</highlight></codeline>
 <codeline lineno="84"><highlight class="normal">{</highlight></codeline>
@@ -328,7 +328,7 @@
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sead::Vector3f<sp/>railDir<sp/>=<sp/>al::getRailDir(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!al::isLoopRail(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>railDir<sp/>*=<sp/>-1;</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_fugumannen_8cpp_1a669131636ac32e04df2878d555e2ab73" kindref="member">FUN_00240e08</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>railDir,<sp/>4.0<sp/>);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_fugumannen_8cpp_1a02ec4d9e8a0d0ae162d2a8d9a4958361" kindref="member">fn_00240e08</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>railDir,<sp/>4.0<sp/>);</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>al::isRailReachedGoal(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::setNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvFugumannen::Move2<sp/>);</highlight></codeline>
 <codeline lineno="92"><highlight class="normal">}</highlight></codeline>
@@ -338,18 +338,18 @@
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sead::Vector3f<sp/>railDir<sp/>=<sp/>al::getRailDir(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!al::isLoopRail(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>railDir<sp/>*=<sp/>-1;</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_fugumannen_8cpp_1a669131636ac32e04df2878d555e2ab73" kindref="member">FUN_00240e08</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>railDir,<sp/>4.0<sp/>);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_fugumannen_8cpp_1a02ec4d9e8a0d0ae162d2a8d9a4958361" kindref="member">fn_00240e08</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>railDir,<sp/>4.0<sp/>);</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>al::isGreaterStep(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>45<sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::setNerve(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>&amp;NrvFugumannen::Move<sp/>);</highlight></codeline>
 <codeline lineno="102"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="104" refid="_fugumannen_8cpp_1abf63fe6309e3bf94d24784d80998423c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_fugumannen_8cpp_1abf63fe6309e3bf94d24784d80998423c" kindref="member">FUN_002cd428</ref>(<sp/>al::LiveActor*,<sp/>al::NerveStateBase*<sp/>);</highlight></codeline>
+<codeline lineno="104" refid="_fugumannen_8cpp_1a4c3b56bd6ae6f1ebd0d6324f40aa57d2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_fugumannen_8cpp_1a4c3b56bd6ae6f1ebd0d6324f40aa57d2" kindref="member">fn_002cd428</ref>(<sp/>al::LiveActor*,<sp/>al::NerveStateBase*<sp/>);</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
 <codeline lineno="106" refid="class_fugumannen_1ab6da62947ed16e92d6042e6477d70e04" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_fugumannen_1ab6da62947ed16e92d6042e6477d70e04" kindref="member">Fugumannen::exeBlowDown</ref>()</highlight></codeline>
 <codeline lineno="107"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>al::updateNerveState(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_fugumannen_8cpp_1abf63fe6309e3bf94d24784d80998423c" kindref="member">FUN_002cd428</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/><ref refid="class_fugumannen_1a02d06d60f3bcb3127148d25a08bb0cac" kindref="member">mStateBlowDown</ref><sp/>);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_fugumannen_8cpp_1a4c3b56bd6ae6f1ebd0d6324f40aa57d2" kindref="member">fn_002cd428</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/><ref refid="class_fugumannen_1a02d06d60f3bcb3127148d25a08bb0cac" kindref="member">mStateBlowDown</ref><sp/>);</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kill();</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="113"><highlight class="normal">}</highlight></codeline>

@@ -166,5 +166,5 @@ inline const KConfigMemory * nn::os::GetKConfigMemory ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/os/os_EventBase.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/os/os_EventBase.h`
 

@@ -87,6 +87,6 @@
 <codeline lineno="47"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="48"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="lib/CTRSDK/include/nn/os/os_KConfigMemory.h"/>
+    <location file="lib/CtrSDK/include/nn/os/os_KConfigMemory.h"/>
   </compounddef>
 </doxygen>

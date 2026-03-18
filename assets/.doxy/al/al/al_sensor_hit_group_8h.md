@@ -4,7 +4,7 @@
 
 
 
-[**FileList**](files.md) **>** [**al**](dir_9602f8714fac85fdd7f7ceb00b335c03.md) **>** [**include**](dir_33e095f68a87f1feebb1083733ab6ad1.md) **>** [**HitSensor**](dir_6d26e8075d2a27d9c00cef447b473cb8.md) **>** [**alSensorHitGroup.h**](al_sensor_hit_group_8h.md)
+[**FileList**](files.md) **>** [**al**](dir_06a57bfe438b90fdc9c94a1df001d5d7.md) **>** [**include**](dir_f7e8efec570a34efc8a6993e55383954.md) **>** [**HitSensor**](dir_c5bc830a30df7017e98410e84b00e200.md) **>** [**alSensorHitGroup.h**](al_sensor_hit_group_8h.md)
 
 [Go to the source code of this file](al_sensor_hit_group_8h_source.md)
 
@@ -89,5 +89,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/al/include/HitSensor/alSensorHitGroup.h`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/HitSensor/alSensorHitGroup.h`
 

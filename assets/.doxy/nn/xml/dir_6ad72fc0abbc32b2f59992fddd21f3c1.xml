@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_6ad72fc0abbc32b2f59992fddd21f3c1" kind="dir">
+    <compoundname>sources</compoundname>
+    <innerdir refid="dir_24f5be450dfa709e190b6f431391bee8">crt0</innerdir>
+    <innerdir refid="dir_34384f97eb7d7a0f4fb4ac7db3565ead">dbg</innerdir>
+    <innerdir refid="dir_097b33632b9d2d03ac5c68ff0a08f9ba">fs</innerdir>
+    <innerdir refid="dir_79e41db79b7fa8bfabe0e320694d691f">math</innerdir>
+    <innerdir refid="dir_9265a2f0e35d56b43a6785601066bd6e">srv</innerdir>
+    <innerdir refid="dir_8aabd6270044b3c7696df7637a3ed4a5">svc</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/CtrSDK/sources/"/>
+  </compounddef>
+</doxygen>

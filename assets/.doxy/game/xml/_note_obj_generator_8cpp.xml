@@ -76,11 +76,11 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
-      <memberdef kind="function" id="_note_obj_generator_8cpp_1a0c764d033389ca23d19f85ec94265941" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_note_obj_generator_8cpp_1a4fd5740b0984f89e3806b25d3e515e25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void FUN_00270fc4</definition>
+        <definition>void fn_00270fc4</definition>
         <argsstring>(al::LiveActor *, float, int)</argsstring>
-        <name>FUN_00270fc4</name>
+        <name>fn_00270fc4</name>
         <param>
           <type>al::LiveActor *</type>
         </param>
@@ -98,11 +98,11 @@
         </inbodydescription>
         <location file="Game/src/MapObj/NoteObjGenerator.cpp" line="29" column="17" declfile="Game/src/MapObj/NoteObjGenerator.cpp" declline="29" declcolumn="17"/>
       </memberdef>
-      <memberdef kind="function" id="_note_obj_generator_8cpp_1ab41635bece2d52357637017abdaf707a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_note_obj_generator_8cpp_1aea58362c9d91856294559079ce988d21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void FUN_001d581c</definition>
+        <definition>void fn_001d581c</definition>
         <argsstring>()</argsstring>
-        <name>FUN_001d581c</name>
+        <name>fn_001d581c</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -146,8 +146,8 @@
 <codeline lineno="26"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="27"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29" refid="_note_obj_generator_8cpp_1a0c764d033389ca23d19f85ec94265941" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_note_obj_generator_8cpp_1a0c764d033389ca23d19f85ec94265941" kindref="member">FUN_00270fc4</ref>(<sp/>al::LiveActor*,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>);<sp/></highlight><highlight class="comment">//<sp/>MtxConnector<sp/>(?)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30" refid="_note_obj_generator_8cpp_1ab41635bece2d52357637017abdaf707a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_note_obj_generator_8cpp_1ab41635bece2d52357637017abdaf707a" kindref="member">FUN_001d581c</ref>();</highlight></codeline>
+<codeline lineno="29" refid="_note_obj_generator_8cpp_1a4fd5740b0984f89e3806b25d3e515e25" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_note_obj_generator_8cpp_1a4fd5740b0984f89e3806b25d3e515e25" kindref="member">fn_00270fc4</ref>(<sp/>al::LiveActor*,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>);<sp/></highlight><highlight class="comment">//<sp/>MtxConnector<sp/>(?)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="_note_obj_generator_8cpp_1aea58362c9d91856294559079ce988d21" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_note_obj_generator_8cpp_1aea58362c9d91856294559079ce988d21" kindref="member">fn_001d581c</ref>();</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32" refid="class_note_obj_generator_1abd60f977eca4616bc2e0be2d46ce095a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_note_obj_generator_1abd60f977eca4616bc2e0be2d46ce095a" kindref="member">NoteObjGenerator::exeWait</ref>()</highlight></codeline>
 <codeline lineno="33"><highlight class="normal">{</highlight></codeline>
@@ -155,9 +155,9 @@
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::invalidateClipping(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::showModel(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_note_obj_8cpp_1a0c764d033389ca23d19f85ec94265941" kindref="member">FUN_00270fc4</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>70.0,<sp/>1<sp/>);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_note_obj_8cpp_1a4fd5740b0984f89e3806b25d3e515e25" kindref="member">fn_00270fc4</ref>(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>70.0,<sp/>1<sp/>);</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::startAction(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Wait&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_note_obj_generator_8cpp_1ab41635bece2d52357637017abdaf707a" kindref="member">FUN_001d581c</ref>();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_note_obj_generator_8cpp_1aea58362c9d91856294559079ce988d21" kindref="member">fn_001d581c</ref>();</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>al::startNerveAction(<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Move&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="43"><highlight class="normal">}</highlight></codeline>

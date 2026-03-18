@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_5853bd49094b28a7d349f2c46e9e7b6c" kind="dir">
+    <compoundname>CTR</compoundname>
+    <innerdir refid="dir_0282a2f8222a067606e59c7197458110">MPCore</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/CtrSDK/include/nn/fs/CTR/"/>
+  </compounddef>
+</doxygen>

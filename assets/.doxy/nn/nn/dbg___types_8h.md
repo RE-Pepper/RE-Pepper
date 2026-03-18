@@ -4,7 +4,7 @@
 
 
 
-[**FileList**](files.md) **>** [**CTRSDK**](dir_1e016f672f65000d1caa1843da5325e4.md) **>** [**include**](dir_b105e27ad861a359b82da8d20daf787e.md) **>** [**nn**](dir_98edea970dce97b73b2af390faecf17b.md) **>** [**dbg**](dir_3f39488ec870ba853d2bea615ec9dbc1.md) **>** [**dbg\_Types.h**](dbg___types_8h.md)
+[**FileList**](files.md) **>** [**CtrSDK**](dir_a581c965070d8303a3ac233c6039c11a.md) **>** [**include**](dir_af9254bf4d22366cfccd04cbaa9622aa.md) **>** [**nn**](dir_a185e92459882a1d3c4a0e5724303e75.md) **>** [**dbg**](dir_8674e25a187048eae8b9b07d931da2b2.md) **>** [**dbg\_Types.h**](dbg___types_8h.md)
 
 [Go to the source code of this file](dbg___types_8h_source.md)
 
@@ -83,5 +83,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/dbg/dbg_Types.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/dbg/dbg_Types.h`
 

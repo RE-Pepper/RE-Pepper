@@ -2,7 +2,7 @@
 
 # File alLiveActorKit.cpp
 
-[**File List**](files.md) **>** [**al**](dir_9602f8714fac85fdd7f7ceb00b335c03.md) **>** [**src**](dir_efbb2da3221fe95d5cd9a5d2d5dabe34.md) **>** [**LiveActor**](dir_a1d892c08cc8ccf4e69e81fa9f5f26fe.md) **>** [**alLiveActorKit.cpp**](al_live_actor_kit_8cpp.md)
+[**File List**](files.md) **>** [**al**](dir_06a57bfe438b90fdc9c94a1df001d5d7.md) **>** [**src**](dir_d8628e97cbd71936d4b5fb3774410590.md) **>** [**LiveActor**](dir_8d17faa1063b24478b1232799869255d.md) **>** [**alLiveActorKit.cpp**](al_live_actor_kit_8cpp.md)
 
 [Go to the documentation of this file](al_live_actor_kit_8cpp.md)
 
@@ -30,18 +30,18 @@ LiveActorKit::LiveActorKit( int groupBufSize )
         mAllActors = new LiveActorGroup( "全てのアクター", mAllActorsBufferSize );
 }
 
-extern "C" void FUN_00240350();
-extern "C" void FUN_001e8a64();
+extern "C" void fn_00240350();
+extern "C" void fn_001e8a64();
 
-extern "C" void FUN_001cc9b0( const char*, const FunctorV0F& );
+extern "C" void fn_001cc9b0( const char*, const FunctorV0F& );
 
 #ifdef NON_MATCHING
 
 // loop is weird
 void LiveActorKit::endInit()
 {
-        FUN_001cc9b0( "プレイヤー影ボリュームのフィル", FunctorV0F( FUN_00240350 ) );
-        FUN_001cc9b0( "影ボリュームのフィル", FunctorV0F( FUN_001e8a64 ) );
+        fn_001cc9b0( "プレイヤー影ボリュームのフィル", FunctorV0F( fn_00240350 ) );
+        fn_001cc9b0( "影ボリュームのフィル", FunctorV0F( fn_001e8a64 ) );
         mEffectSystem->startScene();
         mExecuteDirector->createExecutorListTable();
         mCollisionDirector->endInit();

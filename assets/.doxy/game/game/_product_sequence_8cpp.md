@@ -61,8 +61,8 @@
 
 | Type | Name |
 | ---: | :--- |
-|  bool | [**FUN\_0025ba7c**](#function-fun_0025ba7c) (const char \*) <br> |
-|  bool | [**FUN\_0025ddd0**](#function-fun_0025ddd0) () <br> |
+|  bool | [**fn\_0025ba7c**](#function-fn_0025ba7c) (const char \*) <br> |
+|  bool | [**fn\_0025ddd0**](#function-fn_0025ddd0) () <br> |
 
 
 
@@ -96,10 +96,10 @@
 
 
 
-### function FUN\_0025ba7c 
+### function fn\_0025ba7c 
 
 ```C++
-bool FUN_0025ba7c (
+bool fn_0025ba7c (
     const char *
 ) 
 ```
@@ -111,10 +111,10 @@ bool FUN_0025ba7c (
 
 
 
-### function FUN\_0025ddd0 
+### function fn\_0025ddd0 
 
 ```C++
-bool FUN_0025ddd0 () 
+bool fn_0025ddd0 () 
 ```
 
 

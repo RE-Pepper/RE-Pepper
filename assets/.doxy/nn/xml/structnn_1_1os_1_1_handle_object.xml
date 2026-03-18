@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/os/os_HandleObject.h" line="8" column="16" bodyfile="lib/CTRSDK/include/nn/os/os_HandleObject.h" bodystart="8" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/os/os_HandleObject.h" line="8" column="16" bodyfile="lib/CtrSDK/include/nn/os/os_HandleObject.h" bodystart="8" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -67,7 +67,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="lib/CTRSDK/include/nn/os/os_HandleObject.h" line="7" column="5" bodyfile="lib/CTRSDK/include/nn/os/os_HandleObject.h" bodystart="7" bodyend="9"/>
+    <location file="lib/CtrSDK/include/nn/os/os_HandleObject.h" line="7" column="5" bodyfile="lib/CtrSDK/include/nn/os/os_HandleObject.h" bodystart="7" bodyend="9"/>
     <listofallmembers>
       <member refid="structnn_1_1os_1_1_handle_object_1af67b3008356477c8060389469c563af3" prot="public" virt="non-virtual"><scope>nn::os::HandleObject</scope><name>m_Handle</name></member>
     </listofallmembers>

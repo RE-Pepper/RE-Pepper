@@ -99,5 +99,5 @@ Handle nn::os::HandleObject::m_Handle;
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/os/os_HandleObject.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/os/os_HandleObject.h`
 

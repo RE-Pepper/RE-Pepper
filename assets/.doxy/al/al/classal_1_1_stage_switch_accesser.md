@@ -52,8 +52,8 @@
 
 | Type | Name |
 | ---: | :--- |
-|  [**int**](classal_1_1_functor_v0_m.md) | [**FUN\_0024e734**](#function-fun_0024e734) () const<br> |
 |   | [**StageSwitchAccesser**](#function-stageswitchaccesser) () <br> |
+|  [**int**](classal_1_1_functor_v0_m.md) | [**fn\_0024e734**](#function-fn_0024e734) () const<br> |
 |  [**int**](classal_1_1_functor_v0_m.md) | [**initWithPlacementInfo**](#function-initwithplacementinfo) ([**StageSwitchType**](namespaceal.md#enum-stageswitchtype) type1, [**const**](classal_1_1_functor_v0_m.md) [**PlacementInfo**](namespaceal.md#typedef-placementinfo) & info, [**StageSwitchType**](namespaceal.md#enum-stageswitchtype) type2) <br> |
 |  [**bool**](classal_1_1_functor_v0_m.md) | [**isTypeKillDeadOn**](#function-istypekilldeadon) () const<br> |
 
@@ -89,10 +89,10 @@
 
 
 
-### function FUN\_0024e734 
+### function StageSwitchAccesser 
 
 ```C++
-int al::StageSwitchAccesser::FUN_0024e734 () const
+al::StageSwitchAccesser::StageSwitchAccesser () 
 ```
 
 
@@ -102,10 +102,10 @@ int al::StageSwitchAccesser::FUN_0024e734 () const
 
 
 
-### function StageSwitchAccesser 
+### function fn\_0024e734 
 
 ```C++
-al::StageSwitchAccesser::StageSwitchAccesser () 
+int al::StageSwitchAccesser::fn_0024e734 () const
 ```
 
 
@@ -144,5 +144,5 @@ bool al::StageSwitchAccesser::isTypeKillDeadOn () const
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/al/include/Stage/alStageSwitchAccesser.h`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Stage/alStageSwitchAccesser.h`
 

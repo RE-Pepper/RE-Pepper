@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_ebaeb7c8987009097a9882ca30046667" kind="dir">
+    <compoundname>fs</compoundname>
+    <innerdir refid="dir_5853bd49094b28a7d349f2c46e9e7b6c">CTR</innerdir>
+    <innerdir refid="dir_3f787ef9b8b1977a0717b3ad578e7e39">detail</innerdir>
+    <innerdir refid="dir_8c974ea48ccb2a78c8aba2d13133c3be">ipc</innerdir>
+    <innerfile refid="fs___api_8h">fs_Api.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/CtrSDK/include/nn/fs/"/>
+  </compounddef>
+</doxygen>

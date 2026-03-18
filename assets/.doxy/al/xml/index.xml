@@ -1241,7 +1241,7 @@
     <member refid="classal_1_1_stage_switch_accesser_1a7e65cbf19ad96770a69f3034d20af0b2" kind="variable"><name>mType</name></member>
     <member refid="classal_1_1_stage_switch_accesser_1a1d4409b8dd411a57bc0753dc3594e4f4" kind="function"><name>initWithPlacementInfo</name></member>
     <member refid="classal_1_1_stage_switch_accesser_1a3a79faa833b682a07941b0c2527ba347" kind="function"><name>isTypeKillDeadOn</name></member>
-    <member refid="classal_1_1_stage_switch_accesser_1aa6af18e179fdf05628c2175681851fd8" kind="function"><name>FUN_0024e734</name></member>
+    <member refid="classal_1_1_stage_switch_accesser_1aedc684ce8338dc6b2836af6c2f2bc77b" kind="function"><name>fn_0024e734</name></member>
     <member refid="classal_1_1_stage_switch_accesser_1a7425a0b0b09ed7fb661a8ba7555ee86c" kind="function"><name>StageSwitchAccesser</name></member>
   </compound>
   <compound refid="classal_1_1_stage_switch_keeper" kind="class"><name>al::StageSwitchKeeper</name>
@@ -1624,7 +1624,7 @@
     <member refid="namespaceal_1a6fc9c51f5be30fa4c47f7bd9898831fb" kind="function"><name>isEqualString</name></member>
     <member refid="namespaceal_1a5d23b8b9e530df5eb2116f10ca252cc1" kind="function"><name>isEqualSubString</name></member>
     <member refid="namespaceal_1a89ca1031e510765c040b24cc4d8e933c" kind="function"><name>isInStack</name></member>
-    <member refid="namespaceal_1a1ce2862522e1e8d9663587e668ee84f7" kind="function"><name>FUN_0024edd8</name></member>
+    <member refid="namespaceal_1a7cca52ac0d20c59dd210f2843f9c463d" kind="function"><name>fn_0024edd8</name></member>
     <member refid="namespaceal_1a18545f834984c1f8a2e8da5da44f74dd" kind="function"><name>_T_BUTTON</name></member>
     <member refid="namespaceal_1acdea85d8133115996b967d0616172ea5" kind="function"><name>_T_BUTTON</name></member>
     <member refid="namespaceal_1a82a9dc650d9d9be7a29bcd99498de0f2" kind="function"><name>_T_BUTTON</name></member>
@@ -1645,11 +1645,11 @@
     <member refid="namespaceal_1a201e96806e7622527702907d524d3bd0" kind="function"><name>split</name></member>
     <member refid="namespaceal_1a3f876b9292ecc5ae48e8745df66acd53" kind="function"><name>initActorInitInfo</name></member>
     <member refid="namespaceal_1a24cb3a69f28e9b3943554873519c074d" kind="function"><name>initActorImpl</name></member>
-    <member refid="namespaceal_1afe8533f14458bfc6d4abd38afee72f0c" kind="function"><name>FUN_00240350</name></member>
-    <member refid="namespaceal_1a04df3f22d3fee24911a2711e493d85a8" kind="function"><name>FUN_001e8a64</name></member>
-    <member refid="namespaceal_1ace2641a06626acb0eccddf6175278f83" kind="function"><name>FUN_001cc9b0</name></member>
-    <member refid="namespaceal_1ac29945d2c28f85f9c7f49a9c9293cd25" kind="function"><name>FUN_00268df8</name></member>
-    <member refid="namespaceal_1a4b8b6bfec8c79424d09c8beb2e9cddb9" kind="function"><name>FUN_002911e8</name></member>
+    <member refid="namespaceal_1a666d375435faddaf2e98069158bafad6" kind="function"><name>fn_00240350</name></member>
+    <member refid="namespaceal_1ab1619a901a91baae7f1d51730b7c8f41" kind="function"><name>fn_001e8a64</name></member>
+    <member refid="namespaceal_1af96b41efc63a7baf842d5c144dd7f3cf" kind="function"><name>fn_001cc9b0</name></member>
+    <member refid="namespaceal_1af928749a875f9f57bcb03b68360d8ca5" kind="function"><name>fn_00268df8</name></member>
+    <member refid="namespaceal_1af41b26812f0815f9a827e963cf97913f" kind="function"><name>fn_002911e8</name></member>
     <member refid="namespaceal_1a342b3eaa8591491c009baf7fcece0f02" kind="function"><name>removeExtensionString</name></member>
   </compound>
   <compound refid="namespaceal_1_1_nrv_break_model" kind="namespace"><name>al::NrvBreakModel</name>
@@ -1873,8 +1873,6 @@
   <compound refid="al_host_state_base_8h" kind="file"><name>alHostStateBase.h</name>
   </compound>
   <compound refid="al_nerve_8h" kind="file"><name>alNerve.h</name>
-    <member refid="al_nerve_8h_1a64b864aa348778606400563cc0be8983" kind="define"><name>SPLIT_HACK</name></member>
-    <member refid="al_nerve_8h_1a8c68b3da9ee3127b999d38d3d3cf0c40" kind="define"><name>split</name></member>
     <member refid="al_nerve_8h_1aa673fd862e01ac28f82a4f9deb64b2fa" kind="define"><name>NERVE_DEF</name></member>
     <member refid="al_nerve_8h_1a459526424d9fd161b8012198b82c2c39" kind="define"><name>NERVE_DEF_END</name></member>
   </compound>
@@ -2124,130 +2122,132 @@
   </compound>
   <compound refid="al_byaml_string_table_iter_8cpp" kind="file"><name>alByamlStringTableIter.cpp</name>
   </compound>
-  <compound refid="dir_9602f8714fac85fdd7f7ceb00b335c03" kind="dir"><name>al</name>
+  <compound refid="dir_06a57bfe438b90fdc9c94a1df001d5d7" kind="dir"><name>al</name>
   </compound>
-  <compound refid="dir_63f86be40c2781ee5be7b71e09922881" kind="dir"><name>AreaObj</name>
+  <compound refid="dir_65406aa8482a23b720984def0cee3032" kind="dir"><name>AreaObj</name>
   </compound>
-  <compound refid="dir_4e112348dea335382a2265a55148ea8e" kind="dir"><name>AreaObj</name>
+  <compound refid="dir_79b1387a1d862a1aa194fcab079affc0" kind="dir"><name>AreaObj</name>
   </compound>
-  <compound refid="dir_1e7b40f474a90fa15dd03a7bdde46378" kind="dir"><name>Audio</name>
+  <compound refid="dir_4049e994827d2af237276901db79ed98" kind="dir"><name>Audio</name>
   </compound>
-  <compound refid="dir_942a7c2423887abbe5cffb190a8648dc" kind="dir"><name>Camera</name>
+  <compound refid="dir_b39408af9c4561f6cdf388b41f39f7f7" kind="dir"><name>Camera</name>
   </compound>
-  <compound refid="dir_aa037a0803ca7f431ea7e9415985df05" kind="dir"><name>Camera</name>
+  <compound refid="dir_ae22786bedc4ead2a439ef673b994a37" kind="dir"><name>Camera</name>
   </compound>
-  <compound refid="dir_3c3a2accc795922a76b28cad841041ad" kind="dir"><name>Clipping</name>
+  <compound refid="dir_b42721b03f0382f09cda06110232e739" kind="dir"><name>Clipping</name>
   </compound>
-  <compound refid="dir_daad28a749e3ab92bb0c1d2c973a5ea4" kind="dir"><name>Collision</name>
+  <compound refid="dir_d59a8b5ffa8fb2437785c15a7148fb09" kind="dir"><name>Collision</name>
   </compound>
-  <compound refid="dir_16a613e26ad8256b29c46c5e8ae88338" kind="dir"><name>Collision</name>
+  <compound refid="dir_4625c3c25d458a4908e8cd58e73b9017" kind="dir"><name>Collision</name>
   </compound>
-  <compound refid="dir_079c4ebe0df5fa5a27e77f9c6d15dfb3" kind="dir"><name>Controller</name>
+  <compound refid="dir_7e131ebde053fe7d3351d1831517cd0c" kind="dir"><name>Controller</name>
   </compound>
-  <compound refid="dir_4302fefcf93f6a206c76bb08f6590098" kind="dir"><name>Controller</name>
+  <compound refid="dir_d067c0de001f0fe841ce7f520c46c4e3" kind="dir"><name>Controller</name>
   </compound>
-  <compound refid="dir_9fe20ef74c2d37afbe962f7b1baf4566" kind="dir"><name>Effect</name>
+  <compound refid="dir_132b48dc7483d6ef85515d7c8db2516a" kind="dir"><name>Effect</name>
   </compound>
-  <compound refid="dir_7792e00636cd04400185f9ae07410562" kind="dir"><name>Execute</name>
+  <compound refid="dir_a22e87c788a1f2e7d5d5429c64840582" kind="dir"><name>Execute</name>
   </compound>
-  <compound refid="dir_fb15b02cfb858dccf4e26d2c6768859c" kind="dir"><name>Execute</name>
+  <compound refid="dir_f4cdcb9032257672e779ef34d2d06033" kind="dir"><name>Execute</name>
   </compound>
-  <compound refid="dir_5233f6e3fd4ec22e1b239c0654b74c26" kind="dir"><name>Factory</name>
+  <compound refid="dir_5efa9ffebf04d5a5d0ccd42b7f05d549" kind="dir"><name>Factory</name>
   </compound>
-  <compound refid="dir_39b5099aa57315b839bd41800a0f814b" kind="dir"><name>Factory</name>
+  <compound refid="dir_bf7711d79db7f41a859fc1cca3bfc2af" kind="dir"><name>Factory</name>
   </compound>
-  <compound refid="dir_cdff0b7659982359c16b244fb1f9ef4f" kind="dir"><name>File</name>
+  <compound refid="dir_434e756ae3930eedc6101a4f10d5330c" kind="dir"><name>File</name>
   </compound>
-  <compound refid="dir_c7cfebf693984ba2b82db3972b436d51" kind="dir"><name>File</name>
+  <compound refid="dir_9b6dcd94aa4037af52ac57e311dd7dc6" kind="dir"><name>File</name>
   </compound>
-  <compound refid="dir_bb27280ecfe45fece781170846b99fb2" kind="dir"><name>Fog</name>
+  <compound refid="dir_cf3b936e0891eb65a94b757a33d015d1" kind="dir"><name>Fog</name>
   </compound>
-  <compound refid="dir_81b531fd1852ed4a74e06f5f9a5996f0" kind="dir"><name>Functor</name>
+  <compound refid="dir_0fa42dffbcd7ed2ad30fd522996e9ccf" kind="dir"><name>Functor</name>
   </compound>
-  <compound refid="dir_6d26e8075d2a27d9c00cef447b473cb8" kind="dir"><name>HitSensor</name>
+  <compound refid="dir_c5bc830a30df7017e98410e84b00e200" kind="dir"><name>HitSensor</name>
   </compound>
-  <compound refid="dir_e59aa8918f8e121ea32de5410bcbf3b5" kind="dir"><name>HitSensor</name>
+  <compound refid="dir_132e8bbbb1839ed04e42ac9e1a233121" kind="dir"><name>HitSensor</name>
   </compound>
-  <compound refid="dir_33e095f68a87f1feebb1083733ab6ad1" kind="dir"><name>include</name>
+  <compound refid="dir_f7e8efec570a34efc8a6993e55383954" kind="dir"><name>include</name>
   </compound>
-  <compound refid="dir_c08655b4b0d301e06d5407618ce059e2" kind="dir"><name>KeyPose</name>
+  <compound refid="dir_09c78ece3f2f1ae80a9e8a5794be62d2" kind="dir"><name>KeyPose</name>
   </compound>
-  <compound refid="dir_69ac5a2fe1a36920040982de9aaf0ac3" kind="dir"><name>KeyPose</name>
+  <compound refid="dir_bf1c47771fd9df1cf199e26225c12bef" kind="dir"><name>KeyPose</name>
   </compound>
-  <compound refid="dir_b78bbbc2187fc6e0db904113ffbfbf98" kind="dir"><name>Layout</name>
+  <compound refid="dir_71ac96d9eee999c5231127773bfe6eda" kind="dir"><name>Layout</name>
   </compound>
-  <compound refid="dir_46a925658b0ce4da4c2897114aabc012" kind="dir"><name>Layout</name>
+  <compound refid="dir_17ff0a3ba0f744361034893725301bda" kind="dir"><name>Layout</name>
   </compound>
-  <compound refid="dir_97aefd0d527b934f1d99a682da8fe6a9" kind="dir"><name>lib</name>
+  <compound refid="dir_021823007496ad3b6a4d3c70edc98d01" kind="dir"><name>lib</name>
   </compound>
-  <compound refid="dir_03d20b26238dd8460cdd3a8c8b982db6" kind="dir"><name>LiveActor</name>
+  <compound refid="dir_ae80ee5cf9da1054faf149dc2356c7ac" kind="dir"><name>LiveActor</name>
   </compound>
-  <compound refid="dir_a1d892c08cc8ccf4e69e81fa9f5f26fe" kind="dir"><name>LiveActor</name>
+  <compound refid="dir_8d17faa1063b24478b1232799869255d" kind="dir"><name>LiveActor</name>
   </compound>
-  <compound refid="dir_5a48fe64d9a05f0fc2bfb06a871cd856" kind="dir"><name>MapObj</name>
+  <compound refid="dir_21193efef39fb5d321859f2312a01914" kind="dir"><name>MapObj</name>
   </compound>
-  <compound refid="dir_5ca91f05df63c2bdfeb6893b2f62f587" kind="dir"><name>MapObj</name>
+  <compound refid="dir_13e7c5696f5ef9d3b82cc999f3b8a703" kind="dir"><name>MapObj</name>
   </compound>
-  <compound refid="dir_d00fce1ad8db29fca8c1f1e62d993844" kind="dir"><name>Math</name>
+  <compound refid="dir_93118792663f6968a18c175a87f86283" kind="dir"><name>Math</name>
   </compound>
-  <compound refid="dir_57fe581cdd12098952512d9f3630291a" kind="dir"><name>Math</name>
+  <compound refid="dir_17d2d8808d20549c6aef9df204bad76e" kind="dir"><name>Math</name>
   </compound>
-  <compound refid="dir_60bc250c187f22006aa0849db2a4eb63" kind="dir"><name>Memory</name>
+  <compound refid="dir_dd069ce51d170189eb34db5caaceae51" kind="dir"><name>Memory</name>
   </compound>
-  <compound refid="dir_b8e6d1e681e7dfc39c95492a0336f33b" kind="dir"><name>Memory</name>
+  <compound refid="dir_fc7c8570b7e922c9a1d9dd6154c0fb11" kind="dir"><name>Memory</name>
   </compound>
-  <compound refid="dir_261e9289a1e332991f7f7513233069e9" kind="dir"><name>Message</name>
+  <compound refid="dir_c9e7a9a0a5941c336407b5471a86d276" kind="dir"><name>Message</name>
   </compound>
-  <compound refid="dir_27545de96667afe6b4a4c19cce4980cd" kind="dir"><name>Model</name>
+  <compound refid="dir_ab46701e979e26977414ccd9da8ce736" kind="dir"><name>Model</name>
   </compound>
-  <compound refid="dir_ce5a5d5b959d6ee5ba2a9f5882112a88" kind="dir"><name>Nerve</name>
+  <compound refid="dir_0d638fa675477dde0733aed9f19ea6f2" kind="dir"><name>Nerve</name>
   </compound>
-  <compound refid="dir_800da44cd95379813241ef8b1979e11a" kind="dir"><name>Nerve</name>
+  <compound refid="dir_32e08f09dddceca537f9274884ee9aa2" kind="dir"><name>Nerve</name>
   </compound>
-  <compound refid="dir_89a97eda411c878094de43ee2373f834" kind="dir"><name>Npc</name>
+  <compound refid="dir_e3d165b8bf399078b0d48c0aef5b9296" kind="dir"><name>Npc</name>
   </compound>
-  <compound refid="dir_994dea9abcb19dadec18cd5397f88175" kind="dir"><name>Npc</name>
+  <compound refid="dir_5d75896ca79a105ce4b94e1e9eb1e085" kind="dir"><name>Npc</name>
   </compound>
-  <compound refid="dir_c7552aebe32b87d3f9807cc30725acc3" kind="dir"><name>Placement</name>
+  <compound refid="dir_b0784325fb1baab636da39c4657eec3c" kind="dir"><name>Placement</name>
   </compound>
-  <compound refid="dir_f5d65a9c2539ed9847737e01cd65a3b7" kind="dir"><name>Placement</name>
+  <compound refid="dir_bae670588f3a3b01ed8f19a21a08d7a9" kind="dir"><name>Placement</name>
   </compound>
-  <compound refid="dir_dcbdfe72f8ed7a79f51cb2b45d87cb5e" kind="dir"><name>Rail</name>
+  <compound refid="dir_eddceeca1a9539e4ec5247c1a556acdf" kind="dir"><name>Rail</name>
   </compound>
-  <compound refid="dir_fab2149b85c7f2df5ff84a4f398bbead" kind="dir"><name>Rail</name>
+  <compound refid="dir_6ff4c1b13859b82bf8a5d6f47c0db9b6" kind="dir"><name>Rail</name>
   </compound>
-  <compound refid="dir_3098dd6d939962fae2ec654039250f1a" kind="dir"><name>Resource</name>
+  <compound refid="dir_719d580a840fc9cc7f242bbc4728fbe5" kind="dir"><name>RE-Pepper</name>
   </compound>
-  <compound refid="dir_9c0b9212029f9de285fe876698dcd71c" kind="dir"><name>Save</name>
+  <compound refid="dir_1d838ce5e4d6c8067670c51f08c15e87" kind="dir"><name>Resource</name>
   </compound>
-  <compound refid="dir_1fcd59825b290dcdc71fa0d6dd430206" kind="dir"><name>Scene</name>
+  <compound refid="dir_fec35835b019f224ced7f4d2afb3cf47" kind="dir"><name>Save</name>
   </compound>
-  <compound refid="dir_bb660b31e377772c5b006ae07071e5bd" kind="dir"><name>Scene</name>
+  <compound refid="dir_bbf0d395114b7d01e47e296975854f01" kind="dir"><name>Scene</name>
   </compound>
-  <compound refid="dir_0a90e6cc0bfd96b31d75e85ca0470805" kind="dir"><name>Se</name>
+  <compound refid="dir_ca634763a19f7100b987afb79dcab1e3" kind="dir"><name>Scene</name>
   </compound>
-  <compound refid="dir_87e22e3c667fd0caa7a1ca4d857b0cbc" kind="dir"><name>Sequence</name>
+  <compound refid="dir_9733ad7fb9946fedc1136e5aa2a73b9a" kind="dir"><name>Se</name>
   </compound>
-  <compound refid="dir_bdc1f88f4a8d3bfe295a5d35dc3e8b6f" kind="dir"><name>Sequence</name>
+  <compound refid="dir_82a3f069d834280ed17bc3feb81358ab" kind="dir"><name>Sequence</name>
   </compound>
-  <compound refid="dir_6bd1c2a6a65260ca463239a9e0990858" kind="dir"><name>Shadow</name>
+  <compound refid="dir_61cc125e36c527d3ac6cde3bc5659a45" kind="dir"><name>Sequence</name>
   </compound>
-  <compound refid="dir_efbb2da3221fe95d5cd9a5d2d5dabe34" kind="dir"><name>src</name>
+  <compound refid="dir_5d7ef3fa6541f77d4fe6c7de14b19357" kind="dir"><name>Shadow</name>
   </compound>
-  <compound refid="dir_c5a1413f15ee14dcd95f457cd353067b" kind="dir"><name>Stage</name>
+  <compound refid="dir_d8628e97cbd71936d4b5fb3774410590" kind="dir"><name>src</name>
   </compound>
-  <compound refid="dir_83103bebc67a29d7d8ce851aa6a5914e" kind="dir"><name>Stage</name>
+  <compound refid="dir_5b0b61705299d400abf6aff2e591c6a0" kind="dir"><name>Stage</name>
   </compound>
-  <compound refid="dir_4449175cd25a8cf3d071dc7b0d3fd582" kind="dir"><name>System</name>
+  <compound refid="dir_1105584207b8da44b58906e6f5240647" kind="dir"><name>Stage</name>
   </compound>
-  <compound refid="dir_0319031917185fe3b4f59e1fce58c63b" kind="dir"><name>System</name>
+  <compound refid="dir_29a5069bbf312f731d8cb4e203fae6bc" kind="dir"><name>System</name>
   </compound>
-  <compound refid="dir_a16da3fbf3ffcc1f76dacc64c1edcc99" kind="dir"><name>Util</name>
+  <compound refid="dir_e49b8d878483a20348427946fadd634d" kind="dir"><name>System</name>
   </compound>
-  <compound refid="dir_bdab535a347f7091d2d1f069736b8996" kind="dir"><name>Util</name>
+  <compound refid="dir_159863c77a352c26f2f5de8c6cd02385" kind="dir"><name>Util</name>
   </compound>
-  <compound refid="dir_fa1a77aaae8c446d3aad0478295e7cd6" kind="dir"><name>Yaml</name>
+  <compound refid="dir_4478c2a5592b6f930f15f50e4557300c" kind="dir"><name>Util</name>
   </compound>
-  <compound refid="dir_a36cb0e291adf6b691d9e0404ede2903" kind="dir"><name>Yaml</name>
+  <compound refid="dir_ead735227c22214cb122acbd07613fdc" kind="dir"><name>Yaml</name>
+  </compound>
+  <compound refid="dir_a66705d5185d64e99b2223010bf5d935" kind="dir"><name>Yaml</name>
   </compound>
 </doxygenindex>

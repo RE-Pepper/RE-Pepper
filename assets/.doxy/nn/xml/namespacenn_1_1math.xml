@@ -8,6 +8,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/math/math_VEC3.h" line="4" column="1"/>
+    <location file="lib/CtrSDK/include/nn/math/math_VEC3.h" line="4" column="1"/>
   </compounddef>
 </doxygen>

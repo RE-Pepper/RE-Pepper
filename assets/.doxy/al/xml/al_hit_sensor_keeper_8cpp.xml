@@ -183,6 +183,6 @@
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
 <codeline lineno="68"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>al</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="lib/al/src/LiveActor/alHitSensorKeeper.cpp"/>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/LiveActor/alHitSensorKeeper.cpp"/>
   </compounddef>
 </doxygen>

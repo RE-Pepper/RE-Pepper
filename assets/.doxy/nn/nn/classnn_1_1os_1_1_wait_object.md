@@ -135,5 +135,5 @@ See [nn::os::HandleObject](structnn_1_1os_1_1_handle_object.md)
 
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/os/os_WaitObject.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/os/os_WaitObject.h`
 

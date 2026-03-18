@@ -2,7 +2,7 @@
 
 # File alNerve.h
 
-[**File List**](files.md) **>** [**al**](dir_9602f8714fac85fdd7f7ceb00b335c03.md) **>** [**include**](dir_33e095f68a87f1feebb1083733ab6ad1.md) **>** [**Nerve**](dir_ce5a5d5b959d6ee5ba2a9f5882112a88.md) **>** [**alNerve.h**](al_nerve_8h.md)
+[**File List**](files.md) **>** [**al**](dir_06a57bfe438b90fdc9c94a1df001d5d7.md) **>** [**include**](dir_f7e8efec570a34efc8a6993e55383954.md) **>** [**Nerve**](dir_0d638fa675477dde0733aed9f19ea6f2.md) **>** [**alNerve.h**](al_nerve_8h.md)
 
 [Go to the documentation of this file](al_nerve_8h.md)
 
@@ -22,11 +22,6 @@ struct Nerve
         virtual void execute( NerveKeeper* nerveKeeper ) const = 0;
         virtual void executeOnEnd( NerveKeeper* nerveKeeper ) const {};
 };
-
-#ifndef split
-#define SPLIT_HACK
-#define split( A ) A
-#endif
 
 #define NERVE_DEF( CLASS, ACTION )                                               \
         struct CLASS##Nrv##ACTION : public ::al::Nerve                           \

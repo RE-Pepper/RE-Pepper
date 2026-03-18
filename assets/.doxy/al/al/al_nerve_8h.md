@@ -4,7 +4,7 @@
 
 
 
-[**FileList**](files.md) **>** [**al**](dir_9602f8714fac85fdd7f7ceb00b335c03.md) **>** [**include**](dir_33e095f68a87f1feebb1083733ab6ad1.md) **>** [**Nerve**](dir_ce5a5d5b959d6ee5ba2a9f5882112a88.md) **>** [**alNerve.h**](al_nerve_8h.md)
+[**FileList**](files.md) **>** [**al**](dir_06a57bfe438b90fdc9c94a1df001d5d7.md) **>** [**include**](dir_f7e8efec570a34efc8a6993e55383954.md) **>** [**Nerve**](dir_0d638fa675477dde0733aed9f19ea6f2.md) **>** [**alNerve.h**](al_nerve_8h.md)
 
 [Go to the source code of this file](al_nerve_8h_source.md)
 
@@ -91,8 +91,6 @@
 | ---: | :--- |
 | define  | [**NERVE\_DEF**](al_nerve_8h.md#define-nerve_def) (CLASS, ACTION) `/* multi line expression */`<br> |
 | define  | [**NERVE\_DEF\_END**](al_nerve_8h.md#define-nerve_def_end) (CLASS, ACTION, ENDACTION) `/* multi line expression */`<br> |
-| define  | [**SPLIT\_HACK**](al_nerve_8h.md#define-split_hack)  <br> |
-| define  | [**split**](al_nerve_8h.md#define-split) (A) `A`<br> |
 
 ## Macro Definition Documentation
 
@@ -131,34 +129,6 @@
 
 <hr>
 
-
-
-### define SPLIT\_HACK 
-
-```C++
-#define SPLIT_HACK 
-```
-
-
-
-
-<hr>
-
-
-
-### define split 
-
-```C++
-#define split (
-    A
-) `A`
-```
-
-
-
-
-<hr>
-
 ------------------------------
-The documentation for this class was generated from the following file `lib/al/include/Nerve/alNerve.h`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Nerve/alNerve.h`
 

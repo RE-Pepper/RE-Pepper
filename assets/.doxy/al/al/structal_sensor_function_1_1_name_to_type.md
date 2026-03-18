@@ -111,5 +111,5 @@ al::SensorType alSensorFunction::NameToType::type;
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/al/src/LiveActor/alSensorFunction.cpp`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/LiveActor/alSensorFunction.cpp`
 

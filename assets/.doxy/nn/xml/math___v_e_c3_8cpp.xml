@@ -58,6 +58,6 @@
 <codeline lineno="33"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>math</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>nn</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="lib/CTRSDK/sources/math/math_VEC3.cpp"/>
+    <location file="lib/CtrSDK/sources/math/math_VEC3.cpp"/>
   </compounddef>
 </doxygen>

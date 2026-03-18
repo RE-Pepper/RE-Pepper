@@ -11,7 +11,7 @@
 
 ## f
 
-* **FUN\_00260620** ([**PlayerInitFunc**](namespace_player_init_func.md))
+* **fn\_00260620** ([**PlayerInitFunc**](namespace_player_init_func.md))
 
 
 ## g

@@ -2,7 +2,7 @@
 
 # File hid\_HidBase.h
 
-[**File List**](files.md) **>** [**CTR**](dir_fca7fa14950d22fe1751d6c08a725091.md) **>** [**hid\_HidBase.h**](hid___hid_base_8h.md)
+[**File List**](files.md) **>** [**CTR**](dir_469c329f832ba112fcb0b93bb5878886.md) **>** [**hid\_HidBase.h**](hid___hid_base_8h.md)
 
 [Go to the documentation of this file](hid___hid_base_8h.md)
 

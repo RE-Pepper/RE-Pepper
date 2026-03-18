@@ -17,6 +17,6 @@
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ApplicationFunction</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="lib/al/include/System/ApplicationFunction.h"/>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/System/ApplicationFunction.h"/>
   </compounddef>
 </doxygen>

@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/fs/fs_Api.h" line="8" column="20" bodyfile="lib/CTRSDK/include/nn/fs/fs_Api.h" bodystart="8" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/fs/fs_Api.h" line="8" column="20" bodyfile="lib/CtrSDK/include/nn/fs/fs_Api.h" bodystart="8" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -36,13 +36,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/fs/detail/fs_FileSystemBase.h" line="18" column="14" declfile="lib/CTRSDK/include/nn/fs/detail/fs_FileSystemBase.h" declline="18" declcolumn="14"/>
+        <location file="lib/CtrSDK/include/nn/fs/detail/fs_FileSystemBase.h" line="18" column="14" declfile="lib/CtrSDK/include/nn/fs/detail/fs_FileSystemBase.h" declline="18" declcolumn="14"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/fs/detail/fs_FileSystemBase.h" line="5" column="5"/>
+    <location file="lib/CtrSDK/include/nn/fs/detail/fs_FileSystemBase.h" line="5" column="5"/>
   </compounddef>
 </doxygen>

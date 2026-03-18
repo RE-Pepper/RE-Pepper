@@ -20,6 +20,6 @@
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>al</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="lib/al/include/Model/alAnimInfoTable.h"/>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Model/alAnimInfoTable.h"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 
 # File dbg\_Api.cpp
 
-[**File List**](files.md) **>** [**CTRSDK**](dir_1e016f672f65000d1caa1843da5325e4.md) **>** [**sources**](dir_a4ee87762c46a7490fc221af34a02561.md) **>** [**dbg**](dir_9bc1cafc29c0f8141af375bc8e40d22b.md) **>** [**dbg\_Api.cpp**](dbg___api_8cpp.md)
+[**File List**](files.md) **>** [**CtrSDK**](dir_a581c965070d8303a3ac233c6039c11a.md) **>** [**sources**](dir_6ad72fc0abbc32b2f59992fddd21f3c1.md) **>** [**dbg**](dir_34384f97eb7d7a0f4fb4ac7db3565ead.md) **>** [**dbg\_Api.cpp**](dbg___api_8cpp.md)
 
 [Go to the documentation of this file](dbg___api_8cpp.md)
 

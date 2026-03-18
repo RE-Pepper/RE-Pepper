@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/math/math_VEC3.h" line="7" column="15" bodyfile="lib/CTRSDK/include/nn/math/math_VEC3.h" bodystart="7" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/math/math_VEC3.h" line="7" column="15" bodyfile="lib/CtrSDK/include/nn/math/math_VEC3.h" bodystart="7" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1math_1_1_v_e_c3_1a6e80d5fd3016621186648aff5cae3fcd" prot="public" static="no" mutable="no">
         <type>float</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/math/math_VEC3.h" line="8" column="15" bodyfile="lib/CTRSDK/include/nn/math/math_VEC3.h" bodystart="8" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/math/math_VEC3.h" line="8" column="15" bodyfile="lib/CtrSDK/include/nn/math/math_VEC3.h" bodystart="8" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structnn_1_1math_1_1_v_e_c3_1ae3fc87327b31606bb4f62642de065079" prot="public" static="no" mutable="no">
         <type>float</type>
@@ -44,14 +44,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/math/math_VEC3.h" line="9" column="15" bodyfile="lib/CTRSDK/include/nn/math/math_VEC3.h" bodystart="9" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/math/math_VEC3.h" line="9" column="15" bodyfile="lib/CtrSDK/include/nn/math/math_VEC3.h" bodystart="9" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/math/math_VEC3.h" line="6" column="5" bodyfile="lib/CTRSDK/include/nn/math/math_VEC3.h" bodystart="6" bodyend="10"/>
+    <location file="lib/CtrSDK/include/nn/math/math_VEC3.h" line="6" column="5" bodyfile="lib/CtrSDK/include/nn/math/math_VEC3.h" bodystart="6" bodyend="10"/>
     <listofallmembers>
       <member refid="structnn_1_1math_1_1_v_e_c3_1a76588f86b8c5e9ad351bcebd26352d69" prot="public" virt="non-virtual"><scope>nn::math::VEC3</scope><name>x</name></member>
       <member refid="structnn_1_1math_1_1_v_e_c3_1a6e80d5fd3016621186648aff5cae3fcd" prot="public" virt="non-virtual"><scope>nn::math::VEC3</scope><name>y</name></member>

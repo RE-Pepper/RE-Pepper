@@ -16,14 +16,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/fs/ipc/fs_FileSystem.h" line="8" column="18"/>
+        <location file="lib/CtrSDK/include/nn/fs/ipc/fs_FileSystem.h" line="8" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/fs/ipc/fs_FileSystem.h" line="6" column="9" bodyfile="lib/CTRSDK/include/nn/fs/ipc/fs_FileSystem.h" bodystart="6" bodyend="9"/>
+    <location file="lib/CtrSDK/include/nn/fs/ipc/fs_FileSystem.h" line="6" column="9" bodyfile="lib/CtrSDK/include/nn/fs/ipc/fs_FileSystem.h" bodystart="6" bodyend="9"/>
     <listofallmembers>
       <member refid="classnn_1_1fs_1_1ipc_1_1_file_system_1ae978e5ebff5efbaabb48aa05ab09790b" prot="public" virt="non-virtual"><scope>nn::fs::ipc::FileSystem</scope><name>Initialize</name></member>
     </listofallmembers>

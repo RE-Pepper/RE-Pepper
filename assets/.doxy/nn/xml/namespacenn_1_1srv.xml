@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/srv/srv_Api.h" line="9" column="12" declfile="lib/CTRSDK/include/nn/srv/srv_Api.h" declline="9" declcolumn="12"/>
+        <location file="lib/CtrSDK/include/nn/srv/srv_Api.h" line="9" column="12" declfile="lib/CtrSDK/include/nn/srv/srv_Api.h" declline="9" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1srv_1a67577788d80995f2723850b85974bfdf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classnn_1_1_result" kindref="compound">Result</ref></type>
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/srv/srv_Api.cpp" line="14" column="12" bodyfile="lib/CTRSDK/sources/srv/srv_Api.cpp" bodystart="14" bodyend="22" declfile="lib/CTRSDK/include/nn/srv/srv_Api.h" declline="10" declcolumn="12"/>
+        <location file="lib/CtrSDK/sources/srv/srv_Api.cpp" line="14" column="12" bodyfile="lib/CtrSDK/sources/srv/srv_Api.cpp" bodystart="14" bodyend="22" declfile="lib/CtrSDK/include/nn/srv/srv_Api.h" declline="10" declcolumn="12"/>
         <references refid="classnn_1_1_result_1a39e72c6762fed20b6964a327ee19cbcea669fb6b9a86c5ecdd8667e0e5ae89ac1" compoundref="_result_8h" startline="156">nn::Result::Description_NotInitialized</references>
         <references refid="classnn_1_1srv_1_1detail_1_1_service_1aac7cec3bfacf2280bb3c1164cfb45dc9">nn::srv::detail::Service::GetServiceHandle</references>
         <references refid="classnn_1_1_result_1a7e6e57e86c4f6494bf7c60f70a42a913ad52cbea947e938e604802345effcec01" compoundref="_result_8h" startline="14">nn::Result::Level_Permanent</references>
@@ -59,6 +59,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/srv/detail/srv_Service.h" line="7" column="1"/>
+    <location file="lib/CtrSDK/include/nn/srv/detail/srv_Service.h" line="7" column="1"/>
   </compounddef>
 </doxygen>

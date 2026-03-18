@@ -177,7 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/types.h" line="8" column="9" bodyfile="lib/CTRSDK/include/nn/types.h" bodystart="8" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/types.h" line="8" column="9" bodyfile="lib/CtrSDK/include/nn/types.h" bodystart="8" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="types_8h_1ab979d9d4b4923f7c54d6caa6e1a61936" prot="public" static="no">
         <name>nullptr</name>
@@ -188,19 +188,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/types.h" line="27" column="9" bodyfile="lib/CTRSDK/include/nn/types.h" bodystart="27" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/types.h" line="27" column="9" bodyfile="lib/CtrSDK/include/nn/types.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="types_8h_1a0e288a46fd933dee49c375e7ab76234b" prot="public" static="no">
         <name>split</name>
         <param><defname>S</defname></param>
-        <initializer>__attribute__( ( section( &quot;i.&quot; #S ) ) ) S</initializer>
+        <initializer>__attribute__( ( section( &quot;.sdata_&quot; #S ) ) ) S</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/types.h" line="39" column="9" bodyfile="lib/CTRSDK/include/nn/types.h" bodystart="39" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/types.h" line="40" column="9" bodyfile="lib/CtrSDK/include/nn/types.h" bodystart="40" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="typedef">
@@ -215,7 +215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/types.h" line="11" column="28" bodyfile="lib/CTRSDK/include/nn/types.h" bodystart="11" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/types.h" line="11" column="28" bodyfile="lib/CtrSDK/include/nn/types.h" bodystart="11" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="types_8h_1a9e6c91d77e24643b888dbd1a1a590054" prot="public" static="no">
         <type>unsigned short</type>
@@ -228,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/types.h" line="12" column="28" bodyfile="lib/CTRSDK/include/nn/types.h" bodystart="12" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/types.h" line="12" column="28" bodyfile="lib/CtrSDK/include/nn/types.h" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" prot="public" static="no">
         <type>unsigned int</type>
@@ -241,7 +241,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/types.h" line="13" column="28" bodyfile="lib/CTRSDK/include/nn/types.h" bodystart="13" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/types.h" line="13" column="28" bodyfile="lib/CtrSDK/include/nn/types.h" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="types_8h_1ad758b7a5c3f18ed79d2fcd23d9f16357" prot="public" static="no">
         <type>unsigned long long</type>
@@ -254,7 +254,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/types.h" line="14" column="28" bodyfile="lib/CTRSDK/include/nn/types.h" bodystart="14" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/types.h" line="14" column="28" bodyfile="lib/CtrSDK/include/nn/types.h" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="types_8h_1a151f780fb455885061d3b77ec1c90c03" prot="public" static="no">
         <type>signed char</type>
@@ -267,7 +267,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/types.h" line="16" column="28" bodyfile="lib/CTRSDK/include/nn/types.h" bodystart="16" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/types.h" line="16" column="28" bodyfile="lib/CtrSDK/include/nn/types.h" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="types_8h_1a5ffa4f640862b25ba6d4f635b78bdbe1" prot="public" static="no">
         <type>signed short</type>
@@ -280,7 +280,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/types.h" line="17" column="28" bodyfile="lib/CTRSDK/include/nn/types.h" bodystart="17" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/types.h" line="17" column="28" bodyfile="lib/CtrSDK/include/nn/types.h" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="types_8h_1a0ce6887c26c1c49ad3be5710dd42bfd6" prot="public" static="no">
         <type>signed int</type>
@@ -293,7 +293,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/types.h" line="18" column="28" bodyfile="lib/CTRSDK/include/nn/types.h" bodystart="18" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/types.h" line="18" column="28" bodyfile="lib/CtrSDK/include/nn/types.h" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="types_8h_1a4258bfb2c3a440d06c4aaa3c2b450dde" prot="public" static="no">
         <type>signed long long</type>
@@ -306,7 +306,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/types.h" line="19" column="28" bodyfile="lib/CTRSDK/include/nn/types.h" bodystart="19" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/types.h" line="19" column="28" bodyfile="lib/CtrSDK/include/nn/types.h" bodystart="19" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="types_8h_1a5f6906312a689f27d70e9d086649d3fd" prot="public" static="no">
         <type>float</type>
@@ -319,7 +319,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/types.h" line="21" column="28" bodyfile="lib/CTRSDK/include/nn/types.h" bodystart="21" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/types.h" line="21" column="28" bodyfile="lib/CtrSDK/include/nn/types.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="types_8h_1a94dab5770726ccbef8c7d026cfbdf8e5" prot="public" static="no">
         <type>double</type>
@@ -332,7 +332,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/types.h" line="22" column="28" bodyfile="lib/CTRSDK/include/nn/types.h" bodystart="22" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/types.h" line="22" column="28" bodyfile="lib/CtrSDK/include/nn/types.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="types_8h_1aa22c426c6f5395c0363c438fc88b38d0" prot="public" static="no">
         <type><ref refid="types_8h_1a10e94b422ef0c20dcdec20d31a1f5049" kindref="member">u32</ref></type>
@@ -345,7 +345,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/types.h" line="30" column="13" bodyfile="lib/CTRSDK/include/nn/types.h" bodystart="30" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/types.h" line="30" column="13" bodyfile="lib/CtrSDK/include/nn/types.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="types_8h_1a0bf2a1ddd563125ff7848b2f2c729ef3" prot="public" static="no">
         <type><ref refid="types_8h_1a0ce6887c26c1c49ad3be5710dd42bfd6" kindref="member">s32</ref></type>
@@ -358,7 +358,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/types.h" line="31" column="13" bodyfile="lib/CTRSDK/include/nn/types.h" bodystart="31" bodyend="-1"/>
+        <location file="lib/CtrSDK/include/nn/types.h" line="31" column="13" bodyfile="lib/CtrSDK/include/nn/types.h" bodystart="31" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -404,8 +404,10 @@
 <codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>static_assert(<sp/>COND,<sp/>MSG<sp/>)<sp/>typedef<sp/>int<sp/>__static_assert_balls[<sp/>(<sp/>COND<sp/>)<sp/>?<sp/>1<sp/>:<sp/>-1<sp/>]</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39" refid="types_8h_1a0e288a46fd933dee49c375e7ab76234b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>split(<sp/>S<sp/>)<sp/>__attribute__(<sp/>(<sp/>section(<sp/>&quot;i.&quot;<sp/>#S<sp/>)<sp/>)<sp/>)<sp/>S</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>without<sp/>this<sp/>static<sp/>data<sp/>cannot<sp/>be<sp/>referenced<sp/>in<sp/>the<sp/>linker<sp/>map</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="types_8h_1a0e288a46fd933dee49c375e7ab76234b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>split(<sp/>S<sp/>)<sp/>__attribute__(<sp/>(<sp/>section(<sp/>&quot;.sdata_&quot;<sp/>#S<sp/>)<sp/>)<sp/>)<sp/>S</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="lib/CTRSDK/include/nn/types.h"/>
+    <location file="lib/CtrSDK/include/nn/types.h"/>
   </compounddef>
 </doxygen>

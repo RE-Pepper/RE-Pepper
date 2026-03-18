@@ -116,5 +116,5 @@ bool nn::fs::CTR::MPCore::detail::s_Something;
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/fs/CTR/MPCore/detail/fs_UserFileSystem.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/fs/CTR/MPCore/detail/fs_UserFileSystem.h`
 

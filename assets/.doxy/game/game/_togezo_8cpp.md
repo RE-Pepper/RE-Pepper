@@ -71,14 +71,14 @@
 
 | Type | Name |
 | ---: | :--- |
-|  void | [**FUN\_00258774**](#function-fun_00258774) ([**Togezo**](class_togezo.md) \*, const [**WalkerStateParam**](class_walker_state_param.md) \*) <br> |
-|  bool | [**FUN\_00259758**](#function-fun_00259758) (al::LiveActor \*, const sead::Vector3f &, const [**WalkerStateParam**](class_walker_state_param.md) \*) <br> |
-|  bool | [**FUN\_00262988**](#function-fun_00262988) (al::LiveActor \*, sead::Vector3f \* out, const sead::Vector3f &, float) <br> |
-|  bool | [**FUN\_0026b6cc**](#function-fun_0026b6cc) ([**WalkerStateWander**](class_walker_state_wander.md) \*, const sead::Vector3f & trans) <br> |
-|  bool | [**FUN\_00272a9c**](#function-fun_00272a9c) () <br> |
-|  void | [**FUN\_00279158**](#function-fun_00279158) ([**Togezo**](class_togezo.md) \*, const [**EnemyStateBlowDown**](class_enemy_state_blow_down.md) \*) <br> |
-|  void | [**FUN\_0027a1a0**](#function-fun_0027a1a0) (al::LiveActor \* actor, const char \*) <br> |
-|  void | [**FUN\_0027cf20**](#function-fun_0027cf20) (al::LiveActor \* actor, const al::ActorInitInfo & info, int) <br> |
+|  void | [**fn\_00258774**](#function-fn_00258774) ([**Togezo**](class_togezo.md) \*, const [**WalkerStateParam**](class_walker_state_param.md) \*) <br> |
+|  bool | [**fn\_00259758**](#function-fn_00259758) (al::LiveActor \*, const sead::Vector3f &, const [**WalkerStateParam**](class_walker_state_param.md) \*) <br> |
+|  bool | [**fn\_00262988**](#function-fn_00262988) (al::LiveActor \*, sead::Vector3f \* out, const sead::Vector3f &, float) <br> |
+|  bool | [**fn\_0026b6cc**](#function-fn_0026b6cc) ([**WalkerStateWander**](class_walker_state_wander.md) \*, const sead::Vector3f & trans) <br> |
+|  bool | [**fn\_00272a9c**](#function-fn_00272a9c) () <br> |
+|  void | [**fn\_00279158**](#function-fn_00279158) ([**Togezo**](class_togezo.md) \*, const [**EnemyStateBlowDown**](class_enemy_state_blow_down.md) \*) <br> |
+|  void | [**fn\_0027a1a0**](#function-fn_0027a1a0) (al::LiveActor \* actor, const char \*) <br> |
+|  void | [**fn\_0027cf20**](#function-fn_0027cf20) (al::LiveActor \* actor, const al::ActorInitInfo & info, int) <br> |
 
 
 ## Public Static Functions
@@ -119,10 +119,10 @@
 
 
 
-### function FUN\_00258774 
+### function fn\_00258774 
 
 ```C++
-void FUN_00258774 (
+void fn_00258774 (
     Togezo *,
     const WalkerStateParam *
 ) 
@@ -135,10 +135,10 @@ void FUN_00258774 (
 
 
 
-### function FUN\_00259758 
+### function fn\_00259758 
 
 ```C++
-bool FUN_00259758 (
+bool fn_00259758 (
     al::LiveActor *,
     const sead::Vector3f &,
     const WalkerStateParam *
@@ -152,10 +152,10 @@ bool FUN_00259758 (
 
 
 
-### function FUN\_00262988 
+### function fn\_00262988 
 
 ```C++
-bool FUN_00262988 (
+bool fn_00262988 (
     al::LiveActor *,
     sead::Vector3f * out,
     const sead::Vector3f &,
@@ -170,10 +170,10 @@ bool FUN_00262988 (
 
 
 
-### function FUN\_0026b6cc 
+### function fn\_0026b6cc 
 
 ```C++
-bool FUN_0026b6cc (
+bool fn_0026b6cc (
     WalkerStateWander *,
     const sead::Vector3f & trans
 ) 
@@ -186,10 +186,10 @@ bool FUN_0026b6cc (
 
 
 
-### function FUN\_00272a9c 
+### function fn\_00272a9c 
 
 ```C++
-bool FUN_00272a9c () 
+bool fn_00272a9c () 
 ```
 
 
@@ -199,10 +199,10 @@ bool FUN_00272a9c ()
 
 
 
-### function FUN\_00279158 
+### function fn\_00279158 
 
 ```C++
-void FUN_00279158 (
+void fn_00279158 (
     Togezo *,
     const EnemyStateBlowDown *
 ) 
@@ -215,10 +215,10 @@ void FUN_00279158 (
 
 
 
-### function FUN\_0027a1a0 
+### function fn\_0027a1a0 
 
 ```C++
-void FUN_0027a1a0 (
+void fn_0027a1a0 (
     al::LiveActor * actor,
     const char *
 ) 
@@ -231,10 +231,10 @@ void FUN_0027a1a0 (
 
 
 
-### function FUN\_0027cf20 
+### function fn\_0027cf20 
 
 ```C++
-void FUN_0027cf20 (
+void fn_0027cf20 (
     al::LiveActor * actor,
     const al::ActorInitInfo & info,
     int

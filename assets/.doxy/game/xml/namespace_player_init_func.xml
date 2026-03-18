@@ -31,12 +31,12 @@
         </inbodydescription>
         <location file="Game/include/Player/PlayerInitFunc.h" line="10" column="23" declfile="Game/include/Player/PlayerInitFunc.h" declline="10" declcolumn="23"/>
       </memberdef>
-      <memberdef kind="function" id="namespace_player_init_func_1af3ac84fd5943aaf58c12de0ea3013485" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespace_player_init_func_1aadf7b080f8ec6472775bccc48071c936" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void *</type>
-        <definition>void * PlayerInitFunc::FUN_00260620</definition>
+        <definition>void * PlayerInitFunc::fn_00260620</definition>
         <argsstring>()</argsstring>
-        <name>FUN_00260620</name>
-        <qualifiedname>PlayerInitFunc::FUN_00260620</qualifiedname>
+        <name>fn_00260620</name>
+        <qualifiedname>PlayerInitFunc::fn_00260620</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>

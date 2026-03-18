@@ -64,10 +64,10 @@
 
 | Type | Name |
 | ---: | :--- |
-|  u32 | [**FUN\_002278CC**](#function-fun_002278cc) (al::LiveActor \* actor, char \* str) <br> |
-|  int | [**FUN\_0026A9B8**](#function-fun_0026a9b8) (u32) <br> |
-|  int | [**FUN\_0026AA60**](#function-fun_0026aa60) (u32) <br> |
-|  int | [**FUN\_002786F4**](#function-fun_002786f4) () <br> |
+|  u32 | [**fn\_002278CC**](#function-fn_002278cc) (al::LiveActor \* actor, char \* str) <br> |
+|  int | [**fn\_0026A9B8**](#function-fn_0026a9b8) (u32) <br> |
+|  int | [**fn\_0026AA60**](#function-fn_0026aa60) (u32) <br> |
+|  int | [**fn\_002786F4**](#function-fn_002786f4) () <br> |
 
 
 
@@ -101,10 +101,10 @@
 
 
 
-### function FUN\_002278CC 
+### function fn\_002278CC 
 
 ```C++
-u32 FUN_002278CC (
+u32 fn_002278CC (
     al::LiveActor * actor,
     char * str
 ) 
@@ -117,10 +117,10 @@ u32 FUN_002278CC (
 
 
 
-### function FUN\_0026A9B8 
+### function fn\_0026A9B8 
 
 ```C++
-int FUN_0026A9B8 (
+int fn_0026A9B8 (
     u32
 ) 
 ```
@@ -132,10 +132,10 @@ int FUN_0026A9B8 (
 
 
 
-### function FUN\_0026AA60 
+### function fn\_0026AA60 
 
 ```C++
-int FUN_0026AA60 (
+int fn_0026AA60 (
     u32
 ) 
 ```
@@ -147,10 +147,10 @@ int FUN_0026AA60 (
 
 
 
-### function FUN\_002786F4 
+### function fn\_002786F4 
 
 ```C++
-int FUN_002786F4 () 
+int fn_002786F4 () 
 ```
 
 

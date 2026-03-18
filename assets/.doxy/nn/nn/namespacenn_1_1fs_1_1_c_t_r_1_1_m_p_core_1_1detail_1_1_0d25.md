@@ -77,5 +77,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/sources/fs/CTR/MPCore/detail/fs_UserFileSystem.cpp`
+The documentation for this class was generated from the following file `lib/CtrSDK/sources/fs/CTR/MPCore/detail/fs_UserFileSystem.cpp`
 

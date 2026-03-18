@@ -105,7 +105,7 @@ virtual AudioKeeper * al::IUseAudioKeeper::getAudioKeeper () const = 0
 ### function v1 
 
 ```C++
-virtual void al::IUseAudioKeeper::v1 () 
+inline virtual void al::IUseAudioKeeper::v1 () 
 ```
 
 
@@ -118,7 +118,7 @@ virtual void al::IUseAudioKeeper::v1 ()
 ### function v2 
 
 ```C++
-virtual void al::IUseAudioKeeper::v2 () 
+inline virtual void al::IUseAudioKeeper::v2 () 
 ```
 
 
@@ -127,5 +127,5 @@ virtual void al::IUseAudioKeeper::v2 ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/al/include/Audio/alAudioKeeper.h`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Audio/alAudioKeeper.h`
 

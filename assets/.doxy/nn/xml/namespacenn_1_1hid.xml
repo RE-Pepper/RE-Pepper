@@ -7,6 +7,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/hid/CTR/hid_HidBase.h" line="5" column="1"/>
+    <location file="lib/CtrSDK/include/nn/hid/CTR/hid_HidBase.h" line="5" column="1"/>
   </compounddef>
 </doxygen>

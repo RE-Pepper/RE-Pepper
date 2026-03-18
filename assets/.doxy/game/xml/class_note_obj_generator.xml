@@ -160,8 +160,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="Game/include/MapObj/NoteObjGenerator.h" line="25" column="14" bodyfile="Game/src/MapObj/NoteObjGenerator.cpp" bodystart="32" bodyend="43"/>
-        <references refid="_note_obj_generator_8cpp_1ab41635bece2d52357637017abdaf707a">FUN_001d581c</references>
-        <references refid="_note_obj_8cpp_1a0c764d033389ca23d19f85ec94265941">FUN_00270fc4</references>
+        <references refid="_note_obj_generator_8cpp_1aea58362c9d91856294559079ce988d21">fn_001d581c</references>
+        <references refid="_note_obj_8cpp_1a4fd5740b0984f89e3806b25d3e515e25">fn_00270fc4</references>
       </memberdef>
       <memberdef kind="function" id="class_note_obj_generator_1af6d5cfef5751aa01af68dc09ea82c70c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

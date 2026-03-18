@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_469c329f832ba112fcb0b93bb5878886" kind="dir">
+    <compoundname>CTR</compoundname>
+    <innerfile refid="hid___hid_base_8h">hid_HidBase.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/CtrSDK/include/nn/hid/CTR/"/>
+  </compounddef>
+</doxygen>

@@ -129,7 +129,7 @@
 * **freeAllSequenceHeap** ([**al::MemorySystem**](classal_1_1_memory_system.md))
 * **findNerve** ([**al::NerveActionCtrl**](classal_1_1_nerve_action_ctrl.md))
 * **findStateInfo** ([**al::NerveStateCtrl**](classal_1_1_nerve_state_ctrl.md))
-* **FUN\_0024e734** ([**al::StageSwitchAccesser**](classal_1_1_stage_switch_accesser.md))
+* **fn\_0024e734** ([**al::StageSwitchAccesser**](classal_1_1_stage_switch_accesser.md))
 
 
 ## g

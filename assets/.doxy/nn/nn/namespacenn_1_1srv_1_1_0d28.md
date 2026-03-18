@@ -77,5 +77,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/sources/srv/srv_Api.cpp`
+The documentation for this class was generated from the following file `lib/CtrSDK/sources/srv/srv_Api.cpp`
 

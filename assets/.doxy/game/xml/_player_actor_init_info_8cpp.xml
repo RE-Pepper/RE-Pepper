@@ -33,7 +33,7 @@
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
 <codeline lineno="5" refid="class_player_actor_init_info_1a759944dbaf85020144a7137b1ea98be7" refkind="member"><highlight class="normal"><ref refid="class_player_actor_init_info_1a759944dbaf85020144a7137b1ea98be7" kindref="member">PlayerActorInitInfo::PlayerActorInitInfo</ref>()</highlight></codeline>
 <codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>mModelInfo(<sp/><ref refid="namespace_player_init_func" kindref="compound">PlayerInitFunc</ref>::getModelInfo()<sp/>),<sp/>mAnimInfo(<sp/><ref refid="namespace_player_init_func" kindref="compound">PlayerInitFunc</ref>::getAnimInfo()<sp/>),</highlight></codeline>
-<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>_8(<sp/><ref refid="namespace_player_init_func" kindref="compound">PlayerInitFunc</ref>::FUN_00260620()<sp/>)</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>_8(<sp/><ref refid="namespace_player_init_func" kindref="compound">PlayerInitFunc</ref>::fn_00260620()<sp/>)</highlight></codeline>
 <codeline lineno="8"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="9"><highlight class="normal">}</highlight></codeline>
     </programlisting>

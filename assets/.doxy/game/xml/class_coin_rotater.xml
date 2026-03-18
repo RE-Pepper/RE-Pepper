@@ -84,7 +84,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="Game/include/MapObj/CoinRotater.h" line="20" column="29" bodyfile="Game/src/MapObj/CoinRotater.cpp" bodystart="23" bodyend="27"/>
-        <references refid="_coin_rotater_8cpp_1acf452f1c1b9f6ba9421f1d1a3cfa4de9">FUN_00277de0</references>
+        <references refid="_coin_rotater_8cpp_1a927e8276ffa316ca767ed6423c863f78">fn_00277de0</references>
       </memberdef>
       <memberdef kind="function" id="class_coin_rotater_1afbbf00c865c79edfac7fe78f8e2832fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>

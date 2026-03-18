@@ -114,5 +114,5 @@ inline nn::fs::detail::FileSystemBase::FileSystemBase (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/fs/detail/fs_FileSystemBase.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/fs/detail/fs_FileSystemBase.h`
 

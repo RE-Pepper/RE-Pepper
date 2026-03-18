@@ -118,5 +118,5 @@ inline nn::Handle::Handle ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/Handle.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/Handle.h`
 

@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" line="17" column="26" bodyfile="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" bodystart="17" bodyend="-1"/>
+        <location file="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" line="17" column="26" bodyfile="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" bodystart="17" bodyend="-1"/>
         <referencedby refid="crt0_8cpp_1ae31e4755d36f26545d242c419f8c44ad" compoundref="crt0_8cpp" startline="35" endline="47">nninitRegion</referencedby>
       </memberdef>
       <memberdef kind="variable" id="crt0_8cpp_1ae76d94172765c0462863aea0d457075a" prot="public" static="no" mutable="no">
@@ -100,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" line="18" column="26" bodyfile="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" bodystart="18" bodyend="-1"/>
+        <location file="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" line="18" column="26" bodyfile="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" bodystart="18" bodyend="-1"/>
         <referencedby refid="crt0_8cpp_1ae31e4755d36f26545d242c419f8c44ad" compoundref="crt0_8cpp" startline="35" endline="47">nninitRegion</referencedby>
       </memberdef>
     </sectiondef>
@@ -116,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" line="35" column="23" bodyfile="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" bodystart="35" bodyend="47" declfile="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" declline="5" declcolumn="17"/>
+        <location file="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" line="35" column="23" bodyfile="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" bodystart="35" bodyend="47" declfile="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" declline="5" declcolumn="17"/>
         <references refid="crt0_8cpp_1a06c8455abd2eddf37fd3bfc302626d19" compoundref="crt0_8cpp" startline="17">Image$$ZI$$ZI$$Base</references>
         <references refid="crt0_8cpp_1ae76d94172765c0462863aea0d457075a" compoundref="crt0_8cpp" startline="18">Image$$ZI$$ZI$$Limit</references>
         <referencedby refid="crt0_8cpp_1aea13a4029a2780621f78f3db5df70ab0" compoundref="crt0_8cpp" startline="20" endline="33">__ctr_start</referencedby>
@@ -132,7 +132,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" line="49" column="17" bodyfile="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" bodystart="49" bodyend="54" declfile="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" declline="6" declcolumn="17"/>
+        <location file="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" line="49" column="17" bodyfile="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" bodystart="49" bodyend="54" declfile="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" declline="6" declcolumn="17"/>
         <references refid="crt0_8cpp_1a92996e972a3fad4f6dd61667bd0d08b8">__rt_locale</references>
         <referencedby refid="crt0_8cpp_1aea13a4029a2780621f78f3db5df70ab0" compoundref="crt0_8cpp" startline="20" endline="33">__ctr_start</referencedby>
       </memberdef>
@@ -147,7 +147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" line="7" column="17" declfile="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" declline="7" declcolumn="17"/>
+        <location file="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" line="7" column="17" declfile="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" declline="7" declcolumn="17"/>
         <referencedby refid="crt0_8cpp_1aea13a4029a2780621f78f3db5df70ab0" compoundref="crt0_8cpp" startline="20" endline="33">__ctr_start</referencedby>
       </memberdef>
       <memberdef kind="function" id="crt0_8cpp_1a89b906b6235ed82ee46c4a27ed6de4dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -161,7 +161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" line="8" column="17" declfile="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" declline="8" declcolumn="17"/>
+        <location file="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" line="8" column="17" declfile="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" declline="8" declcolumn="17"/>
         <referencedby refid="crt0_8cpp_1aea13a4029a2780621f78f3db5df70ab0" compoundref="crt0_8cpp" startline="20" endline="33">__ctr_start</referencedby>
       </memberdef>
       <memberdef kind="function" id="crt0_8cpp_1a4c5a1947634f0b57df761a55fb70ee39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -175,7 +175,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" line="10" column="26" declfile="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" declline="10" declcolumn="26"/>
+        <location file="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" line="10" column="26" declfile="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" declline="10" declcolumn="26"/>
         <referencedby refid="crt0_8cpp_1aea13a4029a2780621f78f3db5df70ab0" compoundref="crt0_8cpp" startline="20" endline="33">__ctr_start</referencedby>
       </memberdef>
       <memberdef kind="function" id="crt0_8cpp_1a92996e972a3fad4f6dd61667bd0d08b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" line="11" column="25" declfile="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" declline="11" declcolumn="25"/>
+        <location file="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" line="11" column="25" declfile="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" declline="11" declcolumn="25"/>
         <referencedby refid="crt0_8cpp_1aa945cb3d4b1ce2d22c8719da548a9446" compoundref="crt0_8cpp" startline="49" endline="54">nninitLocale</referencedby>
       </memberdef>
       <memberdef kind="function" id="crt0_8cpp_1aead6f2fa82700f18ef09574fa59613d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -206,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" line="13" column="17" declfile="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" declline="13" declcolumn="17"/>
+        <location file="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" line="13" column="17" declfile="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" declline="13" declcolumn="17"/>
         <referencedby refid="crt0_8cpp_1aea13a4029a2780621f78f3db5df70ab0" compoundref="crt0_8cpp" startline="20" endline="33">__ctr_start</referencedby>
       </memberdef>
       <memberdef kind="function" id="crt0_8cpp_1a1b12be0589c3ef46088d7ca5c1c5d43c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -220,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" line="14" column="17" declfile="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" declline="14" declcolumn="17"/>
+        <location file="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" line="14" column="17" declfile="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" declline="14" declcolumn="17"/>
         <referencedby refid="crt0_8cpp_1aea13a4029a2780621f78f3db5df70ab0" compoundref="crt0_8cpp" startline="20" endline="33">__ctr_start</referencedby>
       </memberdef>
       <memberdef kind="function" id="crt0_8cpp_1ae79180f8ae90e05743b47a872f305a52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -234,7 +234,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" line="15" column="17" declfile="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" declline="15" declcolumn="17"/>
+        <location file="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" line="15" column="17" declfile="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" declline="15" declcolumn="17"/>
         <referencedby refid="crt0_8cpp_1aea13a4029a2780621f78f3db5df70ab0" compoundref="crt0_8cpp" startline="20" endline="33">__ctr_start</referencedby>
       </memberdef>
       <memberdef kind="function" id="crt0_8cpp_1aea13a4029a2780621f78f3db5df70ab0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -248,7 +248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" line="20" column="23" bodyfile="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp" bodystart="20" bodyend="33"/>
+        <location file="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" line="20" column="23" bodyfile="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp" bodystart="20" bodyend="33"/>
         <references refid="crt0_8cpp_1a4c5a1947634f0b57df761a55fb70ee39">__cpp_initialize_aeabi_</references>
         <references refid="namespacenn_1_1svc_1aabb557cf740d0d95a6a4d51c19cea0f5">nn::svc::ExitProcess</references>
         <references refid="crt0_8cpp_1aead6f2fa82700f18ef09574fa59613d3">nninitCallStaticInitializers</references>
@@ -321,6 +321,6 @@
 <codeline lineno="54"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>clang-format<sp/>on</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="lib/CTRSDK/sources/crt0/MPCore/crt0.cpp"/>
+    <location file="lib/CtrSDK/sources/crt0/MPCore/crt0.cpp"/>
   </compounddef>
 </doxygen>

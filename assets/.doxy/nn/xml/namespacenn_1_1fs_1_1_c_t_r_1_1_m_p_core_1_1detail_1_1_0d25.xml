@@ -6,6 +6,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/sources/fs/CTR/MPCore/detail/fs_UserFileSystem.cpp" line="8" column="17"/>
+    <location file="lib/CtrSDK/sources/fs/CTR/MPCore/detail/fs_UserFileSystem.cpp" line="8" column="17"/>
   </compounddef>
 </doxygen>

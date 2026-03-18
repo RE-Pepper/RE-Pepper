@@ -4,7 +4,7 @@
 
 
 
-[**FileList**](files.md) **>** [**CTRSDK**](dir_1e016f672f65000d1caa1843da5325e4.md) **>** [**include**](dir_b105e27ad861a359b82da8d20daf787e.md) **>** [**nn**](dir_98edea970dce97b73b2af390faecf17b.md) **>** [**types.h**](types_8h.md)
+[**FileList**](files.md) **>** [**CtrSDK**](dir_a581c965070d8303a3ac233c6039c11a.md) **>** [**include**](dir_af9254bf4d22366cfccd04cbaa9622aa.md) **>** [**nn**](dir_a185e92459882a1d3c4a0e5724303e75.md) **>** [**types.h**](types_8h.md)
 
 [Go to the source code of this file](types_8h_source.md)
 
@@ -99,7 +99,7 @@
 | ---: | :--- |
 | define  | [**NULL**](types_8h.md#define-null)  `(void\*)0`<br> |
 | define  | [**nullptr**](types_8h.md#define-nullptr)  `[**NULL**](types_8h.md#define-null)`<br> |
-| define  | [**split**](types_8h.md#define-split) (S) `\_\_attribute\_\_( ( section( "i." #S ) ) ) S`<br> |
+| define  | [**split**](types_8h.md#define-split) (S) `\_\_attribute\_\_( ( section( ".sdata\_" #S ) ) ) S`<br> |
 
 ## Public Types Documentation
 
@@ -296,7 +296,7 @@ typedef u32 uintptr_t;
 ```C++
 #define split (
     S
-) `__attribute__( ( section( "i." #S ) ) ) S`
+) `__attribute__( ( section( ".sdata_" #S ) ) ) S`
 ```
 
 
@@ -305,5 +305,5 @@ typedef u32 uintptr_t;
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/types.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/types.h`
 

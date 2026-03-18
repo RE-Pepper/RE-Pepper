@@ -113,5 +113,5 @@ Result nn::ndm::SuspendScheduler (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/ndm/ndm_Api.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/ndm/ndm_Api.h`
 

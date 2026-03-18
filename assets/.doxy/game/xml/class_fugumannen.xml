@@ -53,7 +53,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="Game/include/Enemy/Fugumannen.h" line="14" column="14" bodyfile="Game/src/Enemy/Fugumannen.cpp" bodystart="83" bodyend="92"/>
-        <references refid="_fugumannen_8cpp_1a669131636ac32e04df2878d555e2ab73">FUN_00240e08</references>
+        <references refid="_fugumannen_8cpp_1a02ec4d9e8a0d0ae162d2a8d9a4958361">fn_00240e08</references>
         <references refid="class_fugumannen_1a724bf736bf47e2276618e2fdd0fc746f" compoundref="_fugumannen_8h" startline="10">mRailMoveSpeed</references>
       </memberdef>
       <memberdef kind="function" id="class_fugumannen_1adaa1cfe5b8592801b3869faf31870730" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -69,7 +69,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="Game/include/Enemy/Fugumannen.h" line="15" column="14" bodyfile="Game/src/Enemy/Fugumannen.cpp" bodystart="94" bodyend="102"/>
-        <references refid="_fugumannen_8cpp_1a669131636ac32e04df2878d555e2ab73">FUN_00240e08</references>
+        <references refid="_fugumannen_8cpp_1a02ec4d9e8a0d0ae162d2a8d9a4958361">fn_00240e08</references>
       </memberdef>
       <memberdef kind="function" id="class_fugumannen_1ab6da62947ed16e92d6042e6477d70e04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -84,7 +84,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="Game/include/Enemy/Fugumannen.h" line="16" column="14" bodyfile="Game/src/Enemy/Fugumannen.cpp" bodystart="106" bodyend="113"/>
-        <references refid="_fugumannen_8cpp_1abf63fe6309e3bf94d24784d80998423c">FUN_002cd428</references>
+        <references refid="_fugumannen_8cpp_1a4c3b56bd6ae6f1ebd0d6324f40aa57d2">fn_002cd428</references>
         <references refid="class_fugumannen_1a02d06d60f3bcb3127148d25a08bb0cac" compoundref="_fugumannen_8h" startline="11">mStateBlowDown</references>
       </memberdef>
       <memberdef kind="function" id="class_fugumannen_1a53873753fbd9ff13dfb66e3e54f8fb1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -104,8 +104,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="Game/include/Enemy/Fugumannen.h" line="19" column="22" bodyfile="Game/src/Enemy/Fugumannen.cpp" bodystart="31" bodyend="48"/>
-        <references refid="_fugumannen_8cpp_1acdef4d7e311ac0644fcf1a74ee4a2cbb">FUN_0027b51c</references>
-        <references refid="_fugumannen_8cpp_1ae3b99263d19f2fdd0cca01988da744f6">FUN_0027ee34</references>
+        <references refid="_fugumannen_8cpp_1aa3bfa6b8b29767af5b583d9965aca769">fn_0027b51c</references>
+        <references refid="_fugumannen_8cpp_1a037877e33c6aa98610ed951cef5ffb30">fn_0027ee34</references>
         <references refid="class_fugumannen_1a724bf736bf47e2276618e2fdd0fc746f" compoundref="_fugumannen_8h" startline="10">mRailMoveSpeed</references>
         <references refid="class_fugumannen_1a02d06d60f3bcb3127148d25a08bb0cac" compoundref="_fugumannen_8h" startline="11">mStateBlowDown</references>
       </memberdef>
@@ -156,8 +156,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="Game/include/Enemy/Fugumannen.h" line="21" column="22" bodyfile="Game/src/Enemy/Fugumannen.cpp" bodystart="62" bodyend="79"/>
-        <references refid="_fugumannen_8cpp_1add98d348bfb3b152acc1ed3448093565">FUN_0027b704</references>
-        <references refid="_fugumannen_8cpp_1aea4150c7bc67b649bbc40b747b026341">FUN_0027b768</references>
+        <references refid="_fugumannen_8cpp_1a9c0749cf84a9c072d2918ae2d47342de">fn_0027b704</references>
+        <references refid="_fugumannen_8cpp_1a5fd6eb27d44d666a533c3c639ddb2d3f">fn_0027b768</references>
         <references refid="class_fugumannen_1a02d06d60f3bcb3127148d25a08bb0cac" compoundref="_fugumannen_8h" startline="11">mStateBlowDown</references>
       </memberdef>
       <memberdef kind="function" id="class_fugumannen_1a7a34aabd1d6aac171e201204fc707be7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

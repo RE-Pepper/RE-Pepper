@@ -456,5 +456,5 @@ __asm nn::Result nn::svc::__attribute__ (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/svc/svc_Api.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/svc/svc_Api.h`
 

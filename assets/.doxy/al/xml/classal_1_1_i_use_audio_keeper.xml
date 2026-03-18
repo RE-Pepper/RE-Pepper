@@ -7,7 +7,7 @@
     <derivedcompoundref refid="classal_1_1_scene" prot="public" virt="non-virtual">al::Scene</derivedcompoundref>
     <includes refid="al_audio_keeper_8h" local="no">alAudioKeeper.h</includes>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classal_1_1_i_use_audio_keeper_1a3f33a497a128f0342eb1f99363904e2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classal_1_1_i_use_audio_keeper_1a3f33a497a128f0342eb1f99363904e2d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classal_1_1_functor_v0_m" kindref="compound">void</ref></type>
         <definition>virtual void al::IUseAudioKeeper::v1</definition>
         <argsstring>()</argsstring>
@@ -19,9 +19,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/al/include/Audio/alAudioKeeper.h" line="15" column="22"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Audio/alAudioKeeper.h" line="15" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Audio/alAudioKeeper.h" bodystart="15" bodyend="15"/>
       </memberdef>
-      <memberdef kind="function" id="classal_1_1_i_use_audio_keeper_1a95d203ee6ff57c2f5001803b4ad9bd71" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classal_1_1_i_use_audio_keeper_1a95d203ee6ff57c2f5001803b4ad9bd71" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classal_1_1_functor_v0_m" kindref="compound">void</ref></type>
         <definition>virtual void al::IUseAudioKeeper::v2</definition>
         <argsstring>()</argsstring>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/al/include/Audio/alAudioKeeper.h" line="16" column="22"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Audio/alAudioKeeper.h" line="16" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Audio/alAudioKeeper.h" bodystart="16" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="classal_1_1_i_use_audio_keeper_1a0c4f8543143365d5741170d689d159ce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classal_1_1_audio_keeper" kindref="compound">AudioKeeper</ref> *</type>
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/al/include/Audio/alAudioKeeper.h" line="18" column="29"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Audio/alAudioKeeper.h" line="18" column="29"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -135,7 +135,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="lib/al/include/Audio/alAudioKeeper.h" line="12" column="1" bodyfile="lib/al/include/Audio/alAudioKeeper.h" bodystart="13" bodyend="19"/>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Audio/alAudioKeeper.h" line="12" column="1" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Audio/alAudioKeeper.h" bodystart="13" bodyend="19"/>
     <listofallmembers>
       <member refid="classal_1_1_i_use_audio_keeper_1a0c4f8543143365d5741170d689d159ce" prot="public" virt="pure-virtual"><scope>al::IUseAudioKeeper</scope><name>getAudioKeeper</name></member>
       <member refid="classal_1_1_i_use_audio_keeper_1a3f33a497a128f0342eb1f99363904e2d" prot="public" virt="virtual"><scope>al::IUseAudioKeeper</scope><name>v1</name></member>

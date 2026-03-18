@@ -18,12 +18,6 @@
 * **NERVEACTION\_DEF\_END** ([**alNerveActionCtrl.h**](al_nerve_action_ctrl_8h.md))
 
 
-## s
-
-* **SPLIT\_HACK** ([**alNerve.h**](al_nerve_8h.md))
-* **split** ([**alNerve.h**](al_nerve_8h.md))
-
-
 ## _
 
 * **\_T\_BUTTON** ([**alControllerUtil.h**](al_controller_util_8h.md), [**alControllerUtil.cpp**](al_controller_util_8cpp.md))

@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/math/math_VEC3.cpp" line="9" column="43" bodyfile="lib/CTRSDK/sources/math/math_VEC3.cpp" bodystart="9" bodyend="-1"/>
+        <location file="lib/CtrSDK/sources/math/math_VEC3.cpp" line="9" column="43" bodyfile="lib/CtrSDK/sources/math/math_VEC3.cpp" bodystart="9" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/math/math_VEC3.h" line="14" column="14" declfile="lib/CTRSDK/include/nn/math/math_VEC3.h" declline="14" declcolumn="14"/>
+        <location file="lib/CtrSDK/include/nn/math/math_VEC3.h" line="14" column="14" declfile="lib/CtrSDK/include/nn/math/math_VEC3.h" declline="14" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1math_1_1_a_r_mv6_1a9d82b83262107f56610e7b4ea545ef28" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/math/math_VEC3.h" line="15" column="14" declfile="lib/CTRSDK/include/nn/math/math_VEC3.h" declline="15" declcolumn="14"/>
+        <location file="lib/CtrSDK/include/nn/math/math_VEC3.h" line="15" column="14" declfile="lib/CtrSDK/include/nn/math/math_VEC3.h" declline="15" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1math_1_1_a_r_mv6_1a9660a4c5ac32beae63ff23c48cc14922" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -95,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/math/math_VEC3.h" line="16" column="14" declfile="lib/CTRSDK/include/nn/math/math_VEC3.h" declline="16" declcolumn="14"/>
+        <location file="lib/CtrSDK/include/nn/math/math_VEC3.h" line="16" column="14" declfile="lib/CtrSDK/include/nn/math/math_VEC3.h" declline="16" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1math_1_1_a_r_mv6_1acadbd34d1a233abe639a099242dcb82b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -121,7 +121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/math/math_VEC3.h" line="17" column="14" declfile="lib/CTRSDK/include/nn/math/math_VEC3.h" declline="17" declcolumn="14"/>
+        <location file="lib/CtrSDK/include/nn/math/math_VEC3.h" line="17" column="14" declfile="lib/CtrSDK/include/nn/math/math_VEC3.h" declline="17" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1math_1_1_a_r_mv6_1a3dceb91b47cf4f5d580a4e6a666ae443" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -147,7 +147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/math/math_VEC3.h" line="19" column="14" declfile="lib/CTRSDK/include/nn/math/math_VEC3.h" declline="19" declcolumn="14"/>
+        <location file="lib/CtrSDK/include/nn/math/math_VEC3.h" line="19" column="14" declfile="lib/CtrSDK/include/nn/math/math_VEC3.h" declline="19" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1math_1_1_a_r_mv6_1a4767428e37707e0c5befd1117a08d1ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -173,7 +173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/math/math_VEC3.h" line="20" column="14" declfile="lib/CTRSDK/include/nn/math/math_VEC3.h" declline="20" declcolumn="14"/>
+        <location file="lib/CtrSDK/include/nn/math/math_VEC3.h" line="20" column="14" declfile="lib/CtrSDK/include/nn/math/math_VEC3.h" declline="20" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1math_1_1_a_r_mv6_1a3d3a9a769a8873da24165ebdfad3bb00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -199,7 +199,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/math/math_VEC3.h" line="21" column="14" declfile="lib/CTRSDK/include/nn/math/math_VEC3.h" declline="21" declcolumn="14"/>
+        <location file="lib/CtrSDK/include/nn/math/math_VEC3.h" line="21" column="14" declfile="lib/CtrSDK/include/nn/math/math_VEC3.h" declline="21" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1math_1_1_a_r_mv6_1a8d76f3a2f1a53ef1d9219edfe933239e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -225,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/math/math_VEC3.h" line="22" column="14" declfile="lib/CTRSDK/include/nn/math/math_VEC3.h" declline="22" declcolumn="14"/>
+        <location file="lib/CtrSDK/include/nn/math/math_VEC3.h" line="22" column="14" declfile="lib/CtrSDK/include/nn/math/math_VEC3.h" declline="22" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="namespacenn_1_1math_1_1_a_r_mv6_1a3993b5d9a63bc250623cc9e5f32129e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__asm void</type>
@@ -242,13 +242,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/math/math_VEC3.cpp" line="9" column="16"/>
+        <location file="lib/CtrSDK/sources/math/math_VEC3.cpp" line="9" column="16"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/math/math_VEC3.h" line="12" column="5"/>
+    <location file="lib/CtrSDK/include/nn/math/math_VEC3.h" line="12" column="5"/>
   </compounddef>
 </doxygen>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_53922fdb85244c81a863dd6ad700ec31" kind="dir">
+    <compoundname>os</compoundname>
+    <innerfile refid="os___event_base_8h">os_EventBase.h</innerfile>
+    <innerfile refid="os___handle_object_8h">os_HandleObject.h</innerfile>
+    <innerfile refid="os___interrupt_event_8h">os_InterruptEvent.h</innerfile>
+    <innerfile refid="os___k_config_memory_8h">os_KConfigMemory.h</innerfile>
+    <innerfile refid="os___types_8h">os_Types.h</innerfile>
+    <innerfile refid="os___wait_object_8h">os_WaitObject.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/CtrSDK/include/nn/os/"/>
+  </compounddef>
+</doxygen>

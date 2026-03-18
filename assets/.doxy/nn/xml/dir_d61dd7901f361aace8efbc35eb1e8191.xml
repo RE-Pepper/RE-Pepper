@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_d61dd7901f361aace8efbc35eb1e8191" kind="dir">
+    <compoundname>cfg</compoundname>
+    <innerdir refid="dir_6286be2e3839b9d14dbaf851f98cbdb4">CTR</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/CtrSDK/include/nn/cfg/"/>
+  </compounddef>
+</doxygen>

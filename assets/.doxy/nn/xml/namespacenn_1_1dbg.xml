@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/include/nn/dbg/dbg_Types.h" line="6" column="5" bodyfile="lib/CTRSDK/include/nn/dbg/dbg_Types.h" bodystart="6" bodyend="12"/>
+        <location file="lib/CtrSDK/include/nn/dbg/dbg_Types.h" line="6" column="5" bodyfile="lib/CtrSDK/include/nn/dbg/dbg_Types.h" bodystart="6" bodyend="12"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lib/CTRSDK/sources/dbg/dbg_Api.cpp" line="7" column="10" bodyfile="lib/CTRSDK/sources/dbg/dbg_Api.cpp" bodystart="7" bodyend="10" declfile="lib/CTRSDK/include/nn/dbg/dbg_Api.h" declline="8" declcolumn="10"/>
+        <location file="lib/CtrSDK/sources/dbg/dbg_Api.cpp" line="7" column="10" bodyfile="lib/CtrSDK/sources/dbg/dbg_Api.cpp" bodystart="7" bodyend="10" declfile="lib/CtrSDK/include/nn/dbg/dbg_Api.h" declline="8" declcolumn="10"/>
         <references refid="namespacenn_1_1svc_1a9f50b52349c2c68a393cd53180823733">nn::svc::Break</references>
       </memberdef>
     </sectiondef>
@@ -76,6 +76,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="lib/CTRSDK/include/nn/dbg/dbg_Api.h" line="6" column="1"/>
+    <location file="lib/CtrSDK/include/nn/dbg/dbg_Api.h" line="6" column="1"/>
   </compounddef>
 </doxygen>

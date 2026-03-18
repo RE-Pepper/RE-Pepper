@@ -134,6 +134,6 @@
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>al</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="lib/al/src/Scene/alSceneObjHolder.cpp"/>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/Scene/alSceneObjHolder.cpp"/>
   </compounddef>
 </doxygen>

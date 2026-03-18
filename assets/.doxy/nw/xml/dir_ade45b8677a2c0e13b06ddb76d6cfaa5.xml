@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_ade45b8677a2c0e13b06ddb76d6cfaa5" kind="dir">
+    <compoundname>snd</compoundname>
+    <innerfile refid="snd___hardware_manager_8cpp">snd_HardwareManager.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="lib/NintendoWare/sources/snd/"/>
+  </compounddef>
+</doxygen>

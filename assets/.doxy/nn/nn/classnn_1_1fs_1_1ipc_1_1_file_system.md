@@ -98,5 +98,5 @@ void nn::fs::ipc::FileSystem::Initialize ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `lib/CTRSDK/include/nn/fs/ipc/fs_FileSystem.h`
+The documentation for this class was generated from the following file `lib/CtrSDK/include/nn/fs/ipc/fs_FileSystem.h`
 
