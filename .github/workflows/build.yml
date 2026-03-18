@@ -54,7 +54,7 @@ jobs:
         run: | 
           export DEVKITARM="$PWD/setup/dkp"
           find . -iname "code.bin"
-          VERSIONS=(); for dir in ./data/ver/*/; do [[ -f "$dir/map.csv" && -f "$dir/exh.bin" ]] && VERSIONS+=("${dir%/}"); done; VERSIONS=("${VERSIONS[@]##*/}")
+          VERSIONS=(); for dir in ./data/ver/*/; do [[ -f "$dir/map.csv"]] && VERSIONS+=("${dir%/}"); done; VERSIONS=("${VERSIONS[@]##*/}")
           did_run=false
           for v in "${VERSIONS[@]}"; do
               echo "Now $v"
