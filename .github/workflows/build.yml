@@ -24,12 +24,12 @@ jobs:
           submodules: recursive
           fetch-depth: 0
           persist-credentials: false
-          access-token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Checkout build repo
         uses: actions/checkout@v4
         with:
-          repository: RE-Pepper/RE-Pepper_Build
+          repository: RE-Pepper/RE-Pepper-Build
           token: ${{ secrets.GH_TOKEN }}
           path: setup
 
@@ -53,9 +53,6 @@ jobs:
       - name: Build & Parse
         run: | 
           export LM_LICENSE_FILE="$PWD/setup/license.dat"
-          export ARMCC_PATH="$PWD/setup/armcc"
-          export ARMCC41INC="${ARMCC_PATH}/include/unix"
-          export ARMCC41LIB="${ARMCC_PATH}/lib"
           export DEVKITARM="$PWD/setup/dkp"
           
           VERSIONS=(); for dir in ./data/ver/*/; do [[ -f "$dir/map.csv" && -f "$dir/config.txt" ]] && VERSIONS+=("${dir%/}"); done; VERSIONS=("${VERSIONS[@]##*/}")

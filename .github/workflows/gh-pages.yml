@@ -24,7 +24,7 @@ jobs:
         submodules: recursive
         fetch-depth: 0
         persist-credentials: false
-        access-token: ${{ secrets.GH_TOKEN }}
+        token: ${{ secrets.GH_TOKEN }}
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -45,7 +45,7 @@ jobs:
         repository: 'RE-PepperWiki'
         branch: 'master'
         persist-credentials: false
-        access-token: ${{ secrets.GH_TOKEN }}
+        token: ${{ secrets.GH_TOKEN }}
         
     - name: Convert Charset
       run: |
@@ -74,11 +74,11 @@ jobs:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         mkdir priv
-        mv RE-PepperWiki priv/RE-PepperWiki
-        python -m mkdocs build --config-file priv/RE-PepperWiki/mkdocs.yml
+        mv RE-Pepper-Wiki priv/RE-Pepper-Wiki
+        python -m mkdocs build --config-file priv/RE-Pepper-Wiki/mkdocs.yml
         # upload
         git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/RE-Pepper/RE-Pepper.git
-        echo "prp.moddi.dev" >> priv/RE-PepperWiki/site/CNAME
+        echo "rep.moddi.dev" >> priv/RE-Pepper-Wiki/site/CNAME
         echo "Set CNAME"
-        python -m ghp_import -n -f -p -b website priv/RE-PepperWiki/site
+        python -m ghp_import -n -f -p -b website priv/RE-Pepper-Wiki/site
 
