@@ -23,7 +23,6 @@ jobs:
       with:
         submodules: recursive
         fetch-depth: 0
-        persist-credentials: false
         token: ${{ secrets.GH_TOKEN }}
 
     - name: Set up Python
@@ -42,10 +41,9 @@ jobs:
       uses: GuillaumeFalourd/clone-github-repo-action@v2.3
       with:
         owner: 'RE-Pepper'
-        repository: 'RE-PepperWiki'
+        repository: 'RE-Pepper-Wiki'
         branch: 'master'
-        persist-credentials: false
-        token: ${{ secrets.GH_TOKEN }}
+        access-token: ${{ secrets.GH_TOKEN }}
         
     - name: Convert Charset
       run: |
