@@ -2,10 +2,12 @@
 import os
 import shutil
 
-import tools.splector as splector
-import tools.splector.split
-
 from tools.low.glob import *
+
+if cfg.do_split:
+    import tools.splector as splector
+    import tools.splector.split
+
 from tools.low.readSymMap import *
 from tools.pypstem._utils import *
 from tools.pypstem.callProcess import *
@@ -69,6 +71,8 @@ def write_stubs():
     # check if archive exists
     if (getBuildLibPath() / "libstubs.a").exists() and not isSymMapDiff():
         return
+
+    getSplitPath().mkdir(parents=True, exist_ok=True)
 
     # write stubs.c
     with open(getSplitPath() / "stub.c", "w") as f:

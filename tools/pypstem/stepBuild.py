@@ -168,7 +168,6 @@ def exec_build():
     
         mod_ar_name = f"lib{mod_data.get("name")}.a"
         mod_ar_file = getBuildLibPath() / mod_ar_name
-        mod_ar_list = set()
 
         mod_path = module_paths[mod_path_name]
         flags_cxx = base_flags_cxx
@@ -204,6 +203,8 @@ def exec_build():
             force_update = True # flags mismatch
         if not getCfgSymsFile().exists():
             force_update = True
+        if not mod_ar_file.exists():
+            force_update = True
 
         # iterate files
         for file in sorted(module_files[mod_path_name]):
@@ -237,27 +238,14 @@ def exec_build():
                 if not out_path.exists():
                     fail_ex ("Output not found.", f"Missing {str(out_path)}")
 
-                # append to archive
-                ar_arg = ["-rcn", str(mod_ar_file), str(out_path)]
-                do_archive(ar_arg)
-
                 # add to list
                 obj_new_list.add(out_path)
-
-                # write down symbols in .syms
-                if not str(getBuildPath()) in str(file):
-                    if file_str in json_syms:
-                        del json_syms[file_str]
-                    json_syms[file_str] = []
-                    for sym in read_elfsym(out_path):
-                        json_syms[file_str].append(sym[ElfSymFmt.Symbol])
-
             data_new[file_str] = timestamp
             data_new_names.add(file.name)
 
         did_delete = False
         # check for deleted files
-        if data_old and data_new_names:
+        if data_old and data_new_names and mod_ar_file.exists():
             for old_file, _ in data_old.items():
                 if not str(Path(mod_path_name) / mod_data.get("source_dir")) in old_file:
                     continue
@@ -267,23 +255,42 @@ def exec_build():
                 do_archive(ar_arg)
                 did_delete = True
 
-        # write flags down
-        with open(getCfgFlagsTFile(), "a") as f:
-            f.write(f"{mod_path_name} {new_flags_cxx_hash}\n")
-            f.write(f"{mod_path_name} {new_flags_asm_hash}\n")
-
         # prebuild module string
         line_category = ""
         if file_counter > 0:
             line_category += f"[{file_counter}]"
         line_category += f"<{len(module_files[mod_path_name])}> {mod_data.get("name")}"
 
+        # append to archive
+        if len(obj_new_list) > 0:
+            # Build .via file
+            with open(getBuildViaFile(), "w") as f:
+                for obj in obj_new_list:
+                    f.write(str(obj))
+                    f.write(" ")
+
+            # write down symbols in .syms
+            echo (f"{line_category}: Gathering Symbols", "\r")
+            if not str(getBuildPath()) in str(file):
+                if file_str in json_syms:
+                    del json_syms[file_str]
+                json_syms[file_str] = []
+                for sym in read_elfsym(out_path):
+                    json_syms[file_str].append(sym[ElfSymFmt.Symbol])
+
+
+        # write flags down
+        with open(getCfgFlagsTFile(), "a") as f:
+            f.write(f"{mod_path_name} {new_flags_cxx_hash}\n")
+            f.write(f"{mod_path_name} {new_flags_asm_hash}\n")
+
         # clean / report
         if len(obj_new_list) <= 0 and not did_delete:
             echo (f"{line_category}: Unchanged")
             continue
 
-        ar_arg = ["-sc", str(mod_ar_file)]
+        echo (f"{line_category}: Compressing", "\r")
+        ar_arg = ["-rsc", str(mod_ar_file), "--via", str(getBuildViaFile())]
         do_archive(ar_arg)
 
         if len(obj_new_list) > 0 and not cfg.keep_objects:
@@ -298,6 +305,9 @@ def exec_build():
         echo ("No files found")
 
     getCfgFlagsTFile().replace(getCfgFlagsFile())
+
+    if getBuildViaFile().exists():
+        getBuildViaFile().unlink()
 
     with open(getCfgListFile(), "w") as f:
         for file, time in data_new.items():

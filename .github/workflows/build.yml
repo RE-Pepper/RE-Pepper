@@ -38,7 +38,7 @@ jobs:
           rm -rf ./setup/ver
           sudo apt-get update
           sudo apt-get install -y cmake make python3 python3-pip python-is-python3
-          python -m pip install watchdog colorama levenshtein cxxfilt GitPython matplotlib numpy pyelftools
+          python -m pip install colorama capstone pyelftools requests argcomplete watchdog python-Levenshtein cxxfilt GitPython matplotlib numpy mplcursors
 
       - name: Locale to japanese
         run: |

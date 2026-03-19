@@ -15,6 +15,8 @@ from git import Repo
 from pathlib import Path
 from colorama import Fore
 
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 from tools.low.readSymMap import *
 
 def write_release_txt(ver: str, u: str, o: str, m: str, mm: str, total: str, bytes: str):
@@ -28,7 +30,7 @@ def write_release_txt(ver: str, u: str, o: str, m: str, mm: str, total: str, byt
 **Total**: *{total}*
 """
 
-    with open(str(Path("data") / "stats" / getVersion() / "release.txt"), 'w') as f:
+    with open(getVerDir() / "release.txt", 'w') as f:
         f.write(textt)
 
 def get_matching_bytes(orig: str, other: str):
@@ -46,7 +48,7 @@ def main():
     syms_minor = 0
     syms_ok = 0
     syms_total = 0
-    bytes_ok = get_matching_bytes(getBinFile(), str(Path(getBuildPath()) / "code.bin"))
+    bytes_ok = get_matching_bytes(getBinFile(), getExportFile())
     code_bin_size = os.path.getsize(getBinFile())
     ver = getVersion()
     os.makedirs(str(Path('data') / 'stats' / ver), exist_ok=True)
@@ -74,7 +76,7 @@ def main():
             "color": color,
             "schemaVersion": 1
         }
-        with open(str(Path('data') / 'stats' / ver / 'release.txt'), 'w') as f:
+        with open(getVerDir() / 'release.txt', 'w') as f:
             f.write(json.dumps(out))
 
     bytes_ok_str = "{:.4f}% ({:,} bytes/{:,} bytes)".format((bytes_ok / code_bin_size) * 100, int(bytes_ok), int(code_bin_size))
@@ -86,7 +88,7 @@ def main():
 
     write_type('Total', "Total Functions", str(syms_total), 'inactive');
     write_type('OK', "Matching", str(syms_ok), "success");
-    write_type('NonMatching', "Non-matching", str(syms_major + syms_minor), "yellow.);
+    write_type('NonMatching', "Non-matching", str(syms_major + syms_minor), "yellow");
     write_type('Code', "code.bin", bytes_ok_str, "informational");
 
     x_values = [datetime.datetime.now()]
@@ -125,7 +127,7 @@ def main():
     ax.yaxis.set_major_formatter(matplotlib.ticker.PercentFormatter())
     ax.plot(dates, y_values, '-')
 
-    plt.savefig(str(Path('data') / 'stats' / ver / "Progress.png"))
+    plt.savefig(getVerDir() / "Progress.png")
 
     if 'show' in sys.argv:
         import mplcursors

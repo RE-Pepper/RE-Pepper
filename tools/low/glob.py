@@ -77,6 +77,8 @@ def getOutMapFile():
     return getBuildPath() / f"{cfg.project_name}.map"
 def getOutCallFile():
     return getBuildPath() / f"{cfg.project_name}.txt"
+def getBuildViaFile():
+    return getBuildPath() / f"{cfg.project_name}.via"
 def getBuildObjPath():
     return getBuildPath() / "obj"
 def getBuildLibPath():

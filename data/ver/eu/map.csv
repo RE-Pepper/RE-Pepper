@@ -1,29 +1,29 @@
 Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x00100000,          ,0x00100024,          ,m,fg,__ctr_start
 0x00100024,0x00100040,0x00100048,          ,O,f,nninitRegion
-0x00100048,          ,0x00100050,          ,m,fg,_printf_percent
-0x00100050,          ,0x00100058,          ,U,fg,_printf_p
-0x00100058,          ,0x00100060,          ,U,fg,_printf_f
-0x00100060,          ,0x00100068,          ,U,fg,_printf_e
-0x00100068,          ,0x00100070,          ,U,fg,_printf_g
-0x00100070,          ,0x00100078,          ,U,fg,_printf_a
-0x00100078,          ,0x00100084,          ,U,fg,_printf_ll
-0x00100084,          ,0x0010008C,          ,U,fg,_printf_i
-0x0010008C,          ,0x00100094,          ,U,fg,_printf_d
-0x00100094,          ,0x0010009C,          ,U,fg,_printf_u
-0x0010009C,          ,0x001000A4,          ,U,fg,_printf_o
-0x001000A4,          ,0x001000AC,          ,U,fg,_printf_x
-0x001000AC,          ,0x001000B4,          ,U,fg,_printf_lli
-0x001000B4,          ,0x001000BC,          ,U,fg,_printf_lld
-0x001000BC,          ,0x001000C4,          ,U,fg,_printf_llu
-0x001000C4,          ,0x001000CC,          ,U,fg,_printf_llo
-0x001000CC,          ,0x001000D4,          ,U,fg,_printf_llx
-0x001000D4,          ,0x001000E0,          ,U,fg,_printf_l
-0x001000E0,          ,0x001000E8,          ,U,fg,_printf_c
-0x001000E8,          ,0x001000F0,          ,O,fg,_printf_s
-0x001000F0,          ,0x001000F8,          ,U,fg,_printf_lc
-0x001000F8,          ,0x00100100,          ,U,fg,_printf_ls
-0x00100100,          ,0x00100108,          ,O,fg,_printf_percent_end
+0x00100048,          ,0x00100050,          ,m,f,_printf_percent
+0x00100050,          ,0x00100058,          ,U,f,_printf_p
+0x00100058,          ,0x00100060,          ,U,f,_printf_f
+0x00100060,          ,0x00100068,          ,U,f,_printf_e
+0x00100068,          ,0x00100070,          ,U,f,_printf_g
+0x00100070,          ,0x00100078,          ,U,f,_printf_a
+0x00100078,          ,0x00100084,          ,U,f,_printf_ll
+0x00100084,          ,0x0010008C,          ,U,f,_printf_i
+0x0010008C,          ,0x00100094,          ,U,f,_printf_d
+0x00100094,          ,0x0010009C,          ,U,f,_printf_u
+0x0010009C,          ,0x001000A4,          ,U,f,_printf_o
+0x001000A4,          ,0x001000AC,          ,U,f,_printf_x
+0x001000AC,          ,0x001000B4,          ,U,f,_printf_lli
+0x001000B4,          ,0x001000BC,          ,U,f,_printf_lld
+0x001000BC,          ,0x001000C4,          ,U,f,_printf_llu
+0x001000C4,          ,0x001000CC,          ,U,f,_printf_llo
+0x001000CC,          ,0x001000D4,          ,U,f,_printf_llx
+0x001000D4,          ,0x001000E0,          ,U,f,_printf_l
+0x001000E0,          ,0x001000E8,          ,U,f,_printf_c
+0x001000E8,          ,0x001000F0,          ,O,f,_printf_s
+0x001000F0,          ,0x001000F8,          ,U,f,_printf_lc
+0x001000F8,          ,0x00100100,          ,U,f,_printf_ls
+0x00100100,          ,0x00100108,          ,O,f,_printf_percent_end
 0x00100108,0x00100154,0x0010015C,          ,O,f,nnMain
 0x0010015C,0x00100188,0x00100190,          ,U,f,nninitCallStaticInitializers
 0x00100190,0x001001D4,0x001001DC,          ,M,f,nninitLocale
@@ -586,10 +586,10 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x00117608,0x00117650,0x0011765C,          ,O,f,_ZN10AppearStep14startDisappearEv
 0x0011765C,0x00117704,0x00117710,          ,M,f,_ZN10AppearStep4initERKN2al13ActorInitInfoE
 0x00117710,0x00117738,0x0011773C,          ,O,f,_ZN10AppearStepC1ERKN4sead14SafeStringBaseIcEE
-0x0011773C,          ,0x001177D4,          ,U,f,_ZN2al10AssistItem10receiveMsgEPKNS_9SensorMsgEPNS_9HitSensorES5
-0x001177D4,0x001177DC,0x001177E0,          ,U,f,
+0x0011773C,          ,0x001177D4,          ,U,f,_ZN10AssistItem10receiveMsgEPKN2al9SensorMsgEPNS0_9HitSensorES5
+0x001177D4,0x001177DC,0x001177E0,          ,U,f,_ZN10AssistItem34appearPopUpAboveConnectToCollisionEv
 0x001177E0,0x0011797C,0x001179D0,          ,U,f,_ZN10AssistItem4initERKN2al13ActorInitInfoE
-0x001179D0,0x001179EC,0x001179F0,          ,U,f,
+0x001179D0,0x001179EC,0x001179F0,          ,U,f,_ZN10AssistItem6appearEv
 0x001179F0,0x00117A30,0x00117A34,          ,U,f,_ZN10AssistItemC1ERKN4sead14SafeStringBaseIcEE
 0x00117A34,0x00117B6C,0x00117BB4,          ,U,f,
 0x00117BB4,0x00117BE0,0x00117BEC,          ,U,f,
