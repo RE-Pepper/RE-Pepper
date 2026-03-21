@@ -40,7 +40,7 @@
 
 | Type | Name |
 | ---: | :--- |
-|  const [**NameToType**](structal_sensor_function_1_1_name_to_type.md) | [**split**](#variable-split)   = `/* multi line expression */`<br> |
+|  const [**NameToType**](structal_sensor_function_1_1_name_to_type.md) | [**staticd**](#variable-staticd)   = `/* multi line expression */`<br> |
 
 
 
@@ -96,10 +96,10 @@
 
 
 
-### variable split 
+### variable staticd 
 
 ```C++
-const NameToType alSensorFunction::split(sNameToTypeLookupTable)[];
+const NameToType alSensorFunction::staticd(sNameToTypeLookupTable)[];
 ```
 
 

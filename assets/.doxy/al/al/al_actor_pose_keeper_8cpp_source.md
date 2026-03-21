@@ -18,7 +18,7 @@ ActorPoseKeeperBase::ActorPoseKeeperBase() : mTrans( sead::Vector3f( 0, 0, 0 ) )
 {
 }
 
-const sead::Vector3f split( al::ActorPoseKeeperBase::sDefaultGravity )( 0, -1, 0 );
+const sead::Vector3f staticd( al::ActorPoseKeeperBase::sDefaultGravity )( 0, -1, 0 );
 
 const sead::Vector3f& ActorPoseKeeperBase::getRotate() const
 {

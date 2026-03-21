@@ -67,7 +67,7 @@
 <codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceal_nerve_function" kindref="compound">alNerveFunction</ref></highlight></codeline>
 <codeline lineno="14"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
-<codeline lineno="16" refid="namespaceal_nerve_function_1a0c5fe6417886d86bf164ab580dfdb3e7" refkind="member"><highlight class="normal"><ref refid="classal_nerve_function_1_1_nerve_action_collector" kindref="compound">NerveActionCollector</ref>*<sp/>split(<sp/>NerveActionCollector::sCurrentCollector<sp/>);</highlight></codeline>
+<codeline lineno="16" refid="namespaceal_nerve_function_1a77bd9db8c71222d0bbeb5e78a350e6f1" refkind="member"><highlight class="normal"><ref refid="classal_nerve_function_1_1_nerve_action_collector" kindref="compound">NerveActionCollector</ref>*<sp/>staticd(<sp/>NerveActionCollector::sCurrentCollector<sp/>);</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight></codeline>
 <codeline lineno="18" refid="classal_nerve_function_1_1_nerve_action_collector_1a142dbf1350e88d9fa3dab8f4820dceb1" refkind="member"><highlight class="normal">NerveActionCollector::NerveActionCollector()</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>mNumNodes(<sp/>0<sp/>),<sp/>mStartNode(<sp/>nullptr<sp/>),<sp/>mEndNode(<sp/>nullptr<sp/>)</highlight></codeline>

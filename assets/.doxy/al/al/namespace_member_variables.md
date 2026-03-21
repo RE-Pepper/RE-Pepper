@@ -5,7 +5,7 @@
 
 ## s
 
-* **split** ([**al**](namespaceal.md), [**alSensorFunction**](namespaceal_sensor_function.md))
+* **staticd** ([**al**](namespaceal.md), [**alSensorFunction**](namespaceal_sensor_function.md))
 
 
 

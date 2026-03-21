@@ -31,12 +31,12 @@
         <references refid="classal_1_1_nerve_keeper_1a37e98e97d06e4dad4115b6fa626b2544" compoundref="al_nerve_keeper_8cpp" startline="53" endline="59">al::NerveKeeper::setNerve</references>
         <referencedby refid="namespaceal_1ad3dc1c4ef582193a5c8721113c062b44" compoundref="al_live_actor_function_8cpp" startline="164" endline="169">al::startNerveAction</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespaceal_nerve_function_1a0c5fe6417886d86bf164ab580dfdb3e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceal_nerve_function_1a77bd9db8c71222d0bbeb5e78a350e6f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classal_nerve_function_1_1_nerve_action_collector" kindref="compound">NerveActionCollector</ref> *</type>
-        <definition>NerveActionCollector * alNerveFunction::split</definition>
+        <definition>NerveActionCollector * alNerveFunction::staticd</definition>
         <argsstring>(NerveActionCollector::sCurrentCollector)</argsstring>
-        <name>split</name>
-        <qualifiedname>alNerveFunction::split</qualifiedname>
+        <name>staticd</name>
+        <qualifiedname>alNerveFunction::staticd</qualifiedname>
         <param>
           <type><ref refid="classal_nerve_function_1_1_nerve_action_collector_1a28c42886e499227c205b63bd180f50a9" kindref="member">NerveActionCollector::sCurrentCollector</ref></type>
         </param>

@@ -70,18 +70,18 @@ ExecuteDirector::ExecuteDirector( int p )
 {
 }
 
-static const ExecuteOrder split( sUpdateExecuteOrder ) = { &quot;クリッピング&quot;, &quot;Execute&quot;, 1, &quot;システム&quot; };
+static const ExecuteOrder staticd( sUpdateExecuteOrder ) = { &quot;クリッピング&quot;, &quot;Execute&quot;, 1, &quot;システム&quot; };
 
-static const ExecuteOrder split( sDraw0ExecuteOrder ) = { &quot;空&quot;, &quot;ActorModelDraw&quot;, 8, &quot;地形&quot; };
-static const ExecuteOrder split( sDraw1ExecuteOrder ) = { &quot;２Ｄエンドロールテキスト&quot;, &quot;LayoutDraw&quot;, 64, &quot;レイアウト&quot; };
-static const ExecuteOrder split( sDraw2ExecuteOrder ) = { &quot;固定地形&quot;, &quot;ActorModelDrawModelCache&quot;, 32, &quot;地形&quot; };
-static const ExecuteOrder split( sDraw3ExecuteOrder ) = { &quot;コリジョン地形&quot;, &quot;ActorModelDraw&quot;, 128, &quot;地形&quot; };
-static const ExecuteOrder split( sDraw4ExecuteOrder ) = { &quot;２Ｄアイコン&quot;, &quot;LayoutDraw&quot;, 128, &quot;レイアウト&quot; };
-static const ExecuteOrder split( sDraw5ExecuteOrder ) = { &quot;２Ｄベース&quot;, &quot;LayoutDraw&quot;, 128, &quot;レイアウト&quot; };
-static const ExecuteOrder split( sDraw6ExecuteOrder ) = { &quot;２Ｄポーズ&quot;, &quot;LayoutDraw&quot;, 8, &quot;レイアウト&quot; };
-static const ExecuteOrder split( sDraw7ExecuteOrder ) = { &quot;２Ｄベース（下画面）&quot;, &quot;LayoutDrawBottom&quot;, 8, &quot;レイアウト&quot; };
-static const ExecuteOrder split( sDraw8ExecuteOrder ) = { &quot;アイテムストックモデル&quot;, &quot;ActorModelDraw&quot;, 32, &quot;アイテム&quot; };
-static const ExecuteOrder split( sDraw9ExecuteOrder ) = { &quot;２Ｄポーズ（下画面）&quot;, &quot;LayoutDrawBottom&quot;, 8, &quot;レイアウト&quot; };
+static const ExecuteOrder staticd( sDraw0ExecuteOrder ) = { &quot;空&quot;, &quot;ActorModelDraw&quot;, 8, &quot;地形&quot; };
+static const ExecuteOrder staticd( sDraw1ExecuteOrder ) = { &quot;２Ｄエンドロールテキスト&quot;, &quot;LayoutDraw&quot;, 64, &quot;レイアウト&quot; };
+static const ExecuteOrder staticd( sDraw2ExecuteOrder ) = { &quot;固定地形&quot;, &quot;ActorModelDrawModelCache&quot;, 32, &quot;地形&quot; };
+static const ExecuteOrder staticd( sDraw3ExecuteOrder ) = { &quot;コリジョン地形&quot;, &quot;ActorModelDraw&quot;, 128, &quot;地形&quot; };
+static const ExecuteOrder staticd( sDraw4ExecuteOrder ) = { &quot;２Ｄアイコン&quot;, &quot;LayoutDraw&quot;, 128, &quot;レイアウト&quot; };
+static const ExecuteOrder staticd( sDraw5ExecuteOrder ) = { &quot;２Ｄベース&quot;, &quot;LayoutDraw&quot;, 128, &quot;レイアウト&quot; };
+static const ExecuteOrder staticd( sDraw6ExecuteOrder ) = { &quot;２Ｄポーズ&quot;, &quot;LayoutDraw&quot;, 8, &quot;レイアウト&quot; };
+static const ExecuteOrder staticd( sDraw7ExecuteOrder ) = { &quot;２Ｄベース（下画面）&quot;, &quot;LayoutDrawBottom&quot;, 8, &quot;レイアウト&quot; };
+static const ExecuteOrder staticd( sDraw8ExecuteOrder ) = { &quot;アイテムストックモデル&quot;, &quot;ActorModelDraw&quot;, 32, &quot;アイテム&quot; };
+static const ExecuteOrder staticd( sDraw9ExecuteOrder ) = { &quot;２Ｄポーズ（下画面）&quot;, &quot;LayoutDrawBottom&quot;, 8, &quot;レイアウト&quot; };
 
 #ifdef NON_MATCHING
 

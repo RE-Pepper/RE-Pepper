@@ -87,7 +87,7 @@
 <codeline lineno="8"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="9"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::Vector3f<sp/><ref refid="namespaceal_1a1428c61006a87c2db5da7f94cddcb531" kindref="member">split</ref>(<sp/><ref refid="classal_1_1_actor_pose_keeper_base_1ae4f45a9e45e9a014fe37aca639105900" kindref="member">al::ActorPoseKeeperBase::sDefaultGravity</ref><sp/>)(<sp/>0,<sp/>-1,<sp/>0<sp/>);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::Vector3f<sp/><ref refid="namespaceal_1a19381a99b5b20282d74c2f6870b84c8e" kindref="member">staticd</ref>(<sp/><ref refid="classal_1_1_actor_pose_keeper_base_1ae4f45a9e45e9a014fe37aca639105900" kindref="member">al::ActorPoseKeeperBase::sDefaultGravity</ref><sp/>)(<sp/>0,<sp/>-1,<sp/>0<sp/>);</highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
 <codeline lineno="13" refid="classal_1_1_actor_pose_keeper_base_1a2009e08cbed1f3e38c9a2c2737e75a16" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::Vector3f&amp;<sp/><ref refid="classal_1_1_actor_pose_keeper_base_1a2009e08cbed1f3e38c9a2c2737e75a16" kindref="member">ActorPoseKeeperBase::getRotate</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="14"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>

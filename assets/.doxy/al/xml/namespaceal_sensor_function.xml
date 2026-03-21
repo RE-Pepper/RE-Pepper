@@ -4,12 +4,12 @@
     <compoundname>alSensorFunction</compoundname>
     <innerclass refid="structal_sensor_function_1_1_name_to_type" prot="public">alSensorFunction::NameToType</innerclass>
     <sectiondef kind="var">
-      <memberdef kind="variable" id="namespaceal_sensor_function_1af71d128a6784701deddfc6017b9dcab8" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="namespaceal_sensor_function_1ae698926fd7f614b24a9ef3f7ae0b0287" prot="public" static="no" mutable="no">
         <type>const <ref refid="structal_sensor_function_1_1_name_to_type" kindref="compound">NameToType</ref></type>
-        <definition>const NameToType alSensorFunction::split(sNameToTypeLookupTable)[]</definition>
+        <definition>const NameToType alSensorFunction::staticd(sNameToTypeLookupTable)[]</definition>
         <argsstring>(sNameToTypeLookupTable)[]</argsstring>
-        <name>split</name>
-        <qualifiedname>alSensorFunction::split</qualifiedname>
+        <name>staticd</name>
+        <qualifiedname>alSensorFunction::staticd</qualifiedname>
         <initializer>= {
 
 

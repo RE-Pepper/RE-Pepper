@@ -1298,9 +1298,9 @@
     <member refid="_fugumannen_8cpp_1a4c3b56bd6ae6f1ebd0d6324f40aa57d2" kind="function"><name>fn_002cd428</name></member>
   </compound>
   <compound refid="_togezo_8cpp" kind="file"><name>Togezo.cpp</name>
-    <member refid="_togezo_8cpp_1abd8a1ce1462e35ef560d81791e4b5d9b" kind="function"><name>sTogezoWalkerStateParam</name></member>
-    <member refid="_togezo_8cpp_1ae8dd9a83578f24230eb841e328a7a52b" kind="function"><name>sTogezoWalkerStateWanderParam</name></member>
-    <member refid="_togezo_8cpp_1abe52849362e3ee474d2f38dcdbf18ccb" kind="function"><name>sTogezoWalkerStateChaseParam</name></member>
+    <member refid="_togezo_8cpp_1ac964918a456d10813f83710fc00b462d" kind="function"><name>sTogezoWalkerStateParam</name></member>
+    <member refid="_togezo_8cpp_1a5caeb2085e35f14f571dadffdf00f7d1" kind="function"><name>sTogezoWalkerStateWanderParam</name></member>
+    <member refid="_togezo_8cpp_1a09e5d67acd5be3b93518d0019d24d110" kind="function"><name>sTogezoWalkerStateChaseParam</name></member>
     <member refid="_togezo_8cpp_1a26275c96d8643d1ae0f85eb6dea19911" kind="function"><name>fn_0027a1a0</name></member>
     <member refid="_togezo_8cpp_1aedb98c3fd773a4c84ceb2c1f7cb09197" kind="function"><name>fn_0027cf20</name></member>
     <member refid="_togezo_8cpp_1a297d424186865a05be51726964edffa0" kind="function"><name>fn_00272a9c</name></member>

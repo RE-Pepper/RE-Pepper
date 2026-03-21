@@ -31,7 +31,7 @@ struct Nerve
                         static_cast<CLASS*>( keeper->getHost() )->exe##ACTION(); \
                 }                                                                \
         };                                                                       \
-        const split( CLASS##Nrv##ACTION ) ACTION = CLASS##Nrv##ACTION();
+        const staticd( CLASS##Nrv##ACTION ) ACTION = CLASS##Nrv##ACTION();
 
 #define NERVE_DEF_END( CLASS, ACTION, ENDACTION )                                   \
         struct CLASS##Nrv##ACTION : public ::al::Nerve                              \
@@ -45,7 +45,7 @@ struct Nerve
                         static_cast<CLASS*>( keeper->getHost() )->exe##ENDACTION(); \
                 }                                                                   \
         };                                                                          \
-        const split( CLASS##Nrv##ACTION ) ACTION = CLASS##Nrv##ACTION();
+        const staticd( CLASS##Nrv##ACTION ) ACTION = CLASS##Nrv##ACTION();
 
 #ifdef SPLIT_HACK
 #undef SPLIT_HACK

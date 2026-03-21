@@ -182,7 +182,7 @@
 
 | Type | Name |
 | ---: | :--- |
-|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**split**](#variable-split)   = `{ "クリッピング", "Execute", 1, "システム" }`<br> |
+|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**staticd**](#variable-staticd)   = `{ "クリッピング", "Execute", 1, "システム" }`<br> |
 
 
 
@@ -409,13 +409,13 @@
 |  [**void**](classal_1_1_functor_v0_m.md) | [**setVelocityZero**](#function-setvelocityzero) ([**LiveActor**](classal_1_1_live_actor.md) \* actor) <br> |
 |  [**void**](classal_1_1_functor_v0_m.md) | [**showModel**](#function-showmodel) ([**LiveActor**](classal_1_1_live_actor.md) \* actor) <br> |
 |  [**void**](classal_1_1_functor_v0_m.md) | [**showShadow**](#function-showshadow) ([**LiveActor**](classal_1_1_live_actor.md) \* actor) <br> |
-|  [**const**](classal_1_1_functor_v0_m.md) [**NameToActorCreator**](namespaceal.md#typedef-nametoactorcreator) | [**split**](#function-split) ([**sActorFactoryEntries**](classal_1_1_functor_v0_m.md)) <br> |
-|  [**const**](classal_1_1_functor_v0_m.md) [**NameToAreaObjCreator**](namespaceal.md#typedef-nametoareaobjcreator) | [**split**](#function-split) ([**sAreaObjFactoryEntries**](classal_1_1_functor_v0_m.md)) <br> |
 |  [**void**](classal_1_1_functor_v0_m.md) | [**startAction**](#function-startaction) ([**LayoutActor**](classal_1_1_layout_actor.md) \* actor, [**const**](classal_1_1_functor_v0_m.md) sead::SafeString & actionName) <br> |
 |  [**void**](classal_1_1_functor_v0_m.md) | [**startAction**](#function-startaction) ([**LiveActor**](classal_1_1_live_actor.md) \* actor, [**const**](classal_1_1_functor_v0_m.md) [**char**](classal_1_1_functor_v0_m.md) \* actionName) <br> |
 |  [**void**](classal_1_1_functor_v0_m.md) | [**startHitReaction**](#function-starthitreaction) ([**const**](classal_1_1_functor_v0_m.md) [**LiveActor**](classal_1_1_live_actor.md) \* actor, [**const**](classal_1_1_functor_v0_m.md) [**char**](classal_1_1_functor_v0_m.md) \* name) <br> |
 |  [**void**](classal_1_1_functor_v0_m.md) | [**startNerveAction**](#function-startnerveaction) ([**LiveActor**](classal_1_1_live_actor.md) \* actor, [**const**](classal_1_1_functor_v0_m.md) [**char**](classal_1_1_functor_v0_m.md) \* actionName) <br> |
 |  [**void**](classal_1_1_functor_v0_m.md) | [**startSe**](#function-startse) ([**IUseAudioKeeper**](classal_1_1_i_use_audio_keeper.md) \* p, [**const**](classal_1_1_functor_v0_m.md) sead::SafeString & name) <br> |
+|  [**const**](classal_1_1_functor_v0_m.md) [**NameToActorCreator**](namespaceal.md#typedef-nametoactorcreator) | [**staticd**](#function-staticd) ([**sActorFactoryEntries**](classal_1_1_functor_v0_m.md)) <br> |
+|  [**const**](classal_1_1_functor_v0_m.md) [**NameToAreaObjCreator**](namespaceal.md#typedef-nametoareaobjcreator) | [**staticd**](#function-staticd) ([**sAreaObjFactoryEntries**](classal_1_1_functor_v0_m.md)) <br> |
 |  [**void**](classal_1_1_functor_v0_m.md) | [**stopScene**](#function-stopscene) ([**int**](classal_1_1_functor_v0_m.md) frames) <br> |
 |  [**void**](classal_1_1_functor_v0_m.md) | [**syncCollisionMtx**](#function-synccollisionmtx) ([**LiveActor**](classal_1_1_live_actor.md) \* actor, [**const**](classal_1_1_functor_v0_m.md) sead::Matrix34f \*) <br> |
 |  [**RailKeeper**](classal_1_1_rail_keeper.md) \* | [**tryCreateRailKeeper**](#function-trycreaterailkeeper) ([**const**](classal_1_1_functor_v0_m.md) [**PlacementInfo**](namespaceal.md#typedef-placementinfo) & info) <br> |
@@ -462,16 +462,16 @@
 | Type | Name |
 | ---: | :--- |
 |  [**void**](classal_1_1_functor_v0_m.md) | [**initActorImpl**](#function-initactorimpl) ([**LiveActor**](classal_1_1_live_actor.md) \* actor, [**const**](classal_1_1_functor_v0_m.md) [**ActorInitInfo**](classal_1_1_actor_init_info.md) & info, [**const**](classal_1_1_functor_v0_m.md) sead::SafeString & objectName, [**const**](classal_1_1_functor_v0_m.md) sead::SafeString & archivePath, [**const**](classal_1_1_functor_v0_m.md) [**char**](classal_1_1_functor_v0_m.md) \* suffix=[**nullptr**](classal_1_1_functor_v0_m.md)) <br> |
-|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**split**](#function-split) ([**sDraw0ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
-|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**split**](#function-split) ([**sDraw1ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
-|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**split**](#function-split) ([**sDraw2ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
-|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**split**](#function-split) ([**sDraw3ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
-|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**split**](#function-split) ([**sDraw4ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
-|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**split**](#function-split) ([**sDraw5ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
-|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**split**](#function-split) ([**sDraw6ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
-|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**split**](#function-split) ([**sDraw7ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
-|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**split**](#function-split) ([**sDraw8ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
-|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**split**](#function-split) ([**sDraw9ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
+|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**staticd**](#function-staticd) ([**sDraw0ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
+|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**staticd**](#function-staticd) ([**sDraw1ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
+|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**staticd**](#function-staticd) ([**sDraw2ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
+|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**staticd**](#function-staticd) ([**sDraw3ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
+|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**staticd**](#function-staticd) ([**sDraw4ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
+|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**staticd**](#function-staticd) ([**sDraw5ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
+|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**staticd**](#function-staticd) ([**sDraw6ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
+|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**staticd**](#function-staticd) ([**sDraw7ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
+|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**staticd**](#function-staticd) ([**sDraw8ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
+|  [**const**](classal_1_1_functor_v0_m.md) [**ExecuteOrder**](structal_1_1_execute_order.md) | [**staticd**](#function-staticd) ([**sDraw9ExecuteOrder**](classal_1_1_functor_v0_m.md)) <br> |
 
 
 
@@ -714,10 +714,10 @@ enum al::StageSwitchType {
 
 
 
-### variable split 
+### variable staticd 
 
 ```C++
-const NameToAreaObjCreator al::split(sAreaObjFactoryEntries)[];
+const NameToAreaObjCreator al::staticd(sAreaObjFactoryEntries)[];
 ```
 
 
@@ -3949,36 +3949,6 @@ void al::showShadow (
 
 
 
-### function split 
-
-```C++
-const  NameToActorCreator al::split (
-    sActorFactoryEntries
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function split 
-
-```C++
-const  NameToAreaObjCreator al::split (
-    sAreaObjFactoryEntries
-) 
-```
-
-
-
-
-<hr>
-
-
-
 ### function startAction 
 
 ```C++
@@ -4049,6 +4019,36 @@ void al::startNerveAction (
 void al::startSe (
     IUseAudioKeeper * p,
     const sead::SafeString & name
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function staticd 
+
+```C++
+const  NameToActorCreator al::staticd (
+    sActorFactoryEntries
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function staticd 
+
+```C++
+const  NameToAreaObjCreator al::staticd (
+    sAreaObjFactoryEntries
 ) 
 ```
 
@@ -4707,10 +4707,10 @@ static void al::initActorImpl (
 
 
 
-### function split 
+### function staticd 
 
 ```C++
-static const  ExecuteOrder al::split (
+static const  ExecuteOrder al::staticd (
     sDraw0ExecuteOrder
 ) 
 ```
@@ -4722,10 +4722,10 @@ static const  ExecuteOrder al::split (
 
 
 
-### function split 
+### function staticd 
 
 ```C++
-static const  ExecuteOrder al::split (
+static const  ExecuteOrder al::staticd (
     sDraw1ExecuteOrder
 ) 
 ```
@@ -4737,10 +4737,10 @@ static const  ExecuteOrder al::split (
 
 
 
-### function split 
+### function staticd 
 
 ```C++
-static const  ExecuteOrder al::split (
+static const  ExecuteOrder al::staticd (
     sDraw2ExecuteOrder
 ) 
 ```
@@ -4752,10 +4752,10 @@ static const  ExecuteOrder al::split (
 
 
 
-### function split 
+### function staticd 
 
 ```C++
-static const  ExecuteOrder al::split (
+static const  ExecuteOrder al::staticd (
     sDraw3ExecuteOrder
 ) 
 ```
@@ -4767,10 +4767,10 @@ static const  ExecuteOrder al::split (
 
 
 
-### function split 
+### function staticd 
 
 ```C++
-static const  ExecuteOrder al::split (
+static const  ExecuteOrder al::staticd (
     sDraw4ExecuteOrder
 ) 
 ```
@@ -4782,10 +4782,10 @@ static const  ExecuteOrder al::split (
 
 
 
-### function split 
+### function staticd 
 
 ```C++
-static const  ExecuteOrder al::split (
+static const  ExecuteOrder al::staticd (
     sDraw5ExecuteOrder
 ) 
 ```
@@ -4797,10 +4797,10 @@ static const  ExecuteOrder al::split (
 
 
 
-### function split 
+### function staticd 
 
 ```C++
-static const  ExecuteOrder al::split (
+static const  ExecuteOrder al::staticd (
     sDraw6ExecuteOrder
 ) 
 ```
@@ -4812,10 +4812,10 @@ static const  ExecuteOrder al::split (
 
 
 
-### function split 
+### function staticd 
 
 ```C++
-static const  ExecuteOrder al::split (
+static const  ExecuteOrder al::staticd (
     sDraw7ExecuteOrder
 ) 
 ```
@@ -4827,10 +4827,10 @@ static const  ExecuteOrder al::split (
 
 
 
-### function split 
+### function staticd 
 
 ```C++
-static const  ExecuteOrder al::split (
+static const  ExecuteOrder al::staticd (
     sDraw8ExecuteOrder
 ) 
 ```
@@ -4842,10 +4842,10 @@ static const  ExecuteOrder al::split (
 
 
 
-### function split 
+### function staticd 
 
 ```C++
-static const  ExecuteOrder al::split (
+static const  ExecuteOrder al::staticd (
     sDraw9ExecuteOrder
 ) 
 ```

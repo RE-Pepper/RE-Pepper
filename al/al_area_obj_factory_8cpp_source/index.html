@@ -66,7 +66,7 @@ AreaObj* createAreaObjFunction( const char* name )
         return new T( name );
 }
 
-const NameToAreaObjCreator split( sAreaObjFactoryEntries )[] = {
+const NameToAreaObjCreator staticd( sAreaObjFactoryEntries )[] = {
         { &quot;AudioEffectChangeArea&quot;, createAreaObjFunction&lt;AreaObj&gt; },
         { &quot;AudioVolumeSettingArea&quot;, nullptr },
         { &quot;BgmChangeArea&quot;, createAreaObjFunction&lt;AreaObj&gt; },

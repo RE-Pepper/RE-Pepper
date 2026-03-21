@@ -85,9 +85,9 @@
 
 | Type | Name |
 | ---: | :--- |
-|  [**WalkerStateChaseParam**](class_walker_state_chase_param.md) split() | [**sTogezoWalkerStateChaseParam**](#function-stogezowalkerstatechaseparam) (false, true, 1. 3, 30. 0, 150. 0, 3. 0, 20. 0, "Run", "Wait") <br> |
-|  [**WalkerStateParam**](class_walker_state_param.md) split() | [**sTogezoWalkerStateParam**](#function-stogezowalkerstateparam) (4. 0, 0. 98, 0. 85, 250. 0, 700. 0, 180. 0, 70. 0, 150. 0) <br> |
-|  [**WalkerStateWanderParam**](class_walker_state_wander_param.md) split() | [**sTogezoWalkerStateWanderParam**](#function-stogezowalkerstatewanderparam) (30, 90, 0. 7, 4. 0, 10. 0, "Walk", "Wait") <br> |
+|  [**WalkerStateChaseParam**](class_walker_state_chase_param.md) sdata() | [**sTogezoWalkerStateChaseParam**](#function-stogezowalkerstatechaseparam) (false, true, 1. 3, 30. 0, 150. 0, 3. 0, 20. 0, "Run", "Wait") <br> |
+|  [**WalkerStateParam**](class_walker_state_param.md) sdata() | [**sTogezoWalkerStateParam**](#function-stogezowalkerstateparam) (4. 0, 0. 98, 0. 85, 250. 0, 700. 0, 180. 0, 70. 0, 150. 0) <br> |
+|  [**WalkerStateWanderParam**](class_walker_state_wander_param.md) sdata() | [**sTogezoWalkerStateWanderParam**](#function-stogezowalkerstatewanderparam) (30, 90, 0. 7, 4. 0, 10. 0, "Walk", "Wait") <br> |
 
 
 
@@ -253,7 +253,7 @@ void fn_0027cf20 (
 ### function sTogezoWalkerStateChaseParam 
 
 ```C++
-static WalkerStateChaseParam split() sTogezoWalkerStateChaseParam (
+static WalkerStateChaseParam sdata() sTogezoWalkerStateChaseParam (
     false,
     true,
     1. 3,
@@ -276,7 +276,7 @@ static WalkerStateChaseParam split() sTogezoWalkerStateChaseParam (
 ### function sTogezoWalkerStateParam 
 
 ```C++
-static WalkerStateParam split() sTogezoWalkerStateParam (
+static WalkerStateParam sdata() sTogezoWalkerStateParam (
     4. 0,
     0. 98,
     0. 85,
@@ -298,7 +298,7 @@ static WalkerStateParam split() sTogezoWalkerStateParam (
 ### function sTogezoWalkerStateWanderParam 
 
 ```C++
-static WalkerStateWanderParam split() sTogezoWalkerStateWanderParam (
+static WalkerStateWanderParam sdata() sTogezoWalkerStateWanderParam (
     30,
     90,
     0. 7,

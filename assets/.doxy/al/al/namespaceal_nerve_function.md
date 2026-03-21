@@ -57,7 +57,7 @@
 | Type | Name |
 | ---: | :--- |
 |  void | [**setNerveAction**](#function-setnerveaction) ([**al::IUseNerve**](classal_1_1_i_use_nerve.md) \* p, const char \* name) <br> |
-|  [**NerveActionCollector**](classal_nerve_function_1_1_nerve_action_collector.md) \* | [**split**](#function-split) ([**NerveActionCollector::sCurrentCollector**](classal_nerve_function_1_1_nerve_action_collector.md#variable-scurrentcollector)) <br> |
+|  [**NerveActionCollector**](classal_nerve_function_1_1_nerve_action_collector.md) \* | [**staticd**](#function-staticd) ([**NerveActionCollector::sCurrentCollector**](classal_nerve_function_1_1_nerve_action_collector.md#variable-scurrentcollector)) <br> |
 
 
 
@@ -107,10 +107,10 @@ void alNerveFunction::setNerveAction (
 
 
 
-### function split 
+### function staticd 
 
 ```C++
-NerveActionCollector * alNerveFunction::split (
+NerveActionCollector * alNerveFunction::staticd (
     NerveActionCollector::sCurrentCollector
 ) 
 ```

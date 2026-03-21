@@ -38,9 +38,9 @@ NERVE_DEF( Togezo, BlowDown );
 
 } // namespace NrvTogezo
 
-static WalkerStateParam       split( sTogezoWalkerStateParam )( 4.0, 0.98, 0.85, 250.0, 700.0, 180.0, 70.0, 150.0 );
-static WalkerStateWanderParam split( sTogezoWalkerStateWanderParam )( 30, 90, 0.7, 4.0, 10.0, "Walk", "Wait" );
-static WalkerStateChaseParam  split( sTogezoWalkerStateChaseParam )( false, true, 1.3, 30.0, 150.0, 3.0, 20.0, "Run", "Wait" );
+static WalkerStateParam       sdata( sTogezoWalkerStateParam )( 4.0, 0.98, 0.85, 250.0, 700.0, 180.0, 70.0, 150.0 );
+static WalkerStateWanderParam sdata( sTogezoWalkerStateWanderParam )( 30, 90, 0.7, 4.0, 10.0, "Walk", "Wait" );
+static WalkerStateChaseParam  sdata( sTogezoWalkerStateChaseParam )( false, true, 1.3, 30.0, 150.0, 3.0, 20.0, "Run", "Wait" );
 
 Togezo::Togezo( const sead::SafeString& name )
     : MapObjActor( name ), mWanderState( nullptr ), mChaseState( nullptr ), mBlowDownState( nullptr )

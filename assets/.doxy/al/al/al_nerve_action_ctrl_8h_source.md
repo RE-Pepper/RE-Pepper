@@ -97,7 +97,7 @@ public:
                         return #ACTION;                                          \
                 }                                                                \
         };                                                                       \
-        const split( CLASS##Nrv##ACTION ) ACTION = CLASS##Nrv##ACTION();
+        const staticd( CLASS##Nrv##ACTION ) ACTION = CLASS##Nrv##ACTION();
 
 #define NERVEACTION_DEF_END( CLASS, ACTION, ENDACTION )                             \
         struct CLASS##Nrv##ACTION : public ::al::NerveAction                        \
@@ -115,7 +115,7 @@ public:
                         return #ACTION;                                             \
                 }                                                                   \
         };                                                                          \
-        const split( CLASS##Nrv##ACTION ) ACTION = CLASS##Nrv##ACTION();
+        const staticd( CLASS##Nrv##ACTION ) ACTION = CLASS##Nrv##ACTION();
 ```
 
 

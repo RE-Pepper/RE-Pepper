@@ -1385,7 +1385,7 @@
     <member refid="namespaceal_1a6d6e521a23ba5f3e00bd9747562589a9" kind="typedef"><name>CreateCameraFuncPtr</name></member>
     <member refid="namespaceal_1abdacbf61769535fa98b118dcf3273aaf" kind="typedef"><name>NameToCameraCreator</name></member>
     <member refid="namespaceal_1a41c6acd1e8ea2a3fb205bd494602769d" kind="typedef"><name>PlacementInfo</name></member>
-    <member refid="namespaceal_1a1428c61006a87c2db5da7f94cddcb531" kind="variable"><name>split</name></member>
+    <member refid="namespaceal_1a19381a99b5b20282d74c2f6870b84c8e" kind="variable"><name>staticd</name></member>
     <member refid="namespaceal_1a0dfa0187d4cb37671703ee29d9db8dbb" kind="function"><name>getCameraPos</name></member>
     <member refid="namespaceal_1a6969ea5fb1c51afbfce486a64e13e0c5" kind="function"><name>syncCollisionMtx</name></member>
     <member refid="namespaceal_1a75c95c6822f6d66f0d54000b34663733" kind="function"><name>isCollided</name></member>
@@ -1629,20 +1629,20 @@
     <member refid="namespaceal_1acdea85d8133115996b967d0616172ea5" kind="function"><name>_T_BUTTON</name></member>
     <member refid="namespaceal_1a82a9dc650d9d9be7a29bcd99498de0f2" kind="function"><name>_T_BUTTON</name></member>
     <member refid="namespaceal_1a13b18d6189bcc5f53b6ddbd04d1d6bd1" kind="function"><name>_T_BUTTON</name></member>
-    <member refid="namespaceal_1aca83522315b5a55f3b5207fb0154cc10" kind="function"><name>split</name></member>
-    <member refid="namespaceal_1accc86171b76c112ba26d887b607a45c4" kind="function"><name>split</name></member>
-    <member refid="namespaceal_1a800680ef0fbba85b97a7f7a8eeb2dd8a" kind="function"><name>split</name></member>
-    <member refid="namespaceal_1a9884bdc0c6f33980bba5889afe6f7cfd" kind="function"><name>split</name></member>
-    <member refid="namespaceal_1a7b11d0e4063068603c08cde685281e7c" kind="function"><name>split</name></member>
-    <member refid="namespaceal_1a7d1d52da480693da4c1c08cd207a3e26" kind="function"><name>split</name></member>
-    <member refid="namespaceal_1a2dd508d13450d2a23c9b38176ac3266c" kind="function"><name>split</name></member>
-    <member refid="namespaceal_1ac53509b5610eefa2f3f89a815714369b" kind="function"><name>split</name></member>
-    <member refid="namespaceal_1a17d4f7c92695014d721bd21afe4c9e8b" kind="function"><name>split</name></member>
-    <member refid="namespaceal_1aac2ec5466f4c75c8785425acd2bafb87" kind="function"><name>split</name></member>
+    <member refid="namespaceal_1a907c44bd90eafd302866f1129f867e55" kind="function"><name>staticd</name></member>
+    <member refid="namespaceal_1aa6a65de53baeb76f96bd0d863959409b" kind="function"><name>staticd</name></member>
+    <member refid="namespaceal_1a01b4a0468f14b8b6a59dbcb27db87710" kind="function"><name>staticd</name></member>
+    <member refid="namespaceal_1ad4ae0d9b45d9c341379fe39e7e280ad5" kind="function"><name>staticd</name></member>
+    <member refid="namespaceal_1aa9547312e55d9f156ce1d2cea3098f4e" kind="function"><name>staticd</name></member>
+    <member refid="namespaceal_1a961505ee0215d23fc8d1f0e22cb5c8f9" kind="function"><name>staticd</name></member>
+    <member refid="namespaceal_1a72871cf6adcdc88b9a01153328ac6a0a" kind="function"><name>staticd</name></member>
+    <member refid="namespaceal_1ad213d27dbb030b99159c90604225d49f" kind="function"><name>staticd</name></member>
+    <member refid="namespaceal_1a40c2614cef7c526ffd143a1510a38b46" kind="function"><name>staticd</name></member>
+    <member refid="namespaceal_1a750317d87abe7e1dd29cbf0af1560783" kind="function"><name>staticd</name></member>
     <member refid="namespaceal_1ac3c0363053bb6e343d2ebefbb557f038" kind="function"><name>createActorFunction</name></member>
-    <member refid="namespaceal_1a75456d91a0908d081eca517fa1f739c5" kind="function"><name>split</name></member>
+    <member refid="namespaceal_1a13fa920545fd0e54f6ca8b2eeb011201" kind="function"><name>staticd</name></member>
     <member refid="namespaceal_1ad5b5fc72d7e4da5806c345e19d60b397" kind="function"><name>createAreaObjFunction</name></member>
-    <member refid="namespaceal_1a201e96806e7622527702907d524d3bd0" kind="function"><name>split</name></member>
+    <member refid="namespaceal_1a975ce43de8f1c0884e1ce1cc61f15d8b" kind="function"><name>staticd</name></member>
     <member refid="namespaceal_1a3f876b9292ecc5ae48e8745df66acd53" kind="function"><name>initActorInitInfo</name></member>
     <member refid="namespaceal_1a24cb3a69f28e9b3943554873519c074d" kind="function"><name>initActorImpl</name></member>
     <member refid="namespaceal_1a666d375435faddaf2e98069158bafad6" kind="function"><name>fn_00240350</name></member>
@@ -1674,7 +1674,7 @@
   </compound>
   <compound refid="namespaceal_nerve_function" kind="namespace"><name>alNerveFunction</name>
     <member refid="namespaceal_nerve_function_1a5ca3ee8a312d5f72b7f13910cd8e2dbb" kind="function"><name>setNerveAction</name></member>
-    <member refid="namespaceal_nerve_function_1a0c5fe6417886d86bf164ab580dfdb3e7" kind="function"><name>split</name></member>
+    <member refid="namespaceal_nerve_function_1a77bd9db8c71222d0bbeb5e78a350e6f1" kind="function"><name>staticd</name></member>
   </compound>
   <compound refid="namespaceal_placement_function" kind="namespace"><name>alPlacementFunction</name>
     <member refid="namespaceal_placement_function_1ab97fee244d7fa769b772c7e532f85199" kind="function"><name>getClippingViewId</name></member>
@@ -1683,7 +1683,7 @@
     <member refid="namespaceal_project_interface_1afccfa7260e65b4b22035833b97b34556" kind="function"><name>getSystemKit</name></member>
   </compound>
   <compound refid="namespaceal_sensor_function" kind="namespace"><name>alSensorFunction</name>
-    <member refid="namespaceal_sensor_function_1af71d128a6784701deddfc6017b9dcab8" kind="variable"><name>split</name></member>
+    <member refid="namespaceal_sensor_function_1ae698926fd7f614b24a9ef3f7ae0b0287" kind="variable"><name>staticd</name></member>
     <member refid="namespaceal_sensor_function_1ab44c513fb0285868d728c07c88bf56a0" kind="function"><name>findSensorTypeByName</name></member>
     <member refid="namespaceal_sensor_function_1a4570bd7791091f21b23ecdaf59d8ebad" kind="function"><name>updateHitSensorsAll</name></member>
   </compound>
