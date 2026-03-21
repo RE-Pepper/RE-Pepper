@@ -18,7 +18,7 @@ struct NameToType
 #define ALSENSORFUNCTION_ENTRY( TYPE ) { #TYPE, al::SensorType_##TYPE },
 
 // clang-format off
-const NameToType split(sNameToTypeLookupTable)[] = {
+const NameToType staticd(sNameToTypeLookupTable)[] = {
 ALSENSORFUNCTION_ENTRY(Eye)
 ALSENSORFUNCTION_ENTRY(Player)
 ALSENSORFUNCTION_ENTRY(Npc)

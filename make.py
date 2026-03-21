@@ -8,16 +8,14 @@ from tools.low.glob import * # globals
 # I guess we have to start again :D (dont want to work with duct tape)
 
 def main():
-    parser = argparse.ArgumentParser('make.py', description="Build RE:Pepper")
-    parser.add_argument("version", nargs="?", default=None, help="Version to use")
+    parser = argparse.ArgumentParser(description="Build RE:Pepper")
+    parser.add_argument("version", default=None, help="Version to use")
     parser.add_argument("--warn", '-w', action='store_true', help="Omit many warnings (nintendo standard)")
     parser.add_argument("--only_matching", '-mo', action='store_true', help="Compile only matching code")
     parser.add_argument("--allow_shifting", '-sh', action='store_true', help="Allow shifts during linking")
     parser.add_argument("--do_split", '-sp', action='store_true', help="Enable splitting process (slow)")
     parser.add_argument("--vfe", '-vf', action='store_true', help="Enable VFE for building")
     parser.add_argument("--debug", '-d', action='store_true', help="Build with debug info")
-    parser.add_argument("--debug_obj", '-do', action='store_true', help="Build with debug info (objects only)")
-    parser.add_argument("--debug_link", '-dl', action='store_true', help="Build with debug info (linker only)")
     parser.add_argument("--delete", '-k', action='store_true', help="Delete temporary built files")
     parser.add_argument("--clean", '-c', action='store_true', help="Clean before building (and stop)")
     parser.add_argument("--clear_all", '-ca', action='store_true', help="Clean split and build (and continue)")
@@ -33,9 +31,6 @@ def main():
     if args.clear_all:
         args.clear_build = True
         args.clear_split = True
-    if args.debug:
-        args.debug_obj = True
-        args.debug_link = True
 
     if args.only_matching:
         cfg.only_matching = True
@@ -45,10 +40,10 @@ def main():
         cfg.do_split = True
     if args.delete:
         cfg.keep_objects = True
-    if args.debug_obj:
-        cfg.flags_comppile_cxx.append("--debug")
-    if args.debug_link:
-        cfg.flags_link.append("--debug")
+    if args.debug:
+        cfg.flags_compile_cxx.append("--debug")
+    else:
+        cfg.flags_compile_cxx.append("--no_debug")
     if args.vfe:
         cfg.flags_link.append("--vfemode=force")
     if args.warn:

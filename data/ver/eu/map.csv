@@ -1,29 +1,29 @@
 Start,     Pool,      End,       Section,   Rank,Type,Symbol
-0x00100000,          ,0x00100024,          ,m,fg,__ctr_start
-0x00100024,0x00100040,0x00100048,          ,O,f,nninitRegion
-0x00100048,          ,0x00100050,          ,m,f,_printf_percent
-0x00100050,          ,0x00100058,          ,U,f,_printf_p
-0x00100058,          ,0x00100060,          ,U,f,_printf_f
-0x00100060,          ,0x00100068,          ,U,f,_printf_e
-0x00100068,          ,0x00100070,          ,U,f,_printf_g
-0x00100070,          ,0x00100078,          ,U,f,_printf_a
-0x00100078,          ,0x00100084,          ,U,f,_printf_ll
-0x00100084,          ,0x0010008C,          ,U,f,_printf_i
-0x0010008C,          ,0x00100094,          ,U,f,_printf_d
-0x00100094,          ,0x0010009C,          ,U,f,_printf_u
-0x0010009C,          ,0x001000A4,          ,U,f,_printf_o
-0x001000A4,          ,0x001000AC,          ,U,f,_printf_x
-0x001000AC,          ,0x001000B4,          ,U,f,_printf_lli
-0x001000B4,          ,0x001000BC,          ,U,f,_printf_lld
-0x001000BC,          ,0x001000C4,          ,U,f,_printf_llu
-0x001000C4,          ,0x001000CC,          ,U,f,_printf_llo
-0x001000CC,          ,0x001000D4,          ,U,f,_printf_llx
-0x001000D4,          ,0x001000E0,          ,U,f,_printf_l
-0x001000E0,          ,0x001000E8,          ,U,f,_printf_c
-0x001000E8,          ,0x001000F0,          ,O,f,_printf_s
-0x001000F0,          ,0x001000F8,          ,U,f,_printf_lc
-0x001000F8,          ,0x00100100,          ,U,f,_printf_ls
-0x00100100,          ,0x00100108,          ,O,f,_printf_percent_end
+0x00100000,          ,0x00100024,          ,m,fs,__ctr_start
+0x00100024,0x00100040,0x00100048,0x00100000,O,fs,nninitRegion
+0x00100048,          ,0x00100050,0x00100000,m,fs,_printf_percent
+0x00100050,          ,0x00100058,0x00100000,U,fs,_printf_p
+0x00100058,          ,0x00100060,0x00100000,U,fs,_printf_f
+0x00100060,          ,0x00100068,0x00100000,U,fs,_printf_e
+0x00100068,          ,0x00100070,0x00100000,U,fs,_printf_g
+0x00100070,          ,0x00100078,0x00100000,U,fs,_printf_a
+0x00100078,          ,0x00100084,0x00100000,U,fs,_printf_ll
+0x00100084,          ,0x0010008C,0x00100000,U,fs,_printf_i
+0x0010008C,          ,0x00100094,0x00100000,U,fs,_printf_d
+0x00100094,          ,0x0010009C,0x00100000,U,fs,_printf_u
+0x0010009C,          ,0x001000A4,0x00100000,U,fs,_printf_o
+0x001000A4,          ,0x001000AC,0x00100000,U,fs,_printf_x
+0x001000AC,          ,0x001000B4,0x00100000,U,fs,_printf_lli
+0x001000B4,          ,0x001000BC,0x00100000,U,fs,_printf_lld
+0x001000BC,          ,0x001000C4,0x00100000,U,fs,_printf_llu
+0x001000C4,          ,0x001000CC,0x00100000,U,fs,_printf_llo
+0x001000CC,          ,0x001000D4,0x00100000,U,fs,_printf_llx
+0x001000D4,          ,0x001000E0,0x00100000,U,fs,_printf_l
+0x001000E0,          ,0x001000E8,0x00100000,U,fs,_printf_c
+0x001000E8,          ,0x001000F0,0x00100000,O,fs,_printf_s
+0x001000F0,          ,0x001000F8,0x00100000,U,fs,_printf_lc
+0x001000F8,          ,0x00100100,0x00100000,U,fs,_printf_ls
+0x00100100,          ,0x00100108,0x00100000,O,fs,_printf_percent_end
 0x00100108,0x00100154,0x0010015C,          ,O,f,nnMain
 0x0010015C,0x00100188,0x00100190,          ,U,f,nninitCallStaticInitializers
 0x00100190,0x001001D4,0x001001DC,          ,M,f,nninitLocale
@@ -176,7 +176,7 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x00105168,0x001051A4,0x001051A8,          ,U,f,nngxSetCmdlistParameteri
 0x001051A8,0x001051EC,0x001051F0,          ,U,f,nngxSetDisplayMode
 0x001051F0,          ,0x00105204,          ,U,f,_ZN2nn2os6detail27InitializeThreadEnvrionmentEv
-0x00105204,          ,0x00105210,          ,U,fg,_fp_init
+0x00105204,          ,0x00105210,          ,U,fs,_fp_init
 0x00105210,0x00105230,0x00105238,          ,U,f,_ZN2nn2os6Thread21CallDestructorAndExitEPv
 0x00105238,          ,0x0010523C,          ,U,f,
 0x0010523C,          ,0x00105240,          ,U,f,_ZN2nn2os3CTR43_GLOBAL__N__19_os_CppException_cpp_0201818f24DefaultUnexpectedHandlerEv
@@ -370,36 +370,36 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x0010B954,          ,0x0010B9DC,          ,U,f,_ZN2nn2os6detail17BlockingQueueBaseINS0_15CriticalSectionEE10TryDequeueEPj
 0x0010B9DC,          ,0x0010BAA4,          ,U,f,_ZN2nn2os6detail17BlockingQueueBaseINS0_15CriticalSectionEE7DequeueEv
 0x0010BAA4,0x0010BC28,0x0010BC30,          ,U,f,_ZNK4sead14SafeStringBaseIcE10rfindIndexERKNS_14SafeStringBaseIcEE
-0x0010BC30,          ,0x0010BC34,          ,U,f,__aeabi_idiv0
-0x0010BC34,          ,0x0010BC9C,          ,U,f,_d2e_norm_op1
-0x0010BC9C,0x0010BEE4,0x0010BFE4,          ,U,f,__btod_div_common
-0x0010BFE4,          ,0x0010C0C0,          ,U,f,_e2e
-0x0010C0C0,0x0010C324,0x0010C324,          ,U,f,__btod_mult_common
-0x0010C324,0x0010C378,0x0010C378,          ,U,f,_d2e_denorm_low
-0x0010C378,0x0010C46C,0x0010C474,          ,U,f,_ZN2nn4math5ARMv620MTX34InvTransposeAsmEPNS0_5MTX34EPKS2_
-0x0010C474,          ,0x0010C51C,          ,U,f,decodeSZSCtrAsm_
-0x0010C51C,          ,0x0010C56C,          ,U,f,_ZN2nw3lyt5local36_GLOBAL__N__12_lyt_Pane_cpp_9cfdc53416MultMatrixSRTxSTEPU11__writeonlyN2nn4math5MTX34EPKS5_PKNS4_4VEC2EPKNS4_4VEC3E
-0x0010C56C,          ,0x0010C574,          ,O,f,_ZN2nn3svc11CloseHandleENS_6HandleE
-0x0010C574,          ,0x0010C590,          ,O,f,_ZN2nn3svc17CreateMemoryBlockEPNS_6HandleEjjjj
-0x0010C590,          ,0x0010C5A8,          ,O,f,_ZN2nn3svc11CreateMutexEPNS_6HandleEb
-0x0010C5A8,          ,0x0010C5C0,          ,O,f,_ZN2nn3svc15DuplicateHandleEPNS_6HandleES1_
-0x0010C5C0,          ,0x0010C654,          ,U,f,_printf_wc
-0x0010C654,          ,0x0010C690,          ,U,f,strncat
-0x0010C690,          ,0x0010C6D4,          ,O,f,strstr
-0x0010C6D4,0x0010C73C,0x0010C740,          ,U,f,strcpy
+0x0010BC30,          ,0x0010BC34,          ,U,fs,__aeabi_idiv0
+0x0010BC34,          ,0x0010BC9C,          ,U,fs,_d2e_norm_op1
+0x0010BC9C,0x0010BEE4,0x0010BFE4,          ,U,fs,__btod_div_common
+0x0010BFE4,          ,0x0010C0C0,          ,U,fs,_e2e
+0x0010C0C0,0x0010C324,0x0010C324,          ,U,fs,__btod_mult_common
+0x0010C324,0x0010C378,0x0010C378,          ,U,fs,_d2e_denorm_low
+0x0010C378,0x0010C46C,0x0010C474,          ,U,fs,_ZN2nn4math5ARMv620MTX34InvTransposeAsmEPNS0_5MTX34EPKS2_
+0x0010C474,          ,0x0010C51C,          ,U,fs,decodeSZSCtrAsm_
+0x0010C51C,          ,0x0010C56C,          ,U,fs,_ZN2nw3lyt5local36_GLOBAL__N__12_lyt_Pane_cpp_9cfdc53416MultMatrixSRTxSTEPU11__writeonlyN2nn4math5MTX34EPKS5_PKNS4_4VEC2EPKNS4_4VEC3E
+0x0010C56C,          ,0x0010C574,          ,O,fs,_ZN2nn3svc11CloseHandleENS_6HandleE
+0x0010C574,          ,0x0010C590,0x0010C56C,O,fs,_ZN2nn3svc17CreateMemoryBlockEPNS_6HandleEjjjj
+0x0010C590,          ,0x0010C5A8,0x0010C56C,O,fs,_ZN2nn3svc11CreateMutexEPNS_6HandleEb
+0x0010C5A8,          ,0x0010C5C0,0x0010C56C,O,fs,_ZN2nn3svc15DuplicateHandleEPNS_6HandleES1_
+0x0010C5C0,          ,0x0010C654,          ,U,fs,_printf_wc
+0x0010C654,          ,0x0010C690,          ,U,fs,strncat
+0x0010C690,          ,0x0010C6D4,          ,O,fs,strstr
+0x0010C6D4,0x0010C73C,0x0010C740,          ,U,fs,strcpy
 0x0010C740,          ,0x0010C744,          ,U,f,
-0x0010C744,          ,0x0010C774,          ,U,f,wcsncpy
-0x0010C774,          ,0x0010C84C,          ,U,f,wcstok
-0x0010C84C,          ,0x0010C89C,          ,U,f,wcscasecmp
-0x0010C89C,          ,0x0010C8B8,          ,U,f,memset
-0x0010C8B8,0x0010C920,0x0010C924,          ,U,f,strncpy
-0x0010C924,0x0010C92C,0x0010C930,          ,U,f,__rt_errno_adddr
-0x0010C930,0x0010CA20,0x0010CA24,          ,U,f,_printf_mbtowc
-0x0010CA24,          ,0x0010CA38,          ,U,f,_printf_input_wchar
-0x0010CA38,0x0010CA74,0x0010CA78,          ,U,f,_printf_wchar_common
-0x0010CA78,          ,0x0010CA90,          ,U,f,_snputwc
-0x0010CA90,          ,0x0010CA98,          ,U,f,wmemcpy
-0x0010CA98,          ,0x0010CAA4,          ,U,f,memcpy
+0x0010C744,          ,0x0010C774,          ,U,fs,wcsncpy
+0x0010C774,          ,0x0010C84C,          ,U,fs,wcstok
+0x0010C84C,          ,0x0010C89C,          ,U,fs,wcscasecmp
+0x0010C89C,          ,0x0010C8B8,          ,U,fs,memset
+0x0010C8B8,0x0010C920,0x0010C924,          ,U,fs,strncpy
+0x0010C924,0x0010C92C,0x0010C930,          ,U,fs,__rt_errno_adddr
+0x0010C930,0x0010CA20,0x0010CA24,          ,U,fs,_printf_mbtowc
+0x0010CA24,          ,0x0010CA38,          ,U,fs,_printf_input_wchar
+0x0010CA38,0x0010CA74,0x0010CA78,          ,U,fs,_printf_wchar_common
+0x0010CA78,          ,0x0010CA90,          ,U,fs,_snputwc
+0x0010CA90,          ,0x0010CA98,          ,U,fs,wmemcpy
+0x0010CA98,          ,0x0010CAA4,          ,U,fs,memcpy
 0x0010CAA4,          ,0x0010CAB0,          ,U,f,
 0x0010CAB0,          ,0x0010CAC0,          ,U,f,
 0x0010CAC0,          ,0x0010CAD0,          ,U,f,
@@ -7473,7 +7473,7 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x0024FE98,          ,0x0024FEB0,          ,U,f,
 0x0024FEB0,          ,0x0024FEB8,          ,U,f,
 0x0024FEB8,          ,0x0024FEC8,          ,U,f,
-0x0024FEC8,          ,0x0024FEEC,          ,O,fg,strrchr
+0x0024FEC8,          ,0x0024FEEC,          ,O,fs,strrchr
 0x0024FEEC,0x00250020,0x00250024,          ,U,f,
 0x00250024,          ,0x0025008C,          ,U,f,
 0x0025008C,          ,0x002500DC,          ,U,f,
@@ -9657,7 +9657,7 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x0028A998,          ,0x0028A9B4,          ,U,f,
 0x0028A9B4,          ,0x0028AA58,          ,U,f,
 0x0028AA58,          ,0x0028AA60,          ,U,f,
-0x0028AA60,0x0028AB18,0x0028AB1C,          ,O,fg,strcmp
+0x0028AA60,0x0028AB18,0x0028AB1C,          ,O,fs,strcmp
 0x0028AB1C,0x0028AB70,0x0028AB74,          ,U,f,
 0x0028AB74,0x0028AE24,0x0028AE64,          ,U,f,
 0x0028AE64,          ,0x0028AEA8,          ,U,f,
@@ -9856,7 +9856,7 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x002920F8,0x00292108,0x0029210C,          ,U,f,
 0x0029210C,0x00292118,0x0029211C,          ,U,f,
 0x0029211C,0x0029214C,0x00292158,          ,U,f,_ZN2nn3srv16GetServiceHandleEPNS_6HandleEPKcij
-0x00292158,0x002921B8,0x002921BC,          ,O,fg,strlen
+0x00292158,0x002921B8,0x002921BC,          ,O,fs,strlen
 0x002921BC,0x002921E8,0x002921EC,          ,U,f,
 0x002921EC,0x00292238,0x00292244,          ,U,f,
 0x00292244,          ,0x00292268,          ,U,f,
@@ -18054,7 +18054,7 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x003A0C10,0x003A0D34,0x003A0D38,          ,U,fa,_frem
 0x003A0D38,0x003A0D88,0x003A0D8C,          ,U,fa,__aeabi_f2ulz
 0x003A0D8C,          ,0x003A0DA4,          ,U,f,
-0x003A0DA4,0x003A0DDC,0x003A2008,          ,O,fg,__cpp_initialize__aeabi_
+0x003A0DA4,0x003A0DDC,0x003A2008,          ,O,fs,__cpp_initialize__aeabi_
 0x003A2008,          ,0x003A8FA4,          ,U,d,
 0x003A8FA4,          ,0x003A9344,          ,O,d,sUpdateExecuteOrder
 0x003A9344,          ,0x003A9384,          ,O,d,sDraw0ExecuteOrder
@@ -18242,7 +18242,7 @@ Start,     Pool,      End,       Section,   Rank,Type,Symbol
 0x003E0E38,          ,0x003E0E40,          ,U,dc,__lcnum_c_name
 0x003E0E40,          ,0x003E0E44,          ,U,dc,__lcnum_c_start
 0x003E1000,          ,0x003E23C4,          ,U,d,
-0x003E23C4,0x003E23C8,0x003E2B50,          ,U,dg,_ZN11Application9sInstanceE
+0x003E23C4,0x003E23C8,0x003E2B50,          ,U,d,_ZN11Application9sInstanceE
 0x003E2B50,          ,0x003E2E10,          ,U,dr,
 0x003E2E10,          ,0x003E2E18,          ,U,d,
 0x003E2E18,          ,0x003E2E20,          ,U,dr,

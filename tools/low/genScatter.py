@@ -23,8 +23,7 @@ def gen_scatter():
         ro_s = f"0x{ro_i:08X}"
         rw_s = f"0x{rw_i:08X}"
 
-    sect_prev = 0
-    addr_prev = 0
+    sym_prev = None
     syms = sorted(read_sym_file(), key=lambda tup: tup[MapFmt.Start])
     for sym in syms:
         rank = sym[MapFmt.Rank]
@@ -40,8 +39,8 @@ def gen_scatter():
 
         if (addr % 4) != 0:
             isCreateSection = False
-        if sect and (sect == sect_prev or sect == addr_prev):
-            continue
+        if sect and sym_prev and (sect == sym_prev[MapFmt.Section] or sect == sym_prev[MapFmt.Start]):
+            isCreateSection = False
 
         if not name:
             if "f" in type:
@@ -59,7 +58,7 @@ def gen_scatter():
             if not cfg.allow_shifting:
                 addr_str = f" 0x{addr:08x}\n"
             part +=  "\t}\n"
-            part += f"\t{name}{addr_str}"
+            part += f"\ter_{name}{addr_str}"
             part +=  "\t{\n"
         part += f"\t\t* ({sect_str})\n"
 
@@ -73,8 +72,7 @@ def gen_scatter():
         else:
             fail (f"Unsupported sym type: {type} at 0x{addr:08X}")
 
-        sect_prev = sect
-        addr_prev = addr
+        sym_prev = sym
 
     s_code = endPart(s_code)
     if s_dataro:

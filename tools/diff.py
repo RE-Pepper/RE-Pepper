@@ -23,9 +23,9 @@ def main():
     decomp_symbol = get_elf_symbol(symbolname)
 
     if symbol is None:
-        fail (f"Couldn't find in csv: {symbolname}")
+        fail_ex (f"Couldn't find in symbol map: {symbolname}", "Fix the function, or add it to the map!", False)
     if decomp_symbol is None:
-        fail (f"Couldn't find in decomp: {symbolname}")
+        fail_ex (f"Couldn't find in decomp: {symbolname}", "Make sure to implement this symbol somewhere!", False)
 
     sym_start = int(symbol[MapFmt.Start]-addr_base)
     decomp_start = int(decomp_symbol[ElfMapFmt.Address]-addr_base)

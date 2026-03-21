@@ -141,18 +141,20 @@ def readFile(path):
     if my_modules:
         if not modules:
             modules = {}
-        for my_src_name, my_src_cfg in my_modules.items():
-            if my_src_name in modules:
-                for name, val in my_src_cfg.items():
-                    modules[my_src_name][name] = val
+        for mod_id, mod_data in my_modules.items():
+            if mod_data.get("disabled"):
+                continue
+            if mod_id in modules:
+                for name, val in mod_data.items():
+                    modules[mod_id][name] = val
             else:
-                modules[my_src_name] = my_src_cfg
-            if not modules[my_src_name].get("name"):
-                _fail (f"Module {my_src_name} missing \'name\' entry")
-            if not modules[my_src_name].get("source_dir"):
-                modules[my_src_name]["source_dir"] = "src"
-            if not modules[my_src_name].get("include_dir"):
-                modules[my_src_name]["include_dir"] = "include"
+                modules[mod_id] = mod_data
+            if not mod_data.get("name"):
+                _fail (f"Module {mod_id} missing \'name\' entry")
+            if not mod_data.get("source_dir"):
+                modules[mod_id]["source_dir"] = "src"
+            if not mod_data.get("include_dir"):
+                modules[mod_id]["include_dir"] = "include"
 
 assert_flag = True
 def assertEntry(name):

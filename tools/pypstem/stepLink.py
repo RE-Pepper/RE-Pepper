@@ -11,13 +11,13 @@ def exec_link():
 
     echo ("Preparing to link ...", "\r")
 
+    getElfFile().unlink()
+    getOutMapFile().unlink()
+
     setup_compiler(cfg.compiler)
 
     flags = default_flags_link
     flags.extend(cfg.flags_link)
-    flags.append( "--callgraph")
-    flags.append( "--callgraph_output=text")
-    flags.append(f"--callgraph_file={str(getOutCallFile())}")
     flags.append(f"--list={str(getOutMapFile())}")
     flags.append(f"--output={str(getElfFile())}")
     flags.append(f"--scatter={str(getOutScatterFile())}")

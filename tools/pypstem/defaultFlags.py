@@ -31,6 +31,8 @@ default_flags_link = [
     "--mangled",
     "--symbols",
     "--map",
+    "--muldefweak",
+    "--muldefglobal",
     "--diag_suppress=6642,6439,6329,6314",
 ]
 

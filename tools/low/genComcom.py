@@ -8,6 +8,12 @@ from tools.pypstem._utils import getFileBuildPath
 def gen_comcom():
     directory = str(getBuildObjPath())
     command = ""
+    includes = ""
+
+    for src_path_name, src_data in cfg.modules.items():
+        if not src_data.get("include_dir"):
+            continue
+        includes += f"-I {src_data.get("include_dir")} "
 
     with open(getJsonComcomFile(), "w") as f:
         f.write("[")
@@ -24,7 +30,7 @@ def gen_comcom():
 
                 f.write("\n{\n")
                 f.write(f"  \"directory\": \"{directory}\",\n")
-                f.write( "  \"command\": \"\",\n")
+                f.write(f"  \"command\": \"{includes}\",\n")
                 f.write(f"  \"file\": \"{str(file)}\",\n")
                 f.write(f"  \"output\": \"{str(output)}\"\n")
                 f.write("},")

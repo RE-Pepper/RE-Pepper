@@ -36,7 +36,7 @@ LiveActor* createActorFunction( const char* name )
         return new T( name );
 }
 
-const NameToActorCreator split( sActorFactoryEntries )[] = {
+const NameToActorCreator staticd( sActorFactoryEntries )[] = {
         { "Kinopio", nullptr },
         { "Luigi", nullptr },
         { "Peach", nullptr },

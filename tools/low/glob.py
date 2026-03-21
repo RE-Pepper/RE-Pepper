@@ -75,8 +75,6 @@ def getOutScatterFile():
     return getBuildPath() / f"{cfg.project_name}.ld"
 def getOutMapFile():
     return getBuildPath() / f"{cfg.project_name}.map"
-def getOutCallFile():
-    return getBuildPath() / f"{cfg.project_name}.txt"
 def getBuildViaFile():
     return getBuildPath() / f"{cfg.project_name}.via"
 def getBuildObjPath():
@@ -101,13 +99,20 @@ def getSplitObjFile():
     return getSplitPath() / "splector.o"
 def getSplitLibFile():
     return getBuildLibPath() / f"lib{getSplitLibName()}.a"
+# grabs symbols from libraries
 def getDependFile():
     return getSplitPath() / "depend.o"
+# stubs
+def getStubsLibFile():
+    return getBuildLibPath() / f"libstubs.a"
+def getStubsFile():
+    return getSplitPath() / "stubs.c"
 
 
 # ui
 def echo(str, end="\n"):
     print (f"\033[38;5;221m{str}\033[0m\033[K", end=end)
+
 def _fail_base(msg, det):
     if det: # backtrace
         raise RuntimeError(f"Failure!\n{msg}")
@@ -116,7 +121,6 @@ def _fail_base(msg, det):
         exit (1)
 def fail(err, det=True):
     _fail_base(f"\033[38;5;196mError: {err}\033[0m\033[K", det)
-        
 def fail_ex(err, info, det=True):
     _fail_base(f"\033[38;5;196mError: {err}\033[0m\033[K\n\033[38;5;82m{info}\033[0m\033[K", det)
 

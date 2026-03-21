@@ -16,10 +16,12 @@
   },
   "modules": {
     "Game": {
-      "name": "Game"
+      "name": "Game",
+      "disabled": "1"
     },
     "lib/al": {
-      "name": "Actor"
+      "name": "Actor",
+      "disabled": "1"
     },
     "lib/sead": {
       "name": "Sead",

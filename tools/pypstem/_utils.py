@@ -6,23 +6,15 @@ from tools.pypstem.defaultFlags import *
 
 curname = ""
 curstatus = ""
-progmax = 0
-progidx = 0
-def progress_set(name, idx):
-    global curname, progidx
+def progress_set(name):
+    global curname
     curname = name
-    progidx = idx
 def progress_set_type(status):
     global curstatus
     curstatus = status
-def progress_set_max(max):
-    global progmax
-    progmax = max
 def progress_print():
     if is_silent: return
     prog_line = ""
-    if progmax > 0:
-        prog_line += f"[{progidx}/{progmax}] "
     prog_line += f"\033[38;5;172m{curstatus}\033[38;2;150;75;0m{curname}\033[0m\033[K ..."
     print (prog_line, end='\r', flush=True)
 def progress_upd_type(status):

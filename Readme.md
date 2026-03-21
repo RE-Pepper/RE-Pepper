@@ -2,7 +2,11 @@
  
 This is a reverse engineering project for Super Mario 3D Land.  
 It is also fork from RedPepper on 3dsdecomp's github, massively upgrading the way it works.  
-Currently, this decompilation only targets the European version, but multiversion support was added and is experimental.  
+This decompilation targets the European version, but multiversion support was added and is experimental.  
+
+> [!INFO]
+> Current state of the project:
+> Quite a few things were discovered, so I decided to reset the progress (for now). This means that I am moving individual files back into compilation, but checking and fixing some things.
   
 > [!IMPORTANT]
 > Reminder: **this will not produce a playable game.** This project will not allow you to play the game if you don't already own it.

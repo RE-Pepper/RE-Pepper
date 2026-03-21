@@ -16,9 +16,11 @@ class ElfMapFmt(IntEnum):
     Address = 1
     Type = 2
     Size = 3
-    Section = 4
+    Origin = 4
 
 def _read_elf_symbols():
+    stub_path = getStubsLibFile().name
+
     if not getOutMapFile().exists():
         fail_ex ("Build Map file not found, readElf cannot be used.", f"Missing: {getMapFile()}")
 
@@ -57,12 +59,15 @@ def _read_elf_symbols():
 
                 type += f" {line[3]}"
                 size = int(line[4])
-                sect = line[5]
+                orig = line[5]
             else:
                 size = int(line[3])
-                sect = line[4]
+                orig = line[4]
 
-            yield [sym, addr, type, size, sect]
+            if stub_path in orig:
+                continue # skip stubs
+
+            yield [sym, addr, type, size, orig]
 
         if not flag_found:
             fail_ex ("Symbols not found in map.", "Ensure you are passing --symbols to linker.")

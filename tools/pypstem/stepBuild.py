@@ -60,9 +60,8 @@ def exec_build():
 
     data_new = {}
     data_new_names = set()
-    file_counter = 0
 
-    progress_set("", 0)
+    progress_set("")
     progress_set_type ("Preparing to build ...")
 
     # read file list
@@ -135,7 +134,6 @@ def exec_build():
 
     module_paths = {}
     module_files = {}
-    data_len = 0
 
     for mod_path_name, mod_data in cfg.modules.items():
         mod_path = getModSrc(mod_path_name, mod_data)
@@ -157,8 +155,6 @@ def exec_build():
                 continue
 
             module_files[mod_path_name].add(file)
-            data_len += 1
-    progress_set_max(data_len)
 
     # iterate modules
     for mod_path_name, mod_data in cfg.modules.items():
@@ -226,8 +222,7 @@ def exec_build():
 
             if do_update: # build it
                 # set progress
-                file_counter += 1
-                progress_set(f"{file.name}", file_counter)
+                progress_set(f"{file.name}")
                 progress_print()
 
                 # build it
@@ -257,8 +252,6 @@ def exec_build():
 
         # prebuild module string
         line_category = ""
-        if file_counter > 0:
-            line_category += f"[{file_counter}]"
         line_category += f"<{len(module_files[mod_path_name])}> {mod_data.get("name")}"
 
         # append to archive
@@ -278,6 +271,10 @@ def exec_build():
                 for sym in read_elfsym(out_path):
                     json_syms[file_str].append(sym[ElfSymFmt.Symbol])
 
+            echo (f"{line_category}: Compressing", "\r")
+            ar_arg = ["-rsc", str(mod_ar_file), f"--via={str(getBuildViaFile())}"]
+            do_archive(ar_arg)
+
 
         # write flags down
         with open(getCfgFlagsTFile(), "a") as f:
@@ -288,10 +285,6 @@ def exec_build():
         if len(obj_new_list) <= 0 and not did_delete:
             echo (f"{line_category}: Unchanged")
             continue
-
-        echo (f"{line_category}: Compressing", "\r")
-        ar_arg = ["-rsc", str(mod_ar_file), "--via", str(getBuildViaFile())]
-        do_archive(ar_arg)
 
         if len(obj_new_list) > 0 and not cfg.keep_objects:
             echo (f"{line_category}: Cleaning", "\r")
