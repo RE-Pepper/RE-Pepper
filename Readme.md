@@ -4,12 +4,12 @@ This is a reverse engineering project for Super Mario 3D Land.
 It is also fork from RedPepper on 3dsdecomp's github, massively upgrading the way it works.  
 This decompilation targets the European version, but multiversion support was added and is experimental.  
 
-> [!INFO]
-> Current state of the project:
-> Quite a few things were discovered, so I decided to reset the progress (for now). This means that I am moving individual files back into compilation, but checking and fixing some things.
-  
 > [!IMPORTANT]
 > Reminder: **this will not produce a playable game.** This project will not allow you to play the game if you don't already own it.
+  
+> [!NOTE]
+> Current state of the project:  
+> Quite a few things were discovered, so I decided to reset the progress (for now). This means that I am moving individual files back into compilation, but checking and fixing some things.
   
 > [!NOTE]
 > This project was built in a way that allows for easy customization. If this were to be forked for another game, MIT License applies to the toolchain. The decompiled code is CC0.
@@ -36,8 +36,9 @@ As noted earlier, this fork of the RedPepper project made some updates:
 
 ### Prequesites
     - Python 3
-    - DevKitPro
-    - `code.bin` and `exh.bin` extracted from Super Mario 3D Land
+    <!-- DevKitPro-->
+    - `code.bin` or `.code` (not decrypted) as `code.bin`
+    - `exh.bin` or `extheader.bin` or `HeaderExeFS.bin` (not decrypted) as `exh.bin`
 
 ### Setup
 #### Python
@@ -55,7 +56,7 @@ As noted earlier, this fork of the RedPepper project made some updates:
 - Place the `code.bin` and `exh.bin` files in the data folder, the tools will put them where needed.
 - run ```py make.py [version]```. default version is EU
 
-> [!IMPORTANT]
+> [!CAUTION]
 > Note: **do not delete cmd.exe**, it is required to pass a silly check when building with armcc.
 
 ### Tools
