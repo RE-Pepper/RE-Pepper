@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerFigureDirector.h" line="5" column="1" bodyfile="Game/include/Player/PlayerFigureDirector.h" bodystart="6" bodyend="14"/>
+        <location file="Game/backup/include/Player/PlayerFigureDirector.h" line="5" column="1" bodyfile="Game/backup/include/Player/PlayerFigureDirector.h" bodystart="6" bodyend="14"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -133,6 +133,6 @@
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="47"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Player/PlayerFigureDirector.h"/>
+    <location file="Game/backup/include/Player/PlayerFigureDirector.h"/>
   </compounddef>
 </doxygen>

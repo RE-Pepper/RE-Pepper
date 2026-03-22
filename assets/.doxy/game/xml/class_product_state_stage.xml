@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Sequence/ProductStateStage.h" line="17" column="32" bodyfile="Game/include/Sequence/ProductStateStage.h" bodystart="17" bodyend="-1"/>
+        <location file="Game/backup/include/Sequence/ProductStateStage.h" line="17" column="32" bodyfile="Game/backup/include/Sequence/ProductStateStage.h" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_product_state_stage_1af3bf563229adfe69815b436cdefcfa90" prot="private" static="no" mutable="no">
         <type><ref refid="class_product_stage_start_param" kindref="compound">ProductStageStartParam</ref> *</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Sequence/ProductStateStage.h" line="18" column="32" bodyfile="Game/include/Sequence/ProductStateStage.h" bodystart="18" bodyend="-1"/>
+        <location file="Game/backup/include/Sequence/ProductStateStage.h" line="18" column="32" bodyfile="Game/backup/include/Sequence/ProductStateStage.h" bodystart="18" bodyend="-1"/>
         <referencedby refid="class_product_state_stage_1a3d252f759d3c62b8d5b76fa89db2e3d2" compoundref="_product_state_stage_8cpp" startline="15" endline="21">ProductStateStage</referencedby>
       </memberdef>
       <memberdef kind="variable" id="class_product_state_stage_1ab3d682f250b2222c44d60799ea0ec422" prot="private" static="no" mutable="no">
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Sequence/ProductStateStage.h" line="19" column="32" bodyfile="Game/include/Sequence/ProductStateStage.h" bodystart="19" bodyend="-1"/>
+        <location file="Game/backup/include/Sequence/ProductStateStage.h" line="19" column="32" bodyfile="Game/backup/include/Sequence/ProductStateStage.h" bodystart="19" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_product_state_stage_1a1a06abf1d00cfc4c2ae917776b934399" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Sequence/ProductStateStage.h" line="20" column="32" bodyfile="Game/include/Sequence/ProductStateStage.h" bodystart="20" bodyend="-1"/>
+        <location file="Game/backup/include/Sequence/ProductStateStage.h" line="20" column="32" bodyfile="Game/backup/include/Sequence/ProductStateStage.h" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_product_state_stage_1a0bb7f8616101f51aae64f61f812ae0e1" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Sequence/ProductStateStage.h" line="21" column="32" bodyfile="Game/include/Sequence/ProductStateStage.h" bodystart="21" bodyend="-1"/>
+        <location file="Game/backup/include/Sequence/ProductStateStage.h" line="21" column="32" bodyfile="Game/backup/include/Sequence/ProductStateStage.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_product_state_stage_1aea4513e87f4bb3742f2ce47b591ffa43" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -88,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Sequence/ProductStateStage.h" line="22" column="32" bodyfile="Game/include/Sequence/ProductStateStage.h" bodystart="22" bodyend="-1"/>
+        <location file="Game/backup/include/Sequence/ProductStateStage.h" line="22" column="32" bodyfile="Game/backup/include/Sequence/ProductStateStage.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_product_state_stage_1a83ea7789b10b5e8518fcdfe831001bb1" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -102,7 +102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Sequence/ProductStateStage.h" line="23" column="32" bodyfile="Game/include/Sequence/ProductStateStage.h" bodystart="23" bodyend="-1"/>
+        <location file="Game/backup/include/Sequence/ProductStateStage.h" line="23" column="32" bodyfile="Game/backup/include/Sequence/ProductStateStage.h" bodystart="23" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_product_state_stage_1a500d61a63435b32b740a3bce58088c76" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -116,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Sequence/ProductStateStage.h" line="24" column="32" bodyfile="Game/include/Sequence/ProductStateStage.h" bodystart="24" bodyend="-1"/>
+        <location file="Game/backup/include/Sequence/ProductStateStage.h" line="24" column="32" bodyfile="Game/backup/include/Sequence/ProductStateStage.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_product_state_stage_1ac6cba8fe0c793eed12cb3e6d7f94843b" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -130,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Sequence/ProductStateStage.h" line="25" column="32" bodyfile="Game/include/Sequence/ProductStateStage.h" bodystart="25" bodyend="-1"/>
+        <location file="Game/backup/include/Sequence/ProductStateStage.h" line="25" column="32" bodyfile="Game/backup/include/Sequence/ProductStateStage.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_product_state_stage_1a3c7b48a033e6aca54fe9fc722301dbe4" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Sequence/ProductStateStage.h" line="26" column="32" bodyfile="Game/include/Sequence/ProductStateStage.h" bodystart="26" bodyend="-1"/>
+        <location file="Game/backup/include/Sequence/ProductStateStage.h" line="26" column="32" bodyfile="Game/backup/include/Sequence/ProductStateStage.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_product_state_stage_1a3ff72589009c821d44fb12d381e98fff" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -158,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Sequence/ProductStateStage.h" line="27" column="32" bodyfile="Game/include/Sequence/ProductStateStage.h" bodystart="27" bodyend="-1"/>
+        <location file="Game/backup/include/Sequence/ProductStateStage.h" line="27" column="32" bodyfile="Game/backup/include/Sequence/ProductStateStage.h" bodystart="27" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -186,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Sequence/ProductStateStage.h" line="33" column="9" bodyfile="Game/src/Sequence/ProductStateStage.cpp" bodystart="15" bodyend="21"/>
+        <location file="Game/backup/include/Sequence/ProductStateStage.h" line="33" column="9" bodyfile="Game/backup/src/Sequence/ProductStateStage.cpp" bodystart="15" bodyend="21"/>
         <references refid="class_product_state_stage_1af3bf563229adfe69815b436cdefcfa90" compoundref="_product_state_stage_8h" startline="18">mLastStageStartParam</references>
       </memberdef>
     </sectiondef>
@@ -379,7 +379,7 @@
         <label>al::Scene</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/Sequence/ProductStateStage.h" line="14" column="1" bodyfile="Game/include/Sequence/ProductStateStage.h" bodystart="15" bodyend="34"/>
+    <location file="Game/backup/include/Sequence/ProductStateStage.h" line="14" column="1" bodyfile="Game/backup/include/Sequence/ProductStateStage.h" bodystart="15" bodyend="34"/>
     <listofallmembers>
       <member refid="class_product_state_stage_1a1a06abf1d00cfc4c2ae917776b934399" prot="private" virt="non-virtual"><scope>ProductStateStage</scope><name>_1C</name></member>
       <member refid="class_product_state_stage_1a0bb7f8616101f51aae64f61f812ae0e1" prot="private" virt="non-virtual"><scope>ProductStateStage</scope><name>_20</name></member>

@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/PeachRope.h" line="8" column="22" bodyfile="Game/src/Npc/PeachRope.cpp" bodystart="11" bodyend="15"/>
+        <location file="Game/backup/include/MapObj/PeachRope.h" line="8" column="22" bodyfile="Game/backup/src/Npc/PeachRope.cpp" bodystart="11" bodyend="15"/>
       </memberdef>
       <memberdef kind="function" id="class_peach_rope_1a4dd39a565bf82647cbd3b2a0d2e0319f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/PeachRope.h" line="9" column="22" bodyfile="Game/src/Npc/PeachRope.cpp" bodystart="17" bodyend="21"/>
+        <location file="Game/backup/include/MapObj/PeachRope.h" line="9" column="22" bodyfile="Game/backup/src/Npc/PeachRope.cpp" bodystart="17" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="class_peach_rope_1a254cef8cafcad0062fc407e651b4b1ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -53,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/PeachRope.h" line="12" column="9" bodyfile="Game/src/Npc/PeachRope.cpp" bodystart="7" bodyend="9"/>
+        <location file="Game/backup/include/MapObj/PeachRope.h" line="12" column="9" bodyfile="Game/backup/src/Npc/PeachRope.cpp" bodystart="7" bodyend="9"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -82,7 +82,7 @@
         <label>al::MapObjActor</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/MapObj/PeachRope.h" line="5" column="1" bodyfile="Game/include/MapObj/PeachRope.h" bodystart="6" bodyend="13"/>
+    <location file="Game/backup/include/MapObj/PeachRope.h" line="5" column="1" bodyfile="Game/backup/include/MapObj/PeachRope.h" bodystart="6" bodyend="13"/>
     <listofallmembers>
       <member refid="class_peach_rope_1ab12bcd8c861717a1244b317207879adf" prot="public" virt="virtual"><scope>PeachRope</scope><name>init</name></member>
       <member refid="class_peach_rope_1a4dd39a565bf82647cbd3b2a0d2e0319f" prot="public" virt="virtual"><scope>PeachRope</scope><name>kill</name></member>

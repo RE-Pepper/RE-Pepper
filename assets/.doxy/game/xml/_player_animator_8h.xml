@@ -114,6 +114,6 @@
 <codeline lineno="70" refid="class_player_animator_1a43ce9c3896d6af2444d2903e3eefc2a2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_player_animator_1a43ce9c3896d6af2444d2903e3eefc2a2" kindref="member">PlayerAnimator</ref>(<sp/>al::LiveActor*<sp/>host,<sp/><ref refid="class_player_model_holder" kindref="compound">PlayerModelHolder</ref>*<sp/>modelHolder<sp/>);</highlight></codeline>
 <codeline lineno="71"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Player/PlayerAnimator.h"/>
+    <location file="Game/backup/include/Player/PlayerAnimator.h"/>
   </compounddef>
 </doxygen>

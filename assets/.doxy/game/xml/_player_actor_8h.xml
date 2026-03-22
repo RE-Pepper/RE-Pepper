@@ -153,6 +153,6 @@
 <codeline lineno="104" refid="class_player_actor_1a09e66a16c57565841b28beb761821444" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_player_actor_1a09e66a16c57565841b28beb761821444" kindref="member">PlayerActor</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name<sp/>);</highlight></codeline>
 <codeline lineno="105"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Player/PlayerActor.h"/>
+    <location file="Game/backup/include/Player/PlayerActor.h"/>
   </compounddef>
 </doxygen>

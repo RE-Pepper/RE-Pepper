@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Sequence/StageWipeKeeper.h" line="12" column="33" bodyfile="Game/include/Sequence/StageWipeKeeper.h" bodystart="12" bodyend="-1"/>
+        <location file="Game/backup/include/Sequence/StageWipeKeeper.h" line="12" column="33" bodyfile="Game/backup/include/Sequence/StageWipeKeeper.h" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_stage_wipe_keeper_1a44b1a0459725a6d09f70abf8a5343faf" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Sequence/StageWipeKeeper.h" line="13" column="33" bodyfile="Game/include/Sequence/StageWipeKeeper.h" bodystart="13" bodyend="-1"/>
+        <location file="Game/backup/include/Sequence/StageWipeKeeper.h" line="13" column="33" bodyfile="Game/backup/include/Sequence/StageWipeKeeper.h" bodystart="13" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Sequence/StageWipeKeeper.h" line="16" column="14"/>
+        <location file="Game/backup/include/Sequence/StageWipeKeeper.h" line="16" column="14"/>
       </memberdef>
       <memberdef kind="function" id="class_stage_wipe_keeper_1af1131957bf09e4e7dd0b58bc7429448d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -64,14 +64,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Sequence/StageWipeKeeper.h" line="19" column="9"/>
+        <location file="Game/backup/include/Sequence/StageWipeKeeper.h" line="19" column="9"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="Game/include/Sequence/StageWipeKeeper.h" line="9" column="1" bodyfile="Game/include/Sequence/StageWipeKeeper.h" bodystart="10" bodyend="20"/>
+    <location file="Game/backup/include/Sequence/StageWipeKeeper.h" line="9" column="1" bodyfile="Game/backup/include/Sequence/StageWipeKeeper.h" bodystart="10" bodyend="20"/>
     <listofallmembers>
       <member refid="class_stage_wipe_keeper_1a1d43ee624ad85b81feacc8826a371cd9" prot="public" virt="non-virtual"><scope>StageWipeKeeper</scope><name>isAnyWipeCloseEnd</name></member>
       <member refid="class_stage_wipe_keeper_1a0293ceeeb733fa98d0607d6078428aab" prot="private" virt="non-virtual"><scope>StageWipeKeeper</scope><name>mWipes</name></member>

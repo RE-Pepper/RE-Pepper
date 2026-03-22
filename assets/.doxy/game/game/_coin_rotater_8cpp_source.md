@@ -2,7 +2,7 @@
 
 # File CoinRotater.cpp
 
-[**File List**](files.md) **>** [**Game**](dir_c33286056d2acf479cd8641ef845fec1.md) **>** [**src**](dir_d858f423bf5825f9a3db826b6a54a3cc.md) **>** [**MapObj**](dir_9fb1f6495822aa302d379b21d455a7ad.md) **>** [**CoinRotater.cpp**](_coin_rotater_8cpp.md)
+[**File List**](files.md) **>** [**backup**](dir_70d69dea5d1e5ae3147e3b96d60a7ce1.md) **>** [**src**](dir_47d28cd3eb946f860e1fe0f4e720b9c2.md) **>** [**MapObj**](dir_d5af9f6f62d27d9e3db1b7ff0fb6c0e1.md) **>** [**CoinRotater.cpp**](_coin_rotater_8cpp.md)
 
 [Go to the documentation of this file](_coin_rotater_8cpp.md)
 

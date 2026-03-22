@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_5711be3bb70244779513d118f4c8331f" kind="dir">
+    <compoundname>Stage</compoundname>
+    <innerfile refid="al_stage_resource_keeper_8cpp">alStageResourceKeeper.cpp</innerfile>
+    <innerfile refid="al_stage_switch_accesser_8cpp">alStageSwitchAccesser.cpp</innerfile>
+    <innerfile refid="al_stage_switch_keeper_8cpp">alStageSwitchKeeper.cpp</innerfile>
+    <innerfile refid="al_stage_switch_type_8cpp">alStageSwitchType.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/Stage/"/>
+  </compounddef>
+</doxygen>

@@ -97,5 +97,5 @@ al::SceneObjHolder * SceneObjFactory::createSceneObjHolder ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/Scene/SceneObjFactory.h`
+The documentation for this class was generated from the following file `Game/backup/include/Scene/SceneObjFactory.h`
 

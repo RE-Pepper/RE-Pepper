@@ -35,6 +35,6 @@
 <codeline lineno="24" refid="class_game_data_holder_1a2dd317ee560fef53282adfc51a4afc5d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_game_data_holder_1a2dd317ee560fef53282adfc51a4afc5d" kindref="member">GameDataHolder</ref>(<sp/><ref refid="class_course_list" kindref="compound">CourseList</ref>*<sp/>courseList<sp/>);</highlight></codeline>
 <codeline lineno="25"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/System/GameDataHolder.h"/>
+    <location file="Game/backup/include/System/GameDataHolder.h"/>
   </compounddef>
 </doxygen>

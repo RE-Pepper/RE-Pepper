@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerActorInitInfo.h" line="5" column="20" bodyfile="Game/include/Player/PlayerActorInitInfo.h" bodystart="5" bodyend="-1"/>
+        <location file="Game/backup/include/Player/PlayerActorInitInfo.h" line="5" column="20" bodyfile="Game/backup/include/Player/PlayerActorInitInfo.h" bodystart="5" bodyend="-1"/>
         <referencedby refid="struct_player_model_info_1a03dc7e6871a47a8818fd8508b49b01f2" compoundref="_player_actor_init_info_8h" startline="7" endline="10">getModelArchive</referencedby>
       </memberdef>
     </sectiondef>
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerActorInitInfo.h" line="7" column="20" bodyfile="Game/include/Player/PlayerActorInitInfo.h" bodystart="7" bodyend="10"/>
+        <location file="Game/backup/include/Player/PlayerActorInitInfo.h" line="7" column="20" bodyfile="Game/backup/include/Player/PlayerActorInitInfo.h" bodystart="7" bodyend="10"/>
         <references refid="struct_player_model_info_1a32ae8a51ea490c073a1ef2891d7e8907" compoundref="_player_actor_init_info_8h" startline="5">modelArcs</references>
       </memberdef>
     </sectiondef>
@@ -45,7 +45,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="Game/include/Player/PlayerActorInitInfo.h" line="3" column="1" bodyfile="Game/include/Player/PlayerActorInitInfo.h" bodystart="4" bodyend="11"/>
+    <location file="Game/backup/include/Player/PlayerActorInitInfo.h" line="3" column="1" bodyfile="Game/backup/include/Player/PlayerActorInitInfo.h" bodystart="4" bodyend="11"/>
     <listofallmembers>
       <member refid="struct_player_model_info_1a03dc7e6871a47a8818fd8508b49b01f2" prot="public" virt="non-virtual"><scope>PlayerModelInfo</scope><name>getModelArchive</name></member>
       <member refid="struct_player_model_info_1a32ae8a51ea490c073a1ef2891d7e8907" prot="public" virt="non-virtual"><scope>PlayerModelInfo</scope><name>modelArcs</name></member>

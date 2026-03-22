@@ -37,6 +37,6 @@
 <codeline lineno="8"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="9"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="Game/src/Player/PlayerActorInitInfo.cpp"/>
+    <location file="Game/backup/src/Player/PlayerActorInitInfo.cpp"/>
   </compounddef>
 </doxygen>

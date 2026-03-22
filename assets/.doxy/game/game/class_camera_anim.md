@@ -131,5 +131,5 @@ virtual void CameraAnim::load (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/Camera/CameraAnim.h`
+The documentation for this class was generated from the following file `Game/backup/include/Camera/CameraAnim.h`
 

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_685f8e5aad470601699f790a00ee6ee2" kind="dir">
+    <compoundname>KeyPose</compoundname>
+    <innerfile refid="al_key_pose_8cpp">alKeyPose.cpp</innerfile>
+    <innerfile refid="al_key_pose_keeper_8cpp">alKeyPoseKeeper.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/KeyPose/"/>
+  </compounddef>
+</doxygen>

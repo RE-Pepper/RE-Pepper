@@ -131,5 +131,5 @@ virtual void CameraFixPos::load (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/Camera/CameraFixPos.h`
+The documentation for this class was generated from the following file `Game/backup/include/Camera/CameraFixPos.h`
 

@@ -151,5 +151,5 @@ NrvTrickHintPanel::NERVE_DEF (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/src/MapObj/TrickHintPanel.cpp`
+The documentation for this class was generated from the following file `Game/backup/src/MapObj/TrickHintPanel.cpp`
 

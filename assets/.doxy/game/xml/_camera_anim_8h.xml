@@ -40,6 +40,6 @@
 <codeline lineno="18" refid="class_camera_anim_1afeaa9f8635b076af8ebce72a97532fe3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_camera_anim_1afeaa9f8635b076af8ebce72a97532fe3" kindref="member">CameraAnim</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name<sp/>);</highlight></codeline>
 <codeline lineno="19"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Camera/CameraAnim.h"/>
+    <location file="Game/backup/include/Camera/CameraAnim.h"/>
   </compounddef>
 </doxygen>

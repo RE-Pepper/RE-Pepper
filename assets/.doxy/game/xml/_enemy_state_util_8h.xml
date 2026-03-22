@@ -26,6 +26,6 @@
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>EnemyStateUtil</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="Game/include/Enemy/EnemyStateUtil.h"/>
+    <location file="Game/backup/include/Enemy/EnemyStateUtil.h"/>
   </compounddef>
 </doxygen>

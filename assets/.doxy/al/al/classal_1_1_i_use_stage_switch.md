@@ -113,5 +113,5 @@ virtual void al::IUseStageSwitch::initStageSwitchKeeper () = 0
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Stage/alStageSwitchKeeper.h`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Stage/alStageSwitchKeeper.h`
 

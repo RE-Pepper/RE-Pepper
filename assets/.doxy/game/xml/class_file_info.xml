@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Layout/FileInfo.h" line="8" column="26" bodyfile="Game/include/Layout/FileInfo.h" bodystart="8" bodyend="-1"/>
+        <location file="Game/backup/include/Layout/FileInfo.h" line="8" column="26" bodyfile="Game/backup/include/Layout/FileInfo.h" bodystart="8" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_file_info_1ae64279ef8ba7db8fd8fc836e21938ca6" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Layout/FileInfo.h" line="9" column="27" bodyfile="Game/include/Layout/FileInfo.h" bodystart="9" bodyend="-1"/>
+        <location file="Game/backup/include/Layout/FileInfo.h" line="9" column="27" bodyfile="Game/backup/include/Layout/FileInfo.h" bodystart="9" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_file_info_1a0a9d7e6bc5663a85346451a13553d5da" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Layout/FileInfo.h" line="10" column="27" bodyfile="Game/include/Layout/FileInfo.h" bodystart="10" bodyend="-1"/>
+        <location file="Game/backup/include/Layout/FileInfo.h" line="10" column="27" bodyfile="Game/backup/include/Layout/FileInfo.h" bodystart="10" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_file_info_1a1ecd69058269b4949a6c4a424f8669ab" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Layout/FileInfo.h" line="11" column="27" bodyfile="Game/include/Layout/FileInfo.h" bodystart="11" bodyend="-1"/>
+        <location file="Game/backup/include/Layout/FileInfo.h" line="11" column="27" bodyfile="Game/backup/include/Layout/FileInfo.h" bodystart="11" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_file_info_1a9be38cd94e09e7fe55c4a2ba2598e247" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Layout/FileInfo.h" line="12" column="27" bodyfile="Game/include/Layout/FileInfo.h" bodystart="12" bodyend="-1"/>
+        <location file="Game/backup/include/Layout/FileInfo.h" line="12" column="27" bodyfile="Game/backup/include/Layout/FileInfo.h" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_file_info_1a56077b23494805786a7132ae89a23659" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Layout/FileInfo.h" line="13" column="26" bodyfile="Game/include/Layout/FileInfo.h" bodystart="13" bodyend="-1"/>
+        <location file="Game/backup/include/Layout/FileInfo.h" line="13" column="26" bodyfile="Game/backup/include/Layout/FileInfo.h" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_file_info_1acb4e0e7f262f5e650b6dbe367dfef170" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Layout/FileInfo.h" line="14" column="27" bodyfile="Game/include/Layout/FileInfo.h" bodystart="14" bodyend="-1"/>
+        <location file="Game/backup/include/Layout/FileInfo.h" line="14" column="27" bodyfile="Game/backup/include/Layout/FileInfo.h" bodystart="14" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -117,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Layout/FileInfo.h" line="17" column="22"/>
+        <location file="Game/backup/include/Layout/FileInfo.h" line="17" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_file_info_1abb2a0a96504e15ff2b3a6462e230abc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -139,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Layout/FileInfo.h" line="20" column="9"/>
+        <location file="Game/backup/include/Layout/FileInfo.h" line="20" column="9"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -168,7 +168,7 @@
         <label>al::LayoutActor</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/Layout/FileInfo.h" line="5" column="1" bodyfile="Game/include/Layout/FileInfo.h" bodystart="6" bodyend="21"/>
+    <location file="Game/backup/include/Layout/FileInfo.h" line="5" column="1" bodyfile="Game/backup/include/Layout/FileInfo.h" bodystart="6" bodyend="21"/>
     <listofallmembers>
       <member refid="class_file_info_1ae64279ef8ba7db8fd8fc836e21938ca6" prot="private" virt="non-virtual"><scope>FileInfo</scope><name>_34</name></member>
       <member refid="class_file_info_1a0a9d7e6bc5663a85346451a13553d5da" prot="private" virt="non-virtual"><scope>FileInfo</scope><name>_38</name></member>

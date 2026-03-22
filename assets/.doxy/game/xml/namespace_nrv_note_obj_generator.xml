@@ -6,6 +6,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="Game/src/MapObj/NoteObjGenerator.cpp" line="13" column="1"/>
+    <location file="Game/backup/src/MapObj/NoteObjGenerator.cpp" line="13" column="1"/>
   </compounddef>
 </doxygen>

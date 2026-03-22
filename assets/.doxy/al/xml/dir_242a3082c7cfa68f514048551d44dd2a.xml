@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_242a3082c7cfa68f514048551d44dd2a" kind="dir">
+    <compoundname>File</compoundname>
+    <innerfile refid="al_file_function_8cpp">alFileFunction.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/File/"/>
+  </compounddef>
+</doxygen>

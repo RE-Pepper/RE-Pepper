@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_e05fb92cc301336445c4f62f6c4f58b8" kind="dir">
+    <compoundname>include</compoundname>
+    <innerdir refid="dir_4cdbb219ebc4b6f005e00b0a493e52da">Camera</innerdir>
+    <innerdir refid="dir_e35196509c323c9bb4cd921cf1b24d53">Enemy</innerdir>
+    <innerdir refid="dir_1e009ca70b4067525ad05e79ab8e6ed1">Layout</innerdir>
+    <innerdir refid="dir_2096800ae80e9b320e335490a6d8aa70">MapObj</innerdir>
+    <innerdir refid="dir_c3d399ad73eabae4c9209488b7fe7035">Player</innerdir>
+    <innerdir refid="dir_84f8925aa2d2bbbcb80a56e59501bb98">Scene</innerdir>
+    <innerdir refid="dir_add35431d27bbd5f0559725cdc453615">Sequence</innerdir>
+    <innerdir refid="dir_e1006d71d276319c0715d176f1f44d04">System</innerdir>
+    <innerdir refid="dir_573e22ec43506255a40df6a6e8a6e8a9">Util</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Game/backup/include/"/>
+  </compounddef>
+</doxygen>

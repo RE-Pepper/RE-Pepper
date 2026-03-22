@@ -131,5 +131,5 @@ virtual void PeachRope::kill ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/MapObj/PeachRope.h`
+The documentation for this class was generated from the following file `Game/backup/include/MapObj/PeachRope.h`
 

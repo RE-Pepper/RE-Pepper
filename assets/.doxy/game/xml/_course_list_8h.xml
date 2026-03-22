@@ -98,6 +98,6 @@
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>rp</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="Game/include/System/CourseList.h"/>
+    <location file="Game/backup/include/System/CourseList.h"/>
   </compounddef>
 </doxygen>

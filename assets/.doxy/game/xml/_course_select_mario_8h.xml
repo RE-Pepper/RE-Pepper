@@ -34,6 +34,6 @@
 <codeline lineno="12" refid="class_course_select_mario_1ac01dd5ce194616de86020b9b196ec97b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_course_select_mario_1ac01dd5ce194616de86020b9b196ec97b" kindref="member">CourseSelectMario</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::LayoutInitInfo&amp;<sp/>info<sp/>);</highlight></codeline>
 <codeline lineno="13"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Layout/CourseSelectMario.h"/>
+    <location file="Game/backup/include/Layout/CourseSelectMario.h"/>
   </compounddef>
 </doxygen>

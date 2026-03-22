@@ -42,6 +42,6 @@
 <codeline lineno="20" refid="class_file_info_1abb2a0a96504e15ff2b3a6462e230abc8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_file_info_1abb2a0a96504e15ff2b3a6462e230abc8" kindref="member">FileInfo</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::LayoutInitInfo&amp;<sp/>info,<sp/>FileSelect*<sp/>fileSelect<sp/>);</highlight></codeline>
 <codeline lineno="21"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Layout/FileInfo.h"/>
+    <location file="Game/backup/include/Layout/FileInfo.h"/>
   </compounddef>
 </doxygen>

@@ -30,6 +30,6 @@
 <codeline lineno="19" refid="class_stage_wipe_keeper_1af1131957bf09e4e7dd0b58bc7429448d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_stage_wipe_keeper_1af1131957bf09e4e7dd0b58bc7429448d" kindref="member">StageWipeKeeper</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::LayoutInitInfo&amp;<sp/>info<sp/>);</highlight></codeline>
 <codeline lineno="20"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Sequence/StageWipeKeeper.h"/>
+    <location file="Game/backup/include/Sequence/StageWipeKeeper.h"/>
   </compounddef>
 </doxygen>

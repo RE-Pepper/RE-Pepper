@@ -129,5 +129,5 @@ virtual void StageScene::control ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/Scene/StageScene.h`
+The documentation for this class was generated from the following file `Game/backup/include/Scene/StageScene.h`
 

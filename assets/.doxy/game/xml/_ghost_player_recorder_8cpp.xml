@@ -54,6 +54,6 @@
 <codeline lineno="22"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
-    <location file="Game/src/Player/GhostPlayerRecorder.cpp"/>
+    <location file="Game/backup/src/Player/GhostPlayerRecorder.cpp"/>
   </compounddef>
 </doxygen>

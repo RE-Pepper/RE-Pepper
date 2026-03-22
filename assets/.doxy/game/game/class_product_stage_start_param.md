@@ -240,5 +240,5 @@ Implements [*StageStartParamBase::getUnk4*](class_stage_start_param_base.md#func
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/Sequence/ProductStageStartParam.h`
+The documentation for this class was generated from the following file `Game/backup/include/Sequence/ProductStageStartParam.h`
 

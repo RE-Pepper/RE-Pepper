@@ -131,5 +131,5 @@ virtual void RailDotEnd::init (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/MapObj/RailDotEnd.h`
+The documentation for this class was generated from the following file `Game/backup/include/MapObj/RailDotEnd.h`
 

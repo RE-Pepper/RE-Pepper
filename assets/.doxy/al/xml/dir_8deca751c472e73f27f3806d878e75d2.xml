@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_8deca751c472e73f27f3806d878e75d2" kind="dir">
+    <compoundname>LiveActor</compoundname>
+    <innerfile refid="al_actor_action_keeper_8cpp">alActorActionKeeper.cpp</innerfile>
+    <innerfile refid="al_actor_init_info_8cpp">alActorInitInfo.cpp</innerfile>
+    <innerfile refid="al_actor_init_util_8cpp">alActorInitUtil.cpp</innerfile>
+    <innerfile refid="al_actor_pose_keeper_8cpp">alActorPoseKeeper.cpp</innerfile>
+    <innerfile refid="al_hit_sensor_director_8cpp">alHitSensorDirector.cpp</innerfile>
+    <innerfile refid="al_hit_sensor_function_8cpp">alHitSensorFunction.cpp</innerfile>
+    <innerfile refid="al_hit_sensor_keeper_8cpp">alHitSensorKeeper.cpp</innerfile>
+    <innerfile refid="al_live_actor_8cpp">alLiveActor.cpp</innerfile>
+    <innerfile refid="al_live_actor_flag_8cpp">alLiveActorFlag.cpp</innerfile>
+    <innerfile refid="al_live_actor_function_8cpp">alLiveActorFunction.cpp</innerfile>
+    <innerfile refid="al_live_actor_group_8cpp">alLiveActorGroup.cpp</innerfile>
+    <innerfile refid="al_live_actor_kit_8cpp">alLiveActorKit.cpp</innerfile>
+    <innerfile refid="al_sensor_function_8cpp">alSensorFunction.cpp</innerfile>
+    <innerfile refid="al_sensor_msg_8cpp">alSensorMsg.cpp</innerfile>
+    <innerfile refid="al_sub_actor_function_8cpp">alSubActorFunction.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/LiveActor/"/>
+  </compounddef>
+</doxygen>

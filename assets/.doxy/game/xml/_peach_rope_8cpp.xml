@@ -65,6 +65,6 @@
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LiveActor::kill();</highlight></codeline>
 <codeline lineno="21"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="Game/src/Npc/PeachRope.cpp"/>
+    <location file="Game/backup/src/Npc/PeachRope.cpp"/>
   </compounddef>
 </doxygen>

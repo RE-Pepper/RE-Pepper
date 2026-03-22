@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_b7fc9200a4f7d26d4acf4ee56ee313c7" kind="dir">
+    <compoundname>AreaObj</compoundname>
+    <innerfile refid="al_area_init_info_8h">alAreaInitInfo.h</innerfile>
+    <innerfile refid="al_area_obj_8h">alAreaObj.h</innerfile>
+    <innerfile refid="al_area_shape_8h">alAreaShape.h</innerfile>
+    <innerfile refid="al_area_shape_cube_8h">alAreaShapeCube.h</innerfile>
+    <innerfile refid="al_switch_area_director_8h">alSwitchAreaDirector.h</innerfile>
+    <innerfile refid="al_switch_keep_on_area_group_8h">alSwitchKeepOnAreaGroup.h</innerfile>
+    <innerfile refid="al_switch_on_area_group_8h">alSwitchOnAreaGroup.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/AreaObj/"/>
+  </compounddef>
+</doxygen>

@@ -157,5 +157,5 @@ virtual void CoinRotater::movement ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/MapObj/CoinRotater.h`
+The documentation for this class was generated from the following file `Game/backup/include/MapObj/CoinRotater.h`
 

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_3d028d37cd32fdb455b8e65a68f4df1f" kind="dir">
+    <compoundname>Memory</compoundname>
+    <innerfile refid="al_memory_system_8h">alMemorySystem.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Memory/"/>
+  </compounddef>
+</doxygen>

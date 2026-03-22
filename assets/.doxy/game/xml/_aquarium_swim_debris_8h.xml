@@ -49,6 +49,6 @@
 <codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_aquarium_swim_debris" kindref="compound">AquariumSwimDebris</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::SafeString&amp;<sp/>name<sp/>);</highlight></codeline>
 <codeline lineno="15"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/MapObj/AquariumSwimDebris.h"/>
+    <location file="Game/backup/include/MapObj/AquariumSwimDebris.h"/>
   </compounddef>
 </doxygen>

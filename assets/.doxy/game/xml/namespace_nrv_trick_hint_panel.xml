@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/MapObj/TrickHintPanel.cpp" line="14" column="1" declfile="Game/src/MapObj/TrickHintPanel.cpp" declline="14" declcolumn="1"/>
+        <location file="Game/backup/src/MapObj/TrickHintPanel.cpp" line="14" column="1" declfile="Game/backup/src/MapObj/TrickHintPanel.cpp" declline="14" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespace_nrv_trick_hint_panel_1a11d77a3cee3c213628ff7d086e034c12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/MapObj/TrickHintPanel.cpp" line="15" column="1" declfile="Game/src/MapObj/TrickHintPanel.cpp" declline="15" declcolumn="1"/>
+        <location file="Game/backup/src/MapObj/TrickHintPanel.cpp" line="15" column="1" declfile="Game/backup/src/MapObj/TrickHintPanel.cpp" declline="15" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespace_nrv_trick_hint_panel_1aeb00bf2d7e617c55c980711f45eb5da0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/MapObj/TrickHintPanel.cpp" line="16" column="1" declfile="Game/src/MapObj/TrickHintPanel.cpp" declline="16" declcolumn="1"/>
+        <location file="Game/backup/src/MapObj/TrickHintPanel.cpp" line="16" column="1" declfile="Game/backup/src/MapObj/TrickHintPanel.cpp" declline="16" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespace_nrv_trick_hint_panel_1a8e8e378f04b2fc0fd664e4a588729417" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -81,13 +81,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/MapObj/TrickHintPanel.cpp" line="17" column="1" declfile="Game/src/MapObj/TrickHintPanel.cpp" declline="17" declcolumn="1"/>
+        <location file="Game/backup/src/MapObj/TrickHintPanel.cpp" line="17" column="1" declfile="Game/backup/src/MapObj/TrickHintPanel.cpp" declline="17" declcolumn="1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="Game/src/MapObj/TrickHintPanel.cpp" line="11" column="1"/>
+    <location file="Game/backup/src/MapObj/TrickHintPanel.cpp" line="11" column="1"/>
   </compounddef>
 </doxygen>

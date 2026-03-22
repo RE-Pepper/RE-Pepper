@@ -56,6 +56,6 @@
 <codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_player_actor_1a07d56fce170bd7fe635146779574fe5c" kindref="member">mPlayer</ref>-&gt;<ref refid="class_player_1adbc28ab311abf45c532bbac21cae8b28" kindref="member">getProperty</ref>();</highlight></codeline>
 <codeline lineno="9"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="Game/src/Player/PlayerActor.cpp"/>
+    <location file="Game/backup/src/Player/PlayerActor.cpp"/>
   </compounddef>
 </doxygen>

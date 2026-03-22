@@ -48,6 +48,6 @@
 <codeline lineno="26" refid="class_camera_follow_1aa20c71ccea33b67b41e2b5bfe79bcbad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_camera_follow_1aa20c71ccea33b67b41e2b5bfe79bcbad" kindref="member">CameraFollow</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name<sp/>);</highlight></codeline>
 <codeline lineno="27"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Camera/CameraFollow.h"/>
+    <location file="Game/backup/include/Camera/CameraFollow.h"/>
   </compounddef>
 </doxygen>

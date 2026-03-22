@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Enemy/EnemyStateBlowDown.h" line="11" column="33" bodyfile="Game/include/Enemy/EnemyStateBlowDown.h" bodystart="11" bodyend="-1"/>
+        <location file="Game/backup/include/Enemy/EnemyStateBlowDown.h" line="11" column="33" bodyfile="Game/backup/include/Enemy/EnemyStateBlowDown.h" bodystart="11" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_enemy_state_blow_down_1a979e5820c5184d8053eefcf9cb901ca0" prot="private" static="no" mutable="no">
         <type>sead::Vector3f</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Enemy/EnemyStateBlowDown.h" line="12" column="34" bodyfile="Game/include/Enemy/EnemyStateBlowDown.h" bodystart="12" bodyend="-1"/>
+        <location file="Game/backup/include/Enemy/EnemyStateBlowDown.h" line="12" column="34" bodyfile="Game/backup/include/Enemy/EnemyStateBlowDown.h" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_enemy_state_blow_down_1a8334746ac1499c3a7d7348cb3ec82e13" prot="private" static="no" mutable="no">
         <type>const char *</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Enemy/EnemyStateBlowDown.h" line="13" column="33" bodyfile="Game/include/Enemy/EnemyStateBlowDown.h" bodystart="13" bodyend="-1"/>
+        <location file="Game/backup/include/Enemy/EnemyStateBlowDown.h" line="13" column="33" bodyfile="Game/backup/include/Enemy/EnemyStateBlowDown.h" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_enemy_state_blow_down_1a0fe09b3286543a4971eca394ae68324a" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Enemy/EnemyStateBlowDown.h" line="14" column="33" bodyfile="Game/include/Enemy/EnemyStateBlowDown.h" bodystart="14" bodyend="-1"/>
+        <location file="Game/backup/include/Enemy/EnemyStateBlowDown.h" line="14" column="33" bodyfile="Game/backup/include/Enemy/EnemyStateBlowDown.h" bodystart="14" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Enemy/EnemyStateBlowDown.h" line="17" column="9"/>
+        <location file="Game/backup/include/Enemy/EnemyStateBlowDown.h" line="17" column="9"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -125,7 +125,7 @@
         <label>al::ActorStateBase</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/Enemy/EnemyStateBlowDown.h" line="8" column="1" bodyfile="Game/include/Enemy/EnemyStateBlowDown.h" bodystart="9" bodyend="18"/>
+    <location file="Game/backup/include/Enemy/EnemyStateBlowDown.h" line="8" column="1" bodyfile="Game/backup/include/Enemy/EnemyStateBlowDown.h" bodystart="9" bodyend="18"/>
     <listofallmembers>
       <member refid="class_enemy_state_blow_down_1a979e5820c5184d8053eefcf9cb901ca0" prot="private" virt="non-virtual"><scope>EnemyStateBlowDown</scope><name>_14</name></member>
       <member refid="class_enemy_state_blow_down_1a0fe09b3286543a4971eca394ae68324a" prot="private" virt="non-virtual"><scope>EnemyStateBlowDown</scope><name>_24</name></member>

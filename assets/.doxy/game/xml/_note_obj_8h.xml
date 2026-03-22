@@ -71,6 +71,6 @@
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_note_obj" kindref="compound">NoteObj</ref>(<sp/><ref refid="class_note_obj_generator" kindref="compound">NoteObjGenerator</ref>*<sp/>generator<sp/>);</highlight></codeline>
 <codeline lineno="24"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/MapObj/NoteObj.h"/>
+    <location file="Game/backup/include/MapObj/NoteObj.h"/>
   </compounddef>
 </doxygen>

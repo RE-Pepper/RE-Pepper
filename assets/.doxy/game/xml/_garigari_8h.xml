@@ -44,6 +44,6 @@
 <codeline lineno="22" refid="class_garigari_1a0cce6aba4f8b70d0c3240f8a834bb26e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_garigari_1a0cce6aba4f8b70d0c3240f8a834bb26e" kindref="member">Garigari</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::SafeString&amp;<sp/>name<sp/>);</highlight></codeline>
 <codeline lineno="23"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/MapObj/Garigari.h"/>
+    <location file="Game/backup/include/MapObj/Garigari.h"/>
   </compounddef>
 </doxygen>

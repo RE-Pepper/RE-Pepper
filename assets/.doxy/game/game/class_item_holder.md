@@ -133,5 +133,5 @@ void ItemHolder::initCoinCharger (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/MapObj/ItemHolder.h`
+The documentation for this class was generated from the following file `Game/backup/include/MapObj/ItemHolder.h`
 

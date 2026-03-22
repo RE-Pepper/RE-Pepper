@@ -116,5 +116,5 @@ virtual void WindowConfirmButton::appear ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/Layout/WindowConfirmButton.h`
+The documentation for this class was generated from the following file `Game/backup/include/Layout/WindowConfirmButton.h`
 

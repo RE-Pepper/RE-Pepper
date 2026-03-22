@@ -38,6 +38,6 @@
 <codeline lineno="16" refid="class_block_dragon_generator_1acd742f894debdf0e9fd1c6b1b23f10ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_block_dragon_generator_1acd742f894debdf0e9fd1c6b1b23f10ea" kindref="member">BlockDragonGenerator</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::SafeString&amp;<sp/>name<sp/>);</highlight></codeline>
 <codeline lineno="17"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Enemy/BlockDragonGenerator.h"/>
+    <location file="Game/backup/include/Enemy/BlockDragonGenerator.h"/>
   </compounddef>
 </doxygen>

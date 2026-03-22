@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Enemy/EnemyStateHipDropDown.h" line="11" column="36" bodyfile="Game/include/Enemy/EnemyStateHipDropDown.h" bodystart="11" bodyend="-1"/>
+        <location file="Game/backup/include/Enemy/EnemyStateHipDropDown.h" line="11" column="36" bodyfile="Game/backup/include/Enemy/EnemyStateHipDropDown.h" bodystart="11" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_enemy_state_hip_drop_down_1a3ccd64cceb52a312e1398b38e94b50b6" prot="private" static="no" mutable="no">
         <type>sead::Vector3f</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Enemy/EnemyStateHipDropDown.h" line="12" column="37" bodyfile="Game/include/Enemy/EnemyStateHipDropDown.h" bodystart="12" bodyend="-1"/>
+        <location file="Game/backup/include/Enemy/EnemyStateHipDropDown.h" line="12" column="37" bodyfile="Game/backup/include/Enemy/EnemyStateHipDropDown.h" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_enemy_state_hip_drop_down_1a8fd67df1e85887105b7fa5a10c82af33" prot="private" static="no" mutable="no">
         <type>const char *</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Enemy/EnemyStateHipDropDown.h" line="13" column="36" bodyfile="Game/include/Enemy/EnemyStateHipDropDown.h" bodystart="13" bodyend="-1"/>
+        <location file="Game/backup/include/Enemy/EnemyStateHipDropDown.h" line="13" column="36" bodyfile="Game/backup/include/Enemy/EnemyStateHipDropDown.h" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_enemy_state_hip_drop_down_1ab93f0789f89695ab3dd17395f87e7c0a" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Enemy/EnemyStateHipDropDown.h" line="14" column="36" bodyfile="Game/include/Enemy/EnemyStateHipDropDown.h" bodystart="14" bodyend="-1"/>
+        <location file="Game/backup/include/Enemy/EnemyStateHipDropDown.h" line="14" column="36" bodyfile="Game/backup/include/Enemy/EnemyStateHipDropDown.h" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_enemy_state_hip_drop_down_1a34e56316e2d2f3f86b8d456b110f9d10" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Enemy/EnemyStateHipDropDown.h" line="15" column="36" bodyfile="Game/include/Enemy/EnemyStateHipDropDown.h" bodystart="15" bodyend="-1"/>
+        <location file="Game/backup/include/Enemy/EnemyStateHipDropDown.h" line="15" column="36" bodyfile="Game/backup/include/Enemy/EnemyStateHipDropDown.h" bodystart="15" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -103,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Enemy/EnemyStateHipDropDown.h" line="18" column="9"/>
+        <location file="Game/backup/include/Enemy/EnemyStateHipDropDown.h" line="18" column="9"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -139,7 +139,7 @@
         <label>al::ActorStateBase</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/Enemy/EnemyStateHipDropDown.h" line="8" column="1" bodyfile="Game/include/Enemy/EnemyStateHipDropDown.h" bodystart="9" bodyend="19"/>
+    <location file="Game/backup/include/Enemy/EnemyStateHipDropDown.h" line="8" column="1" bodyfile="Game/backup/include/Enemy/EnemyStateHipDropDown.h" bodystart="9" bodyend="19"/>
     <listofallmembers>
       <member refid="class_enemy_state_hip_drop_down_1a3ccd64cceb52a312e1398b38e94b50b6" prot="private" virt="non-virtual"><scope>EnemyStateHipDropDown</scope><name>_14</name></member>
       <member refid="class_enemy_state_hip_drop_down_1ab93f0789f89695ab3dd17395f87e7c0a" prot="private" virt="non-virtual"><scope>EnemyStateHipDropDown</scope><name>_24</name></member>

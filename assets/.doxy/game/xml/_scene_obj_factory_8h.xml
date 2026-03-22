@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Scene/SceneObjFactory.h" line="12" column="1" bodyfile="Game/include/Scene/SceneObjFactory.h" bodystart="13" bodyend="21"/>
+        <location file="Game/backup/include/Scene/SceneObjFactory.h" line="12" column="1" bodyfile="Game/backup/include/Scene/SceneObjFactory.h" bodystart="13" bodyend="21"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -131,6 +131,6 @@
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_scene_obj_factory_8h_1a2436e592453f0db24c1f61627d4d6220a7b9121e695afa9f45a8d4086b8d884fa" kindref="member">SceneObjType_GhostPlayerRecorder</ref><sp/><sp/><sp/>=<sp/>20</highlight></codeline>
 <codeline lineno="21" refid="_scene_obj_factory_8h_1a2436e592453f0db24c1f61627d4d6220a7b9121e695afa9f45a8d4086b8d884fa" refkind="member"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Scene/SceneObjFactory.h"/>
+    <location file="Game/backup/include/Scene/SceneObjFactory.h"/>
   </compounddef>
 </doxygen>

@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerTrigger.h" line="10" column="9" bodyfile="Game/include/Player/PlayerTrigger.h" bodystart="11" bodyend="12"/>
+        <location file="Game/backup/include/Player/PlayerTrigger.h" line="10" column="9" bodyfile="Game/backup/include/Player/PlayerTrigger.h" bodystart="11" bodyend="12"/>
       </memberdef>
       <memberdef kind="enum" id="class_player_trigger_1a6949994070bb9cb2b9569439c808478d" prot="public" static="no" strong="no">
         <type></type>
@@ -26,7 +26,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerTrigger.h" line="14" column="9" bodyfile="Game/include/Player/PlayerTrigger.h" bodystart="15" bodyend="16"/>
+        <location file="Game/backup/include/Player/PlayerTrigger.h" line="14" column="9" bodyfile="Game/backup/include/Player/PlayerTrigger.h" bodystart="15" bodyend="16"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerTrigger.h" line="6" column="13" bodyfile="Game/include/Player/PlayerTrigger.h" bodystart="6" bodyend="-1"/>
+        <location file="Game/backup/include/Player/PlayerTrigger.h" line="6" column="13" bodyfile="Game/backup/include/Player/PlayerTrigger.h" bodystart="6" bodyend="-1"/>
         <referencedby refid="class_player_trigger_1a5fddb203b0f71ae6879af77c368bedca" compoundref="_player_trigger_8cpp" startline="27" endline="30">clearSensorTrigger</referencedby>
         <referencedby refid="class_player_trigger_1ad745a605de97ab1ae56cb6b1bbc9bfcd" compoundref="_player_trigger_8cpp" startline="17" endline="20">isOn</referencedby>
         <referencedby refid="class_player_trigger_1ac3f60fbee11b06e48fd4e14e4be09064" compoundref="_player_trigger_8cpp" startline="7" endline="10">set</referencedby>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerTrigger.h" line="7" column="13" bodyfile="Game/include/Player/PlayerTrigger.h" bodystart="7" bodyend="-1"/>
+        <location file="Game/backup/include/Player/PlayerTrigger.h" line="7" column="13" bodyfile="Game/backup/include/Player/PlayerTrigger.h" bodystart="7" bodyend="-1"/>
         <referencedby refid="class_player_trigger_1ac731810aa3be676f8b58c40149e386a0" compoundref="_player_trigger_8cpp" startline="32" endline="35">clearCollisionTrigger</referencedby>
         <referencedby refid="class_player_trigger_1a6a0321836d3482e548faec72b8d3053d" compoundref="_player_trigger_8cpp" startline="22" endline="25">isOn</referencedby>
         <referencedby refid="class_player_trigger_1a0270a949ce7eb0d78c3e8c60f5170bf5" compoundref="_player_trigger_8cpp" startline="12" endline="15">set</referencedby>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerTrigger.h" line="19" column="14" bodyfile="Game/src/Player/PlayerTrigger.cpp" bodystart="7" bodyend="10"/>
+        <location file="Game/backup/include/Player/PlayerTrigger.h" line="19" column="14" bodyfile="Game/backup/src/Player/PlayerTrigger.cpp" bodystart="7" bodyend="10"/>
         <references refid="class_player_trigger_1a8c637e534bdfd95909e9ede3c6f676db" compoundref="_player_trigger_8h" startline="6">mSensorTrigger</references>
       </memberdef>
       <memberdef kind="function" id="class_player_trigger_1a0270a949ce7eb0d78c3e8c60f5170bf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerTrigger.h" line="20" column="14" bodyfile="Game/src/Player/PlayerTrigger.cpp" bodystart="12" bodyend="15"/>
+        <location file="Game/backup/include/Player/PlayerTrigger.h" line="20" column="14" bodyfile="Game/backup/src/Player/PlayerTrigger.cpp" bodystart="12" bodyend="15"/>
         <references refid="class_player_trigger_1a368ec264974946437dd1af3e6ec78115" compoundref="_player_trigger_8h" startline="7">mCollisionTrigger</references>
       </memberdef>
       <memberdef kind="function" id="class_player_trigger_1ad745a605de97ab1ae56cb6b1bbc9bfcd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -120,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerTrigger.h" line="21" column="14" bodyfile="Game/src/Player/PlayerTrigger.cpp" bodystart="17" bodyend="20"/>
+        <location file="Game/backup/include/Player/PlayerTrigger.h" line="21" column="14" bodyfile="Game/backup/src/Player/PlayerTrigger.cpp" bodystart="17" bodyend="20"/>
         <references refid="class_player_trigger_1a8c637e534bdfd95909e9ede3c6f676db" compoundref="_player_trigger_8h" startline="6">mSensorTrigger</references>
       </memberdef>
       <memberdef kind="function" id="class_player_trigger_1a6a0321836d3482e548faec72b8d3053d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -139,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerTrigger.h" line="22" column="14" bodyfile="Game/src/Player/PlayerTrigger.cpp" bodystart="22" bodyend="25"/>
+        <location file="Game/backup/include/Player/PlayerTrigger.h" line="22" column="14" bodyfile="Game/backup/src/Player/PlayerTrigger.cpp" bodystart="22" bodyend="25"/>
         <references refid="class_player_trigger_1a368ec264974946437dd1af3e6ec78115" compoundref="_player_trigger_8h" startline="7">mCollisionTrigger</references>
       </memberdef>
       <memberdef kind="function" id="class_player_trigger_1a5fddb203b0f71ae6879af77c368bedca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -154,7 +154,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerTrigger.h" line="23" column="14" bodyfile="Game/src/Player/PlayerTrigger.cpp" bodystart="27" bodyend="30"/>
+        <location file="Game/backup/include/Player/PlayerTrigger.h" line="23" column="14" bodyfile="Game/backup/src/Player/PlayerTrigger.cpp" bodystart="27" bodyend="30"/>
         <references refid="class_player_trigger_1a8c637e534bdfd95909e9ede3c6f676db" compoundref="_player_trigger_8h" startline="6">mSensorTrigger</references>
       </memberdef>
       <memberdef kind="function" id="class_player_trigger_1ac731810aa3be676f8b58c40149e386a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -169,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerTrigger.h" line="24" column="14" bodyfile="Game/src/Player/PlayerTrigger.cpp" bodystart="32" bodyend="35"/>
+        <location file="Game/backup/include/Player/PlayerTrigger.h" line="24" column="14" bodyfile="Game/backup/src/Player/PlayerTrigger.cpp" bodystart="32" bodyend="35"/>
         <references refid="class_player_trigger_1a368ec264974946437dd1af3e6ec78115" compoundref="_player_trigger_8h" startline="7">mCollisionTrigger</references>
       </memberdef>
       <memberdef kind="function" id="class_player_trigger_1a2f040acbe99fed9fb2ceddb546c37b98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -184,14 +184,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerTrigger.h" line="27" column="9" bodyfile="Game/src/Player/PlayerTrigger.cpp" bodystart="3" bodyend="5"/>
+        <location file="Game/backup/include/Player/PlayerTrigger.h" line="27" column="9" bodyfile="Game/backup/src/Player/PlayerTrigger.cpp" bodystart="3" bodyend="5"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="Game/include/Player/PlayerTrigger.h" line="3" column="1" bodyfile="Game/include/Player/PlayerTrigger.h" bodystart="4" bodyend="28"/>
+    <location file="Game/backup/include/Player/PlayerTrigger.h" line="3" column="1" bodyfile="Game/backup/include/Player/PlayerTrigger.h" bodystart="4" bodyend="28"/>
     <listofallmembers>
       <member refid="class_player_trigger_1ac731810aa3be676f8b58c40149e386a0" prot="public" virt="non-virtual"><scope>PlayerTrigger</scope><name>clearCollisionTrigger</name></member>
       <member refid="class_player_trigger_1a5fddb203b0f71ae6879af77c368bedca" prot="public" virt="non-virtual"><scope>PlayerTrigger</scope><name>clearSensorTrigger</name></member>

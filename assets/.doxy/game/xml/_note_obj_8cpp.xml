@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/MapObj/NoteObj.cpp" line="30" column="19" bodyfile="Game/src/MapObj/NoteObj.cpp" bodystart="30" bodyend="-1"/>
+        <location file="Game/backup/src/MapObj/NoteObj.cpp" line="30" column="19" bodyfile="Game/backup/src/MapObj/NoteObj.cpp" bodystart="30" bodyend="-1"/>
         <referencedby refid="class_note_obj_1a29883c8c20e11292ae912fd405928394" compoundref="_note_obj_8cpp" startline="33" endline="45">NoteObj::init</referencedby>
       </memberdef>
     </sectiondef>
@@ -111,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/MapObj/NoteObj.cpp" line="28" column="17" declfile="Game/src/MapObj/NoteObj.cpp" declline="28" declcolumn="17"/>
+        <location file="Game/backup/src/MapObj/NoteObj.cpp" line="28" column="17" declfile="Game/backup/src/MapObj/NoteObj.cpp" declline="28" declcolumn="17"/>
         <referencedby refid="class_note_obj_generator_1abd60f977eca4616bc2e0be2d46ce095a" compoundref="_note_obj_generator_8cpp" startline="32" endline="43">NoteObjGenerator::exeWait</referencedby>
         <referencedby refid="class_note_obj_1a29883c8c20e11292ae912fd405928394" compoundref="_note_obj_8cpp" startline="33" endline="45">NoteObj::init</referencedby>
       </memberdef>
@@ -182,6 +182,6 @@
 <codeline lineno="59"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
-    <location file="Game/src/MapObj/NoteObj.cpp"/>
+    <location file="Game/backup/src/MapObj/NoteObj.cpp"/>
   </compounddef>
 </doxygen>

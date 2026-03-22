@@ -178,6 +178,6 @@
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>al</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/HitSensor/alHitSensor.h"/>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/HitSensor/alHitSensor.h"/>
   </compounddef>
 </doxygen>

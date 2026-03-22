@@ -82,6 +82,6 @@
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>rp</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="Game/include/MapObj/CoinRotater.h"/>
+    <location file="Game/backup/include/MapObj/CoinRotater.h"/>
   </compounddef>
 </doxygen>

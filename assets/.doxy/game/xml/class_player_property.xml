@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerProperty.h" line="8" column="24" bodyfile="Game/include/Player/PlayerProperty.h" bodystart="8" bodyend="-1"/>
+        <location file="Game/backup/include/Player/PlayerProperty.h" line="8" column="24" bodyfile="Game/backup/include/Player/PlayerProperty.h" bodystart="8" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_player_property_1aafdac4f5ef17814274bb51d5e888bd31" prot="private" static="no" mutable="no">
         <type>sead::Vector3f</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerProperty.h" line="9" column="24" bodyfile="Game/include/Player/PlayerProperty.h" bodystart="9" bodyend="-1"/>
+        <location file="Game/backup/include/Player/PlayerProperty.h" line="9" column="24" bodyfile="Game/backup/include/Player/PlayerProperty.h" bodystart="9" bodyend="-1"/>
         <referencedby refid="class_player_property_1aa4397b5c00370c8491821ca0465cc7c5" compoundref="_player_property_8cpp" startline="4" endline="7">setFrontVec</referencedby>
       </memberdef>
       <memberdef kind="variable" id="class_player_property_1a7659aeaf0e6c412612bc685fc6bb7213" prot="private" static="no" mutable="no">
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerProperty.h" line="10" column="24" bodyfile="Game/include/Player/PlayerProperty.h" bodystart="10" bodyend="-1"/>
+        <location file="Game/backup/include/Player/PlayerProperty.h" line="10" column="24" bodyfile="Game/backup/include/Player/PlayerProperty.h" bodystart="10" bodyend="-1"/>
         <referencedby refid="class_player_property_1a96f4e125368df4274bee35571cbb9fce" compoundref="_player_property_8cpp" startline="11" endline="14">setUpVec</referencedby>
       </memberdef>
       <memberdef kind="variable" id="class_player_property_1a4d2b0c2db62ff3927bd5874bf68c624d" prot="private" static="no" mutable="no">
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerProperty.h" line="11" column="24" bodyfile="Game/include/Player/PlayerProperty.h" bodystart="11" bodyend="-1"/>
+        <location file="Game/backup/include/Player/PlayerProperty.h" line="11" column="24" bodyfile="Game/backup/include/Player/PlayerProperty.h" bodystart="11" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerProperty.h" line="14" column="14" bodyfile="Game/src/Player/PlayerProperty.cpp" bodystart="4" bodyend="7"/>
+        <location file="Game/backup/include/Player/PlayerProperty.h" line="14" column="14" bodyfile="Game/backup/src/Player/PlayerProperty.cpp" bodystart="4" bodyend="7"/>
         <references refid="class_player_property_1aafdac4f5ef17814274bb51d5e888bd31" compoundref="_player_property_8h" startline="9">mFront</references>
       </memberdef>
       <memberdef kind="function" id="class_player_property_1a96f4e125368df4274bee35571cbb9fce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerProperty.h" line="15" column="14" bodyfile="Game/src/Player/PlayerProperty.cpp" bodystart="11" bodyend="14"/>
+        <location file="Game/backup/include/Player/PlayerProperty.h" line="15" column="14" bodyfile="Game/backup/src/Player/PlayerProperty.cpp" bodystart="11" bodyend="14"/>
         <references refid="class_player_property_1a7659aeaf0e6c412612bc685fc6bb7213" compoundref="_player_property_8h" startline="10">mUp</references>
       </memberdef>
     </sectiondef>
@@ -107,7 +107,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="Game/include/Player/PlayerProperty.h" line="5" column="1" bodyfile="Game/include/Player/PlayerProperty.h" bodystart="6" bodyend="16"/>
+    <location file="Game/backup/include/Player/PlayerProperty.h" line="5" column="1" bodyfile="Game/backup/include/Player/PlayerProperty.h" bodystart="6" bodyend="16"/>
     <listofallmembers>
       <member refid="class_player_property_1a4d2b0c2db62ff3927bd5874bf68c624d" prot="private" virt="non-virtual"><scope>PlayerProperty</scope><name>_C</name></member>
       <member refid="class_player_property_1aafdac4f5ef17814274bb51d5e888bd31" prot="private" virt="non-virtual"><scope>PlayerProperty</scope><name>mFront</name></member>

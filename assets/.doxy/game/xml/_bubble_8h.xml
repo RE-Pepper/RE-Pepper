@@ -45,6 +45,6 @@
 <codeline lineno="23" refid="class_bubble_1a68e2023e28c8bf83928f788ef2856e8d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_bubble_1a68e2023e28c8bf83928f788ef2856e8d" kindref="member">Bubble</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::SafeString&amp;<sp/>name<sp/>);</highlight></codeline>
 <codeline lineno="24"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Enemy/Bubble.h"/>
+    <location file="Game/backup/include/Enemy/Bubble.h"/>
   </compounddef>
 </doxygen>

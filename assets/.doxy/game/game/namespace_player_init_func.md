@@ -125,5 +125,5 @@ const PlayerModelInfo * PlayerInitFunc::getModelInfo ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/Player/PlayerInitFunc.h`
+The documentation for this class was generated from the following file `Game/backup/include/Player/PlayerInitFunc.h`
 

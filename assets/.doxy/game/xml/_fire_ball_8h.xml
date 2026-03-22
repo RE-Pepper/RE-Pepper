@@ -51,6 +51,6 @@
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_fire_ball" kindref="compound">FireBall</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::SafeString&amp;<sp/>name<sp/>);</highlight></codeline>
 <codeline lineno="17"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Enemy/FireBall.h"/>
+    <location file="Game/backup/include/Enemy/FireBall.h"/>
   </compounddef>
 </doxygen>

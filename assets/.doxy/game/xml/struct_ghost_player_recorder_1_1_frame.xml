@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayerRecorder.h" line="15" column="32" bodyfile="Game/include/Player/GhostPlayerRecorder.h" bodystart="15" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayerRecorder.h" line="15" column="32" bodyfile="Game/backup/include/Player/GhostPlayerRecorder.h" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_ghost_player_recorder_1_1_frame_1a97cb07fda726cf7fc74a0fe46a96fdb0" prot="public" static="no" mutable="no">
         <type>sead::Vector3f</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayerRecorder.h" line="16" column="32" bodyfile="Game/include/Player/GhostPlayerRecorder.h" bodystart="16" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayerRecorder.h" line="16" column="32" bodyfile="Game/backup/include/Player/GhostPlayerRecorder.h" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_ghost_player_recorder_1_1_frame_1ac95cb3b88a59c69540546ed4345aef56" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayerRecorder.h" line="17" column="32" bodyfile="Game/include/Player/GhostPlayerRecorder.h" bodystart="17" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayerRecorder.h" line="17" column="32" bodyfile="Game/backup/include/Player/GhostPlayerRecorder.h" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_ghost_player_recorder_1_1_frame_1ab4884717f475bf11ceaf0597f3f22d07" prot="public" static="no" mutable="no">
         <type>const char *</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayerRecorder.h" line="18" column="31" bodyfile="Game/include/Player/GhostPlayerRecorder.h" bodystart="18" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayerRecorder.h" line="18" column="31" bodyfile="Game/backup/include/Player/GhostPlayerRecorder.h" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_ghost_player_recorder_1_1_frame_1ae405e7e2281068165fde9a80c8cfdc80" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -71,14 +71,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayerRecorder.h" line="19" column="32" bodyfile="Game/include/Player/GhostPlayerRecorder.h" bodystart="19" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayerRecorder.h" line="19" column="32" bodyfile="Game/backup/include/Player/GhostPlayerRecorder.h" bodystart="19" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="Game/include/Player/GhostPlayerRecorder.h" line="13" column="9" bodyfile="Game/include/Player/GhostPlayerRecorder.h" bodystart="14" bodyend="20"/>
+    <location file="Game/backup/include/Player/GhostPlayerRecorder.h" line="13" column="9" bodyfile="Game/backup/include/Player/GhostPlayerRecorder.h" bodystart="14" bodyend="20"/>
     <listofallmembers>
       <member refid="struct_ghost_player_recorder_1_1_frame_1ac95cb3b88a59c69540546ed4345aef56" prot="public" virt="non-virtual"><scope>GhostPlayerRecorder::Frame</scope><name>_18</name></member>
       <member refid="struct_ghost_player_recorder_1_1_frame_1ae405e7e2281068165fde9a80c8cfdc80" prot="public" virt="non-virtual"><scope>GhostPlayerRecorder::Frame</scope><name>_20</name></member>

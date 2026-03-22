@@ -63,6 +63,6 @@
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_togezo" kindref="compound">Togezo</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::SafeString&amp;<sp/>name<sp/>);</highlight></codeline>
 <codeline lineno="29"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Enemy/Togezo.h"/>
+    <location file="Game/backup/include/Enemy/Togezo.h"/>
   </compounddef>
 </doxygen>

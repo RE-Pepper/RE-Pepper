@@ -186,6 +186,6 @@
 <codeline lineno="92"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
-    <location file="Game/src/Player/GhostPlayer.cpp"/>
+    <location file="Game/backup/src/Player/GhostPlayer.cpp"/>
   </compounddef>
 </doxygen>

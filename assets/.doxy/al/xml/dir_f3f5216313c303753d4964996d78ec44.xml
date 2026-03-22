@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_f3f5216313c303753d4964996d78ec44" kind="dir">
+    <compoundname>MapObj</compoundname>
+    <innerfile refid="al_fall_map_parts_8cpp">alFallMapParts.cpp</innerfile>
+    <innerfile refid="al_map_obj_actor_8cpp">alMapObjActor.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/MapObj/"/>
+  </compounddef>
+</doxygen>

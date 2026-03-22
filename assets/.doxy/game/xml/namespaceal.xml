@@ -19,13 +19,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Scene/SceneStopCtrl.h" line="6" column="6" declfile="Game/include/Scene/SceneStopCtrl.h" declline="6" declcolumn="6"/>
+        <location file="Game/backup/include/Scene/SceneStopCtrl.h" line="6" column="6" declfile="Game/backup/include/Scene/SceneStopCtrl.h" declline="6" declcolumn="6"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="Game/include/Enemy/EnemyStateUtil.h" line="3" column="1"/>
+    <location file="Game/backup/include/Enemy/EnemyStateUtil.h" line="3" column="1"/>
   </compounddef>
 </doxygen>

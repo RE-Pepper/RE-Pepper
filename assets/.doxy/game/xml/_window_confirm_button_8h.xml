@@ -49,6 +49,6 @@
 <codeline lineno="14" refid="class_window_confirm_button_1afc27bd6bbd72892d81fcf4e5a0242774" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_window_confirm_button_1afc27bd6bbd72892d81fcf4e5a0242774" kindref="member">WindowConfirmButton</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::LayoutInitInfo&amp;<sp/>info<sp/>);</highlight></codeline>
 <codeline lineno="15"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Layout/WindowConfirmButton.h"/>
+    <location file="Game/backup/include/Layout/WindowConfirmButton.h"/>
   </compounddef>
 </doxygen>

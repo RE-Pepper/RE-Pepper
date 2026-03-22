@@ -101,5 +101,5 @@ virtual void PlayerFigureLoss::update (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/Player/PlayerFigureDirector.h`
+The documentation for this class was generated from the following file `Game/backup/include/Player/PlayerFigureDirector.h`
 

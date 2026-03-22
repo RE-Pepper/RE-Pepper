@@ -17,6 +17,6 @@
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>al</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="Game/include/Scene/SceneStopCtrl.h"/>
+    <location file="Game/backup/include/Scene/SceneStopCtrl.h"/>
   </compounddef>
 </doxygen>

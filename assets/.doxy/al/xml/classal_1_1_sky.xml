@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Npc/alSky.h" line="11" column="30" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Npc/alSky.h" bodystart="11" bodyend="-1"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Npc/alSky.h" line="11" column="30" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Npc/alSky.h" bodystart="11" bodyend="-1"/>
         <referencedby refid="classal_1_1_sky_1aad1ba2690aa630099ecfbb620fa195b4" compoundref="al_sky_8cpp" startline="25" endline="29">calcAnim</referencedby>
         <referencedby refid="classal_1_1_sky_1aaa9e24a0a9f86f3fac997a1ae3516033" compoundref="al_sky_8cpp" startline="15" endline="23">init</referencedby>
       </memberdef>
@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Npc/alSky.h" line="14" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/Npc/alSky.cpp" bodystart="15" bodyend="23"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Npc/alSky.h" line="14" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/Npc/alSky.cpp" bodystart="15" bodyend="23"/>
         <references refid="namespaceal_1a0dfa0187d4cb37671703ee29d9db8dbb">al::getCameraPos</references>
         <references refid="namespaceal_1a02e2cad94750340ba74c233546820a8e" compoundref="al_actor_init_util_8cpp" startline="24" endline="29">al::initActor</references>
         <references refid="namespaceal_1aaf3fb3e1ddcbe8f55a762c0aa53b66f6">al::initStageSwitchAppear</references>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Npc/alSky.h" line="15" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/Npc/alSky.cpp" bodystart="25" bodyend="29"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Npc/alSky.h" line="15" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/Npc/alSky.cpp" bodystart="25" bodyend="29"/>
         <references refid="classal_1_1_live_actor_1a302e89a156c4c82e0839e1b12cd6ee2a" compoundref="al_live_actor_8cpp" startline="45" endline="54">al::LiveActor::calcAnim</references>
         <references refid="classal_1_1_sky_1a55744820286e0a8c8e85d4c9c4e8dad0" compoundref="al_sky_8h" startline="11">mCameraTransPtr</references>
         <references refid="namespaceal_1a3893d7e6385ef62457746d2409ba745e" compoundref="al_actor_pose_keeper_8cpp" startline="224" endline="227">al::setTrans</references>
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Npc/alSky.h" line="18" column="9" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/Npc/alSky.cpp" bodystart="11" bodyend="13"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Npc/alSky.h" line="18" column="9" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/Npc/alSky.cpp" bodystart="11" bodyend="13"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -448,7 +448,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Npc/alSky.h" line="8" column="1" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Npc/alSky.h" bodystart="9" bodyend="19"/>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Npc/alSky.h" line="8" column="1" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Npc/alSky.h" bodystart="9" bodyend="19"/>
     <listofallmembers>
       <member refid="classal_1_1_live_actor_1aa11b2c18af8f11324d3eed176bd6abba" prot="protected" virt="non-virtual"><scope>al::Sky</scope><name>_4C</name></member>
       <member refid="classal_1_1_live_actor_1a837c7a850e38668f36ea7dc0bd7864c1" prot="public" virt="virtual"><scope>al::Sky</scope><name>appear</name></member>

@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Layout/CourseSelectMario.h" line="8" column="13" bodyfile="Game/include/Layout/CourseSelectMario.h" bodystart="8" bodyend="-1"/>
+        <location file="Game/backup/include/Layout/CourseSelectMario.h" line="8" column="13" bodyfile="Game/backup/include/Layout/CourseSelectMario.h" bodystart="8" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_course_select_mario_1a584babbb5cbc0021f9ced6ff5d125294" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Layout/CourseSelectMario.h" line="9" column="13" bodyfile="Game/include/Layout/CourseSelectMario.h" bodystart="9" bodyend="-1"/>
+        <location file="Game/backup/include/Layout/CourseSelectMario.h" line="9" column="13" bodyfile="Game/backup/include/Layout/CourseSelectMario.h" bodystart="9" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Layout/CourseSelectMario.h" line="12" column="9"/>
+        <location file="Game/backup/include/Layout/CourseSelectMario.h" line="12" column="9"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -80,7 +80,7 @@
         <label>al::LayoutActor</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/Layout/CourseSelectMario.h" line="5" column="1" bodyfile="Game/include/Layout/CourseSelectMario.h" bodystart="6" bodyend="13"/>
+    <location file="Game/backup/include/Layout/CourseSelectMario.h" line="5" column="1" bodyfile="Game/backup/include/Layout/CourseSelectMario.h" bodystart="6" bodyend="13"/>
     <listofallmembers>
       <member refid="class_course_select_mario_1ac5e4cfb92e6957c4ceb6aadeadf32f90" prot="private" virt="non-virtual"><scope>CourseSelectMario</scope><name>_30</name></member>
       <member refid="class_course_select_mario_1a584babbb5cbc0021f9ced6ff5d125294" prot="private" virt="non-virtual"><scope>CourseSelectMario</scope><name>_34</name></member>

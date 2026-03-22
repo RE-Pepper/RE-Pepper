@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/NoteObj.h" line="8" column="27" bodyfile="Game/include/MapObj/NoteObj.h" bodystart="8" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/NoteObj.h" line="8" column="27" bodyfile="Game/backup/include/MapObj/NoteObj.h" bodystart="8" bodyend="-1"/>
         <referencedby refid="class_note_obj_1ab3d633c430be823e3d51495a228b95a9" compoundref="_note_obj_8cpp" startline="54" endline="59">control</referencedby>
         <referencedby refid="class_note_obj_1a29883c8c20e11292ae912fd405928394" compoundref="_note_obj_8cpp" startline="33" endline="45">init</referencedby>
       </memberdef>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/NoteObj.h" line="9" column="27" bodyfile="Game/include/MapObj/NoteObj.h" bodystart="9" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/NoteObj.h" line="9" column="27" bodyfile="Game/backup/include/MapObj/NoteObj.h" bodystart="9" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_note_obj_1a82e0ca39845c03b9abfd00f909f1af61" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/NoteObj.h" line="10" column="27" bodyfile="Game/include/MapObj/NoteObj.h" bodystart="10" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/NoteObj.h" line="10" column="27" bodyfile="Game/backup/include/MapObj/NoteObj.h" bodystart="10" bodyend="-1"/>
         <referencedby refid="class_note_obj_1ab3d633c430be823e3d51495a228b95a9" compoundref="_note_obj_8cpp" startline="54" endline="59">control</referencedby>
       </memberdef>
       <memberdef kind="variable" id="class_note_obj_1ab2d674de421fc5db97955852ebb30e5e" prot="private" static="no" mutable="no">
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/NoteObj.h" line="11" column="27" bodyfile="Game/include/MapObj/NoteObj.h" bodystart="11" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/NoteObj.h" line="11" column="27" bodyfile="Game/backup/include/MapObj/NoteObj.h" bodystart="11" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_note_obj_1a7c63e546dd9fa34aef7a0733ade250dd" prot="private" static="no" mutable="no">
         <type>sead::Vector3f</type>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/NoteObj.h" line="12" column="27" bodyfile="Game/include/MapObj/NoteObj.h" bodystart="12" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/NoteObj.h" line="12" column="27" bodyfile="Game/backup/include/MapObj/NoteObj.h" bodystart="12" bodyend="-1"/>
         <referencedby refid="class_note_obj_1a29883c8c20e11292ae912fd405928394" compoundref="_note_obj_8cpp" startline="33" endline="45">init</referencedby>
       </memberdef>
       <memberdef kind="variable" id="class_note_obj_1a52311d47e8882ec04f81e7417211a4a5" prot="private" static="no" mutable="no">
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/NoteObj.h" line="13" column="26" bodyfile="Game/include/MapObj/NoteObj.h" bodystart="13" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/NoteObj.h" line="13" column="26" bodyfile="Game/backup/include/MapObj/NoteObj.h" bodystart="13" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -111,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/NoteObj.h" line="16" column="22" bodyfile="Game/src/MapObj/NoteObj.cpp" bodystart="33" bodyend="45"/>
+        <location file="Game/backup/include/MapObj/NoteObj.h" line="16" column="22" bodyfile="Game/backup/src/MapObj/NoteObj.cpp" bodystart="33" bodyend="45"/>
         <references refid="class_note_obj_1a7c63e546dd9fa34aef7a0733ade250dd" compoundref="_note_obj_8h" startline="12">_78</references>
         <references refid="_note_obj_8cpp_1a4fd5740b0984f89e3806b25d3e515e25">fn_00270fc4</references>
         <references refid="class_note_obj_1a10ba9147792b190c95d9e52d93faa266" compoundref="_note_obj_8h" startline="8">mStartQuat</references>
@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/NoteObj.h" line="17" column="22" bodyfile="Game/src/MapObj/NoteObj.cpp" bodystart="48" bodyend="50"/>
+        <location file="Game/backup/include/MapObj/NoteObj.h" line="17" column="22" bodyfile="Game/backup/src/MapObj/NoteObj.cpp" bodystart="48" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="class_note_obj_1a5afd73bd75907248a97a992baff4411e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -155,7 +155,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/NoteObj.h" line="18" column="22"/>
+        <location file="Game/backup/include/MapObj/NoteObj.h" line="18" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_note_obj_1ab3d633c430be823e3d51495a228b95a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -169,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/NoteObj.h" line="19" column="22" bodyfile="Game/src/MapObj/NoteObj.cpp" bodystart="54" bodyend="59"/>
+        <location file="Game/backup/include/MapObj/NoteObj.h" line="19" column="22" bodyfile="Game/backup/src/MapObj/NoteObj.cpp" bodystart="54" bodyend="59"/>
         <references refid="class_note_obj_1a82e0ca39845c03b9abfd00f909f1af61" compoundref="_note_obj_8h" startline="10">_71</references>
         <references refid="namespacerp_1a4f58ad73f89ce46fb895c8269092a7da" compoundref="_coin_rotater_8cpp" startline="37" endline="41">rp::getCoinRotateY</references>
         <references refid="class_note_obj_1a10ba9147792b190c95d9e52d93faa266" compoundref="_note_obj_8h" startline="8">mStartQuat</references>
@@ -190,7 +190,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/NoteObj.h" line="22" column="9" bodyfile="Game/src/MapObj/NoteObj.cpp" bodystart="13" bodyend="18"/>
+        <location file="Game/backup/include/MapObj/NoteObj.h" line="22" column="9" bodyfile="Game/backup/src/MapObj/NoteObj.cpp" bodystart="13" bodyend="18"/>
         <references refid="namespacerp_1a25e3e3a7ce26bcfb37889f38280f64c6" compoundref="_coin_rotater_8cpp" startline="32" endline="35">rp::createCoinRotater</references>
       </memberdef>
       <memberdef kind="function" id="class_note_obj_1ab59f13359f9fa07507592f315a1a9987" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -209,7 +209,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/NoteObj.h" line="23" column="9" bodyfile="Game/src/MapObj/NoteObj.cpp" bodystart="20" bodyend="25"/>
+        <location file="Game/backup/include/MapObj/NoteObj.h" line="23" column="9" bodyfile="Game/backup/src/MapObj/NoteObj.cpp" bodystart="20" bodyend="25"/>
         <references refid="namespacerp_1a25e3e3a7ce26bcfb37889f38280f64c6" compoundref="_coin_rotater_8cpp" startline="32" endline="35">rp::createCoinRotater</references>
       </memberdef>
     </sectiondef>
@@ -248,7 +248,7 @@
         <label>al::MapObjActor</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/MapObj/NoteObj.h" line="5" column="1" bodyfile="Game/include/MapObj/NoteObj.h" bodystart="6" bodyend="24"/>
+    <location file="Game/backup/include/MapObj/NoteObj.h" line="5" column="1" bodyfile="Game/backup/include/MapObj/NoteObj.h" bodystart="6" bodyend="24"/>
     <listofallmembers>
       <member refid="class_note_obj_1a02cdc02514b6c35c7f327aa81bc133fa" prot="private" virt="non-virtual"><scope>NoteObj</scope><name>_70</name></member>
       <member refid="class_note_obj_1a82e0ca39845c03b9abfd00f909f1af61" prot="private" virt="non-virtual"><scope>NoteObj</scope><name>_71</name></member>

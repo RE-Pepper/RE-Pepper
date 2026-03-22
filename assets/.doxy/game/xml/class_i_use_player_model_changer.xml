@@ -22,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerModelHolder.h" line="15" column="22"/>
+        <location file="Game/backup/include/Player/PlayerModelHolder.h" line="15" column="22"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -41,7 +41,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="Game/include/Player/PlayerModelHolder.h" line="12" column="1" bodyfile="Game/include/Player/PlayerModelHolder.h" bodystart="13" bodyend="16"/>
+    <location file="Game/backup/include/Player/PlayerModelHolder.h" line="12" column="1" bodyfile="Game/backup/include/Player/PlayerModelHolder.h" bodystart="13" bodyend="16"/>
     <listofallmembers>
       <member refid="class_i_use_player_model_changer_1a12aa9daa3204bdfdd1b492333381d5d1" prot="public" virt="virtual"><scope>IUsePlayerModelChanger</scope><name>change</name></member>
     </listofallmembers>

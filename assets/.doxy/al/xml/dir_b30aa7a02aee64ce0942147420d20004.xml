@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_b30aa7a02aee64ce0942147420d20004" kind="dir">
+    <compoundname>Model</compoundname>
+    <innerfile refid="al_anim_info_table_8h">alAnimInfoTable.h</innerfile>
+    <innerfile refid="al_anim_player_simple_8h">alAnimPlayerSimple.h</innerfile>
+    <innerfile refid="al_anim_player_skl_8h">alAnimPlayerSkl.h</innerfile>
+    <innerfile refid="al_model_ctr_8h">alModelCtr.h</innerfile>
+    <innerfile refid="al_model_keeper_8h">alModelKeeper.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Model/"/>
+  </compounddef>
+</doxygen>

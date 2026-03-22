@@ -56,6 +56,6 @@
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_player_trigger_1a368ec264974946437dd1af3e6ec78115" kindref="member">mCollisionTrigger</ref><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="35"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="Game/src/Player/PlayerTrigger.cpp"/>
+    <location file="Game/backup/src/Player/PlayerTrigger.cpp"/>
   </compounddef>
 </doxygen>

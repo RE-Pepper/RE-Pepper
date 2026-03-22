@@ -166,5 +166,5 @@ virtual bool Garigari::receiveMsg (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/MapObj/Garigari.h`
+The documentation for this class was generated from the following file `Game/backup/include/MapObj/Garigari.h`
 

@@ -166,5 +166,5 @@ virtual bool BombHei::receiveMsg (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/Enemy/BombHei.h`
+The documentation for this class was generated from the following file `Game/backup/include/Enemy/BombHei.h`
 

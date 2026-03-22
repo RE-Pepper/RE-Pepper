@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_7e8c68cf19e0ef7d7545051dcecbf0eb" kind="dir">
+    <compoundname>Clipping</compoundname>
+    <innerfile refid="al_clipping_actor_holder_8h">alClippingActorHolder.h</innerfile>
+    <innerfile refid="al_clipping_actor_info_list_8h">alClippingActorInfoList.h</innerfile>
+    <innerfile refid="al_clipping_director_8h">alClippingDirector.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Clipping/"/>
+  </compounddef>
+</doxygen>

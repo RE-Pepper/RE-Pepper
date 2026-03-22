@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/MapObj/CoinRotater.cpp" line="32" column="6" bodyfile="Game/src/MapObj/CoinRotater.cpp" bodystart="32" bodyend="35" declfile="Game/include/MapObj/CoinRotater.h" declline="31" declcolumn="7"/>
+        <location file="Game/backup/src/MapObj/CoinRotater.cpp" line="32" column="6" bodyfile="Game/backup/src/MapObj/CoinRotater.cpp" bodystart="32" bodyend="35" declfile="Game/backup/include/MapObj/CoinRotater.h" declline="31" declcolumn="7"/>
         <references refid="_scene_obj_factory_8h_1a2436e592453f0db24c1f61627d4d6220a9783264edafce4e658638cb9f4123c7b" compoundref="_scene_obj_factory_8h" startline="17">SceneObjType_CoinRotater</references>
         <referencedby refid="class_note_obj_1a4b1a1a3079df8576f897c968550926d7" compoundref="_note_obj_8cpp" startline="13" endline="18">NoteObj::NoteObj</referencedby>
         <referencedby refid="class_note_obj_1ab59f13359f9fa07507592f315a1a9987" compoundref="_note_obj_8cpp" startline="20" endline="25">NoteObj::NoteObj</referencedby>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/MapObj/CoinRotater.cpp" line="37" column="7" bodyfile="Game/src/MapObj/CoinRotater.cpp" bodystart="37" bodyend="41" declfile="Game/include/MapObj/CoinRotater.h" declline="32" declcolumn="7"/>
+        <location file="Game/backup/src/MapObj/CoinRotater.cpp" line="37" column="7" bodyfile="Game/backup/src/MapObj/CoinRotater.cpp" bodystart="37" bodyend="41" declfile="Game/backup/include/MapObj/CoinRotater.h" declline="32" declcolumn="7"/>
         <references refid="class_coin_rotater_1adfae9a55421e0885960013f1ca4c36cf" compoundref="_coin_rotater_8h" startline="13" endline="16">CoinRotater::getRotateY</references>
         <references refid="_scene_obj_factory_8h_1a2436e592453f0db24c1f61627d4d6220a9783264edafce4e658638cb9f4123c7b" compoundref="_scene_obj_factory_8h" startline="17">SceneObjType_CoinRotater</references>
         <referencedby refid="class_note_obj_1ab3d633c430be823e3d51495a228b95a9" compoundref="_note_obj_8cpp" startline="54" endline="59">NoteObj::control</referencedby>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/Player/PlayerFunction.cpp" line="15" column="13" bodyfile="Game/src/Player/PlayerFunction.cpp" bodystart="15" bodyend="18" declfile="Game/include/Player/PlayerFunction.h" declline="10" declcolumn="22"/>
+        <location file="Game/backup/src/Player/PlayerFunction.cpp" line="15" column="13" bodyfile="Game/backup/src/Player/PlayerFunction.cpp" bodystart="15" bodyend="18" declfile="Game/backup/include/Player/PlayerFunction.h" declline="10" declcolumn="22"/>
         <referencedby refid="namespacerp_1a6701b3d668865fd035e0b2b324fd18b9" compoundref="_player_function_8cpp" startline="20" endline="23">getPlayerPos</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacerp_1a6701b3d668865fd035e0b2b324fd18b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -64,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/Player/PlayerFunction.cpp" line="20" column="22" bodyfile="Game/src/Player/PlayerFunction.cpp" bodystart="20" bodyend="23" declfile="Game/include/Player/PlayerFunction.h" declline="11" declcolumn="22"/>
+        <location file="Game/backup/src/Player/PlayerFunction.cpp" line="20" column="22" bodyfile="Game/backup/src/Player/PlayerFunction.cpp" bodystart="20" bodyend="23" declfile="Game/backup/include/Player/PlayerFunction.h" declline="11" declcolumn="22"/>
         <references refid="namespacerp_1ac3e89cc48c971cfe175cb196af460198" compoundref="_player_function_8cpp" startline="15" endline="18">getPlayerActor</references>
         <referencedby refid="class_togezo_1ab5d5cca7f132e766b1ec53c0e181bb57" compoundref="_togezo_8cpp" startline="98" endline="111">Togezo::exeSearch</referencedby>
         <referencedby refid="class_togezo_1a4671992639eb11962b3b8e3cfeee0ad2" compoundref="_togezo_8cpp" startline="79" endline="91">Togezo::exeTurn</referencedby>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/System/CourseList.h" line="69" column="12" bodyfile="Game/src/System/CourseList.cpp" bodystart="131" bodyend="134" declfile="Game/include/System/CourseList.h" declline="69" declcolumn="12"/>
+        <location file="Game/backup/include/System/CourseList.h" line="69" column="12" bodyfile="Game/backup/src/System/CourseList.cpp" bodystart="131" bodyend="134" declfile="Game/backup/include/System/CourseList.h" declline="69" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="namespacerp_1a03658529f1f4371f374b71d6a8ca0f77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Util/SensorMsg.h" line="8" column="6" declfile="Game/include/Util/SensorMsg.h" declline="8" declcolumn="6"/>
+        <location file="Game/backup/include/Util/SensorMsg.h" line="8" column="6" declfile="Game/backup/include/Util/SensorMsg.h" declline="8" declcolumn="6"/>
         <referencedby refid="class_ghost_player_1a3bc76c235152a3cfa6f336ce63baffec" compoundref="_ghost_player_8cpp" startline="59" endline="69">GhostPlayer::receiveMsg</referencedby>
       </memberdef>
     </sectiondef>
@@ -113,6 +113,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="Game/include/MapObj/CoinRotater.h" line="28" column="1"/>
+    <location file="Game/backup/include/MapObj/CoinRotater.h" line="28" column="1"/>
   </compounddef>
 </doxygen>

@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/TrickHintPanel.h" line="8" column="14" bodyfile="Game/include/MapObj/TrickHintPanel.h" bodystart="8" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/TrickHintPanel.h" line="8" column="14" bodyfile="Game/backup/include/MapObj/TrickHintPanel.h" bodystart="8" bodyend="-1"/>
         <referencedby refid="class_trick_hint_panel_1a1e2a4496107c674d8e05ce4957d33590" compoundref="_trick_hint_panel_8cpp" startline="86" endline="94">exeOff</referencedby>
         <referencedby refid="class_trick_hint_panel_1a8f4c4293f418160a569d6e12d9306db8" compoundref="_trick_hint_panel_8cpp" startline="66" endline="77">exeOn</referencedby>
         <referencedby refid="class_trick_hint_panel_1a02c521ae794ecbba99dea4b567702044" compoundref="_trick_hint_panel_8cpp" startline="28" endline="34">init</referencedby>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/TrickHintPanel.h" line="9" column="14" bodyfile="Game/include/MapObj/TrickHintPanel.h" bodystart="9" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/TrickHintPanel.h" line="9" column="14" bodyfile="Game/backup/include/MapObj/TrickHintPanel.h" bodystart="9" bodyend="-1"/>
         <referencedby refid="class_trick_hint_panel_1a8f4c4293f418160a569d6e12d9306db8" compoundref="_trick_hint_panel_8cpp" startline="66" endline="77">exeOn</referencedby>
       </memberdef>
     </sectiondef>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/TrickHintPanel.h" line="12" column="14" bodyfile="Game/src/MapObj/TrickHintPanel.cpp" bodystart="55" bodyend="57"/>
+        <location file="Game/backup/include/MapObj/TrickHintPanel.h" line="12" column="14" bodyfile="Game/backup/src/MapObj/TrickHintPanel.cpp" bodystart="55" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="class_trick_hint_panel_1a8f4c4293f418160a569d6e12d9306db8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/TrickHintPanel.h" line="13" column="14" bodyfile="Game/src/MapObj/TrickHintPanel.cpp" bodystart="66" bodyend="77"/>
+        <location file="Game/backup/include/MapObj/TrickHintPanel.h" line="13" column="14" bodyfile="Game/backup/src/MapObj/TrickHintPanel.cpp" bodystart="66" bodyend="77"/>
         <references refid="class_trick_hint_panel_1a6e70167c901f723fb16e3fed4767709e" compoundref="_trick_hint_panel_8h" startline="8">_96</references>
         <references refid="_trick_hint_panel_8cpp_1a7659ae16207cf2d862446ef473d5bf24">fn_0026A9B8</references>
         <references refid="class_trick_hint_panel_1a049f596e17ce776c1246ef74e37baef6" compoundref="_trick_hint_panel_8h" startline="9">mPlayedSound</references>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/TrickHintPanel.h" line="14" column="14" bodyfile="Game/src/MapObj/TrickHintPanel.cpp" bodystart="80" bodyend="84"/>
+        <location file="Game/backup/include/MapObj/TrickHintPanel.h" line="14" column="14" bodyfile="Game/backup/src/MapObj/TrickHintPanel.cpp" bodystart="80" bodyend="84"/>
         <references refid="_trick_hint_panel_8cpp_1a27c3f83439213e491f4cba4d68d38469">fn_002786F4</references>
       </memberdef>
       <memberdef kind="function" id="class_trick_hint_panel_1a1e2a4496107c674d8e05ce4957d33590" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/TrickHintPanel.h" line="15" column="14" bodyfile="Game/src/MapObj/TrickHintPanel.cpp" bodystart="86" bodyend="94"/>
+        <location file="Game/backup/include/MapObj/TrickHintPanel.h" line="15" column="14" bodyfile="Game/backup/src/MapObj/TrickHintPanel.cpp" bodystart="86" bodyend="94"/>
         <references refid="class_trick_hint_panel_1a6e70167c901f723fb16e3fed4767709e" compoundref="_trick_hint_panel_8h" startline="8">_96</references>
         <references refid="_trick_hint_panel_8cpp_1a728351b06a8fbb280b93fe874734a525">fn_0026AA60</references>
         <references refid="_trick_hint_panel_8cpp_1a27c3f83439213e491f4cba4d68d38469">fn_002786F4</references>
@@ -118,7 +118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/TrickHintPanel.h" line="18" column="22" bodyfile="Game/src/MapObj/TrickHintPanel.cpp" bodystart="28" bodyend="34"/>
+        <location file="Game/backup/include/MapObj/TrickHintPanel.h" line="18" column="22" bodyfile="Game/backup/src/MapObj/TrickHintPanel.cpp" bodystart="28" bodyend="34"/>
         <references refid="class_trick_hint_panel_1a6e70167c901f723fb16e3fed4767709e" compoundref="_trick_hint_panel_8h" startline="8">_96</references>
         <references refid="_trick_hint_panel_8cpp_1a928f1a6bd5b4772938e9704b712ac4cc">fn_002278CC</references>
       </memberdef>
@@ -146,7 +146,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/TrickHintPanel.h" line="19" column="22" bodyfile="Game/src/MapObj/TrickHintPanel.cpp" bodystart="36" bodyend="53"/>
+        <location file="Game/backup/include/MapObj/TrickHintPanel.h" line="19" column="22" bodyfile="Game/backup/src/MapObj/TrickHintPanel.cpp" bodystart="36" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_trick_hint_panel_1aae73d43b5cea40f751e8b6e2497158ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -164,7 +164,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/TrickHintPanel.h" line="22" column="9" bodyfile="Game/src/MapObj/TrickHintPanel.cpp" bodystart="21" bodyend="24"/>
+        <location file="Game/backup/include/MapObj/TrickHintPanel.h" line="22" column="9" bodyfile="Game/backup/src/MapObj/TrickHintPanel.cpp" bodystart="21" bodyend="24"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -193,7 +193,7 @@
         <label>al::MapObjActor</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/MapObj/TrickHintPanel.h" line="5" column="1" bodyfile="Game/include/MapObj/TrickHintPanel.h" bodystart="6" bodyend="23"/>
+    <location file="Game/backup/include/MapObj/TrickHintPanel.h" line="5" column="1" bodyfile="Game/backup/include/MapObj/TrickHintPanel.h" bodystart="6" bodyend="23"/>
     <listofallmembers>
       <member refid="class_trick_hint_panel_1a6e70167c901f723fb16e3fed4767709e" prot="private" virt="non-virtual"><scope>TrickHintPanel</scope><name>_96</name></member>
       <member refid="class_trick_hint_panel_1a375ef84fa70a470e9027d43cae417a11" prot="public" virt="non-virtual"><scope>TrickHintPanel</scope><name>exenrv3</name></member>

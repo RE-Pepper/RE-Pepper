@@ -22,14 +22,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerFigureDirector.h" line="20" column="22"/>
+        <location file="Game/backup/include/Player/PlayerFigureDirector.h" line="20" column="22"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="Game/include/Player/PlayerFigureDirector.h" line="17" column="1" bodyfile="Game/include/Player/PlayerFigureDirector.h" bodystart="18" bodyend="21"/>
+    <location file="Game/backup/include/Player/PlayerFigureDirector.h" line="17" column="1" bodyfile="Game/backup/include/Player/PlayerFigureDirector.h" bodystart="18" bodyend="21"/>
     <listofallmembers>
       <member refid="class_player_figure_loss_1a58b005e9ed5c073684205ab1935f5b6a" prot="public" virt="virtual"><scope>PlayerFigureLoss</scope><name>update</name></member>
     </listofallmembers>

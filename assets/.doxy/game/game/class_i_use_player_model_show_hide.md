@@ -127,5 +127,5 @@ virtual void IUsePlayerModelShowHide::show ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/Player/PlayerModelHolder.h`
+The documentation for this class was generated from the following file `Game/backup/include/Player/PlayerModelHolder.h`
 

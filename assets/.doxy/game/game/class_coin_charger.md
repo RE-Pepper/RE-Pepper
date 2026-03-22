@@ -101,5 +101,5 @@ CoinCharger::CoinCharger (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/MapObj/CoinCharger.h`
+The documentation for this class was generated from the following file `Game/backup/include/MapObj/CoinCharger.h`
 

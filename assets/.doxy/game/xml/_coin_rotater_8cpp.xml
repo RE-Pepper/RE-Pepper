@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/MapObj/CoinRotater.cpp" line="21" column="17" declfile="Game/src/MapObj/CoinRotater.cpp" declline="21" declcolumn="17"/>
+        <location file="Game/backup/src/MapObj/CoinRotater.cpp" line="21" column="17" declfile="Game/backup/src/MapObj/CoinRotater.cpp" declline="21" declcolumn="17"/>
         <referencedby refid="class_coin_rotater_1a41b5dacdf28a7da5898c152266dccc94" compoundref="_coin_rotater_8cpp" startline="23" endline="27">CoinRotater::initAfterPlacementSceneObj</referencedby>
       </memberdef>
     </sectiondef>
@@ -112,6 +112,6 @@
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>rp</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="Game/src/MapObj/CoinRotater.cpp"/>
+    <location file="Game/backup/src/MapObj/CoinRotater.cpp"/>
   </compounddef>
 </doxygen>

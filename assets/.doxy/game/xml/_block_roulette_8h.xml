@@ -38,6 +38,6 @@
 <codeline lineno="16" refid="class_block_roulette_1a5c30c83a7af92c7479d934016bf1ed42" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_block_roulette_1a5c30c83a7af92c7479d934016bf1ed42" kindref="member">BlockRoulette</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::SafeString&amp;<sp/>name<sp/>);</highlight></codeline>
 <codeline lineno="17"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/MapObj/BlockRoulette.h"/>
+    <location file="Game/backup/include/MapObj/BlockRoulette.h"/>
   </compounddef>
 </doxygen>

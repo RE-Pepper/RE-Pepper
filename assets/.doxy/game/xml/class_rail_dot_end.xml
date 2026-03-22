@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/RailDotEnd.h" line="8" column="14" bodyfile="Game/src/Npc/RailDotEnd.cpp" bodystart="26" bodyend="28"/>
+        <location file="Game/backup/include/MapObj/RailDotEnd.h" line="8" column="14" bodyfile="Game/backup/src/Npc/RailDotEnd.cpp" bodystart="26" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="class_rail_dot_end_1ad382d5067e8818e66baf119f13ab9dcc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/RailDotEnd.h" line="11" column="22" bodyfile="Game/src/Npc/RailDotEnd.cpp" bodystart="19" bodyend="24"/>
+        <location file="Game/backup/include/MapObj/RailDotEnd.h" line="11" column="22" bodyfile="Game/backup/src/Npc/RailDotEnd.cpp" bodystart="19" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="class_rail_dot_end_1a1ff967fdb2ab558a4f466618c18ef71d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -53,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/RailDotEnd.h" line="14" column="9" bodyfile="Game/src/Npc/RailDotEnd.cpp" bodystart="15" bodyend="17"/>
+        <location file="Game/backup/include/MapObj/RailDotEnd.h" line="14" column="9" bodyfile="Game/backup/src/Npc/RailDotEnd.cpp" bodystart="15" bodyend="17"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -82,7 +82,7 @@
         <label>al::MapObjActor</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/MapObj/RailDotEnd.h" line="5" column="1" bodyfile="Game/include/MapObj/RailDotEnd.h" bodystart="6" bodyend="15"/>
+    <location file="Game/backup/include/MapObj/RailDotEnd.h" line="5" column="1" bodyfile="Game/backup/include/MapObj/RailDotEnd.h" bodystart="6" bodyend="15"/>
     <listofallmembers>
       <member refid="class_rail_dot_end_1aa693bf40c39591e6c6a2e85e1101099a" prot="public" virt="non-virtual"><scope>RailDotEnd</scope><name>exeWait</name></member>
       <member refid="class_rail_dot_end_1ad382d5067e8818e66baf119f13ab9dcc" prot="public" virt="virtual"><scope>RailDotEnd</scope><name>init</name></member>

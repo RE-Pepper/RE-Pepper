@@ -297,5 +297,5 @@ virtual void Coin::v26 ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/MapObj/Coin.h`
+The documentation for this class was generated from the following file `Game/backup/include/MapObj/Coin.h`
 

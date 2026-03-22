@@ -101,5 +101,5 @@ CourseSelectScene::CourseSelectScene (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/Scene/CourseSelectScene.h`
+The documentation for this class was generated from the following file `Game/backup/include/Scene/CourseSelectScene.h`
 

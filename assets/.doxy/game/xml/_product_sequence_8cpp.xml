@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/Sequence/ProductSequence.cpp" line="40" column="17" declfile="Game/src/Sequence/ProductSequence.cpp" declline="40" declcolumn="17"/>
+        <location file="Game/backup/src/Sequence/ProductSequence.cpp" line="40" column="17" declfile="Game/backup/src/Sequence/ProductSequence.cpp" declline="40" declcolumn="17"/>
         <referencedby refid="class_product_sequence_1a7fa46e1b47636909ca0298c1a0629338" compoundref="_product_sequence_8cpp" startline="42" endline="51">ProductSequence::exeTitle</referencedby>
       </memberdef>
       <memberdef kind="function" id="_product_sequence_8cpp_1af2cb6af23d3a0a8502b909a9a5024187" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/Sequence/ProductSequence.cpp" line="68" column="17" declfile="Game/src/Sequence/ProductSequence.cpp" declline="68" declcolumn="17"/>
+        <location file="Game/backup/src/Sequence/ProductSequence.cpp" line="68" column="17" declfile="Game/backup/src/Sequence/ProductSequence.cpp" declline="68" declcolumn="17"/>
         <referencedby refid="class_product_sequence_1a65f4b6437e23bf81339d58ddd407d3ee" compoundref="_product_sequence_8cpp" startline="70" endline="79">ProductSequence::exeEnding</referencedby>
       </memberdef>
     </sectiondef>
@@ -176,6 +176,6 @@
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="79"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="Game/src/Sequence/ProductSequence.cpp"/>
+    <location file="Game/backup/src/Sequence/ProductSequence.cpp"/>
   </compounddef>
 </doxygen>

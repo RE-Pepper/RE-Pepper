@@ -41,6 +41,6 @@
 <codeline lineno="14"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
-    <location file="Game/src/Player/PlayerProperty.cpp"/>
+    <location file="Game/backup/src/Player/PlayerProperty.cpp"/>
   </compounddef>
 </doxygen>

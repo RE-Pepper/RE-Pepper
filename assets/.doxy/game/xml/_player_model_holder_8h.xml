@@ -121,6 +121,6 @@
 <codeline lineno="94" refid="class_player_model_holder_1a2b8a5cabafe537c48c97ad2f75bf95f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_player_model_holder_1a2b8a5cabafe537c48c97ad2f75bf95f0" kindref="member">PlayerModelHolder</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::ActorInitInfo&amp;<sp/>info,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_player_actor_init_info" kindref="compound">PlayerActorInitInfo</ref>&amp;<sp/>playerInfo,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::Vector3f*<sp/>transPtr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::Vector3f*<sp/>rotatePtr,<sp/>u64<sp/>something<sp/>);</highlight></codeline>
 <codeline lineno="95"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Player/PlayerModelHolder.h"/>
+    <location file="Game/backup/include/Player/PlayerModelHolder.h"/>
   </compounddef>
 </doxygen>

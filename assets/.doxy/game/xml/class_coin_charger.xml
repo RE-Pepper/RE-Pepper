@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCharger.h" line="15" column="25" bodyfile="Game/include/MapObj/CoinCharger.h" bodystart="15" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/CoinCharger.h" line="15" column="25" bodyfile="Game/backup/include/MapObj/CoinCharger.h" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_charger_1a767c75f5fa2dc39d2be647e9e661148f" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCharger.h" line="16" column="25" bodyfile="Game/include/MapObj/CoinCharger.h" bodystart="16" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/CoinCharger.h" line="16" column="25" bodyfile="Game/backup/include/MapObj/CoinCharger.h" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_charger_1a3a84691800372eb8f09baeec61abea0a" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCharger.h" line="17" column="25" bodyfile="Game/include/MapObj/CoinCharger.h" bodystart="17" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/CoinCharger.h" line="17" column="25" bodyfile="Game/backup/include/MapObj/CoinCharger.h" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_charger_1a330b4a4bac4b5f6b54c3ed05b01dcb9a" prot="private" static="no" mutable="no">
         <type>al::AudioKeeper *</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCharger.h" line="18" column="25" bodyfile="Game/include/MapObj/CoinCharger.h" bodystart="18" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/CoinCharger.h" line="18" column="25" bodyfile="Game/backup/include/MapObj/CoinCharger.h" bodystart="18" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -79,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCharger.h" line="21" column="9"/>
+        <location file="Game/backup/include/MapObj/CoinCharger.h" line="21" column="9"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -120,7 +120,7 @@
         <label>al::NerveExecutor</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/MapObj/CoinCharger.h" line="12" column="1" bodyfile="Game/include/MapObj/CoinCharger.h" bodystart="13" bodyend="22"/>
+    <location file="Game/backup/include/MapObj/CoinCharger.h" line="12" column="1" bodyfile="Game/backup/include/MapObj/CoinCharger.h" bodystart="13" bodyend="22"/>
     <listofallmembers>
       <member refid="class_coin_charger_1a3a84691800372eb8f09baeec61abea0a" prot="private" virt="non-virtual"><scope>CoinCharger</scope><name>_10</name></member>
       <member refid="class_coin_charger_1a767c75f5fa2dc39d2be647e9e661148f" prot="private" virt="non-virtual"><scope>CoinCharger</scope><name>_C</name></member>

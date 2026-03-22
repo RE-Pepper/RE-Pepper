@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="8" column="23" bodyfile="Game/include/MapObj/Coin.h" bodystart="8" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="8" column="23" bodyfile="Game/backup/include/MapObj/Coin.h" bodystart="8" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1ac9b836a6a3d3f64e0f6c739992de8fa8" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="9" column="24" bodyfile="Game/include/MapObj/Coin.h" bodystart="9" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="9" column="24" bodyfile="Game/backup/include/MapObj/Coin.h" bodystart="9" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1a1734cc1e3f8367fe33b0c873dda55588" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="10" column="24" bodyfile="Game/include/MapObj/Coin.h" bodystart="10" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="10" column="24" bodyfile="Game/backup/include/MapObj/Coin.h" bodystart="10" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1a954b0cd60ff019359cda869856a8e13d" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="11" column="24" bodyfile="Game/include/MapObj/Coin.h" bodystart="11" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="11" column="24" bodyfile="Game/backup/include/MapObj/Coin.h" bodystart="11" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1a24031207c9e1456c82539dcb34cc0a3e" prot="private" static="no" mutable="no">
         <type>sead::Quatf</type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="12" column="24" bodyfile="Game/include/MapObj/Coin.h" bodystart="12" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="12" column="24" bodyfile="Game/backup/include/MapObj/Coin.h" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1a3283b68e4bd004c00ce334af44213057" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -88,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="13" column="24" bodyfile="Game/include/MapObj/Coin.h" bodystart="13" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="13" column="24" bodyfile="Game/backup/include/MapObj/Coin.h" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1a24556d6cf6b51b8221ae2c17cb8cdaa6" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -102,7 +102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="14" column="24" bodyfile="Game/include/MapObj/Coin.h" bodystart="14" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="14" column="24" bodyfile="Game/backup/include/MapObj/Coin.h" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1a058458f6c05f65113e5d2010040105b7" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -116,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="15" column="24" bodyfile="Game/include/MapObj/Coin.h" bodystart="15" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="15" column="24" bodyfile="Game/backup/include/MapObj/Coin.h" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1ab8dd94da1d23ba6b9d25c68d31949f25" prot="private" static="no" mutable="no">
         <type>sead::Vector3f</type>
@@ -130,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="16" column="24" bodyfile="Game/include/MapObj/Coin.h" bodystart="16" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="16" column="24" bodyfile="Game/backup/include/MapObj/Coin.h" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1a298368ce50d34ac0c820df5a4a80985b" prot="private" static="no" mutable="no">
         <type>sead::Vector3f</type>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="17" column="24" bodyfile="Game/include/MapObj/Coin.h" bodystart="17" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="17" column="24" bodyfile="Game/backup/include/MapObj/Coin.h" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1ae1e81ce63d8733f63ba2c5921f2f2a6b" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -158,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCollect.h" line="9" column="23" bodyfile="Game/include/MapObj/CoinCollect.h" bodystart="9" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/CoinCollect.h" line="9" column="23" bodyfile="Game/backup/include/MapObj/CoinCollect.h" bodystart="9" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1ad0f56f57021d779da870f0c6af8233bc" prot="private" static="no" mutable="no">
         <type>sead::Vector3f</type>
@@ -172,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCollect.h" line="10" column="24" bodyfile="Game/include/MapObj/CoinCollect.h" bodystart="10" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/CoinCollect.h" line="10" column="24" bodyfile="Game/backup/include/MapObj/CoinCollect.h" bodystart="10" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1aeffb0f4334eb208503b9d2f03b7148bf" prot="private" static="no" mutable="no">
         <type>sead::Quatf</type>
@@ -186,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCollect.h" line="11" column="24" bodyfile="Game/include/MapObj/CoinCollect.h" bodystart="11" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/CoinCollect.h" line="11" column="24" bodyfile="Game/backup/include/MapObj/CoinCollect.h" bodystart="11" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1a3dd189ffba573792e91d3f7433281414" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -200,7 +200,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCollect.h" line="12" column="24" bodyfile="Game/include/MapObj/CoinCollect.h" bodystart="12" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/CoinCollect.h" line="12" column="24" bodyfile="Game/backup/include/MapObj/CoinCollect.h" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1a1e20904bcc96a12cad5255292bf00ade" prot="private" static="no" mutable="no">
         <type>float</type>
@@ -214,7 +214,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCollect.h" line="13" column="24" bodyfile="Game/include/MapObj/CoinCollect.h" bodystart="13" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/CoinCollect.h" line="13" column="24" bodyfile="Game/backup/include/MapObj/CoinCollect.h" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1a714e61354160754ac4099b1154d79f06" prot="private" static="no" mutable="no">
         <type>float</type>
@@ -228,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCollect.h" line="14" column="24" bodyfile="Game/include/MapObj/CoinCollect.h" bodystart="14" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/CoinCollect.h" line="14" column="24" bodyfile="Game/backup/include/MapObj/CoinCollect.h" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1a4796087bacdd678d95bc9d4db4a407a7" prot="private" static="no" mutable="no">
         <type>sead::Vector3f</type>
@@ -242,7 +242,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCollect.h" line="15" column="24" bodyfile="Game/include/MapObj/CoinCollect.h" bodystart="15" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/CoinCollect.h" line="15" column="24" bodyfile="Game/backup/include/MapObj/CoinCollect.h" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1a212ee468417ba432c349e6d332929909" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -256,7 +256,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCollect.h" line="16" column="24" bodyfile="Game/include/MapObj/CoinCollect.h" bodystart="16" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/CoinCollect.h" line="16" column="24" bodyfile="Game/backup/include/MapObj/CoinCollect.h" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1ac5b06614dafcc341bae57585ef369236" prot="private" static="no" mutable="no">
         <type>sead::Vector3f</type>
@@ -270,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCollect.h" line="17" column="24" bodyfile="Game/include/MapObj/CoinCollect.h" bodystart="17" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/CoinCollect.h" line="17" column="24" bodyfile="Game/backup/include/MapObj/CoinCollect.h" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_coin_1a4ef1e2d2df2a537bb72dfb9b495d15ee" prot="private" static="no" mutable="no">
         <type>sead::Vector3f</type>
@@ -284,7 +284,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCollect.h" line="18" column="24" bodyfile="Game/include/MapObj/CoinCollect.h" bodystart="18" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/CoinCollect.h" line="18" column="24" bodyfile="Game/backup/include/MapObj/CoinCollect.h" bodystart="18" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -304,7 +304,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="20" column="22"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="20" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_coin_1abae53f6801051ec9888834e5f37a8252" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -318,7 +318,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="21" column="22"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="21" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_coin_1a34aa1448e1aa3e9960c56fe0054e4742" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -332,7 +332,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="22" column="22"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="22" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_coin_1a00923c9d50b444a7ec991ff26cdd4efa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -346,7 +346,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="23" column="22"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="23" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_coin_1a3153e5547d535253267c662dd30912df" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -372,7 +372,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="24" column="22"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="24" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_coin_1aa0b4f5e760ad19ea9dd083a7247dd5ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -386,7 +386,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="26" column="22"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="26" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_coin_1ae09087e9b40ac7b72cabefa99e241c02" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -400,7 +400,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="27" column="22"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="27" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_coin_1acac4360ec63b2326d58b299282244d3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -414,7 +414,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="28" column="22"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="28" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_coin_1a512e42bb3badbd3e8b6e5143b5146cbd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -432,7 +432,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/Coin.h" line="31" column="9"/>
+        <location file="Game/backup/include/MapObj/Coin.h" line="31" column="9"/>
       </memberdef>
       <memberdef kind="function" id="class_coin_1a83ab7de272e66ca4bf8074d9309b0b05" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -450,7 +450,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCollect.h" line="21" column="22"/>
+        <location file="Game/backup/include/MapObj/CoinCollect.h" line="21" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_coin_1abae53f6801051ec9888834e5f37a8252" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -464,7 +464,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCollect.h" line="22" column="22"/>
+        <location file="Game/backup/include/MapObj/CoinCollect.h" line="22" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_coin_1a34aa1448e1aa3e9960c56fe0054e4742" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -478,7 +478,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCollect.h" line="23" column="22"/>
+        <location file="Game/backup/include/MapObj/CoinCollect.h" line="23" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_coin_1a3153e5547d535253267c662dd30912df" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -504,7 +504,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCollect.h" line="24" column="22"/>
+        <location file="Game/backup/include/MapObj/CoinCollect.h" line="24" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_coin_1a512e42bb3badbd3e8b6e5143b5146cbd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -522,7 +522,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinCollect.h" line="27" column="9"/>
+        <location file="Game/backup/include/MapObj/CoinCollect.h" line="27" column="9"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -555,7 +555,7 @@
         <label>al::MapObjActor</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/MapObj/Coin.h" line="5" column="1" bodyfile="Game/include/MapObj/Coin.h" bodystart="6" bodyend="32"/>
+    <location file="Game/backup/include/MapObj/Coin.h" line="5" column="1" bodyfile="Game/backup/include/MapObj/Coin.h" bodystart="6" bodyend="32"/>
     <listofallmembers>
       <member refid="class_coin_1ac26856c5b35a20f70836e0afd05c6ac7" prot="private" virt="non-virtual"><scope>Coin</scope><name>_60</name></member>
       <member refid="class_coin_1ac9b836a6a3d3f64e0f6c739992de8fa8" prot="private" virt="non-virtual"><scope>Coin</scope><name>_64</name></member>

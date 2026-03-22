@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/Player/GhostPlayer.cpp" line="16" column="1" declfile="Game/src/Player/GhostPlayer.cpp" declline="16" declcolumn="1"/>
+        <location file="Game/backup/src/Player/GhostPlayer.cpp" line="16" column="1" declfile="Game/backup/src/Player/GhostPlayer.cpp" declline="16" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespace_nrv_ghost_player_1a573c8223ddf047add8a2faa435423d53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -41,13 +41,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/Player/GhostPlayer.cpp" line="17" column="1" declfile="Game/src/Player/GhostPlayer.cpp" declline="17" declcolumn="1"/>
+        <location file="Game/backup/src/Player/GhostPlayer.cpp" line="17" column="1" declfile="Game/backup/src/Player/GhostPlayer.cpp" declline="17" declcolumn="1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="Game/src/Player/GhostPlayer.cpp" line="13" column="1"/>
+    <location file="Game/backup/src/Player/GhostPlayer.cpp" line="13" column="1"/>
   </compounddef>
 </doxygen>

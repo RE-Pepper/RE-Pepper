@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="8" column="14" bodyfile="Game/include/Player/GhostPlayer.h" bodystart="8" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="8" column="14" bodyfile="Game/backup/include/Player/GhostPlayer.h" bodystart="8" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_ghost_player_1ae36db2fcd273b87d03381084e62da173" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="9" column="15" bodyfile="Game/include/Player/GhostPlayer.h" bodystart="9" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="9" column="15" bodyfile="Game/backup/include/Player/GhostPlayer.h" bodystart="9" bodyend="-1"/>
         <referencedby refid="class_ghost_player_1ac25ab6bc0970c6a27ccdb8c445ca6a6f" compoundref="_ghost_player_8cpp" startline="44" endline="57">attackSensor</referencedby>
       </memberdef>
       <memberdef kind="variable" id="class_ghost_player_1a25d9b28414e0172bc2e73452c14be7f6" prot="private" static="no" mutable="no">
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="10" column="15" bodyfile="Game/include/Player/GhostPlayer.h" bodystart="10" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="10" column="15" bodyfile="Game/backup/include/Player/GhostPlayer.h" bodystart="10" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_ghost_player_1a73569d3db4da23b500eb492e6c24071f" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="11" column="15" bodyfile="Game/include/Player/GhostPlayer.h" bodystart="11" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="11" column="15" bodyfile="Game/backup/include/Player/GhostPlayer.h" bodystart="11" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_ghost_player_1aa1f85b59dac9b10714a827bb767ec93a" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="12" column="15" bodyfile="Game/include/Player/GhostPlayer.h" bodystart="12" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="12" column="15" bodyfile="Game/backup/include/Player/GhostPlayer.h" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_ghost_player_1a7387b3b729922027ade8fc4cfc716bbb" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -88,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="13" column="15" bodyfile="Game/include/Player/GhostPlayer.h" bodystart="13" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="13" column="15" bodyfile="Game/backup/include/Player/GhostPlayer.h" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_ghost_player_1a13e83f6d72c04caf4e1dbaf457c2b566" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -102,7 +102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="14" column="15" bodyfile="Game/include/Player/GhostPlayer.h" bodystart="14" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="14" column="15" bodyfile="Game/backup/include/Player/GhostPlayer.h" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_ghost_player_1adf15e2a765a67c02271e86e73ba7d38c" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -116,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="15" column="15" bodyfile="Game/include/Player/GhostPlayer.h" bodystart="15" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="15" column="15" bodyfile="Game/backup/include/Player/GhostPlayer.h" bodystart="15" bodyend="-1"/>
         <referencedby refid="class_ghost_player_1ac25ab6bc0970c6a27ccdb8c445ca6a6f" compoundref="_ghost_player_8cpp" startline="44" endline="57">attackSensor</referencedby>
       </memberdef>
       <memberdef kind="variable" id="class_ghost_player_1a59d0e8a1ef4c5adac7d28dec63a71be4" prot="private" static="no" mutable="no">
@@ -131,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="16" column="15" bodyfile="Game/include/Player/GhostPlayer.h" bodystart="16" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="16" column="15" bodyfile="Game/backup/include/Player/GhostPlayer.h" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_ghost_player_1a15fbaab9c2d0c9e3f6b2a91295229ab7" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -145,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="17" column="15" bodyfile="Game/include/Player/GhostPlayer.h" bodystart="17" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="17" column="15" bodyfile="Game/backup/include/Player/GhostPlayer.h" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_ghost_player_1a332a0f33dd8f92507221cb9006fe2932" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -159,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="18" column="15" bodyfile="Game/include/Player/GhostPlayer.h" bodystart="18" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="18" column="15" bodyfile="Game/backup/include/Player/GhostPlayer.h" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_ghost_player_1a390a2805cedb1341ef13ab106b2f5fb2" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -173,7 +173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="19" column="15" bodyfile="Game/include/Player/GhostPlayer.h" bodystart="19" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="19" column="15" bodyfile="Game/backup/include/Player/GhostPlayer.h" bodystart="19" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_ghost_player_1a9f0385039414406cb5dae9c551e4b81a" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -187,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="20" column="15" bodyfile="Game/include/Player/GhostPlayer.h" bodystart="20" bodyend="-1"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="20" column="15" bodyfile="Game/backup/include/Player/GhostPlayer.h" bodystart="20" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -203,7 +203,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="23" column="14" bodyfile="Game/src/Player/GhostPlayer.cpp" bodystart="78" bodyend="80"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="23" column="14" bodyfile="Game/backup/src/Player/GhostPlayer.cpp" bodystart="78" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_ghost_player_1adfff5c469cf68625fdf8f387f4649d74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -217,7 +217,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="24" column="14" bodyfile="Game/src/Player/GhostPlayer.cpp" bodystart="84" bodyend="86"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="24" column="14" bodyfile="Game/backup/src/Player/GhostPlayer.cpp" bodystart="84" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="class_ghost_player_1a87422811c09d9fd26366a92b9c5f8c06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -231,7 +231,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="25" column="14" bodyfile="Game/src/Player/GhostPlayer.cpp" bodystart="90" bodyend="92"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="25" column="14" bodyfile="Game/backup/src/Player/GhostPlayer.cpp" bodystart="90" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="class_ghost_player_1ad93076659eaf1ff2918736897824d89d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -249,7 +249,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="28" column="22" bodyfile="Game/src/Player/GhostPlayer.cpp" bodystart="33" bodyend="35"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="28" column="22" bodyfile="Game/backup/src/Player/GhostPlayer.cpp" bodystart="33" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="class_ghost_player_1a21e11f2e5d2317e61dcafb05aa504057" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -263,7 +263,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="29" column="22" bodyfile="Game/src/Player/GhostPlayer.cpp" bodystart="37" bodyend="41"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="29" column="22" bodyfile="Game/backup/src/Player/GhostPlayer.cpp" bodystart="37" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="class_ghost_player_1ac25ab6bc0970c6a27ccdb8c445ca6a6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -285,7 +285,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="30" column="22" bodyfile="Game/src/Player/GhostPlayer.cpp" bodystart="44" bodyend="57"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="30" column="22" bodyfile="Game/backup/src/Player/GhostPlayer.cpp" bodystart="44" bodyend="57"/>
         <references refid="class_ghost_player_1ae36db2fcd273b87d03381084e62da173" compoundref="_ghost_player_8h" startline="9">_64</references>
         <references refid="class_ghost_player_1adf15e2a765a67c02271e86e73ba7d38c" compoundref="_ghost_player_8h" startline="15">_6A</references>
       </memberdef>
@@ -313,7 +313,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="31" column="22" bodyfile="Game/src/Player/GhostPlayer.cpp" bodystart="59" bodyend="69"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="31" column="22" bodyfile="Game/backup/src/Player/GhostPlayer.cpp" bodystart="59" bodyend="69"/>
         <references refid="namespacerp_1a03658529f1f4371f374b71d6a8ca0f77">rp::requestHitReactionToAttacker</references>
       </memberdef>
       <memberdef kind="function" id="class_ghost_player_1a6f8477a7608d4a6ceb059ba5388d55f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -328,7 +328,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="32" column="22" bodyfile="Game/src/Player/GhostPlayer.cpp" bodystart="72" bodyend="74"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="32" column="22" bodyfile="Game/backup/src/Player/GhostPlayer.cpp" bodystart="72" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_ghost_player_1a02af26195671e21e13dd9aca8c59b7fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -346,7 +346,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/GhostPlayer.h" line="35" column="9" bodyfile="Game/src/Player/GhostPlayer.cpp" bodystart="21" bodyend="30"/>
+        <location file="Game/backup/include/Player/GhostPlayer.h" line="35" column="9" bodyfile="Game/backup/src/Player/GhostPlayer.cpp" bodystart="21" bodyend="30"/>
         <references refid="class_ghost_player_recorder_1a3e4246a5978272372cf1a5209e7fb976" compoundref="_ghost_player_recorder_8cpp" startline="9" endline="17">GhostPlayerRecorder::create</references>
         <references refid="class_ghost_player_recorder_1aae72848f40885d7e929a79cf758929e0" compoundref="_ghost_player_recorder_8h" startline="41" endline="44">GhostPlayerRecorder::initGhostPlayer</references>
         <references refid="class_ghost_player_recorder_1a231ba9679b376ed92986996986ab0478" compoundref="_ghost_player_recorder_8h" startline="22">GhostPlayerRecorder::mFrames</references>
@@ -379,7 +379,7 @@
         <label>al::MapObjActor</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/Player/GhostPlayer.h" line="5" column="1" bodyfile="Game/include/Player/GhostPlayer.h" bodystart="6" bodyend="36"/>
+    <location file="Game/backup/include/Player/GhostPlayer.h" line="5" column="1" bodyfile="Game/backup/include/Player/GhostPlayer.h" bodystart="6" bodyend="36"/>
     <listofallmembers>
       <member refid="class_ghost_player_1a7061c1220706eedf75b6f056e9656d76" prot="private" virt="non-virtual"><scope>GhostPlayer</scope><name>_60</name></member>
       <member refid="class_ghost_player_1ae36db2fcd273b87d03381084e62da173" prot="private" virt="non-virtual"><scope>GhostPlayer</scope><name>_64</name></member>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_ff51cf8ab20432040552f45403bead0b" kind="dir">
+    <compoundname>Effect</compoundname>
+    <innerfile refid="al_effect_keeper_8h">alEffectKeeper.h</innerfile>
+    <innerfile refid="al_effect_system_8h">alEffectSystem.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Effect/"/>
+  </compounddef>
+</doxygen>

@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraFollow.h" line="8" column="14" bodyfile="Game/include/Camera/CameraFollow.h" bodystart="8" bodyend="-1"/>
+        <location file="Game/backup/include/Camera/CameraFollow.h" line="8" column="14" bodyfile="Game/backup/include/Camera/CameraFollow.h" bodystart="8" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_camera_follow_1a001494f52e988a66bfe7ae525ea9f63d" prot="private" static="no" mutable="no">
         <type>float</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraFollow.h" line="9" column="15" bodyfile="Game/include/Camera/CameraFollow.h" bodystart="9" bodyend="-1"/>
+        <location file="Game/backup/include/Camera/CameraFollow.h" line="9" column="15" bodyfile="Game/backup/include/Camera/CameraFollow.h" bodystart="9" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_camera_follow_1adbf2122041b04e27db9fac8e0292ff82" prot="private" static="no" mutable="no">
         <type>float</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraFollow.h" line="10" column="15" bodyfile="Game/include/Camera/CameraFollow.h" bodystart="10" bodyend="-1"/>
+        <location file="Game/backup/include/Camera/CameraFollow.h" line="10" column="15" bodyfile="Game/backup/include/Camera/CameraFollow.h" bodystart="10" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_camera_follow_1ab172eb0c29480b667a9a0702a5e98559" prot="private" static="no" mutable="no">
         <type>float</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraFollow.h" line="11" column="15" bodyfile="Game/include/Camera/CameraFollow.h" bodystart="11" bodyend="-1"/>
+        <location file="Game/backup/include/Camera/CameraFollow.h" line="11" column="15" bodyfile="Game/backup/include/Camera/CameraFollow.h" bodystart="11" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_camera_follow_1a7c72cbd1fa15aa8aebc09d077ac33f3a" prot="private" static="no" mutable="no">
         <type>float</type>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraFollow.h" line="12" column="15" bodyfile="Game/include/Camera/CameraFollow.h" bodystart="12" bodyend="-1"/>
+        <location file="Game/backup/include/Camera/CameraFollow.h" line="12" column="15" bodyfile="Game/backup/include/Camera/CameraFollow.h" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_camera_follow_1a2e1760e19e7c47dae2fba577443688e2" prot="private" static="no" mutable="no">
         <type>float</type>
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraFollow.h" line="13" column="15" bodyfile="Game/include/Camera/CameraFollow.h" bodystart="13" bodyend="-1"/>
+        <location file="Game/backup/include/Camera/CameraFollow.h" line="13" column="15" bodyfile="Game/backup/include/Camera/CameraFollow.h" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_camera_follow_1af851aca28328e2798722e8d77867a57d" prot="private" static="no" mutable="no">
         <type>float</type>
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraFollow.h" line="14" column="15" bodyfile="Game/include/Camera/CameraFollow.h" bodystart="14" bodyend="-1"/>
+        <location file="Game/backup/include/Camera/CameraFollow.h" line="14" column="15" bodyfile="Game/backup/include/Camera/CameraFollow.h" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_camera_follow_1a3f481c365d75c001f24a61f82e875644" prot="private" static="no" mutable="no">
         <type>float</type>
@@ -115,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraFollow.h" line="15" column="15" bodyfile="Game/include/Camera/CameraFollow.h" bodystart="15" bodyend="-1"/>
+        <location file="Game/backup/include/Camera/CameraFollow.h" line="15" column="15" bodyfile="Game/backup/include/Camera/CameraFollow.h" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_camera_follow_1a2163506ddbeed88035971e9a635bdad7" prot="private" static="no" mutable="no">
         <type>float</type>
@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraFollow.h" line="16" column="15" bodyfile="Game/include/Camera/CameraFollow.h" bodystart="16" bodyend="-1"/>
+        <location file="Game/backup/include/Camera/CameraFollow.h" line="16" column="15" bodyfile="Game/backup/include/Camera/CameraFollow.h" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_camera_follow_1a5cc14c874b30413b6f7bfb1a8450790e" prot="private" static="no" mutable="no">
         <type>float</type>
@@ -143,7 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraFollow.h" line="17" column="15" bodyfile="Game/include/Camera/CameraFollow.h" bodystart="17" bodyend="-1"/>
+        <location file="Game/backup/include/Camera/CameraFollow.h" line="17" column="15" bodyfile="Game/backup/include/Camera/CameraFollow.h" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_camera_follow_1a9f347e036f5a74752770ef1bc6a2653a" prot="private" static="no" mutable="no">
         <type>float</type>
@@ -157,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraFollow.h" line="18" column="15" bodyfile="Game/include/Camera/CameraFollow.h" bodystart="18" bodyend="-1"/>
+        <location file="Game/backup/include/Camera/CameraFollow.h" line="18" column="15" bodyfile="Game/backup/include/Camera/CameraFollow.h" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_camera_follow_1a2bd30d2172ee1d69508318afc411ceb5" prot="private" static="no" mutable="no">
         <type>float</type>
@@ -171,7 +171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraFollow.h" line="19" column="15" bodyfile="Game/include/Camera/CameraFollow.h" bodystart="19" bodyend="-1"/>
+        <location file="Game/backup/include/Camera/CameraFollow.h" line="19" column="15" bodyfile="Game/backup/include/Camera/CameraFollow.h" bodystart="19" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -191,7 +191,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraFollow.h" line="22" column="22"/>
+        <location file="Game/backup/include/Camera/CameraFollow.h" line="22" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_camera_follow_1a99ac4449591db5d2d2f8664601bfc2fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -205,7 +205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraFollow.h" line="23" column="22"/>
+        <location file="Game/backup/include/Camera/CameraFollow.h" line="23" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_camera_follow_1aa20c71ccea33b67b41e2b5bfe79bcbad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -223,7 +223,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraFollow.h" line="26" column="9"/>
+        <location file="Game/backup/include/Camera/CameraFollow.h" line="26" column="9"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -252,7 +252,7 @@
         <label>al::Camera</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/Camera/CameraFollow.h" line="5" column="1" bodyfile="Game/include/Camera/CameraFollow.h" bodystart="6" bodyend="27"/>
+    <location file="Game/backup/include/Camera/CameraFollow.h" line="5" column="1" bodyfile="Game/backup/include/Camera/CameraFollow.h" bodystart="6" bodyend="27"/>
     <listofallmembers>
       <member refid="class_camera_follow_1a860586cdb78ce7c0fedc28a3116635d4" prot="private" virt="non-virtual"><scope>CameraFollow</scope><name>_4C</name></member>
       <member refid="class_camera_follow_1a001494f52e988a66bfe7ae525ea9f63d" prot="private" virt="non-virtual"><scope>CameraFollow</scope><name>_50</name></member>

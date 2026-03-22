@@ -36,6 +36,6 @@
 <codeline lineno="14" refid="class_course_select_scene_1aa17980bc4908683698abb81457d07a88" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_course_select_scene_1aa17980bc4908683698abb81457d07a88" kindref="member">CourseSelectScene</ref>(<sp/><ref refid="class_product_stage_start_param" kindref="compound">ProductStageStartParam</ref>*<sp/>stageStartParam<sp/>);</highlight></codeline>
 <codeline lineno="15"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Scene/CourseSelectScene.h"/>
+    <location file="Game/backup/include/Scene/CourseSelectScene.h"/>
   </compounddef>
 </doxygen>

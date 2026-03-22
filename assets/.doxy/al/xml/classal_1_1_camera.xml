@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="25" column="26" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" bodystart="25" bodyend="-1"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="25" column="26" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" bodystart="25" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-attrib">
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="28" column="36" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" bodystart="28" bodyend="-1"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="28" column="36" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classal_1_1_camera_1adb0bab8e6aaf69bf585b91fb6567461c" prot="protected" static="no" mutable="no">
         <type>sead::Vector3f</type>
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="29" column="36" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" bodystart="29" bodyend="-1"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="29" column="36" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classal_1_1_camera_1ab21c244d3d2a7049002fde6abc9649ac" prot="protected" static="no" mutable="no">
         <type>sead::Vector3f</type>
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="30" column="36" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" bodystart="30" bodyend="-1"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="30" column="36" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classal_1_1_camera_1aa7c6a55134ca9aa25b4e9fa6e1c97257" prot="protected" static="no" mutable="no">
         <type>sead::Vector3f</type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="31" column="36" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" bodystart="31" bodyend="-1"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="31" column="36" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classal_1_1_camera_1a7da9be00806bb983a4060b40d304f7f9" prot="protected" static="no" mutable="no">
         <type><ref refid="classal_1_1_functor_v0_m" kindref="compound">int</ref></type>
@@ -88,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="32" column="36" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" bodystart="32" bodyend="-1"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="32" column="36" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" bodystart="32" bodyend="-1"/>
         <referencedby refid="classal_1_1_camera_1af6fb29bed068c5ac3b344313f9df486b" compoundref="al_camera_8cpp" startline="25" endline="37">load</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classal_1_1_camera_1a2f067a00a14eccdcb1876f7e57f9c34c" prot="protected" static="no" mutable="no">
@@ -103,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="33" column="35" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" bodystart="33" bodyend="-1"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="33" column="35" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" bodystart="33" bodyend="-1"/>
         <referencedby refid="classal_1_1_camera_1af6fb29bed068c5ac3b344313f9df486b" compoundref="al_camera_8cpp" startline="25" endline="37">load</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classal_1_1_camera_1af4ae6d63afe534fe5d5a75fa25bbfa02" prot="protected" static="no" mutable="no">
@@ -118,7 +118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="34" column="35" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" bodystart="34" bodyend="-1"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="34" column="35" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" bodystart="34" bodyend="-1"/>
         <referencedby refid="classal_1_1_camera_1a5c0d8bdab0dd4c19a8d4ab3a6fbd6428" compoundref="al_camera_8cpp" startline="12" endline="21">Camera</referencedby>
         <referencedby refid="classal_1_1_camera_1af6fb29bed068c5ac3b344313f9df486b" compoundref="al_camera_8cpp" startline="25" endline="37">load</referencedby>
       </memberdef>
@@ -134,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="35" column="35" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" bodystart="35" bodyend="-1"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="35" column="35" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" bodystart="35" bodyend="-1"/>
         <referencedby refid="classal_1_1_camera_1a5c0d8bdab0dd4c19a8d4ab3a6fbd6428" compoundref="al_camera_8cpp" startline="12" endline="21">Camera</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classal_1_1_camera_1a5909227f2cef0a797977ddca511618bb" prot="protected" static="no" mutable="no">
@@ -149,7 +149,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="36" column="35" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" bodystart="36" bodyend="-1"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="36" column="35" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" bodystart="36" bodyend="-1"/>
         <referencedby refid="classal_1_1_camera_1a5c0d8bdab0dd4c19a8d4ab3a6fbd6428" compoundref="al_camera_8cpp" startline="12" endline="21">Camera</referencedby>
         <referencedby refid="classal_1_1_camera_1af6fb29bed068c5ac3b344313f9df486b" compoundref="al_camera_8cpp" startline="25" endline="37">load</referencedby>
       </memberdef>
@@ -171,7 +171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="39" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/Camera/alCamera.cpp" bodystart="25" bodyend="37"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="39" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/Camera/alCamera.cpp" bodystart="25" bodyend="37"/>
         <references refid="classal_1_1_camera_dash_angle_tuner_param_1a3cda7a63a87c3842b1db61a993da1e9a" compoundref="al_camera_dash_angle_tuner_param_8cpp" startline="11" endline="17">al::CameraDashAngleTunerParam::init</references>
         <references refid="classal_1_1_camera_param_vision_1aa960e3d8c4ec1adb5ed95fb0a3274dc6" compoundref="al_camera_param_vision_8cpp" startline="16" endline="29">al::CameraParamVision::init</references>
         <references refid="classal_1_1_camera_rotator_param_1ad368f6a90a4610df5574a873a6f4e66d" compoundref="al_camera_rotator_param_8cpp" startline="11" endline="16">al::CameraRotatorParam::init</references>
@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="40" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/Camera/alCamera.cpp" bodystart="39" bodyend="41"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="40" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/Camera/alCamera.cpp" bodystart="39" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classal_1_1_camera_1afbef657329b41dd5cc4bd19a1cf32283" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classal_1_1_functor_v0_m" kindref="compound">void</ref></type>
@@ -206,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="41" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/Camera/alCamera.cpp" bodystart="43" bodyend="45"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="41" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/Camera/alCamera.cpp" bodystart="43" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classal_1_1_camera_1a910360eb0e7fdae32bd5064f2e62e31c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classal_1_1_functor_v0_m" kindref="compound">void</ref></type>
@@ -220,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="42" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/Camera/alCamera.cpp" bodystart="47" bodyend="49"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="42" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/Camera/alCamera.cpp" bodystart="47" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classal_1_1_camera_1a5066ea446f7bee80ba937be0270f74ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classal_1_1_functor_v0_m" kindref="compound">void</ref></type>
@@ -234,7 +234,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="43" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/Camera/alCamera.cpp" bodystart="51" bodyend="53"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="43" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/Camera/alCamera.cpp" bodystart="51" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classal_1_1_camera_1aa5115317b79f3d2723336ec4ea814ce3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classal_1_1_functor_v0_m" kindref="compound">void</ref></type>
@@ -248,7 +248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="44" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/Camera/alCamera.cpp" bodystart="55" bodyend="57"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="44" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/Camera/alCamera.cpp" bodystart="55" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="classal_1_1_camera_1aba4ca08f1f6daab9f7054441285ea9a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classal_1_1_functor_v0_m" kindref="compound">void</ref></type>
@@ -262,7 +262,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="45" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/Camera/alCamera.cpp" bodystart="59" bodyend="61"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="45" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/Camera/alCamera.cpp" bodystart="59" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="classal_1_1_camera_1af2e4522d937bdc61f9b3c7e043533854" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classal_1_1_functor_v0_m" kindref="compound">void</ref></type>
@@ -276,7 +276,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="46" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/Camera/alCamera.cpp" bodystart="63" bodyend="65"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="46" column="22" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/Camera/alCamera.cpp" bodystart="63" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classal_1_1_camera_1a5c0d8bdab0dd4c19a8d4ab3a6fbd6428" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -294,7 +294,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="49" column="9" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/src/Camera/alCamera.cpp" bodystart="12" bodyend="21"/>
+        <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="49" column="9" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/src/Camera/alCamera.cpp" bodystart="12" bodyend="21"/>
         <references refid="classal_1_1_camera_1af4ae6d63afe534fe5d5a75fa25bbfa02" compoundref="al_camera_8h" startline="34">mDashAngleTunerParam</references>
         <references refid="classal_1_1_camera_1a5909227f2cef0a797977ddca511618bb" compoundref="al_camera_8h" startline="36">mRotatorParam</references>
         <references refid="classal_1_1_camera_1a5ad146210796f513290220c7846a0da3" compoundref="al_camera_8h" startline="35">mUnknownParam</references>
@@ -338,7 +338,7 @@
         <link refid="classal_1_1_camera_unknown_param"/>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" line="22" column="1" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCamera.h" bodystart="23" bodyend="50"/>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" line="22" column="1" bodyfile="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCamera.h" bodystart="23" bodyend="50"/>
     <listofallmembers>
       <member refid="classal_1_1_camera_1aa7c6a55134ca9aa25b4e9fa6e1c97257" prot="protected" virt="non-virtual"><scope>al::Camera</scope><name>_2C</name></member>
       <member refid="classal_1_1_camera_1a08b7e79371f85fc54ed2ba6d58f45e13" prot="protected" virt="non-virtual"><scope>al::Camera</scope><name>_8</name></member>

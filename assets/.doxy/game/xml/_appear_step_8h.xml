@@ -56,6 +56,6 @@
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_appear_step" kindref="compound">AppearStep</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::SafeString&amp;<sp/>name<sp/>);</highlight></codeline>
 <codeline lineno="22"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/MapObj/AppearStep.h"/>
+    <location file="Game/backup/include/MapObj/AppearStep.h"/>
   </compounddef>
 </doxygen>

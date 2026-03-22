@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/Sequence/ProductStateStage.cpp" line="8" column="28" bodyfile="Game/src/Sequence/ProductStateStage.cpp" bodystart="8" bodyend="11"/>
+        <location file="Game/backup/src/Sequence/ProductStateStage.cpp" line="8" column="28" bodyfile="Game/backup/src/Sequence/ProductStateStage.cpp" bodystart="8" bodyend="11"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -60,7 +60,7 @@
         <link refid="class_stage_start_param_base"/>
       </node>
     </collaborationgraph>
-    <location file="Game/src/Sequence/ProductStateStage.cpp" line="5" column="1" bodyfile="Game/src/Sequence/ProductStateStage.cpp" bodystart="6" bodyend="12"/>
+    <location file="Game/backup/src/Sequence/ProductStateStage.cpp" line="5" column="1" bodyfile="Game/backup/src/Sequence/ProductStateStage.cpp" bodystart="6" bodyend="12"/>
     <listofallmembers>
       <member refid="class_stage_start_param_base_1a27d023e7d923f6dc804c7042c15f3dea" prot="private" virt="virtual"><scope>KoopaLastStageStartParam</scope><name>gap</name></member>
       <member refid="class_stage_start_param_base_1ac7f4e34903f95977d1e67511ac271470" prot="private" virt="virtual"><scope>KoopaLastStageStartParam</scope><name>gap2</name></member>

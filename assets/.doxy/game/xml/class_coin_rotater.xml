@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinRotater.h" line="9" column="15" bodyfile="Game/include/MapObj/CoinRotater.h" bodystart="9" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/CoinRotater.h" line="9" column="15" bodyfile="Game/backup/include/MapObj/CoinRotater.h" bodystart="9" bodyend="-1"/>
         <referencedby refid="class_coin_rotater_1adfae9a55421e0885960013f1ca4c36cf" compoundref="_coin_rotater_8h" startline="13" endline="16">getRotateY</referencedby>
       </memberdef>
       <memberdef kind="variable" id="class_coin_rotater_1afa99ce24dc92ecca9c7fb9d503623a87" prot="private" static="no" mutable="no">
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinRotater.h" line="10" column="15" bodyfile="Game/include/MapObj/CoinRotater.h" bodystart="10" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/CoinRotater.h" line="10" column="15" bodyfile="Game/backup/include/MapObj/CoinRotater.h" bodystart="10" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinRotater.h" line="13" column="15" bodyfile="Game/include/MapObj/CoinRotater.h" bodystart="13" bodyend="16"/>
+        <location file="Game/backup/include/MapObj/CoinRotater.h" line="13" column="15" bodyfile="Game/backup/include/MapObj/CoinRotater.h" bodystart="13" bodyend="16"/>
         <references refid="class_coin_rotater_1a206295bace441b8c26b1a79db8276de1" compoundref="_coin_rotater_8h" startline="9">mRotateY</references>
         <referencedby refid="namespacerp_1a4f58ad73f89ce46fb895c8269092a7da" compoundref="_coin_rotater_8cpp" startline="37" endline="41">rp::getCoinRotateY</referencedby>
       </memberdef>
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinRotater.h" line="19" column="28" bodyfile="Game/src/MapObj/CoinRotater.cpp" bodystart="16" bodyend="19"/>
+        <location file="Game/backup/include/MapObj/CoinRotater.h" line="19" column="28" bodyfile="Game/backup/src/MapObj/CoinRotater.cpp" bodystart="16" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="class_coin_rotater_1a41b5dacdf28a7da5898c152266dccc94" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinRotater.h" line="20" column="29" bodyfile="Game/src/MapObj/CoinRotater.cpp" bodystart="23" bodyend="27"/>
+        <location file="Game/backup/include/MapObj/CoinRotater.h" line="20" column="29" bodyfile="Game/backup/src/MapObj/CoinRotater.cpp" bodystart="23" bodyend="27"/>
         <references refid="_coin_rotater_8cpp_1a927e8276ffa316ca767ed6423c863f78">fn_00277de0</references>
       </memberdef>
       <memberdef kind="function" id="class_coin_rotater_1afbbf00c865c79edfac7fe78f8e2832fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -98,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinRotater.h" line="22" column="22"/>
+        <location file="Game/backup/include/MapObj/CoinRotater.h" line="22" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_coin_rotater_1a941546058c86dd0c6a6255386e4f64f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -112,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/CoinRotater.h" line="25" column="9" bodyfile="Game/src/MapObj/CoinRotater.cpp" bodystart="9" bodyend="12"/>
+        <location file="Game/backup/include/MapObj/CoinRotater.h" line="25" column="9" bodyfile="Game/backup/src/MapObj/CoinRotater.cpp" bodystart="9" bodyend="12"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -151,7 +151,7 @@
         <label>al::LiveActor</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/MapObj/CoinRotater.h" line="6" column="1" bodyfile="Game/include/MapObj/CoinRotater.h" bodystart="7" bodyend="26"/>
+    <location file="Game/backup/include/MapObj/CoinRotater.h" line="6" column="1" bodyfile="Game/backup/include/MapObj/CoinRotater.h" bodystart="7" bodyend="26"/>
     <listofallmembers>
       <member refid="class_coin_rotater_1afa99ce24dc92ecca9c7fb9d503623a87" prot="private" virt="non-virtual"><scope>CoinRotater</scope><name>_68</name></member>
       <member refid="class_coin_rotater_1a941546058c86dd0c6a6255386e4f64f0" prot="public" virt="non-virtual"><scope>CoinRotater</scope><name>CoinRotater</name></member>

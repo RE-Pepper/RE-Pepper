@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_89665896fed3b86ffeb2c95c7fea51f5" kind="dir">
+    <compoundname>Npc</compoundname>
+    <innerfile refid="_aquarium_swim_debris_8cpp">AquariumSwimDebris.cpp</innerfile>
+    <innerfile refid="_flower_pot_8cpp">FlowerPot.cpp</innerfile>
+    <innerfile refid="_peach_rope_8cpp">PeachRope.cpp</innerfile>
+    <innerfile refid="_rail_dot_8cpp">RailDot.cpp</innerfile>
+    <innerfile refid="_rail_dot_end_8cpp">RailDotEnd.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Game/backup/src/Npc/"/>
+  </compounddef>
+</doxygen>

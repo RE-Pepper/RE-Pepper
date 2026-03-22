@@ -83,6 +83,6 @@
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_product_state_title" kindref="compound">ProductStateTitle</ref>(<sp/><ref refid="class_product_sequence" kindref="compound">ProductSequence</ref>*<sp/>host,<sp/><ref refid="class_product_stage_start_param" kindref="compound">ProductStageStartParam</ref>*<sp/>startParam,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::LayoutInitInfo&amp;<sp/>info<sp/>);</highlight></codeline>
 <codeline lineno="36"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Sequence/ProductStateCourseSelect.h"/>
+    <location file="Game/backup/include/Sequence/ProductStateCourseSelect.h"/>
   </compounddef>
 </doxygen>

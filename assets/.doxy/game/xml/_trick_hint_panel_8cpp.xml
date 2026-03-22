@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/MapObj/TrickHintPanel.cpp" line="26" column="16" declfile="Game/src/MapObj/TrickHintPanel.cpp" declline="26" declcolumn="16"/>
+        <location file="Game/backup/src/MapObj/TrickHintPanel.cpp" line="26" column="16" declfile="Game/backup/src/MapObj/TrickHintPanel.cpp" declline="26" declcolumn="16"/>
         <referencedby refid="class_trick_hint_panel_1a02c521ae794ecbba99dea4b567702044" compoundref="_trick_hint_panel_8cpp" startline="28" endline="34">TrickHintPanel::init</referencedby>
       </memberdef>
       <memberdef kind="function" id="_trick_hint_panel_8cpp_1a7659ae16207cf2d862446ef473d5bf24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -100,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/MapObj/TrickHintPanel.cpp" line="59" column="16" declfile="Game/src/MapObj/TrickHintPanel.cpp" declline="59" declcolumn="16"/>
+        <location file="Game/backup/src/MapObj/TrickHintPanel.cpp" line="59" column="16" declfile="Game/backup/src/MapObj/TrickHintPanel.cpp" declline="59" declcolumn="16"/>
         <referencedby refid="class_trick_hint_panel_1a8f4c4293f418160a569d6e12d9306db8" compoundref="_trick_hint_panel_8cpp" startline="66" endline="77">TrickHintPanel::exeOn</referencedby>
       </memberdef>
       <memberdef kind="function" id="_trick_hint_panel_8cpp_1a728351b06a8fbb280b93fe874734a525" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -117,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/MapObj/TrickHintPanel.cpp" line="60" column="16" declfile="Game/src/MapObj/TrickHintPanel.cpp" declline="60" declcolumn="16"/>
+        <location file="Game/backup/src/MapObj/TrickHintPanel.cpp" line="60" column="16" declfile="Game/backup/src/MapObj/TrickHintPanel.cpp" declline="60" declcolumn="16"/>
         <referencedby refid="class_trick_hint_panel_1a1e2a4496107c674d8e05ce4957d33590" compoundref="_trick_hint_panel_8cpp" startline="86" endline="94">TrickHintPanel::exeOff</referencedby>
       </memberdef>
       <memberdef kind="function" id="_trick_hint_panel_8cpp_1a27c3f83439213e491f4cba4d68d38469" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -131,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/src/MapObj/TrickHintPanel.cpp" line="61" column="16" declfile="Game/src/MapObj/TrickHintPanel.cpp" declline="61" declcolumn="16"/>
+        <location file="Game/backup/src/MapObj/TrickHintPanel.cpp" line="61" column="16" declfile="Game/backup/src/MapObj/TrickHintPanel.cpp" declline="61" declcolumn="16"/>
         <referencedby refid="class_trick_hint_panel_1a375ef84fa70a470e9027d43cae417a11" compoundref="_trick_hint_panel_8cpp" startline="80" endline="84">TrickHintPanel::exenrv3</referencedby>
         <referencedby refid="class_trick_hint_panel_1a1e2a4496107c674d8e05ce4957d33590" compoundref="_trick_hint_panel_8cpp" startline="86" endline="94">TrickHintPanel::exeOff</referencedby>
       </memberdef>
@@ -236,6 +236,6 @@
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="94"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="Game/src/MapObj/TrickHintPanel.cpp"/>
+    <location file="Game/backup/src/MapObj/TrickHintPanel.cpp"/>
   </compounddef>
 </doxygen>

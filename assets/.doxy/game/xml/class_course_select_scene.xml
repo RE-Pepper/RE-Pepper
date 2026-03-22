@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Scene/CourseSelectScene.h" line="10" column="32" bodyfile="Game/include/Scene/CourseSelectScene.h" bodystart="10" bodyend="-1"/>
+        <location file="Game/backup/include/Scene/CourseSelectScene.h" line="10" column="32" bodyfile="Game/backup/include/Scene/CourseSelectScene.h" bodystart="10" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_course_select_scene_1a5c0a1c67dee12a3528ef974f7b9f92b6" prot="private" static="no" mutable="no">
         <type>u8</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Scene/CourseSelectScene.h" line="11" column="33" bodyfile="Game/include/Scene/CourseSelectScene.h" bodystart="11" bodyend="-1"/>
+        <location file="Game/backup/include/Scene/CourseSelectScene.h" line="11" column="33" bodyfile="Game/backup/include/Scene/CourseSelectScene.h" bodystart="11" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Scene/CourseSelectScene.h" line="14" column="9"/>
+        <location file="Game/backup/include/Scene/CourseSelectScene.h" line="14" column="9"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -93,7 +93,7 @@
         <label>al::Scene</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/Scene/CourseSelectScene.h" line="7" column="1" bodyfile="Game/include/Scene/CourseSelectScene.h" bodystart="8" bodyend="15"/>
+    <location file="Game/backup/include/Scene/CourseSelectScene.h" line="7" column="1" bodyfile="Game/backup/include/Scene/CourseSelectScene.h" bodystart="8" bodyend="15"/>
     <listofallmembers>
       <member refid="class_course_select_scene_1aa17980bc4908683698abb81457d07a88" prot="public" virt="non-virtual"><scope>CourseSelectScene</scope><name>CourseSelectScene</name></member>
       <member refid="class_course_select_scene_1a0c4daf769cdd639d82e07ffd0d91b0f2" prot="private" virt="non-virtual"><scope>CourseSelectScene</scope><name>mStageStartParam</name></member>

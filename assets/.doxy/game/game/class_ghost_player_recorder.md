@@ -159,5 +159,5 @@ virtual void GhostPlayerRecorder::initSceneObj ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/Player/GhostPlayerRecorder.h`
+The documentation for this class was generated from the following file `Game/backup/include/Player/GhostPlayerRecorder.h`
 

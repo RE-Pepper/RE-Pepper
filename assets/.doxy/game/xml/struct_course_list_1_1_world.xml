@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/System/CourseList.h" line="44" column="24" bodyfile="Game/include/System/CourseList.h" bodystart="44" bodyend="-1"/>
+        <location file="Game/backup/include/System/CourseList.h" line="44" column="24" bodyfile="Game/backup/include/System/CourseList.h" bodystart="44" bodyend="-1"/>
         <referencedby refid="class_course_list_1a573fb0bf416df1aa9311e953bae642b7" compoundref="_course_list_8cpp" startline="113" endline="128">CourseList::init</referencedby>
         <referencedby refid="struct_course_list_1_1_world_1aa377b957484b4933f7f77602aac7d3b8" compoundref="_course_list_8cpp" startline="58" endline="83">World</referencedby>
       </memberdef>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/System/CourseList.h" line="45" column="26" bodyfile="Game/include/System/CourseList.h" bodystart="45" bodyend="-1"/>
+        <location file="Game/backup/include/System/CourseList.h" line="45" column="26" bodyfile="Game/backup/include/System/CourseList.h" bodystart="45" bodyend="-1"/>
         <referencedby refid="class_course_list_1a573fb0bf416df1aa9311e953bae642b7" compoundref="_course_list_8cpp" startline="113" endline="128">CourseList::init</referencedby>
         <referencedby refid="struct_course_list_1_1_world_1aa377b957484b4933f7f77602aac7d3b8" compoundref="_course_list_8cpp" startline="58" endline="83">World</referencedby>
       </memberdef>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/System/CourseList.h" line="46" column="26" bodyfile="Game/include/System/CourseList.h" bodystart="46" bodyend="-1"/>
+        <location file="Game/backup/include/System/CourseList.h" line="46" column="26" bodyfile="Game/backup/include/System/CourseList.h" bodystart="46" bodyend="-1"/>
         <referencedby refid="struct_course_list_1_1_world_1aa377b957484b4933f7f77602aac7d3b8" compoundref="_course_list_8cpp" startline="58" endline="83">World</referencedby>
       </memberdef>
     </sectiondef>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/System/CourseList.h" line="48" column="17" bodyfile="Game/src/System/CourseList.cpp" bodystart="58" bodyend="83"/>
+        <location file="Game/backup/include/System/CourseList.h" line="48" column="17" bodyfile="Game/backup/src/System/CourseList.cpp" bodystart="58" bodyend="83"/>
         <references refid="struct_course_list_1_1_world_1ae40a1bcc5219792704cc5661f112ffcc" compoundref="_course_list_8h" startline="44">mCourses</references>
         <references refid="struct_course_list_1_1_world_1a4b1b874cc0602b82971eb064a80468ee" compoundref="_course_list_8h" startline="46">mIsSpecialWorld</references>
         <references refid="struct_course_list_1_1_world_1a566797744ffaf636ba11dcd8ac9aa53d" compoundref="_course_list_8h" startline="45">mNumCourses</references>
@@ -91,7 +91,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="Game/include/System/CourseList.h" line="42" column="9" bodyfile="Game/include/System/CourseList.h" bodystart="43" bodyend="49"/>
+    <location file="Game/backup/include/System/CourseList.h" line="42" column="9" bodyfile="Game/backup/include/System/CourseList.h" bodystart="43" bodyend="49"/>
     <listofallmembers>
       <member refid="struct_course_list_1_1_world_1ae40a1bcc5219792704cc5661f112ffcc" prot="public" virt="non-virtual"><scope>CourseList::World</scope><name>mCourses</name></member>
       <member refid="struct_course_list_1_1_world_1a4b1b874cc0602b82971eb064a80468ee" prot="public" virt="non-virtual"><scope>CourseList::World</scope><name>mIsSpecialWorld</name></member>

@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraAnim.h" line="8" column="13" bodyfile="Game/include/Camera/CameraAnim.h" bodystart="8" bodyend="-1"/>
+        <location file="Game/backup/include/Camera/CameraAnim.h" line="8" column="13" bodyfile="Game/backup/include/Camera/CameraAnim.h" bodystart="8" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_camera_anim_1a4a510fdca1aa6622f0d2a14d395f43ae" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraAnim.h" line="9" column="13" bodyfile="Game/include/Camera/CameraAnim.h" bodystart="9" bodyend="-1"/>
+        <location file="Game/backup/include/Camera/CameraAnim.h" line="9" column="13" bodyfile="Game/backup/include/Camera/CameraAnim.h" bodystart="9" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_camera_anim_1abcbfb2fe0d969ff3be9ab1dcceafe211" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraAnim.h" line="10" column="13" bodyfile="Game/include/Camera/CameraAnim.h" bodystart="10" bodyend="-1"/>
+        <location file="Game/backup/include/Camera/CameraAnim.h" line="10" column="13" bodyfile="Game/backup/include/Camera/CameraAnim.h" bodystart="10" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_camera_anim_1a318d5c773e31499723254808d87fca74" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraAnim.h" line="11" column="13" bodyfile="Game/include/Camera/CameraAnim.h" bodystart="11" bodyend="-1"/>
+        <location file="Game/backup/include/Camera/CameraAnim.h" line="11" column="13" bodyfile="Game/backup/include/Camera/CameraAnim.h" bodystart="11" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -79,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraAnim.h" line="14" column="22"/>
+        <location file="Game/backup/include/Camera/CameraAnim.h" line="14" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_camera_anim_1a3a3ad937995f976b579225a6dfc56b3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraAnim.h" line="15" column="22"/>
+        <location file="Game/backup/include/Camera/CameraAnim.h" line="15" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_camera_anim_1afeaa9f8635b076af8ebce72a97532fe3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -111,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Camera/CameraAnim.h" line="18" column="9"/>
+        <location file="Game/backup/include/Camera/CameraAnim.h" line="18" column="9"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -140,7 +140,7 @@
         <label>al::Camera</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/Camera/CameraAnim.h" line="5" column="1" bodyfile="Game/include/Camera/CameraAnim.h" bodystart="6" bodyend="19"/>
+    <location file="Game/backup/include/Camera/CameraAnim.h" line="5" column="1" bodyfile="Game/backup/include/Camera/CameraAnim.h" bodystart="6" bodyend="19"/>
     <listofallmembers>
       <member refid="class_camera_anim_1ab29cb9c8e9674e7e0cad150dc775bbdc" prot="private" virt="non-virtual"><scope>CameraAnim</scope><name>_4C</name></member>
       <member refid="class_camera_anim_1a4a510fdca1aa6622f0d2a14d395f43ae" prot="private" virt="non-virtual"><scope>CameraAnim</scope><name>_50</name></member>

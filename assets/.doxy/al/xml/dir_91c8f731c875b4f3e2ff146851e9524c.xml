@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_91c8f731c875b4f3e2ff146851e9524c" kind="dir">
+    <compoundname>include</compoundname>
+    <innerdir refid="dir_b7fc9200a4f7d26d4acf4ee56ee313c7">AreaObj</innerdir>
+    <innerdir refid="dir_0b6be3bddc08b0fe777b8f908ed1824a">Audio</innerdir>
+    <innerdir refid="dir_379bdf7de792c5b2fa4c12f230f357ac">Camera</innerdir>
+    <innerdir refid="dir_7e8c68cf19e0ef7d7545051dcecbf0eb">Clipping</innerdir>
+    <innerdir refid="dir_b64277db147a0cb833174dd0bf4617cc">Collision</innerdir>
+    <innerdir refid="dir_e3da62ea5bebfe07a47c3b811589815a">Controller</innerdir>
+    <innerdir refid="dir_ff51cf8ab20432040552f45403bead0b">Effect</innerdir>
+    <innerdir refid="dir_b0627dbdf07c5051f864ccb41a35881f">Execute</innerdir>
+    <innerdir refid="dir_3f8e9df3dfd35c77b73e3e3b5744b002">Factory</innerdir>
+    <innerdir refid="dir_a1283b388f36cc77f3502fde80df9d33">File</innerdir>
+    <innerdir refid="dir_82d961fedc01bae4a429681f03079cb6">Fog</innerdir>
+    <innerdir refid="dir_4b1618e0f87ca3a70fa89f8b6dfa1b0c">Functor</innerdir>
+    <innerdir refid="dir_a2a99ef7263af19e42c28e75f0e41509">HitSensor</innerdir>
+    <innerdir refid="dir_c1df91a8d2930eb97f96869b778a7e0b">KeyPose</innerdir>
+    <innerdir refid="dir_df428175ad75013516ece83f85ae05d3">Layout</innerdir>
+    <innerdir refid="dir_834378260339034a4005b37c1f1948d3">LiveActor</innerdir>
+    <innerdir refid="dir_186204ddd6c634d60c0262be70e5b53c">MapObj</innerdir>
+    <innerdir refid="dir_a6a6e942f5176229b6b86fb9f5bbf267">Math</innerdir>
+    <innerdir refid="dir_3d028d37cd32fdb455b8e65a68f4df1f">Memory</innerdir>
+    <innerdir refid="dir_39912c60a9720bc12b383267e2bbed49">Message</innerdir>
+    <innerdir refid="dir_b30aa7a02aee64ce0942147420d20004">Model</innerdir>
+    <innerdir refid="dir_cea16a3cd0068aab539e5f3441822a40">Nerve</innerdir>
+    <innerdir refid="dir_43489f5cd47c3c88012e1bbb9faf90cc">Npc</innerdir>
+    <innerdir refid="dir_744e64cec26a6892f8b29132f9597205">Placement</innerdir>
+    <innerdir refid="dir_c8bcdc1e1ae46381fd1d0b5e3e0c3157">Rail</innerdir>
+    <innerdir refid="dir_6ad324629ad6e0d47299f2844e376e3d">Resource</innerdir>
+    <innerdir refid="dir_33ac68c743ce979100635e8d517aca20">Save</innerdir>
+    <innerdir refid="dir_7bfae1a6d4e86bc4cb4ede3d69a6b687">Scene</innerdir>
+    <innerdir refid="dir_80eeee9f399bfcc1dc7c8bcc9010f301">Se</innerdir>
+    <innerdir refid="dir_43b72738b05ac15c7f74ccf5d441a094">Sequence</innerdir>
+    <innerdir refid="dir_0cdd618978bbb3ada31715675220b8a9">Shadow</innerdir>
+    <innerdir refid="dir_daa0595dec2e5cfbe17969deed9028aa">Stage</innerdir>
+    <innerdir refid="dir_61ffa07cfbda06360481d678005eeea2">System</innerdir>
+    <innerdir refid="dir_38a3d91dc6c502fa895bc5833df868a6">Util</innerdir>
+    <innerdir refid="dir_4db20b6947036956387e84dab645aa7e">Yaml</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/"/>
+  </compounddef>
+</doxygen>

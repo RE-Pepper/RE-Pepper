@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerActionCondition.h" line="6" column="17" bodyfile="Game/include/Player/PlayerActionCondition.h" bodystart="6" bodyend="8"/>
+        <location file="Game/backup/include/Player/PlayerActionCondition.h" line="6" column="17" bodyfile="Game/backup/include/Player/PlayerActionCondition.h" bodystart="6" bodyend="8"/>
       </memberdef>
       <memberdef kind="function" id="class_player_action_condition_1a19f2c51a0036a0e653b786ba7b49334d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerActionCondition.h" line="10" column="22"/>
+        <location file="Game/backup/include/Player/PlayerActionCondition.h" line="10" column="22"/>
       </memberdef>
       <memberdef kind="function" id="class_player_action_condition_1a0f4e6e4f9535c5e724cebe260840b28f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerActionCondition.h" line="11" column="22" bodyfile="Game/src/Player/PlayerActionCondition.cpp" bodystart="3" bodyend="5"/>
+        <location file="Game/backup/include/Player/PlayerActionCondition.h" line="11" column="22" bodyfile="Game/backup/src/Player/PlayerActionCondition.cpp" bodystart="3" bodyend="5"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -74,7 +74,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="Game/include/Player/PlayerActionCondition.h" line="3" column="1" bodyfile="Game/include/Player/PlayerActionCondition.h" bodystart="4" bodyend="12"/>
+    <location file="Game/backup/include/Player/PlayerActionCondition.h" line="3" column="1" bodyfile="Game/backup/include/Player/PlayerActionCondition.h" bodystart="4" bodyend="12"/>
     <listofallmembers>
       <member refid="class_player_action_condition_1a19f2c51a0036a0e653b786ba7b49334d" prot="public" virt="pure-virtual"><scope>PlayerActionCondition</scope><name>check</name></member>
       <member refid="class_player_action_condition_1a0f4e6e4f9535c5e724cebe260840b28f" prot="public" virt="virtual"><scope>PlayerActionCondition</scope><name>setup</name></member>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_47d28cd3eb946f860e1fe0f4e720b9c2" kind="dir">
+    <compoundname>src</compoundname>
+    <innerdir refid="dir_0e41e8db2a159a2532eb8129063edf58">Enemy</innerdir>
+    <innerdir refid="dir_d5af9f6f62d27d9e3db1b7ff0fb6c0e1">MapObj</innerdir>
+    <innerdir refid="dir_89665896fed3b86ffeb2c95c7fea51f5">Npc</innerdir>
+    <innerdir refid="dir_9f791c72b7e31512581b67600bde1506">Player</innerdir>
+    <innerdir refid="dir_c3e5e32485410daab5e4633456b74fa1">Sequence</innerdir>
+    <innerdir refid="dir_aa3fa84a8a04c23ad2697be67b4c7cc2">System</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Game/backup/src/"/>
+  </compounddef>
+</doxygen>

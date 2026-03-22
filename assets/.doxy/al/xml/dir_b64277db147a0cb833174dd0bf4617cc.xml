@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_b64277db147a0cb833174dd0bf4617cc" kind="dir">
+    <compoundname>Collision</compoundname>
+    <innerfile refid="al_collider_8h">alCollider.h</innerfile>
+    <innerfile refid="al_collision_director_8h">alCollisionDirector.h</innerfile>
+    <innerfile refid="al_collision_parts_8h">alCollisionParts.h</innerfile>
+    <innerfile refid="al_collision_util_8h">alCollisionUtil.h</innerfile>
+    <innerfile refid="al_k_collision_server_8h">alKCollisionServer.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Collision/"/>
+  </compounddef>
+</doxygen>

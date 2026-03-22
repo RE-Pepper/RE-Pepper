@@ -62,6 +62,6 @@
 <codeline lineno="38" refid="class_product_stage_start_param_1a3dc2dbb3c4fdc948faacd40f7bda1a88" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="class_product_stage_start_param_1a3dc2dbb3c4fdc948faacd40f7bda1a88" kindref="member">getDemoStageName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="39"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Sequence/ProductStageStartParam.h"/>
+    <location file="Game/backup/include/Sequence/ProductStageStartParam.h"/>
   </compounddef>
 </doxygen>

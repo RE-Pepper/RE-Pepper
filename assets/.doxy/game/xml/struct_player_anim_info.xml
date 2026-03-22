@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerActorInitInfo.h" line="15" column="20" bodyfile="Game/include/Player/PlayerActorInitInfo.h" bodystart="15" bodyend="-1"/>
+        <location file="Game/backup/include/Player/PlayerActorInitInfo.h" line="15" column="20" bodyfile="Game/backup/include/Player/PlayerActorInitInfo.h" bodystart="15" bodyend="-1"/>
         <referencedby refid="struct_player_anim_info_1a60b5569ac824f987d2f5dab714d4afce" compoundref="_player_actor_init_info_8h" startline="17" endline="20">getAnimArchive</referencedby>
       </memberdef>
     </sectiondef>
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Player/PlayerActorInitInfo.h" line="17" column="20" bodyfile="Game/include/Player/PlayerActorInitInfo.h" bodystart="17" bodyend="20"/>
+        <location file="Game/backup/include/Player/PlayerActorInitInfo.h" line="17" column="20" bodyfile="Game/backup/include/Player/PlayerActorInitInfo.h" bodystart="17" bodyend="20"/>
         <references refid="struct_player_anim_info_1a9d7848fc9c1a5f67c15a181e88a1037b" compoundref="_player_actor_init_info_8h" startline="15">animArcs</references>
       </memberdef>
     </sectiondef>
@@ -45,7 +45,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="Game/include/Player/PlayerActorInitInfo.h" line="13" column="1" bodyfile="Game/include/Player/PlayerActorInitInfo.h" bodystart="14" bodyend="21"/>
+    <location file="Game/backup/include/Player/PlayerActorInitInfo.h" line="13" column="1" bodyfile="Game/backup/include/Player/PlayerActorInitInfo.h" bodystart="14" bodyend="21"/>
     <listofallmembers>
       <member refid="struct_player_anim_info_1a9d7848fc9c1a5f67c15a181e88a1037b" prot="public" virt="non-virtual"><scope>PlayerAnimInfo</scope><name>animArcs</name></member>
       <member refid="struct_player_anim_info_1a60b5569ac824f987d2f5dab714d4afce" prot="public" virt="non-virtual"><scope>PlayerAnimInfo</scope><name>getAnimArchive</name></member>

@@ -44,6 +44,6 @@
 <codeline lineno="21" refid="class_coin_charger_1a1e671ac5573dc1a0efc24bd5f8480f6b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_coin_charger_1a1e671ac5573dc1a0efc24bd5f8480f6b" kindref="member">CoinCharger</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>al::LayoutInitInfo&amp;<sp/>info<sp/>);</highlight></codeline>
 <codeline lineno="22"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/MapObj/CoinCharger.h"/>
+    <location file="Game/backup/include/MapObj/CoinCharger.h"/>
   </compounddef>
 </doxygen>

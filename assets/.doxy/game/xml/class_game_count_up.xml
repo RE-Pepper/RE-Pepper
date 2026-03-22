@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Layout/GameCountUp.h" line="13" column="24" bodyfile="Game/include/Layout/GameCountUp.h" bodystart="13" bodyend="-1"/>
+        <location file="Game/backup/include/Layout/GameCountUp.h" line="13" column="24" bodyfile="Game/backup/include/Layout/GameCountUp.h" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_game_count_up_1a53735fc51f973f895242f8ed3ddbce85" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Layout/GameCountUp.h" line="14" column="24" bodyfile="Game/include/Layout/GameCountUp.h" bodystart="14" bodyend="-1"/>
+        <location file="Game/backup/include/Layout/GameCountUp.h" line="14" column="24" bodyfile="Game/backup/include/Layout/GameCountUp.h" bodystart="14" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/Layout/GameCountUp.h" line="17" column="9"/>
+        <location file="Game/backup/include/Layout/GameCountUp.h" line="17" column="9"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -80,7 +80,7 @@
         <label>al::LayoutActor</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/Layout/GameCountUp.h" line="10" column="1" bodyfile="Game/include/Layout/GameCountUp.h" bodystart="11" bodyend="18"/>
+    <location file="Game/backup/include/Layout/GameCountUp.h" line="10" column="1" bodyfile="Game/backup/include/Layout/GameCountUp.h" bodystart="11" bodyend="18"/>
     <listofallmembers>
       <member refid="class_game_count_up_1a9ebaa4f5a1270f75fe6d2fa5727059c9" prot="private" virt="non-virtual"><scope>GameCountUp</scope><name>_30</name></member>
       <member refid="class_game_count_up_1a53735fc51f973f895242f8ed3ddbce85" prot="private" virt="non-virtual"><scope>GameCountUp</scope><name>_3C</name></member>

@@ -49,6 +49,6 @@
 <codeline lineno="27" refid="class_coin_1a512e42bb3badbd3e8b6e5143b5146cbd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_coin_1a512e42bb3badbd3e8b6e5143b5146cbd" kindref="member">Coin</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::SafeString&amp;<sp/>name<sp/>);</highlight></codeline>
 <codeline lineno="28"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/MapObj/CoinCollect.h"/>
+    <location file="Game/backup/include/MapObj/CoinCollect.h"/>
   </compounddef>
 </doxygen>

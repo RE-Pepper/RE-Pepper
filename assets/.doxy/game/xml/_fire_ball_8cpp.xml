@@ -149,6 +149,6 @@
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
-    <location file="Game/src/Enemy/FireBall.cpp"/>
+    <location file="Game/backup/src/Enemy/FireBall.cpp"/>
   </compounddef>
 </doxygen>

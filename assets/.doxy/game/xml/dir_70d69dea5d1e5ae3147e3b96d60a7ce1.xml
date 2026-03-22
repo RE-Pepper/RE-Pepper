@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_70d69dea5d1e5ae3147e3b96d60a7ce1" kind="dir">
+    <compoundname>backup</compoundname>
+    <innerdir refid="dir_e05fb92cc301336445c4f62f6c4f58b8">include</innerdir>
+    <innerdir refid="dir_47d28cd3eb946f860e1fe0f4e720b9c2">src</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Game/backup/"/>
+  </compounddef>
+</doxygen>

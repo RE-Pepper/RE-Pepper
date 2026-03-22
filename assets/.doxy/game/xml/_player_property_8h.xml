@@ -57,6 +57,6 @@
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_player_property_1a96f4e125368df4274bee35571cbb9fce" kindref="member">setUpVec</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::Vector3f&amp;<sp/>up<sp/>);</highlight></codeline>
 <codeline lineno="16"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Player/PlayerProperty.h"/>
+    <location file="Game/backup/include/Player/PlayerProperty.h"/>
   </compounddef>
 </doxygen>

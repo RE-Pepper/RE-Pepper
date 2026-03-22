@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="15" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="15" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="15" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1a3ef5b531001200ddbeb6f1afb8c2f93c" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="16" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="16" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="16" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1a0984cb3abc2e569ff28ac071dfbd216c" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="17" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="17" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="17" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1ab37cb323f9aab9ac243f1872721507d5" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="18" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="18" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="18" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1a6fe16540cbf3532dff9db2f90898d87f" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="19" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="19" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="19" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="19" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1a45e7d1046fa56710b0caa6e5517f09ff" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="20" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="20" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="20" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1a9f9450db86f79f1536fccbb4f784dbd5" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="21" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="21" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="21" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1afcd4ab45ceee8f85f53fa31affcc02e5" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -115,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="22" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="22" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="22" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1ae8ee81364e047ac157ca29bd0fc77fa2" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="23" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="23" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="23" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="23" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1a818b8eff567715928ccfca54f4dc7028" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -143,7 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="24" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="24" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="24" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1ad50f4af54070a07e0e50f4540f17ec7a" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -157,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="25" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="25" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="25" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1a0e7eae058139f505cf76b3f707ff50db" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -171,7 +171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="26" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="26" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="26" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1ac0f21adec7eecbd4e9d2e39ae6493f25" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -185,7 +185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="27" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="27" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="27" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1ac96d0175256c2fe9d64a54e30d707ea1" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -199,7 +199,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="28" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="28" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="28" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1ac58563657a274e66a79265f8b6cb7432" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -213,7 +213,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="29" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="29" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="29" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1a7992ad6c8e55718263768f1cf139f018" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -227,7 +227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="30" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="30" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="30" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1a4b35ea844eb7ba2bb592d3d773b353c5" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -241,7 +241,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="31" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="31" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="31" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1af37608197f23db10cd29c5670e8db3dc" prot="private" static="no" mutable="no">
         <type>sead::PtrArray&lt; al::LiveActor &gt; *</type>
@@ -255,7 +255,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="32" column="24" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="32" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="32" column="24" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1ad38462f77d9124a88c13f347e065d437" prot="private" static="no" mutable="no">
         <type><ref refid="class_coin_charger" kindref="compound">CoinCharger</ref> *</type>
@@ -269,7 +269,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="33" column="39" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="33" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="33" column="39" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1ab8783821f5dd7d5eb2a62a5dc1daa2d1" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -283,7 +283,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="34" column="39" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="34" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="34" column="39" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1ac2cea584377159fe559f7824c06ad84e" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -297,7 +297,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="35" column="39" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="35" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="35" column="39" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_item_holder_1a759740d50589436afbc7ed171b9004b4" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -311,7 +311,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="36" column="39" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="36" bodyend="-1"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="36" column="39" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="36" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -331,7 +331,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="39" column="14"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="39" column="14"/>
       </memberdef>
       <memberdef kind="function" id="class_item_holder_1a5b91c35404e7ddf3012fd142317fb4e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const char *</type>
@@ -345,7 +345,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="41" column="28" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="41" bodyend="44"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="41" column="28" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="41" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="class_item_holder_1a74f9ddcc2fd146d707e33aa8f6b2e02a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -368,7 +368,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Game/include/MapObj/ItemHolder.h" line="47" column="9"/>
+        <location file="Game/backup/include/MapObj/ItemHolder.h" line="47" column="9"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -421,7 +421,7 @@
         <label>al::NerveExecutor</label>
       </node>
     </collaborationgraph>
-    <location file="Game/include/MapObj/ItemHolder.h" line="12" column="1" bodyfile="Game/include/MapObj/ItemHolder.h" bodystart="13" bodyend="48"/>
+    <location file="Game/backup/include/MapObj/ItemHolder.h" line="12" column="1" bodyfile="Game/backup/include/MapObj/ItemHolder.h" bodystart="13" bodyend="48"/>
     <listofallmembers>
       <member refid="class_item_holder_1ab8783821f5dd7d5eb2a62a5dc1daa2d1" prot="private" virt="non-virtual"><scope>ItemHolder</scope><name>_50</name></member>
       <member refid="class_item_holder_1ac2cea584377159fe559f7824c06ad84e" prot="private" virt="non-virtual"><scope>ItemHolder</scope><name>_54</name></member>

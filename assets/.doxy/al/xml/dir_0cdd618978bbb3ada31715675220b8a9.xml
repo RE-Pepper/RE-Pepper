@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_0cdd618978bbb3ada31715675220b8a9" kind="dir">
+    <compoundname>Shadow</compoundname>
+    <innerfile refid="al_shadow_keeper_8h">alShadowKeeper.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Shadow/"/>
+  </compounddef>
+</doxygen>

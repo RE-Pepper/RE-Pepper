@@ -4,7 +4,7 @@
 
 
 
-[**FileList**](files.md) **>** [**al**](dir_06a57bfe438b90fdc9c94a1df001d5d7.md) **>** [**include**](dir_f7e8efec570a34efc8a6993e55383954.md) **>** [**Camera**](dir_b39408af9c4561f6cdf388b41f39f7f7.md) **>** [**alCameraRotatorParam.h**](al_camera_rotator_param_8h.md)
+[**FileList**](files.md) **>** [**al**](dir_06a57bfe438b90fdc9c94a1df001d5d7.md) **>** [**backup**](dir_e950b0fd36f81e11534198fd855feab3.md) **>** [**include**](dir_91c8f731c875b4f3e2ff146851e9524c.md) **>** [**Camera**](dir_379bdf7de792c5b2fa4c12f230f357ac.md) **>** [**alCameraRotatorParam.h**](al_camera_rotator_param_8h.md)
 
 [Go to the source code of this file](al_camera_rotator_param_8h_source.md)
 
@@ -87,5 +87,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/include/Camera/alCameraRotatorParam.h`
+The documentation for this class was generated from the following file `/home/runner/work/RE-Pepper/RE-Pepper/lib/al/backup/include/Camera/alCameraRotatorParam.h`
 

@@ -70,6 +70,6 @@
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_ghost_player" kindref="compound">GhostPlayer</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sead::SafeString&amp;<sp/>name<sp/>);</highlight></codeline>
 <codeline lineno="36"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Player/GhostPlayer.h"/>
+    <location file="Game/backup/include/Player/GhostPlayer.h"/>
   </compounddef>
 </doxygen>

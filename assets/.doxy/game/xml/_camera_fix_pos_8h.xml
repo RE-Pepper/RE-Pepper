@@ -40,6 +40,6 @@
 <codeline lineno="18" refid="class_camera_fix_pos_1a4b230a200ab009cefa6c20eb674272f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_camera_fix_pos_1a4b230a200ab009cefa6c20eb674272f5" kindref="member">CameraFixPos</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>name<sp/>);</highlight></codeline>
 <codeline lineno="19"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="Game/include/Camera/CameraFixPos.h"/>
+    <location file="Game/backup/include/Camera/CameraFixPos.h"/>
   </compounddef>
 </doxygen>

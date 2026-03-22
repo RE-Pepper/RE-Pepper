@@ -192,5 +192,5 @@ Implements [*IUsePlayerAnimator::getAnimFrame*](class_i_use_player_animator.md#f
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `Game/include/Player/PlayerAnimator.h`
+The documentation for this class was generated from the following file `Game/backup/include/Player/PlayerAnimator.h`
 
