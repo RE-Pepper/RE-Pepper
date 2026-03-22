@@ -9,13 +9,37 @@ AlignConsecutiveDeclarations:
   PadOperators: true
 AlignOperands: true
 AllowAllParametersOfDeclarationOnNextLine: false
-AllowShortFunctionsOnASingleLine: None
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortEnumsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: false
 BinPackArguments: false
 BinPackParameters: false
-BreakBeforeBraces: Allman
+BreakConstructorInitializers: AfterColon
+BreakInheritanceList: AfterColon
+BreakTemplateDeclarations: true
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterEnum: true
+  AfterClass: true
+  AfterStruct: true
+  AfterFunction: true
+  AfterNamespace: false
+  AfterCaseLabel: false
+  AfterExternBlock: false
+  BeforeElse: true
+  BeforeWhile: true
+  BeforeCatch: true
+  BeforeLambdaBody: true
+  SplitEmptyRecord: false
+  SplitEmptyFunction: false
+  SplitEmptyNamespace: false
+  AfterControlStatement: MultiLine
 ColumnLimit: 0
+UseTab: Never
 ContinuationIndentWidth: 8
+CompactNamespaces: false
 IncludeBlocks: Regroup
 IncludeCategories:
   - Regex: ^<
@@ -27,13 +51,16 @@ IncludeCategories:
     SortPriority: 0
     CaseSensitive: false
 IndentWidth: 8
+InsertBraces: true
 PenaltyBreakBeforeFirstCallParameter: 0
 PointerAlignment: Left
 ReferenceAlignment: Left
 ReflowComments: false
 SortIncludes: true
-SpacesInSquareBrackets: true
+InsertNewlineAtEOF: true
+RemoveSemicolon: true
 Standard: c++03
+Cpp11BracedListStyle: false
 WhitespaceSensitiveMacros:
   - SEAD_ENUM
   - SEAD_ENUM_EX
@@ -41,6 +68,5 @@ WhitespaceSensitiveMacros:
   - PP_STRINGIZE
   - STRINGIZE
 Language: Cpp
-SpacesInParentheses: true
 AlwaysBreakAfterReturnType: None
 

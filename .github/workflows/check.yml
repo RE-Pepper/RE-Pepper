@@ -1,4 +1,4 @@
-name: Test if Project builds
+name: Run Checks on the Map
 
 on:
   push:
@@ -7,15 +7,10 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:
-
-concurrency:
-  group: building
-  cancel-in-progress: true
 
 jobs:
-  build:
-    name: Build Project
+  check:
+    name: Run Checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -40,13 +35,17 @@ jobs:
           sudo apt-get install -y cmake make python3 python3-pip python-is-python3
           python -m pip install colorama capstone pyelftools requests argcomplete watchdog python-Levenshtein cxxfilt GitPython matplotlib numpy mplcursors
 
-      - name: Build & Parse
+      - name: Check
         run: | 
+          export DEVKITARM="$PWD/setup/dkp"
+
           VERSIONS=(); for dir in ./data/ver/*/; do [[ -f "$dir/map.csv" ]] && VERSIONS+=("${dir%/}"); done; VERSIONS=("${VERSIONS[@]##*/}")
           did_run=false
           for v in "${VERSIONS[@]}"; do
               echo "Now $v"
-              python make.py "$v"
+              python make.py "$v" --silent
+              echo "Checking and updating csv"
+              python tools/check.py -q -w -e
               echo "Finished $v"
               did_run=true
           done

@@ -20,6 +20,7 @@ is_skip_mode = False
 is_sim_mode = False
 is_silent = False
 is_log = False
+do_error = False
 csv_path = ""
 log_path = ""
 
@@ -101,14 +102,13 @@ def getRankMsg(prev, now):
 def printf(str, end='\n'):
     if is_silent:
         return
-    print(str, end=end)
+    echo (str, end=end)
 
 def clear_line():
     printf (' ' * shutil.get_terminal_size((80, 20)).columns, end='\r')
 
 def print_progress(name, prog, rank):
     printf (Fore.LIGHTRED_EX + f"[{prog}%] " + Fore.LIGHTCYAN_EX + name + Fore.RESET + Style.RESET_ALL + f" ({rank})", end='\r')
-
 
 def check_syms():
     syms = read_sym_file()
@@ -131,6 +131,8 @@ def check_syms():
         start=sym[MapFmt.Start]
         oldrank=sym[MapFmt.Rank]
         name=sym[MapFmt.Symbol]
+        sect=sym[MapFmt.Section]
+        pool=sym[MapFmt.Pool]
         typ=sym[MapFmt.Type]
         rank='U'
 
@@ -139,7 +141,7 @@ def check_syms():
 
         # check addr dupl
         if start in sym_starts:
-            print (f"0x{start:08X} appears more than once!")
+            echo (f"0x{start:08X} appears more than once!")
 
         sym_starts.append(start)
         sym_ends.append(end)
@@ -155,13 +157,13 @@ def check_syms():
             rank = rank_symbol(sym, decomp_symbol)
 
         # main adding
-        newsyms.append((start, end, typ, rank, name))
+        newsyms.append((start, pool, end, sect, rank, typ, name))
         last_name = name
         clear_line()
         print_progress (last_name, progress, rank)
         if oldrank != rank:
             change = f"{name} {oldrank} -> {rank} ({getRankMsg(oldrank, rank)})"
-            print (change)
+            echo (change)
             log.append(change)
             do_rewrite = True
 
@@ -174,47 +176,51 @@ def check_syms():
         addr, endaddr = mySyms[i]
         next_addr = mySyms[i + 1][MapFmt.Start]
         if endaddr > next_addr:
-            print (f"MAP OVERLAP: 0x{addr:08X} overlaps with 0x{next_addr:08X}")
+            echo (f"MAP OVERLAP: 0x{addr:08X} overlaps with 0x{next_addr:08X}")
             is_error = True
 
     if is_error and do_rewrite:
-        print ("Errors detected, cannot update map. Please fix!")
+        echo ("Errors detected, cannot update map. Please fix!")
         if is_sim_mode or is_skip_mode:
-            print (r"... you ran in simulation mode anyways so \_(ツ)_/")
+            echo (r"... you ran in simulation mode anyways so \_(ツ)_/")
+        fail ("Read above")
         return
 
     if is_error:
-        print ("Errors detected, but no changes. Please fix!")
+        fail ("Errors detected, but no changes. Please fix!")
         return
 
     if is_sim_mode or is_skip_mode:
-        print ("Simulation mode, not updating map file")
+        echo ("Simulation mode, not updating map file")
         return
 
     if not do_rewrite:
-        print ("Everything up to date")
+        echo ("Everything up to date")
         return
 
     if is_log:
-        print ("Writing log")
+        echo ("Writing log")
         with open(log_path, 'w') as f:
             for line in log:
                 f.write(f"{line}\n")
 
+    elif do_error:
+        fail_ex ("Map has differences, chose to error.", "If this is from Github, make sure you ran tools/check.py!")
+
     else:
-        print ("Updating map ...")
+        echo ("Updating map ...")
 
         updateFull(newsyms, csv_path)
 
 def check_sym(symbol_name):
     dec = get_elf_symbol(symbol_name)
     if dec is None:
-        print (f"Symbol {symbol_name} not found in build.")
+        echo (f"Symbol {symbol_name} not found in build.")
         return
 
     sym = get_symbol(symbol_name)
     if sym is None:
-        print (f"Symbol {symbol_name} not found in map.")
+        echo (f"Symbol {symbol_name} not found in map.")
         return
 
     prevrank = sym[MapFmt.Rank]
@@ -224,7 +230,7 @@ def check_sym(symbol_name):
         sym[MapFmt.Rank] = nowrank
         updateSingle(sym, csv_path)
 
-        print (f"{prevrank} -> {nowrank} ({getRankMsg(prevrank, nowrank)})")
+        echo (f"{prevrank} -> {nowrank} ({getRankMsg(prevrank, nowrank)})")
     else:
         printf (getRankMsg(prevrank, nowrank))
 
@@ -235,12 +241,14 @@ def main():
     global is_sim_mode
     global is_silent
     global is_log
+    global do_error
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-f", action="store_true", help="Skip rank checking (fast)")
     parser.add_argument("-s", action="store_true", help="Simulation mode (don't write file)")
     parser.add_argument("-q", action="store_true", help="Dont print progress")
     parser.add_argument("-w", action="store_true", help="Log changes to file (No csv update)")
+    parser.add_argument("-e", action="store_true", help="Error when map has differences.")
     parser.add_argument("sym", nargs="?", help="Only check this symbol")
     args = parser.parse_args()
 
@@ -248,15 +256,16 @@ def main():
     is_sim_mode = args.s
     is_silent = args.q
     is_log = args.w
+    do_error = args.e
 
     csv_path = getMapFile()
     log_path = str(getVerDir() / ".changes")
 
     if cfg.only_matching:
         csv_path = getMapFile().with_stem(f"{getMapFile().stem}_test")
-        print("Info: TEST MODE. You need to compile without -m (only matching) to rebuild the functions map. This output will be written to data/*_test.csv")
+        echo ("Info: TEST MODE. You need to compile without -m (only matching) to rebuild the functions map. This output will be written to data/*_test.csv")
 
-    print ("The check has begun ...")
+    echo ("The check has begun ...")
 
     if args.sym:
         check_sym(args.sym)
@@ -264,7 +273,7 @@ def main():
         start = time.time()
         check_syms()
         clear_line()
-        print(f"{int(time.time() - start)}s elapsed")
+        echo (f"{int(time.time() - start)}s elapsed")
 
 if __name__ == "__main__":
     main()

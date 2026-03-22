@@ -64,26 +64,21 @@ def get_asm (sym_name):
 def upload (sym_name, show_name, ctx, src):
     echo ("Uploading ...")
 
-    url = f"https://decomp.me/api/scratch"
+    base_link = "https://decomp.me"
+    url = f"{base_link}/api/scratch"
     asm = get_asm(sym_name)
 
-    if not ctx and not src:
-        data = {
-            "name": show_name,
-            "context": "",
-            "target_asm": asm,
-            "diff_label": sym_name,
-            "preset": cfg.decompme_id
-        }
-    else:
-        data = {
-            "name": show_name,
-            "context": ctx,
-            "source_code": src,
-            "target_asm": asm,
-            "diff_label": sym_name,
-            "preset": cfg.decompme_id
-        }
+    data = {
+        "name": show_name,
+        "context": "",
+        "target_asm": asm,
+        "diff_label": sym_name,
+        "preset": cfg.decompme_id
+    }
+    if ctx:
+        data["context"] = ctx
+    if src:
+        data["source_code"] = src
 
     r = requests.post(url, data=data)
 
@@ -98,8 +93,8 @@ def upload (sym_name, show_name, ctx, src):
     if not slug or not claim_token:
         fail (f"Unexpected response: {res}")
     
-    base_url = f"{api_base}/scratch/{slug}/"
-    claim_url = f"{api_base}/scratch/{slug}/claim?token={claim_token}"
+    base_url = f"{base_link}/scratch/{slug}/"
+    claim_url = f"{base_link}/scratch/{slug}/claim?token={claim_token}"
 
     return base_url, claim_url
 
@@ -110,22 +105,28 @@ def main():
     sym_in = sys.argv[1]
     path, sym = get_sym_file(sym_in)
 
-    if not path:
-        data = None
-        main = None
-    else:
+    if path:
         echo ("Collecting code ...")
         data, main = gen_ctx(path, sym)
+    elif cfg.flag_preinclude:
+        main, data = gen_ctx(getProjDir() / cfg.flag_preinclude)
+        main = None
+    else:
+        main = None
+        data = None
 
     if is_filter:
         name = cxxfilt.demangle (sym)
     else:
         name = sym
 
+#    echo (data)
+#    echo (main)
+
     if path:
         echo (f"Lines: ctx {len(data.splitlines())}, src {len(main.splitlines())}")
     else:
-        echo ("No file found, ctx will be empty.")
+        echo ("No file found, source will be empty.")
 
     if input("Ready to upload? (y/N) ").strip().lower() not in ("y", "yes", "j", "ja"):
         return

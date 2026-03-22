@@ -6,10 +6,14 @@ from tools.low.glob import *
 
 def make_line(sym):
     line = []
+
+    skip_pool = False
+    if sym[MapFmt.Pool] == sym[MapFmt.End]:
+        skip_pool = True
     for col in MapFmt:
-        if not sym[col]:
+        if not (col == MapFmt.Symbol) and not sym[col] or (skip_pool and col == MapFmt.Pool):
             line.append("          ")
-        elif col in (MapFmt.Start, MapFmt.End, MapFmt.Pool):
+        elif col in (MapFmt.Start, MapFmt.End, MapFmt.Pool, MapFmt.Section):
             line.append(f"0x{sym[col]:08X}")
         else:
             line.append(str(sym[col]))
@@ -19,7 +23,7 @@ def updateFull(newsyms, csv_path=None):
     if not csv_path:
         csv_path = getMapFile()
     # Create backup
-    with open(csv_path, 'r') as src, open(csv_path + '_b', 'w') as dst:
+    with open(csv_path, 'r') as src, open(str(csv_path) + '_b', 'w') as dst:
         dst.write(src.read())
 
     # Write file

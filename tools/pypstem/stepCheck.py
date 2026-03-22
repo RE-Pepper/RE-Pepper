@@ -37,6 +37,7 @@ def exec_check(version, clear=False, stop=False):
         fail (f"Current version {version} is not configured. Try again later, por favor.")
 
     # hi
+    check_wibo()
     setVersion(version)
     sayHi()
 
@@ -58,9 +59,6 @@ def exec_check(version, clear=False, stop=False):
         getBuildObjPath().mkdir(parents=True, exist_ok = True)
     if not getBuildLibPath().exists():
         getBuildLibPath().mkdir(parents=True, exist_ok = True)
-
-    # misc
-    check_wibo()
 
     if stop:
         exit(0)

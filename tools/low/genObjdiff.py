@@ -35,7 +35,8 @@ def gen_objdiff():
     data = '\n'
     for src_path_name, src_data in cfg.modules.items():
         src_path = getProjDir().joinpath(*str(src_path_name).split("/")).joinpath(*src_data.get("source_dir").split("/"))
-        for src in sorted(src_path.rglob("**.*")):
+        for src in sorted(src_path.rglob("*")):
+            # TODO: check for extsion, TODO: fix at all 
             obj = file[1]
             name = file[1][len(str(getProjDir()))+1:].partition('.dir/')[2].rsplit(".", 1)[0]
             ctx = obj.rsplit('.', 1)[0] + '.ctx'

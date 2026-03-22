@@ -3,7 +3,7 @@ import subprocess
 import os
 import sys
 
-from tools.low.glob import getCompilerPath, fail_ex, fail, echo
+from tools.low.glob import getCompilerPath, getCompilersDir, fail_ex, fail, echo
 
 def _call(exe, arg_list, silent=False, capture=False):
     from tools.low.glob import isLinux
@@ -12,7 +12,7 @@ def _call(exe, arg_list, silent=False, capture=False):
 
     idx = 0;
     if isLinux():
-        arg_list.insert(idx, "wibo")
+        arg_list.insert(idx, str(getCompilersDir() / "wibo"))
         idx += 1
     if not path.exists():
         fail_ex (f"Compiler binaries incomplete, cannot find {path.name}", f"At {path}")

@@ -18,20 +18,29 @@ for mod_path_name, mod_data in cfg.modules.items():
 
 setup_compiler(cfg.compiler)
 
-def getTypeInc(sym=None, main_data=None, traversed=None):
-    file_path = findFilePath("nn/types.h")
-    if not file_path:
-        fail ("nn/types.h missing, cannot continue.")
+main_data = None
+traversed = None
+sym = None
 
-    data, _ = traverseFile (file_path, sym, main_data, traversed)
+def getTypeInc():
+    file_path = findFilePath(cfg.flag_preinclude)
+    if not file_path:
+        fail ("nn/types.h missing, cannot continue.", Fail)
+
+    data, _ = traverseFile (file_path)
     return data
 
 def findFilePath(relative_path):
     if not relative_path:
         fail ("Cannot find empty string for path.")
 
-    if Path(relative_path).exists():
-        return relative_path # direct path given
+    try_path = Path(relative_path)
+    if try_path.exists():
+        return try_path.resolve() # direct path given
+
+    try_path = getProjDir() / relative_path
+    if try_path.exists():
+        return try_path.resolve() # relative path given
 
     attempt_armcc = Path(os.environ[get_compiler_env_inc()]) / relative_path
     if attempt_armcc.exists():
@@ -43,24 +52,41 @@ def findFilePath(relative_path):
         if candidate.exists():
             return candidate
 
-    fail (f"Cannot find file: {relative_path}")
+    fail (f"Cannot find file: {relative_path}", False)
 
-def traverseFile(pat, sym=None, main_data=None, traversed=None):
-    if main_data is None:
-        main_data = []
+def grabInclude(line):
+    line_match = re.search(r'"([^"]*)"|<([^>]*)>', line)
+    if not line_match:
+        return [line], False
+
+    incl_path = line_match.group(1) or line_match.group(2)
+    if not incl_path:
+        return [line], False
+
+    included, _m = traverseFile (incl_path)
+    if not included or len(included) <= 0:
+        if incl_path in cfg.flag_preinclude:
+            return None, False
+        return [line], False
+        
+    return included, True
+
+def traverseFile(pat):
+    global main_data, traversed
+
+    if main_data is None: main_data = []
+    if traversed is None: traversed = set()
 
     content = []
     file_path = findFilePath(pat)
     if not file_path or not file_path.exists():
         return None, main_data
 
-    if traversed is None: traversed = set()
     if file_path in traversed:
         return None, main_data
 
     traversed.add(file_path)
 
-    has_includes = False
     is_ns_al = False
     is_main_data = True if main_data is None or len(main_data) == 0 else False
     if is_main_data:
@@ -72,9 +98,11 @@ def traverseFile(pat, sym=None, main_data=None, traversed=None):
         else:
             content.append(f'// Context from {file_path.relative_to(getProjDir())}\n')
             main_data.append(f'// Context from {file_path.relative_to(getProjDir())}\n')
-        
-        for l in getTypeInc(sym, main_data, traversed): # to be called after anything is written to main_data.
-            content.append(l)
+
+        list_lines = getTypeInc()
+        if list_lines:
+            for l in list_lines: # to be called after anything is written to main_data.
+                content.append(l)
     else:
         content.append(f"// File: {file_path.relative_to(getProjDir())}\n")
 
@@ -85,23 +113,11 @@ def traverseFile(pat, sym=None, main_data=None, traversed=None):
                 continue
 
             if "include" in line and "#" in line:
-                incl_path = ""
-                match = re.search(r'"([^"]*)"|<([^>]*)>', line)
-                if not match:
-                    continue
-
-                incl_path = match.group(1) or match.group(2)
-                if not incl_path:
-                    continue
-
-                included, _m = traverseFile (incl_path, sym, main_data, traversed)
-                if not included:
-                    continue
-                    
-                for incl_line in included:
-                    content.append(incl_line)
-                content.append (f"// Included from: {file_path.relative_to(getProjDir())}\n")
-                has_includes = True
+                include_lines, did_include = grabInclude(line)
+                if include_lines:
+                    content.extend(include_lines)
+                    if did_include:
+                        content.append (f"// Included from: {file_path.relative_to(getProjDir())}\n")
                 continue
 
             if is_main_data:
@@ -121,7 +137,10 @@ def traverseFile(pat, sym=None, main_data=None, traversed=None):
 
     return content, main_data
 
-def gen_ctx(path, symbol):
-    ctx_data, main_data = traverseFile(path, symbol)
+def gen_ctx(path, symbol=None):
+    global sym
+    sym = symbol
+
+    ctx_data, main_data = traverseFile(path)
     return "\n".join(ctx_data), "\n".join(main_data)
 

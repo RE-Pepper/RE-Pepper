@@ -9,7 +9,7 @@ from tools.low.glob import * # globals
 
 def main():
     parser = argparse.ArgumentParser(description="Build RE:Pepper")
-    parser.add_argument("version", default=None, help="Version to use")
+    parser.add_argument("version", nargs="?", default=None, help="Version to use")
     parser.add_argument("--warn", '-w', action='store_true', help="Omit many warnings (nintendo standard)")
     parser.add_argument("--only_matching", '-mo', action='store_true', help="Compile only matching code")
     parser.add_argument("--allow_shifting", '-sh', action='store_true', help="Allow shifts during linking")
@@ -21,6 +21,7 @@ def main():
     parser.add_argument("--clear_all", '-ca', action='store_true', help="Clean split and build (and continue)")
     parser.add_argument("--clear_build", '-cr', action='store_true', help="Clean build (and continue)")
     parser.add_argument("--clear_split", '-cs', action='store_true', help="Clean split (and continue)")
+    parser.add_argument("--silent", '-q', action='store_true', help="Silent mode (not added yet)")
     args = parser.parse_args()
     sys.argv = [sys.argv[0]] # clear args
 

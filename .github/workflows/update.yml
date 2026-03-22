@@ -1,0 +1,97 @@
+name: Update Statistics
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check:
+    name: Run Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Checkout build repo
+        uses: actions/checkout@v4
+        with:
+          repository: RE-Pepper/RE-Pepper-Build
+          token: ${{ secrets.GH_TOKEN }}
+          path: setup
+
+      - name: Setup
+        run: |
+          cp ./setup/ver/* ./data/ver -rf
+          rm -rf ./setup/ver
+          sudo apt-get update
+          sudo apt-get install -y cmake make python3 python3-pip python-is-python3
+          python -m pip install colorama capstone pyelftools requests argcomplete watchdog python-Levenshtein cxxfilt GitPython matplotlib numpy mplcursors
+
+      - name: Check
+        run: | 
+          VERSIONS=(); for dir in ./data/ver/*/; do [[ -f "$dir/map.csv" ]] && VERSIONS+=("${dir%/}"); done; VERSIONS=("${VERSIONS[@]##*/}")
+          export DEVKITARM="$PWD/setup/dkp"
+          did_run=false
+          for v in "${VERSIONS[@]}"; do
+              echo "Now $v"
+              python make.py "$v" --silent
+              echo "Generating progress info"
+              python tools/progress.py
+              echo "Finished $v"
+              did_run=true
+          done
+
+          if [ -z "$did_run" ]; then
+              echo "No versions found."
+              exit 1
+          fi
+
+      - name: Publish stats
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          VERSIONS=(); for dir in ./data/ver/*/; do [[ -f "$dir/map.csv" ]] && VERSIONS+=("${dir%/}"); done; VERSIONS=("${VERSIONS[@]##*/}")
+
+          for v in "${VERSIONS[@]}"; do
+              echo "Now $v"
+              R="stats-$v"
+              DIR="data/stats/$v"
+              echo "DBG:$DIR"
+              BODY=""
+              FILE="$DIR/release.txt"
+              if [ -f "$FILE" ]; then
+                  BODY=$(cat "$FILE")
+              else
+                  echo missing release.txt for $v
+              fi
+
+              if gh release view "$R" >/dev/null 2>&1; then
+                  gh release delete "$R" --yes || true
+              fi
+
+              gh release create "$R" -t "$R" -n "$BODY"
+
+              for f in "$DIR"/*; do
+                  if [[ "$(basename "$f")" == "release.txt" ]]; then
+                      continue
+                  fi
+                  echo "Got: $f"
+                  gh release upload "$R" "$f" --clobber
+              done
+
+              echo "Uploaded, now updating action summary..."
+              CHANGES="No changes."
+              if [ -f "data/ver/$v/.changes" ]; then
+                  CHANGES=$(cat "data/ver/$v/.changes")
+              fi
+              echo "## Changes for $v:" >> $GITHUB_STEP_SUMMARY
+              echo "$CHANGES" >> $GITHUB_STEP_SUMMARY
+
+              echo "Finished $v"
+          done
+

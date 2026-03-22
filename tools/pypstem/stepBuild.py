@@ -77,6 +77,7 @@ def exec_build():
                     break
 
                 data_old[row[0]] = int(row[1])
+
     flags_old = None
     if getCfgFlagsFile().exists():
         flags_old = {}
@@ -144,14 +145,15 @@ def exec_build():
             mod_extensions = mod_data.get("extensions")
 
         module_files[mod_path_name] = set()
-        for file in mod_path.rglob("**.*"):
-            if file.suffix.lstrip(".") in ("h"):
+        for file in mod_path.rglob("*"):
+            ext_name = file.suffix.lstrip(".")
+            if ext_name in ("h"):
                 timestamp = int(file.stat().st_mtime)
                 file_str = os.path.relpath(file, getProjDir())
                 data_new[file_str] = timestamp
         
             # check file extension
-            if not file.suffix.lstrip(".") in mod_extensions:
+            if not ext_name or not ext_name in mod_extensions:
                 continue
 
             module_files[mod_path_name].add(file)

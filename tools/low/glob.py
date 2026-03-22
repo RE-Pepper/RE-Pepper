@@ -26,6 +26,9 @@ def setCompilerVer(ver):
 
 def isLinux():
     return "linux" in sys.platform
+def isSixFour():
+    import platform
+    return platform.machine().endswith('64')
 def isSilent():
     return is_silent
 def getVersion():
@@ -44,6 +47,8 @@ def getDataDir():
     return getProjDir() / "data"
 def getVerDir(): # Get directory for version
     return getDataDir() / "ver" / getVersion()
+def getStatsDir(): # Get Statistics directory
+    return getDataDir() / "stats" / getVersion()
 def getCompilersDir():
     return getDataDir() / "compilers"
 def getCfgListFile(): # List of all src files + dates

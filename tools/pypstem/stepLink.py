@@ -11,8 +11,10 @@ def exec_link():
 
     echo ("Preparing to link ...", "\r")
 
-    getElfFile().unlink()
-    getOutMapFile().unlink()
+    if getElfFile().exists():
+        getElfFile().unlink()
+    if getOutMapFile().exists():
+        getOutMapFile().unlink()
 
     setup_compiler(cfg.compiler)
 

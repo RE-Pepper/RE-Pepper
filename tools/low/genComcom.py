@@ -13,7 +13,9 @@ def gen_comcom():
     for src_path_name, src_data in cfg.modules.items():
         if not src_data.get("include_dir"):
             continue
-        includes += f"-I {src_data.get("include_dir")} "
+        includes += f"-I{getProjDir() / src_path_name / src_data.get("include_dir")} "
+    if cfg.flag_preinclude:
+        includes += f"--include={str(getProjDir() / cfg.flag_preinclude)}"
 
     with open(getJsonComcomFile(), "w") as f:
         f.write("[")
@@ -25,7 +27,7 @@ def gen_comcom():
             if str(getSplitAsmDir()) in str(src_path):
                 continue
 
-            for file in src_path.rglob("**.*"):
+            for file in src_path.rglob("*"):
                 output = path.relpath(getFileBuildPath(file), getBuildObjPath())
 
                 f.write("\n{\n")
