@@ -36,7 +36,7 @@ As noted earlier, this fork of the RedPepper project made some updates:
 
 ### Prequesites
     - Python 3
-    <!-- DevKitPro-->
+    - DevKitPro (only for diff.py or check.py)
     - `code.bin` or `.code` (not decrypted) as `code.bin`
     - `exh.bin` or `extheader.bin` or `HeaderExeFS.bin` (not decrypted) as `exh.bin`
 
