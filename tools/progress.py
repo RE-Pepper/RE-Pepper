@@ -76,7 +76,7 @@ def main():
             "color": color,
             "schemaVersion": 1
         }
-        with open(getStatsDir() / 'release.txt', 'w') as f:
+        with open(getStatsDir() / f"{rank}.json", 'w') as f:
             f.write(json.dumps(out))
 
     bytes_ok_str = "{:.4f}% ({:,} bytes/{:,} bytes)".format((bytes_ok / code_bin_size) * 100, int(bytes_ok), int(code_bin_size))
