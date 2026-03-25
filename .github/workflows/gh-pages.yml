@@ -70,10 +70,10 @@ jobs:
       run: |
         mkdir priv
         mv RE-Pepper-Wiki priv/RE-Pepper-Wiki
+
         python -m mkdocs build --config-file priv/RE-Pepper-Wiki/mkdocs.yml
-        # upload
-        git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/RE-Pepper/RE-Pepper.git
+
         echo "rep.moddi.dev" >> priv/RE-Pepper-Wiki/site/CNAME
-        echo "Set CNAME"
-        python -m ghp_import -n -f -p -b website priv/RE-Pepper-Wiki/site
+
+        python -m ghp_import -n -f -p -b website -r https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/RE-Pepper/RE-Pepper-Wiki.git priv/RE-Pepper-Wiki/site
 
