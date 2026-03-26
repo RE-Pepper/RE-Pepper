@@ -14,21 +14,22 @@ class MapFmt(IntEnum):
     Symbol = 6
 
 _map_data = []
-with open(getMapFile(), newline='') as f:
-    rows = list(csv.reader(f, delimiter=',', quotechar='"'))
-    rowslen = len(rows)
-    for rowi, row in enumerate(rows):
-        if len(row) != len(MapFmt):
-            continue
-        if not (row and row[MapFmt.Start].startswith("0x")):
-            continue
+if getMapFile().exists():
+    with open(getMapFile(), newline='') as f:
+        rows = list(csv.reader(f, delimiter=',', quotechar='"'))
+        rowslen = len(rows)
+        for rowi, row in enumerate(rows):
+            if len(row) != len(MapFmt):
+                continue
+            if not (row and row[MapFmt.Start].startswith("0x")):
+                continue
 
-        #echo (row)
-        start = int(row[MapFmt.Start].strip(), 0)
-        end = int(row[MapFmt.End].strip(), 0) if row[MapFmt.End].strip() else None
-        pool = int(row[MapFmt.Pool].strip(), 0) if row[MapFmt.Pool].strip() else (end if end else 0)
-        section = int(row[MapFmt.Section].strip(), 0) if row[MapFmt.Section].strip() else None
-        _map_data.append((start, pool, end, section, row[MapFmt.Rank], row[MapFmt.Type], row[MapFmt.Symbol]))
+            #echo (row)
+            start = int(row[MapFmt.Start].strip(), 0)
+            end = int(row[MapFmt.End].strip(), 0) if row[MapFmt.End].strip() else None
+            pool = int(row[MapFmt.Pool].strip(), 0) if row[MapFmt.Pool].strip() else (end if end else 0)
+            section = int(row[MapFmt.Section].strip(), 0) if row[MapFmt.Section].strip() else None
+            _map_data.append((start, pool, end, section, row[MapFmt.Rank], row[MapFmt.Type], row[MapFmt.Symbol]))
 
 def read_sym_file():
     return _map_data

@@ -3,62 +3,34 @@ import os
 import sys
 import hashlib
 from pathlib import Path
-from tools.low import cfg
 
-# from _settings
-def getVerDir(version):
-    return Path(getProjDir()) / "data" / "ver" / version
-def getProjDir(): # Resolve project path
-    return Path(os.path.realpath(__file__).split("tools")[0].rstrip(os.sep))
-def getBinFile(version): # Path of original code binary
-    return getVerDir(version) / "code.bin"
-def getHeadFile(version): # Path of original code binary
-    return getVerDir(version) / "exh.bin"
-def echo(str, end="\n"):
-    print (f"\033[38;5;221m{str}\033[0m\033[K", end=end)
-def fail(err):
-    print (f"\033[38;5;196mError: {err}\033[0m\033[K")
-    exit(1)
-    
-def getVerFile():
-    return str(Path(getProjDir()) / "data" / ".version")
+from tools.low import cfg
+from tools.low.utils import *
 
 def write_ver(version):
-    with open(getVerFile(), 'w') as f:
+    with open(getCfgVerFile(), 'w') as f:
         f.write(version)
 
 def get_ver(version=None):
-    if not os.path.exists(getVerFile()):
+    if not getCfgVerFile().exists():
         write_ver(version or cfg.default_version)
-        if not version: echo (f"Note: Using default version \'{cfg.default_version}\'")
+        if not version:
+            echo (f"Note: Using default version \'{cfg.default_version}\'")
 
-    with open(getVerFile(), 'r') as f:
+    with open(getCfgVerFile(), 'r') as f:
         ver = f.read()
 
-    if len(ver) < 2:
-        fail ("invalid version file")
+    if not ver in cfg.versions:
+        fail (f"Version setting doesnt exist: {ver}", False)
 
     return ver
 
 def get_ver_path(version, file):
-    return getVerDir(version) / file
-
-def get_versions():
-    return list(cfg.versions)
-
-def is_ver_name(name):
-    return name in cfg.versions
-
-def is_ver_exist(version):
-    return getBinFile(version).exists()
-
-def is_ver_valid(version):
-    if not is_ver_name(version):
-        return False
+    return getVerDirEx(version) / file
 
     return hashlib.sha256(getBinFile(version).read_bytes()).hexdigest() == cfg.versions[version]
 def is_ver_configured(version):
-    return getVerDir(version).exists() and get_ver_path(version, "map.csv").exists()
+    return getVerDirEx(version).exists() and get_ver_path(version, "map.csv").exists()
 
 def get_file_ver(path):
     target_hash = hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -70,28 +42,38 @@ def get_file_ver(path):
     return None
 
 def sort_bin_if_exist():
-    try_bin_path = str(Path(getProjDir()) / "data" / "code.bin")
-    try_exh_path = str(Path(getProjDir()) / "data" / "exh.bin")
+    try_bin_path = getDataDir() / "game.axf"
+    try_exh_path = getDataDir() / "exh.bin"
 
-    if not os.path.exists(try_bin_path):
-        return None
-    if not os.path.exists(try_exh_path):
-        fail ("Found unsorted code.bin, but missing exh.bin. Please add exh.bin to data/ (exheader).")
+    if not try_bin_path.exists():
+        try_bin_path = getDataDir() / "code.bin"
+        if not try_bin_path.exists():
+            return None
+        if not try_exh_path.exists():
+            fail ("Found unsorted code.bin, but missing exh.bin. Please add exh.bin to data/ (exheader).", False)
+    elif try_exh_path.exists():
+        try_exh_path.unlink()
 
     # Check version
-    ver = get_file_ver(try_bin_path)
-    if not ver:
+    version = get_file_ver(try_bin_path)
+    if not version:
         echo ("Found loose data/code.bin, but does not correspond to any known version.")
         echo ("List of versions with SHA256:")
         for k, v in cfg.versions.items():
             print(k + ": " + v)
 
-        fail ("Please verify your binaries, and try again.")
+        fail ("Please verify your binaries, and try again.", False)
 
-    # Move file
-    os.rename(try_bin_path, getBinFile(ver))
-    os.rename(try_exh_path, getHeadFile(ver))
+    # Move
+    if not getVerDirEx(version).exists():
+        getVerDirEx(version).mkdir(parents=True, exist_ok=True)
 
-    echo (f"Found loose binaries in data/, identified as v{ver.upper()} and moved to data/ver/{ver}/.")
+    if try_exh_path.exists(): # code.bin
+        try_bin_path.rename(get_ver_path(version, "code.bin"))
+        try_exh_path.rename(getHeadFile(version))
+    else: # game.axf
+        try_bin_path.rename(get_ver_path(version, "game.axf"))
 
-    return ver
+    echo (f"Found loose binaries in data/, identified as v{version.upper()} and moved to data/ver/{version}/.")
+
+    return version

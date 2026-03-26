@@ -9,32 +9,31 @@ def sayHi():
     echo (f"{my_color}{cfg.project_name} v{getVersion().upper()}")
 
 def exec_check(version, clear=False, stop=False):
-
     # decide which version to use
     version = version
     found_version = sort_bin_if_exist()
     old_version = get_ver(version)
 
-    if not version or found_version or ("code.bin" in version):
+    if not version or found_version or ("code.bin" in version) or ("game.axf" in version):
         version = found_version or old_version
     else:
-        if not is_ver_name(version):
-            fail_ex (f"Passed argument \'{version}\' is not a valid version!", f"Available versions: {get_versions()}")
+        if not version in cfg.versions:
+            fail_ex (f"Passed argument \'{version}\' is not a valid version!", f"Available versions: {", ".join(cfg.versions)}", False)
         if found_version and (found_version is not version):
-            fail_ex ("found unsorted code.bin in data/, but parameter version differs.", "data/code.bin: " + found_version + ", specified: " + version)
+            fail_ex ("found unsorted code.bin in data/, but parameter version differs.", "data/code.bin: " + found_version + ", specified: " + version, False)
 
         write_ver(version)
 
     # assert version
-    if not is_ver_exist(version):
+    if not (found_version or getBinFileEx(version).exists()):
         write_ver(old_version)
-        fail (f"data/ver/{version}/code.bin missing. Please provide the code.bin from the {version} version.")
-    if not is_ver_valid(version):
+        fail_ex (f"Target binaries are missing for version \'{version}\'.", f"Please provide the binaries from the \'{version}\' version.", False)
+    if not version in cfg.versions:
         write_ver(old_version)
-        fail (f"code.bin for {version} is invalid. Did you dump the right version, correctly?")
+        fail_ex (f"Version \'{version}\' is invalid.", f"Available versions: {", ".join(cfg.versions)}", False)
     if not is_ver_configured(version):
         write_ver(old_version)
-        fail (f"Current version {version} is not configured. Try again later, por favor.")
+        fail_ex (f"Current version {version} is not configured.", "Initialize the map via \'python3 tools/pypstem/user/initMap.py <version>\'.", False)
 
     # hi
     check_wibo()

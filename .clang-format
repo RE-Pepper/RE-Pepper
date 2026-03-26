@@ -16,6 +16,7 @@ AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: false
 BinPackArguments: false
 BinPackParameters: false
+PackConstructorInitializers: NextLineOnly
 BreakConstructorInitializers: AfterColon
 BreakInheritanceList: AfterColon
 BreakTemplateDeclarations: true

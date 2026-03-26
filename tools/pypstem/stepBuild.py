@@ -53,7 +53,6 @@ def exec_build():
     echo ("Building modules")
 
     global flags_asm, flags_cxx
-    read_elfsym("/data/decomp/RedPepper/build/eu/obj/lib/CtrSDK/sources/fs/*.o")
     if not cfg.modules or len(cfg.modules) <= 0:
         echo ("No modules are specified, nothing to build.")
         return

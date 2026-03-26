@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 import sys
-def fail(msg: str):
-    print(msg)
-    sys.exit(1)
+
+from tools.low.utils import *
 
 def typeToSection(type, name):
     if "g" in type: # any global def

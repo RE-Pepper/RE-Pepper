@@ -2,6 +2,8 @@
 import os
 import json
 
+from tools.low.utilsPrint import *
+
 # GLOBAL CONFIG
 
 # Name of the Project (Project.axf)
@@ -70,11 +72,6 @@ def add_define(str):
     add_macro(str, "1")
 
 
-
-def _fail(str):
-    print (f"\033[38;5;196mError: {str}\033[0m\033[K")
-    exit(1)
-
 def checkStrEntry(data, name):
     if name in data:
         if globals()[name]:
@@ -117,7 +114,7 @@ def readFile(path):
         with open(path, 'r') as f:
             data = json.load(f)
     except Exception as e:
-        _fail (f"Failed to read config: {e}")
+        fail_ex (f"Failed to read config!", e)
 
     checkStrEntry(data, "project_name")
     checkStrEntry(data, "app_name")
@@ -150,7 +147,7 @@ def readFile(path):
             else:
                 modules[mod_id] = mod_data
             if not mod_data.get("name"):
-                _fail (f"Module {mod_id} missing \'name\' entry")
+                fail (f"Module {mod_id} missing \'name\' entry")
             if not mod_data.get("source_dir"):
                 modules[mod_id]["source_dir"] = "src"
             if not mod_data.get("include_dir"):
@@ -176,11 +173,11 @@ def assertCfg():
         print ("config.json is missing modules.")
 
     if not assert_flag:
-        _fail ("config.json is not complete, edit and try again.")
+        fail ("config.json unusable, edit and try again.")
 
 def read(verDir, dataDir):
     if not os.path.exists(str(dataDir / "config.json")):
-        _fail ("Missing config.json in data/.")
+        fail ("Missing config.json in data/.")
 
     readFile(dataDir / "config.json")
     readFile(verDir / "config.json")
