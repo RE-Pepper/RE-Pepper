@@ -162,7 +162,6 @@ def assertEntry(name):
 
 def assertCfg():
     assertEntry("project_name")
-    assertEntry("app_name")
     assertEntry("versions")
     assertEntry("compiler")
     assertEntry("default_version")
