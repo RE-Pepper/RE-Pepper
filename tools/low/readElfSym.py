@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from enum import IntEnum
 from pathlib import Path
+
 from tools.low.glob import *
 from tools.pypstem.callProcess import do_export
 
@@ -30,15 +31,17 @@ def read_elfsym(objfile):
 
         if len(row) != 8:
             continue
+        if not row[2].startswith("0x"):
+            continue
 
-        idx = row[0]
+        idx = int(row[0])
         sym = row[1]
-        addr = row[2]
+        addr = int(row[2],0)
         scope = row[3]
         sect = row[4]
         type = row[5]
         vis = row[6]
-        size = row[7]
+        size = int(row[7],0)
 
         if "Ref" == sect or type == "--":
             continue

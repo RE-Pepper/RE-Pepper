@@ -5,13 +5,14 @@ from tools.low.readSymMap import *
 from tools.low.getSection import typeToSectionLinker
 from tools.low.readHeader import *
 
-def endPart(str):
-    return str.split('\n', 1)[1] + "\t}\n"
+def endPart(lst):
+    lst.pop(0)
+    return "".join(lst) + "\t}\n"
 
 def gen_scatter():
-    s_code = ''
-    s_dataro = ''
-    s_datarw = ''
+    s_code = []
+    s_dataro = []
+    s_datarw = []
 
     ro_s = '+0'
     rw_s = '+0'
@@ -25,7 +26,7 @@ def gen_scatter():
 
     sym_prev = None
     syms = sorted(read_sym_file(), key=lambda tup: tup[MapFmt.Start])
-    for sym in syms:
+    for sym_i, sym in enumerate(syms):
         rank = sym[MapFmt.Rank]
         if cfg.only_matching and rank != 'O':
             continue
@@ -48,49 +49,45 @@ def gen_scatter():
             elif "d" in type:
                 name = f"dat_{addr:08X}"
             else:
-                fail (f"Unsupported sym type: {type} at 0x{addr:08X}")
+                fail(f"Unsupported sym type: {type} at 0x{addr:08X}")
 
         sect_str = typeToSectionLinker(type, name)
 
-        part = ""
+        part = []
         if isCreateSection:
             addr_str = " +0"
             if not cfg.allow_shifting:
                 addr_str = f" 0x{addr:08x}\n"
-            part +=  "\t}\n"
-            part += f"\ter_{name}{addr_str}"
-            part +=  "\t{\n"
-        part += f"\t\t* ({sect_str})\n"
+            part.append("\t}\n")
+            part.append(f"\ter_{name}{addr_str}")
+            part.append("\t{\n")
+        part.append(f"\t\t* ({sect_str})\n")
 
         if "f" in type:
-            s_code += part # func
+            s_code.extend(part)  # func
         elif "d" in type:
             if "c" in type:
-                s_dataro += part # dat ro
+                s_dataro.extend(part)  # dat ro
             else:
-                s_datarw += part # dat rw
+                s_datarw.extend(part)  # dat rw
         else:
-            fail (f"Unsupported sym type: {type} at 0x{addr:08X}")
+            fail(f"Unsupported sym type: {type} at 0x{addr:08X}")
 
         sym_prev = sym
 
-    s_code = endPart(s_code)
-    if s_dataro:
-        s_dataro = endPart(s_dataro)
-    if s_datarw:
-        s_datarw = endPart(s_datarw)
+    if len(s_code) < 2:
+        fail ("No functions matching, try with --allow_shifting")
+        getOutScatterFile().touch()
+        return
 
-    with open(Path(getProjDir()) / "data" / "template" / "linker.ld", 'r') as template:
-        with open(getOutScatterFile(), 'w') as out:
+    s_code_str = endPart(s_code)
+    s_dataro_str = endPart(s_dataro) if s_dataro else ''
+    s_datarw_str = endPart(s_datarw) if s_datarw else ''
 
-            out_line = template.read().replace("///", s_code).replace("&&&", s_dataro).replace("###", s_datarw)
-            
-            out_line = out_line.replace("//O", ro_s).replace("//W", rw_s)
+    out_line = None
+    with open(getDataDir() / "template" / "linker.ld", 'r') as f:
+        out_line = f.read().replace("///", s_code_str).replace("&&&", s_dataro_str).replace("###", s_datarw_str)
+        out_line = out_line.replace("//O", ro_s).replace("//W", rw_s)
+    with open(getOutScatterFile(), 'w') as f:
+        f.write(out_line)
 
-            out.write(out_line)
-
-def main():
-    genLDScript()
-
-if __name__ == '__main__':
-    main()

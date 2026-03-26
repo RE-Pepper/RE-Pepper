@@ -3,9 +3,9 @@ import os
 import re
 import sys
 import shutil
+from capstone import *
 from enum import IntEnum
 from pathlib import Path
-from capstone import *
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from tools.low.readSymMap import *

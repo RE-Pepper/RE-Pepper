@@ -25,7 +25,7 @@ def exec_check(version, clear=False, stop=False):
         write_ver(version)
 
     # assert version
-    if not (found_version or getBinFileEx(version).exists()):
+    if not (found_version or getBinFile(version).exists()):
         write_ver(old_version)
         fail_ex (f"Target binaries are missing for version \'{version}\'.", f"Please provide the binaries from the \'{version}\' version.", False)
     if not version in cfg.versions:

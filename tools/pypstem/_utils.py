@@ -13,12 +13,12 @@ def progress_set_type(status):
     global curstatus
     curstatus = status
 def progress_print():
-    if is_silent: return
+    if isSilent(): return
     prog_line = ""
     prog_line += f"\033[38;5;172m{curstatus}\033[38;2;150;75;0m{curname}\033[0m\033[K ..."
     print (prog_line, end='\r', flush=True)
 def progress_upd_type(status):
-    if is_silent: return
+    if isSilent(): return
     progress_set_type(status)
     progress_print()
 

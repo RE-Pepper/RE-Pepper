@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import sys
 
-from tools.low.utils import *
+from tools.low.utilsPrint import *
 
 def typeToSection(type, name):
     if "g" in type: # any global def

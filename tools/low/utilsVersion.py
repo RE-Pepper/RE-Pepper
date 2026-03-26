@@ -5,7 +5,7 @@ import hashlib
 from pathlib import Path
 
 from tools.low import cfg
-from tools.low.utils import *
+from tools.low.glob import *
 
 def write_ver(version):
     with open(getCfgVerFile(), 'w') as f:
@@ -26,11 +26,11 @@ def get_ver(version=None):
     return ver
 
 def get_ver_path(version, file):
-    return getVerDirEx(version) / file
+    return getVerDir(version) / file
 
     return hashlib.sha256(getBinFile(version).read_bytes()).hexdigest() == cfg.versions[version]
 def is_ver_configured(version):
-    return getVerDirEx(version).exists() and get_ver_path(version, "map.csv").exists()
+    return getVerDir(version).exists() and get_ver_path(version, "map.csv").exists()
 
 def get_file_ver(path):
     target_hash = hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -65,8 +65,8 @@ def sort_bin_if_exist():
         fail ("Please verify your binaries, and try again.", False)
 
     # Move
-    if not getVerDirEx(version).exists():
-        getVerDirEx(version).mkdir(parents=True, exist_ok=True)
+    if not getVerDir(version).exists():
+        getVerDir(version).mkdir(parents=True, exist_ok=True)
 
     if try_exh_path.exists(): # code.bin
         try_bin_path.rename(get_ver_path(version, "code.bin"))
