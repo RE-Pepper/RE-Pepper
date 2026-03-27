@@ -7,6 +7,6 @@
   "git-submodules": {
     "enabled": true
   },
-  "automerge": false,
+  "automerge": true,
   "autoApprove": true
 }
