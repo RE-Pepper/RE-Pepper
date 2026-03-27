@@ -54,8 +54,6 @@ def getCompilersDir():
     return getDataDir() / "compilers"
 def getCfgVerFile():
     return getProjDir() / "data" / ".version"
-def getCfgListFile(): # List of all src files + dates
-    return getVerDir() / ".files"
 def getCfgMapFile(): # Path to map with date
     return getVerDir() / ".map"
 def getCfgFlagsFile(): # List of all modules + flags

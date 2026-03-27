@@ -33,12 +33,14 @@ As noted earlier, this fork of the RedPepper project made some updates:
 - cmake scrapped and wrote custom build system along with new tools  
 - code.bin and exh.bin go to the data/ folder.  
 - rebuild assembly (for "possible" modding support)  
+- project has .axf support added, but 3d land has no axf files. If you happen to own one, contact me asap.
 
 ### Prequesites
     - Python 3
     - DevKitPro (only for diff.py or check.py)
     - `code.bin` or `.code` (not decrypted) as `code.bin`
     - `exh.bin` or `extheader.bin` or `HeaderExeFS.bin` (not decrypted) as `exh.bin`
+    - Or, if you has a .axf file (which is most likely not the case), that as `game.axf`
 
 ### Setup
 #### Python

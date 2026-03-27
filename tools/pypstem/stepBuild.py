@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 import json
+import shlex
 import subprocess
 from tools.low.readElfSym import *
 from tools.low.glob import *
@@ -23,12 +24,14 @@ def buildFile(file_in, file_out):
         fail ("Why are you adding headers as source? (bad)")
 
     file_out.parent.mkdir(parents=True, exist_ok=True)
+    
+    flags_add = ["-o", file_out, "--depend", file_out.with_suffix(".d"), file_in]
 
     if not "c" in file_in.suffix:
-        flags = flags_asm + ["-o", file_out, file_in]
+        flags = flags_asm + flags_add
         do_assemble(flags)
     else:
-        flags = flags_cxx + ["-c", "-o", file_out, file_in]
+        flags = flags_cxx + ["-c"] + flags_add
         do_compile(flags)
 
 # ensure shift-jis
@@ -49,6 +52,47 @@ def convertFile(file):
     except Exception as e:
         fail (f"Conversion failed for {file}: {e}")
 
+def fixDependFile(file):
+    dep_data = None
+    with open(file, "r") as f:
+        dep_data = f.read().splitlines()
+
+    for li in range(len(dep_data)):
+        line = dep_data[li].replace(": ", " ") # remove ": "
+        row = shlex.split(line)
+        src_f = Path(row[1])
+        ts = 0
+        if src_f.exists():
+            ts = int(src_f.stat().st_mtime)
+
+        dep_data[li] = f"{line} \"{ts}\""
+
+    with open(file, "w") as f:
+        f.write("\n".join(dep_data))
+
+def areDependsNew(file):
+    dep_data = None
+    with open(file, "r") as f:
+        dep_data = f.read().splitlines()
+
+    for line in dep_data:
+        row = shlex.split(line)
+
+        if len(row) != 3:
+            return True
+
+        src_f = Path(row[1])
+        ts_o = int(row[2])
+
+        if not src_f.exists():
+            return True
+        ts_n = int(src_f.stat().st_mtime)
+        if ts_n != ts_o:
+            return True
+
+    # no mismatches
+    return False
+
 def exec_build():
     echo ("Building modules")
 
@@ -57,25 +101,10 @@ def exec_build():
         echo ("No modules are specified, nothing to build.")
         return
 
-    data_new = {}
     data_new_names = set()
 
     progress_set("")
     progress_set_type ("Preparing to build ...")
-
-    # read file list
-    data_old = None
-    if getCfgListFile().exists():
-        data_old = {}
-        with open(getCfgListFile(), "r") as f:
-            for line in f:
-                row = line.split()
-                if len(row) != 2:
-                    echo ("data/.files is corrupt, rebuilding.")
-                    getCfgListFile().unlink()
-                    break
-
-                data_old[row[0]] = int(row[1])
 
     flags_old = None
     if getCfgFlagsFile().exists():
@@ -145,14 +174,12 @@ def exec_build():
 
         module_files[mod_path_name] = set()
         for file in mod_path.rglob("*"):
+            if not file.is_file():
+                continue
             ext_name = file.suffix.lstrip(".")
-            if ext_name in ("h"):
-                timestamp = int(file.stat().st_mtime)
-                file_str = os.path.relpath(file, getProjDir())
-                data_new[file_str] = timestamp
         
             # check file extension
-            if not ext_name or not ext_name in mod_extensions:
+            if not ext_name or len(ext_name) < 1 or not ext_name in mod_extensions:
                 continue
 
             module_files[mod_path_name].add(file)
@@ -166,7 +193,6 @@ def exec_build():
         mod_ar_name = f"lib{mod_data.get("name")}.a"
         mod_ar_file = getBuildLibPath() / mod_ar_name
 
-        mod_path = module_paths[mod_path_name]
         flags_cxx = base_flags_cxx
         flags_asm = base_flags_asm
         val = mod_data.get("flags")
@@ -208,17 +234,15 @@ def exec_build():
             file_str = os.path.relpath(file, getProjDir())
 
             do_update = False
-            timestamp = int(file.stat().st_mtime)
             out_path = getFileBuildPath(file)
+            dep_path = getFileBuildPath(file).with_suffix(".d")
             if force_update:
-                do_update = True
-            elif not data_old: # .files file not exist
                 do_update = True
             elif not out_path.exists(): # output not exist
                 do_update = True
-            elif not file_str in data_old: # file not in .files yet
+            elif not dep_path.exists(): # dependency doesnt exist
                 do_update = True
-            elif timestamp != data_old.get(file_str): # timestamp mismatch
+            elif areDependsNew(dep_path): # timestamp mismatch
                 do_update = True
 
             if do_update: # build it
@@ -234,22 +258,32 @@ def exec_build():
                 if not out_path.exists():
                     fail_ex ("Output not found.", f"Missing {str(out_path)}")
 
+                fixDependFile(dep_path)
                 # add to list
                 obj_new_list.add(out_path)
-            data_new[file_str] = timestamp
             data_new_names.add(file.name)
 
         did_delete = False
         # check for deleted files
-        if data_old and data_new_names and mod_ar_file.exists():
-            for old_file, _ in data_old.items():
-                if not str(Path(mod_path_name) / mod_data.get("source_dir")) in old_file:
-                    continue
-                if Path(old_file).name in data_new_names:
-                    continue
-                ar_arg = ["-dcs", str(mod_ar_file), "--diag_suppress=6831", str(Path(old_file).with_suffix(".o").name)]
-                do_archive(ar_arg)
-                did_delete = True
+        if data_new_names and mod_ar_file.exists():
+            build_dir = getBuildObjPath() / mod_path_name
+            # find all dependency files
+            for file in build_dir.rglob("*.d"):
+                # open dependency file
+                with open(file, "r") as f:
+                    line = f.read().splitlines()[0]
+                    row = shlex.split(line)
+                    if len(row) != 3:
+                        continue
+
+                    if Path(row[1]).name in data_new_names:
+                        continue
+                    if Path(row[0]).exists():
+                        continue
+
+                    ar_arg = ["-dcs", str(mod_ar_file), "--diag_suppress=6831", str(Path(row[0]).name)]
+                    do_archive(ar_arg)
+                    did_delete = True
 
         # prebuild module string
         line_category = ""
@@ -295,16 +329,10 @@ def exec_build():
 
         echo (f"{line_category}: Done")
 
-    if not data_new:
-        echo ("No files found")
-
     getCfgFlagsTFile().replace(getCfgFlagsFile())
 
     if getBuildViaFile().exists():
         getBuildViaFile().unlink()
 
-    with open(getCfgListFile(), "w") as f:
-        for file, time in data_new.items():
-            f.write(f"{file} {time}\n")
     with open(getCfgSymsFile(), "w") as f:
         json.dump(json_syms, f)

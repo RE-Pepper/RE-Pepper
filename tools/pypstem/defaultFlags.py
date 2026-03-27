@@ -4,6 +4,7 @@ default_flags_comp = [
     "--cpu=MPCore",
     "--fpmode=fast",
     "--apcs=/interwork",
+    "--depend_format=unix_quoted",
 ]
 
 default_flags_comp_asm = [
@@ -15,13 +16,12 @@ default_flags_comp_cxx = [
     "--dollar",
     "--force_new_nothrow",
     "--no_rtti",
-    "--debug",
     "--no_debug_macros",
+    "--no_depend_system_headers",
 ]
 
 default_flags_link = [
     "--verbose",
-    "--debug",
     "--cpu=MPCore",
     "--fpu=VFPv2",
     "--startup=__ctr_start",

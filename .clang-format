@@ -7,19 +7,19 @@ AlignConsecutiveAssignments:
 AlignConsecutiveDeclarations:
   Enabled: true
   PadOperators: true
-AlignOperands: true
+AlignOperands: Align
 AllowAllParametersOfDeclarationOnNextLine: false
 AllowShortCaseLabelsOnASingleLine: true
 AllowShortEnumsOnASingleLine: false
 AllowShortBlocksOnASingleLine: Empty
-AllowShortFunctionsOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Inline
 AllowShortIfStatementsOnASingleLine: false
 BinPackArguments: false
 BinPackParameters: false
 PackConstructorInitializers: NextLineOnly
-BreakConstructorInitializers: AfterColon
-BreakInheritanceList: AfterColon
-BreakTemplateDeclarations: true
+BreakConstructorInitializers: BeforeColon
+BreakInheritanceList: AfterComma
+BreakTemplateDeclarations: MultiLine
 BreakBeforeBraces: Custom
 BraceWrapping:
   AfterEnum: true
@@ -29,7 +29,7 @@ BraceWrapping:
   AfterNamespace: false
   AfterCaseLabel: false
   AfterExternBlock: false
-  BeforeElse: true
+  BeforeElse: false
   BeforeWhile: true
   BeforeCatch: true
   BeforeLambdaBody: true
