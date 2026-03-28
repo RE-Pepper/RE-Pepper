@@ -14,14 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: recursive
           fetch-depth: 0
           token: ${{ secrets.GH_TOKEN }}
 
       - name: Checkout build repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: RE-Pepper/RE-Pepper-Build
           token: ${{ secrets.GH_TOKEN }}
