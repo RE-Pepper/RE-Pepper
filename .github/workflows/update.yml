@@ -9,6 +9,7 @@ jobs:
   check:
     name: Run Checks
     runs-on: ubuntu-latest
+    if: ${{ github.repository == 'RE-Pepper/RE-Pepper' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v6

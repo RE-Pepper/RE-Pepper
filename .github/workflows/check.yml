@@ -1,7 +1,6 @@
 name: Run Checks on the Map
 
 on:
-  push:
   pull_request:
 
 jobs:
