@@ -2,11 +2,7 @@ name: Run Checks on the Map
 
 on:
   push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
 
 jobs:
   check:
