@@ -13,9 +13,9 @@ on:
     workflows: ["Run Checks on the Map", "Test if Project builds"]
     types: [failed]
   watch:
-  push:
-    branches:
-      - main
+  #push:
+   # branches:
+      #- main
 
 jobs:
   notify:
@@ -25,68 +25,135 @@ jobs:
         run: |
           EVENT="${{ github.event_name }}"
           USER="${{ github.actor }}"
+          COLOR=10699520
+          BOT_NAME="${{ github.repository }}"
+          BOT_AVATAR="${{ github.repository_owner.avatar_url }}"
+          REPO_URL="https://github.com/${{ github.repository }}"
 
+          TITLE="Activity detected"
           DESC="Activity detected"
+          FOOTER=""
+          URL="$REPO_URL"
 
           case "$EVENT" in
             push)
-              DESC="Commit: ${{ github.event.head_commit.message }}"
+              FULL_MSG="${{ github.event.head_commit.message }}"
+              SHORT_MSG="${FULL_MSG%%$'\n'*}"
+              URL="${{ github.event.head_commit.url }}"
+              TITLE="New commit by $USER"
+              DESC="$USER\n**${SHORT_MSG}**\n\`\`\`${FULL_MSG}\`\`\`"
+              FOOTER="8ac0bf"
               ;;
 
             pull_request)
-              DESC="PR: ${{ github.event.pull_request.title }}"
+                PR_ACTION="${{ github.event.action }}"
+                PR_TITLE="${{ github.event.pull_request.title }}"
+                PR_BODY="${{ github.event.pull_request.body }}"
+                URL="${{ github.event.pull_request.html_url }}"
+
+                if [ "$PR_ACTION" = "opened" ]; then
+                TITLE="Pull Request opened"
+                DESC="$USER\n**${PR_TITLE}**\n\`\`\`${PR_BODY}\`\`\`"
+                elif [ "$PR_ACTION" = "closed" ]; then
+                if [ "${{ github.event.pull_request.merged }}" = "true" ]; then
+                    TITLE="Pull Request merged"
+                    DESC="$USER merged PR: **${PR_TITLE}**"
+                else
+                    TITLE="Pull Request closed"
+                    DESC="$USER closed PR: **${PR_TITLE}**"
+                fi
+                fi
+                ;;
+
+            workflow_run)
+              TITLE="Workflow failed"
+              DESC="${{ github.event.workflow_run.name }}"
+              URL="${{ github.event.workflow_run.html_url }}"
+              FOOTER="[8ac0bf](https://github.com)"
               ;;
 
             pull_request_review)
-              DESC="PR Review: ${{ github.event.review.state }}"
+              REVIEW_STATE="${{ github.event.review.state }}"
+              URL="${{ github.event.pull_request.html_url }}"
+              TITLE="Pull Request review"
+              DESC="$USER reviewed PR: $REVIEW_STATE"
               ;;
 
             pull_request_review_comment)
-              DESC="PR Comment: ${{ github.event.comment.body }}"
+              COMMENT="${{ github.event.comment.body }}"
+              URL="${{ github.event.pull_request.html_url }}"
+              TITLE="Pull Request comment"
+              DESC="$USER commented:\n\`\`\`${COMMENT}\`\`\`"
               ;;
 
             issues)
-              DESC="Issue: ${{ github.event.issue.title }}"
-              ;;
+                ISSUE_ACTION="${{ github.event.action }}"
+                ISSUE_TITLE="${{ github.event.issue.title }}"
+                URL="${{ github.event.issue.html_url }}"
+
+                if [ "$ISSUE_ACTION" = "opened" ]; then
+                TITLE="Issue opened"
+                DESC="$USER opened an issue:\n**${ISSUE_TITLE}**"
+                elif [ "$ISSUE_ACTION" = "closed" ]; then
+                TITLE="Issue closed"
+                DESC="$USER closed issue: **${ISSUE_TITLE}**"
+                fi
+                ;;
 
             issue_comment)
-              DESC="Issue Comment: ${{ github.event.comment.body }}"
+              COMMENT="${{ github.event.comment.body }}"
+              TITLE="Issue comment"
+              DESC="$USER commented:\n\`\`\`${COMMENT}\`\`\`"
+              URL="${{ github.event.issue.html_url }}"
               ;;
 
             fork)
-              DESC="Forked: ${{ github.event.forkee.full_name }}"
+              TITLE="Repository forked"
+              DESC="$USER forked the repository: ${{ github.event.forkee.full_name }}"
+              URL="https://github.com/${{ github.event.forkee.full_name }}"
               ;;
 
             watch)
-              DESC="Starred the repository"
+              TITLE="Repository starred"
+              DESC="$USER starred the repository"
               ;;
 
             public)
-              DESC="Repository made public"
+              TITLE="Repository made public"
+              DESC="$USER made the repository public"
               ;;
 
-            member)
-              DESC="Member added: ${{ github.event.member.login }}"
-              ;;
-
-            team_add)
-              DESC="Team added: ${{ github.event.team.name }}"
-              ;;
-
-            repository)
-              DESC="Repository updated"
-              ;;
-
-            workflow_run)
-              DESC="Workflow failed: ${{ github.event.workflow_run.name }}"
+            *)
+              TITLE="Activity detected"
+              DESC="$USER triggered \`$EVENT\`"
               ;;
           esac
 
-          CONTENT="**$USER**\n\`$EVENT\`\n$DESC"
-
-          PAYLOAD=$(jq -n --arg content "$CONTENT" '{content: $content}')
+          PAYLOAD=$(jq -n \
+            --arg username "$BOT_NAME" \
+            --arg avatar_url "$BOT_AVATAR" \
+            --arg title "$TITLE" \
+            --arg desc "$DESC" \
+            --arg footer "$FOOTER" \
+            --arg url "$URL" \
+            --argjson color "$COLOR" \
+            --arg timestamp "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+            '{
+              username: $username,
+              avatar_url: $avatar_url,
+              embeds: [
+                {
+                  title: $title,
+                  url: (if $url != "" then $url else empty end),
+                  description: $desc,
+                  color: $color,
+                  footer: (if $footer != "" then {text: $footer} else empty end),
+                  timestamp: $timestamp
+                }
+              ]
+            }')
 
           curl -H "Content-Type: application/json" \
-          -X POST \
-          -d "$PAYLOAD" \
-          ${{ secrets.DISCORD_WEBHOOK }}
+               -X POST \
+               -d "$PAYLOAD" \
+               ${{ secrets.DISCORD_WEBHOOK }}
