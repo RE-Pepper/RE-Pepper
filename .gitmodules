@@ -2,7 +2,7 @@
 [submodule "tools/asm-differ"]
 	path = tools/asm-differ
 	url = https://github.com/RE-Pepper/asm-differ
-	branch = main
+	branch = master
 [submodule "lib/sead"]
 	path = lib/sead
 	url = https://github.com/RE-Pepper/sead_ctr
