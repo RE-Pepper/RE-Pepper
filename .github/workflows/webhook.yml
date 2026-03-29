@@ -10,6 +10,7 @@ on:
   public:
   fork:
   workflow_run:
+    workflows: ["Run Checks on the Map", "Test if Project builds"]
     types: [failed]
   watch:
   push:
