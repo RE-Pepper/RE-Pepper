@@ -18,3 +18,8 @@ compile_commands.json
 *.csv_b
 *.m2c
 *.bin
+
+tools/asm-differ/*
+lib/CtrSDK/*
+lib/NintendoWare/*
+lib/sead/*
