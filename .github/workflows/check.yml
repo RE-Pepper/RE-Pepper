@@ -3,20 +3,24 @@ name: Run Checks on the Map
 on:
   pull_request:
 
+concurrency:
+  group: checking
+  cancel-in-progress: true
+
 jobs:
   check:
     name: Run Checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
           token: ${{ secrets.GH_TOKEN }}
 
       - name: Checkout build repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           repository: RE-Pepper/RE-Pepper-Build
           token: ${{ secrets.GH_TOKEN }}
