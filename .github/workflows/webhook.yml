@@ -53,7 +53,7 @@ jobs:
                 SHORT_MSG="${FULL_MSG%%$'\n'*}"
                 URL="${{ github.event.head_commit.url }}"
                 TITLE="New commit by $USER"
-                DESC="$USER: **${SHORT_MSG:-** **}**"
+                DESC="**${SHORT_MSG:-** **}**"
                 ;;
 
             pull_request)
@@ -77,8 +77,8 @@ jobs:
                 ;;
 
             pull_request_review_comment)
-                TITLE="Pull Request comment"
-                DESC="by $USER"
+                TITLE="Pull Request comment by $USER"
+                DESC="Click the link to read it"
                 URL="${{ github.event.pull_request.html_url }}"
                 ;;
 
@@ -98,20 +98,19 @@ jobs:
                 ;;
 
             issue_comment)
-                TITLE="Issue comment"
-                DESC="by $USER"
+                TITLE="Issue comment by $USER"
                 URL="${{ github.event.issue.html_url }}"
                 ;;
 
             fork)
-                TITLE="Repository forked"
-                DESC="by $USER: ${{ github.event.forkee.full_name }}"
+                TITLE="Repository forked by $USER"
+                DESC="Fork: ${{ github.event.forkee.full_name }}"
                 URL="https://github.com/${{ github.event.forkee.full_name }}"
                 ;;
 
             watch)
-                TITLE="Repository starred"
-                DESC="by $USER!"
+                TITLE="Repository starred by $USER"
+                DESC="Thank you!"
                 ;;
 
             public)
@@ -125,8 +124,8 @@ jobs:
                 ;;
 
             *)
-                TITLE="Activity detected"
-                DESC="by $USER: \`$EVENT\`"
+                TITLE="Something happened by $USER"
+                DESC="\`$EVENT\`"
                 ;;
             esac
 
