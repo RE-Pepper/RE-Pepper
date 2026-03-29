@@ -29,7 +29,6 @@ jobs:
             DESC="Activity detected"
             URL="https://github.com/${{ github.repository }}"
 
-            # Helper function: format message safely
             format_msg() {
                 local MSG="$1"
                 MSG="${MSG//\`/\\\`}"   # escape backticks
@@ -47,7 +46,7 @@ jobs:
                 SHORT_MSG="${FULL_MSG%%$'\n'*}"
                 URL="${{ github.event.head_commit.url }}"
                 TITLE="New commit by $USER"
-                if [ -z "$PR_BODY" ]; then
+                if [ "$PR_BODY" = "** **" ]; then
                     DESC="$USER: **${SHORT_MSG:-** **}**"
                 else
                     DESC="$USER: **${SHORT_MSG:-** **}**\`\`\`${FULL_MSG}\`\`\`"
@@ -61,17 +60,18 @@ jobs:
                 URL="${{ github.event.pull_request.html_url }}"
 
                 if [ "$PR_ACTION" = "opened" ]; then
-                    if [ -z "$PR_BODY" ]; then
+                    if [ "$PR_BODY" = "** **" ]; then
                         DESC="$USER: **${PR_TITLE}**"
                     else
                         DESC="$USER: **${PR_TITLE}**\`\`\`${PR_BODY}\`\`\`"
                     fi
                     TITLE="Pull Request opened"
-                elif [ "$PR_ACTION" = "closed" ]; then
+                else
+                #elif [ "$PR_ACTION" = "closed" ]; then
                     if [ "${{ github.event.pull_request.merged }}" = "true" ]; then
                         TITLE="Pull Request merged"
                     else
-                        TITLE="Pull Request closed"
+                        TITLE="Pull Request notlol closed"
                     fi
                     DESC="by $USER: **${PR_TITLE}**"
                 else
