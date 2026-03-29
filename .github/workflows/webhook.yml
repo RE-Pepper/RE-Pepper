@@ -1,0 +1,93 @@
+name: Listen and notify Discord
+
+on:
+  issue_comment:
+  issues:
+  pull_request_review_comment:
+  pull_request_review:
+  pull_request:
+  team_add:
+  member:
+  public:
+  repository:
+  fork:
+  workflow_run:
+    types: [failed]
+  watch:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send notification to Discord
+        run: |
+          EVENT="${{ github.event_name }}"
+          USER="${{ github.actor }}"
+
+          DESC="Activity detected"
+
+          case "$EVENT" in
+            push)
+              DESC="Commit: ${{ github.event.head_commit.message }}"
+              ;;
+
+            pull_request)
+              DESC="PR: ${{ github.event.pull_request.title }}"
+              ;;
+
+            pull_request_review)
+              DESC="PR Review: ${{ github.event.review.state }}"
+              ;;
+
+            pull_request_review_comment)
+              DESC="PR Comment: ${{ github.event.comment.body }}"
+              ;;
+
+            issues)
+              DESC="Issue: ${{ github.event.issue.title }}"
+              ;;
+
+            issue_comment)
+              DESC="Issue Comment: ${{ github.event.comment.body }}"
+              ;;
+
+            fork)
+              DESC="Forked: ${{ github.event.forkee.full_name }}"
+              ;;
+
+            watch)
+              DESC="Starred the repository"
+              ;;
+
+            public)
+              DESC="Repository made public"
+              ;;
+
+            member)
+              DESC="Member added: ${{ github.event.member.login }}"
+              ;;
+
+            team_add)
+              DESC="Team added: ${{ github.event.team.name }}"
+              ;;
+
+            repository)
+              DESC="Repository updated"
+              ;;
+
+            workflow_run)
+              DESC="Workflow failed: ${{ github.event.workflow_run.name }}"
+              ;;
+          esac
+
+          CONTENT="**$USER**\n\`$EVENT\`\n$DESC"
+
+          PAYLOAD=$(jq -n --arg content "$CONTENT" '{content: $content}')
+
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d "$PAYLOAD" \
+          ${{ secrets.DISCORD_WEBHOOK }}

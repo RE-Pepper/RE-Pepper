@@ -6,11 +6,11 @@
 [submodule "lib/sead"]
 	path = lib/sead
 	url = https://github.com/RE-Pepper/sead_ctr
-	branch = main
+	branch = master
 [submodule "lib/ctrsdk"]
 	path = lib/CtrSDK
 	url = https://github.com/RE-Pepper/ctrsdk
-	branch = main
+	branch = master
 [submodule "lib/NintendoWare"]
 	path = lib/NintendoWare
 	url = https://github.com/RE-Pepper/NintendoWare_ctr
