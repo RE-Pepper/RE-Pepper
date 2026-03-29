@@ -57,13 +57,18 @@ jobs:
                 TITLE="Pull Request opened"
                 DESC="$USER\n**${PR_TITLE}**\n\`\`\`${PR_BODY}\`\`\`"
                 elif [ "$PR_ACTION" = "closed" ]; then
-                if [ "${{ github.event.pull_request.merged }}" = "true" ]; then
-                    TITLE="Pull Request merged"
-                    DESC="$USER merged PR: **${PR_TITLE}**"
+                    if [ "${{ github.event.pull_request.merged }}" = "true" ]; then
+                        TITLE="Pull Request merged"
+                        DESC="$USER merged PR: **${PR_TITLE}**"
+                    else
+                        TITLE="Pull Request closed"
+                        DESC="$USER closed PR: **${PR_TITLE}**"
+                    fi
                 else
-                    TITLE="Pull Request closed"
-                    DESC="$USER closed PR: **${PR_TITLE}**"
-                fi
+                    TITLE="This is a test"
+                    DESC="The coolest test of all!"
+                    URL="https://moddi.dev"
+                    #exit 0
                 fi
                 if [ -z "$PR_BODY" ]; then
                     PR_BODY="** **"
@@ -103,11 +108,13 @@ jobs:
                   ISSUE_TITLE="** **"
                 fi
                 if [ "$ISSUE_ACTION" = "opened" ]; then
-                TITLE="Issue opened"
-                DESC="$USER opened an issue:\n**${ISSUE_TITLE}**"
+                    TITLE="Issue opened"
+                    DESC="$USER opened an issue:\n**${ISSUE_TITLE}**"
                 elif [ "$ISSUE_ACTION" = "closed" ]; then
-                TITLE="Issue closed"
-                DESC="$USER closed issue: **${ISSUE_TITLE}**"
+                    TITLE="Issue closed"
+                    DESC="$USER closed issue: **${ISSUE_TITLE}**"
+                else
+                    exit 0
                 fi
                 ;;
 
@@ -143,6 +150,12 @@ jobs:
               ;;
           esac
 
+          echo "Name: $BOT_NAME"
+          echo "Tit: $TITLE"
+          echo "Des: $DESC"
+          echo "Feet: $FOOTER"
+          echo "Urlaub: $URL"
+          echo "Gol: $COLOR"
           PAYLOAD=$(jq -n \
             --arg username "$BOT_NAME" \
             --arg title "$TITLE" \
