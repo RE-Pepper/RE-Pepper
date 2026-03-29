@@ -9,8 +9,6 @@
   },
   "automerge": true,
   "automergeType": "branch",
-  "commitMessageAction": "update",
-  "commitMessageTopic": "{{depName}}",
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0
 }
