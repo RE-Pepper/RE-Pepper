@@ -3,10 +3,6 @@ name: Run Checks on the Map
 on:
   pull_request:
 
-concurrency:
-  group: checking
-  cancel-in-progress: true
-
 jobs:
   check:
     name: Run Checks
