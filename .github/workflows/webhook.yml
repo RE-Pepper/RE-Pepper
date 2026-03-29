@@ -26,8 +26,7 @@ jobs:
           EVENT="${{ github.event_name }}"
           USER="${{ github.actor }}"
           COLOR=10699520
-          BOT_NAME="${{ github.repository }}"
-          BOT_AVATAR="${{ github.repository_owner.avatar_url }}"
+          BOT_NAME="BOT:Pepper"
           REPO_URL="https://github.com/${{ github.repository }}"
 
           TITLE="Activity detected"
@@ -43,6 +42,9 @@ jobs:
               TITLE="New commit by $USER"
               DESC="$USER\n**${SHORT_MSG}**\n\`\`\`${FULL_MSG}\`\`\`"
               FOOTER="8ac0bf"
+              if [ -z "$FULL_MSG" ]; then
+                  FULL_MSG="** **"
+              fi
               ;;
 
             pull_request)
@@ -63,6 +65,9 @@ jobs:
                     DESC="$USER closed PR: **${PR_TITLE}**"
                 fi
                 fi
+                if [ -z "$PR_BODY" ]; then
+                    PR_BODY="** **"
+                fi
                 ;;
 
             workflow_run)
@@ -81,6 +86,9 @@ jobs:
 
             pull_request_review_comment)
               COMMENT="${{ github.event.comment.body }}"
+              if [ -z "$COMMENT" ]; then
+                  COMMENT="** **"
+              fi
               URL="${{ github.event.pull_request.html_url }}"
               TITLE="Pull Request comment"
               DESC="$USER commented:\n\`\`\`${COMMENT}\`\`\`"
@@ -91,6 +99,9 @@ jobs:
                 ISSUE_TITLE="${{ github.event.issue.title }}"
                 URL="${{ github.event.issue.html_url }}"
 
+                if [ -z "$ISSUE_TITLE" ]; then
+                  ISSUE_TITLE="** **"
+                fi
                 if [ "$ISSUE_ACTION" = "opened" ]; then
                 TITLE="Issue opened"
                 DESC="$USER opened an issue:\n**${ISSUE_TITLE}**"
@@ -102,6 +113,9 @@ jobs:
 
             issue_comment)
               COMMENT="${{ github.event.comment.body }}"
+              if [ -z "$COMMENT" ]; then
+                  COMMENT="** **"
+              fi
               TITLE="Issue comment"
               DESC="$USER commented:\n\`\`\`${COMMENT}\`\`\`"
               URL="${{ github.event.issue.html_url }}"
@@ -131,7 +145,6 @@ jobs:
 
           PAYLOAD=$(jq -n \
             --arg username "$BOT_NAME" \
-            --arg avatar_url "$BOT_AVATAR" \
             --arg title "$TITLE" \
             --arg desc "$DESC" \
             --arg footer "$FOOTER" \
@@ -140,7 +153,6 @@ jobs:
             --arg timestamp "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
             '{
               username: $username,
-              avatar_url: $avatar_url,
               embeds: [
                 {
                   title: $title,
