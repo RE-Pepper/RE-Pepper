@@ -24,7 +24,7 @@ jobs:
             USER="${{ github.actor }}"
             COLOR=10699520
             BOT_NAME="BOT:Pepper"
-            FOOTER="${{ repository_owner }}"
+            FOOTER="${{ github.repository_owner || github.repository.owner.login }}"
             TITLE="Activity detected"
             DESC="Activity detected"
             URL="https://github.com/${{ github.repository }}"
@@ -46,7 +46,7 @@ jobs:
                 SHORT_MSG="${FULL_MSG%%$'\n'*}"
                 URL="${{ github.event.head_commit.url }}"
                 TITLE="New commit by $USER"
-                if [ "$PR_BODY" = "** **" ]; then
+                if [ "$FULL_MSG" = "** **" ]; then
                     DESC="$USER: **${SHORT_MSG:-** **}**"
                 else
                     DESC="$USER: **${SHORT_MSG:-** **}**\`\`\`${FULL_MSG}\`\`\`"
@@ -70,7 +70,7 @@ jobs:
                     if [ "${{ github.event.pull_request.merged }}" = "true" ]; then
                         TITLE="Pull Request merged"
                     else
-                        TITLE="Pull Request notlol closed"
+                        TITLE="Pull Request closed"
                     fi
                     DESC="by $USER: **${PR_TITLE}**"
                 else
@@ -138,6 +138,7 @@ jobs:
             branch_protection_rule)
                 TITLE="Protection rules updated"
                 DESC="The protection rules of the repo were updated"
+                ;;
 
             *)
                 TITLE="Activity detected"
