@@ -165,7 +165,14 @@ jobs:
               ]
             }')
 
-          curl -H "Content-Type: application/json" \
-               -X POST \
-               -d "$PAYLOAD" \
-               ${{ secrets.DISCORD_WEBHOOK }}
+            HTTP_RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
+                -H "Content-Type: application/json" \
+                -X POST \
+                -d "$PAYLOAD" \
+                "${{ secrets.DISCORD_WEBHOOK }}")
+
+            if [ "$HTTP_RESPONSE" -ne 204 ]; then
+                echo "❌ Discord webhook failed with status $HTTP_RESPONSE"
+                exit 1
+            fi
+
