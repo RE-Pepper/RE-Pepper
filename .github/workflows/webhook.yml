@@ -13,9 +13,9 @@ on:
     workflows: ["Run Checks on the Map", "Test if Project builds"]
     types: [failed]
   watch:
-  push:
-    branches:
-      - main
+  #push:
+   # branches:
+      #- main
 
 jobs:
   notify:
@@ -23,70 +23,151 @@ jobs:
     steps:
       - name: Send notification to Discord
         run: |
-          EVENT="${{ github.event_name }}"
-          USER="${{ github.actor }}"
+            # Base vars
+            EVENT="${{ github.event_name }}"
+            USER="${{ github.actor }}"
+            COLOR=10699520
+            BOT_NAME="BOT:Pepper"
+            REPO_URL="https://github.com/${{ github.repository }}"
+            FOOTER=""   # global footer
+            TITLE="Activity detected"
+            DESC="Activity detected"
 
-          DESC="Activity detected"
-
-          case "$EVENT" in
+            case "$EVENT" in
             push)
-              DESC="Commit: ${{ github.event.head_commit.message }}"
-              ;;
+                FULL_MSG="${{ github.event.head_commit.message }}"
+                SHORT_MSG="${FULL_MSG%%$'\n'*}"
+                COMMIT_LINK="${{ github.event.head_commit.url }}"
+                TITLE="New commit by $USER"
+                DESC="$USER\n**${SHORT_MSG}**\n\`\`\`${FULL_MSG:-** **}\`\`\`"
+                FOOTER="[commit ${SHORT_MSG:0:7}]($COMMIT_LINK)"
+                ;;
 
             pull_request)
-              DESC="PR: ${{ github.event.pull_request.title }}"
-              ;;
+                PR_ACTION="${{ github.event.action }}"
+                PR_TITLE="${{ github.event.pull_request.title }}"
+                PR_BODY="${{ github.event.pull_request.body }}"
+                PR_LINK="${{ github.event.pull_request.html_url }}"
 
-            pull_request_review)
-              DESC="PR Review: ${{ github.event.review.state }}"
-              ;;
-
-            pull_request_review_comment)
-              DESC="PR Comment: ${{ github.event.comment.body }}"
-              ;;
-
-            issues)
-              DESC="Issue: ${{ github.event.issue.title }}"
-              ;;
-
-            issue_comment)
-              DESC="Issue Comment: ${{ github.event.comment.body }}"
-              ;;
-
-            fork)
-              DESC="Forked: ${{ github.event.forkee.full_name }}"
-              ;;
-
-            watch)
-              DESC="Starred the repository"
-              ;;
-
-            public)
-              DESC="Repository made public"
-              ;;
-
-            member)
-              DESC="Member added: ${{ github.event.member.login }}"
-              ;;
-
-            team_add)
-              DESC="Team added: ${{ github.event.team.name }}"
-              ;;
-
-            repository)
-              DESC="Repository updated"
-              ;;
+                # Only open or close PR events
+                if [ "$PR_ACTION" = "opened" ]; then
+                    TITLE="Pull Request opened"
+                    DESC="$USER\n**${PR_TITLE}**\n\`\`\`${PR_BODY:-** **}\`\`\`"
+                    FOOTER="[View Here]($PR_LINK)"
+                elif [ "$PR_ACTION" = "closed" ]; then
+                    if [ "${{ github.event.pull_request.merged }}" = "true" ]; then
+                        TITLE="Pull Request merged"
+                        DESC="$USER merged PR: **${PR_TITLE}**"
+                    else
+                        TITLE="Pull Request closed"
+                        DESC="$USER closed PR: **${PR_TITLE}**"
+                    fi
+                    FOOTER="[View Here]($PR_LINK)"
+                else
+                    exit 0
+                fi
+                ;;
 
             workflow_run)
-              DESC="Workflow failed: ${{ github.event.workflow_run.name }}"
-              ;;
-          esac
+                TITLE="Workflow failed"
+                DESC="${{ github.event.workflow_run.name }}"
+                FOOTER="[View Here]($REPO_URL)"
+                ;;
 
-          CONTENT="**$USER**\n\`$EVENT\`\n$DESC"
+            pull_request_review)
+                REVIEW_STATE="${{ github.event.review.state }}"
+                TITLE="Pull Request review"
+                DESC="$USER reviewed PR: $REVIEW_STATE"
+                FOOTER="[View Here]($REPO_URL)"
+                ;;
 
-          PAYLOAD=$(jq -n --arg content "$CONTENT" '{content: $content}')
+            pull_request_review_comment)
+                COMMENT="${{ github.event.comment.body }}"
+                TITLE="Pull Request comment"
+                DESC="$USER commented:\n\`\`\`${COMMENT:-** **}\`\`\`"
+                FOOTER="[View Here]($REPO_URL)"
+                ;;
 
-          curl -H "Content-Type: application/json" \
-          -X POST \
-          -d "$PAYLOAD" \
-          ${{ secrets.DISCORD_WEBHOOK }}
+            issues)
+                ISSUE_ACTION="${{ github.event.action }}"
+                ISSUE_TITLE="${{ github.event.issue.title }}"
+                TITLE=""
+                DESC=""
+                # Only open or close events
+                if [ "$ISSUE_ACTION" = "opened" ]; then
+                    TITLE="Issue opened"
+                    DESC="$USER opened an issue:\n**${ISSUE_TITLE:-** **}**"
+                    FOOTER="[View Here]($REPO_URL)"
+                elif [ "$ISSUE_ACTION" = "closed" ]; then
+                    TITLE="Issue closed"
+                    DESC="$USER closed issue: **${ISSUE_TITLE:-** **}**"
+                    FOOTER="[View Here]($REPO_URL)"
+                else
+                    exit 0
+                fi
+                ;;
+
+            issue_comment)
+                COMMENT="${{ github.event.comment.body }}"
+                TITLE="Issue comment"
+                DESC="$USER commented:\n\`\`\`${COMMENT:-** **}\`\`\`"
+                FOOTER="[View Here]($REPO_URL)"
+                ;;
+
+            fork)
+                TITLE="Repository forked"
+                DESC="$USER forked the repository: ${{ github.event.forkee.full_name }}"
+                FOOTER="[View Here](https://github.com/${{ github.event.forkee.full_name }})"
+                ;;
+
+            watch)
+                TITLE="Repository starred"
+                DESC="$USER starred the repository"
+                FOOTER="[View Here]($REPO_URL)"
+                ;;
+
+            public)
+                TITLE="Repository made public"
+                DESC="$USER made the repository public"
+                FOOTER="[View Here]($REPO_URL)"
+                ;;
+
+            *)
+                TITLE="Activity detected"
+                DESC="$USER triggered \`$EVENT\`"
+                FOOTER="[View Here]($REPO_URL)"
+                ;;
+            esac
+
+            # Build and send embed
+            PAYLOAD=$(jq -n \
+            --arg username "$BOT_NAME" \
+            --arg title "$TITLE" \
+            --arg desc "$DESC" \
+            --arg footer "$FOOTER" \
+            --argjson color "$COLOR" \
+            --arg timestamp "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+            '{
+                username: $username,
+                embeds: [
+                {
+                    title: $title,
+                    description: $desc,
+                    color: $color,
+                    footer: { text: $footer },
+                    timestamp: $timestamp
+                }
+                ]
+            }')
+
+            HTTP_RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
+                -H "Content-Type: application/json" \
+                -X POST \
+                -d "$PAYLOAD" \
+                "${{ secrets.DISCORD_WEBHOOK }}")
+
+            if [ "$HTTP_RESPONSE" -ne 204 ]; then
+                echo "Failed with status $HTTP_RESPONSE"
+                exit 1
+            fi
+
