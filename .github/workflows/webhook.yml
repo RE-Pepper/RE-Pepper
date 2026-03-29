@@ -24,7 +24,7 @@ jobs:
             USER="${{ github.actor }}"
             COLOR=10699520
             BOT_NAME="BOT:Pepper"
-            FOOTER="${{ repository_owner }}"
+            FOOTER="${{ github.repository_owner }}"
             TITLE="Activity detected"
             DESC="Activity detected"
             URL="https://github.com/${{ github.repository }}"
