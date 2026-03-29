@@ -66,8 +66,7 @@ jobs:
                         DESC="$USER: **${PR_TITLE}**\`\`\`${PR_BODY}\`\`\`"
                     fi
                     TITLE="Pull Request opened"
-                else
-                #elif [ "$PR_ACTION" = "closed" ]; then
+                elif [ "$PR_ACTION" = "closed" ]; then
                     if [ "${{ github.event.pull_request.merged }}" = "true" ]; then
                         TITLE="Pull Request merged"
                     else
