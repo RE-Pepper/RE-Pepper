@@ -13,6 +13,9 @@ on:
     workflows: ["Run Checks on the Map", "Test if Project builds"]
     types: [failed]
   watch:
+  push:
+    branches:
+      - main
 
 jobs:
   notify:
