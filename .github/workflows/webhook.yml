@@ -1,21 +1,18 @@
 name: Listen and notify Discord
 
 on:
-  issue_comment:
-  issues:
   pull_request_review_comment:
   pull_request_review:
   pull_request:
-  branch_protection_rule:
+  issue_comment:
+  issues:
   public:
   fork:
+  branch_protection_rule:
   workflow_run:
     workflows: ["Run Checks on the Map", "Test if Project builds"]
     types: [failed]
   watch:
-  #push:
-   # branches:
-      #- main
 
 jobs:
   notify:
@@ -23,46 +20,59 @@ jobs:
     steps:
       - name: Send notification to Discord
         run: |
-            # Base vars
             EVENT="${{ github.event_name }}"
             USER="${{ github.actor }}"
             COLOR=10699520
             BOT_NAME="BOT:Pepper"
-            REPO_URL="https://github.com/${{ github.repository }}"
-            FOOTER=""   # global footer
+            FOOTER="${{ github.repository_owner || github.repository.owner.login }}"
             TITLE="Activity detected"
             DESC="Activity detected"
+            URL="https://github.com/${{ github.repository }}"
+
+            format_msg() {
+                local MSG="$1"
+                MSG="${MSG//\`/\\\`}"   # escape backticks
+                MSG="${MSG//$'\r'/}"    # remove CR
+                if [ -z "${MSG// }" ]; then
+                    echo "** **"
+                else
+                    echo "$MSG"
+                fi
+            }
 
             case "$EVENT" in
             push)
-                FULL_MSG="${{ github.event.head_commit.message }}"
+                FULL_MSG="$(format_msg "${{ github.event.head_commit.message }}")"
                 SHORT_MSG="${FULL_MSG%%$'\n'*}"
-                COMMIT_LINK="${{ github.event.head_commit.url }}"
+                URL="${{ github.event.head_commit.url }}"
                 TITLE="New commit by $USER"
-                DESC="$USER\n**${SHORT_MSG}**\n\`\`\`${FULL_MSG:-** **}\`\`\`"
-                FOOTER="[commit ${SHORT_MSG:0:7}]($COMMIT_LINK)"
+                if [ "$FULL_MSG" = "** **" ]; then
+                    DESC="$USER: **${SHORT_MSG:-** **}**"
+                else
+                    DESC="$USER: **${SHORT_MSG:-** **}**\`\`\`${FULL_MSG}\`\`\`"
+                fi
                 ;;
 
             pull_request)
                 PR_ACTION="${{ github.event.action }}"
-                PR_TITLE="${{ github.event.pull_request.title }}"
-                PR_BODY="${{ github.event.pull_request.body }}"
-                PR_LINK="${{ github.event.pull_request.html_url }}"
+                PR_TITLE="$(format_msg "${{ github.event.pull_request.title }}")"
+                PR_BODY="$(format_msg "${{ github.event.pull_request.body }}")"
+                URL="${{ github.event.pull_request.html_url }}"
 
-                # Only open or close PR events
                 if [ "$PR_ACTION" = "opened" ]; then
+                    if [ "$PR_BODY" = "** **" ]; then
+                        DESC="$USER: **${PR_TITLE}**"
+                    else
+                        DESC="$USER: **${PR_TITLE}**\`\`\`${PR_BODY}\`\`\`"
+                    fi
                     TITLE="Pull Request opened"
-                    DESC="$USER\n**${PR_TITLE}**\n\`\`\`${PR_BODY:-** **}\`\`\`"
-                    FOOTER="[View Here]($PR_LINK)"
                 elif [ "$PR_ACTION" = "closed" ]; then
                     if [ "${{ github.event.pull_request.merged }}" = "true" ]; then
                         TITLE="Pull Request merged"
-                        DESC="$USER merged PR: **${PR_TITLE}**"
                     else
                         TITLE="Pull Request closed"
-                        DESC="$USER closed PR: **${PR_TITLE}**"
                     fi
-                    FOOTER="[View Here]($PR_LINK)"
+                    DESC="by $USER: **${PR_TITLE}**"
                 else
                     exit 0
                 fi
@@ -70,72 +80,69 @@ jobs:
 
             workflow_run)
                 TITLE="Workflow failed"
-                DESC="${{ github.event.workflow_run.name }}"
-                FOOTER="[View Here]($REPO_URL)"
+                DESC="$(format_msg "${{ github.event.workflow_run.name }}")"
                 ;;
 
             pull_request_review)
-                REVIEW_STATE="${{ github.event.review.state }}"
+                REVIEW_STATE="$(format_msg "${{ github.event.review.state }}")"
                 TITLE="Pull Request review"
-                DESC="$USER reviewed PR: $REVIEW_STATE"
-                FOOTER="[View Here]($REPO_URL)"
+                DESC="by $USER: $REVIEW_STATE"
+                URL="${{ github.event.pull_request.html_url }}"
                 ;;
 
             pull_request_review_comment)
-                COMMENT="${{ github.event.comment.body }}"
+                COMMENT="$(format_msg "${{ github.event.comment.body }}")"
                 TITLE="Pull Request comment"
-                DESC="$USER commented:\n\`\`\`${COMMENT:-** **}\`\`\`"
-                FOOTER="[View Here]($REPO_URL)"
+                DESC="by $USER: \`\`\`${COMMENT}\`\`\`"
+                URL="${{ github.event.pull_request.html_url }}"
                 ;;
 
             issues)
                 ISSUE_ACTION="${{ github.event.action }}"
-                ISSUE_TITLE="${{ github.event.issue.title }}"
-                TITLE=""
-                DESC=""
-                # Only open or close events
+                ISSUE_TITLE="$(format_msg "${{ github.event.issue.title }}")"
+                URL="${{ github.event.issue.html_url }}"
+
                 if [ "$ISSUE_ACTION" = "opened" ]; then
                     TITLE="Issue opened"
-                    DESC="$USER opened an issue:\n**${ISSUE_TITLE:-** **}**"
-                    FOOTER="[View Here]($REPO_URL)"
                 elif [ "$ISSUE_ACTION" = "closed" ]; then
                     TITLE="Issue closed"
-                    DESC="$USER closed issue: **${ISSUE_TITLE:-** **}**"
-                    FOOTER="[View Here]($REPO_URL)"
                 else
                     exit 0
                 fi
+                DESC="by $USER: **${ISSUE_TITLE}**"
                 ;;
 
             issue_comment)
-                COMMENT="${{ github.event.comment.body }}"
+                COMMENT="$(format_msg "${{ github.event.comment.body }}")"
                 TITLE="Issue comment"
-                DESC="$USER commented:\n\`\`\`${COMMENT:-** **}\`\`\`"
-                FOOTER="[View Here]($REPO_URL)"
+                DESC="by $USER: \`\`\`${COMMENT}\`\`\`"
+                URL="${{ github.event.issue.html_url }}"
                 ;;
 
             fork)
                 TITLE="Repository forked"
-                DESC="$USER forked the repository: ${{ github.event.forkee.full_name }}"
-                FOOTER="[View Here](https://github.com/${{ github.event.forkee.full_name }})"
+                DESC="by $USER: ${{ github.event.forkee.full_name }}"
+                URL="https://github.com/${{ github.event.forkee.full_name }}"
                 ;;
 
             watch)
                 TITLE="Repository starred"
-                DESC="$USER starred the repository"
-                FOOTER="[View Here]($REPO_URL)"
+                DESC="by $USER!"
                 ;;
 
             public)
                 TITLE="Repository made public"
-                DESC="$USER made the repository public"
-                FOOTER="[View Here]($REPO_URL)"
+                DESC="by $USER..."
+                ;;
+
+            branch_protection_rule)
+                TITLE="Protection rules updated"
+                DESC="The protection rules of the repo were updated"
                 ;;
 
             *)
                 TITLE="Activity detected"
-                DESC="$USER triggered \`$EVENT\`"
-                FOOTER="[View Here]($REPO_URL)"
+                DESC="by $USER: \`$EVENT\`"
                 ;;
             esac
 
@@ -145,6 +152,7 @@ jobs:
             --arg title "$TITLE" \
             --arg desc "$DESC" \
             --arg footer "$FOOTER" \
+            --arg url "$URL" \
             --argjson color "$COLOR" \
             --arg timestamp "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
             '{
@@ -153,6 +161,7 @@ jobs:
                 {
                     title: $title,
                     description: $desc,
+                    url: $url,
                     color: $color,
                     footer: { text: $footer },
                     timestamp: $timestamp
@@ -170,4 +179,3 @@ jobs:
                 echo "Failed with status $HTTP_RESPONSE"
                 exit 1
             fi
-
