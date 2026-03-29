@@ -1,16 +1,12 @@
 [submodule "tools/asm-differ"]
 	path = tools/asm-differ
 	url = https://github.com/RE-Pepper/asm-differ
-	ignore = all
 [submodule "lib/sead"]
 	path = lib/sead
 	url = https://github.com/RE-Pepper/sead_ctr
-	ignore = all
 [submodule "lib/ctrsdk"]
 	path = lib/CtrSDK
 	url = https://github.com/RE-Pepper/ctrsdk
-	ignore = all
 [submodule "lib/NintendoWare"]
 	path = lib/NintendoWare
 	url = https://github.com/RE-Pepper/NintendoWare_ctr
-	ignore = all
