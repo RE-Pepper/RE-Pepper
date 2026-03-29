@@ -19,7 +19,7 @@ compile_commands.json
 *.m2c
 *.bin
 
-lib/CtrSDK
-lib/NintendoWare
-lib/sead
-tools/asm-differ
+#lib/CtrSDK
+#lib/NintendoWare
+#lib/sead
+#tools/asm-differ
