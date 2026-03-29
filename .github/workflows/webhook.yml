@@ -20,11 +20,9 @@ jobs:
     steps:
       - name: Send notification to Discord
         env:
-          PR_BODY_RAW: ${{ github.event.pull_request.body }}
           PR_TITLE_RAW: ${{ github.event.pull_request.title }}
           COMMIT_MSG_RAW: ${{ github.event.head_commit.message }}
           ISSUE_TITLE_RAW: ${{ github.event.issue.title }}
-          COMMENT_BODY_RAW: ${{ github.event.comment.body }}
         run: |
             EVENT="${{ github.event_name }}"
             USER="${{ github.actor }}"
@@ -52,25 +50,16 @@ jobs:
                 SHORT_MSG="${FULL_MSG%%$'\n'*}"
                 URL="${{ github.event.head_commit.url }}"
                 TITLE="New commit by $USER"
-                if [ "$FULL_MSG" = "** **" ]; then
-                    DESC="$USER: **${SHORT_MSG:-** **}**"
-                else
-                    DESC="$USER: **${SHORT_MSG:-** **}**\`\`\`${FULL_MSG}\`\`\`"
-                fi
+                DESC="$USER: **${SHORT_MSG:-** **}**"
                 ;;
 
             pull_request)
                 PR_ACTION="${{ github.event.action }}"
                 PR_TITLE="$(format_msg "$PR_TITLE_RAW")"
-                PR_BODY="$(format_msg "$PR_BODY_RAW")"
                 URL="${{ github.event.pull_request.html_url }}"
 
                 if [ "$PR_ACTION" = "opened" ]; then
-                    if [ "$PR_BODY" = "** **" ]; then
-                        DESC="$USER: **${PR_TITLE}**"
-                    else
-                        DESC="$USER: **${PR_TITLE}**\`\`\`${PR_BODY}\`\`\`"
-                    fi
+                    DESC="$USER: **${PR_TITLE}**"
                     TITLE="Pull Request opened"
                 elif [ "$PR_ACTION" = "closed" ]; then
                     if [ "${{ github.event.pull_request.merged }}" = "true" ]; then
@@ -85,9 +74,8 @@ jobs:
                 ;;
 
             pull_request_review_comment)
-                COMMENT="$(format_msg "$COMMENT_BODY_RAW")"
                 TITLE="Pull Request comment"
-                DESC="by $USER: \`\`\`${COMMENT}\`\`\`"
+                DESC="by $USER"
                 URL="${{ github.event.pull_request.html_url }}"
                 ;;
 
@@ -107,9 +95,8 @@ jobs:
                 ;;
 
             issue_comment)
-                COMMENT="$(format_msg "$COMMENT_BODY_RAW")"
                 TITLE="Issue comment"
-                DESC="by $USER: \`\`\`${COMMENT}\`\`\`"
+                DESC="by $USER"
                 URL="${{ github.event.issue.html_url }}"
                 ;;
 
