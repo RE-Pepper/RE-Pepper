@@ -74,8 +74,8 @@ jobs:
                         TITLE="Pull Request notlol closed"
                     fi
                     DESC="by $USER: **${PR_TITLE}**"
-                else
-                    exit 0
+                #else
+                #    exit 0
                 fi
                 ;;
 
