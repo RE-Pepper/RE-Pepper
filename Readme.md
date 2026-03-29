@@ -13,6 +13,9 @@ This decompilation targets the European version, but multiversion support was ad
   
 > [!NOTE]
 > This project was built in a way that allows for easy customization. If this were to be forked for another game, MIT License applies to the toolchain. The decompiled code is CC0.
+
+> [!WARNING]
+> Some libraries in this project were not built on clean ground. Please check their Readme's for more.
   
 Check out the [docs](https://prp.moddi.dev)!  
 Chat about [3DS Decompilation](https://discord.gg/dFgw7CwrEX)!  
