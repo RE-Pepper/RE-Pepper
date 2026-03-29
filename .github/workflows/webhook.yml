@@ -64,8 +64,10 @@ jobs:
                     fi
                     FOOTER="[View Here]($PR_LINK)"
                 else
-                    # other PR actions (synchronize, reopened, etc.) do nothing
-                    exit 0
+                    TITLE="This is a test"
+                    DESC="The coolest test of all!"
+                    FOOTER="https://moddi.dev"
+                    #exit 0
                 fi
                 ;;
 
