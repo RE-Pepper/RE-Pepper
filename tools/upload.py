@@ -116,7 +116,11 @@ def main():
         data = None
 
     if is_filter:
-        name = cxxfilt.demangle (sym)
+        try:
+            name = cxxfilt.demangle (sym)
+        except:
+            echo ("Note: Could not demangle symbol!")
+            pass
     else:
         name = sym
 

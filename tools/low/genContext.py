@@ -42,10 +42,6 @@ def findFilePath(relative_path):
     if try_path.exists():
         return try_path.resolve() # relative path given
 
-    attempt_armcc = Path(os.environ[get_compiler_env_inc()]) / relative_path
-    if attempt_armcc.exists():
-        return None # do not resolve arm headers
-
     for possible_dir in base_code_dirs:
         candidate = possible_dir / relative_path
         #print(f"{relative_path}: {candidate}")
@@ -63,13 +59,18 @@ def grabInclude(line):
     if not incl_path:
         return [line], False
 
-    included, _m = traverseFile (incl_path)
-    if not included or len(included) <= 0:
-        if incl_path in cfg.flag_preinclude:
-            return None, False
-        return [line], False
+    if cfg.flag_preinclude and incl_path in cfg.flag_preinclude:
+        return None, False
+
+    attempt_armcc = Path(os.environ[get_compiler_env_inc()]) / incl_path
+    if attempt_armcc.exists():
+        return [line], False # do not resolve arm headers
+
+    include_data, _m = traverseFile (incl_path)
+    if not include_data or len(include_data) <= 0:
+        return None, False
         
-    return included, True
+    return include_data, True
 
 def traverseFile(pat):
     global main_data, traversed

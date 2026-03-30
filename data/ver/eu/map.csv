@@ -59,7 +59,7 @@ Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol
 0x001012B4,0x001012C4,0x001012C8,          ,U,f,_ZN2nn2os6detail22InitializeSharedMemoryEv
 0x001012C8,          ,0x001012CC,          ,U,f,_ZN2nn3cfg3CTR10InitializeEv
 0x001012CC,0x00101384,0x00101398,          ,U,f,_ZN2nn3cfg3CTR6detail10InitializeEv
-0x00101398,          ,0x0010139C,          ,U,f,nninitSetupDaemons
+0x00101398,          ,0x0010139C,          ,M,f,nninitSetupDaemons
 0x0010139C,0x00101410,0x00101414,          ,U,f,_ZN2nn3ndm19SetupDaemonsDefaultEv
 0x00101414,          ,0x00101418,          ,U,f,_ZN2nn3ndm16SuspendSchedulerEb
 0x00101418,0x0010144C,0x00101454,          ,U,f,_ZN2nn3ndm3CTR6detail9Interface16SuspendSchedulerEb
@@ -9786,7 +9786,7 @@ Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol
 0x0028EBA8,          ,0x0028EBCC,          ,U,f,_ZN2nn3svc20WaitSynchronizationNEPiPKNS_6HandleEibx
 0x0028EBCC,          ,0x0028EBD0,          ,U,f,
 0x0028EBD0,0x0028EC00,0x0028EC08,          ,U,f,
-0x0028EC08,0x0028EC88,0x0028EC8C,          ,U,f,
+0x0028EC08,0x0028EC88,0x0028EC8C,          ,M,f,_ZN2nn2os15CriticalSection9EnterImplEv
 0x0028EC8C,          ,0x0028EC90,          ,U,f,_ZN2nn3dbg5BreakENS0_11BreakReasonE
 0x0028EC90,          ,0x0028EC98,          ,U,f,_ZN2nn3svc5BreakENS_3dbg11BreakReasonE
 0x0028EC98,          ,0x0028ECAC,          ,U,f,
@@ -9892,7 +9892,7 @@ Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol
 0x002933C0,          ,0x002933D0,          ,U,f,
 0x002933D0,0x00293414,0x00293418,          ,U,f,_ZnajPN4sead4HeapEi
 0x00293418,0x00293478,0x0029347C,          ,U,f,
-0x0029347C,          ,0x00293480,          ,U,f,nninitSystem
+0x0029347C,          ,0x00293480,          ,M,f,nninitSystem
 0x00293480,          ,0x00293498,          ,U,f,
 0x00293498,0x002934A0,0x002934A4,          ,U,f,
 0x002934A4,0x00293548,0x00293558,          ,U,f,
