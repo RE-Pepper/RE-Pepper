@@ -30,13 +30,18 @@ def exec_link():
 
     if not cfg.modules or len(cfg.modules) <= 0:
         echo ("No modules are specified.")
-    else:#replace with archive names
+    else:
         for mod_path_name, mod_data in cfg.modules.items():
             my_name = str(mod_data.get("name"))
+            if my_name == getStubsLibName():
+                continue
             flags.append(f"--library={my_name}")
 
     if cfg.do_split:
         flags.append(f"--library={getSplitLibName()}")
+    else:
+        flags.append(f"--library={getStubsLibName()}")
+
 
     echo (f"Linking {getElfFile().name}")
 

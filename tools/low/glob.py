@@ -118,10 +118,12 @@ def getSplitLibFile():
 def getDependFile():
     return getSplitPath() / "depend.o"
 # stubs
+def getStubsLibName():
+    return "stubs"
 def getStubsLibFile():
-    return getBuildLibPath() / f"libstubs.a"
+    return getBuildLibPath() / f"lib{getStubsLibName()}.a"
 def getStubsFile():
-    return getSplitPath() / "stubs.c"
+    return getSplitPath() / f"{getStubsLibName()}.c"
 
 # enable ansi colors on windows
 if os.name == "nt":

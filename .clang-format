@@ -41,6 +41,8 @@ ColumnLimit: 0
 UseTab: Never
 ContinuationIndentWidth: 8
 CompactNamespaces: false
+OneLineFormatOffRegex: "nf"
+Macros: [asm, asm_ext, var]
 IncludeBlocks: Regroup
 IncludeCategories:
   - Regex: ^<
@@ -53,6 +55,7 @@ IncludeCategories:
     CaseSensitive: false
 IndentWidth: 8
 InsertBraces: true
+SpaceBeforeParens: Always
 PenaltyBreakBeforeFirstCallParameter: 0
 PointerAlignment: Left
 ReferenceAlignment: Left

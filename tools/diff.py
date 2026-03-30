@@ -44,7 +44,8 @@ def main():
         str(sym_start),
         str(decomp_start),
         str(sym_size),
-        str(decomp_size)
+        str(decomp_size),
+        "-I", "-i"
     ] + extra_flags
     #print(cmd)
     subprocess.run(cmd)

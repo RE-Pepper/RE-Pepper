@@ -1,33 +1,33 @@
 Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol
-0x00100000,          ,0x00100024,          ,m,fs,__ctr_start
-0x00100024,0x00100040,0x00100048,0x00100000,O,fs,nninitRegion
-0x00100048,          ,0x00100050,0x00100000,U,fs,_printf_percent
-0x00100050,          ,0x00100058,0x00100000,U,fs,_printf_p
-0x00100058,          ,0x00100060,0x00100000,U,fs,_printf_f
-0x00100060,          ,0x00100068,0x00100000,U,fs,_printf_e
-0x00100068,          ,0x00100070,0x00100000,U,fs,_printf_g
-0x00100070,          ,0x00100078,0x00100000,U,fs,_printf_a
-0x00100078,          ,0x00100084,0x00100000,U,fs,_printf_ll
-0x00100084,          ,0x0010008C,0x00100000,U,fs,_printf_i
-0x0010008C,          ,0x00100094,0x00100000,U,fs,_printf_d
-0x00100094,          ,0x0010009C,0x00100000,U,fs,_printf_u
-0x0010009C,          ,0x001000A4,0x00100000,U,fs,_printf_o
-0x001000A4,          ,0x001000AC,0x00100000,U,fs,_printf_x
-0x001000AC,          ,0x001000B4,0x00100000,U,fs,_printf_lli
-0x001000B4,          ,0x001000BC,0x00100000,U,fs,_printf_lld
-0x001000BC,          ,0x001000C4,0x00100000,U,fs,_printf_llu
-0x001000C4,          ,0x001000CC,0x00100000,U,fs,_printf_llo
-0x001000CC,          ,0x001000D4,0x00100000,U,fs,_printf_llx
-0x001000D4,          ,0x001000E0,0x00100000,U,fs,_printf_l
-0x001000E0,          ,0x001000E8,0x00100000,U,fs,_printf_c
-0x001000E8,          ,0x001000F0,0x00100000,U,fs,_printf_s
-0x001000F0,          ,0x001000F8,0x00100000,U,fs,_printf_lc
-0x001000F8,          ,0x00100100,0x00100000,U,fs,_printf_ls
-0x00100100,          ,0x00100108,0x00100000,U,fs,_printf_percent_end
+0x00100000,          ,0x00100024,          ,M,fsg,__ctr_start
+0x00100024,          ,0x00100040,          ,m,fs,nninitRegion
+0x00100048,          ,0x00100050,0x00100048,U,fs,_printf_percent
+0x00100050,          ,0x00100058,0x00100048,U,fs,_printf_p
+0x00100058,          ,0x00100060,0x00100048,U,fs,_printf_f
+0x00100060,          ,0x00100068,0x00100048,U,fs,_printf_e
+0x00100068,          ,0x00100070,0x00100048,U,fs,_printf_g
+0x00100070,          ,0x00100078,0x00100048,U,fs,_printf_a
+0x00100078,          ,0x00100084,0x00100048,U,fs,_printf_ll
+0x00100084,          ,0x0010008C,0x00100048,U,fs,_printf_i
+0x0010008C,          ,0x00100094,0x00100048,U,fs,_printf_d
+0x00100094,          ,0x0010009C,0x00100048,U,fs,_printf_u
+0x0010009C,          ,0x001000A4,0x00100048,U,fs,_printf_o
+0x001000A4,          ,0x001000AC,0x00100048,U,fs,_printf_x
+0x001000AC,          ,0x001000B4,0x00100048,U,fs,_printf_lli
+0x001000B4,          ,0x001000BC,0x00100048,U,fs,_printf_lld
+0x001000BC,          ,0x001000C4,0x00100048,U,fs,_printf_llu
+0x001000C4,          ,0x001000CC,0x00100048,U,fs,_printf_llo
+0x001000CC,          ,0x001000D4,0x00100048,U,fs,_printf_llx
+0x001000D4,          ,0x001000E0,0x00100048,U,fs,_printf_l
+0x001000E0,          ,0x001000E8,0x00100048,U,fs,_printf_c
+0x001000E8,          ,0x001000F0,0x00100048,U,fs,_printf_s
+0x001000F0,          ,0x001000F8,0x00100048,U,fs,_printf_lc
+0x001000F8,          ,0x00100100,0x00100048,U,fs,_printf_ls
+0x00100100,          ,0x00100108,0x00100048,U,fs,_printf_percent_end
 0x00100108,0x00100154,0x0010015C,          ,U,f,nnMain
-0x0010015C,0x00100188,0x00100190,          ,U,f,nninitCallStaticInitializers
-0x00100190,0x001001D4,0x001001DC,          ,U,f,nninitLocale
-0x001001DC,          ,0x001001FC,          ,U,f,nninitSetup
+0x0010015C,0x00100188,0x00100190,          ,m,f,nninitCallStaticInitializers
+0x00100190,0x001001D4,0x001001DC,          ,M,f,nninitLocale
+0x001001DC,          ,0x001001FC,          ,M,f,nninitSetup
 0x001001FC,0x00100254,0x0010025C,          ,U,f,_ZN2nn6applet3CTR6detail10InitializeEj
 0x0010025C,0x0010030C,0x00100318,          ,U,f,_ZN11Application14createInstanceEPN4sead4HeapE
 0x00100318,0x00100350,0x00100354,          ,U,f,_ZN11Application3runEv
@@ -52,7 +52,7 @@ Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol
 0x00101124,          ,0x00101148,          ,U,f,
 0x00101148,          ,0x0010117C,          ,U,f,_ZN2al9SystemKitC2Ev
 0x0010117C,0x00101220,0x0010123C,          ,U,f,_ZN2al9getRegionEv
-0x0010123C,0x00101274,0x00101278,          ,U,f,_ZN2nn2os15WaitableCounter10InitializeEv
+0x0010123C,0x00101274,0x00101278,          ,m,f,_ZN2nn2os15WaitableCounter10InitializeEv
 0x00101278,          ,0x0010128C,          ,U,f,nninitSetupDefault
 0x0010128C,0x0010129C,0x001012A0,          ,U,f,_ZN2nn2os3ARM6detail28SaveThreadLocalRegionAddressEv
 0x001012A0,0x001012B0,0x001012B4,          ,U,f,_ZN2nn2os6detail21InitializeStackMemoryEv
@@ -14049,8 +14049,8 @@ Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol
 0x00336FE4,          ,0x00337030,          ,U,f,
 0x00337030,          ,0x00337054,          ,U,f,_ZNK2al7AreaObj10isInVolumeERKN4sead7Vector3IfEE
 0x00337054,          ,0x0033705C,          ,U,f,_ZNK2al7AreaObj20getStageSwitchKeeperEv
-0x0033705C,          ,0x00337064,          ,O,f,
-0x00337064,          ,0x0033706C,          ,O,f,
+0x00337064,          ,0x0033706C,          ,U,f,
+0x0033705C,          ,0x00337064,          ,U,f,
 0x0033706C,          ,0x00337090,          ,U,f,
 0x00337090,          ,0x003370B4,          ,U,f,
 0x003370B4,          ,0x00337264,          ,U,f,
