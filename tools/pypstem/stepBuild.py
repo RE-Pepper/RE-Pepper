@@ -263,6 +263,16 @@ def exec_build():
                 obj_new_list.add(out_path)
             data_new_names.add(file.name)
 
+            # write down symbols in .syms
+            if not str(getBuildPath()) in str(file):
+                if file_str in json_syms:
+                    del json_syms[file_str]
+                json_syms[file_str] = []
+                for sym in read_elfsym(out_path):
+                    if sym[ElfSymFmt.Symbol] in json_syms[file_str]:
+                        continue
+                    json_syms[file_str].append(sym[ElfSymFmt.Symbol])
+
         did_delete = False
         # check for deleted files
         if data_new_names and mod_ar_file.exists():
@@ -296,15 +306,6 @@ def exec_build():
                 for obj in obj_new_list:
                     f.write(str(obj))
                     f.write(" ")
-
-            # write down symbols in .syms
-            echo (f"{line_category}: Gathering Symbols", "\r")
-            if not str(getBuildPath()) in str(file):
-                if file_str in json_syms:
-                    del json_syms[file_str]
-                json_syms[file_str] = []
-                for sym in read_elfsym(out_path):
-                    json_syms[file_str].append(sym[ElfSymFmt.Symbol])
 
             echo (f"{line_category}: Compressing", "\r")
             ar_arg = ["-rsc", str(mod_ar_file), f"--via={str(getBuildViaFile())}"]
