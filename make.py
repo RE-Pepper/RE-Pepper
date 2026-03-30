@@ -12,7 +12,7 @@ def main():
     parser.add_argument("version", nargs="?", default=None, help="Version to use")
     parser.add_argument("--warn", '-w', action='store_true', help="Omit many warnings (nintendo standard)")
     parser.add_argument("--only_matching", '-mo', action='store_true', help="Compile only matching code")
-    parser.add_argument("--allow_shifting", '-sh', action='store_true', help="Allow shifts during linking")
+    parser.add_argument("--stop_shifting", '-sh', action='store_true', help="Allow shifts during linking")
     parser.add_argument("--do_split", '-sp', action='store_true', help="Enable splitting process (slow)")
     parser.add_argument("--vfe", '-vf', action='store_true', help="Enable VFE for building")
     parser.add_argument("--debug", '-d', action='store_true', help="Build with debug info")
@@ -35,7 +35,7 @@ def main():
 
     if args.only_matching:
         cfg.only_matching = True
-    if args.allow_shifting:
+    if not args.stop_shifting:
         cfg.allow_shifting = True
     if args.do_split:
         cfg.do_split = True
@@ -45,6 +45,8 @@ def main():
         cfg.flags_compile_cxx.append("--debug")
     else:
         cfg.flags_compile_cxx.append("--no_debug")
+        cfg.macros["NN_SWITCH_DISABLE_ASSERT_WARNING_FOR_SDK"]=1
+        cfg.macros["NN_SWITCH_DISABLE_DEBUG_PRINT_FOR_SDK"]=1
     if args.vfe:
         cfg.flags_link.append("--vfemode=force")
     if args.warn:

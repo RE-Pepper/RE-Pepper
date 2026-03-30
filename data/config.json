@@ -73,7 +73,6 @@
     "--keep=*",
     "--no_remove",
     "--vfemode=off",
-    "--no_strict_visibility",
     "--no_list_mapping_symbols",
     "--show_parent_lib",
     "--show_full_path"

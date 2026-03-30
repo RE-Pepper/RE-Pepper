@@ -27,16 +27,18 @@ def gen_scatter():
     sym_prev = None
     syms = sorted(read_sym_file(), key=lambda tup: tup[MapFmt.Start])
     for sym_i, sym in enumerate(syms):
+        name = sym[MapFmt.Symbol]
+        if not name:
+            continue
         rank = sym[MapFmt.Rank]
         if cfg.only_matching and rank != 'O':
             continue
-        elif not cfg.allow_shifting and not rank in ("O" "m"):
-            continue
+        #elif rank == "U":
+        #    continue
         isCreateSection = True
         addr = sym[MapFmt.Start]
         sect = sym[MapFmt.Section]
         type = sym[MapFmt.Type]
-        name = sym[MapFmt.Symbol]
 
         if (addr % 4) != 0:
             isCreateSection = False
