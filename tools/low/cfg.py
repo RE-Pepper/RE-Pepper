@@ -127,7 +127,7 @@ def readFile(path):
     checkArrEntry(data, "flags_compile_asm")
     checkArrEntry(data, "flags_link")
     checkStrEntry(data, "flag_preinclude")
-    checkSetEntry(data, "macros")
+    checkDctEntry(data, "macros")
     checkSetEntry(data, "extensions")
     checkBolEntry(data, "only_matching")
     checkBolEntry(data, "allow_shifting")

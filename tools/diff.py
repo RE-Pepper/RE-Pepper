@@ -2,15 +2,13 @@
 import os
 import sys
 import subprocess
-
 from pathlib import Path
+
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from tools.low.glob import *
 from tools.low.readElfMap import *
 from tools.low.readSymMap import *
-from tools.low.readHeader import *
-
-addr_base = read_header()[HeadType.Text][HeadVal.Start]
+from tools.low.callAsmdiff import *
 
 def main():
     if len(sys.argv) < 2:
@@ -27,28 +25,10 @@ def main():
     if decomp_symbol is None:
         fail_ex (f"Couldn't find in decomp: {symbolname}", "Make sure to implement this symbol somewhere!", False)
 
-    sym_start = int(symbol[MapFmt.Start]-addr_base)
-    decomp_start = int(decomp_symbol[ElfMapFmt.Address]-addr_base)
-
-    sym_size = int(symbol[MapFmt.Pool] - symbol[MapFmt.Start])
-    decomp_size = int(decomp_symbol[ElfMapFmt.Size])
-    if decomp_size <= 0:
-        decomp_size = sym_size
-
-    if sym_size <= 0:
+    res, _ = callAsmdiff(symbol, decomp_symbol, extra_flags, True)
+    echo (res)
+    if res is None:
         fail (f"End address is invalid for {symbolname}")
-
-    cmd = [
-        sys.executable,
-        str(Path(getProjDir()) / "tools" / "asm-differ" / "diff.py"),
-        str(sym_start),
-        str(decomp_start),
-        str(sym_size),
-        str(decomp_size),
-        "-I", "-i"
-    ] + extra_flags
-    #print(cmd)
-    subprocess.run(cmd)
 
 if __name__ == "__main__":
     main()
