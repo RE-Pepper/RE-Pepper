@@ -12,9 +12,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent))
 from tools.low.updateMap import *
 from tools.low.readSymMap import *
 from tools.low.readElfMap import *
-from tools.low.readHeader import *
-
-addr_base = read_header()[HeadType.Text][HeadVal.Start]
+from tools.low.callAsmdiff import *
 
 is_skip_mode = False
 is_sim_mode = False
@@ -25,45 +23,22 @@ csv_path = ""
 log_path = ""
 
 def rank_symbol(symbol, decomp_symbol):
-    sym_start = int(symbol[MapFmt.Start]-addr_base)
-    decomp_start = int(decomp_symbol[ElfMapFmt.Address]-addr_base)
-
-    sym_size = int(symbol[MapFmt.Pool] - symbol[MapFmt.Start])
-    decomp_size = int(decomp_symbol[ElfMapFmt.Size])
-    if decomp_size <= 0:
-        decomp_size = sym_size
-
-    if sym_size <= 0:
+    res, sym_size = callAsmdiff(symbol, decomp_symbol, None, True)
+    if res is None:
         return 'U'
-
-    cmd = [
-        sys.executable,
-        str(Path(getProjDir()) / "tools" / "asm-differ" / "diff.py"),
-        str("--format json"),
-        str(sym_start),
-        str(decomp_start),
-        str(sym_size),
-        str(decomp_size)
-    ]
-    cmd = " ".join(cmd)
-    #echo (cmd)
-    err = subprocess.run(cmd, shell=True, capture_output=True, text=True)
-    if err.returncode != 0:
-        fail (f"asm-differ failed:\n"+ err.stderr, False)
-    out = err.stdout
-
-    if not "CURRENT" in out:
-        raise RuntimeError(f"Unexpected output when running asm-differ:\n{out}")
+    if res.returncode != 0:
+        fail (f"asm-differ failed:\n{res.stderr}", False)
+    
+    out = res.stdout
+    if "CURRENT" not in out: raise RuntimeError(f"Unexpected output:\n{out}")
     
     rank = 'O'
+    if "CURRENT (0)" in out:
+        return rank # match override
     if "diff_change" in out:
         rank = 'm'
     if "diff_add" in out or "diff_remove" in out:
-        if out.count('diff_add') == out.count('diff_remove'):
-            rank = 'm'
-        else:
-            rank = 'M'
-    
+        rank = 'm' if out.count('diff_add') == out.count('diff_remove') else 'M'
     return rank
 
 def getRankName(rank: str):

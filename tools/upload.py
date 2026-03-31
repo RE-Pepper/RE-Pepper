@@ -127,6 +127,13 @@ def main():
 #    echo (data)
 #    echo (main)
 
+    data_macs = ""
+
+    for key, value in cfg.macros.items():
+        data_macs += f"#define {key} {value}\n"
+
+    data = data_macs + data
+
     if path:
         echo (f"Lines: ctx {len(data.splitlines())}, src {len(main.splitlines())}")
     else:
