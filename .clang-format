@@ -16,8 +16,6 @@ AllowShortFunctionsOnASingleLine: Inline
 AllowShortIfStatementsOnASingleLine: false
 BinPackArguments: false
 BinPackParameters: false
-PackConstructorInitializers: NextLineOnly
-BreakConstructorInitializers: BeforeColon
 BreakInheritanceList: AfterComma
 BreakTemplateDeclarations: MultiLine
 BreakBeforeBraces: Custom
