@@ -2,6 +2,7 @@
 import csv
 from enum import IntEnum
 
+from tools.low.chooser import choose
 from tools.low.glob import *
 
 class MapFmt(IntEnum):
@@ -34,8 +35,20 @@ if getMapFile().exists():
 def read_sym_file():
     return _map_data
 
-def get_symbol(symbol):
-    return next((r for r in _map_data if r[MapFmt.Symbol] == symbol), None)
+def get_symbol(symbol): #chatgpt espanol si si
+    # Coincidencia exacta primero
+    retval = next((r for r in _map_data if r[MapFmt.Symbol] == symbol), None)
+    if retval:
+        return retval
+
+    # Fallback al chooser si no hay coincidencia exacta
+    choices_dict = {
+        (r[MapFmt.Symbol], f"0x{r[MapFmt.Start]:08X}"): r
+        for r in _map_data
+        if symbol in r[MapFmt.Symbol]
+    }
+    
+    return choose(choices_dict, "Multiple matches in Symbol Map!")
 
 def get_next(symbol):
     rows = read_sym_file()

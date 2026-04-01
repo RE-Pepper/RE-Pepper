@@ -17,16 +17,18 @@
   "modules": {
     "Game": {
       "name": "Game",
-      "disabled": "1"
+      "disabled": "1",
+      "flags_cxx": ["--sys_include"]
     },
     "lib/al": {
       "name": "Actor",
-      "disabled": "1"
+      "disabled": "1",
+      "flags_cxx": ["--sys_include"]
     },
     "lib/sead": {
       "name": "Sead",
       "source_dir": "modules/src",
-      "flags_cxx": ["--no_vla"]
+      "flags_cxx": ["--no_vla", "--sys_include"]
     },
     "lib/sead/addins/libms": {
       "name": "MS",
@@ -57,7 +59,6 @@
     "--force_new_nothrow",
     "--multibyte_chars",
     "--enum_is_int",
-    "--sys_include",
     "--signed_chars",
     "--no_rtti_data",
     "--forceinline"

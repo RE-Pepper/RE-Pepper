@@ -80,5 +80,17 @@ for sym in _read_elf_symbols():
 def get_elf_symbol_list():
     return _elf_map_data.values()
 
-def get_elf_symbol(name):
-    return _elf_map_data.get(name)
+def get_elf_symbol(target_name):
+    retval = _elf_map_data.get(target_name)
+    if retval:
+        return retval
+
+    from tools.low.chooser import choose
+
+    choices_dict = {
+        (entry[0], f"0x{entry[1]:08X}"): entry
+        for entry in _elf_map_data.values()
+        if target_name in entry[0]
+    }
+
+    return choose(choices_dict, "Multiple matches in Elf!")
