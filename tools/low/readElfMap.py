@@ -90,7 +90,7 @@ def get_elf_symbol(target_name):
     choices_dict = {
         (entry[0], f"0x{entry[1]:08X}"): entry
         for entry in _elf_map_data.values()
-        if target_name in entry[0]
+        if target_name in entry[ElfMapFmt.Symbol]
     }
 
     return choose(choices_dict, "Multiple matches in Elf!")

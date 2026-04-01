@@ -45,6 +45,8 @@ jobs:
           for v in "${VERSIONS[@]}"; do
               echo "Now $v"
               python make.py "$v" --silent
+              echo "Checking and updating csv"
+              python tools/check.py -q -w
               echo "Generating progress info"
               python tools/progress.py
               echo "Finished $v"

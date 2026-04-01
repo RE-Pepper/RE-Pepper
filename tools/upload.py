@@ -139,6 +139,7 @@ def main():
     else:
         echo ("No file found, source will be empty.")
 
+    echo (f"Symbol chosen: {sym}")
     if input("Ready to upload? (y/N) ").strip().lower() not in ("y", "yes", "j", "ja"):
         return
 
