@@ -18313,6 +18313,7 @@ Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol
 0x003F3198,          ,0x003F39D0,          ,U,d,
 0x003F39D0,          ,0x00424F2C,          ,U,db,
 0x00424F2C,          ,0x0042FB10,          ,U,db,al::ActorPoseKeeperBase::sDefaultGravity
+0x00424FBC,          ,0x00424FC0,          ,U,db,sRootList
 0x0042FB10,          ,0x0042FB30,          ,U,db,sTogezoWalkerStateParam
 0x0042FB30,          ,0x0042FB9C,          ,U,db,sTogezoWalkerStateWanderParam
 0x0042FB9C,          ,0x00430500,          ,U,db,sTogezoWalkerStateChaseParam

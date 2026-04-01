@@ -18,9 +18,10 @@ for mod_path_name, mod_data in cfg.modules.items():
 
 setup_compiler(cfg.compiler)
 
-main_data = None
-traversed = None
+main_data = []
+traversed = set()
 sym = None
+local_dir = None
 
 def getTypeInc():
     file_path = findFilePath(cfg.flag_preinclude)
@@ -37,6 +38,10 @@ def findFilePath(relative_path):
     try_path = Path(relative_path)
     if try_path.exists():
         return try_path.resolve() # direct path given
+
+    try_path = local_dir / relative_path
+    if try_path.exists():
+        return try_path.resolve() # local path given
 
     try_path = getProjDir() / relative_path
     if try_path.exists():
@@ -73,10 +78,7 @@ def grabInclude(line):
     return include_data, True
 
 def traverseFile(pat):
-    global main_data, traversed
-
-    if main_data is None: main_data = []
-    if traversed is None: traversed = set()
+    global main_data, traversed, local_dir
 
     content = []
     file_path = findFilePath(pat)
@@ -85,6 +87,9 @@ def traverseFile(pat):
 
     if file_path in traversed:
         return None, main_data
+
+    if not local_dir:
+        local_dir = file_path.parent
 
     traversed.add(file_path)
 
