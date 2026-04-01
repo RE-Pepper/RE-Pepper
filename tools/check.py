@@ -24,14 +24,16 @@ log_path = ""
 
 def rank_symbol(symbol, decomp_symbol):
     res, sym_size = callAsmdiff(symbol, decomp_symbol, None, True)
+    if sym_size == 1:
+        return 'O'
     if res is None:
         return 'U'
     if res.returncode != 0:
         fail (f"asm-differ failed:\n{res.stderr}", False)
-    
+
     out = res.stdout
     if "CURRENT" not in out: raise RuntimeError(f"Unexpected output:\n{out}")
-    
+
     rank = 'O'
     if "CURRENT (0)" in out:
         return rank # match override
