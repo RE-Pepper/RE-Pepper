@@ -8,15 +8,14 @@ from tools.pypstem._utils import getFileBuildPath
 
 def gen_comcom():
     directory = str(getBuildObjPath())
-    command = ""
-    includes = ""
+    params = "-std=gnu++03 --target=arm-none-eabi -march=armv6k -mfloat-abi=hard -fshort-wchar "
 
     for src_path_name, src_data in cfg.modules.items():
         if not src_data.get("include_dir"):
             continue
-        includes += f"-I{getProjDir() / src_path_name / src_data.get("include_dir")} "
+        params += f"-I{getProjDir() / src_path_name / src_data.get("include_dir")} "
     if cfg.flag_preinclude:
-        includes += f"--include={str(getProjDir() / cfg.flag_preinclude)}"
+        params += f"--include={str(getProjDir() / cfg.flag_preinclude)}"
 
     with open(getJsonComcomFile(), "w") as f:
         f.write("[")
@@ -33,7 +32,7 @@ def gen_comcom():
 
                 f.write("\n{\n")
                 f.write(f"  \"directory\": \"{directory}\",\n")
-                f.write(f"  \"command\": \"{includes}\",\n")
+                f.write(f"  \"command\": \"{params}\",\n")
                 f.write(f"  \"file\": \"{str(file)}\",\n")
                 f.write(f"  \"output\": \"{str(output)}\"\n")
                 f.write("},")

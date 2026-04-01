@@ -5679,15 +5679,15 @@ Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol
 0x001F3244,0x001F3288,0x001F328C,          ,U,f,
 0x001F328C,          ,0x001F32A0,          ,U,f,
 0x001F32A0,0x001F32E0,0x001F32EC,          ,U,f,
-0x001F32EC,0x001F3318,0x001F3320,          ,U,f,
-0x001F3320,          ,0x001F334C,          ,U,f,
-0x001F334C,0x001F33D8,0x001F33E0,          ,U,f,
-0x001F33E0,          ,0x001F3440,          ,U,f,
-0x001F3440,0x001F3558,0x001F355C,          ,U,f,
-0x001F355C,          ,0x001F35C4,          ,U,f,
-0x001F35C4,          ,0x001F3620,          ,U,f,
-0x001F3620,          ,0x001F3624,          ,U,f,
-0x001F3624,0x001F368C,0x001F3690,          ,U,f,
+0x001F32EC,0x001F3318,0x001F3320,          ,U,f,_ZN2nn3dsp3CTR8RecvDataEtPt
+0x001F3320,          ,0x001F334C,          ,U,f,_ZN2nn3fnd11ExpHeapBase10InvalidateEv
+0x001F334C,0x001F33D8,0x001F33E0,          ,U,f,_ZN2nn3fnd6detail10CreateHeapEPNS1_11ExpHeapImplEPvjt
+0x001F33E0,          ,0x001F3440,          ,U,f,_ZN2nn3fnd6detail10FreeToHeapEPNS1_11ExpHeapImplEPv
+0x001F3440,0x001F3558,0x001F355C,          ,U,f,_ZN2nn3fnd6detail13RecycleRegionEPNS1_18NNSiFndExpHeapHeadEPKNS1_13NNSiMemRegionE
+0x001F355C,          ,0x001F35C4,          ,U,f,_ZN2nn3fnd6detail16AppendListObjectEPNS1_10NNSFndListEPv
+0x001F35C4,          ,0x001F3620,          ,U,f,_ZN2nn3fnd6detail16RemoveListObjectEPNS1_10NNSFndListEPv
+0x001F3620,          ,0x001F3624,          ,U,f,_ZN2nn3fnd6detail11DestroyHeapEPNS1_11ExpHeapImplE
+0x001F3624,0x001F368C,0x001F3690,          ,U,f,_ZN2nn3fnd6detail20NNSi_FndFinalizeHeapEPNS1_11ExpHeapImplE
 0x001F3690,0x001F3740,0x001F3748,          ,U,f,
 0x001F3748,          ,0x001F3760,          ,U,f,
 0x001F3760,0x001F3888,0x001F3898,          ,U,f,
@@ -6972,8 +6972,8 @@ Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol
 0x0023B6CC,          ,0x0023B708,          ,U,f,
 0x0023B708,0x0023B8C8,0x0023B8D8,          ,U,f,
 0x0023B8D8,0x0023BCFC,0x0023BE94,          ,U,f,
-0x0023BE94,          ,0x0023BEE8,          ,U,f,
-0x0023BEE8,          ,0x0023BF00,          ,U,f,
+0x0023BE94,          ,0x0023BEE8,          ,M,f,_ZN2nn3fnd6detail15FindContainHeapEPNS1_10NNSFndListEPKv
+0x0023BEE8,          ,0x0023BF00,          ,U,f,_ZN2nn3fnd6detail17GetNextListObjectEPKNS1_10NNSFndListEPKv
 0x0023BF00,          ,0x0023BFBC,          ,U,f,
 0x0023BFBC,          ,0x0023BFE4,          ,U,f,
 0x0023BFE4,          ,0x0023C000,          ,U,f,

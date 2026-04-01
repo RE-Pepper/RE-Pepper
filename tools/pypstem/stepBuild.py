@@ -193,8 +193,8 @@ def exec_build():
         mod_ar_name = f"lib{mod_data.get("name")}.a"
         mod_ar_file = getBuildLibPath() / mod_ar_name
 
-        flags_cxx = base_flags_cxx
-        flags_asm = base_flags_asm
+        flags_cxx = base_flags_cxx[:]
+        flags_asm = base_flags_asm[:]
         val = mod_data.get("flags")
         if val:
             flags_asm.extend(val)

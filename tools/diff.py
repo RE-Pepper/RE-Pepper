@@ -25,8 +25,7 @@ def main():
     if decomp_symbol is None:
         fail_ex (f"Couldn't find in decomp: {symbolname}", "Make sure to implement this symbol somewhere!", False)
 
-    res, _ = callAsmdiff(symbol, decomp_symbol, extra_flags, True)
-    echo (res)
+    res, _ = callAsmdiff(symbol, decomp_symbol, extra_flags)
     if res is None:
         fail (f"End address is invalid for {symbolname}")
 
