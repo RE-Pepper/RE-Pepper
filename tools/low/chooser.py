@@ -7,7 +7,6 @@ def choose(items_dict, msg="Multiple matches found!"):
     global maxlen
     
     if not items_dict:
-        print("No matches found.")
         return None
 
     # If only one, return that
