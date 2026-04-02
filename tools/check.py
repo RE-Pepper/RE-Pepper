@@ -106,11 +106,7 @@ def check_syms():
     for sym in syms:
         end=sym[MapFmt.End]
         start=sym[MapFmt.Start]
-        oldrank=sym[MapFmt.Rank]
         name=sym[MapFmt.Symbol]
-        sect=sym[MapFmt.Section]
-        pool=sym[MapFmt.Pool]
-        typ=sym[MapFmt.Type]
         rank='U'
 
         progress = ((start - first_sym_addr) / (syms[-1][MapFmt.End] - first_sym_addr)) * 100
@@ -133,11 +129,19 @@ def check_syms():
         if not decomp_symbol is None:
             rank = rank_symbol(sym, decomp_symbol)
 
+        sect=sym[MapFmt.Section]
+        pool=sym[MapFmt.Pool]
+        typ=sym[MapFmt.Type]
+        sectname=sym[MapFmt.SectionName]
+
         # main adding
-        newsyms.append((start, pool, end, sect, rank, typ, name))
+        newsyms.append((start, pool, end, sect, rank, typ, name, sectname))
         last_name = name
+
         clear_line()
         print_progress (last_name, progress, rank)
+
+        oldrank=sym[MapFmt.Rank]
         if oldrank != rank:
             change = f"{name} {oldrank} -> {rank} ({getRankMsg(oldrank, rank)})"
             echo (change)

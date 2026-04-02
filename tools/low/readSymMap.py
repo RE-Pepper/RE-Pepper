@@ -13,6 +13,7 @@ class MapFmt(IntEnum):
     Rank = 4
     Type = 5
     Symbol = 6
+    SectionName = 7
 
 _map_data = []
 if getMapFile().exists():
@@ -20,7 +21,7 @@ if getMapFile().exists():
         rows = list(csv.reader(f, delimiter=',', quotechar='"'))
         rowslen = len(rows)
         for rowi, row in enumerate(rows):
-            if len(row) != len(MapFmt):
+            if len(row) < (len(MapFmt) - 1):
                 continue
             if not (row and row[MapFmt.Start].startswith("0x")):
                 continue
@@ -30,7 +31,7 @@ if getMapFile().exists():
             end = int(row[MapFmt.End].strip(), 0) if row[MapFmt.End].strip() else None
             pool = int(row[MapFmt.Pool].strip(), 0) if row[MapFmt.Pool].strip() else (end if end else 0)
             section = int(row[MapFmt.Section].strip(), 0) if row[MapFmt.Section].strip() else None
-            _map_data.append((start, pool, end, section, row[MapFmt.Rank], row[MapFmt.Type], row[MapFmt.Symbol]))
+            _map_data.append((start, pool, end, section, row[MapFmt.Rank], row[MapFmt.Type], row[MapFmt.Symbol], row[MapFmt.SectionName]))
 
 def read_sym_file():
     return _map_data

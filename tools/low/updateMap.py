@@ -11,9 +11,9 @@ def make_line(sym):
     if sym[MapFmt.Pool] == sym[MapFmt.End]:
         skip_pool = True
     for col in MapFmt:
-        if not sym[col] and col == MapFmt.Symbol:
+        if not sym[col] and col in (MapFmt.Symbol, MapFmt.SectionName):
             line.append("")
-        elif not (col == MapFmt.Symbol) and not sym[col] or (skip_pool and col == MapFmt.Pool):
+        elif not sym[col] or (skip_pool and col == MapFmt.Pool):
             line.append("          ")
         elif col in (MapFmt.Start, MapFmt.End, MapFmt.Pool, MapFmt.Section):
             line.append(f"0x{sym[col]:08X}")
@@ -42,7 +42,6 @@ def updateSingle(sym, csv_path=None):
     if not csv_path:
         csv_path = getMapFile()
     # Build line
-    sym[MapFmt.Rank] = nowrank
     newline = make_line(sym)
 
     # Write changes

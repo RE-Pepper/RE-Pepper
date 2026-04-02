@@ -13,16 +13,16 @@ def gen_scatter():
     s_code = []
     s_dataro = []
     s_datarw = []
+    s_databs = []
 
+    header = read_header()
+    tx_s = f"0x{header[HeadType.Text][HeadVal.Start]:08X}"
     ro_s = '+0'
     rw_s = '+0'
 
     if not cfg.allow_shifting:
-        header = read_header()
-        ro_i = header[HeadType.Ro][HeadVal.Start]
-        rw_i = header[HeadType.Rw][HeadVal.Start]
-        ro_s = f"0x{ro_i:08X}"
-        rw_s = f"0x{rw_i:08X}"
+        ro_s = f"{header[HeadType.Ro][HeadVal.Start]:08X}"
+        rw_s = f"{header[HeadType.Rw][HeadVal.Start]:08X}"
 
     sym_prev = None
     syms = sorted(read_sym_file(), key=lambda tup: tup[MapFmt.Start])
@@ -53,7 +53,7 @@ def gen_scatter():
             else:
                 fail(f"Unsupported sym type: {type} at 0x{addr:08X}")
 
-        sect_str = typeToSectionLinker(type, name)
+        sect_str = sym[MapFmt.SectionName] or typeToSectionLinker(type, name)
 
         part = []
         if isCreateSection:
@@ -68,7 +68,9 @@ def gen_scatter():
         if "f" in type:
             s_code.extend(part)  # func
         elif "d" in type:
-            if "c" in type:
+            if "b" in type:
+                s_databs.extend(part)   # dat b
+            elif "c" in type:
                 s_dataro.extend(part)  # dat ro
             else:
                 s_datarw.extend(part)  # dat rw
@@ -85,11 +87,12 @@ def gen_scatter():
     s_code_str = endPart(s_code)
     s_dataro_str = endPart(s_dataro) if s_dataro else ''
     s_datarw_str = endPart(s_datarw) if s_datarw else ''
+    s_databs_str = endPart(s_databs) if s_databs else ''
 
     out_line = None
     with open(getDataDir() / "template" / "linker.ld", 'r') as f:
-        out_line = f.read().replace("///", s_code_str).replace("&&&", s_dataro_str).replace("###", s_datarw_str)
-        out_line = out_line.replace("//O", ro_s).replace("//W", rw_s)
+        out_line = f.read().replace("///", s_code_str).replace("&&&", s_dataro_str).replace("###", s_datarw_str).replace("???", s_databs_str)
+        out_line = out_line.replace("//T", tx_s).replace("//O", ro_s).replace("//W", rw_s)
     with open(getOutScatterFile(), 'w') as f:
         f.write(out_line)
 
