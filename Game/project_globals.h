@@ -51,4 +51,5 @@
 #define asm(Name) Name
 
 #define __weak
+#define __clrex()
 #endif
