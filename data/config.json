@@ -63,7 +63,7 @@
     "--no_rtti_data",
     "--forceinline"
   ],
-  "flag_preinclude": "lib/CtrSDK/include/nn/types.h",
+  "flag_preinclude": "Game/project_globals.h",
   "flags_link": [
     "--arm_only",
     "--no_exceptions",

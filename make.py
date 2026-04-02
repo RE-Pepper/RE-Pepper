@@ -65,11 +65,14 @@ def main():
     # split assembly
     pypstem.exec_split(args.clear_split)
 
+    # gen comcom json
+    pypstem.exec_export_comcom()
+
     # build binaries
     pypstem.exec_build()
 
-    # export json files
-    pypstem.exec_export_json()
+    # export objdiff json
+    pypstem.exec_export_objdiff()
 
     # link binary
     pypstem.exec_link()

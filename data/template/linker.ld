@@ -1,4 +1,4 @@
-TEXT_SECTION 0x00100000
+TEXT_SECTION //T
 {
 ///}
 
@@ -25,15 +25,15 @@ RW_SECTION //W
     {
         * (+RW-DATA)
     }
-    ZI +0
+???    ZI +0
     {
         * (+ZI)
     }
 }
 
-MODULE_INFO     (0x00100000 + (0x04000000 - 0x00100000))
+MODULE_INFO     (//T + (0x04000000 - 0x00100000))
 {
-    .module_id  (0x00100000 + (0x04000000 - 0x00100000))
+    .module_id  (//T + (0x04000000 - 0x00100000))
     {
         * (.module_id)
     }

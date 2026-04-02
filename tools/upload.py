@@ -25,10 +25,10 @@ except ImportError:
     is_filter = False
 
 def get_asm (sym_name):
-    lines = []
+    lines = [".syntax unified"]
     sym = get_symbol(sym_name)
     if not sym:
-        fail (f"get_asm cannot find sym for {sym_name}")
+        fail (f"Symbol in elf, but not in map: {sym_name}!")
 
     # read offsets
     base_addr = read_header()[HeadType.Text][HeadVal.Start]

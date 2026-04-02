@@ -6,24 +6,26 @@ from tools.low.utilsPrint import *
 def typeToSection(type, name):
     if "g" in type: # any global def
         return "g."+name
-    elif "ft" in type: # func template
-        return "t."+name
-    elif "f" in type: # fallback default func
-        return "i."+name
+    elif "f" in type:
+        if "t" in type: # func template
+            return "t."+name
+        else: # fallback default func
+            return "i."+name
 
-    elif "dd" in type: #
+    if "dd" in type: # uhh data?
         return ".data_"+name
-    elif "dc" in type: # const data
-        return ".constdata_"+name
-    elif "db" in type: # bss data
-        return ".bss_"+name
-    elif "d" in type: # fallback default data
-        return ".sdata_"+name
+    elif "d" in type: # data.
+        if "c" in type: # const data
+            return ".constdata_"+name
+        elif "b" in type and not "s" in type: # non-static bss data
+            return ".bss_"+name
+        else: # fallback default data
+            return ".sdata_"+name
 
-    elif not type:
-        fail (f"Missing type for {name} at 0x{addr:08X}.")
+    if not type:
+        fail (f"Missing type for {name}")
     else:
-        fail (f"Invalid type for {name} at 0x{addr:08X} : {type}")
+        fail (f"Invalid type for {name}: {type}")
 
 def typeToSectionLinker(type, name):
     if "g" in type: # any global def
