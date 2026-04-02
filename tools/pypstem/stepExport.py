@@ -15,10 +15,13 @@ def exec_export_bin():
     flags = ["--bincombined", getElfFile(), "--output", getExportFile()]
     do_export(flags)
 
-def exec_export_json():
+def exec_export_comcom():
+    echo ("Generating json")
+    gen_comcom()
+
+def exec_export_objdiff():
     if not getBuildPath().is_dir():
         exit(0)
 
-    echo ("Generating json")
-    gen_comcom()
+   # echo ("Generating objdiff")
    # gen_objdiff()

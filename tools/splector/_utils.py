@@ -67,12 +67,22 @@ def str_func(f):
 def str_sym(f):
     return f"0x{f[MapFmt.Start]:08X}-0x{f[MapFmt.End]:08X}: {f[MapFmt.Symbol]} ({str(f[MapFmt.Type])}, {f[MapFmt.Rank]})"
 
+    Start = 0
+    Pool = 1
+    End = 2
+    Section = 3
+    Rank = 4
+    Type = 5
+    Symbol = 6
+    SectionName = 7
 def sym_conv(map_sym):
     sym = [None] * len(MapFmt)
     for col in MapFmt:
         match col:
             case MapFmt.Start as t:
                 sym[t] = map_sym[0]
+            case MapFmt.Section as t:
+                sym[t] = map_sym[8]
             case MapFmt.End as t:
                 sym[t] = map_sym[1] # prefer next
             case MapFmt.Pool as t:
@@ -83,6 +93,8 @@ def sym_conv(map_sym):
                 sym[t] = map_sym[3]
             case MapFmt.Symbol as t:
                 sym[t] = map_sym[2]
+            case MapFmt.SectionName as t:
+                sym[t] = map_sym[9]
 
     return sym
 
@@ -201,6 +213,7 @@ def load_map():
         rank = sym[MapFmt.Rank]
         pool = sym[MapFmt.Pool]
         section = sym[MapFmt.Section]
+        sectname = sym[MapFmt.SectionName]
 
         if "b" in typ:
             continue
@@ -256,6 +269,6 @@ def load_map():
         if start != 0x00100000: # skip __ctr_start
             sym_map[start] = name
 
-        ranges[start] = ((start, end, name, typ, next, is_gen, rank, pool, section))
+        ranges[start] = ((start, end, name, typ, next, is_gen, rank, pool, section, sectname))
 
     return sym_map, ranges

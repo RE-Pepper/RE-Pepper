@@ -43,10 +43,10 @@ def main():
         cfg.keep_objects = True
     if args.debug:
         cfg.flags_compile_cxx.append("--debug")
-        cfg.macros["NN_SWITCH_DISABLE_ASSERT_WARNING_FOR_SDK"]=0
-        cfg.macros["NN_SWITCH_DISABLE_DEBUG_PRINT_FOR_SDK"]=0
     else:
         cfg.flags_compile_cxx.append("--no_debug")
+        cfg.macros["NN_SWITCH_DISABLE_ASSERT_WARNING_FOR_SDK"]=0
+        cfg.macros["NN_SWITCH_DISABLE_DEBUG_PRINT_FOR_SDK"]=0
     if args.vfe:
         cfg.flags_link.append("--vfemode=force")
     if args.warn:
@@ -65,11 +65,14 @@ def main():
     # split assembly
     pypstem.exec_split(args.clear_split)
 
+    # gen comcom json
+    pypstem.exec_export_comcom()
+
     # build binaries
     pypstem.exec_build()
 
-    # export json files
-    pypstem.exec_export_json()
+    # export objdiff json
+    pypstem.exec_export_objdiff()
 
     # link binary
     pypstem.exec_link()
