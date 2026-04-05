@@ -56,7 +56,7 @@ data_symbol_last = 0
 data_prev_tag = ""
 header = None
 
-def data_line_builder_get_sym(addr):
+def dataLineBuildGetSym(addr):
     myname = None
     size = 4
     if addr in ranges_data_dict:
@@ -67,12 +67,12 @@ def data_line_builder_get_sym(addr):
 
     return myname, size
 
-def data_line_build(addr, data, datatype, info, tag, sect, is_first, is_asm, is_ext):
+def dataLineBuild(addr, data, datatype, info, tag, sect, is_first, is_asm, is_ext):
     global label_log
 
     is_data = addr >= data_start
     do_export = is_data or is_asm
-    myname, size = data_line_builder_get_sym(addr)
+    myname, size = dataLineBuildGetSym(addr)
 
     str = ''
     if myname:
@@ -98,7 +98,7 @@ def data_line_build(addr, data, datatype, info, tag, sect, is_first, is_asm, is_
     
     return str
 
-def dump_data_single(addr, size, caller, tag, sect=None):
+def getDataOnce(addr, size, caller, tag, sect=None):
     global data_symbol_last
 
     lines = []
@@ -131,18 +131,18 @@ def dump_data_single(addr, size, caller, tag, sect=None):
         if (not a in noref_list) and remaining >= 4:
             val = struct.unpack_from("<I", data_view, pc + offset)[0]
             if header[HeadType.Text][HeadVal.Start] < val < header[HeadType.Bss][HeadVal.End]:
-                myline = dump_data_ref(a, caller, tag, sect, is_first)
+                myline = getDataRef(a, caller, tag, sect, is_first)
                 if myline:
                     lines.append(myline)
                     offset += 4
                     continue
 
         val = data_view[pc + offset]
-        lines.append(data_line_build(a, f"0x{val:02X}", "DCB", "data", tag, sect, is_first, False, False))
+        lines.append(dataLineBuild(a, f"0x{val:02X}", "DCB", "data", tag, sect, is_first, False, False))
         offset += 1
     return lines
 
-def dump_data_ref(addr, caller, tag, sect, is_first=False): # 
+def getDataRef(addr, caller, tag, sect, is_first=False): # 
     global ext_calls, func_exts
 
     pc = addr - header[HeadType.Text][HeadVal.Start]
@@ -198,18 +198,18 @@ def dump_data_ref(addr, caller, tag, sect, is_first=False): #
     if ref_name and (not caller or is_ext):
         func_exts.add(ref_name)
 
-    return data_line_build(addr, str[1], "DCDU", str[0], tag, sect, is_first, is_asm, is_ext)
+    return dataLineBuild(addr, str[1], "DCDU", str[0], tag, sect, is_first, is_asm, is_ext)
 
-def dump_data(f):
+def getData(f):
     start = f[0]
     size = f[1] - f[0]
     for j in range(size): # avoid writing out again
         if (start+j) in addr_done:
             return []
-    lines = dump_data_single(f[0], f[1]-f[0], f, f[3], f[8])
+    lines = getDataOnce(f[0], f[1]-f[0], f, f[3], f[8])
     return lines
 
-def disassemble_func(f):
+def processFunction(f):
     global md, datablob_refs, ext_calls, func_exts, label_log
 
     pc = f[0] - header[HeadType.Text][HeadVal.Start]
@@ -389,7 +389,7 @@ def disassemble_func(f):
                         mydatasize = sym[1] - sym[0]
                     break
 
-            lines_data = dump_data_single(i.address, mydatasize, f, None, f[8])
+            lines_data = getDataOnce(i.address, mydatasize, f, None, f[8])
             for line in lines_data:
                 lines.append(line) # dump em
 
@@ -491,18 +491,18 @@ def disassemble_func(f):
 
     return lines
 
-def disassemble_symbol(f):
+def processSymbol(f):
     global func_exts,  datablob_refs, datablob_ext, switchcases, switchcases_entry
 
     if f[0] in addr_done:
         return []  # already written
 
     if not "f" in f[3]:
-        return dump_data(f)
+        return getData(f)
 
-    lines = disassemble_func(f)
+    lines = processFunction(f)
     if not lines: # not a valid function after all
-        return dump_data(f)
+        return getData(f)
 
     # valid function
     blob = sorted(datablob_refs)
@@ -516,7 +516,7 @@ def disassemble_symbol(f):
             size = f[4] - d
         else:
             size = blob[idx+1] - d
-        lines_data = dump_data_single(d, size, f, None, None)
+        lines_data = getDataOnce(d, size, f, None, None)
         for line in lines_data:
             lines.append(line)
     datablob_refs.clear()
@@ -526,7 +526,7 @@ def disassemble_symbol(f):
 
     return lines
 
-def assemble_data(addr):
+def processData(addr):
     global label_log
 
     size = 4
@@ -588,34 +588,21 @@ def assemble_data(addr):
     if (addr % 4) != 0:
         sect = 1 # append unaligned ones to prev
 
-    lines_data = dump_data_single(addr, size, None, tag, sect)
+    lines_data = getDataOnce(addr, size, None, tag, sect)
     for line in lines_data:
         lines.append(line)
 
     return lines
 
-def run(do_update=None):
-    global md, data_view, data_start, data_end, sym_map, ranges, noref_list, flag_doUpdate, flag_ffaddr, func_types, header, label_log
-    
-    if not do_update is None:
-        flag_doUpdate = do_update
+def init():
+    global md, data_view, data_start, data_end, sym_map, ranges, noref_list, flag_ffaddr, func_types, header
     if flag_ffaddr is None:
         flag_ffaddr = 0
 
     upd_status ("Loading map")
     sym_map, ranges = load_map()
 
-    count_lines = 0
-    count_syms = 0
-    count_files = 0
-
-    file_name = None
-    file_sym_count = 0
-
-    lines_file = []
-    first_addr_in_file = None
-
-    upd_status("Preparing")
+    upd_status("Reading")
     with open(getBinFile(), 'rb') as f:
         data = f.read()
     data_view = memoryview(data)
@@ -625,13 +612,6 @@ def run(do_update=None):
     md = Cs(CS_ARCH_ARM, CS_MODE_ARM)
     md.detail = True
     md.skipdata = True
-
-    if flag_ffaddr == 0:
-        if os.path.exists(getSplitAsmDir()):
-            echor ("Output exists, deleting....")
-            shutil.rmtree(getSplitAsmDir())
-            echo ("Output exists, deleted.")
-        getSplitAsmDir().mkdir(parents=True, exist_ok=True)
 
     upd_status("Preprocessing")
     for a, f in ranges.items(): # find all data symbols
@@ -649,7 +629,33 @@ def run(do_update=None):
             func_types[f[0]] = f[3]
     data_end = len(data_view) + header[HeadType.Text][HeadVal.Start]
 
+    if flag_ffaddr == 0:
+        getSplitAsmDir().mkdir(parents=True, exist_ok=True)
+
+def main(do_update=None):
+    global sym_map, flag_doUpdate, label_log
     
+    if not do_update is None:
+        flag_doUpdate = do_update
+
+    init()
+
+    count_lines = 0
+    count_syms = 0
+    count_files = 0
+
+    file_name = None
+    file_sym_count = 0
+
+    lines_file = []
+    first_addr_in_file = None
+
+    if flag_ffaddr == 0:
+        if os.path.exists(getSplitAsmDir()):
+            echor ("Output exists, deleting....")
+            shutil.rmtree(getSplitAsmDir())
+            echo ("Output exists, deleted.")
+
     if flag_doUpdate:
         # try find references
         endaddr = header[HeadType.Text][HeadVal.Start] + len(data_view)
@@ -713,7 +719,7 @@ def run(do_update=None):
         set_progress (f"0x{f[0]:08X}")
         print_progress()
 
-        lines = disassemble_symbol(f)
+        lines = processSymbol(f)
 
         if len(lines) <= 0:
             continue
@@ -756,7 +762,7 @@ def run(do_update=None):
         set_progress (f"0x{addr:08X}")
         print_progress()
 
-        lines = assemble_data(addr)
+        lines = processData(addr)
 
         if len(lines) <= 0:
             continue
@@ -822,6 +828,23 @@ def run(do_update=None):
     set_progress("")
     print_progress()
 
+def split_function(sym_name):
+    init()
+
+    ranges_list = list(ranges.values())
+    for i, f in enumerate(ranges_list):
+        if not f[2] == sym_name:
+            continue
+
+        lines = processSymbol(f)
+
+        if len(lines) <= 0:
+            fail ("Could not get assembly. (Its empty)")
+
+        return "".join(lines)
+
+    return None
+
 if "split.py" in sys.argv[0]:
     parser = argparse.ArgumentParser('split.py', description="Splector 5000")
     parser.add_argument('-u', action='store_true', help="Attempt to update map (dangerous!)")
@@ -836,5 +859,5 @@ if "split.py" in sys.argv[0]:
     flag_ffaddr = args.ffaddr
 
     set_silent(args.q)
-    run()
+    main()
 

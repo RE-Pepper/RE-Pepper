@@ -69,10 +69,13 @@ def main():
     pypstem.exec_export_comcom()
 
     # build binaries
-    pypstem.exec_build()
+    is_new = pypstem.exec_build()
 
     # export objdiff json
     pypstem.exec_export_objdiff()
+
+    if not is_new:
+        return
 
     # link binary
     pypstem.exec_link()

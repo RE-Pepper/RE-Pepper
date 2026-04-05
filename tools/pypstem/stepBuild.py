@@ -102,6 +102,7 @@ def exec_build():
         return
 
     data_new_names = set()
+    has_update = False
 
     progress_set("")
     progress_set_type ("Preparing to build ...")
@@ -246,6 +247,8 @@ def exec_build():
                 do_update = True
 
             if do_update: # build it
+                has_update = True
+
                 # set progress
                 progress_set(f"{file.name}")
                 progress_print()
@@ -337,3 +340,5 @@ def exec_build():
 
     with open(getCfgSymsFile(), "w") as f:
         json.dump(json_syms, f)
+
+    return has_update

@@ -11,8 +11,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from tools.low.genContext import gen_ctx
 from tools.low.getSymFile import get_sym_file
-from tools.low.readSymMap import *
-from tools.low.readHeader import *
+from tools.low.getAssembly import get_asm
 from tools.low.glob import *
 from tools.pypstem.manSetup import setup_compiler
 from tools.pypstem._utils import getFileBuildPath
@@ -24,49 +23,11 @@ except ImportError:
     echo ("cxxfilt module not found, not demangling.")
     is_filter = False
 
-def get_asm (sym_name):
-    lines = [".syntax unified"]
-    sym = get_symbol(sym_name)
-    if not sym:
-        fail (f"Symbol in elf, but not in map: {sym_name}!")
-
-    # read offsets
-    base_addr = read_header()[HeadType.Text][HeadVal.Start]
-    addr_start = sym[MapFmt.Start] - base_addr
-    addr_end_code = sym[MapFmt.Pool] - base_addr
-    addr_end_func = sym[MapFmt.End] - base_addr
-
-    # read binary
-    with open(getBinFile(), 'rb') as f:
-        data = f.read()
-    data_view = memoryview(data)
-
-    # init capstone
-    md = Cs(CS_ARCH_ARM, CS_MODE_ARM)
-    md.detail = True
-
-    instrs = list(md.disasm(data_view[addr_start:addr_end_code], 0))
-
-    for i in instrs:
-        mnem = i.mnemonic
-        str = i.op_str
-        if mnem.startswith("b") and str.startswith("#"):
-            str = str.replace("#", "")
-        lines.append(f"    {mnem}\t\t{str}")
-
-    if addr_end_func > addr_end_code:
-        for data in range(addr_end_code, addr_end_func, 4):
-            val = struct.unpack_from("<I", data_view, data)[0]
-            lines.append(f"    .word\t0x{val:08X}")
-
-    return "\n".join(lines)
-
-def upload (sym_name, show_name, ctx, src):
+def upload (sym_name, show_name, ctx, src, asm):
     echo ("Uploading ...")
 
     base_link = "https://decomp.me"
     url = f"{base_link}/api/scratch"
-    asm = get_asm(sym_name)
 
     data = {
         "name": show_name,
@@ -139,11 +100,13 @@ def main():
     else:
         echo ("No file found, source will be empty.")
 
+    asm = get_asm(sym)
+
     echo (f"Symbol chosen: {sym}")
-    if input("Ready to upload? (y/N) ").strip().lower() not in ("y", "yes", "j", "ja"):
+    if input("Ready to upload? (Y/n) ").strip().lower() in ("N", "n", "No", "NO", "nO", "no", "nein", "NEIN", "Nein!"):
         return
 
-    base_url, claim_url = upload(sym, name, data, main)
+    base_url, claim_url = upload(sym, name, data, main, asm)
 
     echo (f"Scratch created. Good luck matching {name}, and may armcc be with you.")
     echo (f" -> Claim: {claim_url}")

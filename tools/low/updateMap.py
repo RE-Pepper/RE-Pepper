@@ -41,14 +41,13 @@ def updateFull(newsyms, csv_path=None):
 def updateSingle(sym, csv_path=None):
     if not csv_path:
         csv_path = getMapFile()
-    # Build line
-    newline = make_line(sym)
 
     # Write changes
     file = open(csv_path, "r").readlines()
     for i, line in enumerate(file):
-        if symbol_name == line.split(',')[MapFmt.Symbol]:
-            file[i] = newline
+        if sym[MapFmt.Symbol] == line.split(',')[MapFmt.Symbol]:
+            # Build line
+            file[i] = make_line(sym)
             break
     with open(csv_path, "w") as f:
         f.writelines(file)

@@ -25,6 +25,8 @@ if getMapFile().exists():
                 continue
             if not (row and row[MapFmt.Start].startswith("0x")):
                 continue
+            if row[MapFmt.SectionName] and not row[MapFmt.Symbol]:
+                fail_ex ("Symbol Map format error: Section Named, but Symbol unnamed!", f"Section Name: {row[MapFmt.SectionName]}, Address: {row[MapFmt.Start]}", False)
 
             #echo (row)
             start = int(row[MapFmt.Start].strip(), 0)
