@@ -2,6 +2,10 @@
 
 def echo(str, end="\n"):
     print (f"\033[38;5;221m{str}\033[0m\033[K", end=end)
+def warn(str, end="\n"):
+    print (f"\033[38;5;160m{str}\033[0m\033[K", end=end)
+def note(str, end="\n"):
+    print (f"\033[38;5;123m{str}\033[0m\033[K", end=end)
 
 def _fail_base(msg, det):
     if det: # backtrace

@@ -199,6 +199,7 @@ def check_sym(symbol_name):
         echo (f"Symbol {symbol_name} not found in build.")
         return
 
+    symbol_name = dec[ElfMapFmt.Symbol]
     sym = get_symbol(symbol_name)
     if sym is None:
         echo (f"Symbol {symbol_name} not found in map.")
@@ -207,13 +208,16 @@ def check_sym(symbol_name):
     prevrank = sym[MapFmt.Rank]
     nowrank = rank_symbol(sym, dec)
 
-    if cfg.only_matching and prevrank != nowrank:
+    if prevrank != nowrank:
+        sym = list(sym)
         sym[MapFmt.Rank] = nowrank
         updateSingle(sym, csv_path)
 
         echo (f"{prevrank} -> {nowrank} ({getRankMsg(prevrank, nowrank)})")
+    elif prevrank == "O":
+        printf ("Still matching")
     else:
-        printf (getRankMsg(prevrank, nowrank))
+        printf (f"Unchanged. ({prevrank})")
 
 def main():
     global csv_path
@@ -245,8 +249,6 @@ def main():
     if cfg.only_matching:
         csv_path = getMapFile().with_stem(f"{getMapFile().stem}_test")
         echo ("Info: TEST MODE. You need to compile without -m (only matching) to rebuild the functions map. This output will be written to data/*_test.csv")
-
-    echo ("The check has begun ...")
 
     if args.sym:
         check_sym(args.sym)
