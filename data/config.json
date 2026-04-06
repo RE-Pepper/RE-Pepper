@@ -18,17 +18,18 @@
     "Game": {
       "name": "Game",
       "disabled": "1",
-      "flags_cxx": ["--sys_include"]
+      "flags": ["--sys_include"]
     },
     "lib/al": {
       "name": "Actor",
       "disabled": "1",
-      "flags_cxx": ["--sys_include"]
+      "flags": ["--sys_include"]
     },
     "lib/sead": {
       "name": "Sead",
       "source_dir": "modules/src",
-      "flags_cxx": ["--no_vla", "--sys_include"]
+      "flags": ["--sys_include"],
+      "flags_cxx": ["--no_vla"]
     },
     "lib/sead/addins/libms": {
       "name": "MS",
@@ -42,7 +43,8 @@
     "lib/CtrSDK": {
       "name": "SDK",
       "source_dir": "sources",
-      "compiler": "4.0/902"
+      "compiler": "4.0/902",
+      "flags": ["--debug_info=line_inlining_extensions", "--no_debug_macros"]
     }
   },
   "compiler": "4.1/791",
