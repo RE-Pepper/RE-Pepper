@@ -9835,10 +9835,10 @@ Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol,SectionName
 0x0029142C,          ,0x00291470,          ,U,f,,
 0x00291470,          ,0x00291490,          ,U,f,,
 0x00291490,0x002914C4,0x002914C8,          ,U,f,,
-0x002914C8,          ,0x00291510,          ,U,f,,
+0x002914C8,          ,0x00291510,          ,O,f,_ZN2nn2os10LightEvent11ClearSignalEv,
 0x00291510,          ,0x00291538,          ,U,f,,
 0x00291538,          ,0x00291540,          ,U,f,,
-0x00291540,0x002915D0,0x002915D4,          ,U,f,,
+0x00291540,0x002915D0,0x002915D4,          ,O,f,_ZN2nn2os10LightEvent6SignalEv,
 0x002915D4,0x002915E0,0x002915E4,          ,U,f,,
 0x002915E4,0x00291964,0x00291970,          ,U,f,,
 0x00291970,          ,0x00291988,          ,O,f,_ZN2nn3svc11CreateEventEPNS_6HandleENS_2os9ResetTypeE,.nn.svc.CreateEvent
