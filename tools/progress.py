@@ -106,7 +106,7 @@ def main():
             f.write(json.dumps(out))
 
     match_per = (matching / size_total * 100)
-    matching_str = f"{match_per:.2f}% ({matching}b/{size_total}b)"
+    matching_str = f"{match_per:.3f}% ({matching}b/{size_total}b)"
 
     print_type("Total Functions", str(syms_total), Fore.LIGHTBLUE_EX);
     print_type("Matching", str(syms_ok), Fore.LIGHTGREEN_EX);
