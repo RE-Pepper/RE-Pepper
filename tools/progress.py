@@ -17,9 +17,22 @@ from colorama import Fore
 
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
+from tools.low.readElfMap import *
 from tools.low.readSymMap import *
+from tools.low.readHeader import *
 
-def write_release_txt(ver: str, u: str, o: str, m: str, mm: str, total: str, bytes: str):
+addr_base = read_header()[HeadType.Text][HeadVal.Start]
+
+target_data = None
+decomp_data = None
+with open(getBinFile(), "rb") as f:
+    data = f.read()
+    target_data = memoryview(data)
+with open(getExportFile(), "rb") as f:
+    data = f.read()
+    decomp_data = memoryview(data)
+
+def writeHeader(ver: str, u: str, o: str, m: str, mm: str, total: str, bytes: str):
     textt = f"""## {ver.upper()} Matched: *{bytes}*
 
 ### Functions
@@ -33,13 +46,14 @@ def write_release_txt(ver: str, u: str, o: str, m: str, mm: str, total: str, byt
     with open(getStatsDir() / "release.txt", 'w') as f:
         f.write(textt)
 
-def get_matching_bytes(orig: str, other: str):
+def getMatching(tg, tgs, dc, tcs):
     matching = 0
-    with open(orig, 'rb') as orig_file:
-        with open(other, 'rb') as other_file:
-            while (b := orig_file.read(4)):
-                if other_file.read(4) == b:
-                    matching += 4
+    size = min(tgs, tcs)
+
+    for i in range(0, size, 4):
+        if target_data[tg + i : tg + i + 4] == decomp_data[dc + i : dc + i + 4]:
+            matching += 4
+
     return matching
 
 def main():
@@ -47,17 +61,29 @@ def main():
     syms_major = 0
     syms_minor = 0
     syms_ok = 0
-    syms_total = 0
-    bytes_ok = get_matching_bytes(getBinFile(), getExportFile())
-    code_bin_size = os.path.getsize(getBinFile())
+
     ver = getVersion()
     os.makedirs(str(Path('data') / 'stats' / ver), exist_ok=True)
-    
+
+    size_total = 0
+    syms_total = 0
+    matching = 0
     syms = read_sym_file()
     for sym in syms:
-        syms_total += 1
+        rank = sym[MapFmt.Rank]
+        size = sym[MapFmt.End] - sym[MapFmt.Start]
+        name = sym[MapFmt.Symbol]
 
-        match sym[MapFmt.Rank]:
+        if name:
+            sym_dec = get_elf_symbol(name)
+            if sym_dec:
+                dec_size = sym_dec[ElfMapFmt.Size]
+                matching += getMatching(sym[MapFmt.Start] - addr_base, size, sym_dec[ElfMapFmt.Address] - addr_base, dec_size)
+
+        syms_total += 1
+        size_total += size
+
+        match rank:
             case 'U':
                 syms_undefined += 1
             case 'M':
@@ -79,20 +105,21 @@ def main():
         with open(getStatsDir() / f"{rank}.json", 'w') as f:
             f.write(json.dumps(out))
 
-    bytes_ok_str = "{:.4f}% ({:,} bytes/{:,} bytes)".format((bytes_ok / code_bin_size) * 100, int(bytes_ok), int(code_bin_size))
+    match_per = (matching / size_total * 100)
+    matching_str = f"{match_per:.2f}% ({matching}b/{size_total}b)"
 
     print_type("Total Functions", str(syms_total), Fore.LIGHTBLUE_EX);
     print_type("Matching", str(syms_ok), Fore.LIGHTGREEN_EX);
     print_type("Non-matching", str(syms_major + syms_minor), Fore.LIGHTYELLOW_EX);
-    print_type("code.bin", bytes_ok_str, Fore.LIGHTCYAN_EX);
+    print_type("Functions match", matching_str, Fore.LIGHTCYAN_EX);
 
     write_type('Total', "Total Functions", str(syms_total), 'inactive');
     write_type('OK', "Matching", str(syms_ok), "success");
     write_type('NonMatching', "Non-matching", str(syms_major + syms_minor), "yellow");
-    write_type('Code', "code.bin", bytes_ok_str, "informational");
+    write_type('Code', "Functions match", matching_str, "informational");
 
     x_values = [datetime.datetime.now()]
-    y_values = [(bytes_ok / code_bin_size) * 100]
+    y_values = [(matching / size_total) * 100]
 
     numpy.seterr(all="ignore")
     repo = Repo(".")
@@ -134,7 +161,7 @@ def main():
         mplcursors.cursor(ax, hover=True)
         plt.show()
 
-    write_release_txt(ver, syms_undefined, syms_ok, syms_major, syms_minor, syms_total, bytes_ok_str)
+    writeHeader(ver, syms_undefined, syms_ok, syms_major, syms_minor, syms_total, matching_str)
 
 if __name__ == "__main__":
     main()
