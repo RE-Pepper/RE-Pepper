@@ -23,10 +23,11 @@ Ask in the [3DL Discord](https://discord.gg/wK4ZKa9QXq)!
 
 ## Progress (EU)
 
-<img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/RE-Pepper/RE-Pepper/releases/download/stats-eu/Code.json&style=flat-square"/> <img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/RedPepperDec/RedPepper/releases/download/stats-eu/Total.json&style=flat-square"/>
+![Code](https://img.shields.io/endpoint?url=https://_github.moddi.dev/RE-Pepper/RE-Pepper/releases/download/stats-eu/Code.json&style=flat-square)  
 
-<img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/RE-Pepper/RE-Pepper/releases/download/stats-eu/OK.json&style=flat-square"/> <img src ="https://img.shields.io/endpoint?url=https://_github.moddi.dev/RedPepperDec/RedPepper/releases/download/stats-eu/NonMatching.json&style=flat-square"/>
-
+![OK](https://img.shields.io/endpoint?url=https://_github.moddi.dev/RE-Pepper/RE-Pepper/releases/download/stats-eu/OK.json&style=flat-square)
+![NonMatching](https://img.shields.io/endpoint?url=https://_github.moddi.dev/RedPepperDec/RedPepper/releases/download/stats-eu/NonMatching.json&style=flat-square)
+![Total](https://img.shields.io/endpoint?url=https://_github.moddi.dev/RedPepperDec/RedPepper/releases/download/stats-eu/Total.json&style=flat-square)
 ![Progress](https://github.com/RE-Pepper/RE-Pepper/releases/download/stats-eu/Progress.png)
 
 ## How To
@@ -98,8 +99,8 @@ note: retail JP, KO, TW, and US versions are nearly identical
 (eu_d) ```code.bin: 184b8804ccf4aea9f447b2278dfc3171d4f8c4e6abf890d7b24680d649e034c6```  
 (jp_d) ```code.bin: b1987a589ddb9d4caf723e0dfb470131d2aee52023b8b9a90455f6c9f694fefc```  
 (us_d) ```code.bin: 6016cbdada120b2476e512e8c87c5d525f62ee8daa9f81e00c8caa1237477344```  
-(cn) ```code.bin: 11ca2f6fa7e8b9553737830899787e7236f4fdbf8b96ed03c99fbe6a8939b37d```  
 (tw) ```code.bin: 6207415ee0c6d2dff53d65b39cc2b05318a3b25e62e39639ab2a7243d96357f0```  
+(cn) ```code.bin: 11ca2f6fa7e8b9553737830899787e7236f4fdbf8b96ed03c99fbe6a8939b37d```  
 (kr) ```code.bin: 820940dc19b86f8d47515973d9f1484c4efc0571a729c294e85b53e5097fda56``` 
 
 ## Links

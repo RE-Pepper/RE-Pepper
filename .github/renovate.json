@@ -9,6 +9,7 @@
   },
   "automerge": true,
   "automergeType": "branch",
+  "platformAutomerge": true,
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0
 }
