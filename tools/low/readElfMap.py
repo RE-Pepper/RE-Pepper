@@ -80,10 +80,12 @@ for sym in _read_elf_symbols():
 def get_elf_symbol_list():
     return _elf_map_data.values()
 
-def get_elf_symbol(target_name):
+def get_elf_symbol(target_name, interactive=True):
     retval = _elf_map_data.get(target_name)
     if retval:
         return retval
+    elif not interactive:
+        return None
 
     from tools.low.chooser import choose
 

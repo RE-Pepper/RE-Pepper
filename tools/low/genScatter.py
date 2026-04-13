@@ -33,12 +33,12 @@ def gen_scatter():
         rank = sym[MapFmt.Rank]
         if cfg.only_matching and rank != 'O':
             continue
-        #elif rank == "U":
-        #    continue
+        type = sym[MapFmt.Type]
+        if not "f" in type and rank == "U":
+            continue
         isCreateSection = True
         addr = sym[MapFmt.Start]
         sect = sym[MapFmt.Section]
-        type = sym[MapFmt.Type]
 
         if (addr % 4) != 0:
             isCreateSection = False

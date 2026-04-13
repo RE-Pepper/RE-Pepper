@@ -9,6 +9,7 @@ from capstone.arm import *
 
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
+from tools.low.readSymMap import get_symbol, MapFmt
 from tools.low.genContext import gen_ctx
 from tools.low.getSymFile import get_sym_file
 from tools.low.getAssembly import get_asm
@@ -63,18 +64,25 @@ def main():
     if len(sys.argv) <= 1:
         fail ("Missing argument: Symbol", False)
 
-    sym_in = sys.argv[1]
-    path, sym = get_sym_file(sym_in)
+    sym = sys.argv[1]
+    sym_full = get_symbol(sym)
+    if not sym_full:
+        fail ("Symbol not found in Symbolmap!", False)
+
+    sym = sym_full[MapFmt.Symbol]
+
+    path, _ = get_sym_file(sym)
 
     if path:
         echo ("Collecting code ...")
         data, main = gen_ctx(path, sym)
-    elif cfg.flag_preinclude:
-        main, data = gen_ctx(getProjDir() / cfg.flag_preinclude)
-        main = None
     else:
-        main = None
-        data = None
+        if cfg.flag_preinclude:
+            main, data = gen_ctx(getProjDir() / cfg.flag_preinclude)
+            main = None
+        else:
+            main = None
+            data = None
 
     if is_filter:
         try:

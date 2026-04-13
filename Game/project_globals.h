@@ -2,26 +2,35 @@
 
 #ifndef RP_SHUTUP
 #define RP_SHUTUP \
-        _Pragma ("diag_suppress 177,550,940")
+        _Pragma("diag_suppress 177,550,940")
 #endif
 
 // Assertion
 #ifndef static_assert
 #define static_assert(COND, MSG) typedef int __static_assert_failed[(COND) ? 1 : -1]
 #endif
-#define static_assert_(COND) static_assert (COND, #COND)
+#define static_assert_(COND) static_assert(COND, #COND)
 
 #ifdef __arm__ // Used by compiler
 
-#define var(Namespace, Name, Type) static Type __attribute__ ((section (".sdata_" #Namespace "::" #Name))) Name
-#define varc(Namespace, Class, Name, Type) static Type __attribute__ ((section (".sdata_" #Namespace "::" #Name))) Class::Name
-#define varg(Name, Type) static Type __attribute__ ((section (".sdata_" #Name))) Name
-#define varcg(Class, Name, Type) static Type __attribute__ ((section (".sdata_" #Name))) Class::Name
+#define force_section(Section) __attribute__((section(Section)))
 
-#define asm_ext(Name, Sect) __asm __attribute__ ((section (Sect))) Name
-#define asm(Name) asm_ext (Name, "i." #Name)
+#define force_func_section(Symbol) force_section("i." #Symbol)
+
+#define var(Namespace, Name, Type) static Type force_section(".sdata_" #Namespace "::" #Name) Name
+#define varc(Namespace, Class, Name, Type) static Type force_section(".sdata_" #Namespace "::" #Name) Class::Name
+#define varg(Name, Type) static Type force_section(".sdata_" #Name) Name
+#define varcg(Class, Name, Type) static Type force_section(".sdata_" #Name) Class::Name
+
+#define asm_ext(Name, Sect) __asm force_section(Sect) Name
+#define asm(Name) asm_ext(Name, "i." #Name)
 
 #else // Used by editor
+
+// Force a section name
+#define force_section(Section)
+
+#define force_func_section(Symbol)
 
 // Force a section for static namespaced variables
 // Example: var(nn::fs, s_Initialized, bool) = False // == bool s_Initialized;

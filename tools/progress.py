@@ -75,7 +75,7 @@ def main():
         name = sym[MapFmt.Symbol]
 
         if name:
-            sym_dec = get_elf_symbol(name)
+            sym_dec = get_elf_symbol(name, False)
             if sym_dec:
                 dec_size = sym_dec[ElfMapFmt.Size]
                 matching += getMatching(sym[MapFmt.Start] - addr_base, size, sym_dec[ElfMapFmt.Address] - addr_base, dec_size)
