@@ -85,6 +85,12 @@ def write_stubs():
         for sym in read_sym_file():
             if not "f" in sym[MapFmt.Type]:
                 continue
+            if "s" in sym[MapFmt.Type]:
+                continue
+            if "g" in sym[MapFmt.Type]:
+                continue
+            #if  "U" in sym[MapFmt.Rank]:
+            #    continue
 
             func = sym[MapFmt.Symbol]
             size = sym[MapFmt.End] - sym[MapFmt.Start]

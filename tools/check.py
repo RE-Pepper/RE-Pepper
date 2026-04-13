@@ -125,7 +125,7 @@ def check_syms():
             continue
         #continue
         # try get symbol from elf
-        decomp_symbol = get_elf_symbol(name)
+        decomp_symbol = get_elf_symbol(name, False)
         if not decomp_symbol is None:
             rank = rank_symbol(sym, decomp_symbol)
 
