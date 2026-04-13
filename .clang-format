@@ -53,7 +53,7 @@ IncludeCategories:
     CaseSensitive: false
 IndentWidth: 8
 InsertBraces: true
-SpaceBeforeParens: Always
+SpaceBeforeParens: ControlStatementsExceptControlMacros
 PenaltyBreakBeforeFirstCallParameter: 0
 PointerAlignment: Left
 ReferenceAlignment: Left

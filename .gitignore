@@ -20,6 +20,7 @@ compile_commands.json
 *.bin
 *.elf
 
+tools/user/*
 tools/asm-differ/*
 lib/CtrSDK/*
 lib/NintendoWare/*
