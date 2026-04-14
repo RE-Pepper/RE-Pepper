@@ -16,7 +16,7 @@ def exec_export_bin():
 def exec_export_elf():
     if not getBinCodeFile().exists():
         return
-    if not is_sym_map_diff():
+    if not is_sym_map_diff() and getBinCodeFile().with_suffix(".elf").exists():
         return
 
     echo ("Converting bin to elf")
@@ -25,7 +25,6 @@ def exec_export_elf():
     conv_bin_to_elf()
 
 def exec_export_comcom():
-    echo ("Generating json")
     gen_comcom()
 
 def exec_export_objdiff(do_full_file=False):

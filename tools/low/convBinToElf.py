@@ -40,6 +40,8 @@ def conv_bin_to_elf():
     for sym in raw_syms:
         if not sym[MapFmt.Symbol]:
             continue
+        if "d" in sym[MapFmt.Type]:
+            continue
 
         addr = sym[MapFmt.Start]
         name = sym[MapFmt.Symbol]

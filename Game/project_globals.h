@@ -2,7 +2,7 @@
 
 #ifndef RP_SHUTUP
 #define RP_SHUTUP \
-        _Pragma("diag_suppress 177,550,940") S
+        _Pragma("diag_suppress 177,550,940")
 #endif
 
 // Assertion

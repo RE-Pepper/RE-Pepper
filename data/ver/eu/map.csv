@@ -25213,7 +25213,7 @@ Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol,SectionName
 0x003E23A8,          ,0x003E23B4,          ,U,d,,
 0x003E23B4,          ,0x003E23B8,          ,U,d,,
 0x003E23B8,          ,0x003E23C4,          ,U,d,,
-0x003E23C4,          ,0x003E23E8,          ,U,d,Application::sInstance,
+0x003E23C4,          ,0x003E23E8,          ,U,d,Application_MAKEITDOUBLECOLONS_sInstance,
 0x003E23E8,          ,0x003E23F0,          ,U,d,,
 0x003E23F0,          ,0x003E23F8,          ,U,d,,
 0x003E23F8,          ,0x003E242C,          ,U,d,,
