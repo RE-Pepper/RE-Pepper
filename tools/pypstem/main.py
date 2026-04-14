@@ -6,4 +6,5 @@ from tools.pypstem.stepLink import exec_link
 from tools.pypstem.stepExport import exec_export_comcom
 from tools.pypstem.stepExport import exec_export_objdiff
 from tools.pypstem.stepExport import exec_export_bin
-
+from tools.pypstem.stepExport import exec_export_elf
+from tools.pypstem.stepObjdiff import exec_objdiff

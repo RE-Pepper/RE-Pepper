@@ -7,7 +7,7 @@ from capstone import *
 from enum import IntEnum
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).resolve().parent.parent))
+sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
 from tools.low.readSymMap import *
 from tools.low.getSection import typeToSection
 

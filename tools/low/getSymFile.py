@@ -15,14 +15,21 @@ except ImportError:
     echo ("cxxfilt module not found, not demangling.")
     is_filter = False
 
-def get_sym_file(target_sym):
-    with open(getCfgSymsFile(), "r") as f:
-        data = json.load(f)
+_sym_file_data = None
+with open(getCfgSymsFile(), "r") as f:
+    _sym_file_data = json.load(f)
 
+def read_sym_file():
+    return _sym_file_data
+
+def get_sym_file(target_sym):
     matches = defaultdict(set)
 
-    for file, syms in data.items():
-        for sym in syms:
+    for file, syms in _sym_file_data.items():
+        if len(syms) < 3:
+            echo (f"Skipping symbols entry: {file}")
+            continue
+        for sym in syms[2:]:
             if target_sym in sym:
                 matches[sym].add(file)
             elif is_filter:

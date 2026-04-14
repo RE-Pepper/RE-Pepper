@@ -104,6 +104,8 @@ def exec_build():
     data_new_names = set()
     has_update = False
 
+    cache_flags = []
+
     progress_set("")
     progress_set_type ("Preparing to build ...")
 
@@ -127,9 +129,6 @@ def exec_build():
     if getCfgSymsFile().exists():
         with open(getCfgSymsFile(), "r") as f:
             json_syms = json.load(f)
-
-    if getCfgFlagsTFile().exists():
-        getCfgFlagsTFile().unlink()
 
     # precreate flags
     base_flags = []
@@ -190,8 +189,9 @@ def exec_build():
         progress_set_type(f"{mod_path_name}/")
 
         obj_new_list = set()
-    
-        mod_ar_name = f"lib{mod_data.get("name")}.a"
+
+        mod_name = mod_data.get("name")
+        mod_ar_name = f"lib{mod_name}.a"
         mod_ar_file = getBuildLibPath() / mod_ar_name
 
         flags_cxx = base_flags_cxx[:]
@@ -221,6 +221,10 @@ def exec_build():
 
         new_flags_cxx_hash = getArrayHash(flags_cxx)
         new_flags_asm_hash = getArrayHash(flags_asm)
+
+        # write flags down
+        cache_flags.append(f"{mod_path_name} {new_flags_cxx_hash}\n")
+        cache_flags.append(f"{mod_path_name} {new_flags_asm_hash}\n")
 
         force_update = False
         if (new_flags_cxx_hash != old_flags_cxx) or (new_flags_asm_hash != old_flags_asm):
@@ -270,7 +274,7 @@ def exec_build():
             if not str(getBuildPath()) in str(file):
                 if file_str in json_syms:
                     del json_syms[file_str]
-                json_syms[file_str] = []
+                json_syms[file_str] = [mod_name, str(mod_data.get("decompme_id") or cfg.decompme_id or "-1")]
                 for sym in read_elfsym(out_path):
                     if sym[ElfSymFmt.Symbol] in json_syms[file_str]:
                         continue
@@ -314,12 +318,6 @@ def exec_build():
             ar_arg = ["-rsc", str(mod_ar_file), f"--via={str(getBuildViaFile())}"]
             do_archive(ar_arg)
 
-
-        # write flags down
-        with open(getCfgFlagsTFile(), "a") as f:
-            f.write(f"{mod_path_name} {new_flags_cxx_hash}\n")
-            f.write(f"{mod_path_name} {new_flags_asm_hash}\n")
-
         # clean / report
         if len(obj_new_list) <= 0 and not did_delete:
             echo (f"{line_category}: Unchanged")
@@ -333,11 +331,12 @@ def exec_build():
 
         echo (f"{line_category}: Done")
 
-    getCfgFlagsTFile().replace(getCfgFlagsFile())
-
     if getBuildViaFile().exists():
         getBuildViaFile().unlink()
 
+    with open(getCfgFlagsFile(), "w") as f:
+        for line in cache_flags:
+            f.write(line)
     with open(getCfgSymsFile(), "w") as f:
         json.dump(json_syms, f)
 

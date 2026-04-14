@@ -65,6 +65,7 @@ def main():
     ver = getVersion()
     os.makedirs(str(Path('data') / 'stats' / ver), exist_ok=True)
 
+<<<<<<< HEAD
     size_total = 0
     syms_total = 0
     matching = 0
@@ -73,6 +74,13 @@ def main():
         rank = sym[MapFmt.Rank]
         size = sym[MapFmt.End] - sym[MapFmt.Start]
         name = sym[MapFmt.Symbol]
+=======
+    syms = read_sym_file()
+    for sym in syms:
+        if "b" in sym[MapFmt.Type] and "d" in sym[MapFmt.Type]:
+            continue # skip bss
+        syms_total += 1
+>>>>>>> objdiff
 
         if name:
             sym_dec = get_elf_symbol(name, False)
@@ -105,8 +113,12 @@ def main():
         with open(getStatsDir() / f"{rank}.json", 'w') as f:
             f.write(json.dumps(out))
 
+<<<<<<< HEAD
     match_per = (matching / size_total * 100)
     matching_str = f"{match_per:.3f}% ({matching}b/{size_total}b)"
+=======
+    bytes_ok_str = f"{(bytes_ok / code_bin_size) * 100:.4f}% ({int(bytes_ok):,} bytes/{int(code_bin_size):,} bytes)"
+>>>>>>> objdiff
 
     print_type("Total Functions", str(syms_total), Fore.LIGHTBLUE_EX);
     print_type("Matching", str(syms_ok), Fore.LIGHTGREEN_EX);

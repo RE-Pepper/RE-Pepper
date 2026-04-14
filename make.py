@@ -22,8 +22,15 @@ def main():
     parser.add_argument("--clear_build", '-cr', action='store_true', help="Clean build (and continue)")
     parser.add_argument("--clear_split", '-cs', action='store_true', help="Clean split (and continue)")
     parser.add_argument("--silent", '-q', action='store_true', help="Silent mode (not added yet)")
+    parser.add_argument("--objdiff_donotuse", action='store_true', help="Ignore version parameter (for objdiff)")
+    parser.add_argument("--objdiff_full", action='store_true', help="Make objdiff include ALL symbols, even unnamed ones (named)")
     args = parser.parse_args()
     sys.argv = [sys.argv[0]] # clear args
+
+    # first check if objdiff mode is used
+    if args.objdiff_donotuse:
+        pypstem.exec_objdiff(args.version)
+        args.version = None
 
     # TODO: remove this hack, upstrem should contain matches.
     cfg.macros["NON_MATCHING"] = 1
@@ -62,6 +69,9 @@ def main():
     # version and clear checks
     pypstem.exec_check(args.version, args.clean or args.clear_build, args.clean and not args.clear_build)
 
+    # convert bin to elf
+    pypstem.exec_export_elf()
+
     # split assembly
     pypstem.exec_split(args.clear_split)
 
@@ -72,7 +82,7 @@ def main():
     is_new = pypstem.exec_build()
 
     # export objdiff json
-    pypstem.exec_export_objdiff()
+    pypstem.exec_export_objdiff(args.objdiff_full)
 
     if not is_new:
         return

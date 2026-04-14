@@ -5,6 +5,7 @@ import sys
 import bisect
 import struct
 import argparse
+import shutil
 from pathlib import Path
 from capstone import *
 from capstone.arm import *
@@ -33,7 +34,6 @@ data_addrs = set() # defined data
 data_refs_in_func = set()
 addr_done = set() # defined data in functions
 datablob_refs = set() # references inside current function
-datablob_ext = set() # part of referenced data inside current function
 data_instr_adr = set() # saves all future adr mnemonic instructions
 func_refs = set() # all referenced func
 func_exts = set() # externals
@@ -109,6 +109,15 @@ def getDataOnce(addr, size, caller, tag, sect=None):
     size = min(size, len(data_view) - pc)
     offset = 0
 
+    if flag_doUpdate:
+        if addr > data_start:
+            if addr in sym_map or addr in data_addrs or addr in data_refs_in_func:
+                data_symbol_last = addr
+                if data_symbol_last not in symbols_map:
+                    symbols_map[data_symbol_last] = [0, tag]
+            if data_symbol_last:
+                symbols_map[data_symbol_last][0] += size
+
     if addr in addr_done:
         return lines
 
@@ -116,13 +125,6 @@ def getDataOnce(addr, size, caller, tag, sect=None):
         a = addr + ai
         addr_done.add(a)
 
-    if addr > data_start:
-        if addr in sym_map:
-            data_symbol_last = addr
-            symbols_map[data_symbol_last] = [0,tag]
-        if data_symbol_last:
-            symbols_map[data_symbol_last][0] += size
-    
     while offset < size:
         a = addr + offset
         is_first = offset == 0
@@ -197,6 +199,11 @@ def getDataRef(addr, caller, tag, sect, is_first=False): #
 
     if ref_name and (not caller or is_ext):
         func_exts.add(ref_name)
+    
+    if flag_doUpdate:
+        if val > data_start:
+            if (val in sym_map or val in data_addrs or val in data_refs_in_func) and not val in symbols_map:
+                symbols_map[val] = [0, tag]
 
     return dataLineBuild(addr, str[1], "DCDU", str[0], tag, sect, is_first, is_asm, is_ext)
 
@@ -321,13 +328,13 @@ def processFunction(f):
                 switchtables.add(i.address)
             continue
 
+    datablob_ext = set()
     datablob_set = set(v for v in datablob_list.values() if v is not None)
     # Pass 3: Bigger Data scan
     for i_idx, i in enumerate(instrs):
         not_pool = not fpool or (i.address < fpool)
-        if not_pool:
-            if i_idx == 0 or not (i.address in data_addrs or i.address in datablob_set):
-                continue
+        if i_idx == 0 or not (i.address in data_addrs or i.address in datablob_set):
+            continue
             # this is ref. data
         if i.address in switchtable_entry: # skip jtables
             continue
@@ -343,8 +350,10 @@ def processFunction(f):
             if not mnem in ("b", "bx", "pop", "bl") and (i.bytes != b'\x0e\xf0\xa0\xe1'):
                 continue
 
+        
+
         for try_addr in range(i.address, fend, 4): # from now to function end
-            if try_addr in locals: # detected branch, was blob inside function
+            if (try_addr in locals) or (try_addr in ext_calls): # detected branch, was blob inside function
                 break
             if try_addr >= fend: # function end, was blob after function
                 break
@@ -397,7 +406,7 @@ def processFunction(f):
                 addr_done.add(i.address + x)
             if ".word" in i.mnemonic.lower() and (i.address not in data_addrs) and (i.address not in datablob_refs) and (i.address <= fend):
                 echo (f"Info: resolved leftover .word at 0x{i.address:08X}")
-            if flag_doUpdate and lp_start == 0:
+            if flag_doUpdate and not flag_doUpdateNoPool and lp_start == 0:
                 lp_start = i.address
             continue
 
@@ -485,14 +494,14 @@ def processFunction(f):
 
     lines.append("    ENDFUNC\n\n")
 
-    if flag_doUpdate and lp_start:
+    if flag_doUpdate and not flag_doUpdateNoPool and lp_start:
         # overwrite function end
         func_ends[fstart] = lp_start
 
     return lines
 
-def processSymbol(f):
-    global func_exts,  datablob_refs, datablob_ext, switchcases, switchcases_entry
+def disassemble_symbol(f):
+    global func_exts,  datablob_refs, switchcases, switchcases_entry
 
     if f[0] in addr_done:
         return []  # already written
@@ -510,7 +519,7 @@ def processSymbol(f):
         if d in addr_done:
             continue  # already written
         if (d >= f[4] or d < f[0]) and not ("a" in f[3] and d in func_asm_list):
-            echo (f"Warn: Attempted to add data addr {str_ddr(d)} to {f[2]} ({str_addr(f[0])}), which is out of its bounds.")
+            echo (f"Warn: Attempted to add data addr {str_addr(d)} to {f[2]} ({str_addr(f[0])}), which is out of its bounds.")
             continue
         if idx == len(blob) - 1:
             size = f[4] - d
@@ -520,7 +529,6 @@ def processSymbol(f):
         for line in lines_data:
             lines.append(line)
     datablob_refs.clear()
-    datablob_ext.clear()
     switchcases.clear()
     switchtable_entry.clear()
 
@@ -528,71 +536,28 @@ def processSymbol(f):
 
 def processData(addr):
     global label_log
-
+    
     size = 4
-    do_refs = True
     tag = None
     sect = None
-    lines = []
+    
+    idx = bisect.bisect_right(ranges_data, addr, key=lambda x: x[0])
 
-    # get size
-    sym_found = False
     if addr in sym_map:
-        size = 0
-        for sym in ranges_data:
-            if addr == sym[0]:
-                sym_found = True
-                label_log.add(sym[2])
-                if sym[3] == "db": # skip bss
-                    return []
-                tag = sym[3]
-                if sym[1] and sym[1] > addr:
-                    size = sym[1] - addr # if end addr, get correct size
-                break
-
-        if size == 0:
-            nextadr = min((a for a in sym_map if a > addr), default=data_end)
-            size = nextadr - addr # get next start address in map
-
-    if not (flag_doUpdate or sym_found):
-        return [] # avoid writing unknown bytes if not updating map
-
-    if sym_found and not tag:
-        sym_idx = bisect.bisect_left(ranges_data, addr, key=lambda x: x[0])
-        if sym_idx > 0:
-            up = ranges_data[sym_idx - 1]
-        if sym_idx < len(ranges_data):
-            down = ranges_data[sym_idx + 1]
-
-        # decide which to use
-        if up and down: # get closest
-            ddown = addr - down[0]
-            dup = up[1] - addr
-
-            if dup == ddown:
-                tag = down[3]
-            elif ddown > dup:
-                tag = up[3]
-            else:
-                tag = down[3]
-        elif up:
-            tag = up[3]
-        elif down:
-            tag = down[3]
+        if idx < len(ranges_data):
+            size = ranges_data[idx][0] - addr
         else:
-            tag = "d" # fallback
-
-        # strip per-symbol properties
-        tag = tag.replace("r", "").replace("g", "")
+            size = data_end - addr
+            
+        if addr in ranges_data_dict:
+            sym = ranges_data_dict[addr]
+            if sym[3] == "db": return []
+            tag = sym[3]
 
     if (addr % 4) != 0:
-        sect = 1 # append unaligned ones to prev
+        sect = 1  
 
-    lines_data = getDataOnce(addr, size, None, tag, sect)
-    for line in lines_data:
-        lines.append(line)
-
-    return lines
+    return dump_data_single(addr, size, None, tag, sect)
 
 def init():
     global md, data_view, data_start, data_end, sym_map, ranges, noref_list, flag_ffaddr, func_types, header
@@ -663,9 +628,8 @@ def main(do_update=None):
             if (off + header[HeadType.Text][HeadVal.Start]) in noref_list:
                 continue
             val = struct.unpack_from("<I", data_view, off)[0]
-            if (header[HeadType.Text][HeadVal.Start] < val < endaddr) and (val not in sym_map):
-                if val > data_start:
-                    sym_map[val] = f"dat_{val:08X}"
+            if (header[HeadType.Text][HeadVal.Start] < val < endaddr) and (val not in sym_map) and (val > data_start):
+                sym_map[val] = f"dat_{val:08X}"
 
     upd_status("Splecting and writing assembly")
 
@@ -699,6 +663,7 @@ def main(do_update=None):
                         my_e = f"|{e}|" if RE_SPECIAL.search(e) else e
                         out.write(f"    IMPORT {my_e}\n")
                         label_log.add(e)
+                func_exts.clear()
             out.write("\n    PRESERVE8\n")
             
             # write data
@@ -706,7 +671,6 @@ def main(do_update=None):
             out.write("\n    END\n")
         lines_file.clear()
         label_log.clear()
-        func_exts.clear()
 
     # Write out functions
     ranges_list = list(ranges.values())
@@ -753,6 +717,7 @@ def main(do_update=None):
         my_datalist = range(data_start, data_end, 1)
     else:
         my_datalist = [r[0] for r in ranges_data]
+
     for addr in my_datalist:
         if addr in addr_done:
             continue
@@ -788,33 +753,61 @@ def main(do_update=None):
     echo (f"Wrote {count_syms} symbols among {count_lines} lines in {count_files} files")
 
 
+    if flag_doUpdate and flag_ffaddr != 0:
+        echo ("Wanted to update map, but didnt start from 0. refusing.")
     if flag_doUpdate:
         set_status("Updating map")
         set_progress("")
         print_progress()
 
-        # start, end, name, typ, next, is_gen, rank
-        # go through every known data
+        dbg_new_syms = 0
+        dbg_upd_syms = 0
+        new_ranges = {addr: list(sym) for addr, sym in ranges.items()}
+
         for addr, data in symbols_map.items():
             start = addr
-            end = addr + data[0]
+            size = data[0]
+
+            # if not size = next - this
+            if size == 0:
+                next_start = min((a for a in symbols_map if a > start), default=data_end)
+                size = next_start - start
+            end = addr + size
+
+            tag = data[1]
+            if not tag:
+                idx = bisect.bisect_left(ranges_data, addr, key=lambda x: x[0])
+                actual_idx = max(0, idx - 1)
+                
+                if actual_idx < len(ranges_data):
+                    neighbor_sym = ranges_data[actual_idx]
+                    tag = neighbor_sym[3].replace("r", "").replace("g", "")
+                else:
+                    fail (str_addr(addr))
+
             if addr in ranges:  # symbol exists, but update
-                sym = ranges[addr]
+                dbg_upd_syms += 1
+                sym = list(ranges[addr]) 
                 sym[1] = end # set end to new end
                 sym[4] = end # set next to new end
-                ranges[addr] = sym
-            else:  # new, add
-                ranges[start] = [start, end, "", data[1], end, True, "U", end]
+                sym[7] = end # set pool to new end
+                new_ranges[addr] = sym
+            else:
+                dbg_new_syms += 1
+                new_ranges[start] = [start, end, "", tag, end, True, "U", end, "", ""]
+                                    # start, end, name, typ, next, is_gen, rank, pool, sect, sectname
+
+        echo (f"Map update complete. New: {dbg_new_syms}, Updated: {dbg_upd_syms}")
 
         # update all symbols
-        for a, sym in ranges.items():
-            if (sym[5]):  # is autogenerated
+        for a, sym in new_ranges.items():
+            if (sym[5]):
                 sym[2] = ""
-            if (sym[0] in func_ends): # reassign function ends
+            if (sym[0] in func_ends):
                 sym[7] = func_ends.get(sym[0])
 
         # Convert to map syms
-        sym_list = [sym_conv(sym) for a, sym in ranges.items()]
+        sym_list = [sym_conv(sym) for a, sym in new_ranges.items()]
 
         # Sort
         sym_list.sort(key=lambda x: x[MapFmt.Start])  # sort it
@@ -848,16 +841,18 @@ def split_function(sym_name):
 if "split.py" in sys.argv[0]:
     parser = argparse.ArgumentParser('split.py', description="Splector 5000")
     parser.add_argument('-u', action='store_true', help="Attempt to update map (dangerous!)")
+    parser.add_argument('-v', action='store_true', help="Attempt to update map (dangerous!), but do not update function pool addresses.")
     parser.add_argument('-a', action='store_true', help="Use next symbol start for function end instead of defined end")
     parser.add_argument('-q', action='store_true', help="Do not print progress")
     parser.add_argument("ffaddr", nargs="?", type=lambda x: int(x, 0), default=None, help="Skip until addr (avoids cleaning)")
     args = parser.parse_args()
     sys.argv = [sys.argv[0]] # clear args
 
-    flag_doUpdate = args.u
+    flag_doUpdate = args.u or args.v
+    flag_doUpdateNoPool = args.v
     flag_useNextAddr = args.a
     flag_ffaddr = args.ffaddr
 
     set_silent(args.q)
-    main()
 
+    main()

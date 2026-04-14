@@ -10,6 +10,8 @@ def make_line(sym):
     skip_pool = False
     if sym[MapFmt.Pool] == sym[MapFmt.End]:
         skip_pool = True
+    if not sym[MapFmt.Type]:
+        fail (f"FATAL: Symbol 0x{sym[MapFmt.Start]:08X} {sym[MapFmt.Symbol]} has no type!!")
     for col in MapFmt:
         if not sym[col] and col in (MapFmt.Symbol, MapFmt.SectionName):
             line.append("")
@@ -41,13 +43,14 @@ def updateFull(newsyms, csv_path=None):
 def updateSingle(sym, csv_path=None):
     if not csv_path:
         csv_path = getMapFile()
+    # Build line
+    newline = make_line(sym)
 
     # Write changes
     file = open(csv_path, "r").readlines()
     for i, line in enumerate(file):
-        if sym[MapFmt.Symbol] == line.split(',')[MapFmt.Symbol]:
-            # Build line
-            file[i] = make_line(sym)
+        if symbol_name == line.split(',')[MapFmt.Symbol]:
+            file[i] = newline
             break
     with open(csv_path, "w") as f:
         f.writelines(file)

@@ -2,13 +2,14 @@
 
 #ifndef RP_SHUTUP
 #define RP_SHUTUP \
-        _Pragma("diag_suppress 177,550,940")
+        _Pragma("diag_suppress 177,550,940") S
 #endif
 
 // Assertion
 #ifndef static_assert
 #define static_assert(COND, MSG) typedef int __static_assert_failed[(COND) ? 1 : -1]
 #endif
+
 #define static_assert_(COND) static_assert(COND, #COND)
 
 #ifdef __arm__ // Used by compiler
