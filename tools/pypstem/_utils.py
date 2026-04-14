@@ -23,7 +23,7 @@ def progress_upd_type(status):
     progress_print()
 
 def getFileBuildPath(file):
-    return getBuildObjPath() / file.relative_to(getProjDir()).with_suffix(".o")
+    return getBuildObjPath() / Path(file).relative_to(getProjDir()).with_suffix(".o")
 
 def getMacroStr(macro, val):
     return f"-D{macro}={val or '1'}"

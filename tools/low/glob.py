@@ -53,13 +53,11 @@ def getStatsDir(): # Get Statistics directory
 def getCompilersDir():
     return getDataDir() / "compilers"
 def getCfgVerFile():
-    return getProjDir() / "data" / ".version"
+    return getDataDir() / ".version"
 def getCfgMapFile(): # Path to map with date
     return getVerDir() / ".map"
 def getCfgFlagsFile(): # List of all modules + flags
     return getVerDir() / ".flags"
-def getCfgFlagsTFile(): # List of all modules + flags (temp)
-    return getVerDir() / "..flags"
 def getCfgSymsFile(): # List of all symbols + files
     return getVerDir() / ".syms"
 def getMapFile(v=None): # Map for all symbols

@@ -10,6 +10,7 @@ if cfg.do_split:
 
 from tools.low.readSymMap import *
 from tools.pypstem._utils import *
+from tools.low.getIsMapDiff import *
 from tools.pypstem.callProcess import *
 from tools.pypstem.manSetup import setup_compiler
 
@@ -19,34 +20,6 @@ if cfg.flags_compile:
     flags_asm.extend(cfg.flags_compile)
 if cfg.flags_compile_asm:
     flags_asm.extend(cfg.flags_compile_asm)
-
-def isSymMapDiff():
-    if not getMapFile().exists():
-        fail ("Version not configured, cannot split.")
-
-    ts_new = int(getMapFile().stat().st_mtime)
-
-    def write_new():
-        with open(getCfgMapFile(), "w") as f:
-            f.write(f"{getVersion()} {ts_new}")
-
-    if not getCfgMapFile().exists():
-        write_new()
-        return True
-
-    ts_old = 0
-    ver_old = 0
-    with open(getCfgMapFile(), "r") as f:
-        ver_old, ts_old = next(f).split()
-
-    if getVersion() != ver_old:
-        write_new()
-        return True
-    if int(ts_old) != ts_new:
-        write_new()
-        return True
-
-    return False
 
 def write_depend():
     # get all functions
@@ -69,7 +42,7 @@ def write_stubs():
     cfg.modules[str(getSplitPath().relative_to(getProjDir()))] = {"name": getStubsLibName(), "extensions": set(["c"]), "source_dir": "."}
 
     # check if archive exists
-    if getStubsLibFile().exists() and not isSymMapDiff():
+    if getStubsLibFile().exists() and not is_sym_map_diff():
         return
 
     getSplitPath().mkdir(parents=True, exist_ok=True)
@@ -98,11 +71,12 @@ def write_stubs():
 
 def exec_split(clear=False):
     if not cfg.do_split:
+        setup_compiler(cfg.compiler)
         write_stubs()
         write_depend()
         return
 
-    if not clear and getSplitLibFile().exists() and (getSplitAsmDir().exists() and cfg.keep_objects):# and not isSymMapDiff():
+    if not clear and getSplitLibFile().exists() and (getSplitAsmDir().exists() and cfg.keep_objects):# and not is_sym_map_diff():
         echo ("Assembly up to date")
         return
 

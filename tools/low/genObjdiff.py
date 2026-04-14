@@ -5,61 +5,118 @@ from colorama import Fore, Style
 from elftools.elf.elffile import ELFFile
 from elftools.elf.sections import SymbolTableSection
 
+from tools.pypstem._utils import *
 from tools.low.genContext import gen_ctx
+from tools.low.getSymFile import read_sym_file, MapFmt
 from tools.low.glob import *
 
-# Generate objdiff.json (WNIP)
+# Generate objdiff.json
 
-def get_paths_for (file):
-    paths = get_paths()
+map_syms = set()
+matching_syms = set()
+def _doMatchingSyms():
+    global matching_syms
+    from tools.low.readSymMap import read_sym_file, MapFmt
+    for sym in read_sym_file():
+        symname = sym[MapFmt.Symbol]
+        map_syms.add(symname)
+        if sym[MapFmt.Rank] == 'O':
+            matching_syms.add(symname)
+_doMatchingSyms()
 
-    for src, obj in paths:
-        if file.rsplit('.', 1)[0] in obj or file.rsplit('.', 1)[0] in src:
-            return src, obj
+sym_file_list = {}
+for file, syms in read_sym_file().items():
+    if len(syms) < 3: continue
+    for sym in syms[2:]:
+        sym_file_list[sym] = {"module": syms[0], "preset_id": syms[1], "source_path": file}
 
-    return "",""
+def gen_objdiff(do_full_list=False):
+    data = []
+    modules_list = set()
+    target_path = getBinCodeFile().with_suffix(".elf")
+    base_path = getElfFile()
 
-def makeCtxFile(src, obj):
-    out = obj.rsplit('.', 1)[0] + '.ctx'
+    for symbol in map_syms:
+        name = sym[MapFmt.Symbol]
+        module = None
+        source_path = None
+        preset_id = cfg.preset_id
+        ctx_path = getProjDir() / cfg.flag_preinclude
 
-    data, main = genCtx(src)
-    if len(data) < 10:
-        return ""
+        is_present = False
+        is_complete = name in matching_syms
 
-    with open(out, 'w') as f:
-        f.write (data)
+        if name in sym_file_list:
+            is_present = True
 
-    return out
+            module = sym_file_list[name]["module"]
+            preset_id = sym_file_list[name]["preset_id"]
+            source_path = sym_file_list[name]["source_path"]
 
-def gen_objdiff():
-    data = '\n'
-    for src_path_name, src_data in cfg.modules.items():
-        src_path = getProjDir().joinpath(*str(src_path_name).split("/")).joinpath(*src_data.get("source_dir").split("/"))
-        for src in sorted(src_path.rglob("*")):
-            # TODO: check for extsion, TODO: fix at all 
-            obj = file[1]
-            name = file[1][len(str(getProjDir()))+1:].partition('.dir/')[2].rsplit(".", 1)[0]
-            ctx = obj.rsplit('.', 1)[0] + '.ctx'
-            #ctx = makeCtxFile(src, obj)
-            data +=  "    {\n"
-            data += f'      \"name\": "{name}",\n'
-            data += f"      \"target_path\": \"{getElfPath()}\",\n"
-            data += f"      \"base_path\": \"{obj}\",\n"
-            data +=  "      \"scratch\": {\n"
-            data +=  "        \"platform\": \"n3ds\",\n"
-            data += f"        \"ctx_path\": \"{ctx}\",\n"
-            data += f"        \"preset_id\": {cfg.preset_id},\n"
-            data +=  "        \"build_ctx\": true\n"
-            data +=  "      },\n"
-            data +=  "      \"metadata\": {\n"
-            data += f"        \"source_path\": \"{src}\",\n"
-            data +=  "        \"auto_generated\": false\n"
-            data +=  "      }\n"
-            data +=  "    },\n"
-            #print(Fore.LIGHTBLUE_EX + "objdiff.json: " + src + Fore.RESET + Style.RESET_ALL)
-    data = data[:-2] + "\n"
+            if module and not module in modules_list:
+                modules_list.add(module)
 
-    with open(Path(getProjDir()) / "data" / "template" / "objdiff.json", 'r') as template:
-        with open(getJsonObjdiffFile(), 'w') as out:
-            out.write(template.read().replace("$$$", data))
+            ctx_path = getFileBuildPath(source_path).with_suffix(".ctx")
+        elif not do_full_list:
+            continue
+
+        data.append(
+                "    {\n"
+               f'      "name": "{name}",\n'
+               f'      "target_path": "{target_path}",\n'
+        )
+        if is_present:
+            data.append(
+               f'      "base_path": "{base_path}",\n'
+            )
+        data.append(
+                '      "scratch": {\n'
+                '        "platform": "n3ds",\n'
+                '        "compiler": "outatime",\n'
+               f'        "ctx_path": "{ctx_path}",\n'
+        )
+        if preset_id:
+            data.append(
+               f'        "preset_id": {preset_id},\n'
+            )
+        data.append(
+               f'        "build_ctx": {"true" if is_present else "false"}\n'
+        )
+        data.append(
+                '      },\n'
+                '      "metadata": {\n'
+               f'        "complete": {"true" if is_complete else "false"},\n'
+        )
+        if is_present:
+            data.append(
+               f'        "source_path": "{str(source_path)}",\n'
+            )
+        if module:
+            data.append(
+               f'        "progress_categories": ["{module}"],\n'
+            )
+        data.append(
+                '        "auto_generated": false\n'
+                '      }\n'
+                '    }'
+        )
+
+    categories = []
+    for mod in modules_list:
+        categories.append(
+            "    {\n"
+           f"      \"name\": \"{mod}\",\n"
+           f"      \"id\": \"{mod}\"\n"
+            "    }"
+        )
+
+    objdiff_data = ""
+    with open(Path(getProjDir()) / "data" / "template" / "objdiff.json", 'r') as f:
+        objdiff_data = f.read()
+
+    objdiff_data = objdiff_data.replace("###", ",\n".join(data))
+    objdiff_data = objdiff_data.replace("$$$", ",\n".join(categories))
+
+    with open(getJsonObjdiffFile(), 'w') as f:
+        f.write(objdiff_data)
 

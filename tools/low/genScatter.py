@@ -61,7 +61,7 @@ def gen_scatter():
             if not cfg.allow_shifting:
                 addr_str = f" 0x{addr:08x}\n"
             part.append("\t}\n")
-            part.append(f"\ter_{name}{addr_str}")
+            part.append(f"\t{name}{addr_str}")
             part.append("\t{\n")
         part.append(f"\t\t* ({sect_str})\n")
 

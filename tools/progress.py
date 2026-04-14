@@ -52,9 +52,11 @@ def main():
     code_bin_size = os.path.getsize(getBinFile())
     ver = getVersion()
     os.makedirs(str(Path('data') / 'stats' / ver), exist_ok=True)
-    
+
     syms = read_sym_file()
     for sym in syms:
+        if "b" in sym[MapFmt.Type] and "d" in sym[MapFmt.Type]:
+            continue # skip bss
         syms_total += 1
 
         match sym[MapFmt.Rank]:
@@ -79,7 +81,7 @@ def main():
         with open(getStatsDir() / f"{rank}.json", 'w') as f:
             f.write(json.dumps(out))
 
-    bytes_ok_str = "{:.4f}% ({:,} bytes/{:,} bytes)".format((bytes_ok / code_bin_size) * 100, int(bytes_ok), int(code_bin_size))
+    bytes_ok_str = f"{(bytes_ok / code_bin_size) * 100:.4f}% ({int(bytes_ok):,} bytes/{int(code_bin_size):,} bytes)"
 
     print_type("Total Functions", str(syms_total), Fore.LIGHTBLUE_EX);
     print_type("Matching", str(syms_ok), Fore.LIGHTGREEN_EX);

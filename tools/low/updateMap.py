@@ -10,6 +10,8 @@ def make_line(sym):
     skip_pool = False
     if sym[MapFmt.Pool] == sym[MapFmt.End]:
         skip_pool = True
+    if not sym[MapFmt.Type]:
+        fail (f"FATAL: Symbol 0x{sym[MapFmt.Start]:08X} {sym[MapFmt.Symbol]} has no type!!")
     for col in MapFmt:
         if not sym[col] and col in (MapFmt.Symbol, MapFmt.SectionName):
             line.append("")

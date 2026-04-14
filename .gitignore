@@ -18,6 +18,7 @@ compile_commands.json
 *.csv_b
 *.m2c
 *.bin
+*.elf
 
 tools/asm-differ/*
 lib/CtrSDK/*

@@ -134,6 +134,8 @@ def readFile(path):
     checkBolEntry(data, "keep_objects")
     checkBolEntry(data, "do_split")
 
+    if data.get("preset_id"):
+        fail ("Please rename preset_id to decompme_id!", False)
     my_modules = data.get("modules")
     if my_modules:
         if not modules:
@@ -152,6 +154,8 @@ def readFile(path):
                 modules[mod_id]["source_dir"] = "src"
             if not mod_data.get("include_dir"):
                 modules[mod_id]["include_dir"] = "include"
+            if mod_data.get("preset_id"):
+                fail ("Please rename preset_id to decompme_id!", False)
 
 assert_flag = True
 def assertEntry(name):
