@@ -70,6 +70,8 @@ def main():
     matching = 0
     syms = read_sym_file()
     for sym in syms:
+        if "b" in sym[MapFmt.Type] and "d" sym[MapFmt.Type]:
+            continue
         rank = sym[MapFmt.Rank]
         size = sym[MapFmt.End] - sym[MapFmt.Start]
         name = sym[MapFmt.Symbol]

@@ -15,19 +15,10 @@ from tools.splector.split import split_function
 def main():
     parser = argparse.ArgumentParser(description="Build RE:Pepper")
     parser.add_argument("symbol", help="Symbol to diff")
-    parser.add_argument("--no_comp", '-r', action='store_true', help="Do not recompile")
     parser.add_argument("--no_check", '-c', action='store_true', help="Do not recheck")
     parser.add_argument("extra_flags", nargs=argparse.REMAINDER, default=None)
     args = parser.parse_args()
     sys.argv = [sys.argv[0]] # clear args
-
-    # warn
-    if "-mw" in args.extra_flags or "-m" in args.extra_flags or "-w" in args.extra_flags:
-        warn ("WARNING: -mw does not work properly due to address shifting.")
-
-    if not args.no_comp:
-        import make
-        make.main()
 
     symname = args.symbol
     symbol = get_symbol(symname)
@@ -45,7 +36,7 @@ def main():
     sys.stdout.flush()
 
     # call
-    res, _ = callAsmdiff(symbol, decomp_symbol, args.extra_flags)
+    res, _ = callAsmdiff(symbol, decomp_symbol, args.extra_flags, False)
     if res is None:
         fail (f"Assembly diff returned error for {args.symbol}.")
 
