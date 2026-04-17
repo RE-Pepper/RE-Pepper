@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import subprocess
+from typing import Callable, Optional
 
 from tools.low.readSymMap import MapFmt
 from tools.low.readElfMap import ElfMapFmt
@@ -45,5 +46,10 @@ def callAsmdiff(map_symbol, decomp_symbol, extra_flags=[], is_json=False):
         err = subprocess.run(" ".join(cmd), shell=True, capture_output=True, text=True)
     else:
         err = subprocess.run(cmd)
+
+    if not is_json and err and err.returncode == 67:
+        warn("Rebuilding...")
+        callAsmdiff(map_symbol, decomp_symbol, extra_flags, is_json)
+        err.returncode = 0
 
     return err, sym_size

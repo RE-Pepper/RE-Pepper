@@ -32,7 +32,7 @@ def _call(exe, arg_list, silent=False, capture=False):
         ret = subprocess.run(args, env=env)
 
     if ret.returncode != 0:
-        fail_ex (f"{path.name} failed with {ret.returncode}.", " ".join(map(str, arg_list)))
+        fail_ex (f"{path.name} failed with {ret.returncode}.", " ".join(map(str, arg_list)), False)
 
     return ret.stdout
 

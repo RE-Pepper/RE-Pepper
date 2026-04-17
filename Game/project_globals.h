@@ -18,14 +18,17 @@
 #define force_func_section(Symbol) force_section("i." #Symbol)
 
 #define var(Namespace, Name, Type) static Type force_section(".sdata_" #Namespace "::" #Name) Name
-#define varc(Namespace, Class, Name, Type) static Type force_section(".sdata_" #Namespace "::" #Name) Class::Name
+#define varc(Namespace, Class, Name, Type) Type force_section(".sdata_" #Namespace "::" #Name) Class::Name
 #define varg(Name, Type) static Type force_section(".sdata_" #Name) Name
-#define varcg(Class, Name, Type) static Type force_section(".sdata_" #Name) Class::Name
+#define varcg(Class, Name, Type) Type force_section(".sdata_" #Name) Class::Name
 
 #define asm_ext(Name, Sect) __asm force_section(Sect) Name
 #define asm(Name) asm_ext(Name, "i." #Name)
 
 #else // Used by editor
+
+#define NN_SWITCH_DISABLE_ASSERT_WARNING_FOR_SDK 1
+#define NN_SWITCH_DISABLE_DEBUG_PRINTING_FOR_SDK 1
 
 // Force a section name
 #define force_section(Section)
