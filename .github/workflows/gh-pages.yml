@@ -35,7 +35,7 @@ jobs:
         pip install mkdocs mkdocs-material pymdown-extensions mkdocs-macros-plugin mkdocs-redirects mkdoxy
         
     - name: Clone repo
-      uses: GuillaumeFalourd/clone-github-repo-action@v2.3
+      uses: GuillaumeFalourd/clone-github-repo-action@v3
       with:
         owner: 'RE-Pepper'
         repository: 'RE-Pepper-Wiki'
