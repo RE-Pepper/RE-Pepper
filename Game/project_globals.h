@@ -18,7 +18,7 @@
 #define force_func_section(Symbol) force_section("i." #Symbol)
 
 #define var(Namespace, Name, Type) static Type force_section(".sdata_" #Namespace "::" #Name) Name
-#define varc(Namespace, Class, Name, Type) Type force_section(".sdata_" #Namespace "::" #Name) Class::Name
+#define varc(Namespace, Class, Name, Type) Type force_section(".sdata_" #Namespace "::" #Class "::" #Name) Class::Name
 #define varg(Name, Type) static Type force_section(".sdata_" #Name) Name
 #define varcg(Class, Name, Type) Type force_section(".sdata_" #Name) Class::Name
 

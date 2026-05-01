@@ -16,7 +16,6 @@ def exec_export_bin():
     do_export(flags)
 
 def exec_export_comcom():
-    echo ("Generating json")
     gen_comcom()
 
 def exec_export_objdiff():

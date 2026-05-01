@@ -40,7 +40,6 @@ UseTab: Never
 ContinuationIndentWidth: 8
 CompactNamespaces: false
 OneLineFormatOffRegex: "nf"
-Macros: [asm, asm_ext, var]
 IncludeBlocks: Regroup
 IncludeCategories:
   - Regex: ^<

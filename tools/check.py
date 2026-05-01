@@ -107,7 +107,11 @@ def check_syms():
         end=sym[MapFmt.End]
         start=sym[MapFmt.Start]
         name=sym[MapFmt.Symbol]
+        typ=sym[MapFmt.Type]
         rank='U'
+
+        if "d" in typ and "b" in typ:
+            continue
 
         progress = ((start - first_sym_addr) / (syms[-1][MapFmt.End] - first_sym_addr)) * 100
         progress = round(progress, 1)
@@ -131,7 +135,6 @@ def check_syms():
 
         sect=sym[MapFmt.Section]
         pool=sym[MapFmt.Pool]
-        typ=sym[MapFmt.Type]
         sectname=sym[MapFmt.SectionName]
 
         # main adding
