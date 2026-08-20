@@ -1,32 +1,33 @@
 Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol,SectionName
-0x00100000,          ,0x00100024,          ,m,fag,__ctr_start,
-0x00100024,0x00100040,0x00100048,0x00100000,O,fa,nninitRegion,
-0x00100048,          ,0x00100050,          ,U,f,_printf_percent,
-0x00100050,          ,0x00100058,0x00100048,U,f,_printf_p,
-0x00100058,          ,0x00100060,0x00100048,U,f,_printf_f,
-0x00100060,          ,0x00100068,0x00100048,U,f,_printf_e,
-0x00100068,          ,0x00100070,0x00100048,U,f,_printf_g,
-0x00100070,          ,0x00100078,0x00100048,U,f,_printf_a,
-0x00100078,          ,0x00100084,0x00100048,U,f,_printf_ll,
-0x00100084,          ,0x0010008C,0x00100048,U,f,_printf_i,
-0x0010008C,          ,0x00100094,0x00100048,U,f,_printf_d,
-0x00100094,          ,0x0010009C,0x00100048,U,f,_printf_u,
-0x0010009C,          ,0x001000A4,0x00100048,U,f,_printf_o,
-0x001000A4,          ,0x001000AC,0x00100048,U,f,_printf_x,
-0x001000AC,          ,0x001000B4,0x00100048,U,f,_printf_lli,
-0x001000B4,          ,0x001000BC,0x00100048,U,f,_printf_lld,
-0x001000BC,          ,0x001000C4,0x00100048,U,f,_printf_llu,
-0x001000C4,          ,0x001000CC,0x00100048,U,f,_printf_llo,
-0x001000CC,          ,0x001000D4,0x00100048,U,f,_printf_llx,
-0x001000D4,          ,0x001000E0,0x00100048,U,f,_printf_l,
-0x001000E0,          ,0x001000E8,0x00100048,U,f,_printf_c,
-0x001000E8,          ,0x001000F0,0x00100048,U,f,_printf_s,
-0x001000F0,          ,0x001000F8,0x00100048,U,f,_printf_lc,
-0x001000F8,          ,0x00100100,0x00100048,U,f,_printf_ls,
-0x00100100,          ,0x00100108,0x00100048,U,f,_printf_percent_end,
+0x00100000,          ,0x00100024,          ,M,fag,__ctr_start,
+0x00100024,0x00100040,0x00100048,          ,m,fa,nninitRegion,
+0x00100048,          ,0x00100050,          ,U,fa,_printf_percent,.ARM.Collect$$_printf_percent$$00000000
+0x00100048,          ,0x00100050,          ,U,fai,_printf_n,.ARM.Collect$$_printf_percent$$00000001
+0x00100050,          ,0x00100058,          ,U,fa,_printf_p,.ARM.Collect$$_printf_percent$$00000002
+0x00100058,          ,0x00100060,          ,U,fa,_printf_f,.ARM.Collect$$_printf_percent$$00000003
+0x00100060,          ,0x00100068,          ,U,fa,_printf_e,.ARM.Collect$$_printf_percent$$00000004
+0x00100068,          ,0x00100070,          ,U,fa,_printf_g,.ARM.Collect$$_printf_percent$$00000005
+0x00100070,          ,0x00100078,          ,U,fa,_printf_a,.ARM.Collect$$_printf_percent$$00000006
+0x00100078,          ,0x00100084,          ,U,fa,_printf_ll,.ARM.Collect$$_printf_percent$$00000007
+0x00100084,          ,0x0010008C,          ,U,fa,_printf_i,.ARM.Collect$$_printf_percent$$00000008
+0x0010008C,          ,0x00100094,          ,U,fa,_printf_d,.ARM.Collect$$_printf_percent$$00000009
+0x00100094,          ,0x0010009C,          ,U,fa,_printf_u,.ARM.Collect$$_printf_percent$$0000000A
+0x0010009C,          ,0x001000A4,          ,U,fa,_printf_o,.ARM.Collect$$_printf_percent$$0000000B
+0x001000A4,          ,0x001000AC,          ,U,fa,_printf_x,.ARM.Collect$$_printf_percent$$0000000C
+0x001000AC,          ,0x001000B4,          ,U,fa,_printf_lli,.ARM.Collect$$_printf_percent$$0000000D
+0x001000B4,          ,0x001000BC,          ,U,fa,_printf_lld,.ARM.Collect$$_printf_percent$$0000000E
+0x001000BC,          ,0x001000C4,          ,U,fa,_printf_llu,.ARM.Collect$$_printf_percent$$0000000F
+0x001000C4,          ,0x001000CC,          ,U,fa,_printf_llo,.ARM.Collect$$_printf_percent$$00000010
+0x001000CC,          ,0x001000D4,          ,U,fa,_printf_llx,.ARM.Collect$$_printf_percent$$00000011
+0x001000D4,          ,0x001000E0,          ,U,fa,_printf_l,.ARM.Collect$$_printf_percent$$00000012
+0x001000E0,          ,0x001000E8,          ,U,fa,_printf_c,.ARM.Collect$$_printf_percent$$00000013
+0x001000E8,          ,0x001000F0,          ,U,fa,_printf_s,.ARM.Collect$$_printf_percent$$00000014
+0x001000F0,          ,0x001000F8,          ,U,fa,_printf_lc,.ARM.Collect$$_printf_percent$$00000015
+0x001000F8,          ,0x00100100,          ,U,fa,_printf_ls,.ARM.Collect$$_printf_percent$$00000016
+0x00100100,          ,0x00100108,          ,U,fa,_printf_percent_end,.ARM.Collect$$_printf_percent$$00000017
 0x00100108,0x00100154,0x0010015C,          ,U,f,nnMain,
-0x0010015C,0x00100188,0x00100190,          ,O,f,nninitCallStaticInitializers,
-0x00100190,0x001001D4,0x001001DC,          ,O,f,nninitLocale,
+0x0010015C,0x00100188,0x00100190,          ,m,f,nninitCallStaticInitializers,
+0x00100190,0x001001D4,0x001001DC,          ,m,f,nninitLocale,
 0x001001DC,          ,0x001001FC,          ,M,f,nninitSetup,
 0x001001FC,0x00100254,0x0010025C,          ,U,f,_ZN2nn6applet3CTR6detail10InitializeEj,
 0x0010025C,0x0010030C,0x00100318,          ,U,f,_ZN11Application14createInstanceEPN4sead4HeapE,
@@ -175,7 +176,7 @@ Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol,SectionName
 0x00105150,0x00105164,0x00105168,          ,U,f,nngxSetCmdlistCallback,
 0x00105168,0x001051A4,0x001051A8,          ,U,f,nngxSetCmdlistParameteri,
 0x001051A8,0x001051EC,0x001051F0,          ,U,f,nngxSetDisplayMode,
-0x001051F0,          ,0x00105204,          ,M,f,_ZN2nn2os6detail27InitializeThreadEnvrionmentEv,
+0x001051F0,          ,0x00105204,          ,O,f,_ZN2nn2os6detail27InitializeThreadEnvrionmentEv,
 0x00105204,          ,0x00105210,          ,O,fg,_fp_init,
 0x00105210,0x00105230,0x00105238,          ,U,f,_ZN2nn2os6Thread21CallDestructorAndExitEPv,
 0x00105238,          ,0x0010523C,          ,O,f,_ZN2nn2os3CTR24DefaultUnexpectedHandlerEv,i._ZN2nn2os3CTR43_GLOBAL__N__19_os_CppException_cpp_0201818f24DefaultUnexpectedHandlerEv
@@ -378,7 +379,7 @@ Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol,SectionName
 0x0010C474,          ,0x0010C51C,          ,U,fa,decodeSZSCtrAsm_,
 0x0010C51C,          ,0x0010C56C,          ,U,fa,_ZN2nw3lyt5local36_GLOBAL__N__12_lyt_Pane_cpp_9cfdc53416MultMatrixSRTxSTEPU11__writeonlyN2nn4math5MTX34EPKS5_PKNS4_4VEC2EPKNS4_4VEC3E,
 0x0010C56C,          ,0x0010C574,          ,O,fa,_ZN2nn3svc11CloseHandleENS_6HandleE,.nn.svc.CloseHandle
-0x0010C574,          ,0x0010C590,0x0010C56C,U,fa,_ZN2nn3svc17CreateMemoryBlockEPNS_6HandleEjjjj,.nn.svc.CreateMemory
+0x0010C574,          ,0x0010C590,0x0010C56C,O,fa,_ZN2nn3svc17CreateMemoryBlockEPNS_6HandleEjjjj,.nn.svc.CreateMemoryBlock
 0x0010C590,          ,0x0010C5A8,0x0010C56C,O,fa,_ZN2nn3svc11CreateMutexEPNS_6HandleEb,.nn.svc.CreateMutex
 0x0010C5A8,          ,0x0010C5C0,0x0010C56C,O,fa,_ZN2nn3svc15DuplicateHandleEPNS_6HandleES1_,.nn.svc.DuplicateHandle
 0x0010C5C0,          ,0x0010C654,          ,U,fa,_printf_wc,
@@ -6067,7 +6068,7 @@ Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol,SectionName
 0x00211BC8,0x00211BD4,0x00211BD8,          ,U,f,,
 0x00211BD8,0x00211C20,0x00211C28,          ,U,f,_ZN2al11NerveActionC2Ev,
 0x00211C28,0x00211C44,0x00211C48,          ,U,f,_ZN15alNerveFunction20NerveActionCollectorC1Ev,
-0x00211C48,          ,0x00211C4C,          ,O,fg,__aeabi_atexit,
+0x00211C48,          ,0x00211C4C,          ,O,f,__aeabi_atexit,
 0x00211C4C,0x00211CB4,0x00211CCC,          ,U,f,,
 0x00211CCC,0x00211D48,0x00211D5C,          ,U,f,,
 0x00211D5C,0x00211D84,0x00211DA4,          ,U,f,,
@@ -9699,7 +9700,7 @@ Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol,SectionName
 0x0028BC40,          ,0x0028BC4C,          ,U,f,,
 0x0028BC4C,          ,0x0028BC54,          ,O,f,_ZN2nn3svc11SleepThreadEy,.nn.svc.SleepThread
 0x0028BC54,0x0028BC7C,0x0028BC84,          ,U,f,,
-0x0028BC84,          ,0x0028BC8C,          ,U,f,_ZN2nn3svc16ArbitrateAddressENS_6HandleEjNS_2os15ArbitrationTypeEix,.nn.svc.ArbitrateAddress
+0x0028BC84,          ,0x0028BC8C,          ,O,f,_ZN2nn3svc16ArbitrateAddressENS_6HandleEjNS_2os15ArbitrationTypeEi,.nn.svc.ArbitrateAddress
 0x0028BC8C,0x0028C07C,0x0028C084,          ,U,f,,
 0x0028C084,0x0028C148,0x0028C150,          ,U,f,,
 0x0028C150,0x0028C288,0x0028C2A4,          ,U,f,,
@@ -9889,14 +9890,14 @@ Start     ,Pool      ,End       ,Section   ,Rank,Type,Symbol,SectionName
 0x00293374,0x002933B8,0x002933C0,          ,U,f,_ZN4sead9IDisposerC1EPNS_4HeapENS0_14HeapNullOptionE,
 0x002933C0,          ,0x002933D0,          ,U,f,,
 0x002933D0,0x00293414,0x00293418,          ,U,f,_ZnajPN4sead4HeapEi,
-0x00293418,0x00293478,0x0029347C,          ,U,f,_ZN2nn3srv27RegisterNotificationHandlerEPNS0_19NotificationHandlerEj,
+0x00293418,0x00293478,0x0029347C,          ,m,f,_ZN2nn3srv27RegisterNotificationHandlerEPNS0_19NotificationHandlerEj,
 0x0029347C,          ,0x00293480,          ,M,f,nninitSystem,
 0x00293480,          ,0x00293498,          ,U,f,,
-0x00293498,0x002934A0,0x002934A4,          ,U,f,,
-0x002934A4,0x00293548,0x00293558,          ,U,f,,
-0x00293558,0x002935FC,0x0029360C,          ,U,f,,
-0x0029360C,          ,0x00293610,          ,U,f,,
-0x00293610,          ,0x00293614,          ,U,f,,
+0x00293498,0x002934A0,0x002934A4,          ,U,fa,__rt_locale,
+0x002934A4,0x00293548,0x00293558,          ,U,fa,_printf_longlong_dec,
+0x00293558,0x002935FC,0x0029360C,          ,U,fa,_printf_int_dec,
+0x0029360C,          ,0x00293610,          ,U,fa,_printf_fp_dec,
+0x00293610,          ,0x00293614,          ,U,f,_ZN40_GLOBAL__N__16_init_Default_cpp_c3fc63fe11ExitHandler18HandleNotificationEj,
 0x00293614,          ,0x0029361C,          ,O,f,_ZN2nn3svc11ExitProcessEv,.nn.svc.ExitProcess
 0x0029361C,0x002937D4,0x002937E8,          ,U,f,_ZN2nn4jpeg3CTR6detail35JpegMpDecoderCShrink21CtrRgb8Block8EPNS1_20JpegMpDecoderContextEii,
 0x002937E8,0x002939EC,0x00293A00,          ,U,f,_ZN2nn4jpeg3CTR6detail35JpegMpDecoderCShrink22CtrRgb8Block8EPNS1_20JpegMpDecoderContextEii,

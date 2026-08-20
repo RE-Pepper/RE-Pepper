@@ -62,12 +62,6 @@ InsertNewlineAtEOF: true
 RemoveSemicolon: true
 Standard: c++03
 Cpp11BracedListStyle: false
-WhitespaceSensitiveMacros:
-  - SEAD_ENUM
-  - SEAD_ENUM_EX
-  - SEAD_ENUM_EX_VALUES
-  - PP_STRINGIZE
-  - STRINGIZE
 Language: Cpp
 AlwaysBreakAfterReturnType: None
 

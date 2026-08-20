@@ -92,6 +92,7 @@ def check_syms():
     newsyms = []
     sym_starts = []
     sym_ends = []
+    sym_ignores = []
     do_rewrite = False
     is_error = False
     sym_num = len(syms)
@@ -122,6 +123,7 @@ def check_syms():
 
         sym_starts.append(start)
         sym_ends.append(end)
+        sym_ignores.append(True if "i" in typ else False)
 
         # check no name
         if is_skip_mode or not name or len(name) == 0:
@@ -146,7 +148,7 @@ def check_syms():
 
         oldrank=sym[MapFmt.Rank]
         if oldrank != rank:
-            change = f"{name} {oldrank} -> {rank} ({getRankMsg(oldrank, rank)})"
+            change = f"{oldrank} -> {rank} {name} ({getRankMsg(oldrank, rank)})"
             echo (change)
             log.append(change)
             do_rewrite = True
@@ -154,13 +156,15 @@ def check_syms():
     clear_line()
 
     # post check before writing
-    mySyms = [(int(sym_starts[i]), int(sym_ends[i])) for i in range(len(sym_starts))]
+    mySyms = [(int(sym_starts[i]), int(sym_ends[i]), sym_ignores) for i in range(len(sym_starts))]
     mySyms.sort(key=lambda x: x[0])
     for i in range(len(mySyms) - 1):
-        addr, endaddr = mySyms[i]
-        next_addr = mySyms[i + 1][MapFmt.Start]
+        addr, endaddr, ignore = mySyms[i]
+        next_addr = mySyms[i + 1]
+        if ignore or next_addr[2]:
+            continue
         if endaddr > next_addr:
-            echo (f"MAP OVERLAP: 0x{addr:08X} overlaps with 0x{next_addr:08X}")
+            echo (f"MAP OVERLAP: 0x{addr:08X} overlaps with 0x{next_addr[0]:08X}")
             is_error = True
 
     if is_error and do_rewrite:
@@ -249,9 +253,9 @@ def main():
     csv_path = getMapFile()
     log_path = str(getVerDir() / ".changes")
 
-    if cfg.only_matching:
-        csv_path = getMapFile().with_stem(f"{getMapFile().stem}_test")
-        echo ("Info: TEST MODE. You need to compile without -m (only matching) to rebuild the functions map. This output will be written to data/*_test.csv")
+    #if cfg.only_matching:
+    #    csv_path = getMapFile().with_stem(f"{getMapFile().stem}_test")
+    #    echo ("Info: TEST MODE. You need to compile without -m (only matching) to rebuild the functions map. This output will be written to data/*_test.csv")
 
     if args.sym:
         check_sym(args.sym)

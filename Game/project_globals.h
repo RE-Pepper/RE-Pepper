@@ -65,3 +65,18 @@
 #define __weak
 #define __clrex()
 #endif
+
+#define S_(x) #x
+#define S(x) S_(x)
+
+// Force Sections
+// Note: __BASE_FILE_NAME__ is set by the build system.
+// RO
+#define _SECT_RO ".constdata." __BASE_FILE_NAME__
+_Pragma(S(arm section rodata=_SECT_RO))
+// 
+#define _SECT_RW ".data." __BASE_FILE_NAME__
+_Pragma(S(arm section rwdata=_SECT_RW))
+// ZI
+#define _SECT_ZI ".bss." __BASE_FILE_NAME__
+_Pragma(S(arm section zidata=_SECT_ZI))

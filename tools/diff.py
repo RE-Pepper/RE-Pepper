@@ -24,12 +24,12 @@ def main():
     symbol = get_symbol(symname)
 
     if symbol is None:
-        fail_ex (f"Couldn't find in symbol map: {args.symbol}", "Fix the function, or add it to the map!", False)
+        fail_ex (f"Couldn't find in symbol map: {symname}", "Fix the function, or add it to the map!", False)
 
     symname = symbol[MapFmt.Symbol]
     decomp_symbol = get_elf_symbol(symname)
     if decomp_symbol is None:
-        fail_ex (f"Couldn't find in decomp: {args.symbol}", "Make sure to implement this symbol somewhere!", False)
+        fail_ex (f"Couldn't find in decomp: {symname}", "Make sure to implement this symbol somewhere!", False)
 
     # make white
     sys.stdout.write("\033[37m")
@@ -38,7 +38,7 @@ def main():
     # call
     res, _ = callAsmdiff(symbol, decomp_symbol, args.extra_flags, False)
     if res is None:
-        fail (f"Assembly diff returned error for {args.symbol}.")
+        fail (f"Assembly diff returned error for {symname}.")
 
     if not args.no_check:
         check_sym(symname)

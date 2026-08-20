@@ -17,19 +17,18 @@
   "modules": {
     "Game": {
       "name": "Game",
-      "disabled": "1",
-      "flags": ["--sys_include"]
+      "flags_cxx": ["--sys_include"],
+      "disabled": 1
     },
     "lib/al": {
       "name": "Actor",
-      "disabled": "1",
-      "flags": ["--sys_include"]
+      "flags_cxx": ["--sys_include"],
+      "disabled": 1
     },
     "lib/sead": {
       "name": "Sead",
       "source_dir": "modules/src",
-      "flags": ["--sys_include"],
-      "flags_cxx": ["--no_vla"]
+      "flags_cxx": ["--sys_include", "--no_vla"]
     },
     "lib/sead/addins/libms": {
       "name": "MS",
@@ -44,7 +43,7 @@
       "name": "SDK",
       "source_dir": "sources",
       "compiler": "4.0/902",
-      "flags": ["--debug_info=line_inlining_extensions", "--no_debug_macros"]
+      "flags_cxx": ["--debug_info=line_inlining_extensions", "--no_debug_macros"]
     }
   },
   "compiler": "4.1/791",
@@ -63,22 +62,18 @@
     "--enum_is_int",
     "--signed_chars",
     "--no_rtti_data",
-    "--forceinline"
+    "--forceinline",
+    "--remove_unneeded_entities"
   ],
   "flag_preinclude": "Game/project_globals.h",
   "flags_link": [
     "--arm_only",
     "--no_exceptions",
     "--inline",
-    "--tailreorder",
     "--largeregions",
     "--pad=0xFF",
-    "--keep=*",
-    "--no_remove",
-    "--vfemode=off",
     "--no_list_mapping_symbols",
-    "--show_parent_lib",
-    "--show_full_path"
+    "--show_parent_lib"
   ],
   "macros": {
     "NN_SWITCH_DISABLE_ASSERT_WARNING_FOR_SDK": 1,

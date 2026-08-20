@@ -5,9 +5,9 @@ import cxxfilt
 from tools.low.utilsPrint import *
 
 def typeToSection(type, name):
-    if "g" in type: # any global def
-        return "g."+name
-    elif "f" in type:
+    #if "g" in type: # any global def
+    #    return "g."+name
+    if "f" in type:
         if "t" in type: # func template
             return "t."+name
         else: # fallback default func

@@ -3,15 +3,17 @@ import subprocess
 import os
 import sys
 
-from tools.low.glob import getCompilerPath, getCompilersDir, fail_ex, fail, echo
+from tools.low.glob import getProjDir, getCompilerPath, getCompilersDir, fail_ex, fail, echo
 
 def _call(exe, arg_list, silent=False, capture=False):
     from tools.low.glob import isLinux
-
     path = _get_bin(exe)
 
     idx = 0;
     if isLinux():
+        # Create cmd.exe in root directory, workaround for armcc
+        open(getProjDir() / "cmd.exe", 'a').close()
+        # prepend wibo in command for wibo wrapper
         arg_list.insert(idx, str(getCompilersDir() / "wibo"))
         idx += 1
     if not path.exists():
@@ -23,6 +25,7 @@ def _call(exe, arg_list, silent=False, capture=False):
     env["TMP"] = "/tmp"
 
     args = list(map(str, arg_list))
+    #print(args)
 
     if capture:
         ret = subprocess.run(args, env=env, capture_output=True, text=True)

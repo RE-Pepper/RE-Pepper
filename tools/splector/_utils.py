@@ -215,13 +215,19 @@ def load_map():
         section = sym[MapFmt.Section]
         sectname = sym[MapFmt.SectionName]
 
-        if "b" in typ:
+        if "b" in typ or "i" in typ:
             continue
 
         name, is_gen = check_name(sym[MapFmt.Symbol], typ, start) # valid name
 
-        if i < (symlen-1):
-            next_any = syms[i+1][MapFmt.Start]
+        if i < symlen - 1:
+            if "i" not in syms[i + 1][MapFmt.Type]:
+                next_any = syms[i + 1][MapFmt.Start]
+            else:
+                j = i + 1
+                while j < symlen and "i" in syms[j][MapFmt.Type]:
+                    j += 1
+                next_any = syms[j][MapFmt.Start] if j < symlen else end
         else:
             next_any = end
 
@@ -260,7 +266,7 @@ def load_map():
         elif (start > next):
             echo (f"WRONG ADDR! {name}\'s next same-type symbol has a lower address. {str_addr(start)} > {str_addr(next)}")
         elif (start in sym_map):
-            echo (f"DUPLICATE ADDR! {std_addr(start)} is the start address in more than 2 symbols!")
+            echo (f"DUPLICATE ADDR! {str_addr(start)} is the start address in more than 2 symbols!")
         #elif (start % 4) != 0:
         #    echo (f"BAD ADDR! {str_addr(start)} is not 4 byte aligned!")
         #elif (name in sym_map):

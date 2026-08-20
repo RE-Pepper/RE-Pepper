@@ -57,10 +57,8 @@ flags_link = None
 flag_preinclude = None
 
 # Switches
-only_matching = False
-allow_shifting = False
 keep_objects = True
-do_split = False
+split = False
 
 # Dict of macros
 macros = {}
@@ -129,10 +127,8 @@ def readFile(path):
     checkStrEntry(data, "flag_preinclude")
     checkDctEntry(data, "macros")
     checkSetEntry(data, "extensions")
-    checkBolEntry(data, "only_matching")
-    checkBolEntry(data, "allow_shifting")
     checkBolEntry(data, "keep_objects")
-    checkBolEntry(data, "do_split")
+    checkBolEntry(data, "split")
 
     my_modules = data.get("modules")
     if my_modules:

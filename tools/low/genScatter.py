@@ -6,8 +6,10 @@ from tools.low.getSection import typeToSectionLinker
 from tools.low.readHeader import *
 
 def endPart(lst):
-    lst.pop(0)
-    return "".join(lst) + "\t}\n"
+    if not lst or len(lst) < 1:
+        return ""
+
+    return "".join(lst)
 
 def gen_scatter():
     s_code = []
@@ -17,31 +19,21 @@ def gen_scatter():
 
     header = read_header()
     tx_s = f"0x{header[HeadType.Text][HeadVal.Start]:08X}"
-    ro_s = '+0'
-    rw_s = '+0'
-
-    if not cfg.allow_shifting:
-        ro_s = f"{header[HeadType.Ro][HeadVal.Start]:08X}"
-        rw_s = f"{header[HeadType.Rw][HeadVal.Start]:08X}"
+    ro_s = f"0x{header[HeadType.Ro][HeadVal.Start]:08X}"
+    rw_s = f"0x{header[HeadType.Rw][HeadVal.Start]:08X}"
 
     sym_prev = None
     syms = sorted(read_sym_file(), key=lambda tup: tup[MapFmt.Start])
     for sym_i, sym in enumerate(syms):
         name = sym[MapFmt.Symbol]
-        if not name:
-            continue
         rank = sym[MapFmt.Rank]
-        if cfg.only_matching and rank != 'O':
-            continue
-        isCreateSection = True
-        type = sym[MapFmt.Type]
         addr = sym[MapFmt.Start]
-        sect = sym[MapFmt.Section]
+        if not rank:
+            warn(f"Symbol {name} at 0x{addr:08X} is missing the rank!")
+            rank = "U"
 
-        if (addr % 4) != 0:
-            isCreateSection = False
-        if sect and sym_prev and (sect == sym_prev[MapFmt.Section] or sect == sym_prev[MapFmt.Start]):
-            isCreateSection = False
+        type = sym[MapFmt.Type]
+        sect = sym[MapFmt.Section]
 
         if not name:
             if "f" in type:
@@ -51,41 +43,36 @@ def gen_scatter():
             else:
                 fail(f"Unsupported sym type: {type} at 0x{addr:08X}")
 
-        sect_str = sym[MapFmt.SectionName] or typeToSectionLinker(type, name)
+        sect_name = sym[MapFmt.SectionName] or typeToSectionLinker(type, name)
 
-        part = []
-        if isCreateSection:
-            addr_str = " +0"
-            if not cfg.allow_shifting:
-                addr_str = f" 0x{addr:08x}\n"
-            part.append("\t}\n")
-            part.append(f"\ter_{name}{addr_str}")
-            part.append("\t{\n")
-        part.append(f"\t\t* ({sect_str})\n")
+        if sym_i == 0:
+            sect_str = f"\t\t* ({sect_name}, +FIRST)\n"
+        else:
+            sect_str = f"\t\t* ({sect_name})\n"
 
         if "f" in type:
-            s_code.extend(part)  # func
+            s_code.append(sect_str)  # func
         elif "d" in type:
             if "b" in type:
-                s_databs.extend(part)   # dat b
+                s_databs.append(sect_str)   # dat b
             elif "c" in type:
-                s_dataro.extend(part)  # dat ro
+                s_dataro.append(sect_str)  # dat ro
             else:
-                s_datarw.extend(part)  # dat rw
+                s_datarw.append(sect_str)  # dat rw
         else:
             fail(f"Unsupported sym type: {type} at 0x{addr:08X}")
 
         sym_prev = sym
 
     if len(s_code) < 2:
-        fail ("No functions matching, try with --allow_shifting")
+        fail("No functions matching, no scatter created.")
         getOutScatterFile().touch()
         return
 
     s_code_str = endPart(s_code)
-    s_dataro_str = endPart(s_dataro) if s_dataro else ''
-    s_datarw_str = endPart(s_datarw) if s_datarw else ''
-    s_databs_str = endPart(s_databs) if s_databs else ''
+    s_dataro_str = endPart(s_dataro)
+    s_datarw_str = endPart(s_datarw)
+    s_databs_str = endPart(s_databs)
 
     out_line = None
     with open(getDataDir() / "template" / "linker.ld", 'r') as f:

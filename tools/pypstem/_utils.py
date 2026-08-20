@@ -41,3 +41,32 @@ def getModSrc(mod_path_name, mod_data):
 def getModInc(mod_path_name, mod_data):
     mod_subdir = mod_data.get("include_dir") or "."
     return getProjDir().joinpath(*str(mod_path_name).split("/")).joinpath(*str(mod_subdir).split("/"))
+
+def isSymMapDiff():
+    if not getMapFile().exists():
+        fail ("Version not configured, cannot split.")
+
+    ts_new = int(getMapFile().stat().st_mtime)
+
+    def write_new():
+        with open(getCfgMapFile(), "w") as f:
+            f.write(f"{getVersion()} {ts_new}")
+
+    if not getCfgMapFile().exists():
+        write_new()
+        return True
+
+    ts_old = 0
+    ver_old = 0
+    with open(getCfgMapFile(), "r") as f:
+        ver_old, ts_old = next(f).split()
+
+    if getVersion() != ver_old:
+        write_new()
+        return True
+    if int(ts_old) != ts_new:
+        write_new()
+        return True
+
+    return False
+

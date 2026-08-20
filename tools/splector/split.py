@@ -56,6 +56,16 @@ data_symbol_last = 0
 data_prev_tag = ""
 header = None
 
+def getHeadFunction(addr):
+    if addr > data_start:
+        return None
+
+    for f in ranges.values():
+        if addr > f[0]:
+            return f
+def getHeadFunctionAddr(addr):
+    getHeadFunction(addr)[0]
+
 def dataLineBuildGetSym(addr):
     myname = None
     size = 4
@@ -114,6 +124,8 @@ def getDataOnce(addr, size, caller, tag, sect=None):
 
     for ai in range(size):
         a = addr + ai
+        if a == 0x0039C544:
+            print(f"MARKING 0x{a:08X} as done, called from caller={caller[2] if caller else None}, size={size}, base addr={addr:08X}", file=sys.stderr)
         addr_done.add(a)
 
     if addr > data_start:
@@ -177,9 +189,11 @@ def getDataRef(addr, caller, tag, sect, is_first=False): #
             elif val in switchcases:
                 str = ["switch case", f"case_{val:08X}"]
             else: # just local
-                str = ["local ref", f"loc_{val:08X}"]
-                if is_asm:
-                    ext_calls.add(val)
+                head_func = getHeadFunction(val)
+                if not is_ext or (head_func and head_func[3] == 'a'):
+                    str = ["local ref", f"loc_{val:08X}"]
+                    if is_asm:
+                        ext_calls.add(val)
         elif (val in sym_map) and is_ext: # defined symbol
             myinfoname = "func ref" if val < data_start else "data ref"
             str = [myinfoname, sym_map.get(val)]
@@ -464,7 +478,7 @@ def processFunction(f):
                     myname = "__ctr_start"
                 else:
                     myname = sym_map.get(f[8])
-            label += meta_add("f", typeToSection(mytype, myname), f[2], f[1] - f[0], True, True)
+            label += meta_add("f", f[9] or typeToSection(mytype, myname), f[2], f[1] - f[0], True, True)
             extrainfo += " (asm function)"
 
         elif (i.address in locals) or (i.address in ext_calls):
@@ -483,7 +497,8 @@ def processFunction(f):
     if has_instr == False:
         error_func (f, instrs, f"No instructions!")
 
-    lines.append("    ENDFUNC\n\n")
+    if lines and len(lines) > 0:
+        lines.append("    ENDFUNC\n\n")
 
     if flag_doUpdate and lp_start:
         # overwrite function end
@@ -495,6 +510,7 @@ def processSymbol(f):
     global func_exts,  datablob_refs, datablob_ext, switchcases, switchcases_entry
 
     if f[0] in addr_done:
+        print(f"SKIP: 0x{f[0]:08X} ({f[2]}) already in addr_done", file=sys.stderr)
         return []  # already written
 
     if not "f" in f[3]:
@@ -654,6 +670,7 @@ def main(do_update=None):
         if os.path.exists(getSplitAsmDir()):
             echor ("Output exists, deleting....")
             shutil.rmtree(getSplitAsmDir())
+            getSplitAsmDir().mkdir(parents=True, exist_ok=True)
             echo ("Output exists, deleted.")
 
     if flag_doUpdate:
@@ -777,7 +794,6 @@ def main(do_update=None):
         lines_file.extend(lines)
 
         is_this_reset = (file_sym_count > file_sym_count_max)
-
         if is_this_reset:
             write_asm_file()
 
