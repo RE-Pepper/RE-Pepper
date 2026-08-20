@@ -53,6 +53,13 @@ def exec_check(version, clear=False, stop=False):
                     item.unlink()
         if not clear and not stop:
             print(f"Version changed, rebuilding. ({old_version.upper()} -> {version.upper()})")
+        else:
+            if getCfgMapFile().exists():
+                getCfgMapFile().unlink()
+            if getCfgFlagsFile().exists():
+                getCfgFlagsFile().unlink()
+            if getCfgSymsFile().exists():
+                getCfgSymsFile().unlink()
 
     if not getBuildObjPath().exists():
         getBuildObjPath().mkdir(parents=True, exist_ok = True)

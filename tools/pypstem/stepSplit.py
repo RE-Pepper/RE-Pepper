@@ -4,10 +4,6 @@ import shutil
 
 from tools.low.glob import *
 
-if cfg.do_split:
-    import tools.splector as splector
-    import tools.splector.split
-
 from tools.low.readSymMap import *
 from tools.pypstem._utils import *
 from tools.pypstem.callProcess import *
@@ -20,40 +16,12 @@ if cfg.flags_compile:
 if cfg.flags_compile_asm:
     flags_asm.extend(cfg.flags_compile_asm)
 
-def isSymMapDiff():
-    if not getMapFile().exists():
-        fail ("Version not configured, cannot split.")
-
-    ts_new = int(getMapFile().stat().st_mtime)
-
-    def write_new():
-        with open(getCfgMapFile(), "w") as f:
-            f.write(f"{getVersion()} {ts_new}")
-
-    if not getCfgMapFile().exists():
-        write_new()
-        return True
-
-    ts_old = 0
-    ver_old = 0
-    with open(getCfgMapFile(), "r") as f:
-        ver_old, ts_old = next(f).split()
-
-    if getVersion() != ver_old:
-        write_new()
-        return True
-    if int(ts_old) != ts_new:
-        write_new()
-        return True
-
-    return False
-
 def write_depend():
     # get all functions
     func_list = [sym[MapFmt.Symbol] or f"fn_{sym[MapFmt.Start]:08X}" for sym in read_sym_file() if "f" in sym[MapFmt.Type] and not sym[MapFmt.Rank] == "U"]
 
     # write depends.s
-    in_depend = getDependFile().with_suffix(".s")
+    in_depend = getBuildDependFile().with_suffix(".s")
     with open(in_depend, "w") as f:
         for func in func_list:
             f.write(f"    IMPORT {func}\n")
@@ -61,7 +29,7 @@ def write_depend():
         f.write("\n    PRESERVE8\n    END\n")
 
     # compile depends.o
-    asm_flags = flags_asm + ["-o", str(getDependFile()), str(in_depend)]
+    asm_flags = flags_asm + ["-o", str(getBuildDependFile()), str(in_depend)]
     do_assemble(asm_flags)
 
 def write_stubs():
@@ -103,16 +71,16 @@ def write_stubs():
                 f.write(f"STUB({func});\n")
 
 def exec_split(clear=False):
-    if not cfg.do_split:
+    if not cfg.split:
         write_stubs()
         write_depend()
-        return
+        return False
 
     if not clear and getSplitLibFile().exists() and (getSplitAsmDir().exists() and cfg.keep_objects):# and not isSymMapDiff():
-        echo ("Assembly up to date")
-        return
+        echo ("Split up to date")
+        return False
 
-    echo ("Splector11 (may take a few minutes)!")
+    echo ("I'm Splector Gadget (may take a few minutes)!")
     if not clear:
         echo (" if you need to regenerate it later, run with \'-cs\'.")
 
@@ -120,8 +88,11 @@ def exec_split(clear=False):
         shutil.rmtree(getSplitAsmDir(), ignore_errors=True)
     if getSplitObjDir().exists():
         shutil.rmtree(getSplitObjDir(), ignore_errors=True)
-    
-    splector.split.run()
+
+    if cfg.split:
+        import tools.splector as splector
+        import tools.splector.split
+    splector.split.main()
 
     if not getSplitAsmDir().exists():
         fail ("Splits are missing.")
@@ -180,4 +151,6 @@ def exec_split(clear=False):
     # cleanup
     if not cfg.keep_objects:
         shutil.rmtree(getSplitPath(), ignore_errors=True)
+
+    return True
 

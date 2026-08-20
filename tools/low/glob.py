@@ -96,6 +96,8 @@ def getBuildObjPath():
     return getBuildPath() / "obj"
 def getBuildLibPath():
     return getBuildPath() / "lib"
+def getBuildDependFile():
+    return getSplitPath() / "depend.o"
 
 def getJsonComcomFile():
     return getProjDir() / "compile_commands.json"
@@ -115,7 +117,7 @@ def getSplitObjFile():
 def getSplitLibFile():
     return getBuildLibPath() / f"lib{getSplitLibName()}.a"
 # grabs symbols from libraries
-def getDependFile():
+def getSplitDependFile():
     return getSplitPath() / "depend.o"
 # stubs
 def getStubsLibName():

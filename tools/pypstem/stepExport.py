@@ -15,8 +15,18 @@ def exec_export_bin():
     flags = ["--bincombined", getElfFile(), "--output", getExportFile()]
     do_export(flags)
 
+def exec_export_elf():
+    if not getBinCodeFile().exists():
+        return
+    if not isSymMapDiff() and getBinCodeFile().with_suffix(".elf").exists():
+        return
+
+    echo ("Converting bin to elf")
+
+    from tools.low.convBinToElf import conv_bin_to_elf
+    conv_bin_to_elf()
+
 def exec_export_comcom():
-    echo ("Generating json")
     gen_comcom()
 
 def exec_export_objdiff():

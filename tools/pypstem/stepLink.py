@@ -24,7 +24,10 @@ def exec_link():
     flags.append(f"--output={str(getElfFile())}")
     flags.append(f"--scatter={str(getOutScatterFile())}")
 
-    flags.append(str(getDependFile()))
+    depend_file = getSplitDependFile() or getBuildDependFile()
+    if not depend_file:
+        fail("No depend file found! (internal error)")
+    flags.append(str(depend_file))
 
     flags.append(f"--userlibpath={str(getBuildLibPath())}")
 
@@ -37,7 +40,7 @@ def exec_link():
                 continue
             flags.append(f"--library={my_name}")
 
-    if cfg.do_split:
+    if cfg.split:
         flags.append(f"--library={getSplitLibName()}")
     else:
         flags.append(f"--library={getStubsLibName()}")

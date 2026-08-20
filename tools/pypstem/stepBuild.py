@@ -16,6 +16,19 @@ flags_cxx = []
 
 # todo: add check to enforce specific formats for specific configs (cfg.py)
 
+def postProcSrc(file, file_src):
+    sect_formats = [f"||.{x}||" for x in ["constdata", "data", "conststring", "bss"]]
+
+    # read in whole
+    text = file.read_text()
+
+    for s in sect_formats:
+        text = text.replace(s, s[:-2] + "." + file_src.name + "||").replace("        THUMB", "        ARM")
+
+    file.write_text(text)
+
+    return True
+
 def buildFile(file_in, file_out):
     if not file_in.exists():
         fail (f"Bug: trying to build not existing source {file}")
@@ -24,15 +37,22 @@ def buildFile(file_in, file_out):
         fail ("Why are you adding headers as source? (bad)")
 
     file_out.parent.mkdir(parents=True, exist_ok=True)
-    
-    flags_add = ["-o", file_out, "--depend", file_out.with_suffix(".d"), file_in]
 
-    if not "c" in file_in.suffix:
-        flags = flags_asm + flags_add
-        do_assemble(flags)
-    else:
-        flags = flags_cxx + ["-c"] + flags_add
+    if "c" in file_in.suffix:
+        file_tmp = file_out.with_suffix(".s")
+        flags = flags_cxx + ["-S", "-c", f'-D__BASE_FILE_NAME__=\"{file_in.name}\"', "-o", file_tmp, "--depend", file_out.with_suffix(".d"), file_in]
+
         do_compile(flags)
+
+        if not postProcSrc(file_tmp, file_in):
+            return False
+
+        file_in = file_tmp # ONLY AFTER FLAGS!
+
+    flags = flags_asm + ["-o", file_out, file_in]
+    do_assemble(flags)
+
+    return True
 
 # ensure shift-jis
 def convertFile(file):
@@ -96,6 +116,7 @@ def areDependsNew(file):
 def exec_build():
     echo ("Building modules")
 
+    # Assert module count
     global flags_asm, flags_cxx
     if not cfg.modules or len(cfg.modules) <= 0:
         echo ("No modules are specified, nothing to build.")
@@ -107,13 +128,14 @@ def exec_build():
     progress_set("")
     progress_set_type ("Preparing to build ...")
 
+    # Load hash of last compiler flags (per module)
     flags_old = None
     if getCfgFlagsFile().exists():
         flags_old = {}
         with open(getCfgFlagsFile(), "r") as f:
             for line in f:
                 row = line.split()
-                if len(row) != 2:
+                if len(row) != 2:  # moduleName  hash
                     echo ("data/.flags is corrupt, rebuilding.")
                     getCfgFlagsFile().unlink()
                     break
@@ -123,11 +145,13 @@ def exec_build():
                 else:
                     flags_old[row[0]] = row[1]
 
+    # Load symbol cache
     json_syms = {}
     if getCfgSymsFile().exists():
         with open(getCfgSymsFile(), "r") as f:
             json_syms = json.load(f)
 
+    # delete temporary file
     if getCfgFlagsTFile().exists():
         getCfgFlagsTFile().unlink()
 
@@ -152,6 +176,7 @@ def exec_build():
     base_flags_cxx.extend(base_flags)
     base_flags_cxx.extend(default_flags_comp_cxx)
 
+    # if exist, add
     if cfg.flags_compile_asm:
         base_flags_asm.extend(cfg.flags_compile_asm)
     if cfg.flags_compile_cxx:
@@ -165,6 +190,7 @@ def exec_build():
     module_paths = {}
     module_files = {}
 
+    # gen file list per module
     for mod_path_name, mod_data in cfg.modules.items():
         mod_path = getModSrc(mod_path_name, mod_data)
         module_paths[mod_path_name] = mod_path
@@ -213,15 +239,18 @@ def exec_build():
         if val:
             setup_compiler(val)
 
+        # get flag hash for module
         old_flags_cxx = None
         old_flags_asm = None
         if flags_old:
             old_flags_cxx = flags_old.get(mod_path_name)
             old_flags_asm = flags_old.get(f"{mod_path_name}_s")
 
+        # gen flag hashes
         new_flags_cxx_hash = getArrayHash(flags_cxx)
         new_flags_asm_hash = getArrayHash(flags_asm)
 
+        # check hashes of flags
         force_update = False
         if (new_flags_cxx_hash != old_flags_cxx) or (new_flags_asm_hash != old_flags_asm):
             force_update = True # flags mismatch
@@ -247,16 +276,16 @@ def exec_build():
                 do_update = True
 
             if do_update: # build it
-                has_update = True
-
                 # set progress
                 progress_set(f"{file.name}")
                 progress_print()
 
                 # build it
                 convertFile(file)
-                buildFile(file, out_path)
+                if not buildFile(file, out_path):
+                    continue
 
+                has_update = True
                 # post process
                 if not out_path.exists():
                     fail_ex ("Output not found.", f"Missing {str(out_path)}")
@@ -268,10 +297,10 @@ def exec_build():
 
             # write down symbols in .syms
             if not str(getBuildPath()) in str(file):
-                if file_str in json_syms:
+                if file_str in json_syms: # dup check
                     del json_syms[file_str]
                 json_syms[file_str] = []
-                for sym in read_elfsym(out_path):
+                for sym in read_elfsym(out_path): # write
                     if sym[ElfSymFmt.Symbol] in json_syms[file_str]:
                         continue
                     json_syms[file_str].append(sym[ElfSymFmt.Symbol])
@@ -284,7 +313,10 @@ def exec_build():
             for file in build_dir.rglob("*.d"):
                 # open dependency file
                 with open(file, "r") as f:
-                    line = f.read().splitlines()[0]
+                    lines = f.read().splitlines()
+                    if not lines:
+                        continue
+                    line = lines[0]
                     row = shlex.split(line)
                     if len(row) != 3:
                         continue
@@ -320,11 +352,12 @@ def exec_build():
             f.write(f"{mod_path_name} {new_flags_cxx_hash}\n")
             f.write(f"{mod_path_name} {new_flags_asm_hash}\n")
 
-        # clean / report
+        # report
         if len(obj_new_list) <= 0 and not did_delete:
             echo (f"{line_category}: Unchanged")
             continue
 
+        # cleanup
         if len(obj_new_list) > 0 and not cfg.keep_objects:
             echo (f"{line_category}: Cleaning", "\r")
             for f in obj_new_list:
@@ -333,8 +366,10 @@ def exec_build():
 
         echo (f"{line_category}: Done")
 
+    # finally replace real file with working ver
     getCfgFlagsTFile().replace(getCfgFlagsFile())
 
+    # delete via file
     if getBuildViaFile().exists():
         getBuildViaFile().unlink()
 

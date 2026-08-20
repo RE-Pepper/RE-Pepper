@@ -18,8 +18,13 @@ def callAsmdiff(map_symbol, decomp_symbol, extra_flags=[], is_json=False):
 
     sym_start = int(map_symbol[MapFmt.Start]-addr_base)
     decomp_start = int(decomp_symbol[ElfMapFmt.Address]-addr_base)
-    sym_size = int(map_symbol[MapFmt.Pool] - map_symbol[MapFmt.Start]) - size_diff
+    sym_size = int(map_symbol[MapFmt.Pool]) - int(map_symbol[MapFmt.Start]) - size_diff
     decomp_size = int(decomp_symbol[ElfMapFmt.Size]) - size_diff
+
+    #print("Target Start: "+str(sym_start))
+    #print("Current Start: "+str(decomp_start))
+    #print("Target Size: "+str(sym_size))
+    #print("Current Size: "+str(decomp_size))
 
     if decomp_size <= 0:
         decomp_size = sym_size

@@ -18,7 +18,7 @@
 #define force_func_section(Symbol) force_section("i." #Symbol)
 
 #define var(Namespace, Name, Type) static Type force_section(".sdata_" #Namespace "::" #Name) Name
-#define varc(Namespace, Class, Name, Type) Type force_section(".sdata_" #Namespace "::" #Name) Class::Name
+#define varc(Namespace, Class, Name, Type) Type force_section(".sdata_" #Namespace "::" #Class "::" #Name) Class::Name
 #define varg(Name, Type) static Type force_section(".sdata_" #Name) Name
 #define varcg(Class, Name, Type) Type force_section(".sdata_" #Name) Class::Name
 
@@ -65,3 +65,18 @@
 #define __weak
 #define __clrex()
 #endif
+
+#define S_(x) #x
+#define S(x) S_(x)
+
+// Force Sections
+// Note: __BASE_FILE_NAME__ is set by the build system.
+// RO
+#define _SECT_RO ".constdata." __BASE_FILE_NAME__
+_Pragma(S(arm section rodata=_SECT_RO))
+// 
+#define _SECT_RW ".data." __BASE_FILE_NAME__
+_Pragma(S(arm section rwdata=_SECT_RW))
+// ZI
+#define _SECT_ZI ".bss." __BASE_FILE_NAME__
+_Pragma(S(arm section zidata=_SECT_ZI))
