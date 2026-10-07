@@ -1,0 +1,13 @@
+{
+  "$schema": "https://recomp.fyi/schema/v1.json",
+  "game": "Super Mario 3D Land",
+  "system": "3DS",
+  "type": "decomp",
+  "status": "paused",
+  "original": { "region": "PAL", "revision": "1.0" "serial": "CTR-P-AREP", "sha1": "e1d7e188ff88467df776c17cec45c44857fadf5b699944baa8cddcae7d939e64"},
+  "project": "RE:Pepper",
+  "approach": "Functions matching byte for byte",
+  "maintainers": [{ "name": "Moddimation", "link": "https://github.com/Moddimation" }],
+  "links": [{ "label": "3DS Decomp Discord", "url": "https://discord.gg/37mBTzvWsU " }],
+  "notes": "Check out https://rep.moddi.dev/"
+}
