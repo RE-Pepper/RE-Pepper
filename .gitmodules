@@ -7,10 +7,6 @@
 [submodule "lib/NintendoWare"]
 	path = lib/NintendoWare
 	url = https://github.com/ctrdecomp/NintendoWare4Ctr
-[submodule "lib/CtrSDK"]
-	path = lib/CtrSDK
-	url = https://github.com/ctrdecomp/CTR_SDK
-	branch = SDK_2_X_X
 [submodule "lib/sead"]
 	path = lib/sead
 	url = https://github.com/ctrdecomp/sead
