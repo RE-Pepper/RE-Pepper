@@ -39,7 +39,13 @@ ColumnLimit: 0
 UseTab: Never
 ContinuationIndentWidth: 8
 CompactNamespaces: false
+<<<<<<< Updated upstream
 OneLineFormatOffRegex: "nf"
+=======
+SpaceBeforeParens: Always
+OneLineFormatOffRegex: "noformat"
+Macros: [asm, asm_ext, var]
+>>>>>>> Stashed changes
 IncludeBlocks: Regroup
 IncludeCategories:
   - Regex: ^<

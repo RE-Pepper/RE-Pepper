@@ -39,7 +39,7 @@ def main():
         cfg.flags_link.append("--keep=*")
     if args.delete:
         cfg.keep_objects = True
-    if args.debug:
+    if args.debug: # TODO: add a modes_x toggle together with config, overriding flags like user but mode active true (make.py can use it as they wish, thats a user decision)
         cfg.flags_compile_cxx.append("--debug")
         cfg.macros["NN_SWITCH_DISABLE_ASSERT_WARNING_FOR_SDK"]=0
         cfg.macros["NN_SWITCH_DISABLE_DEBUG_PRINT_FOR_SDK"]=0

@@ -28,22 +28,30 @@
     "lib/sead": {
       "name": "Sead",
       "source_dir": "modules/src",
-      "flags_cxx": ["--sys_include", "--no_vla"]
+      "flags_cxx": ["--sys_include", "--no_vla"],
+      "macros": {"SEAD_VERSION_REDPEPPER": 1}
     },
     "lib/sead/addins/libms": {
-      "name": "MS",
+      "name": "LMS",
       "flags_cxx": ["--no_vla"]
+    },
+    "lib/CFL": {
+      "name": "CFL",
+      "flags_cxx": ["--sys_include"],
+      "compiler": "4.0/902"
     },
     "lib/NintendoWare": {
       "name": "NW",
       "source_dir": "sources",
-      "compiler": "4.0/902"
+      "compiler": "4.0/902",
+      "macros": {"NW_VERSION_REDPEPPER": 1}
     },
     "lib/CtrSDK": {
       "name": "SDK",
       "source_dir": "sources",
       "compiler": "4.0/902",
-      "flags_cxx": ["--debug_info=line_inlining_extensions", "--no_debug_macros"]
+      "flags_cxx": ["--debug_info=line_inlining_extensions", "--no_debug_macros"],
+      "macros": {"NN_VERSION_REDPEPPER": 1}
     }
   },
   "compiler": "4.1/791",

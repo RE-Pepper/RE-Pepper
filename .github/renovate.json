@@ -8,8 +8,12 @@
     "enabled": true
   },
   "automerge": true,
+<<<<<<< Updated upstream
   "automergeType": "branch",
   "platformAutomerge": true,
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0
+=======
+  "automergeType": "branch"
+>>>>>>> Stashed changes
 }
