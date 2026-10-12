@@ -32,7 +32,6 @@ jobs:
 
       - name: Check
         run: | 
-          export DEVKITARM="$PWD/setup/dkp"
 
           VERSIONS=(); for dir in ./data/ver/*/; do [[ -f "$dir/map.csv" ]] && VERSIONS+=("${dir%/}"); done; VERSIONS=("${VERSIONS[@]##*/}")
           did_run=false

@@ -12,6 +12,7 @@ def main():
     parser.add_argument("version", nargs="?", default=None, help="Version to use")
     parser.add_argument("--warn", '-w', action='store_true', help="Omit many warnings (nintendo standard)")
     parser.add_argument("--split", '-s', action='store_true', help="Enable splitting process (slow)")
+    parser.add_argument("--match", '-m', action='store_true', help="Matching linker mode: pin every symbol to its original address, fill the rest with original bytes (default when config has matching:true)")
     parser.add_argument("--vfe", '-vf', action='store_true', help="Enable VFE for building")
     parser.add_argument("--debug", '-d', action='store_true', help="Build with debug info")
     parser.add_argument("--delete", '-k', action='store_true', help="Delete temporary built files")
@@ -20,6 +21,7 @@ def main():
     parser.add_argument("--clear_build", '-cr', action='store_true', help="Clean build (and continue)")
     parser.add_argument("--clear_split", '-cs', action='store_true', help="Clean split (and continue)")
     parser.add_argument("--force_link", '-fl', action='store_true', help="Force linking anyways")
+    parser.add_argument("--objdiff_donotuse", action='store_true', help="Marker flag objdiff passes when it invokes the build. No effect, do not use by hand.")
     parser.add_argument("--silent", '-q', action='store_true', help="Silent mode (not added yet)")
     args = parser.parse_args()
     sys.argv = [sys.argv[0]] # clear args
@@ -32,8 +34,21 @@ def main():
         args.clear_build = True
         args.clear_split = True
 
-    if args.split:
-        cfg.split = True7
+    # matching mode can be the project default via config ("matching": true)
+    do_match = args.match or cfg.matching
+    do_split = args.split or cfg.split
+
+    if do_match and do_split:
+        print("Error: --match and --split are mutually exclusive.")
+        exit(1)
+
+    if do_match:
+        # matching linker mode: stepLink adds the official release flags
+        # (--tailreorder, --remove); --keep=* would defeat section
+        # selection so it must NOT be added here
+        cfg.matching = True
+    elif do_split:
+        cfg.split = True
     else:
         cfg.flags_link.append("--tailreorder")
         cfg.flags_link.append("--keep=*")
@@ -74,9 +89,6 @@ def main():
     # build binaries
     is_new_build = pypstem.exec_build()
 
-    # export objdiff json
-    pypstem.exec_export_objdiff()
-
     is_new = args.force_link or is_new_split or is_new_build
 
     # link binary
@@ -86,6 +98,9 @@ def main():
     # export code.bin
     if is_new or not getExportFile().exists():
         pypstem.exec_export_bin()
+
+    # export objdiff json + per unit target objects (after the link)
+    pypstem.exec_export_objdiff()
 
 if __name__ == "__main__":
     main()

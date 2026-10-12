@@ -126,6 +126,15 @@ def getStubsLibFile():
     return getBuildLibPath() / f"lib{getStubsLibName()}.a"
 def getStubsFile():
     return getSplitPath() / f"{getStubsLibName()}.c"
+# original bytes (matching mode)
+def getOrigDir(): # base dir for original byte slices
+    return getSplitPath() / "original"
+def getOrigAsmDir():
+    return getOrigDir() / "asm"
+def getOrigObjDir():
+    return getOrigDir() / "obj"
+def getMatchSkipFile(): # symbols matching mode must not pin (auto managed)
+    return getVerDir() / ".matchskip"
 
 # enable ansi colors on windows
 if os.name == "nt":

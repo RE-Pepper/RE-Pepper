@@ -29,7 +29,7 @@ def rank_symbol(symbol, decomp_symbol):
     if res is None:
         return 'U'
     if res.returncode != 0:
-        fail (f"asm-differ failed:\n{res.stderr}", False)
+        fail (f"3differ failed:\n{res.stdout}", False)
 
     out = res.stdout
     if "CURRENT" not in out: raise RuntimeError(f"Unexpected output:\n{out}")

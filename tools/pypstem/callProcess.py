@@ -35,6 +35,14 @@ def _call(exe, arg_list, silent=False, capture=False):
         ret = subprocess.run(args, env=env)
 
     if ret.returncode != 0:
+        if capture:
+            # the caller wanted the output, but on failure it would be
+            # lost. show what the tool actually said before failing.
+            out = ((ret.stdout or "") + (ret.stderr or "")).splitlines()
+            for line in out[:40]:
+                echo (line)
+            if len(out) > 40:
+                echo (f"... and {len(out) - 40} more lines (rerun the shown command by hand to see all)")
         fail_ex (f"{path.name} failed with {ret.returncode}.", " ".join(map(str, arg_list)), False)
 
     return ret.stdout
@@ -50,6 +58,29 @@ def do_compile(arg_list, silent=False, capture=False):
 
 def do_link(arg_list, silent=False, capture=False):
     return _call("armlink", arg_list, silent, capture)
+
+def do_link_soft(arg_list):
+    # links without failing: returns (returncode, combined_output).
+    # used by matching mode to inspect linker errors and auto demote
+    # offending pinned rows instead of dumping a raw failure.
+    import subprocess
+    from tools.low.glob import isLinux
+    path = _get_bin("armlink")
+
+    args = []
+    if isLinux():
+        open(getProjDir() / "cmd.exe", 'a').close()
+        args.append(str(getCompilersDir() / "wibo"))
+    if not path.exists():
+        fail_ex (f"Compiler binaries incomplete, cannot find {path.name}", f"At {path}")
+    args.append(str(path))
+    args.extend(map(str, arg_list))
+
+    env = os.environ.copy()
+    env["TMP"] = "/tmp"
+
+    ret = subprocess.run(args, env=env, capture_output=True, text=True)
+    return ret.returncode, (ret.stdout or "") + (ret.stderr or "")
 
 def do_archive(arg_list, silent=False, capture=False):
     return _call("armar", arg_list, silent, capture)

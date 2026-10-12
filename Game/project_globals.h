@@ -1,9 +1,10 @@
-#include <nn/types.h>
 
 #ifndef RP_SHUTUP
 #define RP_SHUTUP \
         _Pragma("diag_suppress 177,550,940")
 #endif
+
+#include <nn/types.h>
 
 // Assertion
 #ifndef static_assert

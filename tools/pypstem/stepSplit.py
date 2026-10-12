@@ -17,8 +17,21 @@ if cfg.flags_compile_asm:
     flags_asm.extend(cfg.flags_compile_asm)
 
 def write_depend():
-    # get all functions
-    func_list = [sym[MapFmt.Symbol] or f"fn_{sym[MapFmt.Start]:08X}" for sym in read_sym_file() if "f" in sym[MapFmt.Type] and not sym[MapFmt.Rank] == "U"]
+    # import one symbol per function the stub file actually covers.
+    # write_stubs skips "s" (assembly) and "g" (global def) types and
+    # unnamed rows, so those must not be imported either, otherwise
+    # armlink fails with L6218E for symbols nothing defines.
+    func_list = []
+    for sym in read_sym_file():
+        if "f" not in sym[MapFmt.Type]:
+            continue
+        if sym[MapFmt.Rank] == "U":
+            continue
+        if "s" in sym[MapFmt.Type] or "g" in sym[MapFmt.Type]:
+            continue
+        if not sym[MapFmt.Symbol]:
+            continue
+        func_list.append(sym[MapFmt.Symbol])
 
     # write depends.s
     in_depend = getBuildDependFile().with_suffix(".s")
@@ -31,6 +44,68 @@ def write_depend():
     # compile depends.o
     asm_flags = flags_asm + ["-o", str(getBuildDependFile()), str(in_depend)]
     do_assemble(asm_flags)
+
+def write_match_depend():
+    # matching mode depend file:
+    #  - one IMPORT per slice (keep alive, protects the area from
+    #    unused section elimination and pulls nothing else in)
+    #  - one IMPORT per pinned row (pulls the compiled section of the
+    #    row from the module archives)
+    # the file is content gated: a depend.o left over from another mode
+    # or an older map must not survive into the match link
+    from tools.low.genOriginal import build_units, orig_unit_label
+
+    units, header = build_units()
+
+    lines = []
+    for u in units:
+        if u.kind in ("slice", "zslice"):
+            lines.append(f"    IMPORT {orig_unit_label(u.start)}\n")
+        elif u.kind in ("pin", "zpin"):
+            lines.append(f"    IMPORT {u.rows[0][MapFmt.Symbol]}\n")
+    lines.append("\n    PRESERVE8\n    END\n")
+    content = "".join(lines)
+
+    in_depend = getBuildDependFile().with_suffix(".s")
+    if in_depend.exists() and in_depend.read_text() == content and getBuildDependFile().exists():
+        return # up to date
+
+    with open(in_depend, "w") as f:
+        f.write(content)
+
+    asm_flags = flags_asm + ["-o", str(getBuildDependFile()), str(in_depend)]
+    do_assemble(asm_flags)
+
+def assemble_orig():
+    # assemble the generated original byte slices.
+    # armasm reports missing INCBIN files only as a warning (A1023E) and
+    # still exits with 0, so the output has to be scanned for it, the
+    # objects would otherwise silently miss their bytes.
+    setup_compiler(cfg.compiler)
+
+    getOrigObjDir().mkdir(parents=True, exist_ok=True)
+
+    did_work = False
+    for asm in sorted(getOrigAsmDir().glob("*.s")):
+        out = getOrigObjDir() / asm.with_suffix(".o").name
+
+        if out.exists() and out.stat().st_mtime >= asm.stat().st_mtime:
+            continue
+
+        echo (f"> {out.name} <", "\r")
+        asm_flags = flags_asm + ["-o", str(out), str(asm)]
+        text = do_assemble(asm_flags, silent=True, capture=True) or ""
+
+        problems = [l for l in text.splitlines() if ("A1023E" in l or "Error" in l)]
+        if problems:
+            for p in problems[:10]:
+                echo (p)
+            fail_ex (f"armasm failed on {asm.name}.",
+                     f"{len(problems)} problems (first shown). INCBIN chunks must sit next to the .s file.", False)
+
+        did_work = True
+
+    return did_work
 
 def write_stubs():
     # add stubs module
@@ -71,6 +146,21 @@ def write_stubs():
                 f.write(f"STUB({func});\n")
 
 def exec_split(clear=False):
+    if cfg.matching:
+        # matching mode: original byte slices instead of stubs/splector.
+        # gen_original uses its own stamp (map + .syms + code.bin +
+        # .matchskip), so isSymMapDiff is left untouched for export_elf.
+        from tools.low.genOriginal import gen_original
+
+        did_gen = gen_original(clear)
+        did_asm = assemble_orig()
+
+        # content gated: regenerates when the pin/slice set changed or
+        # when a depend file from another mode is lying around
+        write_match_depend()
+
+        return did_gen or did_asm
+
     if not cfg.split:
         write_stubs()
         write_depend()

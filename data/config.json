@@ -2,7 +2,7 @@
   "project_name": "RE-Pepper",
   "app_name": "CtrApp",
   "decompme_id": 8,
-  "default_version" : "eu",
+  "default_version": "eu",
   "versions": {
     "eu": "e1d7e188ff88467df776c17cec45c44857fadf5b699944baa8cddcae7d939e64",
     "us": "c705711154b1c514d7a0b5d133fabff42834110b198bd4cf86397d0d1c1597e9",
@@ -17,44 +17,70 @@
   "modules": {
     "Game": {
       "name": "Game",
-      "flags_cxx": ["--sys_include"],
+      "flags_cxx": [
+        "--sys_include"
+      ],
       "disabled": 1
     },
     "lib/al": {
       "name": "Actor",
-      "flags_cxx": ["--sys_include"],
+      "flags_cxx": [
+        "--sys_include"
+      ],
       "disabled": 1
     },
     "lib/sead": {
       "name": "Sead",
       "source_dir": "modules/src",
-      "flags_cxx": ["--sys_include", "--no_vla"],
-      "macros": {"SEAD_VERSION_REDPEPPER": 1}
+      "flags_cxx": [
+        "--sys_include",
+        "--no_vla"
+      ],
+      "macros": {
+        "SEAD_VERSION_REDPEPPER": 1
+      },
+      "disabled": 1
     },
     "lib/sead/addins/libms": {
       "name": "LMS",
-      "flags_cxx": ["--no_vla"]
+      "flags_cxx": [
+        "--no_vla"
+      ],
+      "disabled": 1
     },
     "lib/CFL": {
       "name": "CFL",
-      "flags_cxx": ["--sys_include"],
-      "compiler": "4.0/902"
+      "flags_cxx": [
+        "--sys_include"
+      ],
+      "compiler": "4.0/902",
+      "disabled": 1
     },
     "lib/NintendoWare": {
       "name": "NW",
       "source_dir": "sources",
       "compiler": "4.0/902",
-      "macros": {"NW_VERSION_REDPEPPER": 1}
+      "macros": {
+        "NW_VERSION_REDPEPPER": 1
+      },
+      "disabled": 1
     },
     "lib/CtrSDK": {
       "name": "SDK",
       "source_dir": "sources",
       "compiler": "4.0/902",
-      "flags_cxx": ["--debug_info=line_inlining_extensions", "--no_debug_macros"],
-      "macros": {"NN_VERSION_REDPEPPER": 1}
+      "flags_cxx": [
+        "--debug_info=line_inlining_extensions",
+        "--no_debug_macros"
+      ],
+      "macros": {
+        "NN_VERSION_REDPEPPER": 1
+      },
+      "disabled": 0
     }
   },
   "compiler": "4.1/791",
+  "matching": true,
   "flags_compile": [
     "--arm_only",
     "--no_exceptions",
@@ -88,4 +114,3 @@
     "NN_SWITCH_DISABLE_DEBUG_PRINT_FOR_SDK": 1
   }
 }
-

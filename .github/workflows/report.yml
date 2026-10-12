@@ -1,0 +1,61 @@
+name: Generate Progress Report (decomp.dev)
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  report:
+    name: Build & Report (${{ matrix.version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        version: [eu]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Checkout build repo
+        uses: actions/checkout@v7
+        with:
+          repository: RE-Pepper/RE-Pepper-Build
+          token: ${{ secrets.GH_TOKEN }}
+          path: setup
+
+      - name: Setup
+        run: |
+          cp ./setup/ver/* ./data/ver -rf
+          rm -rf ./setup/ver
+          sudo apt-get update
+          sudo apt-get install -y cmake make python3 python3-pip python-is-python3
+          python -m pip install --no-cache-dir colorama capstone pyelftools requests argcomplete watchdog python-Levenshtein cxxfilt GitPython matplotlib numpy mplcursors questionary
+
+      - name: Build
+        run: |
+          python make.py ${{ matrix.version }}
+          python tools/checkMatch.py -e
+
+      - name: Download objdiff-cli
+        run: |
+          mkdir -p ./tools/bin
+          curl -sSL "https://github.com/encounter/objdiff/releases/latest/download/objdiff-cli-linux-x86_64" -o ./tools/bin/objdiff-cli
+          chmod +x ./tools/bin/objdiff-cli
+
+      - name: Generate progress report
+        run: |
+          mkdir -p build
+          ./tools/bin/objdiff-cli report generate -o build/report.json
+
+      - name: Upload progress report
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.version }}_report
+          path: build/report.json

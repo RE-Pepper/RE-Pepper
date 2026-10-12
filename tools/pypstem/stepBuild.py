@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 import json
+import re
 import shlex
 import subprocess
 from tools.low.readElfSym import *
@@ -22,6 +23,10 @@ def postProcSrc(file, file_src):
     # read in whole
     text = file.read_text()
 
+    # armcc -S emits the per TU data sections as ||.data|| style areas
+    # (or ||area_number.N|| with an EXPORTAS to them). give them one
+    # section per source file, so a single map row with SectionName
+    # ".data.<file>" can pin the whole block.
     for s in sect_formats:
         text = text.replace(s, s[:-2] + "." + file_src.name + "||").replace("        THUMB", "        ARM")
 
@@ -119,7 +124,6 @@ def exec_build():
     # Assert module count
     global flags_asm, flags_cxx
     if not cfg.modules or len(cfg.modules) <= 0:
-        echo ("No modules are specified, nothing to build.")
         return
 
     data_new_names = set()
@@ -213,7 +217,8 @@ def exec_build():
 
     # iterate modules
     for mod_path_name, mod_data in cfg.modules.items():
-        progress_set_type(f"{mod_path_name}/")
+        mod_path = getModSrc(mod_path_name, mod_data)
+        progress_set_type("")
 
         obj_new_list = set()
     
@@ -277,7 +282,9 @@ def exec_build():
 
             if do_update: # build it
                 # set progress
-                progress_set(f"{file.name}")
+                # CtrSDK|libraries/os/os_Etc.cpp
+                file_rel = file.relative_to(mod_path)
+                progress_set(f"{mod_data.get("name")}|{file_rel}")
                 progress_print()
 
                 # build it
@@ -375,5 +382,11 @@ def exec_build():
 
     with open(getCfgSymsFile(), "w") as f:
         json.dump(json_syms, f)
+
+    # .syms changed on disk: genOriginal caches the symbol set per
+    # process, and make.py decomposes before the build but links after
+    # it. drop the cache so the link sees the fresh symbols.
+    import tools.low.genOriginal as _genOriginal
+    _genOriginal._known_syms = None
 
     return has_update

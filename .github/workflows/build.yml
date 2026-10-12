@@ -40,6 +40,7 @@ jobs:
           for v in "${VERSIONS[@]}"; do
               echo "Now $v"
               python make.py "$v"
+              python tools/checkMatch.py -e
               echo "Finished $v"
               did_run=true
           done

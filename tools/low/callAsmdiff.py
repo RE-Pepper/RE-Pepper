@@ -1,60 +1,30 @@
 #!/usr/bin/env python3
-import subprocess
+import importlib
 from typing import Callable, Optional
 
+from tools.low.glob import *
 from tools.low.readSymMap import MapFmt
 from tools.low.readElfMap import ElfMapFmt
-from tools.low.readHeader import *
 
-addr_base = read_header()[HeadType.Text][HeadVal.Start]
+# ranks a map row against the build using 3differ (capstone, no
+# devkitpro). returns (DiffResult, size), the result mimics the old
+# subprocess protocol: .returncode (0 = tool ok, a diff is not a
+# failure), .stdout with CURRENT (N), diff_change/add/remove markers.
 
 def callAsmdiff(map_symbol, decomp_symbol, extra_flags=[], is_json=False):
     if decomp_symbol[ElfMapFmt.Address] == 0:
-        return None, 1
-    elif decomp_symbol[ElfMapFmt.Address] < addr_base:
+        return None, None
+    elif decomp_symbol[ElfMapFmt.Address] < getHeaderLo():
         return None, None
 
-    size_diff = 0
-
-    sym_start = int(map_symbol[MapFmt.Start]-addr_base)
-    decomp_start = int(decomp_symbol[ElfMapFmt.Address]-addr_base)
-    sym_size = int(map_symbol[MapFmt.Pool]) - int(map_symbol[MapFmt.Start]) - size_diff
-    decomp_size = int(decomp_symbol[ElfMapFmt.Size]) - size_diff
-
-    #print("Target Start: "+str(sym_start))
-    #print("Current Start: "+str(decomp_start))
-    #print("Target Size: "+str(sym_size))
-    #print("Current Size: "+str(decomp_size))
-
-    if decomp_size <= 0:
-        decomp_size = sym_size
+    sym_size = map_symbol[MapFmt.End] - map_symbol[MapFmt.Start]
     if sym_size <= 0:
         return None, None
 
-    cmd = [
-        sys.executable,
-        str(Path(getProjDir()) / "tools" / "asm-differ" / "diff.py"),
-        str(sym_start),
-        str(decomp_start),
-        str(sym_size),
-        str(decomp_size),
-        "-I", "-i"
-    ]
+    differ = importlib.import_module("tools.3differ")
+    res = differ.diff_symbol(map_symbol, color=False)
+    return res, sym_size
 
-    if is_json:
-        cmd.append("--format json")
-
-    if extra_flags:
-        cmd.extend(extra_flags)
-
-    if is_json:
-        err = subprocess.run(" ".join(cmd), shell=True, capture_output=True, text=True)
-    else:
-        err = subprocess.run(cmd)
-
-    if not is_json and err and err.returncode == 67:
-        warn("Rebuilding...")
-        callAsmdiff(map_symbol, decomp_symbol, extra_flags, is_json)
-        err.returncode = 0
-
-    return err, sym_size
+def getHeaderLo():
+    from tools.low.readHeader import read_header, HeadType, HeadVal
+    return read_header()[HeadType.Text][HeadVal.Start]

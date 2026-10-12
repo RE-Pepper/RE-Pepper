@@ -60,6 +60,27 @@ flag_preinclude = None
 keep_objects = True
 split = False
 
+# Matching linker mode (make.py --match):
+# every map row gets pinned to its original address, everything not
+# taken from decompiled code is filled with original bytes (INCBIN).
+matching = False
+# When matching: keep execution regions at fixed addresses (False, default)
+# or let them shift relative (+0) so the linker packs them (True).
+# Only useful for debugging layout, byte identity requires False.
+allow_shifting = False
+# When matching: pin every row whose compiled version exists, no matter
+# its rank. The byte comparison (tools/checkMatch.py --update) and the
+# link itself demote rows that do not match into data/ver/$v/.matchskip.
+# Set true to only ever pin rank O rows (the map rank is the authority).
+only_matching = False
+# Emit the retail style scatter (TEXT_SECTION/RO_SECTION/RW_SECTION as
+# single load regions) instead of one load region per unit. The .axf
+# then looks like a retail build, but any undersized or missing pin
+# shifts everything after it in the exported binary (armlink packs the
+# load view inside a load region), so only enable this when all pins
+# fill their rows exactly. see Guide.md.
+retail_sections = False
+
 # Dict of macros
 macros = {}
 
@@ -82,7 +103,6 @@ def checkIntEntry(data, name):
 def checkBolEntry(data, name):
     if name in data:
         globals()[name] = bool(data.get(name))
-        print (name)
 def checkSetEntry(data, name):
     if data.get(name):
         if globals()[name]:
@@ -129,6 +149,9 @@ def readFile(path):
     checkSetEntry(data, "extensions")
     checkBolEntry(data, "keep_objects")
     checkBolEntry(data, "split")
+    checkBolEntry(data, "matching")
+    checkBolEntry(data, "allow_shifting")
+    checkBolEntry(data, "only_matching")
 
     my_modules = data.get("modules")
     if my_modules:
@@ -163,9 +186,6 @@ def assertCfg():
     assertEntry("default_version")
     assertEntry("flags_compile")
     assertEntry("flags_link")
-
-    if not modules or len(modules) <= 0:
-        print ("config.json is missing modules.")
 
     if not assert_flag:
         fail ("config.json unusable, edit and try again.")

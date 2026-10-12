@@ -15,11 +15,13 @@ class MapFmt(IntEnum):
     Symbol = 6
     SectionName = 7
 
-_map_data = []
-if getMapFile().exists():
+_map_data = None
+
+def _parse_map():
+    global _map_data
+    data = []
     with open(getMapFile(), newline='') as f:
         rows = list(csv.reader(f, delimiter=',', quotechar='"'))
-        rowslen = len(rows)
         for rowi, row in enumerate(rows):
             if len(row) < (len(MapFmt) - 1):
                 continue
@@ -33,24 +35,29 @@ if getMapFile().exists():
             end = int(row[MapFmt.End].strip(), 0) if row[MapFmt.End].strip() else None
             pool = int(row[MapFmt.Pool].strip(), 0) if row[MapFmt.Pool].strip() else (end if end else 0)
             section = int(row[MapFmt.Section].strip(), 0) if row[MapFmt.Section].strip() else None
-            _map_data.append((start, pool, end, section, row[MapFmt.Rank], row[MapFmt.Type], row[MapFmt.Symbol], row[MapFmt.SectionName]))
+            data.append((start, pool, end, section, row[MapFmt.Rank], row[MapFmt.Type], row[MapFmt.Symbol], row[MapFmt.SectionName]))
+    _map_data = data
 
 def read_sym_file():
+    # lazy: the version is only known after exec_check ran, so the map
+    # cannot be parsed at import time
+    if _map_data is None:
+        _parse_map()
     return _map_data
 
 def get_symbol(symbol): #chatgpt espanol si si
     # Coincidencia exacta primero
-    retval = next((r for r in _map_data if r[MapFmt.Symbol] == symbol), None)
+    retval = next((r for r in read_sym_file() if r[MapFmt.Symbol] == symbol), None)
     if retval:
         return retval
 
     # Fallback al chooser si no hay coincidencia exacta
     choices_dict = {
         (r[MapFmt.Symbol], f"0x{r[MapFmt.Start]:08X}"): r
-        for r in _map_data
+        for r in read_sym_file()
         if symbol in r[MapFmt.Symbol]
     }
-    
+
     return choose(choices_dict, "Multiple matches in Symbol Map!")
 
 def get_next(symbol):

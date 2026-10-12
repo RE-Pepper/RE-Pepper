@@ -15,6 +15,26 @@ def exec_export_bin():
     flags = ["--bincombined", getElfFile(), "--output", getExportFile()]
     do_export(flags)
 
+    if cfg.matching:
+        # The original code.bin carries the page alignment padding of the
+        # RW section (all zero, added by makerom). fromelf stops at the
+        # last loadable byte, so pad the export back to the original
+        # file length. Content beyond the original span (pinned bss
+        # sections, spill) is cut from the export, the check tool
+        # reports it from the linker map instead.
+        orig = getBinCodeFile()
+        if orig.exists():
+            orig_len = orig.stat().st_size
+            build_len = getExportFile().stat().st_size
+            if build_len < orig_len:
+                with open(getExportFile(), "ab") as f:
+                    f.write(b"\x00" * (orig_len - build_len))
+                echo (f"Padded {orig_len - build_len} bytes of RW page alignment")
+            elif build_len > orig_len:
+                with open(getExportFile(), "r+b") as f:
+                    f.truncate(orig_len)
+                echo (f"Trimmed {build_len - orig_len} bytes beyond the original image (bss pins/spill, see checkMatch)")
+
 def exec_export_elf():
     if not getBinCodeFile().exists():
         return
@@ -33,5 +53,5 @@ def exec_export_objdiff():
     if not getBuildPath().is_dir():
         exit(0)
 
-   # echo ("Generating objdiff")
-   # gen_objdiff()
+    echo ("Generating objdiff")
+    gen_objdiff()
