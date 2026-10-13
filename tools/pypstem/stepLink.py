@@ -132,9 +132,8 @@ def _match_auto_demote(output):
     return demoted, other
 
 def exec_link_match():
-    # the build can rewrite .syms after exec_split decomposed (new
-    # symbols appear): re-check the slices so pins for them exist on
-    # the very first build, not just the second one
+    # the build can rewrite .syms after exec_split decomposed, re-check
+    # the slices so new symbols pin on the same run
     from tools.pypstem.stepSplit import assemble_orig, write_match_depend
     from tools.low.genOriginal import gen_original
     if gen_original():
@@ -156,11 +155,10 @@ def exec_link_match():
     # fresh list: never mutate the shared defaults
     flags = list(default_flags_link)
 
-    # armlink validates that the entry points at real instructions.
-    # while the entry bytes come from an INCBIN slice (marked as $d data)
-    # that cannot pass, and the ELF entry is irrelevant for code.bin (the
-    # 3DS loader uses the exheader entry). only pass entry/startup when
-    # the entry row is pinned from compiled code.
+    # armlink validates that the entry points at real instructions, the
+    # entry bytes come from an INCBIN slice so that cannot pass. the
+    # ELF entry is irrelevant for code.bin anyway. only pass it when the
+    # entry row is pinned from compiled code.
     from tools.low.genOriginal import build_units
     units, _header = build_units()
     entry_pinned = any(u.kind == "pin" and u.rows[0][MapFmt.Symbol] == ENTRY_SYM for u in units)

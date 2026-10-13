@@ -17,10 +17,8 @@ if cfg.flags_compile_asm:
     flags_asm.extend(cfg.flags_compile_asm)
 
 def write_depend():
-    # import one symbol per function the stub file actually covers.
-    # write_stubs skips "s" (assembly) and "g" (global def) types and
-    # unnamed rows, so those must not be imported either, otherwise
-    # armlink fails with L6218E for symbols nothing defines.
+    # import one symbol per function the stub file actually covers,
+    # write_stubs skips s/g types and unnamed rows
     func_list = []
     for sym in read_sym_file():
         if "f" not in sym[MapFmt.Type]:
@@ -46,13 +44,9 @@ def write_depend():
     do_assemble(asm_flags)
 
 def write_match_depend():
-    # matching mode depend file:
-    #  - one IMPORT per slice (keep alive, protects the area from
-    #    unused section elimination and pulls nothing else in)
-    #  - one IMPORT per pinned row (pulls the compiled section of the
-    #    row from the module archives)
-    # the file is content gated: a depend.o left over from another mode
-    # or an older map must not survive into the match link
+    # matching mode depend file: one IMPORT per slice (keep alive) and
+    # one per pinned row (pulls the compiled section in). content gated,
+    # a depend.o from another mode must not survive into the match link
     from tools.low.genOriginal import build_units, orig_unit_label
 
     units, header = build_units()
@@ -148,15 +142,13 @@ def write_stubs():
 def exec_split(clear=False):
     if cfg.matching:
         # matching mode: original byte slices instead of stubs/splector.
-        # gen_original uses its own stamp (map + .syms + code.bin +
-        # .matchskip), so isSymMapDiff is left untouched for export_elf.
+        # gen_original has its own stamp, isSymMapDiff stays untouched.
         from tools.low.genOriginal import gen_original
 
         did_gen = gen_original(clear)
         did_asm = assemble_orig()
 
-        # content gated: regenerates when the pin/slice set changed or
-        # when a depend file from another mode is lying around
+        # content gated, regenerates when the pin/slice set changed
         write_match_depend()
 
         return did_gen or did_asm

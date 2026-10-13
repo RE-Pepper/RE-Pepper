@@ -1,20 +1,8 @@
 #!/usr/bin/env python3
-# generates objdiff.json for decomp.dev plus one relocatable target
-# object per unit.
-#
-# objdiff diffs OBJECTS, not executables: it assumes sections live at
-# address 0 and derives relocations/addends straight from the section
-# bytes, so feeding it the whole code.elf (or the linked .axf) trips
-# over its own bookkeeping. instead every unit gets its own ET_REL .o:
-#
-#   - decompiled source files get a "mirror" object: the compiled .o's
-#     exact structure (sections, symbols, relocations) with the
-#     original bytes swapped in for every symbol we have a map row for.
-#     relocation words are re-placeholdered to match the compiled side
-#     so both diffs resolve to the same symbol instead of a raw address.
-#   - everything else gets a single-symbol object cut straight from the
-#     original code.bin, with no base object: objdiff counts those as
-#     zero progress until someone writes the source for them.
+# generates objdiff.json + one target .o per unit.
+# objdiff only takes relocatable objects, so decompiled files get a
+# clone of their compiled .o with the original bytes swapped in, and
+# every other map row gets a single symbol object cut from code.bin.
 
 import json
 import os
@@ -30,7 +18,7 @@ SCHEMA = "https://raw.githubusercontent.com/encounter/objdiff/main/config.schema
 
 UNKNOWN = "Unknown"
 
-# ELF constants (32 bit little endian ARM)
+# elf constants, 32 bit LE arm
 SHT_PROGBITS, SHT_SYMTAB, SHT_STRTAB, SHT_REL, SHT_NOBITS = 1, 2, 3, 9, 8
 SHF_WRITE, SHF_ALLOC, SHF_EXEC = 1, 2, 4
 STT_NOTYPE, STT_OBJECT, STT_FUNC = 0, 1, 2
@@ -55,8 +43,7 @@ def _emit_obj(path, eflags, secs, syms, relocs):
     _write_if_changed(path, data)
 
 def _write_if_changed(path, data):
-    # regenerating every build would rewrite tens of thousands of tiny
-    # objects; only touch the disk when the content actually changed
+    # skip the write when the file is already identical
     try:
         with open(path, "rb") as f:
             if f.read() == data:
@@ -312,7 +299,7 @@ def _inputs_signature():
     # .syms) on every run even when nothing changed
     import hashlib
     files = [getMapFile(), getBinCodeFile(), getCfgSymsFile(), getElfFile(),
-             Path(__file__)]
+             getDataDir() / "template" / "objdiff.json", Path(__file__)]
     parts = []
     for p in files:
         if p and p.exists():
@@ -454,16 +441,23 @@ def gen_objdiff():
             unit["metadata"]["auto_generated"] = True
         units.append(unit)
 
-    out = {
-        "$schema": SCHEMA,
-        "custom_make": "python",
-        "custom_args": ["make.py", "--objdiff_donotuse"],
-        "build_target": False,
-        "build_base": False,
-        "units": units,
-        "progress_categories": [{"id": c, "name": c} for c in sorted(categories)],
-    }
+    # template in data/template/objdiff.json, /// for the units,
+    # &&& for the categories
+    def render_units():
+        parts = []
+        for u in units:
+            body = json.dumps(u, indent=8)
+            parts.append(body)
+        return ",\n".join(parts)
+
+    def render_categories():
+        return ",\n".join(
+            json.dumps({"id": c, "name": c}, indent=8) for c in sorted(categories)
+        )
+
+    template = (getDataDir() / "template" / "objdiff.json").read_text()
+    out = template.replace("///", render_units()).replace("&&&", render_categories())
     with open(getJsonObjdiffFile(), "w") as f:
-        json.dump(out, f, indent=2)
+        f.write(out)
     stamp.write_text(sig)
     echo (f"objdiff: {len(units)} units in {getJsonObjdiffFile().name}")

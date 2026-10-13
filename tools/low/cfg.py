@@ -69,7 +69,7 @@ matching = False
 # Only useful for debugging layout, byte identity requires False.
 allow_shifting = False
 # When matching: pin every row whose compiled version exists, no matter
-# its rank. The byte comparison (tools/checkMatch.py --update) and the
+# its rank. The byte comparison (tools/diff.py --update) and the
 # link itself demote rows that do not match into data/ver/$v/.matchskip.
 # Set true to only ever pin rank O rows (the map rank is the authority).
 only_matching = False

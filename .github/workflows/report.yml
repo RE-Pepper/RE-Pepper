@@ -41,7 +41,7 @@ jobs:
       - name: Build
         run: |
           python make.py ${{ matrix.version }}
-          python tools/checkMatch.py -e
+          python tools/diff.py -e
 
       - name: Download objdiff-cli
         run: |

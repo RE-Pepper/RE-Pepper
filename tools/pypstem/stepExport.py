@@ -5,8 +5,6 @@ from tools.low.glob import *
 from tools.low.genComcom import *
 from tools.low.genObjdiff import *
 
-# TODO: objdiff.json
-
 def exec_export_bin():
     if not getElfFile().exists():
         exit(0)
@@ -16,12 +14,9 @@ def exec_export_bin():
     do_export(flags)
 
     if cfg.matching:
-        # The original code.bin carries the page alignment padding of the
-        # RW section (all zero, added by makerom). fromelf stops at the
-        # last loadable byte, so pad the export back to the original
-        # file length. Content beyond the original span (pinned bss
-        # sections, spill) is cut from the export, the check tool
-        # reports it from the linker map instead.
+        # fromelf stops at the last loadable byte, the original carries
+        # the makerom RW page padding. pad back to the original length,
+        # cut anything beyond (bss pins/spill, the check tool reports it)
         orig = getBinCodeFile()
         if orig.exists():
             orig_len = orig.stat().st_size
@@ -33,7 +28,7 @@ def exec_export_bin():
             elif build_len > orig_len:
                 with open(getExportFile(), "r+b") as f:
                     f.truncate(orig_len)
-                echo (f"Trimmed {build_len - orig_len} bytes beyond the original image (bss pins/spill, see checkMatch)")
+                echo (f"Trimmed {build_len - orig_len} bytes beyond the original image (bss pins/spill, see tools/diff.py)")
 
 def exec_export_elf():
     if not getBinCodeFile().exists():

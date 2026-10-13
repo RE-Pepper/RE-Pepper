@@ -23,10 +23,9 @@ def postProcSrc(file, file_src):
     # read in whole
     text = file.read_text()
 
-    # armcc -S emits the per TU data sections as ||.data|| style areas
-    # (or ||area_number.N|| with an EXPORTAS to them). give them one
-    # section per source file, so a single map row with SectionName
-    # ".data.<file>" can pin the whole block.
+    # armcc -S emits per TU data sections as ||.data|| style areas, give
+    # them one section per source file so a SectionName row can pin the
+    # whole block
     for s in sect_formats:
         text = text.replace(s, s[:-2] + "." + file_src.name + "||").replace("        THUMB", "        ARM")
 
@@ -383,9 +382,8 @@ def exec_build():
     with open(getCfgSymsFile(), "w") as f:
         json.dump(json_syms, f)
 
-    # .syms changed on disk: genOriginal caches the symbol set per
-    # process, and make.py decomposes before the build but links after
-    # it. drop the cache so the link sees the fresh symbols.
+    # drop genOriginal's per process symbol cache, the build just
+    # rewrote .syms
     import tools.low.genOriginal as _genOriginal
     _genOriginal._known_syms = None
 

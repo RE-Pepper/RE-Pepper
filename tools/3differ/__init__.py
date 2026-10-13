@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
 # 3differ: 3ds focused symbol differ. no devkitpro, no objdump, pure
 # capstone, works on linux and windows.
-#
-# - functions: arm + thumb (auto detected), literal pools as data
+# - arm + thumb functions (auto detected), literal pools as data
 # - data symbols: word diff with address normalization
-# - every operand that points into the image (branches, pc relative
-#   loads/adds, pool words, address immediates) is normalized to the
-#   map symbol, so a global shift when something else grows does not
-#   zero the score
-# - output: only the diff by default, --full prints the whole function
-# - colors when stdout is a tty, plain when piped (so tools can parse)
+# - image pointing operands are normalized to map symbols, so a shift
+#   from something else growing does not zero the score
+# - only the diff by default, --full prints the whole function
+# - colors on a tty, plain when piped
 
 import re
 from pathlib import Path

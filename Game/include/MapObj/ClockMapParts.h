@@ -2,10 +2,7 @@
 
 #include <MapObj/alMapObjActor.h>
 
-namespace al
-{
-
-class ClockMapParts : public MapObjActor
+class ClockMapParts : public al::MapObjActor
 {
 private:
         sead::Quatf _60;
@@ -22,10 +19,8 @@ public
         void exeWait();
 
 public:
-        virtual void init( const ActorInitInfo& info );
+        virtual void init( const al::ActorInitInfo& info );
 
 public:
         ClockMapParts( const sead::SafeString& name );
 };
-
-} // namespace al

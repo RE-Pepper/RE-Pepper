@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 # matching mode: original byte filler generator.
-#
-# file ranges are split into units, shared with gen_scatter_match:
-#   pin    map row whose compiled section exists, placed at its address
-#   slice  contiguous run of original code.bin bytes (INCBIN), named
-#          rows inside get an EXPORT label at their exact offset
-# a row with a SectionName spanning the other rows at its start is a
-# per file data block ("one symbol includes all data from that file")
-# and absorbs them.
+# file ranges become units, shared with gen_scatter_match:
+#   pin    map row with a compiled section, placed at its address
+#   slice  run of original code.bin bytes (INCBIN), named rows get a label
+# a row with a SectionName spanning the rows at its start is a per file
+# data block and absorbs them.
 
 import re
 import shutil
@@ -19,22 +16,18 @@ from tools.low.getSection import typeToSectionLinker
 from tools.low.utilsPrint import *
 
 ORIG_AREAS_PER_FILE = 100
-# armasm (a 32 bit exe under wibo) does not cope with one giant source:
-# slices are split at word aligned label boundaries and .s files rotate
-# after this many label points
+# armasm does not cope with one giant source: .s files rotate after
+# this many label points
 ORIG_LABELS_MAX = 240
 ORIG_LABELS_PER_FILE = 256
 
 RE_SPECIAL = re.compile(r'[^a-zA-Z0-9_]')
-# armasm built in register names, labels like these cannot be defined
-# even pipe quoted (A1108E). affected symbols keep their original bytes
-# and cannot be referenced from pinned code until they pin themselves.
+# armasm built in names, cannot be defined even pipe quoted (A1108E)
 ARMASM_BUILTIN = re.compile(r'^(?:r|a|v|c|p|w|s|d|q)\d+$|^(?:sb|sl|fp|ip|sp|lr|pc)$', re.IGNORECASE)
 
 def asm_sym(name):
-    # always pipe quote: armasm has built in names (c0..c15, r0..r15, a1..
-    # a4) that plain labels would collide with. the pipes are syntax
-    # only, the symbol in the object keeps the plain name.
+    # pipe quote always: plain labels would collide with built in names,
+    # the object symbol keeps the plain name
     return f"|{name}|"
 
 def orig_unit_label(start):
@@ -86,10 +79,8 @@ def _load_skip_syms():
 
 class Unit:
     __slots__ = ("kind", "start", "end", "rows", "code", "rw")
-    # kind: "pin"    row comes from a compiled object (scatter selects it)
-    #       "slice"  bytes come from code.bin (INCBIN)
-    #       "zpin" / "zslice"  same, but zero initialized (bss range)
-    # code: text segment slice (CODE area, FUNCTION labels allowed)
+    # kind: "pin"/"slice" for text/ro/rw, "zpin"/"zslice" for bss
+    # code: text segment slice (CODE area)
     # rw:   rw segment slice (READWRITE area)
     def __init__(self, kind, start, end, rows, code, rw=False):
         self.kind = kind
@@ -123,9 +114,8 @@ def is_pinnable(row, zero_init, span_block=False):
     return True
 
 def _block_candidate(group):
-    # a row with a SectionName that spans all other rows at its start is
-    # a per file data block ("one symbol includes all data from that
-    # file"), it wins over the alias protection
+    # a per file data block spans all rows at its start, wins over the
+    # alias protection
     if len(group) < 2:
         return group[0], False
     named = [r for r in group if r[MapFmt.SectionName]]
@@ -170,8 +160,7 @@ def _walk_segment(units, grouped, lo, hi, zero_init, code, rw=False):
     _flush_slice(units, cursor, hi, labels, zero_init, code, rw)
 
 def _split_units(units):
-    # split slices with too many label points at word aligned label
-    # starts (region bases must be aligned), one AREA/region per part
+    # split long slices at word aligned label starts, one AREA per part
     out = []
     for u in units:
         if u.kind not in ("slice", "zslice") or len(u.rows) <= ORIG_LABELS_MAX:
@@ -199,10 +188,9 @@ def _split_units(units):
     return out
 
 def build_units():
-    # returns (units, header); file units ascending, covering
-    # [text_start, rw_end), plus zero init units if the map has bss rows.
-    # The bytes after rw_end in code.bin are makerom page padding (all
-    # zero), they are not part of the ELF image and are handled at export.
+    # returns (units, header), units ascending over [text_start, rw_end),
+    # plus bss units when the map has bss rows. the bytes after rw_end
+    # are makerom page padding and are handled at export.
     global _aliases
 
     header = read_header()
@@ -277,8 +265,7 @@ def build_units():
 # slice emission
 
 def _slice_chunks(unit):
-    # one chunk per label point (armasm INCBIN has no offset support,
-    # so every label needs the following bytes as its own file).
+    # one chunk per label point, armasm INCBIN has no offset support.
     # yields (offset, [rows], chunk_len)
     offs = {}
     total = unit.end - unit.start
@@ -313,8 +300,7 @@ def _emit_slice_asm(f, unit, bin_data, text_lo):
     else:
         f.write(f"    AREA |{area}|,DATA,READONLY,ALIGN=2\n")
 
-    # keep alive label at the slice start: depend.o imports it so the
-    # area can not be removed as an unused section
+    # keep alive label: depend.o imports it so the area survives --remove
     f.write(f"    EXPORT {orig_unit_label(unit.start)}\n")
     f.write(f"{orig_unit_label(unit.start)}\n")
 
@@ -335,9 +321,8 @@ def _emit_slice_asm(f, unit, bin_data, text_lo):
             addr = unit.start + off
             data = bin_data[addr - text_lo : addr - text_lo + size]
             name = f"{addr:08X}.bin"
-            # chunks live next to this .s file: armasm resolves a bare
-            # INCBIN name against the directory of the source file, that
-            # is the only form that is reliable under wibo
+            # armasm resolves a bare INCBIN name against the source
+            # file directory, the only reliable form under wibo
             with open(getOrigAsmDir() / name, "wb") as bf:
                 bf.write(data)
             f.write(f"    INCBIN {name}\n")
