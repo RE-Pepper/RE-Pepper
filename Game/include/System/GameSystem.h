@@ -6,16 +6,16 @@ namespace al
 {
 class LayoutKit;
 class MessageSystem;
-class Sequence;
 } // namespace al
 class CourseList;
+class Sequence;
 
 class GameSystem : public al::NerveExecutor
 {
         friend class ApplicationFunction;
 
 private:
-        al::Sequence*      mCurrentSequence;
+        Sequence*           mCurrentSequence;
         void*              _C;
         void*              _10;
         al::LayoutKit*     mLayoutKit;

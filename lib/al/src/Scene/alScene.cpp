@@ -1,4 +1,4 @@
-#include <Factory/alActorFactory.h>
+#include <Factory/ActorFactory.h>
 #include <LiveActor/alActorInitInfo.h>
 #include <Scene/SceneObjFactory.h>
 #include <Scene/alScene.h>

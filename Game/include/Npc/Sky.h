@@ -2,20 +2,17 @@
 
 #include <MapObj/alMapObjActor.h>
 
-namespace al
-{
 
-class Sky : public MapObjActor
+
+class Sky : public al::MapObjActor
 {
 private:
         const sead::Vector3f* mCameraTransPtr;
 
 public:
-        virtual void init( const ActorInitInfo& info );
+        virtual void init( const al::ActorInitInfo& info );
         virtual void calcAnim();
 
 public:
         Sky( const char* name );
 };
-
-} // namespace al

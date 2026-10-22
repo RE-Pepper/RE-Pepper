@@ -4,8 +4,9 @@
 #include <System/ApplicationFunction.h>
 #include <heap/seadHeapMgr.h>
 #include <nn/cfg/CTR/cfg_Api.h>
-#include <nn/ndm/ndm_Api.h>
-#include <nn/fs/CTR/MPCore/detail/fs_UserFileSystem.h>
+#include <nn/ndm/ndm_UserControl.h>
+#include <nn/fs/fs_Api.h>
+#include <nn/fs/CTR/MPCore/fs_UserFileSystem.h>
 
 GameSystem::GameSystem()
     : NerveExecutor( "ゲームシステム" ), mCurrentSequence( nullptr ), _C( nullptr ), _10( nullptr ),

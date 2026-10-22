@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Sequence/alSequence.h>
+#include <Sequence/Sequence.h>
 
 class ProductStageStartParam;
 class StageWipeKeeper;
@@ -12,7 +12,7 @@ class ProductStateMysteryBox;
 class ProductStateEnding;
 class ProductStateGameOverRoom;
 
-class ProductSequence : public al::Sequence
+class ProductSequence : public Sequence
 {
 private:
         ProductStageStartParam* mStageStartParam;

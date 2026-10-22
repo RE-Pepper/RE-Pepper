@@ -1,14 +1,11 @@
-#include <AreaObj/alSwitchAreaDirector.h>
+#include <AreaObj/SwitchAreaDirector.h>
+#include <AreaObj/SwitchOnAreaGroup.h>
 #include <AreaObj/alSwitchKeepOnAreaGroup.h>
-#include <AreaObj/alSwitchOnAreaGroup.h>
 
 #include "Player/PlayerFunction.h" // GAME
 
-namespace al
-{
-
 SwitchAreaDirector::SwitchAreaDirector()
-    : LiveActor( "スイッチエリアディレクター" ), mSwitchOnAreaGroup( nullptr ),
+    : al::LiveActor( "スイッチエリアディレクター" ), mSwitchOnAreaGroup( nullptr ),
       mSwitchKeepOnAreaGroup( nullptr )
 {
 }
@@ -25,5 +22,3 @@ void SwitchAreaDirector::movement()
                 mSwitchKeepOnAreaGroup->update( pos );
 }
 #endif
-
-} // namespace al

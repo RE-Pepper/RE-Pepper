@@ -46,4 +46,16 @@ void LayoutActor::initNerve( const Nerve* nerve, int step )
         mNerveKeeper = new NerveKeeper( this, nerve, step );
 }
 
+void LayoutActor::calcAnim()
+{
+}
+
+void LayoutActor::unk1()
+{
+}
+
+void LayoutActor::unk2()
+{
+}
+
 } // namespace al

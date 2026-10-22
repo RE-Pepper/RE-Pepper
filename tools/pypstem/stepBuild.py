@@ -60,6 +60,9 @@ def buildFile(file_in, file_out):
 
 # ensure shift-jis
 def convertFile(file):
+    # sources are shift-jis in the tree, armcc wants that. this may
+    # rewrite the file: encode FIRST, then open for writing. opening
+    # earlier truncates and a failed encode would destroy the source.
     with open(file, 'rb') as f:
         data = f.read()
 
@@ -71,10 +74,14 @@ def convertFile(file):
 
     try:
         text = data.decode('utf-8')
-        with open(file, 'wb') as f:
-            f.write(text.encode('shift_jis'))
+        if text.startswith('\ufeff'):
+            text = text[1:]
+        enc = text.encode('shift_jis')
     except Exception as e:
         fail (f"Conversion failed for {file}: {e}")
+
+    with open(file, 'wb') as f:
+        f.write(enc)
 
 def fixDependFile(file):
     dep_data = None
@@ -283,7 +290,7 @@ def exec_build():
                 # set progress
                 # CtrSDK|libraries/os/os_Etc.cpp
                 file_rel = file.relative_to(mod_path)
-                progress_set(f"{mod_data.get("name")}|{file_rel}")
+                progress_set(f"{mod_data.get("name")}Tab{file_rel}")
                 progress_print()
 
                 # build it

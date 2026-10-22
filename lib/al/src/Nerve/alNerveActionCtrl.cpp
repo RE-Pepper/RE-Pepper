@@ -13,7 +13,7 @@ al::NerveAction::NerveAction() : mNextNode( nullptr )
 namespace alNerveFunction
 {
 
-NerveActionCollector* staticd( NerveActionCollector::sCurrentCollector );
+NerveActionCollector* NerveActionCollector::sCurrentCollector;
 
 NerveActionCollector::NerveActionCollector()
     : mNumNodes( 0 ), mStartNode( nullptr ), mEndNode( nullptr )

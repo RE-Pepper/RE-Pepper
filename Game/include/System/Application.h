@@ -65,6 +65,7 @@ public:
         RootTask* getRootTask() const;
 
 public:
+        Application();
         void init();
         void run();
 };

@@ -2,8 +2,8 @@
 
 namespace al
 {
-
 class ByamlIter;
+}
 
 class CameraDashAngleTunerParam
 {
@@ -14,7 +14,5 @@ private:
 public:
         CameraDashAngleTunerParam();
 
-        void init( const ByamlIter* ticket );
+        void init( const al::ByamlIter* ticket );
 };
-
-} // namespace al

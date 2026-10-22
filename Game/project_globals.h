@@ -5,6 +5,14 @@
 #endif
 
 #include <nn/types.h>
+#ifdef __cplusplus
+#include <nn/Assert.h>
+#endif
+
+// armcc 4.x has no c++11 nullptr; original sources predate it
+#ifndef nullptr
+#define nullptr 0
+#endif
 
 // Assertion
 #ifndef static_assert

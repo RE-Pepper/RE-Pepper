@@ -1,9 +1,8 @@
-#include <Factory/alActorFactory.h>
+#include <Factory/ActorFactory.h>
 #include <Resource/alResource.h>
 #include <Yaml/alByamlIter.h>
 
-namespace al
-{
+
 
 #ifdef NON_MATCHING
 // unnecessary streq for mConvertNameData missing
@@ -12,31 +11,29 @@ ActorFactory::ActorFactory()
 {
         mArchive = al::findOrCreateResource( "SystemData/CreatorClassNameTable" );
         mConvertNameData =
-                new ByamlIter( static_cast<const u8*>( mArchive->getByml( "CreatorClassNameTable" ) ) );
+                new al::ByamlIter( static_cast<const u8*>( mArchive->getByml( "CreatorClassNameTable" ) ) );
 }
 #endif
 
-} // namespace al
-
-#include <MapObj/alFallMapParts.h>
-#include <Npc/alEffectObj.h>
-#include <Npc/alSky.h>
+#include <MapObj/FallMapParts.h>
+#include <Npc/EffectObj.h>
+#include <Npc/Sky.h>
 
 #include "Enemy/Togezo.h"
 #include "MapObj/NoteObj.h" // GAMEUSE
 #include "MapObj/NoteObjGenerator.h"
 #include "MapObj/TrickHintPanel.h"
 
-namespace al
+namespace
 {
 
 template <typename T>
-LiveActor* createActorFunction( const char* name )
+al::LiveActor* createActorFunction( const char* name )
 {
         return new T( name );
 }
 
-const NameToActorCreator staticd( sActorFactoryEntries )[] = {
+static const NameToActorCreator sActorFactoryEntries[] = {
         { "Kinopio", nullptr },
         { "Luigi", nullptr },
         { "Peach", nullptr },
@@ -234,7 +231,7 @@ const NameToActorCreator staticd( sActorFactoryEntries )[] = {
         { "ClockMapParts", nullptr },
         { "CollapseBreakMapParts", nullptr },
         { "CollapseMapParts", nullptr },
-        { "FallMapParts", createActorFunction<al::FallMapParts> },
+        { "FallMapParts", createActorFunction<FallMapParts> },
         { "FixMapParts", nullptr },
         { "FloaterMapParts", nullptr },
         { "KeyMoveMapParts", nullptr },
@@ -251,8 +248,8 @@ const NameToActorCreator staticd( sActorFactoryEntries )[] = {
         { "VisibleSwitchMapParts", nullptr },
         { "WheelMapParts", nullptr },
         { "WobbleMapParts", nullptr },
-        { "Sky", createActorFunction<al::Sky> },
-        { "EffectObj", createActorFunction<al::EffectObj> },
+        { "Sky", createActorFunction<Sky> },
+        { "EffectObj", createActorFunction<EffectObj> },
         { "EffectObjFollowCamera", nullptr },
         { "EffectObjLiftLiner", nullptr },
         { "EffectObjReEmit", nullptr },
@@ -263,4 +260,4 @@ const NameToActorCreator staticd( sActorFactoryEntries )[] = {
         { "StreetPassObj", nullptr },
         { "DemoStarter", nullptr } };
 
-} // namespace al
+} // namespace

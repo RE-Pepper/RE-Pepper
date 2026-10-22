@@ -1,4 +1,5 @@
 #include <LiveActor/alLiveActorGroup.h>
+#include <heap/seadHeapMgr.h>
 
 namespace al
 {
@@ -7,7 +8,7 @@ namespace al
 LiveActorGroup::LiveActorGroup( const char* name, int bufSize )
     : mName( name )
 {
-        mActors.allocBufferInline( bufSize );
+        mActors.allocBuffer( bufSize, sead::HeapMgr::instance()->getCurrentHeap() );
 }
 #endif
 

@@ -25,8 +25,12 @@ Fugumannen::Fugumannen( const sead::SafeString& name )
 {
 }
 
-extern "C" void fn_0027b51c( al::LiveActor*, const al::ActorInitInfo& info, int );
-extern "C" void fn_0027ee34( al::LiveActor*, const al::ActorInitInfo& info, int );
+static void fn_0027b51c( al::LiveActor*, const al::ActorInitInfo& info, int )
+        {
+        }
+static void fn_0027ee34( al::LiveActor*, const al::ActorInitInfo& info, int )
+        {
+        }
 
 void Fugumannen::init( const al::ActorInitInfo& info )
 {
@@ -56,8 +60,14 @@ void Fugumannen::attackSensor( al::HitSensor* me, al::HitSensor* other )
         }
 }
 
-extern "C" bool fn_0027b768( u32, al::HitSensor*, al::HitSensor*, al::NerveStateBase*, const al::Nerve* );
-extern "C" bool fn_0027b704( u32, al::HitSensor*, al::HitSensor*, al::NerveStateBase* );
+static bool fn_0027b768( u32, al::HitSensor*, al::HitSensor*, al::NerveStateBase*, const al::Nerve* )
+        {
+                return false;
+        }
+static bool fn_0027b704( u32, al::HitSensor*, al::HitSensor*, al::NerveStateBase* )
+        {
+                return false;
+        }
 
 bool Fugumannen::receiveMsg( u32 msg, al::HitSensor* other, al::HitSensor* me )
 {
@@ -78,7 +88,9 @@ bool Fugumannen::receiveMsg( u32 msg, al::HitSensor* other, al::HitSensor* me )
         return rv;
 }
 
-extern "C" void fn_00240e08( al::LiveActor*, const sead::Vector3f&, float );
+static void fn_00240e08( al::LiveActor*, const sead::Vector3f&, float )
+        {
+        }
 
 void Fugumannen::exeMove()
 {
@@ -101,7 +113,9 @@ void Fugumannen::exeMove2()
                 al::setNerve( this, &NrvFugumannen::Move );
 }
 
-extern "C" void fn_002cd428( al::LiveActor*, al::NerveStateBase* );
+static void fn_002cd428( al::LiveActor*, al::NerveStateBase* )
+        {
+        }
 
 void Fugumannen::exeBlowDown()
 {

@@ -20,10 +20,16 @@ LiveActorKit::LiveActorKit( int groupBufSize )
         mAllActors = new LiveActorGroup( "全てのアクター", mAllActorsBufferSize );
 }
 
-extern "C" void fn_00240350();
-extern "C" void fn_001e8a64();
+static void fn_00240350(  )
+        {
+        }
+static void fn_001e8a64(  )
+        {
+        }
 
-extern "C" void fn_001cc9b0( const char*, const FunctorV0F& );
+static void fn_001cc9b0( const char*, const FunctorV0F& )
+        {
+        }
 
 #ifdef NON_MATCHING
 

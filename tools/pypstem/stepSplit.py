@@ -87,8 +87,14 @@ def assemble_orig():
             continue
 
         echo (f"> {out.name} <", "\r")
-        asm_flags = flags_asm + ["-o", str(out), str(asm)]
-        text = do_assemble(asm_flags, silent=True, capture=True) or ""
+        asm_flags = flags_asm + ["-o", str(out.resolve()), str(asm.resolve())]
+        # armasm resolves INCBIN relative to cwd, not the .s file
+        old_cwd = os.getcwd()
+        os.chdir(asm.parent)
+        try:
+            text = do_assemble(asm_flags, silent=True, capture=True) or ""
+        finally:
+            os.chdir(old_cwd)
 
         problems = [l for l in text.splitlines() if ("A1023E" in l or "Error" in l)]
         if problems:

@@ -3,15 +3,17 @@
 #include <Nerve/alNerveExecutor.h>
 #include <prim/seadSafeString.h>
 
+
 namespace al
 {
 class Scene;
+}
 
-class Sequence : public NerveExecutor
+class Sequence : public al::NerveExecutor
 {
 private:
         sead::FixedSafeString<64> mName;
-        Scene*                    mCurrentScene;
+        al::Scene*                mCurrentScene;
         u8                        unk[ 0xf0 ];
 
 public:
@@ -28,5 +30,3 @@ public:
 public:
         Sequence( const char* name );
 };
-
-} // namespace al

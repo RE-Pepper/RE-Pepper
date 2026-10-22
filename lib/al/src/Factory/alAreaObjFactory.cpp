@@ -1,15 +1,20 @@
 #include <Factory/alAreaObjFactory.h>
 
-namespace al
+namespace
 {
 
 template <typename T>
-AreaObj* createAreaObjFunction( const char* name )
+al::AreaObj* createAreaObjFunction( const char* name )
 {
         return new T( name );
 }
 
-const NameToAreaObjCreator staticd( sAreaObjFactoryEntries )[] = {
+} // namespace
+
+namespace al
+{
+
+static const NameToAreaObjCreator sAreaObjFactoryEntries[] = {
         { "AudioEffectChangeArea", createAreaObjFunction<AreaObj> },
         { "AudioVolumeSettingArea", nullptr },
         { "BgmChangeArea", createAreaObjFunction<AreaObj> },

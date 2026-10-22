@@ -3,6 +3,7 @@
 #include <System/alSystemKit.h>
 #include <Util/alStringUtil.h>
 #include <Yaml/alByamlIter.h>
+#include <heap/seadFrameHeap.h>
 
 namespace al
 {
@@ -12,8 +13,13 @@ void MemorySystem::createSequenceHeap()
         mSequenceHeap = sead::ExpHeap::create( 0, "SequenceHeap", nullptr, sead::ExpHeap::cHeapDirection_Forward, false );
 }
 
-extern "C" void fn_002911e8( sead::FrameHeap** out, u32 heapSize, const char* name, u8,
-        int ); // creates FrameHeap(?)
+// sub_2911E8, frame heap creation helper (unnamed in map)
+static void fn_002911e8( sead::FrameHeap** out, u32 heapSize, const char* name, sead::Heap* parent,
+        int enableLock )
+{
+        *out = sead::FrameHeap::tryCreate( static_cast<size_t>( heapSize ), name, parent, sizeof( void* ),
+                                           sead::Heap::cHeapDirection_Forward, enableLock != 0 );
+}
 
 #ifdef NON_MATCHING
 // WIP

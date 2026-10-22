@@ -49,7 +49,8 @@ def read_elfsym(objfile):
             continue
         if "__ARM" in sym or "BuildAttributes" in sym or "Lib$$Request" in sym or sym.startswith("$d") or sym.startswith("i."):
             continue
-        if objfile.stem in sym:
+        # the source path symbol, without dropping __sti___<len>_<stem>_cpp
+        if sym == objfile.stem or sym.endswith("/" + objfile.name) or sym == objfile.name:
             continue
 
         yield (idx, sym, addr, scope, sect, type, vis, size)

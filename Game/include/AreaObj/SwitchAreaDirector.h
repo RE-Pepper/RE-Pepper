@@ -6,13 +6,15 @@
 namespace al
 {
 class SwitchKeepOnAreaGroup;
+}
+
 class SwitchOnAreaGroup;
 
-class SwitchAreaDirector : public LiveActor, public ISceneObj
+class SwitchAreaDirector : public al::LiveActor, public al::ISceneObj
 {
 private:
-        SwitchOnAreaGroup*     mSwitchOnAreaGroup;
-        SwitchKeepOnAreaGroup* mSwitchKeepOnAreaGroup;
+        SwitchOnAreaGroup*           mSwitchOnAreaGroup;
+        al::SwitchKeepOnAreaGroup*    mSwitchKeepOnAreaGroup;
 
 public:
         virtual void movement();
@@ -21,5 +23,3 @@ public:
 public:
         SwitchAreaDirector();
 };
-
-} // namespace al

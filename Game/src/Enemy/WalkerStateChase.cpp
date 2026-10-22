@@ -25,3 +25,9 @@ WalkerStateChase::WalkerStateChase( al::LiveActor* host, sead::Vector3f* frontPt
 }
 
 #endif
+
+WalkerStateChaseParam::WalkerStateChaseParam( bool a, bool b, float c, float d, float e,
+        float f, float g, const char* h, const char* i )
+    : _0( c ), _4( d ), _8( e ), _C( f ), _10( g ), _14( a ), _15( b ), _18( 0 )
+{
+}

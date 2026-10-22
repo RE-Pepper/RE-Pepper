@@ -1,9 +1,9 @@
 #pragma once
 
-class JMapInfo;
-
 namespace al
 {
+
+class JMapInfo;
 
 struct KCollisionHeader
 {

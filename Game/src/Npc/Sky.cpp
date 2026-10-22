@@ -2,17 +2,16 @@
 #include <LiveActor/alActorInitUtil.h>
 #include <LiveActor/alActorPoseKeeper.h>
 #include <LiveActor/alLiveActorFunction.h>
-#include <Npc/alSky.h>
+#include <Npc/Sky.h>
 #include <Stage/alStageSwitchKeeper.h>
 
-namespace al
-{
 
-Sky::Sky( const char* name ) : MapObjActor( name ), mCameraTransPtr( nullptr )
+
+Sky::Sky( const char* name ) : al::MapObjActor( name ), mCameraTransPtr( nullptr )
 {
 }
 
-void Sky::init( const ActorInitInfo& info )
+void Sky::init( const al::ActorInitInfo& info )
 {
         initActor( this, info );
         initStageSwitchAppear( this, info );
@@ -27,5 +26,3 @@ void Sky::calcAnim()
         setTrans( this, *mCameraTransPtr );
         LiveActor::calcAnim();
 }
-
-} // namespace al

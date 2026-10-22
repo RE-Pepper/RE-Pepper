@@ -1,18 +1,15 @@
-#include <Camera/alCameraRotatorParam.h>
+#include <Camera/CameraRotatorParam.h>
 #include <Yaml/alByamlIter.h>
 
-namespace al
-{
+
 
 CameraRotatorParam::CameraRotatorParam() : mAngleMax( 30 )
 {
 }
 
-void CameraRotatorParam::init( const ByamlIter* ticket )
+void CameraRotatorParam::init( const al::ByamlIter* ticket )
 {
-        ByamlIter h;
+        al::ByamlIter h;
         ticket->tryGetIterByKey( &h, "Rotator" );
         h.tryGetFloatByKey( &mAngleMax, "AngleMax" );
 }
-
-} // namespace al

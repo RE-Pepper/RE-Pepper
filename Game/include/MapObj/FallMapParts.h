@@ -2,10 +2,9 @@
 
 #include <MapObj/alMapObjActor.h>
 
-namespace al
-{
 
-class FallMapParts : public MapObjActor
+
+class FallMapParts : public al::MapObjActor
 {
 private:
         sead::Vector3f mStartTrans;
@@ -20,11 +19,9 @@ public:
         void exeEnd();
 
 public:
-        virtual void init( const ActorInitInfo& info );
-        virtual bool receiveMsg( u32 msg, HitSensor* other, HitSensor* me );
+        virtual void init( const al::ActorInitInfo& info );
+        virtual bool receiveMsg( u32 msg, al::HitSensor* other, al::HitSensor* me );
 
 public:
         FallMapParts( const sead::SafeString& name );
 };
-
-} // namespace al

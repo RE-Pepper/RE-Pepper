@@ -3,7 +3,7 @@
 #include <LiveActor/alLiveActor.h>
 #include <Scene/alISceneObj.h>
 
-class CoinRotater : public al::LiveActor, public al::ISceneObj
+class CoinRotator : public al::LiveActor, public al::ISceneObj
 {
 private:
         float mRotateY;
@@ -22,13 +22,13 @@ public:
         virtual void movement();
 
 public:
-        CoinRotater();
+        CoinRotator();
 };
 
 namespace rp
 {
 
-void  createCoinRotater();
+void  createCoinRotator();
 float getCoinRotateY();
 
 } // namespace rp

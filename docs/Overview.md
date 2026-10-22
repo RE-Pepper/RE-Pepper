@@ -26,6 +26,8 @@ original bytes again.
 data/ver/<v>/map.csv      the map, source of truth
 data/ver/<v>/.syms        symbols in built objects
 data/ver/<v>/.matchskip   demoted rows
+data/ver/<v>/.demote_backlog.txt   last list of differing pins, todo
+build/<v>/split/original/asm/orig_regions.s   linker region symbols
 objdiff.json              decomp.dev file (generated)
 ```
 
@@ -38,3 +40,7 @@ objdiff.json              decomp.dev file (generated)
 - `tools/diff.py` -> byte compare vs original
 - `tools/check.py` -> update map ranks
 - `user/initMap.py` -> bootstrap a map from a raw code.bin
+
+see docs/Sti.md for static initializers (__sti, .init_array).
+see docs/armcc/ for compiler quirks, SDK bugs, matching mechanics
+and runtime init.

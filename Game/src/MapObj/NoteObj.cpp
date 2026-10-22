@@ -6,7 +6,7 @@
 #include <Placement/alPlacementFunction.h>
 #include <Scene/alSceneObjHolder.h>
 
-#include "MapObj/CoinRotater.h"
+#include "MapObj/CoinRotator.h"
 
 #ifdef NON_MATCHING
 // sead inline
@@ -14,18 +14,20 @@ NoteObj::NoteObj( const char* name )
     : MapObjActor( name ), mStartQuat( sead::Quatf::unit ), _70( false ), _71( true ), _74( -1 ),
       _78( sead::Vector3f::zero ), mGenerator( nullptr )
 {
-        rp::createCoinRotater();
+        rp::createCoinRotator();
 }
 
 NoteObj::NoteObj( NoteObjGenerator* generator )
     : MapObjActor( "音符オブジェ" ), mStartQuat( sead::Quatf::unit ), _70( false ), _71( true ), _74( -1 ),
       _78( sead::Vector3f::zero ), mGenerator( generator )
 {
-        rp::createCoinRotater();
+        rp::createCoinRotator();
 }
 #endif
 
-extern "C" void fn_00270fc4( al::LiveActor*, float, int ); // MtxConnector (?)
+static void fn_00270fc4( al::LiveActor*, float, int )
+        {
+        }
 
 static const char* sNoteObjArchive = "NoteObj";
 

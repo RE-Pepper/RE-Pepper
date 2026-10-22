@@ -4,9 +4,10 @@
 #include <Nerve/alNerveExecutor.h>
 #include <heap/seadHeap.h>
 
+class ActorFactory;
+
 namespace al
 {
-class ActorFactory;
 class ActorInitInfo;
 class LayoutKit;
 class LiveActorKit;

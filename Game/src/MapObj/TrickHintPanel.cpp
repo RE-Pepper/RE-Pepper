@@ -23,7 +23,10 @@ TrickHintPanel::TrickHintPanel( const sead::SafeString& name )
 {
 }
 
-extern "C" u32 fn_002278CC( al::LiveActor* actor, char* str );
+static u32 fn_002278CC( al::LiveActor* actor, char* str )
+        {
+                return 0;
+        }
 
 void TrickHintPanel::init( const al::ActorInitInfo& info )
 {
@@ -56,9 +59,18 @@ void TrickHintPanel::exeWait()
 {
 }
 
-extern "C" int fn_0026A9B8( u32 );
-extern "C" int fn_0026AA60( u32 );
-extern "C" int fn_002786F4();
+static int fn_0026A9B8( u32 )
+        {
+                return 0;
+        }
+static int fn_0026AA60( u32 )
+        {
+                return 0;
+        }
+static int fn_002786F4(  )
+        {
+                return 0;
+        }
 
 #ifdef NON_MATCHING
 

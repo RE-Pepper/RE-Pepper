@@ -1,8 +1,7 @@
 #include <Scene/alScene.h>
-#include <Sequence/alSequence.h>
+#include <Sequence/Sequence.h>
 
-namespace al
-{
+
 
 void Sequence::init()
 {
@@ -41,4 +40,7 @@ int Sequence::unk5()
         return unk6() ^ 1;
 }
 
-} // namespace al
+int Sequence::unk6()
+{
+        return 0;
+}

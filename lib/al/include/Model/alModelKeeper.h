@@ -21,6 +21,6 @@ public:
         void hide();
 };
 
-const sead::Matrix34f* getJointMtxPtr( ModelKeeper* keeper, const char* jointName );
+const sead::Matrix34f* getJointMtxPtr( const ModelKeeper* keeper, const char* jointName );
 
 } // namespace al

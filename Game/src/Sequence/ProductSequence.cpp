@@ -37,7 +37,10 @@ void ProductSequence::init()
 
 #endif
 
-extern "C" bool fn_0025ba7c( const char* );
+static bool fn_0025ba7c( const char* )
+        {
+                return false;
+        }
 
 void ProductSequence::exeTitle()
 {
@@ -65,7 +68,10 @@ void ProductSequence::exeKinopioHouse()
         }
 }
 
-extern "C" bool fn_0025ddd0();
+static bool fn_0025ddd0(  )
+        {
+                return false;
+        }
 
 void ProductSequence::exeEnding()
 {
@@ -76,4 +82,16 @@ void ProductSequence::exeEnding()
                 else
                         al::setNerve( this, &NrvProductSequence::Title );
         }
+}
+
+void ProductSequence::exeCourseSelect()
+{
+}
+
+void ProductSequence::exeGameOverRoom()
+{
+}
+
+void ProductSequence::exeUnk1()
+{
 }

@@ -24,7 +24,7 @@
         "--no_debug_macros"
       ],
       "macros": {
-        "NN_VERSION_REDPEPPER": 1
+        "NN_VERSION_REDPEPPER": 2
       },
       "disabled": 0
     },
@@ -39,7 +39,9 @@
         "SEAD_VERSION_REDPEPPER": 1,
         "SEAD_RELEASE": 1,
         "SEAD_PLATFORM_CTR": 1,
-        "SEAD_USE_NW4C": 1
+        "SEAD_USE_NW4C": 1,
+        "NN_SWITCH_DISABLE_ASSERT_WARNING_FOR_SDK": 1,
+        "NN_SWITCH_DISABLE_DEBUG_PRINT_FOR_SDK": 1
       },
       "disabled": 0
     },
@@ -53,7 +55,9 @@
         "SEAD_RELEASE": 1,
         "SEAD_PLATFORM_CTR": 1,
         "SEAD_USE_NW4C": 1,
-        "SEAD_VERSION_REDPEPPER": 1
+        "SEAD_VERSION_REDPEPPER": 1,
+        "NN_SWITCH_DISABLE_ASSERT_WARNING_FOR_SDK": 1,
+        "NN_SWITCH_DISABLE_DEBUG_PRINT_FOR_SDK": 1
       }
     },
     "Game": {
@@ -67,7 +71,9 @@
         "SEAD_RELEASE": 1,
         "SEAD_PLATFORM_CTR": 1,
         "SEAD_USE_NW4C": 1,
-        "SEAD_VERSION_REDPEPPER": 1
+        "SEAD_VERSION_REDPEPPER": 1,
+        "NN_SWITCH_DISABLE_ASSERT_WARNING_FOR_SDK": 1,
+        "NN_SWITCH_DISABLE_DEBUG_PRINT_FOR_SDK": 1
       }
     },
     "lib/CFL": {
@@ -83,16 +89,20 @@
       "source_dir": "sources",
       "compiler": "4.0/902",
       "macros": {
-        "NW_VERSION_REDPEPPER": 1
+        "NW_VERSION_REDPEPPER": 2,
+        "NW_RELEASE": 1,
+        "NW_PLATFORM_CTR": 1,
+        "NN_PROCESSOR_ARM11MPCORE": 1
       },
-      "disabled": 1
+      "disabled": 0
     },
     "lib/sead/addins/libms": {
       "name": "LMS",
       "flags_cxx": [
-        "--no_vla"
+        "--no_vla",
+        "--c99"
       ],
-      "disabled": 1
+      "disabled": 0
     }
   },
   "compiler": "4.1/791",
@@ -125,8 +135,5 @@
     "--no_list_mapping_symbols",
     "--show_parent_lib"
   ],
-  "macros": {
-    "NN_SWITCH_DISABLE_ASSERT_WARNING_FOR_SDK": 1,
-    "NN_SWITCH_DISABLE_DEBUG_PRINT_FOR_SDK": 1
-  }
+  "macros": {}
 }

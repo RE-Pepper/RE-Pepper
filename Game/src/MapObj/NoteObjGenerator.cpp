@@ -26,8 +26,12 @@ NoteObjGenerator::NoteObjGenerator( const sead::SafeString& name )
 {
 }
 
-extern "C" void fn_00270fc4( al::LiveActor*, float, int ); // MtxConnector (?)
-extern "C" void fn_001d581c();
+static void fn_00270fc4( al::LiveActor*, float, int )
+        {
+        }
+static void fn_001d581c(  )
+        {
+        }
 
 void NoteObjGenerator::exeWait()
 {

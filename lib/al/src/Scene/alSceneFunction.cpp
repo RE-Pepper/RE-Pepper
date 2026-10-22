@@ -1,4 +1,4 @@
-#include <Factory/alActorFactory.h>
+#include <Factory/ActorFactory.h>
 #include <LiveActor/alActorInitInfo.h>
 #include <LiveActor/alActorInitUtil.h>
 #include <Placement/alPlacementFunction.h>
@@ -22,7 +22,7 @@ void initPlacementMap( Scene* scene, const Resource* stageArchive, const ActorIn
                         const char* objectName = nullptr;
                         if ( al::tryGetObjectName( &objectName, placementInfo ) )
                         {
-                                al::CreateActorFuncPtr create = scene->getActorFactory()->getCreator( objectName );
+                                CreateActorFuncPtr create = scene->getActorFactory()->getCreator( objectName );
                                 if ( create )
                                 {
                                         ActorInitInfo info;

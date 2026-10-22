@@ -3,8 +3,16 @@
 #include <Controller/alControllerUtil.h>
 #include <controller/seadControllerMgr.h>
 
+#ifdef NON_MATCHING
+
 namespace al
 {
+
+bool isPadRelease( int port, int mask )
+{
+        sead::Controller* controller = sead::ControllerMgr::instance()->getController( port );
+        return controller ? ( controller->getReleaseMask() & mask ) != 0 : false;
+}
 
 extern "C" const u32* fn_0024edd8();
 
@@ -59,3 +67,5 @@ _T_BUTTON( LeftStickRight );
 #undef _T_BUTTON
 
 } // namespace al
+
+#endif

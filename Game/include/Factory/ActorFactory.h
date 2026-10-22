@@ -7,15 +7,16 @@ namespace al
 {
 class Resource;
 class ByamlIter;
+}
 
-typedef CreateFuncPtr<LiveActor>::Type    CreateActorFuncPtr;
-typedef NameToCreator<CreateActorFuncPtr> NameToActorCreator;
+typedef al::CreateFuncPtr<al::LiveActor>::Type    CreateActorFuncPtr;
+typedef al::NameToCreator<CreateActorFuncPtr>     NameToActorCreator;
 
 class ActorFactory
 {
 private:
-        Resource*  mArchive;
-        ByamlIter* mConvertNameData;
+        al::Resource*  mArchive;
+        al::ByamlIter* mConvertNameData;
 
 public:
         const char*        convertName( const char* objectName ) const;
@@ -24,5 +25,3 @@ public:
 public:
         ActorFactory();
 };
-
-} // namespace al

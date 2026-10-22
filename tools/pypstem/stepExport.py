@@ -30,6 +30,18 @@ def exec_export_bin():
                     f.truncate(orig_len)
                 echo (f"Trimmed {build_len - orig_len} bytes beyond the original image (bss pins/spill, see tools/diff.py)")
 
+            # the original's RW page padding is zero, but the spill's
+            # sections land in the same page. zero the range after the
+            # RW section so the exported page matches the original.
+            from tools.low.readHeader import read_header, HeadType, HeadVal
+            hdr = read_header()
+            rw_hi_off = hdr[HeadType.Rw][HeadVal.End] - hdr[HeadType.Text][HeadVal.Start]
+            if 0 < rw_hi_off < orig_len:
+                with open(getExportFile(), "r+b") as f:
+                    f.seek(rw_hi_off)
+                    f.write(b"\x00" * (orig_len - rw_hi_off))
+                echo (f"Zeroed RW page padding 0x{rw_hi_off:X}..0x{orig_len:X}")
+
 def exec_export_elf():
     if not getBinCodeFile().exists():
         return

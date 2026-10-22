@@ -1,5 +1,8 @@
 #pragma once
 
+namespace al
+{
+
 struct JMapItem
 {
         enum Type
@@ -60,3 +63,5 @@ public:
 public:
         JMapInfo();
 };
+
+} // namespace al

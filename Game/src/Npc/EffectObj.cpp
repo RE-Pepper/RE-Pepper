@@ -2,23 +2,22 @@
 #include <LiveActor/alActorInitUtil.h>
 #include <LiveActor/alActorPoseKeeper.h>
 #include <LiveActor/alLiveActorFunction.h>
-#include <Npc/alEffectObj.h>
+#include <Npc/EffectObj.h>
 #include <Placement/alPlacementFunction.h>
 #include <Se/alSeFunction.h>
 #include <Util/alStringUtil.h>
 
-namespace al
-{
+
 
 #ifdef NON_MATCHING
 // something with mBaseMtx
 EffectObj::EffectObj( const sead::SafeString& name )
-    : MapObjActor( name ), mBaseMtx( sead::Matrix34f::ident )
+    : al::MapObjActor( name ), mBaseMtx( sead::Matrix34f::ident )
 {
 }
 #endif
 
-void EffectObj::init( const ActorInitInfo& info )
+void EffectObj::init( const al::ActorInitInfo& info )
 {
         const char* objectName = nullptr;
         tryGetObjectName( &objectName, info );
@@ -49,9 +48,9 @@ void EffectObj::control()
         tryStartSe( this, "Wait", 2 );
 }
 
-void EffectObjFunction::initActorEffectObj( EffectObj* actor, const ActorInitInfo& info, const char* objectName )
+void EffectObjFunction::initActorEffectObj( EffectObj* actor, const al::ActorInitInfo& info, const char* objectName )
 {
-        if ( isExistArchive( StringTmp<128>( "ObjectData/%s.szs", objectName ) ) )
+        if ( al::isExistArchive( al::StringTmp<128>( "ObjectData/%s.szs", objectName ) ) )
                 initActor( actor, info );
         else
                 initActorWithArchiveName( actor, info, "EffectObj" );
@@ -59,5 +58,3 @@ void EffectObjFunction::initActorEffectObj( EffectObj* actor, const ActorInitInf
         makeMtxSRT( &actor->mBaseMtx, actor );
         trySyncStageSwitchAppear( actor );
 }
-
-} // namespace al

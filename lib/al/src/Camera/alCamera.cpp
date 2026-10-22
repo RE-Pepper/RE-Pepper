@@ -1,7 +1,7 @@
 #include <Camera/alCamera.h>
-#include <Camera/alCameraDashAngleTunerParam.h>
+#include <Camera/CameraDashAngleTunerParam.h>
 #include <Camera/alCameraParamVision.h>
-#include <Camera/alCameraRotatorParam.h>
+#include <Camera/CameraRotatorParam.h>
 #include <Yaml/alByamlIter.h>
 
 namespace al

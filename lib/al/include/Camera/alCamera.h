@@ -2,12 +2,13 @@
 
 #include <math/seadVector.h>
 
+class CameraDashAngleTunerParam;
+class CameraRotatorParam;
+
 namespace al
 {
 class ByamlIter;
 class CameraParamVision;
-class CameraDashAngleTunerParam;
-class CameraRotatorParam;
 
 class CameraUnknownParam
 {
