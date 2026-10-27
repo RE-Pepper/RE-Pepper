@@ -45,9 +45,9 @@ def read_elfsym(objfile):
 
         if "Ref" == sect or type == "--":
             continue
-        if sym in ("[Anonymous", "$a", "$v0", ".emb_text"):
+        if sym in ("[Anonymous", ".emb_text"):
             continue
-        if "__ARM" in sym or "BuildAttributes" in sym or "Lib$$Request" in sym or sym.startswith("$d") or sym.startswith("i."):
+        if "__ARM" in sym or "BuildAttributes" in sym or "Lib$$Request" in sym or sym.startswith("$") or sym.startswith("i."):
             continue
         # the source path symbol, without dropping __sti___<len>_<stem>_cpp
         if sym == objfile.stem or sym.endswith("/" + objfile.name) or sym == objfile.name:

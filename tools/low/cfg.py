@@ -20,6 +20,10 @@ decompme_id = None
 # Dict of versions + sha256sum
 versions = None
 
+# versions whose original image is thumb (skips the arm-only THUMB
+# marker strip in the build, example: dlp)
+thumb_versions = None
+
 # Default version to use
 default_version = None
 
@@ -138,6 +142,7 @@ def readFile(path):
     checkStrEntry(data, "app_name")
     checkIntEntry(data, "decompme_id")
     checkDctEntry(data, "versions")
+    checkSetEntry(data, "thumb_versions")
     checkStrEntry(data, "default_version")
     checkStrEntry(data, "compiler")
     checkArrEntry(data, "flags_compile")

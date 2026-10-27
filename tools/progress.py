@@ -8,6 +8,7 @@ import os
 import sys
 import json
 import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.ticker
 from time import sleep
@@ -25,9 +26,8 @@ addr_base = read_header()[HeadType.Text][HeadVal.Start]
 
 target_data = None
 decomp_data = None
-with open(getBinFile(), "rb") as f:
-    data = f.read()
-    target_data = memoryview(data)
+data = readBinImage()
+target_data = memoryview(data)
 with open(getExportFile(), "rb") as f:
     data = f.read()
     decomp_data = memoryview(data)
@@ -73,10 +73,11 @@ def main():
         if "b" in sym[MapFmt.Type] and "d" in sym[MapFmt.Type]:
             continue
         rank = sym[MapFmt.Rank]
-        size = sym[MapFmt.End] - sym[MapFmt.Start]
+        end = sym[MapFmt.End]
+        size = end - sym[MapFmt.Start] if end else 0
         name = sym[MapFmt.Symbol]
 
-        if name:
+        if name and size:
             sym_dec = get_elf_symbol(name, False)
             if sym_dec:
                 dec_size = sym_dec[ElfMapFmt.Size]

@@ -1,18 +1,26 @@
 #!/usr/bin/env python3
-# 3differ: 3ds focused symbol differ. no devkitpro, no objdump, pure
-# capstone, works on linux and windows.
-# - arm + thumb functions (auto detected), literal pools as data
-# - data symbols: word diff with address normalization
-# - image pointing operands are normalized to map symbols, so a shift
-#   from something else growing does not zero the score
-# - only the diff by default, --full prints the whole function
-# - colors on a tty, plain when piped
+# 3differ engine. symbol and data diff between the original code.bin
+# and the built elf, used by tools/diff.py (cli) and check.py (ranks).
+# image pointing operands normalize to map symbols, so a shift from
+# something else growing does not zero the score. arm + thumb (the
+# built side follows the elf mapping symbols), literal pools as data.
+
+import sys
+import re
+import bisect
+from pathlib import Path
+
+from tools.low.glob import *
+from tools.low.readSymMap import MapFmt, read_sym_file
+from tools.low.readHeader import *
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 import re
 from pathlib import Path
 
 from tools.low.glob import *
-from tools.low.readSymMap import MapFmt, read_sym_file
+from tools.low.readSymMap import MapFmt, read_sym_file, get_symbol
 from tools.low.readHeader import *
 
 try:
@@ -134,6 +142,8 @@ def _elf_symtab(data):
                 maps[st_value] = "a"
             elif name.startswith("$t"):
                 maps[st_value] = "t"
+            elif name.startswith("$V"):
+                maps[st_value] = "a" # arm->thumb interworking veneer, arm body
             elif name.startswith("$d"):
                 maps[st_value] = "d"
             syms[name] = (st_value, st_size, st_shndx)
@@ -241,6 +251,17 @@ def _dcd_lines(raw, addr, base_off=0):
         out.append(Insn(addr + off, raw[off:off + 4].hex(), text))
     return out
 
+def _cut_at_ret(insns, count):
+    # -s: stop after the Nth return instruction (bx, pop ..pc, ldm ..pc)
+    seen = 0
+    for i, e in enumerate(insns):
+        t = e.text.split()[0] if e.text else ""
+        if t in ("bx", "pop", "ldm"):
+            seen += 1
+            if seen >= count:
+                return insns[: i + 1]
+    return insns
+
 def _find_pool(insns):
     # words after the last unconditional return are literal pool
     last = -1
@@ -290,9 +311,10 @@ def _gutter(e, unit_start, is_branch_target):
 # ---------------------------------------------------------------------------
 # the differ
 
-def diff_symbol(map_row, built_path=None, thumb_hint=None, color=None, full=False):
+def diff_symbol(map_row, built_path=None, built_data=None, thumb_hint=None, color=None,
+                full=False, show_branches=True, stop_at_ret=0):
     if not HAS_CAPSTONE:
-        return DiffResult(1, "3differ: capstone is missing (pip install capstone)")
+        return DiffResult(1, "diff.py: capstone is missing (pip install capstone)")
 
     import sys
     if color is None:
@@ -302,29 +324,40 @@ def diff_symbol(map_row, built_path=None, thumb_hint=None, color=None, full=Fals
     t_start = map_row[MapFmt.Start]
     t_end = map_row[MapFmt.End]
     if not t_end or t_end <= t_start:
-        return DiffResult(1, "3differ: target row has no size")
+        return DiffResult(1, "diff.py: target row has no size")
     t_size = t_end - t_start
     name = map_row[MapFmt.Symbol] or f"0x{t_start:08X}"
 
-    orig = getBinCodeFile().read_bytes()
+    orig = readBinImage()
     t_bytes = orig[t_start - lo: t_start - lo + t_size]
 
-    if built_path is None:
-        built_path = getElfFile()
-    if not Path(built_path).exists():
-        return DiffResult(1, "3differ: build output missing, link first")
-    built = Path(built_path).read_bytes()
-    bsyms, bmaps = _elf_symtab(built)
-    if name not in bsyms:
-        return DiffResult(1, f"3differ: {name} not found in build")
-    b_addr, b_sym_size, b_shndx = bsyms[name]
-    b_bytes = _elf_section_bytes_at(built, b_shndx, b_addr)
-    if b_bytes is None:
-        if b_sym_size == 0:
-            b_sym_size = t_size
-        b_bytes = _elf_bytes_at(built, b_addr, b_sym_size)
-    if not b_bytes:
-        return DiffResult(1, "3differ: cannot read built bytes")
+    if built_data is not None and built_data[:4] != b"\x7fELF":
+        # raw function bytes: no symtab, the isa falls back to the map
+        b_addr = t_start
+        b_sym_size = len(built_data)
+        b_bytes = built_data
+        bmaps = {}
+    else:
+        if built_data is not None:
+            built = built_data
+        else:
+            if built_path is None:
+                built_path = getElfFile()
+            if not Path(built_path).exists():
+                return DiffResult(1, "diff.py: build output missing, link first")
+            built = Path(built_path).read_bytes()
+        bsyms, bmaps = _elf_symtab(built)
+        if name not in bsyms:
+            return DiffResult(1, f"diff.py: {name} not found in build")
+        b_addr, b_sym_size, b_shndx = bsyms[name]
+        b_addr &= ~1 # elf thumb function symbols carry the thumb bit in st_value
+        b_bytes = _elf_section_bytes_at(built, b_shndx, b_addr)
+        if b_bytes is None:
+            if b_sym_size == 0:
+                b_sym_size = t_size
+            b_bytes = _elf_bytes_at(built, b_addr, b_sym_size)
+        if not b_bytes:
+            return DiffResult(1, "diff.py: cannot read built bytes")
     b_size = len(b_bytes)
 
     # data rows: no disassembly, word diff with normalization
@@ -336,10 +369,18 @@ def diff_symbol(map_row, built_path=None, thumb_hint=None, color=None, full=Fals
         t_pool = map_row[MapFmt.Pool]
         if not t_pool or t_pool <= t_start or t_pool >= t_end:
             t_pool = None
-        t_thumb = _mode_for_target(t_bytes, t_start, thumb_hint)
-        b_thumb = _mode_for_built(b_bytes, b_addr, bmaps, thumb_hint if thumb_hint is not None else t_thumb)
+        # isa precedence: explicit hint, then the built side's mapping
+        # symbols (the original side is the same function), then the map
+        # marker (Type "ff") for builds without mapping symbols
+        b_thumb = _mode_for_built(b_addr, bmaps, thumb_hint)
+        m_thumb = _mode_from_map(map_row)
+        if b_thumb is None:
+            b_thumb = m_thumb
+        t_thumb = thumb_hint if thumb_hint is not None else b_thumb
 
         tl, _ = _disas_unit(t_bytes, t_start, t_thumb, t_pool)
+        if stop_at_ret:
+            tl = _cut_at_ret(tl, stop_at_ret)
         if not t_pool:
             p = _find_pool(tl)
             if p:
@@ -349,6 +390,8 @@ def diff_symbol(map_row, built_path=None, thumb_hint=None, color=None, full=Fals
             tl += _dcd_lines(t_bytes[t_pool - t_start:], t_pool)
 
         bl, _ = _disas_unit(b_bytes, b_addr, b_thumb)
+        if stop_at_ret:
+            bl = _cut_at_ret(bl, stop_at_ret)
         b_pool = _find_pool(bl)
         if b_pool:
             bl = bl[: len([x for x in bl if x.addr < b_pool])]
@@ -363,21 +406,31 @@ def diff_symbol(map_row, built_path=None, thumb_hint=None, color=None, full=Fals
     def C(col, s):
         return f"{col}{s}{RESET}" if color else s
 
+    def arrow(e):
+        # branch visualization: target rows get a corner, sources a tee
+        if not show_branches or e is None:
+            return "  "
+        if getattr(e, "branch_to", False):
+            return "\u2514\u2500"
+        if getattr(e, "branch_from", None) is not None:
+            return "\u251c\u2500"
+        return "  "
+
     for item in _align(tl, bl):
         kind = item[0]
         if kind == "=":
             if full:
-                out.append(C(DIM, f"        {item[1].addr:08X}     {item[1].text}"))
+                out.append(C(DIM, f"  {arrow(item[1])} {item[1].addr:08X}     {item[1].text}"))
         elif kind == "c":
-            out.append(C(GREEN, f"diff_change {item[1].addr:08X}     {item[1].text}"))
-            out.append(C(GREEN, f"CURRENT  {item[1].addr:08X}     {item[1].text}"))
-            out.append(C(RED,   f"BASE    {item[2].addr:08X}     {item[2].text}"))
+            out.append(C(GREEN, f"diff_change {arrow(item[1])} {item[1].addr:08X}     {item[1].text}"))
+            out.append(C(GREEN, f"CURRENT   {arrow(item[1])} {item[1].addr:08X}     {item[1].text}"))
+            out.append(C(RED,   f"BASE      {arrow(item[2])} {item[2].addr:08X}     {item[2].text}"))
             diffs += 1
         elif kind == "d":
-            out.append(C(RED, f"diff_remove {item[1].addr:08X}     {item[1].text}"))
+            out.append(C(RED, f"diff_remove {arrow(item[1])} {item[1].addr:08X}     {item[1].text}"))
             diffs += 1
         elif kind == "a":
-            out.append(C(YELLOW, f"diff_add    {item[1].addr:08X}     {item[1].text}"))
+            out.append(C(YELLOW, f"diff_add    {arrow(item[1])} {item[1].addr:08X}     {item[1].text}"))
             diffs += 1
 
     out.append("")
@@ -385,16 +438,14 @@ def diff_symbol(map_row, built_path=None, thumb_hint=None, color=None, full=Fals
     if diffs == 0:
         out.append("MATCH")
     # rc 0 also when there are diffs: a diff is not a tool failure
-    # (tools/check.py treats nonzero as an error). the cli wrapper maps
-    # this to a nonzero exit for humans.
+    # (tools/check.py treats nonzero as an error)
     return DiffResult(0, "\n".join(out))
 
-def _mode_for_target(data_bytes, addr, thumb_hint=None):
-    if thumb_hint is not None:
-        return thumb_hint
-    return False # 3ds retail images are arm by default, auto thumb later
+def _mode_from_map(map_row):
+    # the map marks thumb functions with Type "ff"
+    return (map_row[MapFmt.Type] or "").startswith("ff")
 
-def _mode_for_built(data_bytes, addr, maps, thumb_hint=None):
+def _mode_for_built(addr, maps, thumb_hint=None):
     if thumb_hint is not None:
         return thumb_hint
     if maps:
@@ -404,4 +455,7 @@ def _mode_for_built(data_bytes, addr, maps, thumb_hint=None):
                 best = (a, kind)
         if best:
             return best[1] == "t"
-    return False
+    return None
+
+
+# ---------------------------------------------------------------------------

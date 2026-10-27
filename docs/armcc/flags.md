@@ -119,10 +119,13 @@ are a primary reconstruction source for donor data.
                        calling sections next to their target
 --remove              drop unreferenced sections from pulled
                        archive members
---largeregions       * allow sections to span page boundaries
+--largeregions       * official 3DS release flag; forces large
+                       region mode, whose default sort is
+                       AvgCallDepth (call depth, ties by name)
 --no_list_mapping_symbols * suppress $a/$d/$t in map
 --show_parent_lib    * show which archive each section came from
---sort=algorithm      section sort order
+--sort=algorithm      section sort order; default Lexical,
+                       AvgCallDepth in large-region mode
 --first=section       place this section first in the region
 --last=section        place this section last in the region
 --zi_base=address     force ZI base address

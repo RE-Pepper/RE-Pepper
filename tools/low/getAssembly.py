@@ -25,8 +25,7 @@ def get_asm (sym_name):
         addr_code_size = None
 
     # read binary
-    with open(getBinFile(), 'rb') as f:
-        data = f.read()
+    data = readBinImage()
     data_view = memoryview(data)
 
     # init capstone

@@ -1,321 +1,201 @@
 #!/usr/bin/env python3
-# diff: builds the decompiled / incbin split from the unit
-# decomposition, byte compares the exported code.bin against the
-# original and prints the verdict. differences attribute to map rows,
-# missing pins and spill content only show when something is wrong.
-# Usage: python3 tools/diff.py [-q] [-e] [-v] [--update]
+# symbol differ forwarder. the engine lives in tools/3differ, the byte
+# check in tools/3differ/match.py, the same way check.py goes through
+# tools/low. flags: -m build first, -w watch, -3/-b three-way (need -w),
+# -s stop at return, -B no arrows, -l skip lines, --full, --thumb/--arm
+# force the isa, --color, --match (-q -v -e --update --skip SYM).
 
 import sys
-import time
 import argparse
-from bisect import bisect_right
+import importlib
 from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
+
 from tools.low.glob import *
-from tools.low.readSymMap import *
-from tools.low.readHeader import *
-from tools.low.utilsPrint import *
+from tools.low.readSymMap import get_symbol, read_sym_file, MapFmt
 
-MAX_REPORT = 32
 
-def read_skip_list():
-    syms = set()
-    f = getMatchSkipFile()
-    if f.exists():
-        for line in f.read_text().splitlines():
-            line = line.split("#")[0].strip()
-            if line:
-                syms.add(line)
-    return syms
+def _differ():
+    # tools.3differ starts with a digit, a plain import cannot name it
+    return importlib.import_module("tools.3differ")
 
-def write_skip_list(syms):
-    f = getMatchSkipFile()
-    existing = read_skip_list()
-    with open(f, "a") as fh:
-        for name in syms:
-            if name not in existing:
-                fh.write(name + "\n")
-                existing.add(name)
 
-def resolve_pin_names():
-    # the same decomposition the generator builds: only the head row of
-    # a pin unit is a pin, absorbed rows inside a block are not
-    from tools.low.genOriginal import build_units
-    units, _header = build_units()
-    return {u.start: u.rows[0][MapFmt.Symbol] for u in units if u.kind in ("pin", "zpin")}
+def _resolve_symbol(token):
+    if token.startswith("0x"):
+        addr = int(token, 0)
+        for r in read_sym_file():
+            if r[MapFmt.Start] == addr:
+                return r
+        return None
+    return get_symbol(token)
 
-def decomp_stats():
-    # pin bytes per module (from .syms) plus the incbin rest
-    import json
-    from tools.low.genOriginal import build_units
-    units, _header = build_units()
 
-    mods = {}
-    if getCfgSymsFile().exists():
-        with open(getCfgSymsFile()) as f:
-            syms_files = json.load(f)
-        sym_mod = {}
-        for src, syms in syms_files.items():
-            best = None
-            for mod_path_name, mod_data in cfg.modules.items():
-                mod_subdir = mod_data.get("source_dir") or "."
-                mod = mod_path_name if mod_subdir in (".", "", None) else f"{mod_path_name}/{mod_subdir}"
-                if str(src).startswith(mod) and len(mod) > len(best or ""):
-                    best = mod_data.get("name") or mod_path_name
-            for s in syms:
-                sym_mod[s] = best or "Unknown"
+def _make():
+    import subprocess
+    r = subprocess.run(
+        [sys.executable, str(getProjDir() / "make.py"), getVersion()],
+        capture_output=True, text=True,
+    )
+    return r.returncode == 0, (r.stdout or "") + (r.stderr or "")
 
-        for u in units:
-            if u.kind not in ("pin", "zpin"):
-                continue
-            cat = sym_mod.get(u.rows[0][MapFmt.Symbol], "Unknown")
-            mods.setdefault(cat, 0)
-            mods[cat] += u.end - u.start
 
-    pinned_total = sum(mods.values())
-    total = max(sum(u.end - u.start for u in units), 1)
-    return mods, pinned_total, total
+def _elf_bytes():
+    p = Path(getElfFile())
+    return p.read_bytes() if p.exists() else None
 
-# ---------------------------------------------------------------------------
-# linker map parsing
-
-def parse_linker_map():
-    # -> (regions, symbols)
-    # regions: {name: {"base": int, "size": int, "sections": [(addr,size,sect,obj)]}}
-    # symbols: {name: (addr, size)}
-    path = getOutMapFile()
-    if not path.exists():
-        warn(f"Linker map not found ({path}), skipping map based checks.")
-        return {}, {}
-
-    regions = {}
-    symbols = {}
-    cur = None
-    in_syms = False
-
-    with open(path, "r", errors="replace") as f:
-        for line in f:
-            line = line.rstrip()
-
-            if "Execution Region " in line and " (Base:" in line:
+def _snap_sources():
+    # mtimes of every module source and the preinclude, os independent
+    out = {}
+    for mod_path_name, mod_data in cfg.modules.items():
+        src_dir = mod_data.get("source_dir") or "."
+        base = getProjDir().joinpath(*str(mod_path_name).split("/"))
+        mod_src = base.joinpath(*str(src_dir).split("/"))
+        if not mod_src.is_dir():
+            continue
+        for f in mod_src.rglob("*"):
+            if f.is_file():
                 try:
-                    name = line.split("Execution Region ")[1].split(" ")[0]
-                    base = int(line.split("Base: ")[1].split(",")[0], 16)
-                    size = int(line.split("Size: ")[1].split(",")[0], 16)
-                except (IndexError, ValueError):
-                    cur = None
-                    continue
-                cur = {"base": base, "size": size, "sections": []}
-                regions[name] = cur
-                in_syms = False
-                continue
+                    out[str(f)] = f.stat().st_mtime
+                except OSError:
+                    pass
+    if cfg.flag_preinclude:
+        p = getProjDir() / cfg.flag_preinclude
+        if p.exists():
+            out[str(p)] = p.stat().st_mtime
+    return out
 
-            if "Global Symbols" in line:
-                in_syms = True
-                cur = None
-                continue
-            if line.startswith("===") and in_syms:
-                in_syms = False
-                continue
 
-            if in_syms:
-                parts = [p for p in line.split() if p != "ABSOLUTE"]
-                if len(parts) < 4 or not parts[1].startswith("0x"):
-                    continue
-                try:
-                    symbols[parts[0]] = (int(parts[1], 16), int(parts[3], 0))
-                except ValueError:
-                    continue
-                continue
+def _render(sym, thumb_hint, full, err, show_branches=True, stop_at_ret=0,
+            base_bytes=None, prev_bytes=None, threeway=None):
+    import shutil
+    from tools.low.utilsPrint import echo
+    differ = _differ()
+    w, _ = shutil.get_terminal_size((100, 40))
+    print("\033[2J\033[H", end="")
+    echo (f"{cfg.project_name} v{getVersion().upper()}  {sym[MapFmt.Symbol] or hex(sym[MapFmt.Start])}")
+    print("\u2500" * min(w, 100))
+    if err:
+        print("\033[31mbuild failed:\033[0m")
+        for l in err.splitlines()[-12:]:
+            print("  " + l)
+        return None
 
-            if cur is not None:
-                sline = line.strip()
-                if sline.startswith("0x") and not sline.endswith("Object"):
-                    parts = sline.split()
-                    if len(parts) < 6:
-                        continue
-                    try:
-                        addr = int(parts[0], 16)
-                        size = int(parts[1], 16)
-                    except ValueError:
-                        continue
-                    sect = parts[5]
-                    obj = " ".join(parts[6:]) if len(parts) > 6 else "?"
-                    cur["sections"].append((addr, size, sect, obj))
+    def section(label, data):
+        echo (f"\u2500\u2500 {label} \u2500\u2500")
+        print (differ.diff_symbol(sym, built_data=data, thumb_hint=thumb_hint, color=True,
+                                  full=full, show_branches=show_branches,
+                                  stop_at_ret=stop_at_ret).stdout)
 
-    return regions, symbols
+    if threeway == "prev" and prev_bytes is not None:
+        section("prev (before the last rebuild)", prev_bytes)
+    if threeway == "base" and base_bytes is not None:
+        section("base (when diff.py was started)", base_bytes)
+    if threeway:
+        echo ("\u2500\u2500 current \u2500\u2500")
+    res = differ.diff_symbol(sym, thumb_hint=thumb_hint, color=True, full=full,
+                             show_branches=show_branches, stop_at_ret=stop_at_ret)
+    print(res.stdout)
+    return res
 
-# ---------------------------------------------------------------------------
 
 def main():
-    parser = argparse.ArgumentParser(description="Verify a matching build")
-    parser.add_argument("-q", action="store_true", help="Quiet, only summary")
-    parser.add_argument("-v", action="store_true", help="Verbose, list every bad row")
-    parser.add_argument("-e", action="store_true", help="Exit with error code when not matching")
-    parser.add_argument("--update", action="store_true", help="Demote pinned rows whose bytes differ into the match skip list, then exit")
-    parser.add_argument("--skip", metavar="SYM", help="Demote a symbol (or ER_PIN_xxxxxxxx region name) by hand")
+    parser = argparse.ArgumentParser(description="3ds symbol differ")
+    parser.add_argument("symbol", nargs="?", default=None, help="Map symbol name or 0xADDRESS")
+    parser.add_argument("--version", metavar="VER", help="Version to diff (default: config default_version)")
+    parser.add_argument("-m", "--make", action="store_true", help="Run make.py before diffing")
+    parser.add_argument("-w", "--watch", action="store_true", help="Rebuild on source change and redraw")
+    parser.add_argument("-l", "--skip-lines", metavar="LINES", type=int, default=0, help="Skip the first LINES lines of output")
+    parser.add_argument("-s", "--stop-at-ret", dest="stop_at_ret", action="count", default=0, help="Stop the disassembly at the first return (-ss: second, ...)")
+    parser.add_argument("-B", "--no-show-branches", dest="show_branches", action="store_false", help="Don't visualize branches")
+    parser.add_argument("--full", action="store_true", help="Print the whole function, not only the diff")
+    parser.add_argument("--thumb", action="store_const", const=True, dest="thumb_hint", help="Force thumb decoding")
+    parser.add_argument("--arm", action="store_const", const=False, dest="thumb_hint", help="Force arm decoding")
+    parser.add_argument("--color", action="store_true", help="Force colors")
+    parser.add_argument("-3", "--threeway-prev", dest="threeway", action="store_const", const="prev",
+                        help="Three-way: target, current, and the state before the last rebuild. Requires -w")
+    parser.add_argument("-b", "--threeway-base", dest="threeway", action="store_const", const="base",
+                        help="Three-way: target, current, and the state when diff.py was started. Requires -w")
+    parser.add_argument("--match", action="store_true", help="Byte compare code.bin instead of diffing a symbol")
+    parser.add_argument("-q", action="store_true", help="match mode: quiet, only summary")
+    parser.add_argument("-v", action="store_true", help="match mode: verbose, list every bad row")
+    parser.add_argument("-e", action="store_true", help="match mode: exit with error code when not matching")
+    parser.add_argument("--update", action="store_true", help="match mode: demote pinned rows whose bytes differ into the skip list, then exit")
+    parser.add_argument("--skip", metavar="SYM", help="match mode: demote a symbol (or ER_PIN_xxxxxxxx region name) by hand")
     args = parser.parse_args()
 
-    # honor the version make.py last selected (data/.version), the map
-    # only parses lazily so this is safe after the imports above
-    from tools.low.utilsVersion import get_ver
-    setVersion(get_ver())
+    if args.version:
+        setVersion(args.version)
 
-    # ---- manual demote
-    if args.skip:
-        target = args.skip
-        if target.upper().startswith("ER_PIN_"):
-            addr = int(target.split("_")[-1], 16)
-            hit = next((r for r in read_sym_file() if r[MapFmt.Start] == addr and r[MapFmt.Symbol]), None)
-            if not hit:
-                fail_ex ("No map row at that address.", target, False)
-            target = hit[MapFmt.Symbol]
-        write_skip_list([target])
-        echo (f"Demoted to original bytes: {target}")
-        echo ("Rerun make.py --match to apply.")
+    if args.threeway and not args.watch:
+        parser.error("-3/-b need -w")
+
+    if args.match:
+        margv = []
+        if args.q: margv.append("-q")
+        if args.v: margv.append("-v")
+        if args.e: margv.append("-e")
+        if args.update: margv.append("--update")
+        if args.skip: margv += ["--skip", args.skip]
+        importlib.import_module("tools.3differ.match").main(margv)
         return
 
-    orig_path = getBinCodeFile()
-    build_path = getExportFile()
+    thumb_hint = args.thumb_hint
+    sym = _resolve_symbol(args.symbol) if args.symbol else None
+    if sym is None:
+        from tools.low.utilsPrint import fail_ex
+        fail_ex ("Symbol not found in map.", args.symbol or "", False)
 
-    if not orig_path.exists():
-        fail_ex ("Original code.bin missing.", str(orig_path), False)
-    if not build_path.exists():
-        fail_ex ("Build code.bin missing.", str(build_path), False)
 
-    header = read_header()
-    text_lo = header[HeadType.Text][HeadVal.Start]
-    rw_hi = header[HeadType.Rw][HeadVal.End]
-
-    orig = orig_path.read_bytes()
-    build = build_path.read_bytes()
-
-    rows = sorted(read_sym_file(), key=lambda r: r[MapFmt.Start])
-    starts = [r[MapFmt.Start] for r in rows]
-
-    # ---- byte comparison
-    cmp_len = min(len(orig), len(build))
-    diffs = []
-    i = 0
-    while i < cmp_len:
-        if orig[i] != build[i]:
-            j = i
-            while j < cmp_len and orig[j] != build[j]:
-                j += 1
-            diffs.append((i, j))
-            i = j
-        else:
-            i += 1
-
-    diff_bytes = sum(b - a for a, b in diffs)
-
-    # ---- attribute diffs to rows
-    bad_rows = {}
-    for a, b in diffs:
-        addr = text_lo + a
-        idx = bisect_right(starts, addr) - 1
-        if idx < 0:
-            row_name = f"<before {text_lo:08X}>"
-        else:
-            r = rows[idx]
-            row_name = r[MapFmt.Symbol] or (f"fn_{r[MapFmt.Start]:08X}" if "f" in r[MapFmt.Type] else f"dat_{r[MapFmt.Start]:08X}")
-        entry = bad_rows.setdefault(idx, [row_name, text_lo + a, 0])
-        entry[2] += b - a
-
-    # ---- pinned regions in the linker map
-    have_map = getOutMapFile().exists()
-    regions, symbols = parse_linker_map()
-    # the same pin candidate set the generator uses (respects
-    # only_matching and the match skip list)
-    candidates = resolve_pin_names()
-    pinned = [(addr, name) for addr, name in sorted(candidates.items())]
-    pin_missing = []
-    if have_map:
-        for addr, name in pinned:
-            reg = regions.get(f"ER_PIN_{addr:08X}")
-            if reg is None or reg["base"] != addr or not reg["sections"]:
-                pin_missing.append(((addr, name), reg))
-
-    # ---- spill
-    spill = regions.get("ER_SPILL")
-    spill_sects = spill["sections"] if spill else []
-
-    # ---- report
-    total = len(orig)
-    mods, pin_bytes, unit_bytes = decomp_stats()
-    decomp_pct = 100.0 * pin_bytes / unit_bytes
-    incbin_pct = 100.0 - decomp_pct
-
-    ok = diff_bytes == 0 and len(build) == len(orig) and not pin_missing
-
-    echo ("")
-    for cat in sorted(mods):
-        pct = 100.0 * mods[cat] / unit_bytes
-        echo (f"{cat:10s} - {pct:6.2f}%  ({mods[cat]} bytes)")
-    echo ("")
-    echo (f"decompiled {decomp_pct:.2f}% ({pin_bytes} bytes) | incbin {incbin_pct:.2f}%")
-
-    if ok:
-        echo ("MATCH: code.bin is identical to the original.")
-    else:
-        echo ("")
-        if len(build) != len(orig):
-            if len(build) < len(orig):
-                echo (f"WARNING: build is {len(orig) - len(build)} bytes SHORTER than original")
-            else:
-                echo (f"WARNING: build is {len(build) - len(orig)} bytes longer (spill, see below)")
-        echo (f"MISMATCH: {len(diffs)} differing ranges, {diff_bytes} bytes, {len(bad_rows)} rows:")
-        shown = 0
-        for idx, (name, first_addr, nbytes) in sorted(bad_rows.items(), key=lambda kv: kv[1][1]):
-            if not args.v and shown >= MAX_REPORT:
-                echo (f"  ... and {len(bad_rows) - shown} more (use -v to list all)")
-                break
-            r = rows[idx] if 0 <= idx < len(rows) else None
-            extra = f" rank {r[MapFmt.Rank]} {r[MapFmt.Type]}" if r else ""
-            echo (f"  {name} at 0x{first_addr:08X} ({nbytes} bytes){extra}")
-            shown += 1
-        if pin_missing:
-            echo (f"{len(pin_missing)} pinned region(s) missing or misplaced in the linker map:")
-            for (addr, name), reg in pin_missing[:MAX_REPORT]:
-                state = "absent" if reg is None else f"at 0x{reg['base']:08X}"
-                echo (f"  {name} expected 0x{addr:08X}, region {state}")
-        if spill_sects:
-            echo (f"spill region holds {len(spill_sects)} section(s) beyond the original image:")
-            for addr, size, sect, obj in spill_sects[:MAX_REPORT]:
-                echo (f"  0x{addr:08X} 0x{size:X} {sect} ({obj})")
-            if len(spill_sects) > MAX_REPORT:
-                echo (f"  ... and {len(spill_sects) - MAX_REPORT} more")
-            echo ("(dead weight in the .axf only, not in code.bin)")
-        echo ("")
-        echo ("Run with --update to demote differing pinned rows to original bytes.")
-
-    # ---- auto demote
-    if args.update:
-        candidates = resolve_pin_names()
-        to_demote = []
-        for a, b in diffs:
-            lo_a, hi_b = text_lo + a, text_lo + b
-            for r in rows:
-                if r[MapFmt.Start] not in candidates:
-                    continue
-                end = r[MapFmt.End] or r[MapFmt.Start]
-                if r[MapFmt.Start] < hi_b and end > lo_a:
-                    name = candidates[r[MapFmt.Start]]
-                    if name not in to_demote:
-                        to_demote.append(name)
-        if to_demote:
-            for name in to_demote:
-                echo (f"Demoted to original bytes: {name}")
-            write_skip_list(to_demote)
-            echo (f"{len(to_demote)} pinned row(s) demoted into {getMatchSkipFile()}.")
-            echo ("Rerun make.py, the output will be byte identical for these rows.")
-        else:
-            echo ("Nothing to demote: no differing byte range touches a pinned row.")
+    if args.watch:
+        import time
+        from tools.low.utilsPrint import echo
+        err = None
+        res = None
+        base_bytes = _elf_bytes()
+        prev_bytes = base_bytes
+        try:
+            prev_bytes = _elf_bytes() or prev_bytes
+            ok, err = _make()
+            res = _render(sym, thumb_hint, args.full, err if not ok else None,
+                          show_branches=args.show_branches, stop_at_ret=args.stop_at_ret,
+                          base_bytes=base_bytes, prev_bytes=prev_bytes, threeway=args.threeway)
+            sources = _snap_sources()
+            while True:
+                time.sleep(1.0)
+                now = _snap_sources()
+                if now != sources:
+                    prev_bytes = _elf_bytes() or prev_bytes
+                    sources = now
+                    ok, err = _make()
+                    res = _render(sym, thumb_hint, args.full, err if not ok else None,
+                                  show_branches=args.show_branches, stop_at_ret=args.stop_at_ret,
+                                  base_bytes=base_bytes, prev_bytes=prev_bytes, threeway=args.threeway)
+        except KeyboardInterrupt:
+            pass
+        if res is not None:
+            echo ("final state:")
+            print (res.stdout)
         return
 
-    if args.e and not ok:
-        sys.exit(1)
+    if args.make:
+        ok, err = _make()
+        if not ok:
+            print("\033[31mbuild failed:\033[0m")
+            for l in err.splitlines()[-12:]:
+                print("  " + l)
+            sys.exit(1)
+
+    differ = _differ()
+    res = differ.diff_symbol(sym, thumb_hint=thumb_hint,
+                             color=True if args.color else None, full=args.full,
+                             show_branches=args.show_branches, stop_at_ret=args.stop_at_ret)
+    out = res.stdout.splitlines()
+    if args.skip_lines:
+        out = out[args.skip_lines:]
+    print ("\n".join(out))
+    sys.exit(res.returncode)
+
 
 if __name__ == "__main__":
     main()

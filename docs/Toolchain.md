@@ -1,6 +1,6 @@
-# Overview
+# Toolchain
 
-the build always outputs a code.bin byte identical to the original.
+the build tries to output a code.bin byte identical to the original.
 decompiled code pins to its real address, everything else is original
 bytes. the build can't drift.
 
@@ -36,11 +36,13 @@ objdiff.json              decomp.dev file (generated)
 - `make.py` -> build, matching is the default
 - `tools/pypstem` -> the build system
 - `tools/low` -> helpers: slices, scatter, objdiff
-- `tools/3differ` -> function diff, no devkitpro
-- `tools/diff.py` -> byte compare vs original
+- `tools/diff.py` -> symbol differ
+- `tools/diff.py --match` -> byte compare vs original
 - `tools/check.py` -> update map ranks
 - `user/initMap.py` -> bootstrap a map from a raw code.bin
 
-see docs/Sti.md for static initializers (__sti, .init_array).
+see docs/armcc/Sti.md for static initializers (__sti, .init_array).
 see docs/armcc/ for compiler quirks, SDK bugs, matching mechanics
-and runtime init.
+and function-order identification. docs/rt-init.md covers the
+SDK startup chain. docs/armcc/identify.md covers how the linker
+decides function order and how to read it back into sources.

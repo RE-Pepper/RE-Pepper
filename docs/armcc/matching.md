@@ -2,7 +2,7 @@
 
 how the matching build places code, resolves symbols and stays
 byte-identical. this covers the armlink interaction, not the
-python tooling (see docs/Overview.md for that).
+python tooling (see docs/Toolchain.md for that).
 
 ## pin vs slice
 

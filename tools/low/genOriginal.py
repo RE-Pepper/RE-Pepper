@@ -203,10 +203,11 @@ def build_units():
     bss_lo  = header[HeadType.Bss][HeadVal.Start]
     bss_hi  = header[HeadType.Bss][HeadVal.End]
 
-    code_path = getBinCodeFile()
-    if not code_path.exists():
-        fail_ex ("Matching mode needs the original code.bin.", f"Missing: {code_path}", False)
-    bin_end = text_lo + code_path.stat().st_size
+    orig_path = getBinFile()
+    if not orig_path.exists():
+        fail_ex ("Matching mode needs the original code.bin or game.axf.", f"Missing: {orig_path}", False)
+    bin_data = readBinImage()
+    bin_end = text_lo + len(bin_data)
 
     if not (text_lo <= text_hi <= ro_lo <= ro_hi <= rw_lo <= rw_hi):
         fail_ex ("Header sections out of order.", f"TEXT 0x{text_lo:X}-0x{text_hi:X}, RO 0x{ro_lo:X}-0x{ro_hi:X}, RW 0x{rw_lo:X}-0x{rw_hi:X}", False)
@@ -308,9 +309,16 @@ def _emit_slice_asm(f, unit, bin_data, text_lo):
         if size <= 0:
             continue
         opened_func = False
+        thumb_state = False
         for r in labels:
             f.write(f"    EXPORT {asm_sym(r[MapFmt.Symbol])}\n")
         for r in labels:
+            # the map marks thumb functions with Type "ff": switch the
+            # assembler isa so the FUNCTION marker carries $t
+            r_thumb = (r[MapFmt.Type] or "").startswith("ff")
+            if r_thumb != thumb_state:
+                f.write("    THUMB\n" if r_thumb else "    ARM\n")
+                thumb_state = r_thumb
             f.write(f"{asm_sym(r[MapFmt.Symbol])}")
             if unit.code and "f" in r[MapFmt.Type] and not opened_func:
                 # one FUNCTION marker per chunk, ENDFUNC closes it below
@@ -360,9 +368,6 @@ def gen_original(clear=False):
     echo ("Generating original byte slices")
     units, header = build_units()
     text_lo = header[HeadType.Text][HeadVal.Start]
-
-    with open(getBinCodeFile(), "rb") as f:
-        bin_data = f.read()
 
     if getOrigDir().exists():
         shutil.rmtree(getOrigDir(), ignore_errors=True)

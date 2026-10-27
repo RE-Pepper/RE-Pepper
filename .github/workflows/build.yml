@@ -40,7 +40,7 @@ jobs:
           for v in "${VERSIONS[@]}"; do
               echo "Now $v"
               python make.py "$v"
-              python tools/diff.py -e
+              python tools/diff.py --match -e
               echo "Finished $v"
               did_run=true
           done

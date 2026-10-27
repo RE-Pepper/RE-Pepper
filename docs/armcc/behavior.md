@@ -14,7 +14,7 @@ from ARM PDFs. armcc 4.0 build 902 / armlink 4.1 build 791.
   sections. the preinclude (`Game/project_globals.h`) forces ro/rw/zi
   section names per file with `_Pragma(arm section ...)`.
 
-## what armcc refuses to do
+## hard limits
 
 - `#351`: the first parameter of any allocation function (operator
   new, custom overloads) must match the compiler's internal size_t,

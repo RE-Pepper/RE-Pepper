@@ -27,7 +27,10 @@ def postProcSrc(file, file_src):
     # them one section per source file so a SectionName row can pin the
     # whole block
     for s in sect_formats:
-        text = text.replace(s, s[:-2] + "." + file_src.name + "||").replace("        THUMB", "        ARM")
+        text = text.replace(s, s[:-2] + "." + file_src.name + "||")
+    if not isThumbVersion():
+        # arm-only build: thumb markers must not reach armasm
+        text = text.replace("        THUMB", "        ARM")
 
     file.write_text(text)
 

@@ -39,12 +39,15 @@ As noted earlier, this fork of the RedPepper project made some updates:
 - rebuild assembly (for "possible" modding support)  
 - project has .axf support added, but 3d land has no axf files. If you happen to own one, contact me asap.
 
-### Prequesites
-    - Python 3
-    - DevKitPro (only for diff.py or check.py)
+### Prerequisites
+    - Python 3.10+
+    - armcc 4.x under `data/compilers/` (which version goes where is in config.json)
+    - on linux: `wibo` at `data/compilers/wibo`
     - `code.bin` or `.code` (not decrypted) as `code.bin`
     - `exh.bin` or `extheader.bin` or `HeaderExeFS.bin` (not decrypted) as `exh.bin`
     - Or, if you has a .axf file (which is most likely not the case), that as `game.axf`
+
+no env vars, no profile changes. the build handles the armcc env itself.
 
 ### Setup
 #### Python
@@ -62,6 +65,16 @@ As noted earlier, this fork of the RedPepper project made some updates:
 - Place the `code.bin` and `exh.bin` files in the data folder, the tools will put them where needed.
 - run ```py make.py [version]```. default version is EU
 
+the loop is: edit code, `make.py`, `diff.py <symbol>`, repeat until the function matches.
+`data/config.user.json` is your personal override file, it's gitignored.
+
+### new version?
+`python3 tools/pypstem/user/initMap.py <version> [--axf]` builds the initial
+map. without `--axf` it recovers functions from `code.bin` by hand (call
+graph, vtables, `.init_array` - rows stay unnamed). with `--axf` the map is
+built from `game.axf` symbols instead: names, data, thumb from the mapping
+symbols (`ff`), weak functions as `ft`.
+
 > [!CAUTION]
 > Note: **do not delete cmd.exe**, it is required to pass a silly check when building with armcc.
 
@@ -70,8 +83,21 @@ The tools use python, and in the tools/ directory of this repository.
 For [...], run --help to get a list of options.
 
 #### diff.py
-```python tools/diff.py [asmdiff flags] <symbol>```
-Start asm-differ, a cli interface to check the assembly of a function. 
+```python tools/diff.py <symbol> [--full] [-m] [-w] [-3|-b]```
+Symbol differ. shows the diff between the original function and your
+build. `-m` builds first, `-w` keeps rebuilding on source change and
+redraws, `--full` prints the whole function (also on match), `-s` stops
+the disassembly at the first return, `-B` hides branch arrows, `-l N`
+skips output lines, `--thumb`/`--arm` force the isa, `-3`/`-b` add the
+build state before the last rebuild / at startup to a `-w` session,
+`--match` byte compares code.bin instead (`-q` `-v` `-e` `--update`
+`--skip SYM`).
+
+#### match mode is part of diff.py
+```python tools/diff.py --match [-q] [-e] [-v] [--update] [--skip SYM]```
+Byte compares the exported code.bin against the original and prints the
+verdict. `--update` demotes pinned rows whose bytes differ into the skip
+list, `--skip` demotes one by hand. CI gates on `diff.py --match -e`.
 
 #### upload.py
 ```python tools/upload.py <symbol>```
@@ -80,6 +106,11 @@ Upload a specific function to decomp.me
 #### check.py
 ```python tools/check.py [...] [symbol]```
 Check and update the csv function map.
+
+#### progress.py
+```python tools/progress.py```
+Progress badges (Code/OK/NonMatching json), release.txt and the
+Progress.png history graph into `data/stats/<ver>/`.
 
 #### listsyms.py
 ```python tools/listsyms.py [...]```

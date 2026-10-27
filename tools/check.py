@@ -12,7 +12,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent))
 from tools.low.updateMap import *
 from tools.low.readSymMap import *
 from tools.low.readElfMap import *
-from tools.low.callAsmdiff import *
+from tools.low.readHeader import read_header, HeadType, HeadVal
 
 is_skip_mode = False
 is_sim_mode = False
@@ -23,13 +23,21 @@ csv_path = ""
 log_path = ""
 
 def rank_symbol(symbol, decomp_symbol):
-    res, sym_size = callAsmdiff(symbol, decomp_symbol, None, True)
+    # rows outside the image or without size have nothing to rank
+    if decomp_symbol[ElfMapFmt.Address] == 0:
+        return 'U'
+    if decomp_symbol[ElfMapFmt.Address] < read_header()[HeadType.Text][HeadVal.Start]:
+        return 'U'
+    sym_size = symbol[MapFmt.End] - symbol[MapFmt.Start]
+    if sym_size <= 0:
+        return 'U'
     if sym_size == 1:
         return 'O'
-    if res is None:
-        return 'U'
+    import importlib
+    differ = importlib.import_module("tools.3differ")
+    res = differ.diff_symbol(symbol, color=False)
     if res.returncode != 0:
-        fail (f"3differ failed:\n{res.stdout}", False)
+        fail (f"diff.py failed:\n{res.stdout}", False)
 
     out = res.stdout
     if "CURRENT" not in out: raise RuntimeError(f"Unexpected output:\n{out}")

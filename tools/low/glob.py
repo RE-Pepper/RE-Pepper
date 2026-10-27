@@ -78,6 +78,37 @@ def getBinFile(v=None):
     else:
         return getBinCodeFile(v)
 
+def isThumbVersion(v=None):
+    return (v or getVersion()) in (cfg.thumb_versions or set())
+
+def readBinImage(v=None):
+    # the original image as flat bytes starting at the lowest load
+    # address: code.bin passes through, an elf/axf original gets its
+    # pt_load segments flattened. consumers index VA - text base, which
+    # armlink 3ds images guarantee to be the lowest load address.
+    data = getBinFile(v).read_bytes()
+    if data[:4] != b"\x7fELF":
+        return data
+    import struct
+    e_phoff = struct.unpack_from("<I", data, 0x1C)[0]
+    e_phentsize, e_phnum = struct.unpack_from("<HH", data, 0x2A)
+    segs = []
+    lo = hi = None
+    for i in range(e_phnum):
+        off = e_phoff + i * e_phentsize
+        p_type, p_offset, p_vaddr, p_paddr, p_filesz, p_memsz = struct.unpack_from("<IIIIII", data, off)
+        if p_type != 1 or p_filesz == 0:
+            continue
+        segs.append((p_vaddr, data[p_offset:p_offset + p_filesz]))
+        lo = p_vaddr if lo is None else min(lo, p_vaddr)
+        hi = (p_vaddr + p_filesz) if hi is None else max(hi, p_vaddr + p_filesz)
+    if not segs:
+        return data
+    out = bytearray(hi - lo)
+    for vaddr, blob in segs:
+        out[vaddr - lo: vaddr - lo + len(blob)] = blob
+    return bytes(out)
+
 def getBuildPath(): # Build path
     return getProjDir() / "build" / getVersion()
 def getElfName(): # Name of built elf file
@@ -148,4 +179,7 @@ if os.name == "nt":
 # read config
 cfg.read(getVerDir(), getDataDir())
 setCompilerVer(cfg.compiler)
+# standalone tools (readHeader/readElfSym via fromelf) need a compiler
+# path without the build setup; manSetup overrides it for the build
+setCompilerPath(getProjDir() / "data" / "compilers" / str(cfg.compiler))
 

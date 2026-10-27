@@ -31,10 +31,3 @@ tools/splector/   (scrapped reassembly engine, unused)
 5. `python3 make.py <yourgame>`
 6. `python3 tools/diff.py` -> should say MATCH. done.
 
-## sdk headers
-
-donor AXFs with DWARF (other games on the same SDK) give you types,
-layouts, enum values, decl files and line numbers. rebuild the headers
-from that. only provable facts go in, everything else stays unknown.
-
-svc wrappers are free: literal translations of your binary's bytes.
